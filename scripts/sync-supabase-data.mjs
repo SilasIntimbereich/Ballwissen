@@ -16,7 +16,7 @@ for(const file of files){
    const metadata={id:teamId,tournament_year:Number(year),team_name:team.name,team_difficulty:team.teamDifficulty||tierOf(team.name),source_url:data.sourceUrl||data.source||null,verified:team.verified===true};
    const {error:metaError}=await db.from("arcade_teams").upsert(metadata);
    if(metaError)throw new Error("Team metadata "+teamId+": "+metaError.message);
-   const roster=(team.players||[]).map((p,i)=>({id:teamId+"-"+(p.number||i+1),name:p.name,position:p.position||"",club:p.club||"",number:p.number||null,rarity:p.rarity||null}));
+   const roster=(team.players||[]).map((p,i)=>({id:teamId+"-"+(i+1),name:p.name,position:p.position||"",club:p.club||"",number:p.number||null,rarity:p.rarity||null}));
    const {error:rosterError}=await db.from("arcade_team_answers").upsert({team_id:teamId,roster,updated_at:new Date().toISOString()});
    if(rosterError)throw new Error("Roster "+teamId+": "+rosterError.message);
    count++;
