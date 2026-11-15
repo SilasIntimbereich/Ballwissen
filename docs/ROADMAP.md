@@ -17,12 +17,13 @@
 - [ ] Run the historical import workflow and inspect its validation output
 - [ ] Audit every 2026 player against FIFA's final squad lists, including late replacements
 - [ ] Audit historical clubs as they appear at each tournament date
-- [ ] Curate team difficulty tiers (Common, Niche, Legendary) across all imported teams
+- [x] Add a separate Common/Niche/Legendary team-difficulty map
+- [ ] Review team-difficulty assignments across all imported teams
 - [ ] Curate player rarity tiers with evidence, not guesses
 - [ ] Deploy Supabase migration and Edge Functions to a real project
 - [ ] Sync all verified team metadata and private answer rosters to Supabase
 - [ ] Publish the daily challenge schedule after team tiers are curated
-- [ ] Wire the frontend to Supabase Auth and the Edge Functions
+- [x] Wire the frontend to Supabase Auth and the Edge Functions
 - [x] Implement the three-team Daily UI, one-attempt-per-day messaging and combined results
 - [x] Implement live score-distribution chart and outscored percentile in the result UI
 - [x] Implement live weekly top-10 leaderboard and current user's rank
