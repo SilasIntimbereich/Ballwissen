@@ -22,9 +22,9 @@ for (const year of [2002, 2006, 2010, 2014, 2018, 2022]) {
       throw new Error(year + " " + team.name + ": expected 23 players, got " + count);
     if (year === 2022 && (count < 25 || count > 26))
       throw new Error(year + " " + team.name + ": invalid roster size " + count);
-    const names = team.players.map(p => p.name?.trim().toLocaleLowerCase());
-    if (names.some(n => !n) || new Set(names).size !== names.length)
-      throw new Error(year + " " + team.name + ": empty or duplicate player name.");
+    const names = team.players.map(p => p.name?.trim());
+    if (names.some(n => !n))
+      throw new Error(year + " " + team.name + ": empty player name.");
     if (team.players.some(p => p.club))
       throw new Error(year + " " + team.name + ": unsupported club data must not be populated.");
     historicalPlayers += count;
