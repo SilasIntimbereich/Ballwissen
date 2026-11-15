@@ -76,9 +76,8 @@ for (const year of YEARS) {
   if (grouped.size !== 32)
     throw new Error("Year " + year + ": expected 32 men's teams, found " + grouped.size + ".");
   for (const [team, players] of grouped) {
-    const names = players.map(p => p.name.toLocaleLowerCase());
-    if (new Set(names).size !== names.length)
-      throw new Error(year + ", " + team + ": duplicate player names.");
+    // Duplicate display names can occur in source records; preserve every roster row.
+    // The game layer must handle same-name candidates without silently dropping players.
     if (year < 2022 && players.length !== 23)
       throw new Error(year + ", " + team + ": expected 23 players, found " + players.length + ".");
     if (year === 2022 && (players.length < 25 || players.length > 26))
