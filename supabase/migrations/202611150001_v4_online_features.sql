@@ -98,7 +98,7 @@ create or replace function public.handle_new_arcade_user()
 returns trigger language plpgsql security definer set search_path=public
 as $$
 begin
- insert into public.profiles(id,display_name) values(new.id,'Player')
+ insert into public.profiles(id,display_name) values(new.id,'Player-'||substr(new.id::text,1,4))
  on conflict(id) do nothing;
  return new;
 end;
