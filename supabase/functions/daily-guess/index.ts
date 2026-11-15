@@ -28,5 +28,5 @@ Deno.serve(async req=>{
  const {data:previous}=await db.from("daily_attempt_teams").select("found_player_ids").eq("attempt_id",attemptId).eq("sequence",sequence).maybeSingle();
  const found=[...new Set([...(previous?.found_player_ids||[]),key])];
  await db.from("daily_attempt_teams").upsert({attempt_id:attemptId,sequence,team_id:challenge.team_id,score:found.length,total:roster.length,found_player_ids:found},{onConflict:"attempt_id,sequence"});
- return json({correct:true,player:{name:player.name,position:player.position||"",club:attempt.mode==="daily-legendary"?null:(player.club||null)},score:found.length,total:roster.length});
+ return json({correct:true,player:{id:key,name:player.name,position:player.position||"",club:attempt.mode==="daily-legendary"?null:(player.club||null)},score:found.length,total:roster.length});
 });
