@@ -20,7 +20,9 @@ Deno.serve(async req=>{
  if(!challenge||!answer)return json({error:"Challenge answer key missing"},503);
  const {data:teamAttempt}=await db.from("daily_attempt_teams").select("score,total").eq("attempt_id",attemptId).eq("sequence",sequence).maybeSingle();
  const score=teamAttempt?.score||0,total=(answer.roster||[]).length;
+ const foundIds=teamAttempt?.found_player_ids||[];
+ const missedPlayers=(answer.roster||[]).filter((p:any)=>!foundIds.includes(p.id)).map((p:any)=>({name:p.name,position:p.position||"",club:p.club||""}));
  const {error:updateError}=await db.from("daily_attempts").update({score:attempt.score+score,total:attempt.total+total,completed_teams:sequence,current_team_started_at:new Date().toISOString(),finished_at:sequence===3?new Date().toISOString():null}).eq("id",attemptId);
  if(updateError)return json({error:"Could not save score"},500);
- return json({sequence,score,total,combinedScore:attempt.score+score,combinedTotal:attempt.total+total,finished:sequence===3,nextSequence:sequence===3?null:sequence+1});
+ return json({sequence,score,total,missedPlayers,combinedScore:attempt.score+score,combinedTotal:attempt.total+total,finished:sequence===3,nextSequence:sequence===3?null:sequence+1});
 });
