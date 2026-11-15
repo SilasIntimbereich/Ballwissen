@@ -29,8 +29,7 @@ The source is the Fjelstul World Cup Database via DataHub, licensed CC BY-SA 4.0
 
 ## 3. Create Supabase backend
 1. Create a Supabase project.
-2. In the Supabase SQL Editor, run the existing initial schema at `database/schema.sql`.
-3. Then run `supabase/migrations/202611150001_v4_online_features.sql`.
+2. Apply `supabase/migrations/202611150001_v4_online_features.sql` using the repository's **Deploy Supabase backend** GitHub Actions workflow. Do not manually run both schema files; the V4 migration is the deployment path.
 4. Enable Anonymous Sign-Ins under Authentication → Providers.
 5. In GitHub → Settings → Secrets and variables → Actions, add these repository secrets: `SUPABASE_ACCESS_TOKEN`, `SUPABASE_PROJECT_ID`, `SUPABASE_DB_PASSWORD`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`. Never paste the service-role key into a normal repository file.
 6. Open GitHub → Actions → **Deploy Supabase backend** → **Run workflow**. This applies migrations, sets server-side secrets and deploys the Edge Functions.
