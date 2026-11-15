@@ -4,6 +4,9 @@ https://datahub.io/football/worldcup
 License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
 Adapted historical data must retain this attribution and the same license.
 
+Important field limitation:
+The DataHub squads.csv schema supplies team, player, position and shirt-number fields. It does not supply the club a player represented at the time of the tournament. FOOTBALL ARCADE stores historical club as null rather than inventing or substituting a current club. A separate, independently sourced and licensed historical club dataset is required before club hints can be enabled.
+
 2026 structured squad snapshot:
 https://github.com/erickalfaro/world-cup-data-2026
 Source README documents the squad CSV snapshot and its upstream provenance:
