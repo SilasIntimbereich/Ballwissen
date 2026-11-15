@@ -141,3 +141,33 @@ as $$
 $$;
 revoke all on function public.team_percentile(text,int,int) from public;
 grant execute on function public.team_percentile(text,int,int) to anon,authenticated;
+
+
+create table if not exists public.profiles (
+ id uuid primary key references auth.users(id) on delete cascade,
+ display_name text not null default 'Player',
+ created_at timestamptz not null default now()
+);
+alter table public.profiles enable row level security;
+drop policy if exists "Users read own profile" on public.profiles;
+create policy "Users read own profile" on public.profiles for select using(auth.uid()=id);
+drop policy if exists "Users update own profile" on public.profiles;
+create policy "Users update own profile" on public.profiles for update using(auth.uid()=id) with check(auth.uid()=id);
+
+create table if not exists public.normal_game_sessions (
+ id uuid primary key default gen_random_uuid(),
+ user_id uuid not null references auth.users(id) on delete cascade,
+ team_id text not null references public.arcade_teams(id),
+ started_at timestamptz not null default now(),
+ finished_at timestamptz
+);
+create table if not exists public.normal_game_session_guesses (
+ session_id uuid not null references public.normal_game_sessions(id) on delete cascade,
+ player_id text not null,
+ guessed_at timestamptz not null default now(),
+ primary key(session_id,player_id)
+);
+alter table public.normal_game_sessions enable row level security;
+alter table public.normal_game_session_guesses enable row level security;
+drop policy if exists "Users read own normal sessions" on public.normal_game_sessions;
+create policy "Users read own normal sessions" on public.normal_game_sessions for select using(auth.uid()=user_id);
