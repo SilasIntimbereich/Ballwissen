@@ -90,7 +90,7 @@ revoke all on function public.daily_common_leaderboard() from public;
 grant execute on function public.daily_common_leaderboard() to anon,authenticated;
 
 -- Answer rosters remain private to service-role Edge Functions. Do not grant anon/authenticated
--- direct access to arcade_teams.roster or daily challenge write operations.
+-- direct access to arcade_team_answers or daily challenge write operations.
 
 
 -- Automatically create the anonymous user's public profile row.
