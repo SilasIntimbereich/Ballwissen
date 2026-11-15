@@ -7,7 +7,7 @@
     "import:historical": "node scripts/import-historical-squads.mjs",
     "validate:data": "node scripts/validate-data.mjs",
     "sync:supabase": "node scripts/sync-supabase-data.mjs",
-    "check": "node --check assets/js/data.js && node --check assets/js/main.js && node --check assets/js/leaderboard.js && node --check scripts/import-historical-squads.mjs && node --check scripts/validate-data.mjs && node --check scripts/sync-supabase-data.mjs",
+    "check": "node --check assets/js/data.js && node --check assets/js/main.js && node --check assets/js/leaderboard.js && node --check sw.js && node --check scripts/import-historical-squads.mjs && node --check scripts/validate-data.mjs && node --check scripts/sync-supabase-data.mjs",
     "test": "npm run check && npm run validate:data"
   },
   "dependencies": {
