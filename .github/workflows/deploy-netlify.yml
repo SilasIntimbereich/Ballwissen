@@ -1,0 +1,25 @@
+name: Deploy FOOTBALL ARCADE to Netlify
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify project before deployment
+        run: npm test
+      - name: Deploy production site
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          if [ -z "$NETLIFY_AUTH_TOKEN" ] || [ -z "$NETLIFY_SITE_ID" ]; then
+            echo "Missing NETLIFY_AUTH_TOKEN or NETLIFY_SITE_ID repository secret."
+            exit 1
+          fi
+          npx --yes netlify-cli deploy --prod --dir=.
