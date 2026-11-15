@@ -13,7 +13,7 @@ for(const file of files){
  for(const [year,teams] of Object.entries(groups)){
   for(const team of teams){
    const teamId=team.id||team.name.toLowerCase().replace(/[^a-z0-9]+/g,"-")+"-"+year;
-   const metadata={id:teamId,tournament_year:Number(year),team_name:team.name,team_difficulty:team.teamDifficulty||tierOf(team.name),source_url:data.sourceUrl||data.source||null,verified:team.verified===true};
+   const metadata={id:teamId,tournament_year:Number(year),team_name:team.name,team_difficulty:team.teamDifficulty||tierOf(team.name),source_url:data.sourceUrl||data.source||null,verified:false};
    const {error:metaError}=await db.from("arcade_teams").upsert(metadata);
    if(metaError)throw new Error("Team metadata "+teamId+": "+metaError.message);
    const roster=(team.players||[]).map((p,i)=>({id:teamId+"-"+(i+1),name:p.name,position:p.position||"",club:p.club||"",number:p.number||null,rarity:p.rarity||null}));
