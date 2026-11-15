@@ -128,3 +128,16 @@ end;
 $$;
 revoke all on function public.publish_daily_challenges(date) from public;
 grant execute on function public.publish_daily_challenges(date) to service_role;
+
+
+create or replace function public.team_percentile(p_team_id text,p_score int,p_total int)
+returns numeric language sql stable security definer set search_path=public
+as $$
+ select coalesce(round(100.0*count(*) filter (
+   where case when total=0 then 0 else score::numeric/total end <
+         case when p_total=0 then 0 else p_score::numeric/p_total end
+ )/nullif(count(*),0),1),0)
+ from public.normal_game_results where team_id=p_team_id;
+$$;
+revoke all on function public.team_percentile(text,int,int) from public;
+grant execute on function public.team_percentile(text,int,int) to anon,authenticated;
