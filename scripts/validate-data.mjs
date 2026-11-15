@@ -11,6 +11,12 @@ for (const p of wc.players) {
 if (teams.size !== 48) throw new Error("2026: expected 48 teams, got " + teams.size);
 for (const [team, n] of teams) if (n !== 26) throw new Error("2026: " + team + " has " + n + " entries, expected 26.");
 
+const difficulty = await read("data/team-difficulty.json");
+const tierEntries = Object.entries(difficulty.tiers || {});
+const tierNames = tierEntries.flatMap(([, names]) => names);
+if (new Set(tierNames).size !== tierNames.length)
+  throw new Error("A national team is assigned to more than one difficulty tier.");
+
 const hist = await read("data/historical-squads.json");
 let historicalPlayers = 0;
 for (const year of [2002, 2006, 2010, 2014, 2018, 2022]) {
@@ -32,5 +38,13 @@ for (const year of [2002, 2006, 2010, 2014, 2018, 2022]) {
 }
 const iran = hist.tournaments[2022].find(t => t.name === "Iran");
 if (!iran || iran.players.length !== 25) throw new Error("2022 Iran source roster check failed.");
+const allTeamNames = new Set([
+  ...hist.tournaments ? Object.values(hist.tournaments).flat().map(t => t.name) : [],
+  ...teams.keys()
+]);
+const unclassified = [...allTeamNames].filter(name => !tierNames.includes(name));
+if (unclassified.length)
+  throw new Error("Missing team difficulty tier for: " + unclassified.join(", "));
+
 console.log("Validation passed: 192 historical teams / " + historicalPlayers +
   " source-listed players; 48 teams / 1,248 rows in 2026. Historical club data is unavailable in this source.");
