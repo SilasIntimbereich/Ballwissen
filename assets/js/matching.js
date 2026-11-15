@@ -13,9 +13,11 @@ function distance(a,b){
 }
 export function matches(guess,player){
  const input=normalize(guess);
+ if(!input)return false;
+ const targets=[player.name,...(player.aliases||[])].filter(Boolean).map(normalize);
+ if(targets.includes(input))return true;
  if(input.length<4)return false;
- return [player.name,...(player.aliases||[])].filter(Boolean).map(normalize).some(target=>
-  input===target||
+ return targets.some(target=>
   (Math.min(input.length,target.length)>=6&&distance(input,target)<=1)||
   (Math.min(input.length,target.length)>=10&&distance(input,target)<=2)
  );
