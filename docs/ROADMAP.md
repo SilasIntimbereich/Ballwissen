@@ -23,10 +23,10 @@
 - [ ] Sync all verified team metadata and private answer rosters to Supabase
 - [ ] Publish the daily challenge schedule after team tiers are curated
 - [ ] Wire the frontend to Supabase Auth and the Edge Functions
-- [ ] Implement the three-team Daily UI, one-attempt-per-day messaging and combined results
-- [ ] Implement live score-distribution chart and outscored percentile in the result UI
-- [ ] Implement live weekly top-10 leaderboard and current user's rank
-- [ ] Add automated end-to-end tests for timer boundaries, attempt uniqueness, concurrency, RLS and mobile Safari
+- [x] Implement the three-team Daily UI, one-attempt-per-day messaging and combined results
+- [x] Implement live score-distribution chart and outscored percentile in the result UI
+- [x] Implement live weekly top-10 leaderboard and current user's rank
+- [ ] Run end-to-end tests for timer boundaries, attempt uniqueness, concurrency, RLS and mobile Safari
 - [ ] Deploy and verify production website
 
 ## Release rule
