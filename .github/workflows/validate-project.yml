@@ -19,3 +19,16 @@ jobs:
         run: npm run check
       - name: Validate tournament data
         run: npm run validate:data
+  edge-functions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - name: Type-check Supabase Edge Functions
+        run: |
+          for file in supabase/functions/*/index.ts; do
+            echo "Checking $file"
+            deno check "$file"
+          done
