@@ -3,8 +3,13 @@ create extension if not exists pgcrypto;
 create table if not exists public.arcade_teams (
  id text primary key, tournament_year int not null, team_name text not null,
  team_difficulty text not null default 'common' check(team_difficulty in ('common','niche','legendary')),
- roster jsonb not null, source_url text, verified boolean not null default false,
+ source_url text, verified boolean not null default false,
  created_at timestamptz not null default now()
+);
+create table if not exists public.arcade_team_answers (
+ team_id text primary key references public.arcade_teams(id) on delete cascade,
+ roster jsonb not null,
+ updated_at timestamptz not null default now()
 );
 create table if not exists public.daily_challenges (
  id uuid primary key default gen_random_uuid(), challenge_date date not null,
@@ -37,12 +42,14 @@ create index if not exists normal_results_team_idx on public.normal_game_results
 create index if not exists arcade_teams_year_idx on public.arcade_teams(tournament_year,team_name);
 
 alter table public.arcade_teams enable row level security;
+alter table public.arcade_team_answers enable row level security;
 alter table public.daily_challenges enable row level security;
 alter table public.daily_attempts enable row level security;
 alter table public.daily_attempt_teams enable row level security;
 alter table public.normal_game_results enable row level security;
 drop policy if exists "Public read team metadata" on public.arcade_teams;
 create policy "Public read team metadata" on public.arcade_teams for select using (true);
+-- Deliberately no policies on arcade_team_answers: only service_role may read answer rosters.
 drop policy if exists "Public read daily schedule" on public.daily_challenges;
 create policy "Public read daily schedule" on public.daily_challenges for select using (true);
 drop policy if exists "Users read own daily attempts" on public.daily_attempts;
