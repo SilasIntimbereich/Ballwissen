@@ -4,6 +4,9 @@ enabled = true
 [functions.daily-challenge]
 verify_jwt = true
 
+[functions.daily-guess]
+verify_jwt = true
+
 [functions.submit-daily]
 verify_jwt = true
 
