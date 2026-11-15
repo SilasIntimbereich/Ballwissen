@@ -15,6 +15,8 @@ Deno.serve(async req=>{
  const {data:attempt}=await db.from("daily_attempts").select("*").eq("id",attemptId).eq("user_id",user.id).is("finished_at",null).maybeSingle();
  if(!attempt)return json({error:"Attempt not found or finished"},404);
  if(sequence!==attempt.completed_teams+1)return json({error:"Teams must be played in order"},409);
+ const teamElapsed=(Date.now()-new Date(attempt.current_team_started_at).getTime())/1000;
+ if(teamElapsed>120)return json({error:"Time is up for this team"},410);
  const {data:challenge}=await db.from("daily_challenges").select("team_id").eq("challenge_date",attempt.challenge_date).eq("mode",attempt.mode).eq("sequence",sequence).maybeSingle();
  if(!challenge)return json({error:"Challenge team unavailable"},404);
  const {data:answer}=await db.from("arcade_team_answers").select("roster").eq("team_id",challenge.team_id).maybeSingle();
