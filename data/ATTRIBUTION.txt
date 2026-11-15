@@ -1,0 +1,10 @@
+Squad data source planned for historical tournaments:
+Fjelstul, Joshua C., Fjelstul World Cup Database, via DataHub:
+https://datahub.io/football/worldcup
+License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+
+The current playable France 2018 demonstration roster has not yet been fully audited against the primary final squad list. No claim of complete historical or 2026 coverage is made in this repository.
+
+2026 official verification source:
+FIFA official squad lists:
+https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf
