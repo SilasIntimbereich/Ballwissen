@@ -177,3 +177,25 @@ alter table public.normal_game_session_guesses enable row level security;
 alter table public.normal_game_session_guesses enable row level security;
 drop policy if exists "Users read own normal sessions" on public.normal_game_sessions;
 create policy "Users read own normal sessions" on public.normal_game_sessions for select using(auth.uid()=user_id);
+
+
+drop function if exists public.daily_common_leaderboard();
+create function public.daily_common_leaderboard()
+returns table(rank bigint, display_name text, points bigint, is_current_user boolean)
+language sql stable security definer set search_path=public
+as $$
+ with sums as (
+  select user_id,sum(score)::bigint points from daily_attempts
+  where mode='daily-common' and challenge_date between current_date-6 and current_date and finished_at is not null
+  group by user_id
+ ), ranked as (
+  select row_number() over(order by s.points desc)::bigint rank,
+         s.user_id,coalesce(p.display_name,'Player') display_name,s.points
+  from sums s left join profiles p on p.id=s.user_id
+ )
+ select r.rank,r.display_name,r.points,(r.user_id=auth.uid()) is_current_user
+ from ranked r
+ where r.rank<=10 or r.user_id=auth.uid()
+ order by r.rank;
+$$;
+grant execute on function public.daily_common_leaderboard() to anon,authenticated;
