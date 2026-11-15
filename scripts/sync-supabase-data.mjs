@@ -9,7 +9,7 @@ const files=["data/historical-squads.json","data/worldcup-2026.json"];
 let count=0;
 for(const file of files){
  let data;try{data=JSON.parse(await readFile(file,"utf8"));}catch{continue;}
- let groups=data.tournaments||{};if(data.year===2026&&Array.isArray(data.players)){const byTeam=new Map();for(const p of data.players){if(!byTeam.has(p.team))byTeam.set(p.team,[]);byTeam.get(p.team).push({name:p.name,position:p.position,club:p.club,number:p.number});}groups={2026:[...byTeam.entries()].map(([name,players])=>({id:name.toLowerCase().replace(/[^a-z0-9]+/g,"-")+"-2026",name,verified:false,players}))};}
+ let groups=data.tournaments||{};if(data.year===2026&&Array.isArray(data.players)){const byTeam=new Map();for(const p of data.players){if(!byTeam.has(p.team))byTeam.set(p.team,[]);byTeam.get(p.team).push({name:p.player||p.name,position:p.pos||p.position,club:p.club||null,number:p.number||null});}groups={2026:[...byTeam.entries()].map(([name,players])=>({id:name.toLowerCase().replace(/[^a-z0-9]+/g,"-")+"-2026",name,verified:false,players}))};}
  for(const [year,teams] of Object.entries(groups)){
   for(const team of teams){
    const teamId=team.id||team.name.toLowerCase().replace(/[^a-z0-9]+/g,"-")+"-"+year;
