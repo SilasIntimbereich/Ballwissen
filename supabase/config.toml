@@ -15,3 +15,6 @@ verify_jwt = false
 
 [functions.weekly-leaderboard]
 verify_jwt = false
+
+[functions.submit-normal-result]
+verify_jwt = true
