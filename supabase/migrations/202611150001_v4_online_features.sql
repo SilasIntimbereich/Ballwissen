@@ -169,5 +169,6 @@ create table if not exists public.normal_game_session_guesses (
 );
 alter table public.normal_game_sessions enable row level security;
 alter table public.normal_game_session_guesses enable row level security;
+alter table public.normal_game_session_guesses enable row level security;
 drop policy if exists "Users read own normal sessions" on public.normal_game_sessions;
 create policy "Users read own normal sessions" on public.normal_game_sessions for select using(auth.uid()=user_id);
