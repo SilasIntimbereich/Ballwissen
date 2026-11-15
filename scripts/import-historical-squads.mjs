@@ -4,7 +4,7 @@ const YEARS=[2002,2006,2010,2014,2018,2022];
 const difficultyData=JSON.parse(await (await import("node:fs/promises")).readFile("data/team-difficulty.json","utf8"));
 const difficultyOf=name=>Object.entries(difficultyData.tiers).find(([,names])=>names.includes(name))?.[0]||"niche";
 function parseCSV(input){const rows=[];let row=[],cell="",quoted=false;input=input.replace(/^\uFEFF/,"");for(let i=0;i<input.length;i++){const c=input[i];if(quoted){if(c==='"'&&input[i+1]==='"'){cell+='"';i++;}else if(c==='"')quoted=false;else cell+=c;}else if(c==='"')quoted=true;else if(c===","){row.push(cell);cell="";}else if(c==="\n"){row.push(cell);rows.push(row);row=[];cell="";}else if(c!=="\r")cell+=c;}if(cell.length||row.length){row.push(cell);rows.push(row);}const headers=rows.shift()||[];return rows.filter(r=>r.length>1).map(r=>Object.fromEntries(headers.map((h,i)=>[h,(r[i]||"").trim()])));}
-const responses=await Promise.all(Object.values(SOURCES).map(fetch));if(responses.some(r=>!r.ok))throw new Error("Could not download DataHub CSV files.");
+const responses=await Promise.all(Object.values(SOURCES).map(url=>fetch(url)));if(responses.some(r=>!r.ok))throw new Error("Could not download DataHub CSV files.");
 const [squadText,tournamentText]=await Promise.all(responses.map(r=>r.text()));
 const tournaments=parseCSV(tournamentText),yearById=new Map(tournaments.map(t=>[t.tournament_id,Number(t.year)])),squads=parseCSV(squadText);
 const yearOf=r=>yearById.get(r.tournament_id)||Number((r.tournament_name||"").match(/(?:19|20)\d{2}/)?.[0]);
