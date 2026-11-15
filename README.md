@@ -1,39 +1,28 @@
 # FOOTBALL ARCADE V4
 
-A mobile-first, English-language retro pixel-art World Cup squad quiz.
+Mobile-first retro World Cup squad quiz, built for iPhone and desktop.
 
-## Current build status
+## Current implementation
+- Normal Easy and Hard modes with a 120-second timer, fuzzy name matching, duplicate protection, Give Up and reveal states.
+- 2026 squad data loaded: 48 national teams and 1,248 registered-player records.
+- Historical 2002–2022 squad importer with strict validation and a GitHub Actions workflow.
+- Supabase migration and Edge Function foundations for Daily challenges, private server-side answer checking, real team statistics and weekly leaderboard.
+- iPhone-oriented setup guide and source attribution.
 
-The first playable frontend foundation is committed. It currently contains a normal-mode demo round using a France 2018 sample roster. This is **not yet the complete V4 release**: full tournament data, rarity curation, Daily backend, global statistics and weekly leaderboard remain in progress.
+## Important status
+This is an active implementation, not yet a finished public launch. The historical import workflow must be run. The 2026 data snapshot still needs a player-by-player audit against FIFA's official final squad lists. Daily mode UI, live statistics and leaderboard UI still need to be connected to a deployed Supabase project. Do not show fabricated results.
 
-## Implemented foundation
-
-- Responsive stadium-inspired pixel-art interface
-- Five requested mode entry points: Daily Common, Daily Niche, Daily Legendary, Normal Easy and Normal Hard
-- Tournament selector for 2002, 2006, 2010, 2014, 2018, 2022 and 2026
-- 120-second normal-mode demo, tolerant name matching and duplicate protection
-- Found/missed reveal states and Give Up
-- Initial Supabase schema with Row Level Security
-- Netlify static deployment configuration
-
-## Product requirements
-
-Historical men's World Cup squads for 2002–2026, actual participating teams per edition, tournament-era clubs, five player rarity tiers, three-team Daily challenges, one attempt per day, real score distributions and a rolling seven-day Daily Common leaderboard.
-
-Online features must remain disabled until secure server-side challenge assignment, result validation and privacy-safe aggregate queries are implemented. Never display fake statistics or leaderboard data.
+## Run the historical data import from iPhone
+Open GitHub → Actions → **Import verified historical World Cup squads** → **Run workflow**. The workflow downloads the Fjelstul/DataHub dataset, checks 32 teams and roster sizes for each men's tournament from 2002 to 2022, validates the 2026 dataset, then commits the generated JSON only if all checks pass.
 
 ## Documentation
-
-- [Setup guide](docs/SETUP.md)
+- [iPhone setup and deployment](docs/SETUP.md)
 - [Data sources and licensing](docs/DATA_SOURCES.md)
-- [V4 implementation checklist](docs/ROADMAP.md)
-- [Roster data schema example](data/schema.example.json)
+- [Implementation checklist](docs/ROADMAP.md)
 - [Data attribution](data/ATTRIBUTION.txt)
 
-## Historical data
+## Data licensing
+Historical squad data is adapted from the Fjelstul World Cup Database via DataHub under CC BY-SA 4.0. The 2026 squad snapshot is sourced from the repository documented in DATA_SOURCES.md and is cross-referenced to FIFA's official 1,248-player/48-team final squad announcement. Verify the full FIFA lists before production launch.
 
-Historical squad data is planned to be adapted from the Fjelstul World Cup Database via DataHub, licensed CC BY-SA 4.0. The 2026 squads require separate verification against final official squad lists. See the data-source document for attribution and validation rules.
-
-## Deployment
-
-The intended deployment is Netlify with Supabase. Follow the setup guide. Do not place Supabase service-role credentials in browser code.
+## Deploy
+Frontend: Netlify. Backend: Supabase. Never expose the Supabase service-role key in browser code.
