@@ -48,3 +48,19 @@ Edit `assets/js/config.js` and enter your Supabase project URL and anon key. The
 - Do not present statistics or leaderboard rows as real until results are being submitted and verified.
 - Test one-attempt-per-day, time boundaries, duplicate guesses, wrong guesses, mobile Safari and network failures before public launch.
 - The game UI is wired to the API, but online modes are not production-ready until the backend is deployed, the rosters are audited and synced, Daily tiers are populated, and end-to-end tests pass.
+
+
+## Deploy to Netlify from an iPhone using GitHub Actions
+
+The repository includes `.github/workflows/deploy-netlify.yml`. To use it without editing source files:
+
+1. Create a Netlify site and connect it to this GitHub repository, or create an empty site in Netlify.
+2. In Netlify, open **Site configuration → General → Site details** and copy the Site ID.
+3. Create a Netlify personal access token in **User settings → Applications**.
+4. In GitHub, open **Repository → Settings → Secrets and variables → Actions**.
+5. Add repository secrets named `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID`.
+6. Open **Actions → Deploy FOOTBALL ARCADE to Netlify → Run workflow**.
+
+The workflow runs `npm test` first and only deploys if syntax, dataset and player-matching tests pass. The deploy action publishes the repository root, as configured in `netlify.toml`.
+
+For online modes, Supabase still needs its own project and the separate Supabase secrets/workflow described above. Never add a Supabase service-role key to frontend files.
