@@ -1,0 +1,25 @@
+{
+  "source": "Fjelstul World Cup Database via DataHub; 2026 official FIFA squad lists",
+  "sourceLicense": "CC BY-SA 4.0 for adapted Fjelstul data; verify terms for all additional sources",
+  "tournaments": [
+    {
+      "year": 2018,
+      "teamId": "france-2018",
+      "teamName": "France",
+      "teamDifficulty": "common",
+      "verified": false,
+      "sourceUrls": [],
+      "players": [
+        {
+          "name": "Example Player",
+          "position": "MF",
+          "clubAtTournament": "Example Club",
+          "aliases": [],
+          "rarity": "Niche",
+          "rarityEvidence": "Document the evidence used for this tier",
+          "verified": false
+        }
+      ]
+    }
+  ]
+}
