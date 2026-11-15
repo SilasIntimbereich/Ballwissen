@@ -76,7 +76,7 @@ for (const year of YEARS) {
   if (grouped.size !== 32)
     throw new Error("Year " + year + ": expected 32 men's teams, found " + grouped.size + ".");
   for (const [team, players] of grouped) {
-    // Duplicate display names can occur in source records; preserve every roster row.
+    // Duplicate display names can occur in source records; preserve every roster row.\n    // Player IDs remain distinct by their source roster position.
     // The game layer must handle same-name candidates without silently dropping players.
     if (year < 2022 && players.length !== 23)
       throw new Error(year + ", " + team + ": expected 23 players, found " + players.length + ".");
