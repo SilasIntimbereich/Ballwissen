@@ -1,4 +1,4 @@
-const CACHE_NAME="football-arcade-v4-shell-1";
+const CACHE_NAME="football-arcade-v4-shell-2";
 const APP_SHELL=[
   "./",
   "./index.html",
@@ -10,7 +10,8 @@ const APP_SHELL=[
   "./assets/js/leaderboard.js",
   "./data/historical-squads.json",
   "./data/worldcup-2026.json",
-  "./data/team-difficulty.json"
+  "./data/team-difficulty.json",
+  "./assets/icons/football-arcade.svg"
 ];
 self.addEventListener("install",event=>{
   event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(APP_SHELL)).then(()=>self.skipWaiting()));
@@ -21,15 +22,8 @@ self.addEventListener("activate",event=>{
 self.addEventListener("fetch",event=>{
   const request=event.request;
   if(request.method!=="GET"||new URL(request.url).origin!==self.location.origin)return;
-  const url=new URL(request.url);
-  if(url.pathname.endsWith("/index.html")||url.pathname==="/"){
-    event.respondWith(fetch(request).then(response=>{
-      const copy=response.clone();caches.open(CACHE_NAME).then(cache=>cache.put(request,copy));return response;
-    }).catch(()=>caches.match(request).then(cached=>cached||caches.match("./index.html"))));
-    return;
-  }
-  event.respondWith(caches.match(request).then(cached=>cached||fetch(request).then(response=>{
+  event.respondWith(fetch(request).then(response=>{
     if(response.ok){const copy=response.clone();caches.open(CACHE_NAME).then(cache=>cache.put(request,copy));}
     return response;
-  })));
+  }).catch(()=>caches.match(request).then(cached=>cached||caches.match("./index.html"))));
 });
