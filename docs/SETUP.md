@@ -32,16 +32,16 @@ The source is the Fjelstul World Cup Database via DataHub, licensed CC BY-SA 4.0
 2. In the Supabase SQL Editor, run the existing initial schema at `database/schema.sql`.
 3. Then run `supabase/migrations/202611150001_v4_online_features.sql`.
 4. Enable Anonymous Sign-Ins under Authentication → Providers.
-5. Deploy the Edge Functions in `supabase/functions/` using the Supabase CLI or the Supabase Dashboard.
-6. Set server-side secrets for each function: `SUPABASE_URL`, `SUPABASE_ANON_KEY`, and `SUPABASE_SERVICE_ROLE_KEY`. The service-role key must never be placed in frontend files.
-7. Sync the roster data using `scripts/sync-supabase-data.mjs` from a trusted Node environment with `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY`.
-8. Curate team difficulty values for at least three verified teams in each tier (common, niche, legendary).
-9. Run `select public.publish_daily_challenges(current_date);` using a privileged SQL session after the team tiers have been curated.
+5. In GitHub → Settings → Secrets and variables → Actions, add these repository secrets: `SUPABASE_ACCESS_TOKEN`, `SUPABASE_PROJECT_ID`, `SUPABASE_DB_PASSWORD`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`. Never paste the service-role key into a normal repository file.
+6. Open GitHub → Actions → **Deploy Supabase backend** → **Run workflow**. This applies migrations, sets server-side secrets and deploys the Edge Functions.
+7. Open GitHub → Actions → **Sync verified squads to Supabase** → **Run workflow**. This uploads team metadata and private answer rosters using the service-role key from GitHub Secrets.
+8. Review the curated team difficulty mapping in `data/team-difficulty.json`. It is separate from player rarity and can be adjusted before daily challenges are published.
+9. Run `select public.publish_daily_challenges(current_date);` in Supabase SQL Editor after at least three verified teams exist in each tier. Configure a daily Supabase Cron job for `select public.publish_daily_challenges(current_date);` after the first successful publish.
 
-The daily functions intentionally return no answer rosters to the browser. The private answer table has no public RLS policy.
+The daily and normal-mode functions intentionally return no answer rosters to the browser. The private answer table has no public RLS policy. Server-side sessions enforce the 120-second game timer and duplicate-guess protection.
 
 ## 4. Configure the online frontend
-The online endpoints are present but are not yet wired into the game UI. Add the public Supabase project URL and anon key to a dedicated frontend config module before enabling online UI. The anon key is public by design; the service-role key is not.
+Edit `assets/js/config.js` and enter your Supabase project URL and anon key. The anon key is public by design; the service-role key is not. The weekly leaderboard panel reads from the deployed leaderboard endpoint once this config is set. Daily and normal-mode online game screens still need their final frontend connection and end-to-end tests.
 
 ## Security and release checks
 - Never expose the Supabase service-role key in GitHub files, Netlify environment variables used by browser code, or client JavaScript.
