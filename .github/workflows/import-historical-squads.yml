@@ -1,6 +1,11 @@
 name: Import verified historical World Cup squads
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/import-historical-squads.mjs'
+      - '.github/workflows/import-historical-squads.yml'
 permissions:
   contents: write
 jobs:
