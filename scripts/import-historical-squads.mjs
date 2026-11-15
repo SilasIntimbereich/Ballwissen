@@ -93,7 +93,7 @@ for (const year of YEARS) {
   output.tournaments[year] = [...grouped.entries()].map(([name, players]) => ({
     id: name.toLowerCase().replace(/[^a-z0-9]+/g, "-") + "-" + year,
     name, year, teamDifficulty: difficultyOf(name),
-    verified: true,
+    verified: false,
     players: players.sort((a, b) => (a.number || 99) - (b.number || 99))
   })).sort((a, b) => a.name.localeCompare(b.name));
   console.log(year, grouped.size, "teams", rows.length, "players");
