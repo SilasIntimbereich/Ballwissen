@@ -5,15 +5,15 @@ Mobile-first retro World Cup squad quiz, built for iPhone and desktop.
 ## Current implementation
 - Normal Easy and Hard modes with a 120-second timer, fuzzy name matching, duplicate protection, Give Up and reveal states.
 - 2026 squad data loaded: 48 national teams and 1,248 registered-player records.
-- Historical 2002–2022 squad importer with strict validation and a GitHub Actions workflow (must still be run).
+- Historical 2002–2022 squad importer with per-tournament roster checks, duplicate/name validation and a GitHub Actions workflow.
 - Supabase migration and Edge Function foundations for Daily challenges, private server-side answer checking, real team statistics and weekly leaderboard.
 - iPhone-oriented setup guide and source attribution.
 
 ## Important status
-This is an active implementation, not yet a finished public launch. The historical import workflow must be run. The 2026 data snapshot still needs a player-by-player audit against FIFA's official final squad lists. Daily and normal online gameplay, live score distributions, percentile results and the weekly top-ten/current-player leaderboard are wired to Supabase Edge Functions. They require backend deployment, data sync and testing before launch. Do not show fabricated results.
+This is an active implementation, not yet a finished public launch. Historical club-at-tournament hints are not present in the upstream squads CSV and remain unavailable until a separate reliable, licensed source is integrated. The 2026 data snapshot still needs a player-by-player audit against FIFA's official final squad lists. Daily and normal online gameplay, live score distributions, percentile results and the weekly top-ten/current-player leaderboard are wired to Supabase Edge Functions. They require backend deployment, data sync and testing before launch. Do not show fabricated results.
 
 ## Run the historical data import from iPhone
-Open GitHub → Actions → **Import verified historical World Cup squads** → **Run workflow**. The workflow downloads the Fjelstul/DataHub dataset, checks 32 teams and roster sizes for each men's tournament from 2002 to 2022, validates the 2026 dataset, then commits the generated JSON only if all checks pass.
+Open GitHub → Actions → **Import verified historical World Cup squads** → **Run workflow**. The workflow downloads the Fjelstul/DataHub dataset, checks all 32 teams per historical tournament, validates player names and roster sizes (including the 2022 Iran source roster), confirms the 2026 dataset, then commits the generated JSON only if all checks pass. Historical club fields remain null because the upstream squads CSV does not contain them.
 
 ## Documentation
 - [iPhone setup and deployment](docs/SETUP.md)
