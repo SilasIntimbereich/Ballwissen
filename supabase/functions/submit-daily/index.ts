@@ -18,7 +18,7 @@ Deno.serve(async req=>{
  const {data:challenge}=await db.from("daily_challenges").select("team_id").eq("challenge_date",attempt.challenge_date).eq("mode",attempt.mode).eq("sequence",sequence).maybeSingle();
  const {data:answer}=await db.from("arcade_team_answers").select("roster").eq("team_id",challenge?.team_id||"").maybeSingle();
  if(!challenge||!answer)return json({error:"Challenge answer key missing"},503);
- const {data:teamAttempt}=await db.from("daily_attempt_teams").select("score,total").eq("attempt_id",attemptId).eq("sequence",sequence).maybeSingle();
+ const {data:teamAttempt}=await db.from("daily_attempt_teams").select("score,total,found_player_ids").eq("attempt_id",attemptId).eq("sequence",sequence).maybeSingle();
  const score=teamAttempt?.score||0,total=(answer.roster||[]).length;
  const foundIds=teamAttempt?.found_player_ids||[];
  const missedPlayers=(answer.roster||[]).filter((p:any)=>!foundIds.includes(p.id)).map((p:any)=>({name:p.name,position:p.position||"",club:p.club||""}));
