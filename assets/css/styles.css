@@ -13,3 +13,5 @@
 .player-card.rarity-legendary{box-shadow:inset 3px 0 #ffd36e}
 .player-card.rarity-ball-knowledge{box-shadow:inset 3px 0 #ff8e8e}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+
+.result-stats{width:min(560px,100%);margin-top:12px;text-align:left}.stat-row{display:grid;grid-template-columns:1fr auto;gap:8px;font-size:14px;padding:4px 0;color:#d7e3d6}.stat-track{grid-column:1/-1;height:7px;background:#1c3326}.stat-fill{height:100%;background:var(--green)}.stat-percentile{font:8px "Press Start 2P";color:var(--green);text-align:center;margin:12px 0}
