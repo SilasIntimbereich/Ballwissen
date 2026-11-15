@@ -1,0 +1,20 @@
+{
+  "id": "./",
+  "name": "FOOTBALL ARCADE",
+  "short_name": "FOOTBALL ARCADE",
+  "description": "A retro World Cup squad recall game.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#071b13",
+  "theme_color": "#071b13",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/icons/football-arcade.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
