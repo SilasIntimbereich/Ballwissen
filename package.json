@@ -1,0 +1,10 @@
+{
+  "name": "football-arcade-v4",
+  "version": "4.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "import:historical": "node scripts/import-historical-squads.mjs"
+  },
+  "engines": { "node": ">=20" }
+}
