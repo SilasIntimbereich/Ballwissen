@@ -1,34 +1,33 @@
 # V4 implementation checklist
 
 ## Implemented in repository
-- [x] Responsive stadium-inspired mobile frontend
-- [x] English UI and five requested mode entry points
-- [x] Normal Easy/Hard round, timer, fuzzy matching, duplicate protection and reveal states
-- [x] All 48 teams and 1,248 players from the 2026 squad snapshot loaded into the normal selector
-- [x] Historical squad import script for men's 2002–2022 tournaments with hard validation
-- [x] GitHub Actions workflow to run the historical import from iPhone Safari
-- [x] Supabase schema for private answer rosters, daily attempts, team results and leaderboard aggregates
-- [x] Edge Function foundations for daily challenge start, server-side guess checking, daily team submission, normal result submission, team stats and weekly leaderboard
-- [x] Deterministic daily challenge publisher that requires curated verified team tiers
-- [x] iPhone deployment and backend setup guide
-- [x] Source and license attribution
+- [x] Responsive stadium-inspired mobile frontend and English UI
+- [x] Five mode entry points (three Daily modes, Normal Easy and Normal Hard)
+- [x] Normal local practice: 120-second timer, fuzzy matching, duplicate protection, give-up and reveal states
+- [x] Historical import for men's World Cups 2002–2022; latest GitHub Actions run #7 completed successfully
+- [x] Imported historical data: 192 teams and 4,511 source-listed player rows
+- [x] 2026 snapshot: 48 teams and 1,248 player rows
+- [x] Separate team-difficulty map, now covering all imported historical and 2026 teams
+- [x] Supabase migration and Edge Function source files for private answers, Daily attempts, normal sessions and leaderboard/statistics
+- [x] Frontend request wiring for Supabase-backed features
+- [x] iPhone setup and deployment documentation
 
 ## Still required before public release
-- [ ] Run the historical import workflow and inspect its validation output
-- [ ] Audit every 2026 player against FIFA's final squad lists, including late replacements
-- [ ] Audit historical clubs as they appear at each tournament date
-- [x] Add a separate Common/Niche/Legendary team-difficulty map
-- [ ] Review team-difficulty assignments across all imported teams
-- [ ] Curate player rarity tiers with evidence, not guesses
+- [ ] Audit historical player names and completeness against authoritative tournament squad lists (2022 source currently has 831 rows, not 832)
+- [ ] Source and audit historical club-at-tournament data; current historical source does not include clubs
+- [ ] Audit all 1,248 2026 players against FIFA's final squad PDF
+- [ ] Curate player rarity tiers with evidence; player rarity values are currently unassigned
+- [ ] Independently review team-difficulty tiers after playtesting
 - [ ] Deploy Supabase migration and Edge Functions to a real project
-- [ ] Sync all verified team metadata and private answer rosters to Supabase
-- [ ] Publish the daily challenge schedule after team tiers are curated
-- [x] Wire the frontend to Supabase Auth and the Edge Functions
-- [x] Implement the three-team Daily UI, one-attempt-per-day messaging and combined results
-- [x] Implement live score-distribution chart and outscored percentile in the result UI
-- [x] Implement live weekly top-10 leaderboard and current user's rank
-- [ ] Run end-to-end tests for timer boundaries, attempt uniqueness, concurrency, RLS and mobile Safari
-- [ ] Deploy and verify production website
+- [ ] Sync team metadata and private answer rosters to Supabase
+- [ ] Add at least three independently verified teams to each Daily tier before publishing Daily schedules
+- [ ] Fix/verify Daily attempt resume behavior after reload and server/browser timer boundaries
+- [ ] Run end-to-end tests for RLS, attempt uniqueness, concurrency, timer boundaries, scoring and mobile Safari
+- [ ] Configure public Supabase URL and anon key in the frontend
+- [ ] Deploy to Netlify and verify the production site on iPhone
 
-## Release rule
-Never show fake global statistics, fake leaderboard entries, unverified team difficulty, or Daily availability without a published challenge schedule. Keep online features disabled until the backend is deployed and tested.
+## Safety and release rules
+- Historical and 2026 datasets remain available for local practice but are marked unverified for online ranking until their audits are complete.
+- Historical club hints are shown only when a reliable source supplies them; missing clubs must never display as the string "null".
+- Never expose Supabase service-role credentials in frontend code.
+- Never show fake global statistics, leaderboard entries, or Daily availability without a published schedule.
