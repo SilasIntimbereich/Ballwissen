@@ -23,7 +23,7 @@ create table if not exists public.daily_attempts (
  challenge_date date not null, mode text not null check(mode in ('daily-common','daily-niche','daily-legendary')),
  score int not null default 0 check(score>=0), total int not null default 0 check(total>=score),
  completed_teams smallint not null default 0 check(completed_teams between 0 and 3),
- started_at timestamptz not null default now(), finished_at timestamptz,
+ started_at timestamptz not null default now(), current_team_started_at timestamptz not null default now(), finished_at timestamptz,
  unique(user_id,challenge_date,mode)
 );
 create table if not exists public.daily_attempt_teams (
