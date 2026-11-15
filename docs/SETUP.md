@@ -38,7 +38,7 @@ The source is the Fjelstul World Cup Database via DataHub, licensed CC BY-SA 4.0
 8. Review the curated team difficulty mapping in `data/team-difficulty.json`. It is separate from player rarity and can be adjusted before daily challenges are published.
 9. Run `select public.publish_daily_challenges(current_date);` in Supabase SQL Editor after at least three verified teams exist in each tier. To schedule it daily at 00:05 UTC, enable the `pg_cron` extension and run `select cron.schedule('football-arcade-daily','5 0 * * *','select public.publish_daily_challenges(current_date);');`.
 
-The daily and normal-mode frontends are wired to the Edge Functions. The functions return no answer rosters to the browser. The private answer table has no public RLS policy. Server-side sessions enforce the 120-second game timer and duplicate-guess protection.
+The daily and normal-mode frontends are wired to the Edge Functions, but this is not yet a production-tested service. The functions are intended to keep answer rosters server-side; verify RLS and timer behavior in a real Supabase project before launch.
 
 ## 4. Configure the online frontend
 Edit `assets/js/config.js` and enter your Supabase project URL and anon key. The anon key is public by design; the service-role key is not. The weekly leaderboard, Daily modes, normal online sessions, result distributions and percentile display are wired to the deployed endpoints. They remain unavailable until the project is configured, data is synced and the backend is tested.
@@ -48,4 +48,4 @@ Edit `assets/js/config.js` and enter your Supabase project URL and anon key. The
 - Do not publish a Daily challenge until three teams exist for each difficulty tier.
 - Do not present statistics or leaderboard rows as real until results are being submitted and verified.
 - Test one-attempt-per-day, time boundaries, duplicate guesses, wrong guesses, mobile Safari and network failures before public launch.
-- The current daily API is a backend foundation; the game UI still needs wiring and end-to-end tests before online modes are production-ready.
+- The game UI is wired to the API, but online modes are not production-ready until the backend is deployed, the rosters are audited and synced, Daily tiers are populated, and end-to-end tests pass.
