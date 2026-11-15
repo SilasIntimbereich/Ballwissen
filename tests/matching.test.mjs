@@ -15,7 +15,7 @@ test("accepts a single minor typo in longer names",()=>{
  assert.equal(matches("Ronald",{name:"Ronaldo"}),true);
 });
 test("supports explicit aliases",()=>{
- assert.equal(matches("CR7",{name:"Cristiano Ronaldo",aliases:["CR7"]}),false);
+ assert.equal(matches("CR7",{name:"Cristiano Ronaldo",aliases:["CR7"]}),true);
  assert.equal(matches("Cristiano Ronaldo",{name:"Cristiano Ronaldo",aliases:["CR7"]}),true);
 });
 test("rejects very short guesses and unrelated names",()=>{
