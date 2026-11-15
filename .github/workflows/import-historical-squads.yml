@@ -13,6 +13,8 @@ jobs:
           node-version: 22
       - name: Download and validate historical squad data
         run: node scripts/import-historical-squads.mjs
+      - name: Validate all seven tournament datasets
+        run: node scripts/validate-data.mjs
       - name: Commit generated data
         run: |
           git config user.name "github-actions[bot]"
