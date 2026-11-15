@@ -36,12 +36,12 @@ The source is the Fjelstul World Cup Database via DataHub, licensed CC BY-SA 4.0
 6. Open GitHub → Actions → **Deploy Supabase backend** → **Run workflow**. This applies migrations, sets server-side secrets and deploys the Edge Functions.
 7. Open GitHub → Actions → **Sync verified squads to Supabase** → **Run workflow**. This uploads team metadata and private answer rosters using the service-role key from GitHub Secrets.
 8. Review the curated team difficulty mapping in `data/team-difficulty.json`. It is separate from player rarity and can be adjusted before daily challenges are published.
-9. Run `select public.publish_daily_challenges(current_date);` in Supabase SQL Editor after at least three verified teams exist in each tier. Configure a daily Supabase Cron job for `select public.publish_daily_challenges(current_date);` after the first successful publish.
+9. Run `select public.publish_daily_challenges(current_date);` in Supabase SQL Editor after at least three verified teams exist in each tier. To schedule it daily at 00:05 UTC, enable the `pg_cron` extension and run `select cron.schedule('football-arcade-daily','5 0 * * *','select public.publish_daily_challenges(current_date);');`.
 
-The daily and normal-mode functions intentionally return no answer rosters to the browser. The private answer table has no public RLS policy. Server-side sessions enforce the 120-second game timer and duplicate-guess protection.
+The daily and normal-mode frontends are wired to the Edge Functions. The functions return no answer rosters to the browser. The private answer table has no public RLS policy. Server-side sessions enforce the 120-second game timer and duplicate-guess protection.
 
 ## 4. Configure the online frontend
-Edit `assets/js/config.js` and enter your Supabase project URL and anon key. The anon key is public by design; the service-role key is not. The weekly leaderboard panel reads from the deployed leaderboard endpoint once this config is set. Daily and normal-mode online game screens still need their final frontend connection and end-to-end tests.
+Edit `assets/js/config.js` and enter your Supabase project URL and anon key. The anon key is public by design; the service-role key is not. The weekly leaderboard, Daily modes, normal online sessions, result distributions and percentile display are wired to the deployed endpoints. They remain unavailable until the project is configured, data is synced and the backend is tested.
 
 ## Security and release checks
 - Never expose the Supabase service-role key in GitHub files, Netlify environment variables used by browser code, or client JavaScript.
