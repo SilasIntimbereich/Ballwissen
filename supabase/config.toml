@@ -18,3 +18,9 @@ verify_jwt = false
 
 [functions.submit-normal-result]
 verify_jwt = true
+
+[functions.start-normal-game]
+verify_jwt = true
+
+[functions.normal-guess]
+verify_jwt = true
