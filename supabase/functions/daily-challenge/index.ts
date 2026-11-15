@@ -18,7 +18,7 @@ Deno.serve(async req=>{
  const teams=await Promise.all(challenges.map(async c=>{
   const {data:answer}=await admin.from("arcade_team_answers").select("roster").eq("team_id",c.team_id).maybeSingle();
   const roster=(answer?.roster||[]) as Array<{position?:string,club?:string}>;
-  return {sequence:c.sequence,teamId:c.team_id,teamName:(c.arcade_teams as any).team_name,year:(c.arcade_teams as any).tournament_year,total:roster.length,hints:mode==="daily-legendary"?[]:roster.map(p=>({id:p.id||"",position:p.position||"",club:p.club||""}))};
+  return {sequence:c.sequence,teamId:c.team_id,teamName:(c.arcade_teams as any).team_name,year:(c.arcade_teams as any).tournament_year,total:roster.length,hints:roster.map(p=>mode==="daily-legendary"?({id:p.id||""}):({id:p.id||"",position:p.position||"",club:p.club||""}))};
  }));
  return json({attemptId:attempt.id,teams,mode,date:today,secondsPerTeam:120});
 });
