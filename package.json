@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "import:historical": "node scripts/import-historical-squads.mjs",
+    "validate:data": "node scripts/validate-data.mjs",
     "sync:supabase": "node scripts/sync-supabase-data.mjs"
   },
   "dependencies": {
