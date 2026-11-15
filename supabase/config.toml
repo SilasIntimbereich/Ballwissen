@@ -1,0 +1,14 @@
+[api]
+enabled = true
+
+[functions.daily-challenge]
+verify_jwt = true
+
+[functions.submit-daily]
+verify_jwt = true
+
+[functions.team-stats]
+verify_jwt = false
+
+[functions.weekly-leaderboard]
+verify_jwt = false
