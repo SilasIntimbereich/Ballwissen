@@ -2,7 +2,7 @@ create extension if not exists pgcrypto;
 
 create table if not exists public.arcade_teams (
  id text primary key, tournament_year int not null, team_name text not null,
- team_difficulty text not null default 'common' check(team_difficulty in ('common','niche','legendary')),
+ team_difficulty text check(team_difficulty in ('common','niche','legendary')),
  source_url text, verified boolean not null default false,
  created_at timestamptz not null default now()
 );
@@ -86,3 +86,45 @@ grant execute on function public.daily_common_leaderboard() to anon,authenticate
 
 -- Answer rosters remain private to service-role Edge Functions. Do not grant anon/authenticated
 -- direct access to arcade_teams.roster or daily challenge write operations.
+
+
+-- Automatically create the anonymous user's public profile row.
+create or replace function public.handle_new_arcade_user()
+returns trigger language plpgsql security definer set search_path=public
+as $$
+begin
+ insert into public.profiles(id,display_name) values(new.id,'Player')
+ on conflict(id) do nothing;
+ return new;
+end;
+$$;
+drop trigger if exists on_arcade_user_created on auth.users;
+create trigger on_arcade_user_created after insert on auth.users
+for each row execute procedure public.handle_new_arcade_user();
+
+-- Select three deterministic, shared teams per daily difficulty. A tier must be curated first.
+create or replace function public.publish_daily_challenges(p_date date default current_date)
+returns void language plpgsql security definer set search_path=public
+as $$
+declare tier text; mode_name text; selected_count int;
+begin
+ for tier,mode_name in
+  select * from (values
+   ('common','daily-common'),('niche','daily-niche'),('legendary','daily-legendary')
+  ) as tiers(team_tier,daily_mode)
+ loop
+  select count(*) into selected_count from public.arcade_teams
+   where team_difficulty=tier and verified=true;
+  if selected_count<3 then
+   raise exception 'Need at least three verified teams tagged % before publishing %',tier,mode_name;
+  end if;
+  insert into public.daily_challenges(challenge_date,mode,sequence,team_id)
+  select p_date,mode_name,row_number() over(order by md5(id||p_date::text))::smallint,id
+  from public.arcade_teams where team_difficulty=tier and verified=true
+  order by md5(id||p_date::text) limit 3
+  on conflict(challenge_date,mode,sequence) do nothing;
+ end loop;
+end;
+$$;
+revoke all on function public.publish_daily_challenges(date) from public;
+grant execute on function public.publish_daily_challenges(date) to service_role;
