@@ -19,4 +19,4 @@ https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf
 FIFA announcement confirming 48 teams and 1,248 players:
 https://inside.fifa.com/organisation/media-releases/world-cup-2026-48-squads-confirmed
 
-The 2026 snapshot contains 1,248 rows across 48 teams, 26 per team. Nine teams have a complete player-level comparison against FIFA's final PDF and an independent secondary roster source; the other 39 remain unverified. The automated PDF.js checker reports discrepancies but does not automatically approve a team. The public site build excludes names for all verified teams; the original source data stays in the private repository for server-side sync.
+The 2026 snapshot contains 1,248 rows across 48 teams, 26 per team. Twenty teams have a complete player-level comparison against FIFA's final PDF and an independent secondary roster source; the other 28 remain unverified. The automated PDF.js checker reports discrepancies but does not automatically approve a team. The public site build excludes names for all verified teams; the original source data stays in the private repository for server-side sync.
