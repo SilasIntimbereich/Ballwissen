@@ -18,7 +18,7 @@ A team is eligible for public Daily challenges and online leaderboards only afte
 
 ## 2026 audited teams
 
-The 2026 FIFA PDF contains 48 team pages and records player, position and club data. The machine-readable player-by-player ledger is `data/roster-audit.json`.
+The 2026 FIFA PDF contains 48 team pages and records player, position and club data. The machine-readable player-by-player ledger is `data/roster-audit.json`. The weekly GitHub Actions workflow runs `scripts/audit-2026-fifa-pdf.mjs`, compares the FIFA PDF with the imported snapshot, and uploads a JSON discrepancy report. It does not approve teams automatically; the independent secondary-source check remains mandatory.
 
 - **Czechia / Czech Republic: 26/26.** FIFA page 15 and NBC Sports confirmed squad list. FIFA uses “Czechia (CZE)”; the dataset uses “Czech Republic”, with the same code.
 - **Australia: 26/26.** FIFA page 3 and NBC Sports confirmed squad list.
@@ -64,4 +64,4 @@ The sync script independently rechecks the complete ledger before it can set `ar
 
 ## Daily exclusions
 
-The fixed 50-squad exclusion list is stored in `data/daily-exclusions.json`. IDs refer to a specific country-and-tournament edition, not to the country globally. The SQL migration copies those exact IDs to `public.daily_excluded_squads`, excludes them in the publisher, deletes old schedules containing them, and installs a database trigger that rejects future inserts or updates for excluded teams. The API also fails closed for excluded, unverified or malformed schedules. These are code-level protections; the migrations and Edge Functions still need to be deployed to the Supabase project before live backend protection is active.
+The fixed 50-squad exclusion list is stored in `data/daily-exclusions.json`. IDs refer to a specific country-and-tournament edition, not to the country globally. Migration `202611160001_daily_squad_exclusions.sql` copies those exact IDs to `public.daily_excluded_squads`, excludes them in the publisher, deletes old schedules containing them, and installs a database trigger that rejects future inserts or updates for excluded teams. Migration `202611160004_secure_public_rosters.sql` keeps verified Normal-mode answer names server-side until a correct guess or game completion. Migration `202611160005_independent_daily_tiers.sql` allows Daily Common and Daily Niche to publish independently while Daily Legendary remains locked until it has three verified, non-excluded squads. The APIs fail closed for excluded, unverified or malformed schedules. These are code-level protections; the migrations and Edge Functions still need to be deployed to the Supabase project before live backend protection is active.
