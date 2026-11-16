@@ -23,7 +23,7 @@ for (const [team, players] of teams) {
   if (players.length !== 26) fail("2026: " + team + " has " + players.length + " entries, expected 26.");
   const numbers = players.map(p => Number(p.number));
   if (new Set(numbers).size !== numbers.length) fail("2026: duplicate shirt number in " + team);
-  const names = players.map(p => p.name.normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, ""));
+  const names = players.map(p => p.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, ""));
   if (new Set(names).size !== names.length) fail("2026: duplicate normalized player name in " + team);
 }
 
