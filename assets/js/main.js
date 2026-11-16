@@ -11,7 +11,19 @@ function renderTeams(){
  const year=Number($("#year").value),allTeams=tournaments[year]||[],teams=practiceOnly?allTeams.filter(item=>!item.verified&&item.players.length):allTeams,status=datasetStatus[year];
  $("#team-grid").innerHTML="";
  $("#select-note").textContent=practiceOnly?(teams.length?"Practice mode shows locally playable, unverified squads. These rounds are unranked.":"No local practice squads are available for this tournament yet."):(teams.length?(status.verified?"All squads independently audited.":status.auditPending?(year===2026?status.verifiedTeams+" of 48 teams independently audited; "+(48-status.verifiedTeams)+" remain pending.":status.verifiedTeams+" of "+teams.length+" historical teams independently audited; the rest are practice-only."):"Practice squads."):"Historical squads for this tournament are not yet imported. No invented teams are shown.");
- teams.forEach(selected=>{const button=document.createElement("button");button.className="team-button";const name=document.createElement("span");name.textContent=selected.name;const meta=document.createElement("small");meta.textContent=selected.total+" players · "+selected.teamDifficulty+" difficulty · "+(selected.verified?"online verified":"practice only");button.append(name,meta);button.onclick=()=>startGame(selected);$("#team-grid").append(button);});
+ teams.forEach(selected=>{
+  const button=document.createElement("button");button.className="team-button";
+  const name=document.createElement("span");name.textContent=selected.name;
+  const meta=document.createElement("small");
+  const onlineLocked=selected.verified&&!supabase;
+  meta.textContent=onlineLocked
+   ?"Verified roster · online backend not connected"
+   :selected.total+" players · "+selected.teamDifficulty+" difficulty · "+(selected.verified?"online verified":"practice only");
+  button.append(name,meta);
+  if(onlineLocked){button.disabled=true;button.title="This verified squad needs the secure online backend. Choose Practice Mode for playable local squads.";}
+  else button.onclick=()=>startGame(selected);
+  $("#team-grid").append(button);
+ });
 }
 function formatHint(position,club){return [position,club].filter(value=>typeof value==="string"&&value.trim()&&value.trim().toLowerCase()!=="null").join(" · ")||"HIDDEN PLAYER";}
 function updateTimer(){$("#timer").textContent=String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");}
