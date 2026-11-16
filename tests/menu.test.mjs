@@ -36,6 +36,14 @@ test("public build contains the data required by the mode and tournament selecto
   const exclusions = JSON.parse(await read("dist/data/daily-exclusions.json"));
   assert.equal(exclusions.teams.length, 50);
   assert.equal(new Set(exclusions.teams.map(team => team.id)).size, 50);
+  const excludedIds = new Set(exclusions.teams.map(team => team.id));
+  for (const tier of ["common", "niche", "legendary"]) {
+    const available = publicData.teams.filter(team =>
+      !team.verified && team.teamDifficulty === tier &&
+      !excludedIds.has(team.id) && practiceIds.has(team.id)
+    );
+    assert.ok(available.length >= 3, tier + " needs at least three eligible demo squads");
+  }
 });
 
 
