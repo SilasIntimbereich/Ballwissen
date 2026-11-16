@@ -57,9 +57,9 @@ for (const year of [2002, 2006, 2010, 2014, 2018, 2022]) {
       fail(year + " " + team.name + ": invalid shirt number.");
     if (new Set(numbers).size !== numbers.length)
       fail(year + " " + team.name + ": duplicate shirt number.");
-    // Historical clubs are intentionally blank until an independent tournament-time source is audited.
-    if (team.players.some(p => p.club))
-      fail(year + " " + team.name + ": unsupported historical club data must not be populated.");
+    // Historical club values may be added only together with a complete team-level player audit.
+    if (team.players.some(p => p.club) && audit.teams?.[team.id]?.status !== "verified")
+      fail(year + " " + team.name + ": historical club data requires a complete independent player audit.");
     historicalPlayers += count;
   }
 }
