@@ -15,9 +15,10 @@ Deno.serve(async req=>{
  const {data:existing}=await admin.from("daily_attempts").select("id,score,total,completed_teams,finished_at,current_team_started_at").eq("user_id",user.id).eq("challenge_date",today).eq("mode",mode).maybeSingle();
  if(existing?.finished_at)return json({error:"Already played today",attempt:existing},409);
  let resumeAttempt=existing;
- const {data:challenges,error}=await admin.from("daily_challenges").select("sequence,team_id,arcade_teams(team_name,tournament_year)").eq("challenge_date",today).eq("mode",mode).order("sequence");
+ const {data:challenges,error}=await admin.from("daily_challenges").select("sequence,team_id,arcade_teams(team_name,tournament_year,verified)").eq("challenge_date",today).eq("mode",mode).order("sequence");
  if(error||!challenges||challenges.length!==3)return json({error:"Today's three-team challenge is not configured"},503);
  if(challenges.some(c=>excludedIds.has(c.team_id)))return json({error:"Daily schedule contains a prohibited squad"},503);
+ if(challenges.some(c=>!(c.arcade_teams as any)?.verified))return json({error:"Daily schedule contains an unverified squad"},503);
  let attemptId=existing?.id;
  if(!attemptId){
   const {data:attempt,error:insertError}=await admin.from("daily_attempts").insert({user_id:user.id,challenge_date:today,mode,total:0}).select("id").single();
@@ -28,10 +29,16 @@ Deno.serve(async req=>{
   }else if(insertError)return json({error:"Daily attempt could not be started"},500);
   else attemptId=attempt.id;
  }
- const teams=await Promise.all(challenges.map(async c=>{
-  const {data:answer}=await admin.from("arcade_team_answers").select("roster").eq("team_id",c.team_id).maybeSingle();
+ const loadedTeams=await Promise.all(challenges.map(async c=>{
+  const {data:answer,error:answerError}=await admin.from("arcade_team_answers").select("roster").eq("team_id",c.team_id).maybeSingle();
   const roster=(answer?.roster||[]) as Array<{id?:string,position?:string,club?:string}>;
-  return {sequence:c.sequence,teamId:c.team_id,teamName:(c.arcade_teams as any).team_name,year:(c.arcade_teams as any).tournament_year,total:roster.length,hints:roster.map(p=>mode==="daily-legendary"?({id:p.id||""}):({id:p.id||"",position:p.position||"",club:p.club||""}))};
+  return {challenge:c,roster,valid:!answerError&&Array.isArray(roster)&&roster.length>0};
+ }));
+ if(loadedTeams.some(t=>!t.valid))return json({error:"One or more Daily answer rosters are unavailable"},503);
+ const teams=loadedTeams.map(({challenge:c,roster})=>({
+  sequence:c.sequence,teamId:c.team_id,teamName:(c.arcade_teams as any).team_name,
+  year:(c.arcade_teams as any).tournament_year,total:roster.length,
+  hints:roster.map(p=>mode==="daily-legendary"?({id:p.id||""}):({id:p.id||"",position:p.position||"",club:p.club||""}))
  }));
  const currentSequence=(resumeAttempt?.completed_teams||0)+1;
  let foundPlayers:Array<{id:string,name:string,position?:string,club?:string}>=[];
