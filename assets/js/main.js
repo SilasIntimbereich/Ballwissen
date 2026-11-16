@@ -117,8 +117,10 @@ async function finishDailyTeam(giveUp){
   $("#result").classList.remove("hidden");$("#result").scrollIntoView({behavior:"smooth",block:"center"});
   return;
  }
- const response=await supabase.functions.invoke("submit-daily",{body:{attemptId:dailyState.attemptId,sequence:dailyState.current,giveUp}});
- if(response.error){ended=false;$("#give-up").disabled=false;$("#give-up").textContent="RETRY SUBMIT";$("#feedback").textContent="Could not submit this team. Tap RETRY SUBMIT to send the result again.";return;}
+ let response;
+ try{response=await supabase.functions.invoke("submit-daily",{body:{attemptId:dailyState.attemptId,sequence:dailyState.current,giveUp}});}
+ catch(error){ended=false;$("#give-up").disabled=false;$("#give-up").textContent="RETRY SUBMIT";$("#feedback").textContent=error.message||"Connection lost while submitting. Tap RETRY SUBMIT.";return;}
+ if(response.error){ended=false;$("#give-up").disabled=false;$("#give-up").textContent="RETRY SUBMIT";$("#feedback").textContent=response.error.message||"Could not submit this team. Tap RETRY SUBMIT to send the result again.";return;}
  const data=response.data;dailyState.score=data.combinedScore;dailyState.total=data.combinedTotal;
  (data.missedPlayers||[]).forEach(player=>{
   const card=cardForPlayer(player.id)||[...document.querySelectorAll(".player-card")].find(item=>!item.classList.contains("found")&&!item.classList.contains("missed"));
@@ -138,8 +140,10 @@ function renderStats(payload){
 async function finish(giveUp,completed=false){
  if(dailyState){await finishDailyTeam(giveUp);return;}if(ended)return;ended=true;clearInterval(tick);$("#guess").disabled=true;$("#guess-btn").disabled=true;$("#give-up").disabled=true;
  if(normalSessionId){
-  const response=await supabase.functions.invoke("submit-normal-result",{body:{sessionId:normalSessionId,giveUp:giveUp||completed}});
-  if(response.error){ended=false;$("#give-up").disabled=false;$("#give-up").textContent="RETRY SUBMIT";$("#feedback").textContent="Could not submit the online result. Tap RETRY SUBMIT.";return;}
+  let response;
+  try{response=await supabase.functions.invoke("submit-normal-result",{body:{sessionId:normalSessionId,giveUp:giveUp||completed}});}
+  catch(error){ended=false;$("#give-up").disabled=false;$("#give-up").textContent="RETRY SUBMIT";$("#feedback").textContent=error.message||"Connection lost while submitting. Tap RETRY SUBMIT.";return;}
+  if(response.error){ended=false;$("#give-up").disabled=false;$("#give-up").textContent="RETRY SUBMIT";$("#feedback").textContent=response.error.message||"Could not submit the online result. Tap RETRY SUBMIT.";return;}
   const data=response.data;
   (data.missedPlayers||[]).forEach(player=>{const card=cardForPlayer(player.id);if(!card||card.classList.contains("found"))return;card.classList.add("missed");setPlayerRarity(card,player.rarity);card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=mode==="easy"?formatHint(player.position,player.club):"NOT FOUND";});
   $("#result-score").textContent=data.score+" / "+data.total;$("#result-message").textContent=completed?"Perfect run! You found every player.":giveUp?"You gave up. Every squad member is now revealed.":"Time is up. The full squad has been revealed.";renderStats(data);$("#result").classList.remove("hidden");$("#result").scrollIntoView({behavior:"smooth",block:"center"});return;
