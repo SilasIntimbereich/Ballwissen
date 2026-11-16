@@ -30,7 +30,7 @@ function addPlayerCard(index,hint,id){const card=document.createElement("div");c
 function renderNormalRoster(){if(normalSessionId&&Array.isArray(normalHints)){normalHints.forEach((hint,index)=>addPlayerCard(index,mode==="easy"?formatHint(hint.position,hint.club):"HIDDEN PLAYER",hint.id));$("#total").textContent=String(team.total);return;}team.players.forEach((player,index)=>addPlayerCard(index,mode==="easy"?formatHint(player.position,player.club):"HIDDEN PLAYER"));$("#total").textContent=String(team.players.length);}
 function renderDailyRoster(dailyTeam){dailyTeam.hints.forEach((hint,index)=>addPlayerCard(index,mode==="daily-legendary"?"HIDDEN PLAYER":formatHint(hint.position,hint.club),hint.id));$("#total").textContent=String(dailyTeam.total);}
 async function startGame(selected){
- dailyState=null;normalSessionId=null;normalHints=null;mode=mode==="hard"?"hard":"easy";team=selected;resetGameView();
+ dailyState=null;normalSessionId=null;normalHints=null;mode=mode==="hard"?"hard":"easy";team=selected;$("#result").dataset.resultKind=team.verified?"online":"practice";resetGameView();
  $("#game-team").textContent=team.name.toUpperCase();$("#game-tournament").textContent="WORLD CUP "+team.year;$("#game-mode").textContent=mode==="easy"?"NORMAL EASY":"NORMAL HARD";$("#game-heading").textContent="NAME THE SQUAD";show("game");clearInterval(tick);updateTimer();
  if(team.verified){
   if(!supabase){$("#online-message").textContent="This verified squad is protected for online play. Connect Supabase to start it; its answer list is not shipped to the browser.";show("online");return;}
@@ -47,6 +47,7 @@ async function startDaily(modeName){
  catch(error){$("#online-message").textContent=error.message||"Today's challenge is unavailable. It may already have been played or not yet published.";show("online");}
 }
 function startDailyTeam(sequence,resume=null){
+ $("#result").dataset.resultKind="daily";
  const dailyTeam=dailyState.teams.find(item=>item.sequence===sequence);if(!dailyTeam){finishDailyOverall();return;}
  dailyState.current=sequence;team={id:dailyTeam.teamId,name:dailyTeam.teamName,year:dailyTeam.year,total:dailyTeam.total,players:[],hints:dailyTeam.hints};normalSessionId=null;normalHints=null;resetGameView();
  $("#game-team").textContent=dailyTeam.teamName.toUpperCase();$("#game-tournament").textContent="DAILY TEAM "+sequence+" / 3";$("#game-mode").textContent=dailyState.mode.replace("daily-","DAILY ").toUpperCase();$("#game-heading").textContent="NAME THE SQUAD";renderDailyRoster(dailyTeam);
@@ -68,7 +69,7 @@ async function finishDailyTeam(giveUp){
  (data.missedPlayers||[]).forEach(player=>{const card=[...document.querySelectorAll(".player-card")].find(item=>!item.classList.contains("found")&&!item.classList.contains("missed"));if(!card)return;card.classList.add("missed");setPlayerRarity(card,player.rarity);card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=dailyState.mode==="daily-legendary"?"NOT FOUND":formatHint(player.position,player.club);});
  $("#feedback").textContent="Team score: "+data.score+" / "+data.total;if(data.finished){finishDailyOverall();return;}$("#feedback").textContent+=" · Next team loading...";setTimeout(()=>startDailyTeam(data.nextSequence),900);
 }
-function finishDailyOverall(){clearInterval(tick);$("#result-score").textContent=dailyState.score+" / "+dailyState.total;$("#result-message").textContent="Daily challenge complete. Combined score across all three teams.";$("#result-stats").innerHTML="";$("#result").classList.remove("hidden");$("#guess").disabled=true;$("#guess-btn").disabled=true;$("#give-up").disabled=true;}
+function finishDailyOverall(){$("#result").dataset.resultKind="daily";clearInterval(tick);$("#result-score").textContent=dailyState.score+" / "+dailyState.total;$("#result-message").textContent="Daily challenge complete. Combined score across all three teams.";$("#result-stats").innerHTML="";$("#result").classList.remove("hidden");$("#guess").disabled=true;$("#guess-btn").disabled=true;$("#give-up").disabled=true;}
 function renderStats(payload){
  const box=$("#result-stats");box.innerHTML="";
  if(payload&&typeof payload.outscoredPercent==="number"&&Number.isFinite(payload.outscoredPercent)){const percentile=document.createElement("div");percentile.className="stat-percentile";percentile.textContent="YOU OUTSCORED "+payload.outscoredPercent+"% OF PLAYERS";box.append(percentile);}
