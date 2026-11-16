@@ -15,6 +15,7 @@ const [historical,worldCup2026,difficulty,audit]=await Promise.all([
 const normalize=value=>String(value??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");
 const validHttps=value=>{try{return new URL(value).protocol==="https:";}catch{return false;}};
 const tierOf=name=>Object.entries(difficulty.tiers||{}).find(([,names])=>names.includes(name))?.[0]||"niche";
+const slug=name=>String(name||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 const auditVerified=(team,record)=>{
  if(!record||record.status!=="verified")return false;
  if(record.tournament!==team.year||record.teamNameInDataset!==team.name||!String(record.teamNameInFifaPdf||"").trim())return false;
@@ -47,7 +48,7 @@ for(const player of worldCup2026.players||[]){
 const teams2026=[];
 for(const [name,players] of grouped){
  players.sort((a,b)=>Number(a.number)-Number(b.number));
- const id=name.toLowerCase().replace(/[^a-z0-9]+/g,"-")+"-2026";
+ const id=slug(name)+"-2026";
  const team={id,name,year:2026,teamCode:players[0]?.teamCode||"",teamDifficulty:tierOf(name),players,total:players.length};
  team.verified=auditVerified(team,audit.teams?.[id]);
  teams2026.push(team);
