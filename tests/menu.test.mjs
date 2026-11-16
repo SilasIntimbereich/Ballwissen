@@ -98,6 +98,7 @@ test("local stats update from completed results and settings persist locally", a
   assert.match(main, /football-arcade:result/);
   assert.match(main, /recordLocalResult\(dailyState\.score,dailyState\.total\)/);
   assert.match(menu, /football-arcade:result/);
+  assert.match(menu, /Local unranked results on this device/);
   assert.match(menu, /stats\.played \+= 1/);
   assert.match(menu, /clear-local-stats/);
   assert.match(menu, /SETTINGS_KEY/);
