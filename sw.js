@@ -11,10 +11,6 @@ const APP_SHELL=[
   "./assets/js/leaderboard.js",
   "./data/public-teams.json",
   "./data/practice-rosters.json",
-  "./data/historical-squads.json",
-  "./data/worldcup-2026.json",
-  "./data/team-difficulty.json",
-  "./data/roster-audit.json",
   "./assets/icons/football-arcade.svg"
 ];
 self.addEventListener("install",event=>{
