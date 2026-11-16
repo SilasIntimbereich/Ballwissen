@@ -62,12 +62,27 @@ insert into public.daily_excluded_squads(team_id,team_name,tournament_year) valu
 on conflict(team_id) do update
 set team_name=excluded.team_name,tournament_year=excluded.tournament_year;
 
+-- Remove whole Daily sets if an old schedule contains an excluded squad or repeats a team.
+delete from public.daily_challenges d
+where exists (
+  select 1
+  from public.daily_challenges bad
+  join public.daily_excluded_squads x on x.team_id=bad.team_id
+  where bad.challenge_date=d.challenge_date and bad.mode=d.mode
+);
+delete from public.daily_challenges d
+where exists (
+  select 1
+  from public.daily_challenges a
+  join public.daily_challenges b
+    on b.challenge_date=a.challenge_date
+   and b.mode=a.mode
+   and b.team_id=a.team_id
+   and b.sequence<>a.sequence
+  where a.challenge_date=d.challenge_date and a.mode=d.mode
+);
 create unique index if not exists daily_challenges_date_mode_team_unique_idx
 on public.daily_challenges(challenge_date,mode,team_id);
-
--- Remove any challenge rows that may have been published before this migration.
-delete from public.daily_challenges
-where team_id in (select team_id from public.daily_excluded_squads);
 
 create or replace function public.publish_daily_challenges(p_date date default current_date)
 returns void language plpgsql security definer set search_path=public
@@ -107,14 +122,14 @@ grant execute on function public.publish_daily_challenges(date) to service_role;
 -- Defense in depth: even a future publisher or manual insert cannot schedule an excluded squad.
 create or replace function public.reject_excluded_daily_squad()
 returns trigger language plpgsql security definer set search_path=public
-as $
+as $$
 begin
   if exists (select 1 from public.daily_excluded_squads x where x.team_id=new.team_id) then
     raise exception 'Daily challenge cannot include excluded squad %', new.team_id;
   end if;
   return new;
 end;
-$;
+$$;
 drop trigger if exists enforce_daily_squad_exclusions on public.daily_challenges;
 create trigger enforce_daily_squad_exclusions
 before insert or update of team_id on public.daily_challenges
