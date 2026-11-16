@@ -6,7 +6,7 @@
 - A historical-data importer for men's World Cups 2002, 2006, 2010, 2014, 2018 and 2022.
 - Supabase migrations and Edge Functions for daily challenges, guess validation, result aggregation, team statistics and the weekly leaderboard.
 
-The 2026 CSV snapshot is from the public repository documented in DATA_SOURCES.md. FIFA independently confirms the 48-team, 1,248-player final squad total. Nine 2026 teams have passed full checks; the remaining 39 teams are still unverified. The weekly FIFA PDF audit workflow generates a row-by-row discrepancy report, but only teams with a complete independent secondary-source review are approved. The player-level audit ledger is `data/roster-audit.json`; only complete, independently sourced team audits can unlock ranked play.
+The 2026 CSV snapshot is from the public repository documented in DATA_SOURCES.md. FIFA independently confirms the 48-team, 1,248-player final squad total. Twenty 2026 teams have passed full checks; the remaining 28 teams are still unverified. All three Daily difficulty tiers currently have at least three verified squads. The weekly FIFA PDF audit workflow generates a row-by-row discrepancy report, but only teams with a complete independent secondary-source review are approved. The player-level audit ledger is `data/roster-audit.json`; only complete, independently sourced team audits can unlock ranked play.
 
 ## 1. Import historical squads
 This repository includes a GitHub Actions workflow so no computer or terminal is needed.
