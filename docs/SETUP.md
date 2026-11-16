@@ -61,6 +61,6 @@ The repository includes `.github/workflows/deploy-netlify.yml`. To use it withou
 5. Add repository secrets named `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID`.
 6. Open **Actions → Deploy FOOTBALL ARCADE to Netlify → Run workflow**.
 
-The workflow runs `npm test` first and only deploys if syntax, dataset and player-matching tests pass. The deploy action publishes the repository root, as configured in `netlify.toml`.
+The workflow runs `npm test` first and only deploys if syntax, dataset and player-matching tests pass. The deploy action builds and publishes only `dist`, as configured in `netlify.toml`. Verified player names are not included in that public directory.
 
 For online modes, Supabase still needs its own project and the separate Supabase secrets/workflow described above. Never add a Supabase service-role key to frontend files.
