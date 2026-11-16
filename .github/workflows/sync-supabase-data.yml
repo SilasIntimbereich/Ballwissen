@@ -1,4 +1,4 @@
-name: Sync verified squads to Supabase
+name: Sync roster data to Supabase (audit-gated)
 on:
   workflow_dispatch:
 permissions:
@@ -13,7 +13,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm install
-      - name: Sync verified squad metadata and private answer rosters
+      - name: Sync roster metadata and private answer rosters; ranked access requires a complete player audit
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
