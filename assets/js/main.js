@@ -92,7 +92,7 @@ function startDailyTeam(sequence,resume=null){
  $("#result").dataset.resultKind="daily";
  const dailyTeam=dailyState.teams.find(item=>item.sequence===sequence);if(!dailyTeam){finishDailyOverall();return;}
  dailyState.current=sequence;team={id:dailyTeam.teamId,name:dailyTeam.teamName,year:dailyTeam.year,total:dailyTeam.total,players:dailyTeam.players||[],hints:dailyTeam.hints};normalSessionId=null;normalHints=null;resetGameView();if(dailyState.demo){roundState=createRound(team.players);found=roundState.found;}
- $("#game-team").textContent=dailyTeam.teamName.toUpperCase();$("#game-tournament").textContent="DAILY TEAM "+sequence+" / 3";$("#game-mode").textContent=(dailyState.demo?"DAILY DEMO · ":"DAILY ")+dailyState.mode.replace("daily-","").toUpperCase()+(dailyState.demoFallback?" · MIXED TEST POOL":"");$("#game-heading").textContent="NAME THE SQUAD";renderDailyRoster(dailyTeam);
+ $("#game-team").textContent=dailyTeam.teamName.toUpperCase();$("#game-tournament").textContent="DAILY TEAM "+sequence+" / 3";$("#game-mode").textContent=(dailyState.demo?"DAILY · ":"DAILY ")+dailyState.mode.replace("daily-","").toUpperCase()+(dailyState.demoFallback?" · MIXED TEST POOL":"");$("#game-heading").textContent="NAME THE SQUAD";renderDailyRoster(dailyTeam);
  if(resume){seconds=resume.remainingSeconds??120;(resume.foundPlayers||[]).forEach(player=>{found.add(player.id);const card=cardForPlayer(player.id);if(card){card.classList.add("found");setPlayerRarity(card,player.rarity);card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=dailyState.mode==="daily-legendary"?"FOUND":formatHint(player.position,player.club);}});$("#score").textContent=String(found.size);$("#feedback").textContent="Daily challenge resumed. Your remaining time is restored.";}
  show("game");enableGuessControls();updateTimer();if(resume&&seconds<=0){finishDailyTeam(false);return;}startClock();$("#guess").focus();
 }
@@ -123,9 +123,9 @@ async function finishDailyTeam(giveUp){
    card.querySelector(".player-hint").textContent=dailyState.mode==="daily-legendary"?"NOT FOUND":formatHint(player.position,player.club);
   });
   dailyState.score+=found.size;dailyState.total+=team.players.length;
-  $("#feedback").textContent="Demo team score: "+found.size+" / "+team.players.length+" · unranked";
+  $("#feedback").textContent="Daily team score: "+found.size+" / "+team.players.length+" · unranked";
   $("#result-score").textContent=found.size+" / "+team.players.length;
-  $("#result-message").textContent="Daily demo team "+dailyState.current+" of 3 complete. Your missed players are shown above. This round is unranked.";
+  $("#result-message").textContent="Daily team "+dailyState.current+" of 3 complete. Your missed players are shown above. This round is unranked.";
   $("#result-stats").innerHTML="<div class=\"stat-percentile\">TEAM ACCURACY · "+Math.round(found.size/team.players.length*100)+"%</div>";
   $("#result-home").textContent=dailyState.current>=3?"VIEW FINAL RESULTS":"NEXT TEAM";
   $("#result").classList.remove("hidden");$("#result").scrollIntoView({behavior:"smooth",block:"center"});
@@ -145,7 +145,7 @@ async function finishDailyTeam(giveUp){
  });
  $("#feedback").textContent="Team score: "+data.score+" / "+data.total;if(data.finished){finishDailyOverall();return;}$("#feedback").textContent+=" · Next team loading...";setTimeout(()=>startDailyTeam(data.nextSequence),900);
 }
-function finishDailyOverall(){if(dailyState?.demo)dailyState.finalShown=true;$("#result").dataset.resultKind=dailyState.demo?"practice":"daily";clearInterval(tick);$("#result-home").textContent="BACK TO MENU";$("#result-score").textContent=dailyState.score+" / "+dailyState.total;$("#result-message").textContent=dailyState.demo?"Daily demo complete. Three local practice squads played. Unranked test mode.":"Daily challenge complete. Combined score across all three teams." ;$("#result-stats").innerHTML=dailyState.total?"<div class=\"stat-percentile\">OVERALL ACCURACY · "+Math.round(dailyState.score/dailyState.total*100)+"%</div>":"";$("#result").classList.remove("hidden");$("#result").scrollIntoView({behavior:"smooth",block:"center"});$("#guess").disabled=true;$("#guess-btn").disabled=true;$("#give-up").disabled=true;}
+function finishDailyOverall(){if(dailyState?.demo)dailyState.finalShown=true;$("#result").dataset.resultKind=dailyState.demo?"practice":"daily";clearInterval(tick);$("#result-home").textContent="BACK TO MENU";$("#result-score").textContent=dailyState.score+" / "+dailyState.total;$("#result-message").textContent=dailyState.demo?"Daily challenge complete. Three local squads played. Unranked.":"Daily challenge complete. Combined score across all three teams." ;$("#result-stats").innerHTML=dailyState.total?"<div class=\"stat-percentile\">OVERALL ACCURACY · "+Math.round(dailyState.score/dailyState.total*100)+"%</div>":"";$("#result").classList.remove("hidden");$("#result").scrollIntoView({behavior:"smooth",block:"center"});$("#guess").disabled=true;$("#guess-btn").disabled=true;$("#give-up").disabled=true;}
 function renderStats(payload){
  const box=$("#result-stats");box.innerHTML="";
  if(payload&&typeof payload.outscoredPercent==="number"&&Number.isFinite(payload.outscoredPercent)){const percentile=document.createElement("div");percentile.className="stat-percentile";percentile.textContent="YOU OUTSCORED "+payload.outscoredPercent+"% OF PLAYERS";box.append(percentile);}
@@ -189,17 +189,15 @@ $("#result-home").onclick=()=>{if(dailyState?.demo){if(dailyState.current<3){sta
 document.querySelectorAll("[data-back]").forEach(button=>button.onclick=()=>{clearInterval(tick);dailyState=null;normalSessionId=null;normalHints=null;show("home");});
 $("#year").onchange=renderTeams;
 document.querySelectorAll("[data-mode]").forEach(button=>button.onclick=()=>{const selected=button.dataset.mode;if(selected.startsWith("daily")){startDaily(selected);return;}practiceOnly=selected==="practice";mode=selected==="hard"?"hard":"easy";show("select");renderTeams();});
-const allTeams=Object.values(tournaments).flat(),verifiedTeams=allTeams.filter(item=>item.verified).length;
-const dailyCounts={common:0,niche:0,legendary:0},demoCounts={common:0,niche:0,legendary:0};
-allTeams.filter(item=>item.verified&&!dailyExclusions.has(item.id)).forEach(item=>{if(Object.hasOwn(dailyCounts,item.teamDifficulty))dailyCounts[item.teamDifficulty]++;});
+const allTeams=Object.values(tournaments).flat();
+const demoCounts={common:0,niche:0,legendary:0};
 allTeams.filter(item=>!dailyExclusions.has(item.id)&&item.players.length).forEach(item=>{if(Object.hasOwn(demoCounts,item.teamDifficulty))demoCounts[item.teamDifficulty]++;});
 for(const tier of ["common","niche","legendary"]){
  const button=document.querySelector('[data-mode="daily-'+tier+'"]');
  const ready=demoCounts[tier]>=3||Object.values(demoCounts).reduce((sum,count)=>sum+count,0)>=3;
  button.disabled=!ready;
  button.title=ready?(demoCounts[tier]>=3?"Local unranked challenge with three squads from this tier.":"Local unranked challenge using a mixed pool because this tier has too few squads."):"Daily mode needs at least three eligible local squads.";
- if(!supabase&&ready)button.querySelector("small").textContent=demoCounts[tier]>=3?"3-team local demo · unranked":"3-team mixed test pool · unranked";
+ if(!supabase&&ready)button.querySelector("small").textContent=demoCounts[tier]>=3?"3 teams · unranked":"3 teams · mixed pool · unranked";
 }
-const readyTiers=["common","niche","legendary"].filter(tier=>dailyCounts[tier]>=3);
-$("#data-status").textContent="LOCAL SQUADS: "+allTeams.filter(item=>item.players.length).length+" · ONLINE FEATURES COMING LATER";
+$("#data-status").textContent="LOCAL SQUADS: "+allTeams.filter(item=>item.players.length).length+" · LOCAL UNRANKED PLAY";
 renderTeams();
