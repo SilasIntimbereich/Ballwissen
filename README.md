@@ -18,6 +18,7 @@ Open GitHub → Actions → **Import verified historical World Cup squads** → 
 ## Documentation
 - [iPhone setup and deployment](docs/SETUP.md)
 - [Data sources and licensing](docs/DATA_SOURCES.md)
+- [Independent roster and club audit](docs/ROSTER_AUDIT.md)
 - [Implementation checklist](docs/ROADMAP.md)
 - [Data attribution](data/ATTRIBUTION.txt)
 
