@@ -38,7 +38,7 @@ try{
  const openTeam=async(mode,year,name)=>{
   await page.locator('[data-mode="'+mode+'"]').click();
   await page.locator("#year").selectOption(String(year));
-  await page.locator(".team-button").filter({hasText:new RegExp("^"+name+"\\b")}).first().click();
+  await page.locator("#team-grid .team-button").getByText(name,{exact:true}).click();
   await page.waitForFunction(()=>document.querySelectorAll(".player-card").length>0);
  };
  const giveUp=async()=>{
