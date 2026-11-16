@@ -51,6 +51,8 @@ for (const year of [2002, 2006, 2010, 2014, 2018, 2022]) {
       fail(year + " " + team.name + ": expected 23 players, got " + count);
     if (year === 2022 && (count < 25 || count > 26))
       fail(year + " " + team.name + ": invalid roster size " + count);
+    if (year === 2022 && count === 25 && team.name !== "Iran")
+      fail("2022: only Iran should have a 25-player source list; found " + team.name);
     const names = team.players.map(p => p.name?.trim());
     if (names.some(n => !n))
       fail(year + " " + team.name + ": empty player name.");
@@ -83,6 +85,9 @@ for (const year of [2002, 2006, 2010, 2014, 2018, 2022]) {
   }
 }
 const historicalTeams = Object.values(hist.tournaments).flat();
+const historicalIds = historicalTeams.map(t => t.id);
+if (new Set(historicalIds).size !== historicalIds.length)
+  fail("Historical team IDs must be unique across tournament editions.");
 const historicalById = new Map(historicalTeams.map(t => [t.id, t]));
 if (dailyExclusions.count !== 50 || dailyExclusions.teams?.length !== 50)
   fail("Daily exclusions must contain exactly 50 squads.");
@@ -137,6 +142,8 @@ for (const [teamId, record] of Object.entries(audit.teams)) {
   if (record.status !== "verified") continue;
   const team = allTeamsById.get(teamId);
   if (!team) fail("Audit ledger marks an unknown team verified: " + teamId);
+  if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(record.reviewedAt || ""))
+    fail("Verified audit requires an ISO review date: " + teamId);
   if (!Array.isArray(record.players) || record.players.length !== team.players.length)
     fail("Verified audit row count mismatch: " + teamId);
   const auditKeys = record.players.map(r => Number(r.number) + "|" + normalize(r.playerName));
@@ -148,8 +155,8 @@ for (const [teamId, record] of Object.entries(audit.teams)) {
   }
   for (const player of team.players) {
     const row = record.players.find(r => Number(r.number) === Number(player.number) && normalize(r.playerName) === normalize(player.name));
-    if (!row || !["matched", "corrected"].includes(row.status))
-      fail("Verified audit contains missing/unresolved player: " + teamId + " / " + player.name);
+    if (!row || !["matched", "corrected"].includes(row.status) || !String(row.sourceName || "").trim())
+      fail("Verified audit contains missing/unresolved player or source name: " + teamId + " / " + player.name);
     if (row.position !== player.position)
       fail("Verified audit position mismatch: " + teamId + " / " + player.name);
     if (!Object.hasOwn(row, "clubAtTournament") || (row.clubAtTournament ?? null) !== (player.club ?? null))
