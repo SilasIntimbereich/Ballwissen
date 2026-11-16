@@ -29,6 +29,9 @@ if (new Set(tierNames).size !== tierNames.length)
 
 const hist = await read("data/historical-squads.json");
 const dailyExclusions = await read("data/daily-exclusions.json");
+const audit = await read("data/roster-audit.json");
+if (audit.schemaVersion !== 1 || !audit.teams || typeof audit.teams !== "object")
+  fail("Invalid player-level roster audit ledger.");
 let historicalPlayers = 0;
 for (const year of [2002, 2006, 2010, 2014, 2018, 2022]) {
   const list = hist.tournaments?.[year];
@@ -76,6 +79,36 @@ const migration = await readText("supabase/migrations/202611160001_daily_squad_e
 for (const excluded of dailyExclusions.teams) {
   if (!migration.includes("'" + excluded.id + "'"))
     fail("Server-side Daily exclusion migration is missing " + excluded.id);
+}
+const normalize = value => String(value || "").normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
+const allTeams = [
+  ...historicalTeams,
+  ...[...teams.entries()].map(([name, players]) => ({
+    id: name.toLowerCase().replace(/[^a-z0-9]+/g, "-") + "-2026",
+    name, year: 2026, players
+  }))
+];
+const allTeamsById = new Map(allTeams.map(t => [t.id, t]));
+for (const [teamId, record] of Object.entries(audit.teams)) {
+  if (record.status !== "verified") continue;
+  const team = allTeamsById.get(teamId);
+  if (!team) fail("Audit ledger marks an unknown team verified: " + teamId);
+  if (!Array.isArray(record.players) || record.players.length !== team.players.length)
+    fail("Verified audit row count mismatch: " + teamId);
+  for (const player of team.players) {
+    const row = record.players.find(r => Number(r.number) === Number(player.number) && normalize(r.playerName) === normalize(player.name));
+    if (!row || !["matched", "corrected"].includes(row.status))
+      fail("Verified audit contains missing/unresolved player: " + teamId + " / " + player.name);
+    if (row.position !== player.position)
+      fail("Verified audit position mismatch: " + teamId + " / " + player.name);
+    if (!Object.hasOwn(row, "clubAtTournament") || (row.clubAtTournament ?? null) !== (player.club ?? null))
+      fail("Verified audit club mismatch: " + teamId + " / " + player.name);
+    const primary = row.primarySource || record.primarySource;
+    const secondary = row.secondarySource || record.secondarySource;
+    if (![primary, secondary].every(value => {
+      try { return new URL(value).protocol === "https:"; } catch { return false; }
+    })) fail("Verified audit requires primary and secondary HTTPS sources: " + teamId + " / " + player.name);
+  }
 }
 const iran = hist.tournaments[2022].find(t => t.name === "Iran");
 if (!iran || iran.players.length !== 25) fail("2022 Iran source roster check failed.");
