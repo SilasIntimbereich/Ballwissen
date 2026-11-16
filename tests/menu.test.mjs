@@ -13,7 +13,10 @@ test("home menu exposes every offline mode and utility screen", async () => {
   assert.match(html, /data-open-screen="stats"/);
   assert.match(html, /data-open-screen="settings"/);
   assert.match(html, /id="stats" class="screen"/);
-  assert.match(html, /id="settings" class="screen"/);\n  assert.match(html, /Fjelstul World Cup Database via DataHub/);\n  assert.match(html, /20 of 48 teams/);\n  assert.doesNotMatch(html, /assets\\/js\\/config\\.js/);
+  assert.match(html, /id="settings" class="screen"/);
+  assert.match(html, /Fjelstul World Cup Database via DataHub/);
+  assert.match(html, /20 of 48 teams/);
+  assert.doesNotMatch(html, /assets\/js\/config\.js/);
   assert.match(html, /assets\/js\/menu\.js/);
   assert.match(main, /querySelectorAll\("\[data-mode\]"\)/);
   assert.doesNotMatch(main, /supabase|normalSessionId|normalHints/);
