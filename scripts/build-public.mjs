@@ -26,7 +26,11 @@ const verified = team => {
   for (const player of team.players || []) {
     const row = record.players.find(item => Number(item.number) === Number(player.number) && normalize(item.playerName) === normalize(player.name));
     const sources = [row?.primarySource || record.primarySource, row?.secondarySource || record.secondarySource];
+    const sourceTokens = String(row?.sourceName || "").normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+    const playerTokens = String(player.name || "").normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+    const explicitAlias = (row?.sourceNameAliases || []).some(alias => normalize(alias) === normalize(player.name));
     if (!row || !["matched","corrected"].includes(row.status) || !String(row.sourceName || "").trim() ||
+        (!explicitAlias && !playerTokens.some(token => sourceTokens.includes(token))) ||
         row.position !== player.position || (row.clubAtTournament ?? null) !== (player.club ?? null) ||
         !sources.every(source => { try { return new URL(source).protocol === "https:"; } catch { return false; } }))
       throw new Error("Verified audit has an unresolved or incomplete player row: " + team.id + " / " + player.name);
