@@ -197,6 +197,33 @@ for (const [teamId, record] of Object.entries(audit.teams)) {
     })) fail("Verified audit requires primary and secondary HTTPS sources: " + teamId + " / " + player.name);
   }
 }
+const secureRosterMigration = await readText("supabase/migrations/202611160004_secure_public_rosters.sql");
+const normalStartFunction = await readText("supabase/functions/start-normal-game/index.ts");
+const normalSubmitFunction = await readText("supabase/functions/submit-normal-result/index.ts");
+const normalGuessFunction = await readText("supabase/functions/normal-guess/index.ts");
+const publicDataModule = await readText("assets/js/data.js");
+const publicBuilder = await readText("scripts/build-public.mjs");
+const netlifyConfig = await readText("netlify.toml");
+const serviceWorker = await readText("sw.js");
+if (!secureRosterMigration.includes("missed_players jsonb") ||
+    !secureRosterMigration.includes("drop function if exists public.finish_normal_game_session") ||
+    !secureRosterMigration.includes("Normal game squad is no longer verified"))
+  fail("Secure normal-roster migration must reveal missed names only after completion and recheck verification.");
+if (!normalStartFunction.includes("hints=roster.map") ||
+    normalStartFunction.includes("name:p.name") ||
+    !normalSubmitFunction.includes("missedPlayers:result.missed_players"))
+  fail("Normal online API must send hints before play and names only after a correct guess or completion.");
+if (!normalGuessFunction.includes("eq(\"verified\",true)"))
+  fail("Normal guess endpoint must reject squads that are no longer verified.");
+if (publicDataModule.includes("worldcup-2026.json") || publicDataModule.includes("historical-squads.json"))
+  fail("Browser data module must never fetch source roster files.");
+if (!publicBuilder.includes("if (!isAudited) practiceTeams.push") ||
+    !publicBuilder.includes("Private source data leaked into public build"))
+  fail("Public build must exclude every verified answer roster and raw source data.");
+if (!netlifyConfig.includes('publish = "dist"') ||
+    serviceWorker.includes("./data/worldcup-2026.json") ||
+    serviceWorker.includes("./data/historical-squads.json"))
+  fail("Netlify and PWA must publish/cache only the filtered public build.");
 const iran = hist.tournaments[2022].find(t => t.name === "Iran");
 if (!iran || iran.players.length !== 25) fail("2022 Iran source roster check failed.");
 const allTeamNames = new Set([
