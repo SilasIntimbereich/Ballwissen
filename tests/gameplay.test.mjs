@@ -61,5 +61,7 @@ test("app wires the gameplay engine into normal and Daily demo rounds", async ()
   assert.match(main, /revealRound\(roundState\)/);
   assert.match(main, /scrollIntoView\(\{behavior:"smooth",block:"center"\}\)/);
   assert.match(main, /submitting\)return/);
+  assert.match(main, /dailyState\.finalShown=true/);
+  assert.match(main, /if\(!dailyState\.finalShown\)\{finishDailyOverall\(\);return;\}/);
   assert.match(shell, /assets\/js\/gameplay\.js/);
 });
