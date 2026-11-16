@@ -71,7 +71,7 @@ test("Daily modes use local squads, deterministic selection and the shared gamep
   const data = await read("dist/assets/js/data.js");
   const sw = await read("dist/sw.js");
   assert.match(data, /dailyExclusions=new Set/);
-  assert.match(main, /DAILY DEMO/);
+  assert.match(main, /DAILY · /);
   assert.match(main, /Local unranked challenge with three squads from this tier/);
   assert.match(main, /demoFallback=pool\.length<3/);
   assert.match(main, /function dailyRandom\(tier\)/);
