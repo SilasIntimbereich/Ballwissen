@@ -95,6 +95,9 @@ for (const excluded of dailyExclusions.teams) {
     fail("Daily exclusion name/year mismatch: " + excluded.id);
 }
 const migration = await readText("supabase/migrations/202611160001_daily_squad_exclusions.sql");
+if (!migration.includes("create trigger enforce_daily_squad_exclusions") ||
+    !migration.includes("Daily challenge cannot include excluded squad"))
+  fail("Daily exclusion database trigger is missing.");
 for (const excluded of dailyExclusions.teams) {
   if (!migration.includes("'" + excluded.id + "'"))
     fail("Server-side Daily exclusion migration is missing " + excluded.id);
