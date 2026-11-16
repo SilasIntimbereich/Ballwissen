@@ -1,6 +1,8 @@
 const $ = (selector) => document.querySelector(selector);
 const STORAGE_KEY = "football-arcade-local-stats-v1";
 const SETTINGS_KEY = "football-arcade-settings-v1";
+function storeJSON(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch { return false; } }
+function removeStored(key) { try { localStorage.removeItem(key); return true; } catch { return false; } }
 
 function showScreen(id) {
   document.querySelectorAll(".screen").forEach(screen => screen.classList.toggle("active", screen.id === id));
@@ -39,13 +41,13 @@ $("#save-settings")?.addEventListener("click", () => {
     reducedMotion: $("#setting-motion").checked,
     compact: $("#setting-compact").checked
   };
-  localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
+  const saved = storeJSON(SETTINGS_KEY, settings);
   document.body.classList.toggle("reduce-motion", settings.reducedMotion);
   document.body.classList.toggle("compact-ui", settings.compact);
-  $("#settings-feedback").textContent = "Settings saved on this device.";
+  $("#settings-feedback").textContent = saved ? "Settings saved on this device." : "Your browser blocked local storage. Settings apply until you close this page.";
 });
 $("#clear-local-stats")?.addEventListener("click", () => {
-  localStorage.removeItem(STORAGE_KEY);
+  removeStored(STORAGE_KEY);
   renderStats();
 });
 const result = $("#result");
@@ -64,7 +66,7 @@ if (result) {
     stats.played += 1;
     stats.found += found;
     stats.best = Math.max(stats.best, Math.round(found / total * 100));
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(stats));
+    storeJSON(STORAGE_KEY, stats);
   });
   observer.observe(result, { attributes: true, attributeFilter: ["class"] });
 }
