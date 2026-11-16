@@ -453,3 +453,43 @@ body{padding-bottom:env(safe-area-inset-bottom)}
 @media(max-width:650px){
  .result{padding:20px 14px;margin-top:20px}
 }
+
+
+/* V4 flat-colour arcade pass: crisp blocks, no neon gradients */
+.stadium{background:#09172d}
+.stadium:before,.stadium:after{display:none}
+.lights{background:none;opacity:.16}
+.stands{background:#142b4c;box-shadow:none;border-top:5px solid #263f61}
+.crowd{background:none;opacity:.08;animation:none}
+.pitch{background:#17633f;border-top:4px solid #8bd17a;box-shadow:none}
+.pitch:before{border-color:#b9e5a866}
+.pitch-line{background:#b9e5a866}
+.scanlines{display:none}
+.brand-mark{background:#f0c64a;color:#12233c;box-shadow:none}
+.hero:before{display:none}
+.mode-card,.mode-card:nth-child(n){background:#17345d;border:2px solid #365477;border-radius:8px;box-shadow:0 5px 0 #071326;transition:transform .12s ease,border-color .12s ease}
+.mode-card:nth-child(1){background:#17536a;border-color:#3aa4ad}
+.mode-card:nth-child(2){background:#29466b;border-color:#5e83a8}
+.mode-card:nth-child(3){background:#513b67;border-color:#9a72ba}
+.mode-card:nth-child(4){background:#22563f;border-color:#5c9d70}
+.mode-card:nth-child(5){background:#70452c;border-color:#c28b50}
+.mode-card:before{display:none}
+.mode-card:after{height:5px;background:#e9bd4a}
+.mode-card:nth-child(1):after,.mode-card:nth-child(2):after,.mode-card:nth-child(3):after,.mode-card:nth-child(4):after,.mode-card:nth-child(5):after{background:#e9bd4a}
+.mode-card:hover{transform:translateY(-2px);box-shadow:0 7px 0 #071326}
+.utility-card{background:#132b4c;border:1px solid #49617e;border-radius:8px;box-shadow:0 4px 0 #071326}
+.utility-card:before,.utility-card:after{display:none}
+.leaderboard-panel{background:#132b4c;border:1px solid #49617e;border-radius:8px;box-shadow:none}
+.local-play-panel{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.local-play-stamp{font:7px/1.8 "Press Start 2P";color:#f0c64a;text-align:right}
+.team-button{background:#17345d;border:1px solid #49617e;border-radius:7px;box-shadow:none}
+.team-button:hover:not(:disabled){background:#214674;border-color:#e9bd4a}
+.guess-form input{background:#0b1d36;border:2px solid #56718f;border-radius:6px}
+.guess-form button,.primary-btn{background:#e9bd4a;color:#17243b;border:0;border-radius:6px;box-shadow:0 4px 0 #9d762b}
+.give-up,.secondary-action{background:#5d2e3d;border:1px solid #b96b7d;border-radius:6px}
+.player-card{background:#132b4c;border:1px solid #49617e;border-radius:6px;box-shadow:none}
+.player-card.found{background:#1d513e;border-color:#6fbd82}
+.player-card.missed{background:#592f3a;border-color:#c97883}
+.result{background:#132b4c;border:2px solid #e9bd4a;border-radius:8px;box-shadow:0 8px 0 #071326}
+.timer{border-radius:6px}
+@media(max-width:650px){.local-play-panel{align-items:flex-start;flex-direction:column}.local-play-stamp{text-align:left}.mode-card,.mode-card:nth-child(4),.mode-card:nth-child(5){grid-column:span 6}}
