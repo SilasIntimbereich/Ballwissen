@@ -129,7 +129,7 @@ async function finishDailyTeam(giveUp){
  });
  $("#feedback").textContent="Team score: "+data.score+" / "+data.total;if(data.finished){finishDailyOverall();return;}$("#feedback").textContent+=" · Next team loading...";setTimeout(()=>startDailyTeam(data.nextSequence),900);
 }
-function finishDailyOverall(){$("#result").dataset.resultKind=dailyState.demo?"practice":"daily";clearInterval(tick);$("#result-home").textContent="BACK TO MENU";$("#result-score").textContent=dailyState.score+" / "+dailyState.total;$("#result-message").textContent=dailyState.demo?"Daily demo complete. Three local practice squads played. Unranked test mode.":"Daily challenge complete. Combined score across all three teams." ;$("#result-stats").innerHTML="";$("#result").classList.remove("hidden");$("#result").scrollIntoView({behavior:"smooth",block:"center"});$("#guess").disabled=true;$("#guess-btn").disabled=true;$("#give-up").disabled=true;}
+function finishDailyOverall(){if(dailyState?.demo)dailyState.finalShown=true;$("#result").dataset.resultKind=dailyState.demo?"practice":"daily";clearInterval(tick);$("#result-home").textContent="BACK TO MENU";$("#result-score").textContent=dailyState.score+" / "+dailyState.total;$("#result-message").textContent=dailyState.demo?"Daily demo complete. Three local practice squads played. Unranked test mode.":"Daily challenge complete. Combined score across all three teams." ;$("#result-stats").innerHTML="";$("#result").classList.remove("hidden");$("#result").scrollIntoView({behavior:"smooth",block:"center"});$("#guess").disabled=true;$("#guess-btn").disabled=true;$("#give-up").disabled=true;}
 function renderStats(payload){
  const box=$("#result-stats");box.innerHTML="";
  if(payload&&typeof payload.outscoredPercent==="number"&&Number.isFinite(payload.outscoredPercent)){const percentile=document.createElement("div");percentile.className="stat-percentile";percentile.textContent="YOU OUTSCORED "+payload.outscoredPercent+"% OF PLAYERS";box.append(percentile);}
@@ -167,7 +167,7 @@ $("#guess-form").addEventListener("submit",async event=>{
  }catch(error){$("#feedback").textContent=error.message||"Could not check this guess.";}finally{submitting=false;if(!ended){$("#guess-btn").disabled=false;$("#guess").focus();}}
 });
 $("#give-up").onclick=()=>finish(true).catch(error=>{$("#feedback").textContent=error.message||"Could not finish this round.";$("#give-up").disabled=false;});
-$("#result-home").onclick=()=>{if(dailyState?.demo){if(dailyState.current<3){startDailyTeam(dailyState.current+1);return;}finishDailyOverall();return;}dailyState=null;normalSessionId=null;normalHints=null;show("home");};
+$("#result-home").onclick=()=>{if(dailyState?.demo){if(dailyState.current<3){startDailyTeam(dailyState.current+1);return;}if(!dailyState.finalShown){finishDailyOverall();return;}}dailyState=null;normalSessionId=null;normalHints=null;clearInterval(tick);show("home");};
 document.querySelectorAll("[data-back]").forEach(button=>button.onclick=()=>{clearInterval(tick);dailyState=null;normalSessionId=null;normalHints=null;show("home");});
 $("#year").onchange=renderTeams;
 document.querySelectorAll("[data-mode]").forEach(button=>button.onclick=()=>{const selected=button.dataset.mode;if(selected.startsWith("daily")){startDaily(selected);return;}practiceOnly=selected==="practice";mode=selected==="hard"?"hard":"easy";show("select");renderTeams();});
