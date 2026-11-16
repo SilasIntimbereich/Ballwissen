@@ -4,11 +4,11 @@ const $=selector=>document.querySelector(selector);
 const config=window.FOOTBALL_ARCADE_CONFIG||{};
 let supabase=null;
 if(config.supabaseUrl&&config.supabaseAnonKey){try{const mod=await import("https://esm.sh/@supabase/supabase-js@2");supabase=mod.createClient(config.supabaseUrl,config.supabaseAnonKey);}catch(error){console.warn("Supabase client unavailable",error);}}
-let mode="easy",team=null,found=new Set(),seconds=120,tick=null,ended=false,normalSessionId=null,normalHints=null,dailyState=null;
+let mode="easy",team=null,found=new Set(),seconds=120,tick=null,ended=false,normalSessionId=null,normalHints=null,dailyState=null,practiceOnly=false;
 async function ensureAuth(){if(!supabase)throw new Error("Supabase is not configured.");const current=await supabase.auth.getSession();if(!current.data.session){const auth=await supabase.auth.signInAnonymously();if(auth.error)throw auth.error;}}
-function show(id){["home","select","game","online"].forEach(screen=>$("#"+screen).classList.toggle("active",screen===id));window.scrollTo(0,0);}
+function show(id){["home","select","game","online","stats","settings"].forEach(screen=>$("#"+screen)?.classList.toggle("active",screen===id));window.scrollTo(0,0);}
 function renderTeams(){
- const year=Number($("#year").value),teams=tournaments[year]||[],status=datasetStatus[year];
+ const year=Number($("#year").value),allTeams=tournaments[year]||[],teams=practiceOnly?allTeams.filter(item=>!item.verified&&item.players.length):allTeams,status=datasetStatus[year];
  $("#team-grid").innerHTML="";
  $("#select-note").textContent=teams.length?(status.verified?"All squads independently audited.":status.auditPending?(year===2026?status.verifiedTeams+" of 48 teams independently audited; "+(48-status.verifiedTeams)+" remain pending.":status.verifiedTeams+" of "+teams.length+" historical teams independently audited; the rest are practice-only."):"Practice squads."):"Historical squads for this tournament are not yet imported. No invented teams are shown.";
  teams.forEach(selected=>{const button=document.createElement("button");button.className="team-button";const name=document.createElement("span");name.textContent=selected.name;const meta=document.createElement("small");meta.textContent=selected.total+" players · "+selected.teamDifficulty+" difficulty · "+(selected.verified?"online verified":"practice only");button.append(name,meta);button.onclick=()=>startGame(selected);$("#team-grid").append(button);});
@@ -108,7 +108,7 @@ $("#give-up").onclick=()=>finish(true);
 $("#result-home").onclick=()=>{dailyState=null;normalSessionId=null;normalHints=null;show("home");};
 document.querySelectorAll("[data-back]").forEach(button=>button.onclick=()=>{clearInterval(tick);dailyState=null;normalSessionId=null;normalHints=null;show("home");});
 $("#year").onchange=renderTeams;
-document.querySelectorAll("[data-mode]").forEach(button=>button.onclick=()=>{const selected=button.dataset.mode;if(selected.startsWith("daily")){startDaily(selected);return;}mode=selected;show("select");renderTeams();});
+document.querySelectorAll("[data-mode]").forEach(button=>button.onclick=()=>{const selected=button.dataset.mode;if(selected.startsWith("daily")){startDaily(selected);return;}practiceOnly=selected==="practice";mode=selected==="hard"?"hard":"easy";show("select");renderTeams();});
 const allTeams=Object.values(tournaments).flat(),verifiedTeams=allTeams.filter(item=>item.verified).length;
 const dailyCounts={common:0,niche:0,legendary:0};
 allTeams.filter(item=>item.verified).forEach(item=>{if(Object.hasOwn(dailyCounts,item.teamDifficulty))dailyCounts[item.teamDifficulty]++;});
