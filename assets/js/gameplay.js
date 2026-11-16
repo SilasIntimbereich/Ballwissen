@@ -10,11 +10,11 @@ export function submitGuess(round, guess, matcher) {
   const value = String(guess ?? "").trim();
   if (!value) return { status: "empty" };
   const index = round.players.findIndex((player, i) =>
-    !round.found.has(i) && matcher(value, player)
+    !round.found.has(i) && matcher(value, player, round.players)
   );
   if (index < 0) {
     const duplicate = round.players.some((player, i) =>
-      round.found.has(i) && matcher(value, player)
+      round.found.has(i) && matcher(value, player, round.players)
     );
     return { status: duplicate ? "duplicate" : "incorrect" };
   }
