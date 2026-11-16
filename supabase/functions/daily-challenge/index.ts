@@ -44,7 +44,7 @@ Deno.serve(async req=>{
   hints:roster.map(p=>mode==="daily-legendary"?({id:p.id||""}):({id:p.id||"",position:p.position||"",club:p.club||""}))
  }));
  const currentSequence=(resumeAttempt?.completed_teams||0)+1;
- let foundPlayers:Array<{id:string,name:string,position?:string,club?:string}>=[];
+ let foundPlayers:Array<{id:string,name:string,position?:string,club?:string,rarity?:string}>=[];
  let remainingSeconds=120;
  if(resumeAttempt){
   const current=teams.find(t=>t.sequence===currentSequence);
