@@ -6,19 +6,25 @@ const positions = new Set(["GK", "DF", "MF", "FW"]);
 const wc = await read("data/worldcup-2026.json");
 if (wc.players.length !== 1248) fail("2026: expected 1,248 players, got " + wc.players.length);
 const teams = new Map();
+const teamCodes = new Map();
 for (const p of wc.players) {
-  if (!p.name?.trim() || !p.team?.trim() || !p.club?.trim() || !p.position || !positions.has(p.position))
+  if (!p.name?.trim() || !p.team?.trim() || !p.teamCode?.trim() || !p.club?.trim() || !p.position || !positions.has(p.position))
     fail("2026: incomplete or invalid player row: " + JSON.stringify(p));
   if (!Number.isInteger(Number(p.number)) || Number(p.number) < 1 || Number(p.number) > 99)
     fail("2026: invalid shirt number for " + p.name);
   if (!teams.has(p.team)) teams.set(p.team, []);
   teams.get(p.team).push(p);
+  if (teamCodes.has(p.team) && teamCodes.get(p.team) !== p.teamCode) fail("2026: inconsistent FIFA team code for " + p.team);
+  teamCodes.set(p.team, p.teamCode);
 }
 if (teams.size !== 48) fail("2026: expected 48 teams, got " + teams.size);
+if (new Set(teamCodes.values()).size !== 48) fail("2026: FIFA team codes must be unique across all 48 teams.");
 for (const [team, players] of teams) {
   if (players.length !== 26) fail("2026: " + team + " has " + players.length + " entries, expected 26.");
   const numbers = players.map(p => Number(p.number));
   if (new Set(numbers).size !== numbers.length) fail("2026: duplicate shirt number in " + team);
+  const names = players.map(p => p.name.normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, ""));
+  if (new Set(names).size !== names.length) fail("2026: duplicate normalized player name in " + team);
 }
 
 const difficulty = await read("data/team-difficulty.json");
