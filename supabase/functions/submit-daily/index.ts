@@ -14,7 +14,7 @@ Deno.serve(async req=>{
  if(sequence!==attempt.completed_teams+1)return json({error:"Teams must be completed in order"},409);
  const elapsed=(Date.now()-new Date(attempt.current_team_started_at).getTime())/1000;
  if(elapsed<0||(!giveUp&&elapsed<120))return json({error:"Team timer has not ended yet"},409);
- if(elapsed>180)return json({error:"Daily team session expired"},410);
+
  const {data:challenge}=await db.from("daily_challenges").select("team_id").eq("challenge_date",attempt.challenge_date).eq("mode",attempt.mode).eq("sequence",sequence).maybeSingle();
  const {data:answer}=await db.from("arcade_team_answers").select("roster").eq("team_id",challenge?.team_id||"").maybeSingle();
  if(!challenge||!answer)return json({error:"Challenge answer key missing"},503);
