@@ -23,7 +23,7 @@ Deno.serve(async req=>{
  const {data:excluded}=await db.from("daily_excluded_squads").select("team_id").eq("team_id",challenge.team_id).maybeSingle();
  if(excluded)return json({error:"This squad is excluded from Daily challenges"},409);
  const {data:answer}=await db.from("arcade_team_answers").select("roster").eq("team_id",challenge.team_id).maybeSingle();
- const roster=(answer?.roster||[]) as Array<{id:string,name:string,position?:string,club?:string}>;
+ const roster=(answer?.roster||[]) as Array<{id:string,name:string,position?:string,club?:string,rarity?:string,aliases?:string[]}>;
  const {data:previous}=await db.from("daily_attempt_teams").select("found_player_ids").eq("attempt_id",attemptId).eq("sequence",sequence).maybeSingle();
  const foundBefore=(previous?.found_player_ids||[]) as string[];
  const needle=norm(guess);
@@ -38,5 +38,5 @@ Deno.serve(async req=>{
  if(recordError)return json({error:"Guess could not be recorded"},/timer expired/i.test(recordError.message)?410:409);
  const result=Array.isArray(record)?record[0]:record;
  if(!result?.is_correct)return json({correct:false,duplicate:!!result?.is_duplicate});
- return json({correct:true,player:{id:playerId,name:player.name,position:player.position||"",club:attempt.mode==="daily-legendary"?null:(player.club||null)},score:result.score,total:result.total});
+ return json({correct:true,player:{id:playerId,name:player.name,position:attempt.mode==="daily-legendary"?"":(player.position||""),club:attempt.mode==="daily-legendary"?null:(player.club||null),rarity:player.rarity||"Ball Knowledge"},score:result.score,total:result.total});
 });
