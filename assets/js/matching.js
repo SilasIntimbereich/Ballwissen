@@ -16,8 +16,9 @@ function surnameForms(value){
  const words=String(value??"").trim().split(/\s+/).filter(Boolean);
  if(!words.length)return [];
  const forms=[normalize(words.at(-1))];
- if(words.length>1&&surnameParticles.has(normalize(words.at(-2))))
-  forms.push(normalize(words.slice(-2).join(" ")));
+ let start=words.length-1;
+ while(start>0&&surnameParticles.has(normalize(words[start-1])))start--;
+ if(start<words.length-1)forms.push(normalize(words.slice(start).join(" ")));
  return [...new Set(forms.filter(form=>form.length>=4))];
 }
 function nameTargets(player){
