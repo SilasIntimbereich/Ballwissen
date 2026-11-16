@@ -55,9 +55,9 @@ Deno.serve(async req=>{
    const ids=(teamAttempt?.found_player_ids||[]) as string[];
    if(ids.length){
     const {data:answer}=await admin.from("arcade_team_answers").select("roster").eq("team_id",current.teamId).maybeSingle();
-    foundPlayers=((answer?.roster||[]) as Array<{id?:string,name:string,position?:string,club?:string}>)
+    foundPlayers=((answer?.roster||[]) as Array<{id?:string,name:string,position?:string,club?:string,rarity?:string}>)
      .filter(p=>ids.includes(p.id||""))
-     .map(p=>({id:p.id||"",name:p.name,position:mode==="daily-legendary"?"":(p.position||""),club:mode==="daily-legendary"?"":(p.club||"")}));
+     .map(p=>({id:p.id||"",name:p.name,position:mode==="daily-legendary"?"":(p.position||""),club:mode==="daily-legendary"?"":(p.club||""),rarity:p.rarity||"Ball Knowledge"}));
    }
   }
  }
