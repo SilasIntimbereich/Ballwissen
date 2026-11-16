@@ -29,7 +29,7 @@ The source is the Fjelstul World Cup Database via DataHub, licensed CC BY-SA 4.0
 
 ## 3. Create Supabase backend
 1. Create a Supabase project.
-2. Apply all repository migrations in order using the **Deploy Supabase backend** GitHub Actions workflow. The newer `202611160001_daily_squad_exclusions.sql` migration is required: it installs the exact 50 excluded squad IDs in PostgreSQL and enforces the exclusion inside the server-side Daily publisher. Do not deploy only the first migration.
+2. Apply all repository migrations in order using the **Deploy Supabase backend** GitHub Actions workflow. The newer `202611160001_daily_squad_exclusions.sql` migration is required: it installs the exact 50 excluded squad IDs in PostgreSQL, filters them in the Daily publisher, and adds a database trigger that rejects excluded teams even if another insert path is used. Do not deploy only the first migration.
 3. Enable Anonymous Sign-Ins under Authentication → Providers.
 4. In GitHub → Settings → Secrets and variables → Actions, add these repository secrets: `SUPABASE_ACCESS_TOKEN`, `SUPABASE_PROJECT_ID`, `SUPABASE_DB_PASSWORD`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`. Never paste the service-role key into a normal repository file.
 5. Open GitHub → Actions → **Deploy Supabase backend** → **Run workflow**. This applies migrations, sets server-side secrets and deploys the Edge Functions.
