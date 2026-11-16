@@ -27,7 +27,8 @@ Deno.serve(async req=>{
  const {data:previous}=await db.from("daily_attempt_teams").select("found_player_ids").eq("attempt_id",attemptId).eq("sequence",sequence).maybeSingle();
  const foundBefore=(previous?.found_player_ids||[]) as string[];
  const needle=norm(guess);
- const isMatch=(p:{id?:string,name:string})=>{const target=norm(p.name);return needle===target||(Math.min(needle.length,target.length)>=6&&distance(needle,target)<=1)||(Math.min(needle.length,target.length)>=10&&distance(needle,target)<=2);};
+ const isNameMatch=(value:string)=>{const target=norm(value);return needle===target||(Math.min(needle.length,target.length)>=6&&distance(needle,target)<=1)||(Math.min(needle.length,target.length)>=10&&distance(needle,target)<=2);};
+ const isMatch=(p:{id?:string,name:string,aliases?:string[]})=>[p.name,...(p.aliases||[])].some(isNameMatch);
  const player=roster.find(p=>isMatch(p)&&!foundBefore.includes(p.id||norm(p.name)));
  if(!player)return json({correct:false,duplicate:roster.some(isMatch)});
  const playerId=player.id||norm(player.name);
