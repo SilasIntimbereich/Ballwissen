@@ -3,28 +3,22 @@ import assert from "node:assert/strict";
 import {readFile,access} from "node:fs/promises";
 
 const publicData=JSON.parse(await readFile("dist/data/public-teams.json","utf8"));
-const practiceData=JSON.parse(await readFile("dist/data/practice-rosters.json","utf8"));
-const practiceIds=new Set(practiceData.teams.map(team=>team.id));
+const localData=JSON.parse(await readFile("dist/data/practice-rosters.json","utf8"));
+const localById=new Map(localData.teams.map(team=>[team.id,team]));
 
 test("public build contains metadata for all 240 tournament squads",()=>{
  assert.equal(publicData.teams.length,240);
  assert.equal(new Set(publicData.teams.map(team=>team.id)).size,240);
 });
 
-test("verified answer rosters are never shipped to the browser",()=>{
- const verified=publicData.teams.filter(team=>team.verified);
- assert.ok(verified.length>=9);
- for(const team of verified){
-  assert.equal(practiceIds.has(team.id),false);
-  assert.equal(Object.hasOwn(team,"players"),false);
- }
-});
-
-test("only unverified teams are included as local practice rosters",()=>{
- assert.equal(practiceData.teams.length+publicData.teams.filter(team=>team.verified).length,240);
- for(const team of practiceData.teams){
-  assert.equal(publicData.teams.find(item=>item.id===team.id)?.verified,false);
-  assert.ok(team.players.length>0);
+test("all 240 squads have complete local rosters for unranked offline gameplay",()=>{
+ assert.equal(localData.teams.length,240);
+ assert.equal(localById.size,240);
+ for(const team of publicData.teams){
+  const local=localById.get(team.id);
+  assert.ok(local,"Missing local roster: "+team.id);
+  assert.equal(local.players.length,team.total,"Incorrect roster size: "+team.id);
+  assert.ok(local.players.length>0,"Empty roster: "+team.id);
  }
 });
 
