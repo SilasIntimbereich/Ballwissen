@@ -24,7 +24,8 @@ Deno.serve(async req=>{
  const {data:alreadyGuessed}=await db.from("normal_game_session_guesses").select("player_id").eq("session_id",sessionId);
  const guessedIds=new Set((alreadyGuessed||[]).map(x=>x.player_id));
  const needle=norm(guess);
- const isMatch=(p:{name:string})=>{const n=norm(p.name);return needle===n||(Math.min(needle.length,n.length)>=6&&distance(needle,n)<=1)||(Math.min(needle.length,n.length)>=10&&distance(needle,n)<=2);};
+ const isNameMatch=(value:string)=>{const n=norm(value);return needle===n||(Math.min(needle.length,n.length)>=6&&distance(needle,n)<=1)||(Math.min(needle.length,n.length)>=10&&distance(needle,n)<=2);};
+ const isMatch=(p:{name:string,aliases?:string[]})=>[p.name,...(p.aliases||[])].some(isNameMatch);
  const player=roster.find(p=>isMatch(p)&&!guessedIds.has(p.id));
  if(!player)return json({correct:false,duplicate:roster.some(isMatch)});
  const {data:record,error:recordError}=await db.rpc("record_normal_player_guess",{
