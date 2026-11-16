@@ -1,4 +1,4 @@
-export const normalize=value=>String(value??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");
+export const normalize=value=>String(value??"").normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");
 function distance(a,b){
  const row=Array.from({length:b.length+1},(_,i)=>i);
  for(let i=1;i<=a.length;i++){
@@ -11,11 +11,32 @@ function distance(a,b){
  }
  return row[b.length];
 }
-export function matches(guess,player){
+const surnameParticles=new Set(["da","das","de","del","della","di","dos","du","la","le","van","von","bin","al","el","st"]);
+function surnameForms(value){
+ const words=String(value??"").trim().split(/\\s+/).filter(Boolean);
+ if(!words.length)return [];
+ const forms=[normalize(words.at(-1))];
+ if(words.length>1&&surnameParticles.has(normalize(words.at(-2))))
+  forms.push(normalize(words.slice(-2).join(" ")));
+ return [...new Set(forms.filter(form=>form.length>=4))];
+}
+function nameTargets(player){
+ return [player?.name,...(player?.aliases||[])].filter(Boolean).map(normalize);
+}
+export function matches(guess,player,squad=[player]){
  const input=normalize(guess);
- if(!input)return false;
- const targets=[player.name,...(player.aliases||[])].filter(Boolean).map(normalize);
+ if(!input||!player)return false;
+ const targets=nameTargets(player);
  if(targets.includes(input))return true;
+ // Accept a surname only when it identifies exactly one player in this squad.
+ const ownSurnames=surnameForms(player.name);
+ const ownAliases=(player.aliases||[]).flatMap(surnameForms);
+ if([...ownSurnames,...ownAliases].includes(input)){
+  const candidates=(Array.isArray(squad)?squad:[player]).filter(candidate=>
+   [...surnameForms(candidate?.name),...(candidate?.aliases||[]).flatMap(surnameForms)].includes(input)
+  );
+  if(candidates.length===1&&candidates[0]===player)return true;
+ }
  if(input.length<4)return false;
  return targets.some(target=>
   (Math.min(input.length,target.length)>=6&&distance(input,target)<=1)||
