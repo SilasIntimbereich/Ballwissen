@@ -9,5 +9,252 @@
     "missing",
     "extra"
   ],
-  "teams": {}
+  "teams": {
+    "czech-republic-2026": {
+      "status": "verified",
+      "tournament": 2026,
+      "teamNameInDataset": "Czech Republic",
+      "teamNameInFifaPdf": "Czechia (CZE)",
+      "reviewedAt": "2026-11-16",
+      "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
+      "secondarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
+      "notes": "All 26 roster rows were compared manually by shirt number, player identity, position and tournament-time club against FIFA's final squad PDF (page 15) and NBC Sports' confirmed Czechia squad list. FIFA labels the team Czechia; the repository source labels it Czech Republic. Both identify CZE. Clubs in the ledger preserve the repository's normalized club names while matching the club identities in FIFA's PDF.",
+      "players": [
+        {
+          "playerName": "Matěj Kovář",
+          "sourceName": "KOVAR Matej",
+          "number": 1,
+          "position": "GK",
+          "clubAtTournament": "PSV Eindhoven",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "David Zima",
+          "sourceName": "ZIMA David",
+          "number": 2,
+          "position": "DF",
+          "clubAtTournament": "SK Slavia Praha",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Tomáš Holeš",
+          "sourceName": "HOLES Tomas",
+          "number": 3,
+          "position": "DF",
+          "clubAtTournament": "SK Slavia Praha",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Robin Hranáč",
+          "sourceName": "HRANAC Robin",
+          "number": 4,
+          "position": "DF",
+          "clubAtTournament": "TSG Hoffenheim",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Vladimír Coufal",
+          "sourceName": "COUFAL Vladimir",
+          "number": 5,
+          "position": "DF",
+          "clubAtTournament": "TSG Hoffenheim",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Štěpán Chaloupek",
+          "sourceName": "CHALOUPEK Stepan",
+          "number": 6,
+          "position": "DF",
+          "clubAtTournament": "SK Slavia Praha",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Ladislav Krejčí",
+          "sourceName": "KREJCI Ladislav",
+          "number": 7,
+          "position": "DF",
+          "clubAtTournament": "Wolverhampton Wanderers FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Vladimír Darida",
+          "sourceName": "DARIDA Vladimir",
+          "number": 8,
+          "position": "MF",
+          "clubAtTournament": "FC Hradec Králové",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Adam Hložek",
+          "sourceName": "HLOZEK Adam",
+          "number": 9,
+          "position": "FW",
+          "clubAtTournament": "TSG Hoffenheim",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Patrik Schick",
+          "sourceName": "SCHICK Patrik",
+          "number": 10,
+          "position": "FW",
+          "clubAtTournament": "Bayer 04 Leverkusen",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Jan Kuchta",
+          "sourceName": "KUCHTA Jan",
+          "number": 11,
+          "position": "FW",
+          "clubAtTournament": "AC Sparta Praha",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Lukáš Červ",
+          "sourceName": "CERV Lukas",
+          "number": 12,
+          "position": "MF",
+          "clubAtTournament": "FC Viktoria Plzeň",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Mojmír Chytil",
+          "sourceName": "CHYTIL Mojmir",
+          "number": 13,
+          "position": "FW",
+          "clubAtTournament": "SK Slavia Praha",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "David Jurásek",
+          "sourceName": "JURASEK David",
+          "number": 14,
+          "position": "DF",
+          "clubAtTournament": "SK Slavia Praha",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Pavel Šulc",
+          "sourceName": "SULC Pavel",
+          "number": 15,
+          "position": "FW",
+          "clubAtTournament": "Olympique Lyonnais",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Jindřich Staněk",
+          "sourceName": "STANEK Jindrich",
+          "number": 16,
+          "position": "GK",
+          "clubAtTournament": "SK Slavia Praha",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Lukáš Provod",
+          "sourceName": "PROVOD Lukas",
+          "number": 17,
+          "position": "MF",
+          "clubAtTournament": "SK Slavia Praha",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Michal Sadílek",
+          "sourceName": "SADILEK Michal",
+          "number": 18,
+          "position": "MF",
+          "clubAtTournament": "SK Slavia Praha",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Tomáš Chorý",
+          "sourceName": "CHORY Tomas",
+          "number": 19,
+          "position": "FW",
+          "clubAtTournament": "SK Slavia Praha",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Jaroslav Zelený",
+          "sourceName": "ZELENY Jaroslav",
+          "number": 20,
+          "position": "DF",
+          "clubAtTournament": "AC Sparta Praha",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "David Douděra",
+          "sourceName": "DOUDERA David",
+          "number": 21,
+          "position": "DF",
+          "clubAtTournament": "SK Slavia Praha",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Tomáš Souček",
+          "sourceName": "SOUCEK Tomas",
+          "number": 22,
+          "position": "MF",
+          "clubAtTournament": "West Ham United FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Lukáš Horníček",
+          "sourceName": "HORNICEK Lukas",
+          "number": 23,
+          "position": "GK",
+          "clubAtTournament": "SC Braga",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Alexandr Sojka",
+          "sourceName": "SOJKA Alexandr",
+          "number": 24,
+          "position": "MF",
+          "clubAtTournament": "FC Viktoria Plzeň",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Hugo Sochůrek",
+          "sourceName": "SOCHUREK Hugo",
+          "number": 25,
+          "position": "MF",
+          "clubAtTournament": "AC Sparta Praha",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Denis Višinský",
+          "sourceName": "VISINSKY Denis",
+          "number": 26,
+          "position": "FW",
+          "clubAtTournament": "FC Viktoria Plzeň",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        }
+      ]
+    }
+  }
 }
