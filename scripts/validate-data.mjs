@@ -103,9 +103,12 @@ const migration = await readText("supabase/migrations/202611160001_daily_squad_e
 if (!migration.includes("create trigger enforce_daily_squad_exclusions") ||
     !migration.includes("Daily challenge cannot include excluded squad"))
   fail("Daily exclusion database trigger is missing.");
+if (!migration.includes("daily_challenges_date_mode_team_unique_idx"))
+  fail("Daily schedule must prevent duplicate teams within one mode/day.");
 const dailyFunction = await readText("supabase/functions/daily-challenge/index.ts");
-if (!dailyFunction.includes("daily_excluded_squads") || !dailyFunction.includes("excludedIds.has"))
-  fail("Daily challenge API must fail closed when an excluded squad is scheduled.");
+if (!dailyFunction.includes("daily_excluded_squads") || !dailyFunction.includes("excludedIds.has") ||
+    !dailyFunction.includes("new Set(challenges.map(c=>c.team_id)).size!==3"))
+  fail("Daily challenge API must fail closed for excluded or malformed schedules.");
 const statisticsMigration = await readText("supabase/migrations/202611160002_statistics_integrity.sql");
 if (!statisticsMigration.includes("order by bucket_start") ||
     !statisticsMigration.includes("count(*)-1") ||
@@ -119,6 +122,16 @@ for (const functionName of ["record_daily_player_guess","complete_daily_team","r
 if (!atomicMigration.includes("normal_results_user_team_unique_idx") ||
     !atomicMigration.includes("on conflict(user_id,team_id) where user_id is not null"))
   fail("Normal-mode statistics must count one latest result per player and squad.");
+const atomicChecks = [
+  ["supabase/functions/daily-guess/index.ts","record_daily_player_guess"],
+  ["supabase/functions/submit-daily/index.ts","complete_daily_team"],
+  ["supabase/functions/normal-guess/index.ts","record_normal_player_guess"],
+  ["supabase/functions/submit-normal-result/index.ts","finish_normal_game_session"]
+];
+for (const [path,functionName] of atomicChecks) {
+  if (!(await readText(path)).includes('rpc("' + functionName + '"'))
+    fail("Edge Function is not wired to atomic game action: " + path);
+}
 const edgeWiring = [
   ["supabase/functions/daily-guess/index.ts","record_daily_player_guess"],
   ["supabase/functions/submit-daily/index.ts","complete_daily_team"],
