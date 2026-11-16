@@ -28,7 +28,7 @@ for (let pageNo = 1; pageNo <= pdf.numPages; pageNo++) {
   const lineGroups = [];
   for (const item of textItems) {
     let group = lineGroups[lineGroups.length - 1];
-    if (!group || Math.abs(group.y - item.y) > 1.5) {
+    if (!group || Math.abs(group.y - item.y) > 2.5) {
       group = { y: item.y, items: [] };
       lineGroups.push(group);
     }
