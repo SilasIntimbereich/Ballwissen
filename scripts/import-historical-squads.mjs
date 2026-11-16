@@ -61,7 +61,7 @@ for (const year of YEARS) {
   const grouped = new Map();
   for (const r of rows) {
     const name = r.team_name || "";
-    const playerName = [r.given_name, r.family_name].filter(Boolean).join(" ").trim();
+    const playerName = [r.given_name, r.family_name].filter(v => v && !/^not applicable$/i.test(v.trim())).join(" ").trim();
     if (!name) throw new Error(year + ": squad row without team name.");
     if (!playerName) throw new Error(year + ", " + name + ": squad row without player name.");
     if (!grouped.has(name)) grouped.set(name, []);
