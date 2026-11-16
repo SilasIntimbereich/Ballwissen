@@ -255,6 +255,252 @@
           "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
         }
       ]
+    },
+    "australia-2026": {
+      "status": "verified",
+      "tournament": 2026,
+      "teamNameInDataset": "Australia",
+      "teamNameInFifaPdf": "Australia (AUS)",
+      "reviewedAt": "2026-11-16",
+      "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
+      "secondarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
+      "notes": "All 26 roster rows were compared manually by shirt number, player identity, position and tournament-time club against FIFA's final squad PDF (page 3) and NBC Sports' confirmed Australia squad list. Club strings in the dataset omit FIFA's country suffixes but identify the same clubs.",
+      "players": [
+        {
+          "playerName": "Mathew Ryan",
+          "sourceName": "RYAN Mathew",
+          "number": 1,
+          "position": "GK",
+          "clubAtTournament": "Levante UD",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Miloš Degenek",
+          "sourceName": "DEGENEK Milos",
+          "number": 2,
+          "position": "DF",
+          "clubAtTournament": "APOEL FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Alessandro Circati",
+          "sourceName": "CIRCATI Alessandro",
+          "number": 3,
+          "position": "DF",
+          "clubAtTournament": "Parma",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Jacob Italiano",
+          "sourceName": "ITALIANO Jacob",
+          "number": 4,
+          "position": "DF",
+          "clubAtTournament": "Grazer AK",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Jordan Bos",
+          "sourceName": "BOS Jordan",
+          "number": 5,
+          "position": "DF",
+          "clubAtTournament": "Feyenoord Rotterdam",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Jason Geria",
+          "sourceName": "GERIA Jason",
+          "number": 6,
+          "position": "DF",
+          "clubAtTournament": "Albirex Niigata",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Mathew Leckie",
+          "sourceName": "LECKIE Mathew",
+          "number": 7,
+          "position": "FW",
+          "clubAtTournament": "Melbourne City FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Connor Metcalfe",
+          "sourceName": "METCALFE Connor",
+          "number": 8,
+          "position": "MF",
+          "clubAtTournament": "FC St. Pauli",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Mohamed Touré",
+          "sourceName": "TOURE Mohamed",
+          "number": 9,
+          "position": "FW",
+          "clubAtTournament": "Norwich City FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Ajdin Hrustic",
+          "sourceName": "HRUSTIC Ajdin",
+          "number": 10,
+          "position": "FW",
+          "clubAtTournament": "SC Heracles Almelo",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Awer Mabil",
+          "sourceName": "MABIL Awer",
+          "number": 11,
+          "position": "FW",
+          "clubAtTournament": "CD Castellón",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Paul Izzo",
+          "sourceName": "IZZO Paul",
+          "number": 12,
+          "position": "GK",
+          "clubAtTournament": "Randers FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Aiden O'Neill",
+          "sourceName": "ONEILL Aiden",
+          "number": 13,
+          "position": "MF",
+          "clubAtTournament": "New York City FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Cammy Devlin",
+          "sourceName": "DEVLIN Cameron",
+          "number": 14,
+          "position": "MF",
+          "clubAtTournament": "Heart Of Midlothian FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Kai Trewin",
+          "sourceName": "TREWIN Kai",
+          "number": 15,
+          "position": "DF",
+          "clubAtTournament": "New York City FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Aziz Behich",
+          "sourceName": "BEHICH Aziz",
+          "number": 16,
+          "position": "DF",
+          "clubAtTournament": "Melbourne City FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Nestory Irankunda",
+          "sourceName": "IRANKUNDA Nestory",
+          "number": 17,
+          "position": "FW",
+          "clubAtTournament": "Watford FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Patrick Beach",
+          "sourceName": "BEACH Patrick",
+          "number": 18,
+          "position": "GK",
+          "clubAtTournament": "Melbourne City FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Harry Souttar",
+          "sourceName": "SOUTTAR Harry",
+          "number": 19,
+          "position": "DF",
+          "clubAtTournament": "Leicester City FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Cristian Volpato",
+          "sourceName": "VOLPATO Cristian",
+          "number": 20,
+          "position": "FW",
+          "clubAtTournament": "US Sassuolo",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Cameron Burgess",
+          "sourceName": "BURGESS Cameron",
+          "number": 21,
+          "position": "DF",
+          "clubAtTournament": "Swansea City AFC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Jackson Irvine",
+          "sourceName": "IRVINE Jackson",
+          "number": 22,
+          "position": "MF",
+          "clubAtTournament": "FC St. Pauli",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Nishan Velupillay",
+          "sourceName": "VELUPILLAY Nishan",
+          "number": 23,
+          "position": "FW",
+          "clubAtTournament": "Melbourne Victory FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Paul Okon-Engstler",
+          "sourceName": "OKON-ENGSTLER Paul",
+          "number": 24,
+          "position": "MF",
+          "clubAtTournament": "Sydney FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Lucas Herrington",
+          "sourceName": "HERRINGTON Lucas",
+          "number": 25,
+          "position": "DF",
+          "clubAtTournament": "Colorado Rapids",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Tete Yengi",
+          "sourceName": "YENGI Tete",
+          "number": 26,
+          "position": "FW",
+          "clubAtTournament": "FC Machida Zelvia",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        }
+      ]
     }
   }
 }
