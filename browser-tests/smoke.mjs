@@ -29,6 +29,9 @@ try{
  await page.waitForFunction(()=>document.querySelector("#data-status")?.textContent.includes("240"));
  assert.equal(await page.locator("[data-mode]").count(),7);
  assert.equal(await page.locator("[data-mode^='daily-']:not(:disabled)").count(),3);
+ await page.locator('[data-mode="tournament"]').click();
+ assert.equal(await page.locator("#select").evaluate(el=>el.classList.contains("active")),true);
+ await page.locator("#select [data-back]").click();
  for(const [year,count] of [[2002,32],[2006,32],[2010,32],[2014,32],[2018,32],[2022,32],[2026,48]]){
   await page.locator('[data-mode="easy"]').click();
   await page.locator("#year").selectOption(String(year));
@@ -139,6 +142,7 @@ try{
  await timerPage.clock.runFor(120_000);
  await timerPage.waitForFunction(()=>!document.querySelector("#result").classList.contains("hidden"));
  assert.match(await timerPage.locator("#result-message").textContent(),/Time is up/);
+ assert.equal(await timerPage.locator(".player-card.missed").count(),23);
  assert.deepEqual(timerErrors,[]);
  await timerContext.close();
 
