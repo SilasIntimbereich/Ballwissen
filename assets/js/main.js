@@ -11,8 +11,8 @@ function renderTeams(){
  const year=Number($("#year").value),allTeams=tournaments[year]||[],teams=allTeams.filter(item=>item.players.length);
  $("#team-grid").innerHTML="";
  $("#select-note").textContent=teams.length
-  ?"All available squads are playable locally. Games are unranked and work without an account."
-  :"No local squads are available for this tournament yet.";
+  ?"All available squads are playable locally and unranked. Club hints appear where historical club data is available."
+   :"No local squads are available for this tournament yet.";
  teams.forEach(selected=>{
   const button=document.createElement("button");button.className="team-button";
   const name=document.createElement("span");name.textContent=selected.name;
@@ -75,7 +75,7 @@ async function startDaily(modeName){
   const allDemoTeams=Object.values(tournaments).flat().filter(item=>!dailyExclusions.has(item.id)&&item.players.length);
   let pool=allDemoTeams.filter(item=>item.teamDifficulty===tier),demoFallback=pool.length<3;
   if(demoFallback)pool=allDemoTeams;
-  if(pool.length<3){$("#online-message").textContent="Not enough eligible local practice squads are available for this Daily demo.";show("online");return;}
+  if(pool.length<3){$("#online-message").textContent="Not enough eligible local squads are available for this Daily challenge.";show("online");return;}
   const random=dailyRandom(tier);for(let i=pool.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
   const teams=pool.slice(0,3).map((selected,index)=>({
    sequence:index+1,teamId:selected.id,teamName:selected.name,year:selected.year,total:selected.players.length,
