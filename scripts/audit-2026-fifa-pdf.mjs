@@ -21,18 +21,25 @@ const report = { source: PDF_URL, pages: pdf.numPages, generatedAt: new Date().t
 for (let pageNo = 1; pageNo <= pdf.numPages; pageNo++) {
   const page = await pdf.getPage(pageNo);
   const content = await page.getTextContent();
-  const lineMap = new Map();
-  for (const item of content.items) {
-    if (!("str" in item) || !item.str.trim()) continue;
-    const y = Math.round(item.transform[5] * 10) / 10;
-    if (!lineMap.has(y)) lineMap.set(y, []);
-    lineMap.get(y).push({ x: item.transform[4], text: item.str.trim() });
+  const textItems = content.items
+    .filter(item => "str" in item && item.str.trim())
+    .map(item => ({ x: item.transform[4], y: item.transform[5], text: item.str.trim() }))
+    .sort((a, b) => b.y - a.y || a.x - b.x);
+  const lineGroups = [];
+  for (const item of textItems) {
+    let group = lineGroups[lineGroups.length - 1];
+    if (!group || Math.abs(group.y - item.y) > 1.5) {
+      group = { y: item.y, items: [] };
+      lineGroups.push(group);
+    }
+    group.items.push(item);
+    group.y = group.items.reduce((sum, entry) => sum + entry.y, 0) / group.items.length;
   }
-  const lines = [...lineMap.entries()]
-    .sort((a, b) => b[0] - a[0])
-    .map(([, items]) => items.sort((a, b) => a.x - b.x).map(x => x.text).join(" ").replace(/\s+/g, " ").trim());
-  const heading = lines.find(line => /\([A-Z]{3}\)/.test(line) && !/SQUAD LIST|FIFA WORLD CUP/i.test(line));
-  const code = heading?.match(/\(([A-Z]{3})\)/)?.[1] || null;
+  const lines = lineGroups.map(group => group.items.sort((a, b) => a.x - b.x).map(item => item.text).join(" ").replace(/\s+/g, " ").trim());
+  const knownCodes = new Set(data.players.map(player => player.teamCode || player.fifa_code).filter(Boolean));
+  const heading = lines.find(line => !/^\d{1,2}\s+(GK|DF|MF|FW)\b/.test(line) &&
+    [...knownCodes].some(teamCode => line.endsWith("(" + teamCode + ")")));
+  const code = heading?.match(/\(([A-Z]{3})\)$/)?.[1] || null;
   const teamPlayers = code ? byCode.get(code) || [] : [];
   const fifaRows = [];
   const unparsed = [];
