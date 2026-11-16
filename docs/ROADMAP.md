@@ -27,21 +27,22 @@
 - [ ] Audit historical player names and completeness against authoritative tournament squad lists (2022 source currently has 831 rows, not 832)
 - [ ] Confirm GitHub Actions syntax/data/Edge Function checks pass after the latest commits; the connected GitHub tools do not expose the push-run status in this session
 - [ ] Source and audit historical club-at-tournament data; current historical source does not include clubs. FIFA PDFs have been located for 2006–2022, but no row-by-row import has been completed
-- [ ] Audit all 1,248 2026 players against FIFA's final squad PDF
+- [x] Audit seven 2026 squads (182 players) against FIFA and independent roster sources
+- [ ] Audit the remaining 41 2026 squads (1,066 players) against FIFA's final squad PDF
 - [ ] Curate player rarity tiers with evidence; player rarity values are currently unassigned
 - [ ] Playtest and review the provisional 50-squad Daily exclusion list before release
 - [ ] Expand and playtest the Daily Legendary pool: only 6 non-excluded team-year candidates currently remain, so three-team daily sets would repeat quickly
 - [ ] Independently review team-difficulty tiers after playtesting
 - [ ] Deploy Supabase migration and Edge Functions to a real project
 - [ ] Sync team metadata and private answer rosters to Supabase
-- [ ] Add at least three independently verified teams to each Daily tier before publishing Daily schedules
+- [ ] Add at least three independently verified teams to each Daily tier before publishing Daily schedules (current verified pool: Common 4, Niche 3, Legendary 0)
 - [ ] End-to-end test Daily attempt resume and server/browser timer boundaries against a deployed Supabase project
 - [ ] Run end-to-end tests for RLS, attempt uniqueness, concurrency, timer boundaries, scoring and mobile Safari
 - [ ] Configure public Supabase URL and anon key in the frontend
 - [ ] Deploy to Netlify and verify the production site on iPhone
 
 ## Safety and release rules
-- Historical and 2026 datasets remain available for local practice but are marked unverified for online ranking until their audits are complete.
+- Unreviewed historical and 2026 teams remain available for local practice but are marked unverified for online ranking; seven 2026 teams are audit-approved.
 - Historical club hints are shown only when a reliable source supplies them; missing clubs must never display as the string "null".
 - Never expose Supabase service-role credentials in frontend code.
 - Never show fake global statistics, leaderboard entries, or Daily availability without a published schedule.
