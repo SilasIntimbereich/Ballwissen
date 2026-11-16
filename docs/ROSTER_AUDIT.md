@@ -2,7 +2,7 @@
 
 ## Release rule
 
-A team is eligible for ranked Normal play or Daily challenges only after every player has been checked by shirt number and identity against the final tournament roster, with position and tournament-time club checked against the official squad-list snapshot. Discrepancies must be resolved and recorded. A plausible team size or a copied third-party dataset is not proof.
+A team is eligible for any future ranked Normal play or Daily challenge only after every player has been checked by shirt number and identity against the final tournament roster, with position and tournament-time club checked against the official squad-list snapshot. Discrepancies must be resolved and recorded. A plausible team size or a copied third-party dataset is not proof.
 
 ## Sources
 
@@ -76,4 +76,4 @@ The sync script and public build independently recheck the complete ledger befor
 
 The fixed 50-squad exclusion list is stored in `data/daily-exclusions.json`. IDs refer to a specific country-and-tournament edition, not to the country globally. Migration `202611160001_daily_squad_exclusions.sql` copies those exact IDs to PostgreSQL, excludes them in the publisher, deletes old schedules containing them, and installs a database trigger that rejects future inserts or updates for excluded teams. Migration `202611160004_secure_public_rosters.sql` keeps verified Normal-mode answer names server-side until a correct guess or game completion. Migration `202611160005_independent_daily_tiers.sql` lets each ready Daily tier publish independently. Migration `202611160006_daily_rarity_reveals.sql` includes player rarity when missed Daily players are revealed.
 
-The Netlify build publishes only `dist`: verified answer names are not present in the browser build. Unverified squads remain available as unranked local practice. These protections are code-level until all Supabase migrations and Edge Functions have been deployed.
+The current V4 static build publishes all 240 local rosters in `dist/data/practice-rosters.json` so every squad can be played offline. This is intentionally unranked; answer names are inspectable in the browser. The private-answer protections in the Supabase migrations are reserved for a later online release and are not active in the current browser app.
