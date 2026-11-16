@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import {createServer} from "node:http";
 import {readFile} from "node:fs/promises";
 import {resolve,extname,sep} from "node:path";
-import {chromium} from "playwright";
+import {chromium,webkit} from "playwright";
 
 const root=resolve("dist");
 const mime={".html":"text/html; charset=utf-8",".js":"text/javascript; charset=utf-8",".css":"text/css; charset=utf-8",".json":"application/json; charset=utf-8",".svg":"image/svg+xml",".webmanifest":"application/manifest+json"};
@@ -20,6 +20,7 @@ const server=createServer(async(req,res)=>{
 await new Promise(done=>server.listen(0,"127.0.0.1",done));
 const origin="http://127.0.0.1:"+server.address().port;
 const browser=await chromium.launch({headless:true,args:["--no-sandbox"]});
+let webkitBrowser;
 try{
  const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,serviceWorkers:"block"});
  const page=await context.newPage();
@@ -164,8 +165,31 @@ try{
  await offlinePage.waitForFunction(()=>document.querySelector("#score").textContent==="1");
  assert.deepEqual(offlineErrors,[],"cached app must run after an offline reload");
  await offlineContext.close();
- console.log("Browser smoke suite passed: all teams, mobile gameplay, every mode, results, timer, stats, settings and offline reload.");
+
+ webkitBrowser=await webkit.launch({headless:true});
+ const webkitContext=await webkitBrowser.newContext({viewport:{width:390,height:844},hasTouch:true});
+ const webkitPage=await webkitContext.newPage();
+ const webkitErrors=[];
+ webkitPage.on("pageerror",error=>webkitErrors.push(error.message));
+ await webkitPage.goto(origin,{waitUntil:"domcontentloaded"});
+ await webkitPage.waitForFunction(()=>document.querySelector("#data-status")?.textContent.includes("240"));
+ await webkitPage.locator('[data-mode="easy"]').click();
+ await webkitPage.locator("#year").selectOption("2018");
+ await webkitPage.locator("#team-grid .team-button").getByText("Argentina",{exact:true}).click();
+ await webkitPage.locator("#guess").fill("Messi");await webkitPage.locator("#guess").press("Enter");
+ await webkitPage.waitForFunction(()=>document.querySelector("#score").textContent==="1");
+ await webkitPage.locator("#guess").fill("Di Maria");await webkitPage.locator("#guess").press("Enter");
+ await webkitPage.waitForFunction(()=>document.querySelector("#score").textContent==="2");
+ await webkitPage.locator("#give-up").click();
+ await webkitPage.waitForFunction(()=>!document.querySelector("#result").classList.contains("hidden"));
+ assert.equal((await webkitPage.locator("#result-score").textContent()).trim(),"2 / 23");
+ assert.deepEqual(webkitErrors,[],"WebKit gameplay must not throw runtime errors");
+ await webkitContext.close();
+ await webkitBrowser.close();
+ webkitBrowser=null;
+ console.log("Browser smoke suite passed: Chromium mobile/offline plus WebKit gameplay, all modes, results, timer, stats and settings.");
 }finally{
+ if(webkitBrowser)await webkitBrowser.close();
  await browser.close();
  await new Promise(done=>server.close(done));
 }
