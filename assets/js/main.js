@@ -113,7 +113,7 @@ async function finishDailyTeam(giveUp){
   $("#feedback").textContent="Demo team score: "+found.size+" / "+team.players.length+" · unranked";
   $("#result-score").textContent=found.size+" / "+team.players.length;
   $("#result-message").textContent="Daily demo team "+dailyState.current+" of 3 complete. Your missed players are shown above. This round is unranked.";
-  $("#result-stats").innerHTML="";
+  $("#result-stats").innerHTML="<div class=\"stat-percentile\">TEAM ACCURACY · "+Math.round(found.size/team.players.length*100)+"%</div>";
   $("#result-home").textContent=dailyState.current>=3?"VIEW FINAL RESULTS":"NEXT TEAM";
   $("#result").classList.remove("hidden");$("#result").scrollIntoView({behavior:"smooth",block:"center"});
   return;
