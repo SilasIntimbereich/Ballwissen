@@ -1,10 +1,11 @@
 import {loadWeeklyLeaderboard} from "./leaderboard.js";
+import {createRound,submitGuess,revealRound} from "./gameplay.js";
 import {tournaments,matches,datasetStatus,dailyExclusions} from "./data.js";
 const $=selector=>document.querySelector(selector);
 const config=window.FOOTBALL_ARCADE_CONFIG||{};
 let supabase=null;
 if(config.supabaseUrl&&config.supabaseAnonKey){try{const mod=await import("https://esm.sh/@supabase/supabase-js@2");supabase=mod.createClient(config.supabaseUrl,config.supabaseAnonKey);}catch(error){console.warn("Supabase client unavailable",error);}}
-let mode="easy",team=null,found=new Set(),seconds=120,tick=null,ended=false,normalSessionId=null,normalHints=null,dailyState=null,practiceOnly=false;
+let mode="easy",team=null,found=new Set(),roundState=null,submitting=false,seconds=120,tick=null,ended=false,normalSessionId=null,normalHints=null,dailyState=null,practiceOnly=false;
 async function ensureAuth(){if(!supabase)throw new Error("Supabase is not configured.");const current=await supabase.auth.getSession();if(!current.data.session){const auth=await supabase.auth.signInAnonymously();if(auth.error)throw auth.error;}}
 function show(id){["home","select","game","online","stats","settings"].forEach(screen=>$("#"+screen)?.classList.toggle("active",screen===id));window.scrollTo(0,0);}
 function renderTeams(){
@@ -28,7 +29,7 @@ function renderTeams(){
 function formatHint(position,club){return [position,club].filter(value=>typeof value==="string"&&value.trim()&&value.trim().toLowerCase()!=="null").join(" · ")||"HIDDEN PLAYER";}
 function updateTimer(){$("#timer").textContent=String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");}
 function enableGuessControls(){const input=$("#guess"),button=$("#guess-btn");input.disabled=false;input.readOnly=false;input.removeAttribute("disabled");button.disabled=false;button.removeAttribute("disabled");}
-function resetGameView(){found=new Set();seconds=120;ended=false;$("#result").classList.add("hidden");$("#result-stats").innerHTML="";$("#score").textContent="0";$("#guess").value="";enableGuessControls();$("#give-up").disabled=false;$("#give-up").textContent="GIVE UP";$("#roster").innerHTML="";$("#feedback").textContent="Type a player name and press enter.";}
+function resetGameView(){found=new Set();roundState=null;submitting=false;seconds=120;ended=false;$("#result").classList.add("hidden");$("#result-stats").innerHTML="";$("#score").textContent="0";$("#guess").value="";enableGuessControls();$("#give-up").disabled=false;$("#give-up").textContent="GIVE UP";$("#roster").innerHTML="";$("#feedback").textContent="Type a player name and press enter.";}
 function cardForPlayer(id){return [...document.querySelectorAll(".player-card[data-player-id]")].find(card=>card.dataset.playerId===id)||null;}
 function setPlayerRarity(card,rarity){
  if(!card||!rarity)return;
@@ -50,7 +51,7 @@ async function startGame(selected){
   $("#guess").disabled=true;$("#guess-btn").disabled=true;$("#give-up").disabled=true;$("#feedback").textContent="Starting secure online session...";
   try{await ensureAuth();const response=await supabase.functions.invoke("start-normal-game",{body:{teamId:team.id}});if(response.error)throw response.error;normalSessionId=response.data.sessionId;normalHints=response.data.hints||[];team.total=response.data.total;if(!normalSessionId||normalHints.length!==team.total)throw new Error("Secure roster hints are incomplete.");resetGameView();renderNormalRoster();$("#feedback").textContent="Online session active. Correct guesses are checked by the server.";}
   catch(error){$("#online-message").textContent=error.message||"Secure online session unavailable. Try again after the backend is deployed.";show("online");return;}
- }else{if(!team.players.length){$("#online-message").textContent="This practice roster is unavailable in the public build.";show("online");return;}renderNormalRoster();$("#feedback").textContent="Practice round. This unverified squad is not ranked.";}
+ }else{if(!team.players.length){$("#online-message").textContent="This practice roster is unavailable in the public build.";show("online");return;}roundState=createRound(team.players);found=roundState.found;renderNormalRoster();$("#feedback").textContent="Practice round. This unverified squad is not ranked."; }
  enableGuessControls();$("#guess").focus();startClock();
 }
 function startClock(){clearInterval(tick);tick=setInterval(()=>{seconds=Math.max(0,seconds-1);updateTimer();if(seconds<=0)finish(false);},1000);}
@@ -76,19 +77,19 @@ async function startDaily(modeName){
 function startDailyTeam(sequence,resume=null){
  $("#result").dataset.resultKind="daily";
  const dailyTeam=dailyState.teams.find(item=>item.sequence===sequence);if(!dailyTeam){finishDailyOverall();return;}
- dailyState.current=sequence;team={id:dailyTeam.teamId,name:dailyTeam.teamName,year:dailyTeam.year,total:dailyTeam.total,players:dailyTeam.players||[],hints:dailyTeam.hints};normalSessionId=null;normalHints=null;resetGameView();
+ dailyState.current=sequence;team={id:dailyTeam.teamId,name:dailyTeam.teamName,year:dailyTeam.year,total:dailyTeam.total,players:dailyTeam.players||[],hints:dailyTeam.hints};normalSessionId=null;normalHints=null;resetGameView();if(dailyState.demo){roundState=createRound(team.players);found=roundState.found;}
  $("#game-team").textContent=dailyTeam.teamName.toUpperCase();$("#game-tournament").textContent="DAILY TEAM "+sequence+" / 3";$("#game-mode").textContent=(dailyState.demo?"DAILY DEMO · ":"DAILY ")+dailyState.mode.replace("daily-","").toUpperCase()+(dailyState.demoFallback?" · MIXED TEST POOL":"");$("#game-heading").textContent="NAME THE SQUAD";renderDailyRoster(dailyTeam);
  if(resume){seconds=resume.remainingSeconds??120;(resume.foundPlayers||[]).forEach(player=>{found.add(player.id);const card=cardForPlayer(player.id);if(card){card.classList.add("found");setPlayerRarity(card,player.rarity);card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=dailyState.mode==="daily-legendary"?"FOUND":formatHint(player.position,player.club);}});$("#score").textContent=String(found.size);$("#feedback").textContent="Daily challenge resumed. Your remaining time is restored.";}
  show("game");enableGuessControls();updateTimer();if(resume&&seconds<=0){finishDailyTeam(false);return;}startClock();$("#guess").focus();
 }
 async function acceptDailyGuess(value){
  if(dailyState.demo){
-  const index=team.players.findIndex((player,i)=>!found.has(i)&&matches(value,player));
-  if(index<0){$("#feedback").textContent="Not in this squad. Try another name.";$("#guess").select();return;}
-  found.add(index);const player=team.players[index],card=cardForPlayer(team.id+":"+index);
+  const outcome=submitGuess(roundState,value,matches);
+  if(outcome.status!=="correct"){$("#feedback").textContent=outcome.status==="duplicate"?"Already found.":"Not in this squad. Try another name.";$("#guess").select();return;}
+  const index=outcome.index,player=outcome.player,card=cardForPlayer(team.id+":"+index);
   if(card){card.classList.add("found");setPlayerRarity(card,player.rarity);card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=dailyState.mode==="daily-legendary"?"FOUND":formatHint(player.position,player.club);}
   $("#score").textContent=String(found.size);$("#feedback").textContent="Correct! "+player.name+" found.";
-  if(found.size===team.players.length)await finishDailyTeam(true);
+  if(outcome.complete)await finishDailyTeam(true);
   return;
  }
  const response=await supabase.functions.invoke("daily-guess",{body:{attemptId:dailyState.attemptId,sequence:dailyState.current,guess:value}});if(response.error)throw response.error;const data=response.data;
@@ -100,8 +101,8 @@ async function acceptDailyGuess(value){
 async function finishDailyTeam(giveUp){
  if(ended)return;ended=true;clearInterval(tick);$("#guess").disabled=true;$("#guess-btn").disabled=true;$("#give-up").disabled=true;
  if(dailyState.demo){
-  team.players.forEach((player,index)=>{
-   if(found.has(index))return;
+  const revealed=revealRound(roundState);
+  revealed.missed.forEach(({player,index})=>{
    const card=cardForPlayer(team.id+":"+index);if(!card)return;
    card.classList.add("missed");setPlayerRarity(card,player.rarity);
    card.querySelector(".player-name").textContent=player.name;
@@ -113,7 +114,7 @@ async function finishDailyTeam(giveUp){
   $("#result-message").textContent="Daily demo team "+dailyState.current+" of 3 complete. Your missed players are shown above. This round is unranked.";
   $("#result-stats").innerHTML="";
   $("#result-home").textContent=dailyState.current>=3?"VIEW FINAL RESULTS":"NEXT TEAM";
-  $("#result").classList.remove("hidden");
+  $("#result").classList.remove("hidden");$("#result").scrollIntoView({behavior:"smooth",block:"center"});
   return;
  }
  const response=await supabase.functions.invoke("submit-daily",{body:{attemptId:dailyState.attemptId,sequence:dailyState.current,giveUp}});
@@ -128,7 +129,7 @@ async function finishDailyTeam(giveUp){
  });
  $("#feedback").textContent="Team score: "+data.score+" / "+data.total;if(data.finished){finishDailyOverall();return;}$("#feedback").textContent+=" · Next team loading...";setTimeout(()=>startDailyTeam(data.nextSequence),900);
 }
-function finishDailyOverall(){$("#result").dataset.resultKind=dailyState.demo?"practice":"daily";clearInterval(tick);$("#result-home").textContent="BACK TO MENU";$("#result-score").textContent=dailyState.score+" / "+dailyState.total;$("#result-message").textContent=dailyState.demo?"Daily demo complete. Three local practice squads played. Unranked test mode.":"Daily challenge complete. Combined score across all three teams." ;$("#result-stats").innerHTML="";$("#result").classList.remove("hidden");$("#guess").disabled=true;$("#guess-btn").disabled=true;$("#give-up").disabled=true;}
+function finishDailyOverall(){$("#result").dataset.resultKind=dailyState.demo?"practice":"daily";clearInterval(tick);$("#result-home").textContent="BACK TO MENU";$("#result-score").textContent=dailyState.score+" / "+dailyState.total;$("#result-message").textContent=dailyState.demo?"Daily demo complete. Three local practice squads played. Unranked test mode.":"Daily challenge complete. Combined score across all three teams." ;$("#result-stats").innerHTML="";$("#result").classList.remove("hidden");$("#result").scrollIntoView({behavior:"smooth",block:"center"});$("#guess").disabled=true;$("#guess-btn").disabled=true;$("#give-up").disabled=true;}
 function renderStats(payload){
  const box=$("#result-stats");box.innerHTML="";
  if(payload&&typeof payload.outscoredPercent==="number"&&Number.isFinite(payload.outscoredPercent)){const percentile=document.createElement("div");percentile.className="stat-percentile";percentile.textContent="YOU OUTSCORED "+payload.outscoredPercent+"% OF PLAYERS";box.append(percentile);}
@@ -141,13 +142,14 @@ async function finish(giveUp,completed=false){
   if(response.error){ended=false;$("#give-up").disabled=false;$("#give-up").textContent="RETRY SUBMIT";$("#feedback").textContent="Could not submit the online result. Tap RETRY SUBMIT.";return;}
   const data=response.data;
   (data.missedPlayers||[]).forEach(player=>{const card=cardForPlayer(player.id);if(!card||card.classList.contains("found"))return;card.classList.add("missed");setPlayerRarity(card,player.rarity);card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=mode==="easy"?formatHint(player.position,player.club):"NOT FOUND";});
-  $("#result-score").textContent=data.score+" / "+data.total;$("#result-message").textContent=completed?"Perfect run! You found every player.":giveUp?"You gave up. Every squad member is now revealed.":"Time is up. The full squad has been revealed.";renderStats(data);$("#result").classList.remove("hidden");return;
+  $("#result-score").textContent=data.score+" / "+data.total;$("#result-message").textContent=completed?"Perfect run! You found every player.":giveUp?"You gave up. Every squad member is now revealed.":"Time is up. The full squad has been revealed.";renderStats(data);$("#result").classList.remove("hidden");$("#result").scrollIntoView({behavior:"smooth",block:"center"});return;
  }
- team.players.forEach((player,index)=>{if(found.has(index))return;const card=document.querySelector('.player-card[data-index="'+index+'"]');if(!card)return;card.classList.add("missed");setPlayerRarity(card,player.rarity);card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=mode==="easy"?formatHint(player.position,player.club):"NOT FOUND";});
- $("#result-score").textContent=found.size+" / "+team.players.length;$("#result-message").textContent=completed?"Perfect run! You found every player.":giveUp?"You gave up. Every squad member is now revealed.":"Time is up. The full squad has been revealed.";$("#result").classList.remove("hidden");
+ const revealed=revealRound(roundState);
+ revealed.missed.forEach(({player,index})=>{const card=document.querySelector('.player-card[data-index="'+index+'"]');if(!card)return;card.classList.add("missed");setPlayerRarity(card,player.rarity);card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=mode==="easy"?formatHint(player.position,player.club):"NOT FOUND";});
+ $("#result-score").textContent=found.size+" / "+team.players.length;$("#result-message").textContent=completed?"Perfect run! You found every player.":giveUp?"You gave up. Every squad member is now revealed.":"Time is up. The full squad has been revealed.";$("#result").classList.remove("hidden");$("#result").scrollIntoView({behavior:"smooth",block:"center"});
 }
 $("#guess-form").addEventListener("submit",async event=>{
- event.preventDefault();if(ended)return;const value=$("#guess").value.trim();if(!value)return;
+ event.preventDefault();if(ended||submitting)return;const value=$("#guess").value.trim();if(!value)return;submitting=true;$("#guess-btn").disabled=true;
  try{
   if(dailyState){await acceptDailyGuess(value);}
   else if(normalSessionId){
@@ -157,14 +159,14 @@ $("#guess-form").addEventListener("submit",async event=>{
    if(card){card.classList.add("found");setPlayerRarity(card,player.rarity);card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=mode==="easy"?formatHint(player.position,player.club):"FOUND";}
    $("#score").textContent=data.score;$("#feedback").textContent="Correct! "+player.name+" found.";if(data.score===data.total)await finish(false,true);
   }else{
-   const index=team.players.findIndex((player,i)=>!found.has(i)&&matches(value,player));
-   if(index<0){$("#feedback").textContent="Not in this squad. Try another name.";$("#guess").select();return;}
-   found.add(index);const player=team.players[index],card=document.querySelector('.player-card[data-index="'+index+'"]');card.classList.add("found");setPlayerRarity(card,player.rarity);card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=mode==="easy"?formatHint(player.position,player.club):"FOUND";$("#score").textContent=found.size;$("#feedback").textContent="Correct! "+player.name+" found.";if(found.size===team.players.length)await finish(false,true);
+   const outcome=submitGuess(roundState,value,matches);
+   if(outcome.status!=="correct"){$("#feedback").textContent=outcome.status==="duplicate"?"Already found.":"Not in this squad. Try another name.";$("#guess").select();return;}
+   const index=outcome.index,player=outcome.player,card=document.querySelector('.player-card[data-index="'+index+'"]');card.classList.add("found");setPlayerRarity(card,player.rarity);card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=mode==="easy"?formatHint(player.position,player.club):"FOUND";$("#score").textContent=outcome.score;$("#feedback").textContent="Correct! "+player.name+" found.";if(outcome.complete)await finish(false,true);
   }
   $("#guess").value="";
- }catch(error){$("#feedback").textContent=error.message||"Could not check this guess.";}
+ }catch(error){$("#feedback").textContent=error.message||"Could not check this guess.";}finally{submitting=false;if(!ended){$("#guess-btn").disabled=false;$("#guess").focus();}}
 });
-$("#give-up").onclick=()=>finish(true);
+$("#give-up").onclick=()=>finish(true).catch(error=>{$("#feedback").textContent=error.message||"Could not finish this round.";$("#give-up").disabled=false;});
 $("#result-home").onclick=()=>{if(dailyState?.demo){if(dailyState.current<3){startDailyTeam(dailyState.current+1);return;}finishDailyOverall();return;}dailyState=null;normalSessionId=null;normalHints=null;show("home");};
 document.querySelectorAll("[data-back]").forEach(button=>button.onclick=()=>{clearInterval(tick);dailyState=null;normalSessionId=null;normalHints=null;show("home");});
 $("#year").onchange=renderTeams;
