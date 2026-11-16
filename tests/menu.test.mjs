@@ -24,66 +24,69 @@ test("home menu exposes all seven selectable destinations", async () => {
   assert.match(serviceWorker, /\.\/assets\/js\/menu\.js/);
 });
 
-test("public build contains the data required by the mode and tournament selectors", async () => {
+test("public build includes a complete local roster for every tournament team", async () => {
   const publicData = JSON.parse(await read("dist/data/public-teams.json"));
-  const practiceData = JSON.parse(await read("dist/data/practice-rosters.json"));
+  const localData = JSON.parse(await read("dist/data/practice-rosters.json"));
   assert.equal(publicData.teams.length, 240);
   assert.equal(new Set(publicData.teams.map(team => team.id)).size, 240);
-  assert.equal(practiceData.teams.length, publicData.teams.length);
-  const practiceIds = new Set(practiceData.teams.map(team => team.id));
-  assert.ok(publicData.teams.every(team => practiceIds.has(team.id)));
-  assert.ok(publicData.teams.every(team => practiceIds.has(team.id)));
+  assert.equal(localData.teams.length, publicData.teams.length);
+  const localById = new Map(localData.teams.map(team => [team.id, team]));
+  assert.equal(localById.size, publicData.teams.length);
+  for (const team of publicData.teams) {
+    const local = localById.get(team.id);
+    assert.ok(local, "missing local roster: " + team.id);
+    assert.equal(local.players.length, team.total, "wrong roster size: " + team.id);
+    assert.ok(local.players.length > 0, "empty local roster: " + team.id);
+  }
   const exclusions = JSON.parse(await read("dist/data/daily-exclusions.json"));
   assert.equal(exclusions.teams.length, 50);
   assert.equal(new Set(exclusions.teams.map(team => team.id)).size, 50);
   const excludedIds = new Set(exclusions.teams.map(team => team.id));
-  const eligibleDemoTeams = publicData.teams.filter(team =>
-    !excludedIds.has(team.id) && practiceIds.has(team.id)
-  );
-  assert.ok(eligibleDemoTeams.length >= 3, "offline Daily demo needs at least three eligible practice squads");
+  const eligibleDailyTeams = publicData.teams.filter(team => !excludedIds.has(team.id) && localById.has(team.id));
+  assert.ok(eligibleDailyTeams.length >= 3, "offline Daily needs at least three eligible squads");
 });
 
-
-test("gameplay keeps the roster visible and handles all end states", async () => {
+test("normal gameplay is local, input-enabled and handles every end state", async () => {
   const main = await read("dist/assets/js/main.js");
   const css = await read("dist/assets/css/styles.css");
   assert.match(main, /\$\("#guess-form"\)\.addEventListener\("submit"/);
   assert.match(main, /async function finish\(giveUp,completed=false\)/);
-  assert.match(main, /giveUp:giveUp\|\|completed/);
   assert.match(main, /Perfect run! You found every player\./);
   assert.match(main, /Every squad member is now revealed\./);
-  assert.match(main, /cardForPlayer\(player\.id\)\|\|/);
-  assert.match(main, /roundState=createRound\(team\.players\)/);\n  assert.match(main, /local practice/);\n  assert.doesNotMatch(main, /const onlineLocked=selected\.verified&&!supabase/);
+  assert.match(main, /roundState=createRound\(team\.players\)/);
+  assert.match(main, /Local practice round · unranked/);
+  assert.match(main, /function enableGuessControls\(\)/);
+  assert.match(main, /input\.removeAttribute\("disabled"\)/);
+  assert.match(main, /button\.removeAttribute\("disabled"\)/);
+  assert.match(main, /if\(practiceOnly\)\{\$\("#timer"\)\.textContent="∞";return;\}/);
+  assert.match(main, /ACCURACY · /);
+  assert.doesNotMatch(main, /const onlineLocked=selected\.verified&&!supabase/);
   assert.ok(css.includes("Gameplay usability fix: keep the revealed roster visible"));
   assert.match(css, /\.result\{\s*position:relative/);
 });
 
-
-test("offline Daily challenge is playable using local squads", async () => {
+test("Daily modes use local squads and the shared gameplay engine", async () => {
   const main = await read("dist/assets/js/main.js");
   const data = await read("dist/assets/js/data.js");
   const sw = await read("dist/sw.js");
   assert.match(data, /dailyExclusions=new Set/);
-  assert.match(main, /if\(!supabase\)\{/);
   assert.match(main, /DAILY DEMO/);
   assert.match(main, /Local unranked challenge with three squads from this tier/);
   assert.match(main, /demoFallback=pool\.length<3/);
-  assert.match(main, /mixed test pool/i);
   assert.match(main, /dailyState\.demo/);
   assert.match(main, /submitGuess\(roundState,value,matches\)/);
   assert.match(main, /Three local practice squads played/);
   assert.match(sw, /daily-exclusions\.json/);
   assert.match(main, /!dailyExclusions\.has\(item\.id\)/);
-  assert.match(main, /!dailyExclusions\.has\(item\.id\)/);
+  assert.match(main, /startDailyTeam\(1\)/);
+  assert.match(main, /VIEW FINAL RESULTS/);
 });
 
-
-test("game controls are explicitly enabled and Daily demo Give Up shows a round result", async () => {
+test("roster cards use real shirt numbers and preserve Give Up navigation", async () => {
   const main = await read("dist/assets/js/main.js");
-  assert.match(main, /function enableGuessControls\(\)/);
-  assert.match(main, /input\.removeAttribute\("disabled"\)/);
-  assert.match(main, /button\.removeAttribute\("disabled"\)/);
-  assert.match(main, /result-score.*found\.size/s);
-  assert.match(main, /\$\("#result-home"\)\.textContent=dailyState\.current>=3\?"VIEW FINAL RESULTS":"NEXT TEAM"/);
-  assert.match(main, /if\(dailyState\?\.demo\)\{/);
+  assert.match(main, /function addPlayerCard\(index,hint,id,shirtNumber\)/);
+  assert.match(main, /hint\.number/);
+  assert.match(main, /player\.number/);
+  assert.match(main, /result-home/);
+  assert.match(main, /if\(!dailyState\.finalShown\)\{finishDailyOverall\(\);return;\}/);
 });
