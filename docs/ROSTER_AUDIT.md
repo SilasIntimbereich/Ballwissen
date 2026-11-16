@@ -14,7 +14,7 @@ A team is eligible for public Daily challenges and online leaderboards only afte
 | 2014 | FIFA squad-list PDF: https://www.fifadata.com/document/FWC/2014/pdf/FWC_2014_SquadLists.pdf | RSSSF tournament archive | No complete player/club audit |
 | 2018 | FIFA squad-list PDF: https://www.fifadata.com/document/fwc/2018/pdf/FWC_2018_SQUADLISTS.pdf | BBC confirmed squads: https://www.bbc.co.uk/sport/football/44083365 | No complete player/club audit |
 | 2022 | FIFA final squad-list PDF: https://fdp.fifa.org/assetspublic/ce44/pdf/SquadLists-English.pdf | RSSSF tournament archive | No complete player/club audit |
-| 2026 | FIFA final squad-list PDF: https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf | DFB data center, NBC Sports, CBF/DFB federation announcements as specified per team | 7 of 48 teams fully audited; 41 remain unverified |
+| 2026 | FIFA final squad-list PDF: https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf | DFB data center, NBC Sports, CBF/DFB federation announcements as specified per team | 9 of 48 teams fully audited; 39 remain unverified |
 
 ## 2026 audited teams
 
@@ -28,7 +28,7 @@ The 2026 FIFA PDF contains 48 team pages and records player, position and club d
 - **Brazil: 26/26.** FIFA page 7 and DFB data center; the CBF's 7 June replacement notice confirms Éderson Silva replaced injured Wesley. Éderson Silva (#2, MF) and Ederson Moraes (#23, GK) are distinct players.
 - **Algeria: 26/26.** FIFA page 1 and DFB data center. Player identities and shirt numbers were cross-checked; FIFA supplies the final position and club values.
 
-These seven audits verify only these seven squads, not the full 2026 tournament. The other 41 teams remain unverified and must not be used in ranked Daily modes.
+- **Austria: 26/26.** FIFA page 4 and the DFB data center; final positions and tournament-time clubs checked against FIFA.\n- **Belgium: 26/26.** FIFA page 5 and the DFB data center; final positions and tournament-time clubs checked against FIFA.\n\nThese nine audits verify only these nine squads, not the full 2026 tournament. The other 39 teams remain unverified and must not be used in ranked Daily modes.
 
 ## Historical dataset status
 
