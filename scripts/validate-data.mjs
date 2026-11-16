@@ -59,7 +59,7 @@ for (const year of [2002, 2006, 2010, 2014, 2018, 2022]) {
       fail(year + " " + team.name + ": duplicate shirt number.");
     const normalizedNames = new Map();
     for (const player of team.players) {
-      const key = String(player.name).normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
+      const key = String(player.name).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
       if (!normalizedNames.has(key)) normalizedNames.set(key, []);
       normalizedNames.get(key).push(player);
     }
