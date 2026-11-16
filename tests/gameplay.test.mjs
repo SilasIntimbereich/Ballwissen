@@ -51,3 +51,15 @@ test("empty and invalid rounds are handled safely", () => {
   assert.throws(() => createRound([]), /at least one player/);
   assert.deepEqual(revealRound(null), { score: 0, total: 0, missed: [] });
 });
+
+test("app wires the gameplay engine into normal and Daily demo rounds", async () => {
+  const main = await (await import("node:fs/promises")).readFile("dist/assets/js/main.js", "utf8");
+  const shell = await (await import("node:fs/promises")).readFile("dist/sw.js", "utf8");
+  assert.match(main, /import \{createRound,submitGuess,revealRound\} from "\.\/gameplay\.js"/);
+  assert.match(main, /roundState=createRound\(team\.players\)/);
+  assert.match(main, /submitGuess\(roundState,value,matches\)/);
+  assert.match(main, /revealRound\(roundState\)/);
+  assert.match(main, /scrollIntoView\(\{behavior:"smooth",block:"center"\}\)/);
+  assert.match(main, /submitting\)return/);
+  assert.match(shell, /assets\/js\/gameplay\.js/);
+});
