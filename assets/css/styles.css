@@ -493,3 +493,17 @@ body{padding-bottom:env(safe-area-inset-bottom)}
 .result{background:#132b4c;border:2px solid #e9bd4a;border-radius:8px;box-shadow:0 8px 0 #071326}
 .timer{border-radius:6px}
 @media(max-width:650px){.local-play-panel{align-items:flex-start;flex-direction:column}.local-play-stamp{text-align:left}.mode-card,.mode-card:nth-child(4),.mode-card:nth-child(5){grid-column:span 6}}
+
+.timer{background:#e9bd4a;color:#17243b;border:2px solid #f7d878;border-radius:6px;box-shadow:0 4px 0 #9d762b}
+.score{background:#132b4c;border:1px solid #49617e;border-radius:6px}
+.game-head,.game-title{background:none}
+.team-grid{gap:10px}
+.team-button{min-height:66px;padding:12px;text-align:left}
+.team-button span{font-size:18px;font-weight:800}
+.team-button small{font-size:12px;opacity:.82}
+.guess-form{gap:8px}
+.guess-form button{min-width:88px}
+.player-card{min-height:62px}
+.player-number{min-width:28px;font-size:9px}
+.player-hint{line-height:1.3}
+.result{margin-top:18px}
