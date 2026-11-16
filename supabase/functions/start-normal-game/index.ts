@@ -14,10 +14,10 @@ Deno.serve(async req=>{
  const {data:team}=await db.from("arcade_teams").select("id").eq("id",body.teamId).eq("verified",true).maybeSingle();
  if(!team)return json({error:"Verified team not available"},404);
  const {data:answers,error:answerError}=await db.from("arcade_team_answers").select("roster").eq("team_id",body.teamId).maybeSingle();
- const roster=(answers?.roster||[]) as Array<{id?:string,position?:string,club?:string,rarity?:string}>;
+ const roster=(answers?.roster||[]) as Array<{id?:string,position?:string,club?:string}>;
  if(answerError||!Array.isArray(roster)||roster.length<1||roster.some(p=>!p.id))return json({error:"Verified answer roster unavailable"},503);
  const {data:session,error:insertError}=await db.from("normal_game_sessions").insert({user_id:user.id,team_id:body.teamId}).select("id").single();
  if(insertError)return json({error:"Could not start game" },500);
- const hints=roster.map(p=>({id:p.id,position:p.position||"",club:p.club||"",rarity:p.rarity||null}));
+ const hints=roster.map(p=>({id:p.id,position:p.position||"",club:p.club||""}));
  return json({sessionId:session.id,total:roster.length,seconds:120,hints});
 });
