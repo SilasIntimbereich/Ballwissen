@@ -78,7 +78,7 @@ test("Daily modes use local squads, deterministic selection and the shared gamep
   assert.match(main, /const random=dailyRandom\(tier\)/);
   assert.match(main, /dailyState\.demo/);
   assert.match(main, /submitGuess\(roundState,value,matches\)/);
-  assert.match(main, /Three local practice squads played/);
+  assert.match(main, /Three local squads played/);
   assert.match(sw, /daily-exclusions\.json/);
   assert.match(main, /!dailyExclusions\.has\(item\.id\)/);
   assert.match(main, /startDailyTeam\(1\)/);
