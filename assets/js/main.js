@@ -37,9 +37,9 @@ function setPlayerRarity(card,rarity){
  label.textContent=rarity.toUpperCase();
  label.className="player-rarity "+className;
 }
-function addPlayerCard(index,hint,id){const card=document.createElement("div");card.className="player-card";card.dataset.index=index;if(id)card.dataset.playerId=id;const number=document.createElement("span");number.className="player-number";number.textContent=String(index+1).padStart(2,"0");const info=document.createElement("div");info.className="player-info";const name=document.createElement("div");name.className="player-name";name.textContent="???";const detail=document.createElement("div");detail.className="player-hint";detail.textContent=hint||"HIDDEN PLAYER";info.append(name,detail);card.append(number,info);$("#roster").append(card);return card;}
-function renderNormalRoster(){if(normalSessionId&&Array.isArray(normalHints)){normalHints.forEach((hint,index)=>addPlayerCard(index,mode==="easy"?formatHint(hint.position,hint.club):"HIDDEN PLAYER",hint.id));$("#total").textContent=String(team.total);return;}team.players.forEach((player,index)=>addPlayerCard(index,mode==="easy"?formatHint(player.position,player.club):"HIDDEN PLAYER"));$("#total").textContent=String(team.players.length);}
-function renderDailyRoster(dailyTeam){dailyTeam.hints.forEach((hint,index)=>addPlayerCard(index,mode==="daily-legendary"?"HIDDEN PLAYER":formatHint(hint.position,hint.club),hint.id));$("#total").textContent=String(dailyTeam.total);}
+function addPlayerCard(index,hint,id,shirtNumber){const card=document.createElement("div");card.className="player-card";card.dataset.index=index;if(id)card.dataset.playerId=id;const number=document.createElement("span");number.className="player-number";number.textContent=String(Number.isInteger(Number(shirtNumber))&&Number(shirtNumber)>0?Number(shirtNumber):index+1).padStart(2,"0");const info=document.createElement("div");info.className="player-info";const name=document.createElement("div");name.className="player-name";name.textContent="???";const detail=document.createElement("div");detail.className="player-hint";detail.textContent=hint||"HIDDEN PLAYER";info.append(name,detail);card.append(number,info);$("#roster").append(card);return card;}
+function renderNormalRoster(){if(normalSessionId&&Array.isArray(normalHints)){normalHints.forEach((hint,index)=>addPlayerCard(index,mode==="easy"?formatHint(hint.position,hint.club):"HIDDEN PLAYER",hint.id,hint.number));$("#total").textContent=String(team.total);return;}team.players.forEach((player,index)=>addPlayerCard(index,mode==="easy"?formatHint(player.position,player.club):"HIDDEN PLAYER",null,player.number));$("#total").textContent=String(team.players.length);}
+function renderDailyRoster(dailyTeam){dailyTeam.hints.forEach((hint,index)=>addPlayerCard(index,mode==="daily-legendary"?"HIDDEN PLAYER":formatHint(hint.position,hint.club),hint.id,hint.number));$("#total").textContent=String(dailyTeam.total);}
 async function startGame(selected){
  dailyState=null;normalSessionId=null;normalHints=null;mode=mode==="hard"?"hard":"easy";team=selected;
  $("#result").dataset.resultKind="practice";resetGameView();
@@ -54,8 +54,9 @@ async function startGame(selected){
  $("#feedback").textContent="Local practice round · unranked.";
  enableGuessControls();$("#guess").focus();startClock();
 }
-function startClock(){clearInterval(tick);tick=setInterval(()=>{seconds=Math.max(0,seconds-1);updateTimer();if(seconds<=0)finish(false);},1000);}
+function startClock(){clearInterval(tick);if(practiceOnly){$("#timer").textContent="∞";return;}tick=setInterval(()=>{seconds=Math.max(0,seconds-1);updateTimer();if(seconds<=0)finish(false);},1000);}
 async function startDaily(modeName){
+ practiceOnly=false;
  if(!supabase){
   const tier=modeName.replace("daily-","");
   const allDemoTeams=Object.values(tournaments).flat().filter(item=>!dailyExclusions.has(item.id)&&item.players.length);
@@ -66,7 +67,7 @@ async function startDaily(modeName){
   const teams=pool.slice(0,3).map((selected,index)=>({
    sequence:index+1,teamId:selected.id,teamName:selected.name,year:selected.year,total:selected.players.length,
    players:selected.players,
-   hints:selected.players.map((player,playerIndex)=>({id:selected.id+":"+playerIndex,position:player.position,club:player.club}))
+   hints:selected.players.map((player,playerIndex)=>({id:selected.id+":"+playerIndex,position:player.position,club:player.club,number:player.number}))
   }));
   dailyState={demo:true,demoFallback,attemptId:null,mode:modeName,teams,current:1,score:0,total:0};
   mode=modeName;startDailyTeam(1);return;
@@ -150,7 +151,7 @@ async function finish(giveUp,completed=false){
  }
  const revealed=revealRound(roundState);
  revealed.missed.forEach(({player,index})=>{const card=document.querySelector('.player-card[data-index="'+index+'"]');if(!card)return;card.classList.add("missed");setPlayerRarity(card,player.rarity);card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=mode==="easy"?formatHint(player.position,player.club):"NOT FOUND";});
- $("#result-score").textContent=found.size+" / "+team.players.length;$("#result-message").textContent=completed?"Perfect run! You found every player.":giveUp?"You gave up. Every squad member is now revealed.":"Time is up. The full squad has been revealed.";$("#result").classList.remove("hidden");$("#result").scrollIntoView({behavior:"smooth",block:"center"});
+ $("#result-score").textContent=found.size+" / "+team.players.length;$("#result-stats").innerHTML="<div class=\"stat-percentile\">ACCURACY · "+Math.round(found.size/team.players.length*100)+"%</div>";$("#result-message").textContent=completed?"Perfect run! You found every player.":giveUp?"You gave up. Every squad member is now revealed.":"Time is up. The full squad has been revealed.";$("#result").classList.remove("hidden");$("#result").scrollIntoView({behavior:"smooth",block:"center"});
 }
 $("#guess-form").addEventListener("submit",async event=>{
  event.preventDefault();if(ended||submitting)return;const value=$("#guess").value.trim();if(!value)return;submitting=true;$("#guess-btn").disabled=true;
