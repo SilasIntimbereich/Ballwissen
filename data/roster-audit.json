@@ -3453,6 +3453,744 @@
           "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
         }
       ]
+    },
+    "haiti-2026": {
+      "status": "verified",
+      "tournament": 2026,
+      "teamNameInDataset": "Haiti",
+      "teamNameInFifaPdf": "Haiti (HAI)",
+      "reviewedAt": "2026-11-16",
+      "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
+      "secondarySource": "https://datencenter.dfb.de/teams/haiti",
+      "notes": "All 26 shirt numbers, identities, FIFA position codes and tournament-time clubs match FIFA's final squad PDF (page 22) and the DFB data center's Haiti roster. FIFA lists Markhus Lacroix (#13), while DFB uses Duke Lacroix; both sources give the same birth date and club. FIFA lists Deedson Louicius (#11), while DFB uses Deedson Vixamar; the birth date and club match. The upstream snapshot's #14 Leverton Pierre was incorrect and has been corrected to Garven Metusala.",
+      "players": [
+        {
+          "playerName": "Johny Placide",
+          "sourceName": "PLACIDE Johny",
+          "number": 1,
+          "position": "GK",
+          "clubAtTournament": "SC Bastia",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Carlens Arcus",
+          "sourceName": "ARCUS Carlens",
+          "number": 2,
+          "position": "DF",
+          "clubAtTournament": "Angers SCO",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Keeto Thermoncy",
+          "sourceName": "THERMONCY Keeto",
+          "number": 3,
+          "position": "DF",
+          "clubAtTournament": "BSC Young Boys",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Ricardo Adé",
+          "sourceName": "ADE Ricardo",
+          "number": 4,
+          "position": "DF",
+          "clubAtTournament": "LDU Quito",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Hannes Delcroix",
+          "sourceName": "DELCROIX Hannes",
+          "number": 5,
+          "position": "DF",
+          "clubAtTournament": "FC Lugano",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Carl Sainté",
+          "sourceName": "SAINTE Carl",
+          "number": 6,
+          "position": "MF",
+          "clubAtTournament": "El Paso Locomotive FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Derrick Etienne Jr.",
+          "sourceName": "ETIENNE JR Derrick",
+          "number": 7,
+          "position": "FW",
+          "clubAtTournament": "Toronto FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Martin Expérience",
+          "sourceName": "EXPERIENCE Martin",
+          "number": 8,
+          "position": "DF",
+          "clubAtTournament": "AS Nancy",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Duckens Nazon",
+          "sourceName": "NAZON Duckens",
+          "number": 9,
+          "position": "FW",
+          "clubAtTournament": "Esteghlal Tehran FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Jean-Ricner Bellegarde",
+          "sourceName": "BELLEGARDE Jean-Ricner",
+          "number": 10,
+          "position": "MF",
+          "clubAtTournament": "Wolverhampton Wanderers FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Deedson Louicius",
+          "sourceName": "DEEDSON Louicius",
+          "number": 11,
+          "position": "FW",
+          "clubAtTournament": "FC Dallas",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Alexandre Pierre",
+          "sourceName": "PIERRE Alexandre",
+          "number": 12,
+          "position": "GK",
+          "clubAtTournament": "FC Sochaux-Montbéliard",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Markhus Lacroix",
+          "sourceName": "LACROIX Markhus",
+          "number": 13,
+          "position": "DF",
+          "clubAtTournament": "Colorado Springs Switchbacks FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Garven Metusala",
+          "sourceName": "METUSALA Garven",
+          "number": 14,
+          "position": "DF",
+          "clubAtTournament": "Colorado Springs Switchbacks FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Ruben Providence",
+          "sourceName": "PROVIDENCE Ruben",
+          "number": 15,
+          "position": "FW",
+          "clubAtTournament": "Almere City FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Lenny Joseph",
+          "sourceName": "JOSEPH Lenny",
+          "number": 16,
+          "position": "FW",
+          "clubAtTournament": "Ferencvárosi TC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Danley Jean Jacques",
+          "sourceName": "JEAN JACQUES Danley",
+          "number": 17,
+          "position": "MF",
+          "clubAtTournament": "Philadelphia Union",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Wilson Isidor",
+          "sourceName": "ISIDOR Wilson",
+          "number": 18,
+          "position": "FW",
+          "clubAtTournament": "Sunderland AFC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Yassin Fortuné",
+          "sourceName": "FORTUNE Yassin",
+          "number": 19,
+          "position": "FW",
+          "clubAtTournament": "FC Vizela",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Frantzdy Pierrot",
+          "sourceName": "PIERROT Frantzdy",
+          "number": 20,
+          "position": "FW",
+          "clubAtTournament": "Çaykur Rizespor",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Josué Casimir",
+          "sourceName": "CASIMIR Josue",
+          "number": 21,
+          "position": "FW",
+          "clubAtTournament": "AJ Auxerre",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Jean-Kévin Duverne",
+          "sourceName": "DUVERNE Jean-Kevin",
+          "number": 22,
+          "position": "DF",
+          "clubAtTournament": "KAA Gent",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Josué Duverger",
+          "sourceName": "DUVERGER Josue",
+          "number": 23,
+          "position": "GK",
+          "clubAtTournament": "FC Cosmos Koblenz",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Wilguens Paugain",
+          "sourceName": "PAUGAIN Wilguens",
+          "number": 24,
+          "position": "DF",
+          "clubAtTournament": "SV Zulte Waregem",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Dominique Simon",
+          "sourceName": "SIMON Dominique",
+          "number": 25,
+          "position": "MF",
+          "clubAtTournament": "FC Tatran Prešov",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Woodensky Pierre",
+          "sourceName": "PIERRE Woodensky",
+          "number": 26,
+          "position": "MF",
+          "clubAtTournament": "Violette AC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        }
+      ]
+    },
+    "curacao-2026": {
+      "status": "verified",
+      "tournament": 2026,
+      "teamNameInDataset": "Curaçao",
+      "teamNameInFifaPdf": "Curaçao (CUW)",
+      "reviewedAt": "2026-11-16",
+      "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
+      "secondarySource": "https://datencenter.dfb.de/teams/curacao",
+      "notes": "All 26 shirt numbers, identities, FIFA position codes and tournament-time clubs match FIFA's final squad PDF (page 14) and the DFB data center's Curaçao roster. Jürgen Locadia's FIFA text uses the transliteration Juergen; both spellings are supported as aliases.",
+      "players": [
+        {
+          "playerName": "Eloy Room",
+          "sourceName": "ROOM Eloy",
+          "number": 1,
+          "position": "GK",
+          "clubAtTournament": "Miami FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Shurandy Sambo",
+          "sourceName": "SAMBO Shurandy",
+          "number": 2,
+          "position": "DF",
+          "clubAtTournament": "Sparta Rotterdam",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Juriën Gaari",
+          "sourceName": "GAARI Jurien",
+          "number": 3,
+          "position": "DF",
+          "clubAtTournament": "Abha Club",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Roshon van Eijma",
+          "sourceName": "VAN EIJMA Roshon",
+          "number": 4,
+          "position": "DF",
+          "clubAtTournament": "RKC Waalwijk",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Sherel Floranus",
+          "sourceName": "FLORANUS Sherel",
+          "number": 5,
+          "position": "DF",
+          "clubAtTournament": "PEC Zwolle",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Godfried Roemeratoe",
+          "sourceName": "ROEMERATOE Godfried",
+          "number": 6,
+          "position": "MF",
+          "clubAtTournament": "RKC Waalwijk",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Juninho Bacuna",
+          "sourceName": "BACUNA Juninho",
+          "number": 7,
+          "position": "MF",
+          "clubAtTournament": "FC Volendam",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Livano Comenencia",
+          "sourceName": "COMENENCIA Livano",
+          "number": 8,
+          "position": "MF",
+          "clubAtTournament": "FC Zürich",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Jürgen Locadia",
+          "sourceName": "LOCADIA Juergen",
+          "number": 9,
+          "position": "FW",
+          "clubAtTournament": "Miami FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Leandro Bacuna",
+          "sourceName": "BACUNA Leandro",
+          "number": 10,
+          "position": "MF",
+          "clubAtTournament": "Iğdır FK",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Jeremy Antonisse",
+          "sourceName": "ANTONISSE Jeremy",
+          "number": 11,
+          "position": "FW",
+          "clubAtTournament": "AE Kifisia FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Sontje Hansen",
+          "sourceName": "HANSEN Sontje",
+          "number": 12,
+          "position": "FW",
+          "clubAtTournament": "Middlesbrough FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Tyrese Noslin",
+          "sourceName": "NOSLIN Tyrese",
+          "number": 13,
+          "position": "FW",
+          "clubAtTournament": "SC Telstar",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Kenji Gorré",
+          "sourceName": "GORRE Kenji",
+          "number": 14,
+          "position": "FW",
+          "clubAtTournament": "Maccabi Haifa FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Ar'jany Martha",
+          "sourceName": "MARTHA Arjany",
+          "number": 15,
+          "position": "MF",
+          "clubAtTournament": "Rotherham United FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Jearl Margaritha",
+          "sourceName": "MARGARITHA Jearl",
+          "number": 16,
+          "position": "FW",
+          "clubAtTournament": "SK Beveren",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Brandley Kuwas",
+          "sourceName": "KUWAS Brandley",
+          "number": 17,
+          "position": "FW",
+          "clubAtTournament": "FC Volendam",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Armando Obispo",
+          "sourceName": "OBISPO Armando",
+          "number": 18,
+          "position": "DF",
+          "clubAtTournament": "PSV Eindhoven",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Gervane Kastaneer",
+          "sourceName": "KASTANEER Gervane",
+          "number": 19,
+          "position": "FW",
+          "clubAtTournament": "Terengganu FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Joshua Brenet",
+          "sourceName": "BRENET Joshua",
+          "number": 20,
+          "position": "DF",
+          "clubAtTournament": "Kayserispor",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Tahith Chong",
+          "sourceName": "CHONG Tahith",
+          "number": 21,
+          "position": "MF",
+          "clubAtTournament": "Sheffield United FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Kevin Felida",
+          "sourceName": "FELIDA Kevin",
+          "number": 22,
+          "position": "MF",
+          "clubAtTournament": "FC Den Bosch",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Riechedly Bazoer",
+          "sourceName": "BAZOER Riechedly",
+          "number": 23,
+          "position": "DF",
+          "clubAtTournament": "Konyaspor",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Deveron Fonville",
+          "sourceName": "FONVILLE Deveron",
+          "number": 24,
+          "position": "DF",
+          "clubAtTournament": "NEC Nijmegen",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Tyrick Bodak",
+          "sourceName": "BODAK Tyrick",
+          "number": 25,
+          "position": "GK",
+          "clubAtTournament": "SC Telstar",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Trevor Doornbusch",
+          "sourceName": "DOORNBUSCH Trevor",
+          "number": 26,
+          "position": "GK",
+          "clubAtTournament": "VVV Venlo",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        }
+      ]
+    },
+    "cape-verde-2026": {
+      "status": "verified",
+      "tournament": 2026,
+      "teamNameInDataset": "Cape Verde",
+      "teamNameInFifaPdf": "Cabo Verde (CPV)",
+      "reviewedAt": "2026-11-16",
+      "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
+      "secondarySource": "https://datencenter.dfb.de/teams/kap-verde",
+      "notes": "All 26 shirt numbers, identities, FIFA position codes and tournament-time clubs match FIFA's final squad PDF (page 8) and the DFB data center's Kap Verde roster. FIFA's official player names differ from several common DFB/display names: Diney Borges/Diney, Pico Lopes/Roberto Lopes, Gilson Benchimol/Gilson Tavares and Yannick Semedo/Jair Semedo Monteiro. All variants are stored as accepted aliases.",
+      "players": [
+        {
+          "playerName": "Vozinha",
+          "sourceName": "VOZINHA",
+          "number": 1,
+          "position": "GK",
+          "clubAtTournament": "GD Chaves",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Stopira",
+          "sourceName": "STOPIRA",
+          "number": 2,
+          "position": "DF",
+          "clubAtTournament": "SCU Torreense",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Diney Borges",
+          "sourceName": "DINEY BORGES",
+          "number": 3,
+          "position": "DF",
+          "clubAtTournament": "Al Bataeh Club",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Pico Lopes",
+          "sourceName": "PICO LOPES",
+          "number": 4,
+          "position": "DF",
+          "clubAtTournament": "Shamrock Rovers FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Logan Costa",
+          "sourceName": "LOGAN COSTA",
+          "number": 5,
+          "position": "DF",
+          "clubAtTournament": "Villarreal CF",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Kevin Pina",
+          "sourceName": "KEVIN PINA",
+          "number": 6,
+          "position": "MF",
+          "clubAtTournament": "FC Krasnodar",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Jovane Cabral",
+          "sourceName": "JOVANE CABRAL",
+          "number": 7,
+          "position": "MF",
+          "clubAtTournament": "CF Estrela Da Amadora",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "João Paulo",
+          "sourceName": "JOAO PAULO",
+          "number": 8,
+          "position": "MF",
+          "clubAtTournament": "FC FCSB",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Gilson Benchimol",
+          "sourceName": "GILSON BENCHIMOL",
+          "number": 9,
+          "position": "FW",
+          "clubAtTournament": "FC Akron Tolyatti",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Jamiro Monteiro",
+          "sourceName": "JAMIRO MONTEIRO",
+          "number": 10,
+          "position": "MF",
+          "clubAtTournament": "PEC Zwolle",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Garry Rodrigues",
+          "sourceName": "GARRY RODRIGUES",
+          "number": 11,
+          "position": "MF",
+          "clubAtTournament": "Apollon Limassol",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Márcio Rosa",
+          "sourceName": "MARCIO ROSA",
+          "number": 12,
+          "position": "GK",
+          "clubAtTournament": "PFC Montana",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Sidny Lopes Cabral",
+          "sourceName": "SIDNY LOPES CABRAL",
+          "number": 13,
+          "position": "DF",
+          "clubAtTournament": "SL Benfica",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Deroy Duarte",
+          "sourceName": "DEROY DUARTE",
+          "number": 14,
+          "position": "MF",
+          "clubAtTournament": "PFC Ludogorets Razgrad",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Laros Duarte",
+          "sourceName": "LAROS DUARTE",
+          "number": 15,
+          "position": "MF",
+          "clubAtTournament": "Puskás Akadémia FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Yannick Semedo",
+          "sourceName": "YANNICK SEMEDO",
+          "number": 16,
+          "position": "MF",
+          "clubAtTournament": "SC Farense",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Willy Semedo",
+          "sourceName": "WILLY SEMEDO",
+          "number": 17,
+          "position": "MF",
+          "clubAtTournament": "AC Omonia",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Telmo Arcanjo",
+          "sourceName": "TELMO ARCANJO",
+          "number": 18,
+          "position": "MF",
+          "clubAtTournament": "Vitória SC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Dailon Livramento",
+          "sourceName": "DAILON LIVRAMENTO",
+          "number": 19,
+          "position": "FW",
+          "clubAtTournament": "Casa Pia AC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Ryan Mendes",
+          "sourceName": "RYAN MENDES",
+          "number": 20,
+          "position": "FW",
+          "clubAtTournament": "Iğdır FK",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Nuno da Costa",
+          "sourceName": "NUNO DA COSTA",
+          "number": 21,
+          "position": "MF",
+          "clubAtTournament": "Başakşehir FK",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Steven Moreira",
+          "sourceName": "STEVEN MOREIRA",
+          "number": 22,
+          "position": "DF",
+          "clubAtTournament": "Columbus Crew",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "CJ dos Santos",
+          "sourceName": "CJ DOS SANTOS",
+          "number": 23,
+          "position": "GK",
+          "clubAtTournament": "San Diego FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Wagner Pina",
+          "sourceName": "WAGNER PINA",
+          "number": 24,
+          "position": "DF",
+          "clubAtTournament": "Trabzonspor",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Kelvin Pires",
+          "sourceName": "KELVIN PIRES",
+          "number": 25,
+          "position": "DF",
+          "clubAtTournament": "SJK",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        },
+        {
+          "playerName": "Hélio Varela",
+          "sourceName": "HELIO VARELA",
+          "number": 26,
+          "position": "MF",
+          "clubAtTournament": "Maccabi Tel-Aviv FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+        }
+      ]
     }
   }
 }
