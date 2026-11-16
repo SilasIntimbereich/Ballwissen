@@ -12,14 +12,23 @@ const validHttps=value=>{try{return new URL(value).protocol==="https:";}catch{re
 function verifiedByAudit(team,teamId){
  const record=audit.teams?.[teamId];
  if(!record||record.status!=="verified")return false;
+ if(!/^\d{4}-\d{2}-\d{2}$/.test(record.reviewedAt||""))
+  throw new Error("Verified audit requires an ISO review date for "+teamId);
  const rows=record.players;
  if(!Array.isArray(rows)||rows.length!==(team.players||[]).length)
   throw new Error("Audit marked verified but player-row count does not match for "+teamId);
+ const keys=rows.map(r=>Number(r.number)+"|"+normalize(r.playerName));
+ if(new Set(keys).size!==keys.length)
+  throw new Error("Duplicate audit player rows for "+teamId);
+ for(const row of rows){
+  if(!String(row.sourceName||"").trim()||!(team.players||[]).some(p=>Number(p.number)===Number(row.number)&&normalize(p.name)===normalize(row.playerName)))
+   throw new Error("Audit has an extra or incomplete player row for "+teamId+": "+row.playerName);
+ }
  for(const player of team.players||[]){
   const row=rows.find(r=>Number(r.number)===Number(player.number)&&normalize(r.playerName)===normalize(player.name));
   if(!row)throw new Error("Verified audit has no exact name/number match for "+teamId+": "+player.name);
-  if(!["matched","corrected"].includes(row.status))
-   throw new Error("Unresolved player audit status for "+teamId+": "+player.name);
+  if(!["matched","corrected"].includes(row.status)||!String(row.sourceName||"").trim())
+   throw new Error("Unresolved player audit status or missing source name for "+teamId+": "+player.name);
   if(row.position!==player.position)
    throw new Error("Audited position differs from game data for "+teamId+": "+player.name);
   if(!Object.hasOwn(row,"clubAtTournament")||(row.clubAtTournament??null)!==(player.club??null))
