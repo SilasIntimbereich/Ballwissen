@@ -166,7 +166,7 @@ $("#year").onchange=renderTeams;
 document.querySelectorAll("[data-mode]").forEach(button=>button.onclick=()=>{const selected=button.dataset.mode;if(selected.startsWith("daily")){startDaily(selected);return;}practiceOnly=selected==="practice";mode=selected==="hard"?"hard":"easy";show("select");renderTeams();});
 const allTeams=Object.values(tournaments).flat(),verifiedTeams=allTeams.filter(item=>item.verified).length;
 const dailyCounts={common:0,niche:0,legendary:0},demoCounts={common:0,niche:0,legendary:0};
-allTeams.filter(item=>item.verified).forEach(item=>{if(Object.hasOwn(dailyCounts,item.teamDifficulty))dailyCounts[item.teamDifficulty]++;});
+allTeams.filter(item=>item.verified&&!dailyExclusions.has(item.id)).forEach(item=>{if(Object.hasOwn(dailyCounts,item.teamDifficulty))dailyCounts[item.teamDifficulty]++;});
 allTeams.filter(item=>!item.verified&&!dailyExclusions.has(item.id)&&item.players.length).forEach(item=>{if(Object.hasOwn(demoCounts,item.teamDifficulty))demoCounts[item.teamDifficulty]++;});
 for(const tier of ["common","niche","legendary"]){
  const button=document.querySelector('[data-mode="daily-'+tier+'"]');
