@@ -20,7 +20,7 @@ jobs:
       - name: Install Chromium for real browser tests
         run: |
           npm install --no-save playwright
-          npx playwright install --with-deps chromium
+          npx playwright install --with-deps chromium webkit
       - name: Test mobile gameplay and offline reload
         run: npm run test:browser
   edge-functions:
