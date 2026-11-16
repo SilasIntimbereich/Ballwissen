@@ -24,7 +24,7 @@ The 2026 FIFA PDF contains 48 team pages and records player, position and club d
 - **Australia: 26/26.** FIFA page 3 and NBC Sports confirmed squad list.
 - **Germany: 26/26.** FIFA page 20 and Bundesliga final squad list. The DFB's 5 June replacement notice confirms Assan Ouédraogo replaced injured Lennart Karl; an older NBC list was stale.
 - **France: 26/26.** FIFA page 19 and NBC Sports confirmed squad list. FIFA position codes are retained where the secondary article groups players differently.
-- **Argentina: 26/26.** FIFA page 2 and DFB data center. Nicolás González (#15) is FW in FIFA's final list; the imported position was corrected from MF to FW. Marcos Senesi (#2) is DF.
+- **Argentina: 26/26.** FIFA page 2 and DFB data center. Nicolás González (#15) is MF in FIFA's final squad PDF; the DFB groups him under its tactical Sturm section, so the FIFA position code is retained. Marcos Senesi (#2) is DF.
 - **Brazil: 26/26.** FIFA page 7 and DFB data center; the CBF's 7 June replacement notice confirms Éderson Silva replaced injured Wesley. Éderson Silva (#2, MF) and Ederson Moraes (#23, GK) are distinct players.
 - **Algeria: 26/26.** FIFA page 1 and DFB data center. Player identities and shirt numbers were cross-checked; FIFA supplies the final position and club values.
 
