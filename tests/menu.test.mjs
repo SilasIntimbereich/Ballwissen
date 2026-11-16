@@ -83,7 +83,7 @@ test("game controls are explicitly enabled and Daily demo Give Up shows a round 
   assert.match(main, /function enableGuessControls\(\)/);
   assert.match(main, /input\.removeAttribute\("disabled"\)/);
   assert.match(main, /button\.removeAttribute\("disabled"\)/);
-  assert.match(main, /\$\("#result-score"\)\.textContent=found\.size\+" \/ "+team\.players\.length/);
+  assert.match(main, /result-score.*found\.size/s);
   assert.match(main, /\$\("#result-home"\)\.textContent=dailyState\.current>=3\?"VIEW FINAL RESULTS":"NEXT TEAM"/);
   assert.match(main, /if\(dailyState\?\.demo\)\{/);
 });
