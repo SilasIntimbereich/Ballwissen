@@ -34,3 +34,18 @@ test("public build contains the data required by the mode and tournament selecto
   assert.ok(publicData.teams.filter(team => !team.verified).every(team => practiceIds.has(team.id)));
   assert.ok(publicData.teams.filter(team => team.verified).every(team => !practiceIds.has(team.id)));
 });
+
+
+test("gameplay keeps the roster visible and handles all end states", async () => {
+  const main = await read("dist/assets/js/main.js");
+  const css = await read("dist/assets/css/styles.css");
+  assert.match(main, /\$\("#guess-form"\)\.addEventListener\("submit"/);
+  assert.match(main, /async function finish\(giveUp,completed=false\)/);
+  assert.match(main, /giveUp:giveUp\|\|completed/);
+  assert.match(main, /Perfect run! You found every player\./);
+  assert.match(main, /Every squad member is now revealed\./);
+  assert.match(main, /cardForPlayer\(player\.id\)\|\|/);
+  assert.match(main, /const onlineLocked=selected\.verified&&!supabase/);
+  assert.match(css, /\/\* Gameplay usability fix: keep the revealed roster visible after game ends\. \*\//);
+  assert.match(css, /\.result\{\s*position:relative/);
+});
