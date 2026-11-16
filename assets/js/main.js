@@ -101,6 +101,14 @@ document.querySelectorAll("[data-back]").forEach(button=>button.onclick=()=>{cle
 $("#year").onchange=renderTeams;
 document.querySelectorAll("[data-mode]").forEach(button=>button.onclick=()=>{const selected=button.dataset.mode;if(selected.startsWith("daily")){startDaily(selected);return;}mode=selected;show("select");renderTeams();});
 const allTeams=Object.values(tournaments).flat(),verifiedTeams=allTeams.filter(item=>item.verified).length;
-const dailyReady=["common","niche","legendary"].every(tier=>allTeams.filter(item=>item.verified&&item.teamDifficulty===tier).length>=3);
-$("#data-status").textContent="ROSTER AUDIT: "+verifiedTeams+"/"+allTeams.length+" TEAMS VERIFIED · DAILY MODES "+(dailyReady?"READY":"LOCKED");
+const dailyCounts={common:0,niche:0,legendary:0};
+allTeams.filter(item=>item.verified).forEach(item=>{if(Object.hasOwn(dailyCounts,item.teamDifficulty))dailyCounts[item.teamDifficulty]++;});
+for(const tier of ["common","niche","legendary"]){
+ const button=document.querySelector('[data-mode="daily-'+tier+'"]');
+ const ready=dailyCounts[tier]>=3;
+ button.disabled=!ready;
+ button.title=ready?"At least three verified squads are available.":"Daily mode locked until three squads in this tier are independently verified.";
+}
+const readyTiers=["common","niche","legendary"].filter(tier=>dailyCounts[tier]>=3);
+$("#data-status").textContent="ROSTER AUDIT: "+verifiedTeams+"/"+allTeams.length+" VERIFIED · DAILY READY: "+(readyTiers.length?readyTiers.join(" + ").toUpperCase():"NONE")+" · LEGENDARY "+(dailyCounts.legendary>=3?"READY":"LOCKED");
 renderTeams();loadWeeklyLeaderboard();
