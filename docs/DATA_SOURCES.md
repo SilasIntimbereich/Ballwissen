@@ -28,7 +28,7 @@ https://inside.fifa.com/organisation/media-releases/world-cup-2026-48-squads-con
 Official name-by-name verification source:
 https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf
 
-The current imported snapshot matches FIFA's published overall total and team count. A manual spot-check against FIFA's PDF has been recorded for Germany and France, plus selected rows for Australia and Brazil. This is not a complete audit. Before launch, compare every player's name, team, position and club against the official final FIFA lists, including late replacements. The CSV is a third-party structured snapshot, not a direct FIFA export.
+The current imported snapshot matches FIFA's published overall total and team count. A complete 26-player audit has now been recorded for Czechia (the repository labels it Czech Republic), comparing shirt number, player identity, position and tournament-time club against FIFA's final PDF and NBC Sports' confirmed squad list. A separate manual spot-check is recorded for Germany and France, plus selected rows for Australia and Brazil. The other 47 teams still require full audits. Before launch, compare every remaining player's name, team, position and club against the official final FIFA lists, including late replacements. The CSV is a third-party structured snapshot, not a direct FIFA export.
 
 ## Independent audit sources
 - 2002: RSSSF squad archive https://www.rsssf.org/tables/2002full.html; FIFA-released roster transcription https://www.lacancha.com/Roster.html; contemporary club references for selected teams https://www.theguardian.com/football/2002/may/12/worldcupfootball2002.sport2
