@@ -17,6 +17,7 @@ Deno.serve(async req=>{
  let resumeAttempt=existing;
  const {data:challenges,error}=await admin.from("daily_challenges").select("sequence,team_id,arcade_teams(team_name,tournament_year,verified)").eq("challenge_date",today).eq("mode",mode).order("sequence");
  if(error||!challenges||challenges.length!==3)return json({error:"Today's three-team challenge is not configured"},503);
+ if(challenges.map(c=>c.sequence).sort().join(",")!=="1,2,3"||new Set(challenges.map(c=>c.team_id)).size!==3)return json({error:"Daily schedule is malformed"},503);
  if(challenges.some(c=>excludedIds.has(c.team_id)))return json({error:"Daily schedule contains a prohibited squad"},503);
  if(challenges.some(c=>!(c.arcade_teams as any)?.verified))return json({error:"Daily schedule contains an unverified squad"},503);
  let attemptId=existing?.id;
