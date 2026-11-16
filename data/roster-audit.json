@@ -1485,6 +1485,252 @@
           "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
         }
       ]
+    },
+    "algeria-2026": {
+      "status": "verified",
+      "tournament": 2026,
+      "teamNameInDataset": "Algeria",
+      "teamNameInFifaPdf": "Algeria (ALG)",
+      "reviewedAt": "2026-11-16",
+      "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
+      "secondarySource": "https://datencenter.dfb.de/en/competitions/fifa-world-cup/seasons/2026-in-usa%2Fmexico%2Fcanada/teams/algeria-13940?datacenter_name=data-center",
+      "notes": "All 26 players were compared by shirt number and identity against FIFA's final squad PDF (page 1) and the DFB tournament data center. FIFA position codes and tournament-time clubs were checked row-by-row against the final PDF. Club suffixes such as country codes are omitted in the normalized game data, but the club identities match.",
+      "players": [
+        {
+          "playerName": "Melvin Mastil",
+          "sourceName": "MASTIL Melvin",
+          "number": 1,
+          "position": "GK",
+          "clubAtTournament": "FC Stade Nyonnais",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Aïssa Mandi",
+          "sourceName": "MANDI Aissa",
+          "number": 2,
+          "position": "DF",
+          "clubAtTournament": "Lille OSC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Achref Abada",
+          "sourceName": "ABADA Achref",
+          "number": 3,
+          "position": "DF",
+          "clubAtTournament": "USM Alger",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Mohamed Amine Tougai",
+          "sourceName": "TOUGAI Mohamed Amine",
+          "number": 4,
+          "position": "DF",
+          "clubAtTournament": "Espérance De Tunisie",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Zineddine Belaïd",
+          "sourceName": "BELAID Zineddine",
+          "number": 5,
+          "position": "DF",
+          "clubAtTournament": "JS Kabylie",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Ramiz Zerrouki",
+          "sourceName": "ZERROUKI Ramiz",
+          "number": 6,
+          "position": "MF",
+          "clubAtTournament": "FC Twente",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Riyad Mahrez",
+          "sourceName": "MAHREZ Riyad",
+          "number": 7,
+          "position": "FW",
+          "clubAtTournament": "Al Ahli FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Houssem Aouar",
+          "sourceName": "AOUAR Houssem",
+          "number": 8,
+          "position": "MF",
+          "clubAtTournament": "Al Ittihad",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Amine Gouiri",
+          "sourceName": "GOUIRI Amine",
+          "number": 9,
+          "position": "FW",
+          "clubAtTournament": "Olympique Marseille",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Farès Chaïbi",
+          "sourceName": "CHAIBI Fares",
+          "number": 10,
+          "position": "MF",
+          "clubAtTournament": "Eintracht Frankfurt",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Anis Hadj Moussa",
+          "sourceName": "HADJ MOUSSA Anis",
+          "number": 11,
+          "position": "FW",
+          "clubAtTournament": "Feyenoord Rotterdam",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Nadhir Benbouali",
+          "sourceName": "BENBOUALI Nadhir",
+          "number": 12,
+          "position": "FW",
+          "clubAtTournament": "Györi ETO FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Jaouen Hadjam",
+          "sourceName": "HADJAM Jaouen",
+          "number": 13,
+          "position": "DF",
+          "clubAtTournament": "BSC Young Boys",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Hicham Boudaoui",
+          "sourceName": "BOUDAOUI Hicham",
+          "number": 14,
+          "position": "MF",
+          "clubAtTournament": "OGC Nice",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Rayan Aït-Nouri",
+          "sourceName": "AIT-NOURI Rayan",
+          "number": 15,
+          "position": "DF",
+          "clubAtTournament": "Manchester City FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Oussama Benbot",
+          "sourceName": "BENBOT Oussama",
+          "number": 16,
+          "position": "GK",
+          "clubAtTournament": "USM Alger",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Rafik Belghali",
+          "sourceName": "BELGHALI Rafik",
+          "number": 17,
+          "position": "DF",
+          "clubAtTournament": "Hellas Verona FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Mohamed Amoura",
+          "sourceName": "AMOURA Mohamed",
+          "number": 18,
+          "position": "FW",
+          "clubAtTournament": "VfL Wolfsburg",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Nabil Bentaleb",
+          "sourceName": "BENTALEB Nabil",
+          "number": 19,
+          "position": "MF",
+          "clubAtTournament": "Lille OSC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Adil Boulbina",
+          "sourceName": "BOULBINA Adil",
+          "number": 20,
+          "position": "FW",
+          "clubAtTournament": "Al Duhail SC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Ramy Bensebaini",
+          "sourceName": "BENSEBAINI Ramy",
+          "number": 21,
+          "position": "DF",
+          "clubAtTournament": "Borussia Dortmund",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Ibrahim Maza",
+          "sourceName": "MAZA Ibrahim",
+          "number": 22,
+          "position": "MF",
+          "clubAtTournament": "Bayer 04 Leverkusen",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Luca Zidane",
+          "sourceName": "ZIDANE Luca",
+          "number": 23,
+          "position": "GK",
+          "clubAtTournament": "Granada CF",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Yacine Titraoui",
+          "sourceName": "TITRAOUI Yassine",
+          "number": 24,
+          "position": "MF",
+          "clubAtTournament": "Sporting Charleroi",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Farès Ghedjemis",
+          "sourceName": "GHEDJEMIS Fares",
+          "number": 25,
+          "position": "FW",
+          "clubAtTournament": "Frosinone",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Samir Chergui",
+          "sourceName": "CHERGUI Samir",
+          "number": 26,
+          "position": "DF",
+          "clubAtTournament": "Paris FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        }
+      ]
     }
   }
 }
