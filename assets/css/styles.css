@@ -133,3 +133,7 @@ select{background:#172b60;color:white;border:1px solid #ffffff66;padding:12px 15
 .player-rarity.rarity-ball-knowledge{color:#ff8e8e}
 @keyframes legendary-reveal{0%{transform:scale(.94);filter:brightness(1)}35%{transform:scale(1.035);filter:brightness(1.65)}70%{transform:scale(.995);filter:brightness(1.25)}100%{transform:scale(1);filter:brightness(1)}}
 .player-card.rarity-legendary.found{animation:legendary-reveal .65s ease-out}
+
+/* Tournament confetti and flag-colour sparkle */
+.lights:before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,#ffe45e 0 2px,transparent 3px),radial-gradient(circle,#ff5e9d 0 2px,transparent 3px),radial-gradient(circle,#55e4ff 0 2px,transparent 3px),radial-gradient(circle,#a8ff8e 0 2px,transparent 3px);background-size:83px 97px,117px 131px,149px 113px,181px 157px;background-position:8px 12px,34px 51px,77px 24px,16px 89px;opacity:.55;animation:confetti-drift 22s linear infinite}
+@keyframes confetti-drift{from{transform:translateY(-3%) rotate(0deg)}to{transform:translateY(5%) rotate(4deg)}}
