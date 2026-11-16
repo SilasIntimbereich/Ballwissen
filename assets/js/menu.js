@@ -9,7 +9,7 @@ function showScreen(id) {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 function readStats() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { played: 0, found: 0, best: 0 }; }
+  try { const value = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; return { played: Number.isSafeInteger(value.played) && value.played >= 0 ? value.played : 0, found: Number.isSafeInteger(value.found) && value.found >= 0 ? value.found : 0, best: Number.isFinite(value.best) && value.best >= 0 && value.best <= 100 ? value.best : 0 }; }
   catch { return { played: 0, found: 0, best: 0 }; }
 }
 function renderStats() {
@@ -50,24 +50,13 @@ $("#clear-local-stats")?.addEventListener("click", () => {
   removeStored(STORAGE_KEY);
   renderStats();
 });
-const result = $("#result");
-if (result) {
-  const observer = new MutationObserver(() => {
-    const isHidden = result.classList.contains("hidden");
-    if (isHidden) { result.dataset.recorded = "0"; return; }
-    if (result.dataset.recorded === "1") return;
-    result.dataset.recorded = "1";
-    if (result.dataset.resultKind !== "practice") return;
-    const match = ($("#result-score").textContent || "").match(/(\d+)\s*\/\s*(\d+)/);
-    if (!match) return;
-    const found = Number(match[1]), total = Number(match[2]);
-    if (!total) return;
-    const stats = readStats();
-    stats.played += 1;
-    stats.found += found;
-    stats.best = Math.max(stats.best, Math.round(found / total * 100));
-    storeJSON(STORAGE_KEY, stats);
-  });
-  observer.observe(result, { attributes: true, attributeFilter: ["class"] });
-}
+window.addEventListener("football-arcade:result", event => {
+  const { score, total } = event.detail || {};
+  if (!Number.isFinite(score) || !Number.isFinite(total) || total <= 0 || score < 0 || score > total) return;
+  const stats = readStats();
+  stats.played += 1;
+  stats.found += score;
+  stats.best = Math.max(stats.best, Math.round(score / total * 100));
+  storeJSON(STORAGE_KEY, stats);
+});
 loadSettings();
