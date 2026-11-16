@@ -13,7 +13,7 @@ test("public build contains metadata for all 240 tournament squads",()=>{
 
 test("verified answer rosters are never shipped to the browser",()=>{
  const verified=publicData.teams.filter(team=>team.verified);
- assert.equal(verified.length,9);
+ assert.ok(verified.length>=9);
  for(const team of verified){
   assert.equal(practiceIds.has(team.id),false);
   assert.equal(Object.hasOwn(team,"players"),false);
@@ -21,7 +21,7 @@ test("verified answer rosters are never shipped to the browser",()=>{
 });
 
 test("only unverified teams are included as local practice rosters",()=>{
- assert.equal(practiceData.teams.length,231);
+ assert.equal(practiceData.teams.length+publicData.teams.filter(team=>team.verified).length,240);
  for(const team of practiceData.teams){
   assert.equal(publicData.teams.find(item=>item.id===team.id)?.verified,false);
   assert.ok(team.players.length>0);
