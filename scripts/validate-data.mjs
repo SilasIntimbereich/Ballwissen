@@ -18,6 +18,7 @@ if (new Set(tierNames).size !== tierNames.length)
   throw new Error("A national team is assigned to more than one difficulty tier.");
 
 const hist = await read("data/historical-squads.json");
+const dailyExclusions = await read("data/daily-exclusions.json");
 let historicalPlayers = 0;
 for (const year of [2002, 2006, 2010, 2014, 2018, 2022]) {
   const list = hist.tournaments?.[year];
@@ -36,6 +37,16 @@ for (const year of [2002, 2006, 2010, 2014, 2018, 2022]) {
     historicalPlayers += count;
   }
 }
+const historicalTeams = Object.values(hist.tournaments).flat();
+const historicalIds = new Set(historicalTeams.map(t => t.id));
+if (dailyExclusions.count !== 50 || dailyExclusions.teams?.length !== 50)
+  throw new Error("Daily exclusions must contain exactly 50 squads.");
+if (new Set(dailyExclusions.teams.map(t => t.id)).size !== 50)
+  throw new Error("Daily exclusion IDs must be unique.");
+for (const excluded of dailyExclusions.teams) {
+  if (!historicalIds.has(excluded.id))
+    throw new Error("Daily exclusion references unknown historical team: " + excluded.id);
+}
 const iran = hist.tournaments[2022].find(t => t.name === "Iran");
 if (!iran || iran.players.length !== 25) throw new Error("2022 Iran source roster check failed.");
 const allTeamNames = new Set([
@@ -47,4 +58,4 @@ if (unclassified.length)
   throw new Error("Missing team difficulty tier for: " + unclassified.join(", "));
 
 console.log("Validation passed: 192 historical teams / " + historicalPlayers +
-  " source-listed players; 48 teams / 1,248 rows in 2026. Historical club data is unavailable in this source.");
+  " source-listed players; 48 teams / 1,248 rows in 2026; 50 Daily-excluded squads. Historical club data is unavailable in this source.");
