@@ -550,3 +550,6 @@ h1 span{background:none;color:#f0c64a;-webkit-background-clip:border-box;backgro
  .player-card{padding:10px}
  .result{padding:18px 12px}
 }
+
+.data-attribution{display:block;max-width:920px;margin:12px auto 0;color:#b8c4d2;font-size:13px;line-height:1.5;text-align:center}
+.data-attribution a{color:#f0c64a;text-decoration:underline;text-underline-offset:3px}
