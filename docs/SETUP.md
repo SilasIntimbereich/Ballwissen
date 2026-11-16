@@ -6,7 +6,7 @@
 - A historical-data importer for men's World Cups 2002, 2006, 2010, 2014, 2018 and 2022.
 - Supabase migrations and Edge Functions for daily challenges, guess validation, result aggregation, team statistics and the weekly leaderboard.
 
-The 2026 CSV snapshot is from the public repository documented in DATA_SOURCES.md. FIFA independently confirms the 48-team, 1,248-player final squad total. A final name-by-name audit against FIFA's PDF remains a release check.
+The 2026 CSV snapshot is from the public repository documented in DATA_SOURCES.md. FIFA independently confirms the 48-team, 1,248-player final squad total. A final name-by-name audit against FIFA's PDF remains a release check. The player-level audit ledger is `data/roster-audit.json`; only complete, independently sourced team audits can unlock ranked play.
 
 ## 1. Import historical squads
 This repository includes a GitHub Actions workflow so no computer or terminal is needed.
@@ -33,7 +33,7 @@ The source is the Fjelstul World Cup Database via DataHub, licensed CC BY-SA 4.0
 3. Enable Anonymous Sign-Ins under Authentication → Providers.
 4. In GitHub → Settings → Secrets and variables → Actions, add these repository secrets: `SUPABASE_ACCESS_TOKEN`, `SUPABASE_PROJECT_ID`, `SUPABASE_DB_PASSWORD`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`. Never paste the service-role key into a normal repository file.
 5. Open GitHub → Actions → **Deploy Supabase backend** → **Run workflow**. This applies migrations, sets server-side secrets and deploys the Edge Functions.
-6. Open GitHub → Actions → **Sync verified squads to Supabase** → **Run workflow**. This uploads team metadata and private answer rosters using the service-role key from GitHub Secrets.
+6. Open GitHub → Actions → **Sync roster data to Supabase (audit-gated)** → **Run workflow**. This uploads team metadata and private answer rosters using the service-role key from GitHub Secrets. Every team remains unranked unless `data/roster-audit.json` contains a complete player-by-player audit with primary and secondary HTTPS sources, matching position and tournament-time club.
 7. Review the curated team difficulty mapping in `data/team-difficulty.json`. It is separate from player rarity and can be adjusted before daily challenges are published.
 8. Run `select public.publish_daily_challenges(current_date);` in Supabase SQL Editor after at least three verified teams exist in each tier. To schedule it daily at 00:05 UTC, enable the `pg_cron` extension and run `select cron.schedule('football-arcade-daily','5 0 * * *','select public.publish_daily_challenges(current_date);');`.
 
