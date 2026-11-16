@@ -9,7 +9,7 @@ const [worldCup2026, historical, difficulty, audit] = await Promise.all([
 ]);
 const tierOf = name => Object.entries(difficulty.tiers || {}).find(([, names]) => names.includes(name))?.[0] || "niche";
 const verified = id => audit.teams?.[id]?.status === "verified";
-const slug = name => name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+const slug = name => name.normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 const allTeams = [];
 for (const [year, teams] of Object.entries(historical.tournaments || {})) {
