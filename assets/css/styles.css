@@ -417,7 +417,6 @@ button:disabled{cursor:not-allowed;filter:grayscale(.55);opacity:.48;transform:n
 .guess-form input:disabled{opacity:.72;cursor:not-allowed}
 body{padding-bottom:env(safe-area-inset-bottom)}
 .shell{padding-top:max(14px,env(safe-area-inset-top))}
-#feedback{aria-live:polite}
 @media(max-width:760px){
  .utility-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
  .utility-card{min-height:138px}
