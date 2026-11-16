@@ -57,6 +57,19 @@ for (const year of [2002, 2006, 2010, 2014, 2018, 2022]) {
       fail(year + " " + team.name + ": invalid shirt number.");
     if (new Set(numbers).size !== numbers.length)
       fail(year + " " + team.name + ": duplicate shirt number.");
+    const normalizedNames = new Map();
+    for (const player of team.players) {
+      const key = String(player.name).normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
+      if (!normalizedNames.has(key)) normalizedNames.set(key, []);
+      normalizedNames.get(key).push(player);
+    }
+    for (const [key, sameName] of normalizedNames) {
+      if (sameName.length < 2) continue;
+      const knownNorthKoreaHomonym = team.id === "north-korea-2010" && key === "namcholpak" &&
+        sameName.length === 2 && sameName.map(p => Number(p.number)).sort((a,b)=>a-b).join(",") === "4,14";
+      if (!knownNorthKoreaHomonym)
+        fail(year + " " + team.name + ": unexpected duplicate normalized player name " + key);
+    }
     // Historical club values may be added only together with a complete team-level player audit.
     if (team.players.some(p => p.club) && audit.teams?.[team.id]?.status !== "verified")
       fail(year + " " + team.name + ": historical club data requires a complete independent player audit.");
