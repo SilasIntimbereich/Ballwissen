@@ -37,13 +37,10 @@ test("public build contains the data required by the mode and tournament selecto
   assert.equal(exclusions.teams.length, 50);
   assert.equal(new Set(exclusions.teams.map(team => team.id)).size, 50);
   const excludedIds = new Set(exclusions.teams.map(team => team.id));
-  for (const tier of ["common", "niche", "legendary"]) {
-    const available = publicData.teams.filter(team =>
-      !team.verified && team.teamDifficulty === tier &&
-      !excludedIds.has(team.id) && practiceIds.has(team.id)
-    );
-    assert.ok(available.length >= 3, tier + " needs at least three eligible demo squads");
-  }
+  const eligibleDemoTeams = publicData.teams.filter(team =>
+    !team.verified && !excludedIds.has(team.id) && practiceIds.has(team.id)
+  );
+  assert.ok(eligibleDemoTeams.length >= 3, "offline Daily demo needs at least three eligible practice squads");
 });
 
 
@@ -70,6 +67,8 @@ test("offline Daily demo is playable without exposing verified answer rosters", 
   assert.match(main, /if\(!supabase\)\{/);
   assert.match(main, /DAILY DEMO/);
   assert.match(main, /Local unranked demo with three practice squads/);
+  assert.match(main, /demoFallback=pool\.length<3/);
+  assert.match(main, /mixed test pool/);
   assert.match(main, /dailyState\.demo/);
   assert.match(main, /team\.players\.findIndex/);
   assert.match(main, /Three local practice squads played/);
