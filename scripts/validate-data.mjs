@@ -147,10 +147,11 @@ if (!/create trigger enforce_daily_squad_exclusions/i.test(migration) ||
     !/create or replace function public\.reject_excluded_daily_squad/i.test(migration))
   fail("Daily exclusion migration is missing the database-level exclusion trigger.");
 const normalize = value => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
+const slug = value => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const allTeams = [
   ...historicalTeams,
   ...[...teams.entries()].map(([name, players]) => ({
-    id: name.toLowerCase().replace(/[^a-z0-9]+/g, "-") + "-2026",
+    id: slug(name) + "-2026",
     name, year: 2026, players
   }))
 ];
