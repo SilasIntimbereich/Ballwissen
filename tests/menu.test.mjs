@@ -33,6 +33,9 @@ test("public build contains the data required by the mode and tournament selecto
   const practiceIds = new Set(practiceData.teams.map(team => team.id));
   assert.ok(publicData.teams.filter(team => !team.verified).every(team => practiceIds.has(team.id)));
   assert.ok(publicData.teams.filter(team => team.verified).every(team => !practiceIds.has(team.id)));
+  const exclusions = JSON.parse(await read("dist/data/daily-exclusions.json"));
+  assert.equal(exclusions.teams.length, 50);
+  assert.equal(new Set(exclusions.teams.map(team => team.id)).size, 50);
 });
 
 
@@ -48,4 +51,20 @@ test("gameplay keeps the roster visible and handles all end states", async () =>
   assert.match(main, /const onlineLocked=selected\.verified&&!supabase/);
   assert.ok(css.includes("Gameplay usability fix: keep the revealed roster visible"));
   assert.match(css, /\.result\{\s*position:relative/);
+});
+
+
+test("offline Daily demo is playable without exposing verified answer rosters", async () => {
+  const main = await read("dist/assets/js/main.js");
+  const data = await read("dist/assets/js/data.js");
+  const sw = await read("dist/sw.js");
+  assert.match(data, /dailyExclusions=new Set/);
+  assert.match(main, /if\(!supabase\)\{/);
+  assert.match(main, /DAILY DEMO/);
+  assert.match(main, /Local unranked demo with three practice squads/);
+  assert.match(main, /dailyState\.demo/);
+  assert.match(main, /team\.players\.findIndex/);
+  assert.match(main, /Three local practice squads played/);
+  assert.match(sw, /daily-exclusions\.json/);
+  assert.match(main, /!dailyExclusions\.has\(item\.id\)/);
 });
