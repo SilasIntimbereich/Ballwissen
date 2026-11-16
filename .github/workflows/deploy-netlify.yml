@@ -13,6 +13,8 @@ jobs:
           node-version: 22
       - name: Verify project before deployment
         run: npm test
+      - name: Build secure public site
+        run: npm run build:public
       - name: Deploy production site
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
@@ -22,4 +24,4 @@ jobs:
             echo "Missing NETLIFY_AUTH_TOKEN or NETLIFY_SITE_ID repository secret."
             exit 1
           fi
-          npx --yes netlify-cli deploy --prod --dir=.
+          npx --yes netlify-cli deploy --prod --dir=dist
