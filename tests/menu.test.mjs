@@ -59,7 +59,7 @@ test("normal gameplay is local, input-enabled and handles every end state", asyn
   assert.match(main, /input\.removeAttribute\("disabled"\)/);
   assert.match(main, /button\.removeAttribute\("disabled"\)/);
   assert.match(main, /if\(practiceOnly\)\{\$\("#timer"\)\.textContent="∞";return;\}/);
-  assert.match(main, /ACCURACY · /);
+  assert.match(main, /ACCURACY · /);\n  assert.match(main, /PRACTICE · NO TIMER/);
   assert.doesNotMatch(main, /const onlineLocked=selected\.verified&&!supabase/);
   assert.ok(css.includes("Gameplay usability fix: keep the revealed roster visible"));
   assert.match(css, /\.result\{\s*position:relative/);
