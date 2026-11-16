@@ -90,6 +90,14 @@ report.summary = {
 await mkdir("artifacts", { recursive: true });
 await writeFile("artifacts/fifa-2026-audit.json", JSON.stringify(report, null, 2) + "\n");
 console.log(JSON.stringify(report.summary, null, 2));
+const failedTeams = report.teams.filter(t => !t.code || !t.parsed || !t.rowCountMatches || t.mismatchCount > 0);
+if (failedTeams.length) {
+  console.error("FIFA roster discrepancies:");
+  for (const team of failedTeams) {
+    console.error(JSON.stringify({ page: team.page, code: team.code, datasetTeam: team.datasetTeam, parsed: team.parsed, fifaPlayerRows: team.fifaPlayerRows, datasetPlayerRows: team.datasetPlayerRows, mismatches: team.mismatches, unparsedRows: team.unparsedRows }, null, 2));
+  }
+  throw new Error("FIFA audit found " + failedTeams.length + " incomplete or mismatched team pages. Inspect the uploaded audit artifact.");
+}
 if (report.teams.length !== 48 || report.summary.parsedTeams !== 48) {
   throw new Error("FIFA PDF extraction did not parse all 48 team pages. Inspect the uploaded audit artifact.");
 }
