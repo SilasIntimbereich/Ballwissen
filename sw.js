@@ -1,4 +1,4 @@
-const CACHE_NAME="football-arcade-v4-shell-8";
+const CACHE_NAME="football-arcade-v4-shell-9";
 const APP_SHELL=[
   "./",
   "./index.html",
@@ -9,6 +9,7 @@ const APP_SHELL=[
   "./assets/js/matching.js",
   "./assets/js/data.js",
   "./assets/js/leaderboard.js",
+  "./assets/js/menu.js",
   "./data/public-teams.json",
   "./data/practice-rosters.json",
   "./assets/icons/football-arcade.svg"
