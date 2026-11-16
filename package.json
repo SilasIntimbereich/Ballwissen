@@ -11,7 +11,8 @@
     "test": "npm run check && npm run validate:data && npm run build:public && node --test tests/*.test.mjs",
     "audit:2026": "node scripts/audit-2026-fifa-pdf.mjs",
     "build:public": "node scripts/build-public.mjs",
-    "build": "npm run build:public"
+    "build": "npm run build:public",
+    "test:browser": "node browser-tests/smoke.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.0"
