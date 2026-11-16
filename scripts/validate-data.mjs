@@ -130,10 +130,10 @@ for (const excluded of dailyExclusions.teams) {
   if (!migration.includes("'" + excluded.id + "'"))
     fail("Server-side Daily exclusion migration is missing " + excluded.id);
 }
-if (!/delete from public\\.daily_challenges/i.test(migration))
+if (!/delete from public\.daily_challenges/i.test(migration))
   fail("Daily exclusion migration must purge previously scheduled excluded squads.");
 if (!/create trigger enforce_daily_squad_exclusions/i.test(migration) ||
-    !/create or replace function public\\.reject_excluded_daily_squad/i.test(migration))
+    !/create or replace function public\.reject_excluded_daily_squad/i.test(migration))
   fail("Daily exclusion migration is missing the database-level exclusion trigger.");
 const normalize = value => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
 const allTeams = [
@@ -200,4 +200,4 @@ async function readText(path) {
 console.log("Structural validation passed: 192 historical teams / " + historicalPlayers +
   " source-listed players; 48 teams / 1,248 rows in 2026; 50 exact Daily exclusions are present in both JSON and the server-side SQL migration.");
 console.log("Potential non-excluded Daily pool: " + Object.entries(eligibleDailyByTier).map(([tier,count])=>tier+"="+count).join(", ") + ". These are candidates only; at least three fully audited teams per tier are still required before publishing Daily challenges.");
-console.log("Historical clubs remain intentionally blank and all roster datasets remain unverified pending player-by-player independent audits.");
+console.log("Historical club fields remain blank pending independent audits. The 2026 dataset has " + Object.values(audit.teams).filter(r => r.status === "verified").length + " fully audited team(s); all other squads remain unverified.");
