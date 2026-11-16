@@ -1,6 +1,6 @@
 import {createClient} from "https://esm.sh/@supabase/supabase-js@2";
 const cors={"Access-Control-Allow-Origin":"*","Access-Control-Allow-Headers":"authorization, apikey, content-type","Access-Control-Allow-Methods":"POST, OPTIONS"};
-const json=(v:unknown,s=200)=>new Response(JSON.stringify(v),{status:s,headers:{...cors,"Content-Type":"application/json"}});
+const json=(value:unknown,status=200)=>new Response(JSON.stringify(value),{status,headers:{...cors,"Content-Type":"application/json"}});
 Deno.serve(async req=>{
  if(req.method==="OPTIONS")return new Response("ok",{headers:cors});
  if(req.method!=="POST")return json({error:"POST required"},405);
@@ -11,9 +11,7 @@ Deno.serve(async req=>{
  const {sessionId,giveUp=false}=await req.json();
  if(typeof sessionId!=="string"||typeof giveUp!=="boolean")return json({error:"Invalid result"},400);
  const db=createClient(url,service);
- const {data:completion,error:completionError}=await db.rpc("finish_normal_game_session",{
-  p_session_id:sessionId,p_user_id:user.id,p_give_up:giveUp
- });
+ const {data:completion,error:completionError}=await db.rpc("finish_normal_game_session",{p_session_id:sessionId,p_user_id:user.id,p_give_up:giveUp});
  if(completionError)return json({error:"Game result could not be submitted"},409);
  const result=Array.isArray(completion)?completion[0]:completion;
  if(!result)return json({error:"Game result unavailable"},503);
@@ -22,7 +20,7 @@ Deno.serve(async req=>{
   db.rpc("team_score_distribution",{p_team_id:result.team_id})
  ]);
  return json({
-  score:result.score,total:result.total,
+  score:result.score,total:result.total,missedPlayers:result.missed_players||[],
   outscoredPercent:percentileError?null:percentile,
   distribution:distributionError?[]:(distribution||[])
  });
