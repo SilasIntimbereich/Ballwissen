@@ -1,7 +1,7 @@
 name: Validate FOOTBALL ARCADE
 on:
   push:
-    branches: [main]
+    branches: [main, v4-arcade-menu-pass]
   pull_request:
     branches: [main]
   workflow_dispatch:
