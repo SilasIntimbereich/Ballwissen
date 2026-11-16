@@ -3114,7 +3114,10 @@
           "position": "MF",
           "clubAtTournament": "Manchester City FC",
           "status": "matched",
-          "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
+          "notes": "FIFA's registered name is Rodrigo Hernández; the official shirt name is RODRI and the DFB roster uses Rodri. Shirt number, identity, position and club match.",
+          "sourceNameAliases": [
+            "Rodri"
+          ]
         },
         {
           "playerName": "Nico Williams",
@@ -4290,7 +4293,10 @@
           "position": "FW",
           "clubAtTournament": "Stade Rennais FC",
           "status": "matched",
-          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+          "notes": "FIFA's registered transliteration is MOUSA ALTAMARI; the dataset/secondary roster use Musa Al-Taamari. The shared identity, shirt number, position and club were cross-checked.",
+          "sourceNameAliases": [
+            "Musa Al-Taamari"
+          ]
         },
         {
           "playerName": "Odeh Al-Fakhouri",
