@@ -67,6 +67,10 @@ The scan also flagged a repeated romanized display name in Korea DPR 2010: “Na
 
 This scan is a structural check only. It does not constitute a player-by-player comparison of the entire historical dataset. The historical dataset currently has no tournament-time club values at all. The 2026 dataset has club values, but most teams still require an individual comparison with FIFA's final PDF.
 
+## Unresolved cross-source discrepancy: Germany 2026
+
+Germany remains unverified. The repository snapshot matches FIFA's final PDF (page 20), which lists Assan Ouédraogo as player 25 and does not list Lennart Karl. NBC Sports' confirmed-squad article instead lists Lennart Karl and omits Ouédraogo. Until a second independent source is found that agrees with FIFA's final version, do not promote Germany to verified. This is exactly why a matching overall count is not enough.
+
 ## Independently verified team
 
 **Czechia / Czech Republic (2026): 26 of 26 players verified.** Each player was checked by shirt number, player identity, position and tournament-time club against FIFA's final squad PDF (page 15) and NBC Sports' confirmed squad list. FIFA labels the team “Czechia (CZE)”; the source snapshot uses “Czech Republic”, with the same FIFA code. The player-level records are stored in `data/roster-audit.json`. This verifies one team, not the entire 2026 tournament.
