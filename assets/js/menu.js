@@ -18,8 +18,8 @@ function renderStats() {
   $("#local-found").textContent = stats.found;
   $("#local-best").textContent = stats.best + "%";
   $("#local-stats-note").textContent = stats.played
-    ? "Local practice results on this device. Online ranked results are not included."
-    : "No local games recorded yet. Finish a practice round to start your record.";
+    ? "Local unranked results on this device. Online ranked results are not included."
+    : "No local games recorded yet. Finish a game to start your record.";
 }
 function loadSettings() {
   let settings = {};
