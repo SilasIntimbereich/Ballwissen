@@ -88,3 +88,9 @@ test("compound surname matching supports Van Dijk and De Bruyne", () => {
   assert.equal(submitGuess(round, "Van Dijk", matches).status, "correct");
   assert.equal(submitGuess(round, "De Bruyne", matches).status, "correct");
 });
+
+test("multi-particle surnames are accepted without accepting ambiguous family names", () => {
+  const squad = [{name:"Nicolás de la Cruz"},{name:"José Luis Rodríguez"}];
+  const round = createRound(squad);
+  assert.equal(submitGuess(round, "De La Cruz", matches).status, "correct");
+});
