@@ -1,16 +1,22 @@
 import {matches} from "./matching.js";
 export {matches};
-const [worldCup2026,historical,difficultyData,auditData]=await Promise.all([
- fetch("../../data/worldcup-2026.json").then(r=>{if(!r.ok)throw new Error("2026 squad data unavailable");return r.json();}),
- fetch("../../data/historical-squads.json").then(r=>r.ok?r.json():({tournaments:{}})).catch(()=>({tournaments:{}})),
- fetch("../../data/team-difficulty.json").then(r=>r.ok?r.json():({tiers:{}})).catch(()=>({tiers:{}})),
- fetch("../../data/roster-audit.json").then(r=>r.ok?r.json():({teams:{}})).catch(()=>({teams:{}}))
+
+const [publicData,practiceData]=await Promise.all([
+ fetch("./data/public-teams.json").then(r=>{if(!r.ok)throw new Error("Public team metadata unavailable");return r.json();}),
+ fetch("./data/practice-rosters.json").then(r=>{if(!r.ok)throw new Error("Practice rosters unavailable");return r.json();})
 ]);
-const tierOf=name=>Object.entries(difficultyData.tiers||{}).find(([,names])=>names.includes(name))?.[0]||"niche";
-const isVerified=id=>auditData.teams?.[id]?.status==="verified";
-const grouped=new Map();
-for(const p of worldCup2026.players){if(!grouped.has(p.team))grouped.set(p.team,[]);grouped.get(p.team).push({name:p.player||p.name,position:p.pos||p.position,club:p.club,number:Number(p.number),teamCode:p.fifa_code||p.teamCode,rarity:null});}
-const teams2026=[...grouped.entries()].map(([name,players])=>{const id=name.toLowerCase().replace(/[^a-z0-9]+/g,"-")+"-2026";return{id,name,year:2026,teamDifficulty:tierOf(name),verified:isVerified(id),players:players.sort((a,b)=>a.number-b.number)};}).sort((a,b)=>a.name.localeCompare(b.name));
-const historicalTournaments=Object.fromEntries(Object.entries(historical.tournaments||{}).map(([year,teams])=>[year,teams.map(t=>({...t,verified:isVerified(t.id)}))]));
-export const tournaments={...historicalTournaments,2026:teams2026};
-export const datasetStatus=Object.fromEntries(Object.entries(tournaments).map(([year,teams])=>[year,{teams:teams.length,players:teams.reduce((n,t)=>n+t.players.length,0),verified:teams.length>0&&teams.every(t=>t.verified),verifiedTeams:teams.filter(t=>t.verified).length,auditPending:teams.some(t=>!t.verified)}]));
+const practiceById=new Map((practiceData.teams||[]).map(t=>[t.id,t.players||[]]));
+const grouped={};
+for(const meta of publicData.teams||[]){
+ if(!grouped[meta.year])grouped[meta.year]=[];
+ grouped[meta.year].push({...meta,players:practiceById.get(meta.id)||[]});
+}
+for(const year of Object.keys(grouped))grouped[year].sort((a,b)=>a.name.localeCompare(b.name));
+export const tournaments=grouped;
+export const datasetStatus=Object.fromEntries(Object.entries(tournaments).map(([year,teams])=>[year,{
+ teams:teams.length,
+ players:teams.reduce((n,t)=>n+t.total,0),
+ verified:teams.length>0&&teams.every(t=>t.verified),
+ verifiedTeams:teams.filter(t=>t.verified).length,
+ auditPending:teams.some(t=>!t.verified)
+}]));
