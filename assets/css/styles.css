@@ -436,3 +436,20 @@ body{padding-bottom:env(safe-area-inset-bottom)}
  .screen.active{animation:none}
  .crowd,.lights:before{animation:none}
 }
+
+
+/* Gameplay usability fix: keep the revealed roster visible after Give Up/time-up. */
+.result{
+ position:relative;
+ inset:auto;
+ width:min(760px,100%);
+ margin:24px auto 12px;
+ min-height:0;
+ z-index:1;
+}
+#game{padding-bottom:32px}
+#guess-form input{min-height:50px}
+#guess-form button{min-height:50px}
+@media(max-width:650px){
+ .result{padding:20px 14px;margin-top:20px}
+}
