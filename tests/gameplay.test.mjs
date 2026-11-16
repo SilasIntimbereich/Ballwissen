@@ -65,3 +65,26 @@ test("app wires the gameplay engine into normal and Daily demo rounds", async ()
   assert.match(main, /if\(!dailyState\.finalShown\)\{finishDailyOverall\(\);return;\}/);
   assert.match(shell, /assets\/js\/gameplay\.js/);
 });
+
+test("Argentina 2018 accepts Messi and Di Maria by surname", async () => {
+  const { readFile } = await import("node:fs/promises");
+  const data = JSON.parse(await readFile("data/historical-squads.json", "utf8"));
+  const argentina = data.tournaments["2018"].find(team => team.id === "argentina-2018");
+  const round = createRound(argentina.players);
+  assert.equal(submitGuess(round, "Messi", matches).status, "correct");
+  assert.equal(submitGuess(round, "Di Maria", matches).status, "correct");
+});
+
+test("surname matching refuses ambiguous surnames in the same squad", () => {
+  const squad = [{name:"Lucas Hernandez"},{name:"Theo Hernandez"}];
+  const round = createRound(squad);
+  assert.equal(submitGuess(round, "Hernandez", matches).status, "incorrect");
+  assert.equal(submitGuess(round, "Lucas", matches).status, "incorrect");
+});
+
+test("compound surname matching supports Van Dijk and De Bruyne", () => {
+  const squad = [{name:"Virgil van Dijk"},{name:"Kevin De Bruyne"}];
+  const round = createRound(squad);
+  assert.equal(submitGuess(round, "Van Dijk", matches).status, "correct");
+  assert.equal(submitGuess(round, "De Bruyne", matches).status, "correct");
+});
