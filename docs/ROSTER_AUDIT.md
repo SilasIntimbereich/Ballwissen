@@ -42,3 +42,21 @@ Produce a machine-readable audit file with one record per player:
 Allowed statuses: `matched`, `corrected`, `unresolved`, `missing`, `extra`.
 
 The audit process must fail closed: unresolved or missing records keep the team unverified and excluded from Daily/online ranked modes. Keep the full source attribution and any applicable license notices.
+
+
+## Additional structural checks performed 2026-11-16
+
+A fresh structural scan of the current repository JSON found:
+
+| Tournament | Teams | Player rows | Club fields missing | Verified teams |
+|---|---:|---:|---:|---:|
+| 2002 | 32 | 736 | 736 | 0 |
+| 2006 | 32 | 736 | 736 | 0 |
+| 2010 | 32 | 736 | 736 | 0 |
+| 2014 | 32 | 736 | 736 | 0 |
+| 2018 | 32 | 736 | 736 | 0 |
+| 2022 | 32 | 831 | 831 | 0 |
+
+The scan also flagged a repeated romanized display name in Korea DPR 2010: “Nam-Chol Pak” appears at shirt numbers 4 and 14. This is **not** automatically a duplicate player: FIFA's 2010 list identifies two distinct people with the same display name and different dates of birth (2 July 1985 and 3 October 1988), positions (midfielder/defender), and clubs (April 25/Amrokgang). Keep both records; do not deduplicate on display name alone. Source: https://www.fifadata.com/document/fwc/2010/PDF_BackUp_2010_06_13/FWC_2010_SquadLists.pdf (Korea DPR section).
+
+This scan is a structural check only. It does not constitute a player-by-player comparison, so no team has been promoted to verified. The historical dataset currently has no tournament-time club values at all. The 2026 dataset has club values, but still requires an individual comparison with FIFA's final PDF.
