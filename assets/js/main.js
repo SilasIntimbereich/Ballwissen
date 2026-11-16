@@ -56,7 +56,9 @@ function startClock(){clearInterval(tick);tick=setInterval(()=>{seconds=Math.max
 async function startDaily(modeName){
  if(!supabase){
   const tier=modeName.replace("daily-","");
-  const pool=Object.values(tournaments).flat().filter(item=>!item.verified&&!dailyExclusions.has(item.id)&&item.players.length&&item.teamDifficulty===tier);
+  const allDemoTeams=Object.values(tournaments).flat().filter(item=>!item.verified&&!dailyExclusions.has(item.id)&&item.players.length);
+  let pool=allDemoTeams.filter(item=>item.teamDifficulty===tier),demoFallback=pool.length<3;
+  if(demoFallback)pool=allDemoTeams;
   if(pool.length<3){$("#online-message").textContent="Not enough eligible local practice squads are available for this Daily demo.";show("online");return;}
   for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
   const teams=pool.slice(0,3).map((selected,index)=>({
@@ -64,7 +66,7 @@ async function startDaily(modeName){
    players:selected.players,
    hints:selected.players.map((player,playerIndex)=>({id:selected.id+":"+playerIndex,position:player.position,club:player.club}))
   }));
-  dailyState={demo:true,attemptId:null,mode:modeName,teams,current:1,score:0,total:0};
+  dailyState={demo:true,demoFallback,attemptId:null,mode:modeName,teams,current:1,score:0,total:0};
   mode=modeName;startDailyTeam(1);return;
  }
  try{await ensureAuth();const response=await supabase.functions.invoke("daily-challenge",{body:{mode:modeName}});if(response.error)throw response.error;const data=response.data;dailyState={attemptId:data.attemptId,mode:modeName,teams:data.teams,current:data.currentSequence||1,score:data.combinedScore||0,total:data.combinedTotal||0};mode=modeName;startDailyTeam(data.currentSequence||1,data.resumed?data:null);}
@@ -74,7 +76,7 @@ function startDailyTeam(sequence,resume=null){
  $("#result").dataset.resultKind="daily";
  const dailyTeam=dailyState.teams.find(item=>item.sequence===sequence);if(!dailyTeam){finishDailyOverall();return;}
  dailyState.current=sequence;team={id:dailyTeam.teamId,name:dailyTeam.teamName,year:dailyTeam.year,total:dailyTeam.total,players:dailyTeam.players||[],hints:dailyTeam.hints};normalSessionId=null;normalHints=null;resetGameView();
- $("#game-team").textContent=dailyTeam.teamName.toUpperCase();$("#game-tournament").textContent="DAILY TEAM "+sequence+" / 3";$("#game-mode").textContent=(dailyState.demo?"DAILY DEMO · ":"DAILY ")+dailyState.mode.replace("daily-","").toUpperCase();$("#game-heading").textContent="NAME THE SQUAD";renderDailyRoster(dailyTeam);
+ $("#game-team").textContent=dailyTeam.teamName.toUpperCase();$("#game-tournament").textContent="DAILY TEAM "+sequence+" / 3";$("#game-mode").textContent=(dailyState.demo?"DAILY DEMO · ":"DAILY ")+dailyState.mode.replace("daily-","").toUpperCase()+(dailyState.demoFallback?" · MIXED TEST POOL":"");$("#game-heading").textContent="NAME THE SQUAD";renderDailyRoster(dailyTeam);
  if(resume){seconds=resume.remainingSeconds??120;(resume.foundPlayers||[]).forEach(player=>{found.add(player.id);const card=cardForPlayer(player.id);if(card){card.classList.add("found");setPlayerRarity(card,player.rarity);card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=dailyState.mode==="daily-legendary"?"FOUND":formatHint(player.position,player.club);}});$("#score").textContent=String(found.size);$("#feedback").textContent="Daily challenge resumed. Your remaining time is restored.";}
  show("game");updateTimer();if(resume&&seconds<=0){finishDailyTeam(false);return;}startClock();$("#guess").focus();
 }
@@ -170,10 +172,10 @@ allTeams.filter(item=>item.verified&&!dailyExclusions.has(item.id)).forEach(item
 allTeams.filter(item=>!item.verified&&!dailyExclusions.has(item.id)&&item.players.length).forEach(item=>{if(Object.hasOwn(demoCounts,item.teamDifficulty))demoCounts[item.teamDifficulty]++;});
 for(const tier of ["common","niche","legendary"]){
  const button=document.querySelector('[data-mode="daily-'+tier+'"]');
- const ready=supabase?dailyCounts[tier]>=3:demoCounts[tier]>=3;
+ const ready=supabase?dailyCounts[tier]>=3:(demoCounts[tier]>=3||Object.values(demoCounts).reduce((sum,count)=>sum+count,0)>=3);
  button.disabled=!ready;
- button.title=supabase?(ready?"At least three verified squads are available.":"Daily mode locked until three squads in this tier are independently verified."):(ready?"Local unranked demo with three practice squads.":"Daily demo needs three eligible practice squads.");
- if(!supabase&&ready)button.querySelector("small").textContent="3-team local demo · unranked";
+ button.title=supabase?(ready?"At least three verified, non-excluded squads are available.":"Daily mode locked until three eligible squads in this tier are independently verified."):(ready?(demoCounts[tier]>=3?"Local unranked demo with three squads from this tier.":"Local unranked demo using a mixed test pool because this tier has too few practice squads."):"Daily demo needs at least three eligible practice squads.");
+ if(!supabase&&ready)button.querySelector("small").textContent=demoCounts[tier]>=3?"3-team local demo · unranked":"3-team mixed test pool · unranked";
 }
 const readyTiers=["common","niche","legendary"].filter(tier=>dailyCounts[tier]>=3);
 $("#data-status").textContent="ROSTER AUDIT: "+verifiedTeams+"/"+allTeams.length+" VERIFIED · "+(supabase?"ONLINE DAILY: "+(readyTiers.length?readyTiers.join(" + ").toUpperCase():"NONE"):"LOCAL DAILY DEMO: "+Object.keys(demoCounts).filter(tier=>demoCounts[tier]>=3).join(" + ").toUpperCase());
