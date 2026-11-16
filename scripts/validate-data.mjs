@@ -139,15 +139,16 @@ for (const [path,functionName] of edgeWiring) {
 }
 const dataModule = await readText("assets/js/data.js");
 const serviceWorker = await readText("sw.js");
-for (const filename of ["historical-squads.json","worldcup-2026.json","team-difficulty.json","roster-audit.json"]) {
+for (const filename of ["public-teams.json","practice-rosters.json"]) {
   if (!dataModule.includes("./data/" + filename))
-    fail("Frontend data loader does not load required file: " + filename);
+    fail("Frontend data loader does not load generated public file: " + filename);
   if (!serviceWorker.includes("./data/" + filename))
-    fail("Service worker does not cache required data file: " + filename);
+    fail("Service worker does not cache generated public file: " + filename);
 }
-if (dataModule.includes("public-teams.json") || dataModule.includes("practice-rosters.json") ||
-    serviceWorker.includes("public-teams.json") || serviceWorker.includes("practice-rosters.json"))
-  fail("Frontend or service worker references missing generated data files.");
+for (const filename of ["historical-squads.json","worldcup-2026.json","team-difficulty.json","roster-audit.json"]) {
+  if (dataModule.includes(filename) || serviceWorker.includes(filename))
+    fail("Private source roster file is referenced by the public frontend: " + filename);
+}
 for (const excluded of dailyExclusions.teams) {
   if (!migration.includes("'" + excluded.id + "'"))
     fail("Server-side Daily exclusion migration is missing " + excluded.id);
