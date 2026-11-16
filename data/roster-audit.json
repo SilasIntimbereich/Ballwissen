@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "status": "pending",
+  "description": "Player-level independent audit ledger. A team is eligible for ranked play only when every player has a matched/corrected audit row, exact tournament position and club value, and primary plus secondary source URLs. Never set a team status to verified based on row counts alone.",
+  "allowedPlayerStatuses": [
+    "matched",
+    "corrected",
+    "unresolved",
+    "missing",
+    "extra"
+  ],
+  "teams": {}
+}
