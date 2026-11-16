@@ -40,10 +40,10 @@ The official FIFA final squad PDF is https://fdp.fifa.org/assetspublic/ce281/pdf
 
 ## Audit output expected before launch
 
-Produce a machine-readable audit file with one record per player:
-`{ tournament, teamId, playerName, sourceName, position, clubAtTournament, primarySource, secondarySource, status, notes }`
+The machine-readable ledger is `data/roster-audit.json`. A team may use `status: verified` only when every player has a corresponding row and all checks below pass. The sync script rechecks the ledger before writing `arcade_teams.verified=true`; it does not trust a bare boolean in the roster JSON.\n\nProduce a machine-readable audit file with one record per player:
+`{ tournament, teamId, playerName, sourceName, number, position, clubAtTournament, primarySource, secondarySource, status, notes }`
 
-Allowed statuses: `matched`, `corrected`, `unresolved`, `missing`, `extra`.
+Allowed statuses: `matched`, `corrected`, `unresolved`, `missing`, `extra`. A verified team needs exactly one audit row per roster player, a matching shirt number and normalized player name, identical position and club fields, and both primary and secondary HTTPS source URLs.
 
 The audit process must fail closed: unresolved or missing records keep the team unverified and excluded from Daily/online ranked modes. Keep the full source attribution and any applicable license notices.
 
