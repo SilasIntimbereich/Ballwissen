@@ -55,6 +55,7 @@ if (result) {
     if (isHidden) { result.dataset.recorded = "0"; return; }
     if (result.dataset.recorded === "1") return;
     result.dataset.recorded = "1";
+    if (result.dataset.resultKind !== "practice") return;
     const match = ($("#result-score").textContent || "").match(/(\d+)\s*\/\s*(\d+)/);
     if (!match) return;
     const found = Number(match[1]), total = Number(match[2]);
