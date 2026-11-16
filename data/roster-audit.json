@@ -4445,8 +4445,8 @@
       "teamNameInFifaPdf": "Uzbekistan (UZB)",
       "reviewedAt": "2026-11-16",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
-      "secondarySource": "https://www.tifolab.com/world-cup-2026/squads/uzbekistan",
-      "notes": "All 26 players, FIFA positions and tournament-time clubs were checked against the final FIFA squad PDF (page 48). Tifolab's earlier roster still shows Jaloliddin Masharipov; Uzbekistan's government news service Yuz.uz reported on 16 June that Masharipov was ruled out and Ruslanbek Jiyanov was added to the final roster. The final FIFA PDF lists Jiyanov at #10, replacing Masharipov. Other transliteration variants are retained as aliases.",
+      "secondarySource": "https://www.zamin.uz/en/sport/204738-uzbekistan-national-team-final-squad-for-wc-2026-announced.html",
+      "notes": "All 26 players, shirt numbers, positions and tournament-time clubs were checked against FIFA's final squad PDF (page 48). Zamin.uz's 2 June article independently confirms the final 26-player list before the late change. Uzbekistan's state news service Yuz.uz reported on 16 June that Jaloliddin Masharipov was ruled out and Ruslanbek Jiyanov was added; the FIFA final PDF contains Jiyanov at #10. Tifolab's earlier list was stale and is not used as the secondary source.",
       "players": [
         {
           "playerName": "Utkir Yusupov",
@@ -4682,7 +4682,8 @@
           "status": "matched",
           "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
         }
-      ]
+      ],
+      "additionalSource": "https://yuz.uz/index.php/en/news/zaloliddin-masaripov-zaon-cempionatini-tkazib-iuboradi"
     },
     "panama-2026": {
       "status": "verified",
