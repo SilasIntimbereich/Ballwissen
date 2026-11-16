@@ -41,6 +41,10 @@ The current imported snapshot matches FIFA's published overall total and team co
 
 For 2006–2018, the located FIFA Data PDFs are mirrored on the FIFA Data domain; verify provenance and use RSSSF or another independent source for cross-checks. For 2002, the sources located so far do not yet provide a complete, authoritative club-at-tournament table for all 32 teams.
 
+## Player rarity categories
+
+Player rarity is calculated independently of team difficulty by `scripts/player-rarity.mjs`. Players appearing in three or more distinct World Cup squad editions are Common; two editions are Rare. The manually curated override lists in `data/player-rarity-overrides.json` take priority for Legendary and Niche players. Remaining one-edition players are Ball Knowledge. These are consistent gameplay labels, not claims of objective player quality or value. The public practice build and private Supabase answer sync use the same resolver so rarity does not change between modes.
+
 ## Tournament-era club names
 Preserve clubs listed for the tournament snapshot. Do not substitute a player's current club. If club data is absent or unclear, leave the hint blank and record a verification note.
 
