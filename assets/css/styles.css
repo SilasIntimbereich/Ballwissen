@@ -123,3 +123,13 @@ select{background:#172b60;color:white;border:1px solid #ffffff66;padding:12px 15
 @keyframes crowd-wave{from{background-position:0 0,7px 8px,14px 4px,3px 12px}to{background-position:19px 8px,0 23px,31px 0,13px 19px}}
 @media(max-width:650px){.shell{padding:14px}.top-tag{font-size:6px;max-width:145px}.screen{padding:23px 0}.hero{padding:17px 0 24px}.hero-copy{font-size:18px}.mode-grid{gap:9px}.mode-card,.mode-card:nth-child(4),.mode-card:nth-child(5){grid-column:span 6;min-height:124px;padding:14px 15px;border-radius:14px}.mode-card strong{font-size:10px;margin:8px 0 5px}.mode-card b{padding-top:9px}.home-footer{font-size:6px}.roster{grid-template-columns:1fr}.game-title{margin:20px 0 14px}.game-head{flex-wrap:wrap}.game-meta{order:3;width:100%;flex-direction:row;justify-content:center;gap:10px}.timer{font-size:14px}.guess-form input{font-size:16px;padding:13px}.guess-form button{font-size:7px;padding:0 10px}.selector-row{align-items:flex-start;flex-direction:column}.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.leaderboard-panel{grid-template-columns:1fr;gap:8px;padding:14px}.stands{bottom:17%;height:28%}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+
+.player-card.rarity-common{box-shadow:inset 3px 0 #a9f56b}
+.player-rarity{display:block;margin-top:5px;font:6px/1.6 "Press Start 2P";letter-spacing:.2px}
+.player-rarity.rarity-common{color:#a9f56b}
+.player-rarity.rarity-rare{color:#72c9ff}
+.player-rarity.rarity-niche{color:#c18aff}
+.player-rarity.rarity-legendary{color:#ffd36e}
+.player-rarity.rarity-ball-knowledge{color:#ff8e8e}
+@keyframes legendary-reveal{0%{transform:scale(.94);filter:brightness(1)}35%{transform:scale(1.035);filter:brightness(1.65)}70%{transform:scale(.995);filter:brightness(1.25)}100%{transform:scale(1);filter:brightness(1)}}
+.player-card.rarity-legendary.found{animation:legendary-reveal .65s ease-out}
