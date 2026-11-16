@@ -5,13 +5,15 @@ License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0
 Adapted historical data must retain this attribution and the same license.
 
 Important field limitation:
-The DataHub squads.csv schema supplies team, player, position and shirt-number fields. It does not supply the club a player represented at the time of the tournament. FOOTBALL ARCADE stores historical club as null rather than inventing or substituting a current club. A separate, independently sourced and licensed historical club dataset is required before club hints can be enabled.
+The DataHub squads.csv schema supplies team, player, position and shirt-number fields. It does not supply the club a player represented at the time of the tournament. FOOTBALL ARCADE stores historical club as null rather than inventing or substituting a current club. A separate, independently sourced and licensed historical club dataset is required before historical club hints can be enabled.
 
 2026 structured squad snapshot:
 https://github.com/erickalfaro/world-cup-data-2026
-Source README documents the squad CSV snapshot and its upstream provenance:
+The source README documents its squad CSV snapshot and upstream provenance:
 https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md
-No license is asserted here for this third-party snapshot; confirm its terms before commercial redistribution.
+The snapshot is derived from OpenFootball squad data, which its source documentation describes as public domain:
+https://github.com/openfootball/worldcup.json
+The third-party snapshot repository does not state a separate data license; confirm the upstream terms before commercial redistribution.
 
 Official 2026 cross-check:
 FIFA final squad lists:
@@ -19,4 +21,7 @@ https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf
 FIFA announcement confirming 48 teams and 1,248 players:
 https://inside.fifa.com/organisation/media-releases/world-cup-2026-48-squads-confirmed
 
-The 2026 snapshot contains 1,248 rows across 48 teams, 26 per team. Twenty teams have a complete player-level comparison against FIFA's final PDF and an independent secondary roster source; the other 28 remain unverified. The automated PDF.js checker reports discrepancies but does not automatically approve a team. The public site build excludes names for all verified teams; the original source data stays in the private repository for server-side sync.
+The 2026 snapshot contains 1,248 rows across 48 teams, 26 per team. Twenty teams have a complete player-level comparison against FIFA's final PDF and an independent secondary roster source; the other 28 remain unverified. The automated PDF.js checker reports discrepancies but does not automatically approve a team.
+
+Current V4 delivery note:
+The local-first public build includes all 240 answer rosters in dist/data/practice-rosters.json so the game can run offline. This is intentionally unranked and player names are inspectable in the downloaded data. The server-side answer protection described in the Supabase migrations is reserved for a later online release and is not active in this build.
