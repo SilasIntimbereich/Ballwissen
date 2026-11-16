@@ -1,4 +1,3 @@
-import {loadWeeklyLeaderboard} from "./leaderboard.js";
 import {createRound,submitGuess,revealRound} from "./gameplay.js";
 import {tournaments,matches,datasetStatus,dailyExclusions} from "./data.js";
 const $=selector=>document.querySelector(selector);
@@ -189,4 +188,4 @@ for(const tier of ["common","niche","legendary"]){
 }
 const readyTiers=["common","niche","legendary"].filter(tier=>dailyCounts[tier]>=3);
 $("#data-status").textContent="LOCAL SQUADS: "+allTeams.filter(item=>item.players.length).length+" · ONLINE FEATURES COMING LATER";
-renderTeams();loadWeeklyLeaderboard();
+renderTeams();
