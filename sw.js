@@ -1,4 +1,4 @@
-const CACHE_NAME="football-arcade-v4-shell-9";
+const CACHE_NAME="football-arcade-v4-shell-10";
 const APP_SHELL=[
   "./",
   "./index.html",
@@ -12,6 +12,7 @@ const APP_SHELL=[
   "./assets/js/menu.js",
   "./data/public-teams.json",
   "./data/practice-rosters.json",
+  "./data/daily-exclusions.json",
   "./assets/icons/football-arcade.svg"
 ];
 self.addEventListener("install",event=>{
