@@ -1,12 +1,15 @@
+import { createPlayerRarityResolver } from "./player-rarity.mjs";
 import { cp, mkdir, readFile, rm, writeFile, stat } from "node:fs/promises";
 
 const readJson = async path => JSON.parse(await readFile(path, "utf8"));
-const [worldCup2026, historical, difficulty, audit] = await Promise.all([
+const [worldCup2026, historical, difficulty, audit, rarityOverrides] = await Promise.all([
   readJson("data/worldcup-2026.json"),
   readJson("data/historical-squads.json"),
   readJson("data/team-difficulty.json"),
-  readJson("data/roster-audit.json")
+  readJson("data/roster-audit.json"),
+  readJson("data/player-rarity-overrides.json")
 ]);
+const rarityOf = createPlayerRarityResolver(historical, worldCup2026, rarityOverrides);
 const tierOf = name => Object.entries(difficulty.tiers || {}).find(([, names]) => names.includes(name))?.[0] || "niche";
 const normalize = value => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
 const slug = name => name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -44,7 +47,7 @@ for (const p of worldCup2026.players) {
     club: p.club || null,
     number: Number(p.number),
     teamCode: p.fifa_code || p.teamCode,
-    rarity: p.rarity || null
+    rarity: rarityOf(p)
   });
 }
 for (const [name, players] of grouped2026) {
@@ -55,7 +58,7 @@ const publicTeams = [];
 const practiceTeams = [];
 for (const team of allTeams) {
   const isAudited = verified(team);
-  const players = [...(team.players || [])].sort((a, b) => Number(a.number) - Number(b.number));
+  const players = [...(team.players || [])].map(player => ({ ...player, rarity: rarityOf(player) })).sort((a, b) => Number(a.number) - Number(b.number));
   if (isAudited && players.length !== 26 && team.year === 2026)
     throw new Error("Verified 2026 team has unexpected roster size: " + team.id);
   publicTeams.push({
