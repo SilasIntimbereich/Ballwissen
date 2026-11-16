@@ -221,7 +221,7 @@ const normalGuessFunction = await readText("supabase/functions/normal-guess/inde
 const publicDataModule = await readText("assets/js/data.js");
 const publicBuilder = await readText("scripts/build-public.mjs");
 const netlifyConfig = await readText("netlify.toml");
-const serviceWorker = await readText("sw.js");
+
 if (!secureRosterMigration.includes("missed_players jsonb") ||
     !secureRosterMigration.includes("drop function if exists public.finish_normal_game_session") ||
     !secureRosterMigration.includes("Normal game squad is no longer verified"))
