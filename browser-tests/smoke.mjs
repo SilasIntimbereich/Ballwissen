@@ -106,9 +106,9 @@ try{
  assert.equal((await page.locator(".player-hint").first().textContent()).trim(),"HIDDEN PLAYER");
  for(let round=0;round<3;round++){await giveUp();if(round<2)await page.locator("#result-home").click();}
  await page.locator("#result-home").click();
- await openTeam("easy",2026,"Germany");
+ await openTeam("easy",2026,"England");
  assert.equal(await page.locator(".player-card").count(),26);
- assert.match(await page.locator(".player-hint").first().textContent(),/GK|DF|MF|FW/);
+ assert.match(await page.locator(".player-hint").first().textContent(),/GK · Everton FC/);
  await giveUp();await page.locator("#result-home").click();
  await page.locator('[data-open-screen="settings"]').click();
  await page.locator("#setting-compact").check();
