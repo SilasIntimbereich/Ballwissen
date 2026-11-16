@@ -4191,6 +4191,744 @@
           "notes": "Matched by shirt number and identity across FIFA's final squad PDF and the DFB data center roster."
         }
       ]
+    },
+    "jordan-2026": {
+      "status": "verified",
+      "tournament": 2026,
+      "teamNameInDataset": "Jordan",
+      "teamNameInFifaPdf": "Jordan (JOR)",
+      "reviewedAt": "2026-11-16",
+      "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
+      "secondarySource": "https://www.joc.jo/en/news/6029/jordan-squad-announced-for-world-cup/",
+      "notes": "All 26 players were matched by shirt number and identity against FIFA's final squad PDF (page 26) and the Jordan Olympic Committee's 2 June final 26-player announcement. Common transliteration variants in the JOC list are supported as aliases; FIFA position codes and tournament-time clubs are taken from the final PDF.",
+      "players": [
+        {
+          "playerName": "Yazeed Abulaila",
+          "sourceName": "YAZEED ABULAILA",
+          "number": 1,
+          "position": "GK",
+          "clubAtTournament": "Al Hussein SC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Mohammad Abu Hashish",
+          "sourceName": "MOHAMMAD ABUHASHEESH",
+          "number": 2,
+          "position": "DF",
+          "clubAtTournament": "Al Karma SC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Abdallah Nasib",
+          "sourceName": "ABDALLAH NASIB",
+          "number": 3,
+          "position": "DF",
+          "clubAtTournament": "Al Zawra'a SC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Husam Abu Dahab",
+          "sourceName": "HUSAM ABUDAHAB",
+          "number": 4,
+          "position": "DF",
+          "clubAtTournament": "Al Faisaly SC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Yazan Al-Arab",
+          "sourceName": "YAZAN ALARAB",
+          "number": 5,
+          "position": "DF",
+          "clubAtTournament": "FC Seoul",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Amer Jamous",
+          "sourceName": "AMER JAMOUS",
+          "number": 6,
+          "position": "MF",
+          "clubAtTournament": "Al Zawra'a SC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Mohammad Abu Zrayq",
+          "sourceName": "MOHAMMAD ABUZRAIQ",
+          "number": 7,
+          "position": "FW",
+          "clubAtTournament": "Raja Casablanca",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Noor Al-Rawabdeh",
+          "sourceName": "NOOR ALRAWABDEH",
+          "number": 8,
+          "position": "MF",
+          "clubAtTournament": "Selangor FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Ali Olwan",
+          "sourceName": "ALI OLWAN",
+          "number": 9,
+          "position": "FW",
+          "clubAtTournament": "Al Sailiya SC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Musa Al-Taamari",
+          "sourceName": "MOUSA ALTAMARI",
+          "number": 10,
+          "position": "FW",
+          "clubAtTournament": "Stade Rennais FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Odeh Al-Fakhouri",
+          "sourceName": "ODEH FAKHOURY",
+          "number": 11,
+          "position": "FW",
+          "clubAtTournament": "Pyramids FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Nour Bani Attiah",
+          "sourceName": "NOUR BANIATEYAH",
+          "number": 12,
+          "position": "GK",
+          "clubAtTournament": "Al Faisaly SC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Mahmoud Al-Mardi",
+          "sourceName": "MAHMOUD ALMARDI",
+          "number": 13,
+          "position": "FW",
+          "clubAtTournament": "Al Hussein SC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Rajaei Ayed",
+          "sourceName": "RAJAEI AYED",
+          "number": 14,
+          "position": "MF",
+          "clubAtTournament": "Al Hussein SC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Ibrahim Sadeh",
+          "sourceName": "IBRAHIM SADEH",
+          "number": 15,
+          "position": "MF",
+          "clubAtTournament": "Al Karma SC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Mo Abualnadi",
+          "sourceName": "MOHAMMAD ABUALNADI",
+          "number": 16,
+          "position": "DF",
+          "clubAtTournament": "Selangor FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Salim Obaid",
+          "sourceName": "SALEEM OBAID",
+          "number": 17,
+          "position": "DF",
+          "clubAtTournament": "Al Hussein SC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Mohammad Ahmed Mohammad Taha",
+          "sourceName": "MOHAMMAD ABUGHOUSH",
+          "number": 18,
+          "position": "MF",
+          "clubAtTournament": "Al Hussein SC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Saed Al-Rosan",
+          "sourceName": "SAED ALROSAN",
+          "number": 19,
+          "position": "DF",
+          "clubAtTournament": "Al Hussein SC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Mohannad Abu Taha",
+          "sourceName": "MOHANNAD ABUTAHA",
+          "number": 20,
+          "position": "MF",
+          "clubAtTournament": "Al-Quwa Al-Jawiya",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Nizar Al-Rashdan",
+          "sourceName": "NIZAR ALRASHDAN",
+          "number": 21,
+          "position": "MF",
+          "clubAtTournament": "Qatar SC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Abdallah Al-Fakhouri",
+          "sourceName": "ABDALLAH ALFAKHOURI",
+          "number": 22,
+          "position": "GK",
+          "clubAtTournament": "Al Wahdat SC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Ihsan Haddad",
+          "sourceName": "EHSAN HADDAD",
+          "number": 23,
+          "position": "DF",
+          "clubAtTournament": "Al Hussein SC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Ali Azaizeh",
+          "sourceName": "ALI AZAIZEH",
+          "number": 24,
+          "position": "FW",
+          "clubAtTournament": "Al Shabab FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Mohammad Al-Dawoud",
+          "sourceName": "MOHAMMAD ALDAOU",
+          "number": 25,
+          "position": "MF",
+          "clubAtTournament": "Al Wahdat SC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Anas Badawi",
+          "sourceName": "ANAS BADAWI",
+          "number": 26,
+          "position": "DF",
+          "clubAtTournament": "Al Faisaly SC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        }
+      ]
+    },
+    "uzbekistan-2026": {
+      "status": "verified",
+      "tournament": 2026,
+      "teamNameInDataset": "Uzbekistan",
+      "teamNameInFifaPdf": "Uzbekistan (UZB)",
+      "reviewedAt": "2026-11-16",
+      "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
+      "secondarySource": "https://www.tifolab.com/world-cup-2026/squads/uzbekistan",
+      "notes": "All 26 players, FIFA positions and tournament-time clubs were checked against the final FIFA squad PDF (page 48). Tifolab's earlier roster still shows Jaloliddin Masharipov; Uzbekistan's government news service Yuz.uz reported on 16 June that Masharipov was ruled out and Ruslanbek Jiyanov was added to the final roster. The final FIFA PDF lists Jiyanov at #10, replacing Masharipov. Other transliteration variants are retained as aliases.",
+      "players": [
+        {
+          "playerName": "Utkir Yusupov",
+          "sourceName": "YUSUPOV Utkir",
+          "number": 1,
+          "position": "GK",
+          "clubAtTournament": "PFC Navbahor Namangan",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Abdukodir Khusanov",
+          "sourceName": "KHUSANOV Abdukodir",
+          "number": 2,
+          "position": "DF",
+          "clubAtTournament": "Manchester City FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Khojiakbar Alijonov",
+          "sourceName": "ALIJONOV Khojiakbar",
+          "number": 3,
+          "position": "DF",
+          "clubAtTournament": "Pakhtakor Tashkent FK",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Farrukh Sayfiev",
+          "sourceName": "SAYFIEV Farrukh",
+          "number": 4,
+          "position": "DF",
+          "clubAtTournament": "FK Neftchi Farg'ona",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Rustam Ashurmatov",
+          "sourceName": "ASHURMATOV Rustam",
+          "number": 5,
+          "position": "DF",
+          "clubAtTournament": "Esteghlal Tehran FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Akmal Mozgovoy",
+          "sourceName": "MOZGOVOY Akmal",
+          "number": 6,
+          "position": "MF",
+          "clubAtTournament": "Pakhtakor Tashkent FK",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Otabek Shukurov",
+          "sourceName": "SHUKUROV Otabek",
+          "number": 7,
+          "position": "MF",
+          "clubAtTournament": "Baniyas Club",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Jamshid Iskanderov",
+          "sourceName": "ISKANDEROV Jamshid",
+          "number": 8,
+          "position": "MF",
+          "clubAtTournament": "FK Neftchi Farg'ona",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Odiljon Hamrobekov",
+          "sourceName": "XAMROBEKOV Odiljon",
+          "number": 9,
+          "position": "MF",
+          "clubAtTournament": "Tractor Sazi Tabriz FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Ruslanbek Jiyanov",
+          "sourceName": "JIYANOV Ruslanbek",
+          "number": 10,
+          "position": "MF",
+          "clubAtTournament": "PFC Navbahor Namangan",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Oston Urunov",
+          "sourceName": "URUNOV Oston",
+          "number": 11,
+          "position": "MF",
+          "clubAtTournament": "Persepolis FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Abduvohid Nematov",
+          "sourceName": "NEMATOV Abduvohid",
+          "number": 12,
+          "position": "GK",
+          "clubAtTournament": "Nasaf Qarshi FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Sherzod Nasrullaev",
+          "sourceName": "NASRULLAEV Sherzod",
+          "number": 13,
+          "position": "DF",
+          "clubAtTournament": "Pakhtakor Tashkent FK",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Eldor Shomurodov",
+          "sourceName": "SHOMURODOV Eldor",
+          "number": 14,
+          "position": "FW",
+          "clubAtTournament": "Başakşehir FK",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Umar Eshmurodov",
+          "sourceName": "ESHMURODOV Umar",
+          "number": 15,
+          "position": "DF",
+          "clubAtTournament": "Nasaf Qarshi FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Botirali Ergashev",
+          "sourceName": "ERGASHEV Botirali",
+          "number": 16,
+          "position": "GK",
+          "clubAtTournament": "FK Neftchi Farg'ona",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Dostonbek Khamdamov",
+          "sourceName": "KHAMDAMOV Dostonbek",
+          "number": 17,
+          "position": "MF",
+          "clubAtTournament": "Pakhtakor Tashkent FK",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Abdulla Abdullaev",
+          "sourceName": "ABDULLAEV Abdulla",
+          "number": 18,
+          "position": "DF",
+          "clubAtTournament": "Dibba FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Azizjon Ganiev",
+          "sourceName": "GANIEV Azizjon",
+          "number": 19,
+          "position": "MF",
+          "clubAtTournament": "Al Bataeh Club",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Azizbek Amonov",
+          "sourceName": "AMONOV Azizbek",
+          "number": 20,
+          "position": "FW",
+          "clubAtTournament": "FK Dinamo Samarkand",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Igor Sergeev",
+          "sourceName": "SERGEEV Igor",
+          "number": 21,
+          "position": "FW",
+          "clubAtTournament": "Persepolis FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Abbosbek Fayzullaev",
+          "sourceName": "FAYZULLAEV Abbosbek",
+          "number": 22,
+          "position": "MF",
+          "clubAtTournament": "Başakşehir FK",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Sherzod Esanov",
+          "sourceName": "ESANOV Sherzod",
+          "number": 23,
+          "position": "MF",
+          "clubAtTournament": "FK Buxoro",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Bekhruz Karimov",
+          "sourceName": "KARIMOV Behruzjon",
+          "number": 24,
+          "position": "DF",
+          "clubAtTournament": "Surkhon FK",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Avazbek Ulmasaliev",
+          "sourceName": "ULMASALIYEV Avazbek",
+          "number": 25,
+          "position": "DF",
+          "clubAtTournament": "OKMK FK",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Jakhongir Urozov",
+          "sourceName": "UROZOV Jakhongir",
+          "number": 26,
+          "position": "DF",
+          "clubAtTournament": "FK Dinamo Samarkand",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        }
+      ]
+    },
+    "panama-2026": {
+      "status": "verified",
+      "tournament": 2026,
+      "teamNameInDataset": "Panama",
+      "teamNameInFifaPdf": "Panama (PAN)",
+      "reviewedAt": "2026-11-16",
+      "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
+      "secondarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
+      "notes": "All 26 players, FIFA position codes and tournament-time clubs were checked against FIFA's final squad PDF (page 33) and NBC Sports' 11 June confirmed squad list. FIFA labels Ismael Díaz (#10) MF and Carlos Harvey (#14) DF; NBC groups them as forward and midfielder respectively, so the official FIFA position codes are retained.",
+      "players": [
+        {
+          "playerName": "Luis Mejía",
+          "sourceName": "MEJIA Luis",
+          "number": 1,
+          "position": "GK",
+          "clubAtTournament": "Club Nacional",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "César Blackman",
+          "sourceName": "BLACKMAN Cesar",
+          "number": 2,
+          "position": "DF",
+          "clubAtTournament": "ŠK Slovan Bratislava",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "José Córdoba",
+          "sourceName": "CORDOBA Jose",
+          "number": 3,
+          "position": "DF",
+          "clubAtTournament": "Norwich City FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Fidel Escobar",
+          "sourceName": "ESCOBAR Fidel",
+          "number": 4,
+          "position": "DF",
+          "clubAtTournament": "Deportivo Saprissa",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Edgardo Fariña",
+          "sourceName": "FARINA Edgardo",
+          "number": 5,
+          "position": "DF",
+          "clubAtTournament": "FC Pari Nizhny Novgorod",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Cristian Martínez",
+          "sourceName": "MARTINEZ Cristian",
+          "number": 6,
+          "position": "MF",
+          "clubAtTournament": "Hapoel Kiryat Shmona FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "José Luis Rodríguez",
+          "sourceName": "RODRIGUEZ Jose Luis",
+          "number": 7,
+          "position": "MF",
+          "clubAtTournament": "FC Juárez",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Adalberto Carrasquilla",
+          "sourceName": "CARRASQUILLA Adalberto",
+          "number": 8,
+          "position": "MF",
+          "clubAtTournament": "Pumas UNAM",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Tomás Rodríguez",
+          "sourceName": "RODRIGUEZ Tomas",
+          "number": 9,
+          "position": "FW",
+          "clubAtTournament": "Deportivo Saprissa",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Ismael Díaz",
+          "sourceName": "DIAZ Ismael",
+          "number": 10,
+          "position": "MF",
+          "clubAtTournament": "Club León",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Yoel Bárcenas",
+          "sourceName": "BARCENAS Edgar Yoel",
+          "number": 11,
+          "position": "MF",
+          "clubAtTournament": "Mazatlán FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "César Samudio",
+          "sourceName": "SAMUDIO Cesar",
+          "number": 12,
+          "position": "GK",
+          "clubAtTournament": "CD Marathón",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Jiovany Ramos",
+          "sourceName": "RAMOS Jiovany",
+          "number": 13,
+          "position": "DF",
+          "clubAtTournament": "Puerto Cabello CF",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Carlos Harvey",
+          "sourceName": "HARVEY Carlos",
+          "number": 14,
+          "position": "DF",
+          "clubAtTournament": "Minnesota United FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Eric Davis",
+          "sourceName": "DAVIS Eric",
+          "number": 15,
+          "position": "DF",
+          "clubAtTournament": "CD Plaza Amador",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Andrés Andrade",
+          "sourceName": "ANDRADE Andres",
+          "number": 16,
+          "position": "DF",
+          "clubAtTournament": "LASK Linz",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "José Fajardo",
+          "sourceName": "FAJARDO Jose",
+          "number": 17,
+          "position": "FW",
+          "clubAtTournament": "CD Universidad Católica",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Cecilio Waterman",
+          "sourceName": "WATERMAN Cecilio",
+          "number": 18,
+          "position": "FW",
+          "clubAtTournament": "CD Universidad De Concepción",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Alberto Quintero",
+          "sourceName": "QUINTERO Alberto",
+          "number": 19,
+          "position": "MF",
+          "clubAtTournament": "CD Plaza Amador",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Aníbal Godoy",
+          "sourceName": "GODOY Anibal",
+          "number": 20,
+          "position": "MF",
+          "clubAtTournament": "San Diego FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "César Yanis",
+          "sourceName": "YANIS Cesar",
+          "number": 21,
+          "position": "MF",
+          "clubAtTournament": "CD Cobresal",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Orlando Mosquera",
+          "sourceName": "MOSQUERA Orlando",
+          "number": 22,
+          "position": "GK",
+          "clubAtTournament": "Al Fayha FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Michael Amir Murillo",
+          "sourceName": "MURILLO Amir",
+          "number": 23,
+          "position": "DF",
+          "clubAtTournament": "Beşiktaş JK",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Azarias Londoño",
+          "sourceName": "LONDONO Azarias",
+          "number": 24,
+          "position": "FW",
+          "clubAtTournament": "CD Universidad Católica",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Roderick Miller",
+          "sourceName": "MILLER Roderick",
+          "number": 25,
+          "position": "DF",
+          "clubAtTournament": "Turan Tovuz",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        },
+        {
+          "playerName": "Jorge Gutiérrez",
+          "sourceName": "GUTIERREZ Jorge",
+          "number": 26,
+          "position": "DF",
+          "clubAtTournament": "Deportivo La Guaira",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity against FIFA's final squad PDF; secondary roster or official replacement source cross-checked."
+        }
+      ]
     }
   }
 }
