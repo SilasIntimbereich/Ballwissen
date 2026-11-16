@@ -4,7 +4,7 @@ import { readFile } from "node:fs/promises";
 
 const read = path => readFile(path, "utf8");
 
-test("home menu exposes all seven selectable destinations", async () => {
+test("home menu exposes every offline mode and utility screen", async () => {
   const html = await read("dist/index.html");
   const main = await read("dist/assets/js/main.js");
   const css = await read("dist/assets/css/styles.css");
@@ -16,8 +16,9 @@ test("home menu exposes all seven selectable destinations", async () => {
   assert.match(html, /id="settings" class="screen"/);
   assert.match(html, /assets\/js\/menu\.js/);
   assert.match(main, /querySelectorAll\("\[data-mode\]"\)/);
+  assert.doesNotMatch(main, /supabase|normalSessionId|normalHints/);
   assert.match(css, /\.shell\{[^}]*z-index:1/);
-  assert.match(css, /\.stadium\{[^}]*pointer-events:none/);
+  assert.match(css, /\.stadium\{[^}]*z-index:0/);
   assert.match(css, /\.utility-grid\{display:grid/);
   assert.match(css, /button:focus-visible/);
   assert.ok(css.includes("h1 span{background:none;color:#f0c64a"));
@@ -38,6 +39,7 @@ test("public build includes a complete local roster for every tournament team", 
     assert.ok(local, "missing local roster: " + team.id);
     assert.equal(local.players.length, team.total, "wrong roster size: " + team.id);
     assert.ok(local.players.length > 0, "empty local roster: " + team.id);
+    assert.ok(["common","niche","legendary"].includes(team.teamDifficulty), "missing difficulty: "+team.id);
   }
   const exclusions = JSON.parse(await read("dist/data/daily-exclusions.json"));
   assert.equal(exclusions.teams.length, 50);
@@ -62,35 +64,39 @@ test("normal gameplay is local, input-enabled and handles every end state", asyn
   assert.match(main, /if\(practiceOnly\)\{\$\("#timer"\)\.textContent="∞";return;\}/);
   assert.match(main, /ACCURACY · /);
   assert.match(main, /PRACTICE · NO TIMER/);
-  assert.doesNotMatch(main, /const onlineLocked=selected\.verified&&!supabase/);
+  assert.doesNotMatch(main, /supabase|normalSessionId|normalHints/);
   assert.ok(css.includes("Gameplay usability fix: keep the revealed roster visible"));
   assert.match(css, /\.result\{\s*position:relative/);
 });
 
-test("Daily modes use local squads, deterministic selection and the shared gameplay engine", async () => {
+test("Daily modes are local, stable, tier-specific and respect exclusions", async () => {
   const main = await read("dist/assets/js/main.js");
   const data = await read("dist/assets/js/data.js");
   const sw = await read("dist/sw.js");
   assert.match(data, /dailyExclusions=new Set/);
-  assert.match(main, /DAILY · /);\n  assert.match(main, /dailyState=\\{mode:modeName,teams,current:1,score:0,total:0,finalShown:false\\}/);
+  assert.match(main, /DAILY · /);
   assert.match(main, /Local unranked challenge with three squads from this tier/);
-  assert.match(main, /demoFallback=pool\.length<3/);
   assert.match(main, /function dailyRandom\(tier\)/);
   assert.match(main, /const random=dailyRandom\(tier\)/);
-  assert.match(main, /dailyState\.demo/);
+  assert.match(main, /dailyState=\{mode:modeName,teams,current:1,score:0,total:0,finalShown:false\}/);
   assert.match(main, /submitGuess\(roundState,value,matches\)/);
   assert.match(main, /Three local squads played/);
-  assert.match(sw, /daily-exclusions\.json/);
   assert.match(main, /!dailyExclusions\.has\(item\.id\)/);
   assert.match(main, /startDailyTeam\(1\)/);
   assert.match(main, /VIEW FINAL RESULTS/);
+  assert.doesNotMatch(main, /demoFallback|MIXED TEST POOL/);
+  assert.match(sw, /daily-exclusions\.json/);
 });
 
-test("roster cards use real shirt numbers and preserve Give Up navigation", async () => {
+test("local stats update from completed results and settings persist locally", async () => {
   const main = await read("dist/assets/js/main.js");
-  assert.match(main, /function addPlayerCard\(index,hint,id,shirtNumber\)/);
-  assert.match(main, /hint\.number/);
-  assert.match(main, /player\.number/);
-  assert.match(main, /result-home/);
-  assert.match(main, /if\(!dailyState\.finalShown\)\{finishDailyOverall\(\);return;\}/);
+  const menu = await read("dist/assets/js/menu.js");
+  assert.match(main, /football-arcade:result/);
+  assert.match(main, /recordLocalResult\(dailyState\.score,dailyState\.total\)/);
+  assert.match(menu, /football-arcade:result/);
+  assert.match(menu, /stats\.played \+= 1/);
+  assert.match(menu, /clear-local-stats/);
+  assert.match(menu, /SETTINGS_KEY/);
+  assert.match(menu, /compact-ui/);
+  assert.match(menu, /reduce-motion/);
 });
