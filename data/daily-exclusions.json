@@ -1,0 +1,257 @@
+{
+  "version": 1,
+  "description": "Curated exclusion list: these 50 individual World Cup squad editions are never selected for Daily Common, Daily Niche or Daily Legendary. They remain available in Normal modes. Review this list after playtesting.",
+  "count": 50,
+  "teams": [
+    {
+      "id": "china-2002",
+      "name": "China",
+      "year": 2002
+    },
+    {
+      "id": "togo-2006",
+      "name": "Togo",
+      "year": 2006
+    },
+    {
+      "id": "angola-2006",
+      "name": "Angola",
+      "year": 2006
+    },
+    {
+      "id": "trinidad-and-tobago-2006",
+      "name": "Trinidad and Tobago",
+      "year": 2006
+    },
+    {
+      "id": "north-korea-2010",
+      "name": "North Korea",
+      "year": 2010
+    },
+    {
+      "id": "slovenia-2002",
+      "name": "Slovenia",
+      "year": 2002
+    },
+    {
+      "id": "slovenia-2010",
+      "name": "Slovenia",
+      "year": 2010
+    },
+    {
+      "id": "slovakia-2010",
+      "name": "Slovakia",
+      "year": 2010
+    },
+    {
+      "id": "honduras-2010",
+      "name": "Honduras",
+      "year": 2010
+    },
+    {
+      "id": "honduras-2014",
+      "name": "Honduras",
+      "year": 2014
+    },
+    {
+      "id": "panama-2018",
+      "name": "Panama",
+      "year": 2018
+    },
+    {
+      "id": "saudi-arabia-2002",
+      "name": "Saudi Arabia",
+      "year": 2002
+    },
+    {
+      "id": "saudi-arabia-2006",
+      "name": "Saudi Arabia",
+      "year": 2006
+    },
+    {
+      "id": "saudi-arabia-2018",
+      "name": "Saudi Arabia",
+      "year": 2018
+    },
+    {
+      "id": "saudi-arabia-2022",
+      "name": "Saudi Arabia",
+      "year": 2022
+    },
+    {
+      "id": "tunisia-2002",
+      "name": "Tunisia",
+      "year": 2002
+    },
+    {
+      "id": "tunisia-2006",
+      "name": "Tunisia",
+      "year": 2006
+    },
+    {
+      "id": "tunisia-2018",
+      "name": "Tunisia",
+      "year": 2018
+    },
+    {
+      "id": "tunisia-2022",
+      "name": "Tunisia",
+      "year": 2022
+    },
+    {
+      "id": "iran-2006",
+      "name": "Iran",
+      "year": 2006
+    },
+    {
+      "id": "iran-2014",
+      "name": "Iran",
+      "year": 2014
+    },
+    {
+      "id": "iran-2018",
+      "name": "Iran",
+      "year": 2018
+    },
+    {
+      "id": "iran-2022",
+      "name": "Iran",
+      "year": 2022
+    },
+    {
+      "id": "ecuador-2002",
+      "name": "Ecuador",
+      "year": 2002
+    },
+    {
+      "id": "ecuador-2006",
+      "name": "Ecuador",
+      "year": 2006
+    },
+    {
+      "id": "ecuador-2014",
+      "name": "Ecuador",
+      "year": 2014
+    },
+    {
+      "id": "ecuador-2022",
+      "name": "Ecuador",
+      "year": 2022
+    },
+    {
+      "id": "costa-rica-2002",
+      "name": "Costa Rica",
+      "year": 2002
+    },
+    {
+      "id": "costa-rica-2006",
+      "name": "Costa Rica",
+      "year": 2006
+    },
+    {
+      "id": "costa-rica-2014",
+      "name": "Costa Rica",
+      "year": 2014
+    },
+    {
+      "id": "costa-rica-2018",
+      "name": "Costa Rica",
+      "year": 2018
+    },
+    {
+      "id": "costa-rica-2022",
+      "name": "Costa Rica",
+      "year": 2022
+    },
+    {
+      "id": "cameroon-2002",
+      "name": "Cameroon",
+      "year": 2002
+    },
+    {
+      "id": "cameroon-2010",
+      "name": "Cameroon",
+      "year": 2010
+    },
+    {
+      "id": "cameroon-2014",
+      "name": "Cameroon",
+      "year": 2014
+    },
+    {
+      "id": "cameroon-2022",
+      "name": "Cameroon",
+      "year": 2022
+    },
+    {
+      "id": "ghana-2006",
+      "name": "Ghana",
+      "year": 2006
+    },
+    {
+      "id": "ghana-2010",
+      "name": "Ghana",
+      "year": 2010
+    },
+    {
+      "id": "ghana-2014",
+      "name": "Ghana",
+      "year": 2014
+    },
+    {
+      "id": "ghana-2022",
+      "name": "Ghana",
+      "year": 2022
+    },
+    {
+      "id": "ivory-coast-2006",
+      "name": "Ivory Coast",
+      "year": 2006
+    },
+    {
+      "id": "ivory-coast-2010",
+      "name": "Ivory Coast",
+      "year": 2010
+    },
+    {
+      "id": "ivory-coast-2014",
+      "name": "Ivory Coast",
+      "year": 2014
+    },
+    {
+      "id": "algeria-2010",
+      "name": "Algeria",
+      "year": 2010
+    },
+    {
+      "id": "algeria-2014",
+      "name": "Algeria",
+      "year": 2014
+    },
+    {
+      "id": "new-zealand-2010",
+      "name": "New Zealand",
+      "year": 2010
+    },
+    {
+      "id": "qatar-2022",
+      "name": "Qatar",
+      "year": 2022
+    },
+    {
+      "id": "serbia-and-montenegro-2006",
+      "name": "Serbia and Montenegro",
+      "year": 2006
+    },
+    {
+      "id": "south-africa-2002",
+      "name": "South Africa",
+      "year": 2002
+    },
+    {
+      "id": "south-africa-2010",
+      "name": "South Africa",
+      "year": 2010
+    }
+  ]
+}
