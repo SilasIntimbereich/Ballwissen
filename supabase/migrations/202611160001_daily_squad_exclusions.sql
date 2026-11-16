@@ -62,6 +62,10 @@ insert into public.daily_excluded_squads(team_id,team_name,tournament_year) valu
 on conflict(team_id) do update
 set team_name=excluded.team_name,tournament_year=excluded.tournament_year;
 
+-- Remove any challenge rows that may have been published before this migration.
+delete from public.daily_challenges
+where team_id in (select team_id from public.daily_excluded_squads);
+
 create or replace function public.publish_daily_challenges(p_date date default current_date)
 returns void language plpgsql security definer set search_path=public
 as $$
