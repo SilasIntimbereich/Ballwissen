@@ -78,7 +78,6 @@ try{
  await page.waitForFunction(()=>document.querySelector(".player-card.found .player-name")?.textContent==="Lionel Messi");
  assert.equal((await page.locator(".player-card.found .player-hint").textContent()).trim(),"FOUND");
  await giveUp();await page.locator("#result-home").click();
- await page.locator("[data-back]").click();
  await openTeam("practice",2018,"Argentina");
  assert.equal((await page.locator("#timer").textContent()).trim(),"∞","Practice must have no timer");
  await page.waitForTimeout(1200);
@@ -106,10 +105,8 @@ try{
  await dailyStart("common");
  assert.equal((await page.locator("#game-team").textContent()).trim(),dailyFirstTeam,"Daily squad selection must be stable throughout the local day");
  await page.locator("[data-back]").click();
- await page.locator("[data-back]").click();
  await dailyStart("niche");
  await giveUp();await page.locator("#result-home").click();await giveUp();await page.locator("#result-home").click();await giveUp();await page.locator("#result-home").click();await page.locator("#result-home").click();
- await page.locator("[data-back]").click();
  await dailyStart("legendary");
  assert.equal((await page.locator(".player-hint").first().textContent()).trim(),"HIDDEN PLAYER","Daily Legendary must hide all hints");
  await giveUp();await page.locator("#result-home").click();await giveUp();await page.locator("#result-home").click();await giveUp();await page.locator("#result-home").click();await page.locator("#result-home").click();
@@ -125,7 +122,7 @@ try{
  await page.locator("#save-settings").click();
  assert.equal(await page.locator("body").evaluate(el=>el.classList.contains("compact-ui")),true);
  assert.equal(await page.locator("body").evaluate(el=>el.classList.contains("reduce-motion")),true);
- await page.locator("#clear-local-stats").count();
+ await page.locator("#clear-local-stats").click();\n assert.equal((await page.locator("#local-played").textContent()).trim(),"0");
  assert.deepEqual(errors,[],"the app must not throw browser runtime errors");
  await context.close();
 
