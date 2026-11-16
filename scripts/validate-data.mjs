@@ -198,8 +198,8 @@ for (const [teamId, record] of Object.entries(audit.teams)) {
     const row = record.players.find(r => Number(r.number) === Number(player.number) && normalize(r.playerName) === normalize(player.name));
     if (!row || !["matched", "corrected"].includes(row.status) || !String(row.sourceName || "").trim())
       fail("Verified audit contains missing/unresolved player or source name: " + teamId + " / " + player.name);
-    const sourceTokens = String(row.sourceName).normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
-    const playerTokens = String(player.name).normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+    const sourceTokens = String(row.sourceName).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+    const playerTokens = String(player.name).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
     const explicitAlias = (row.sourceNameAliases || []).some(alias => normalize(alias) === normalize(player.name));
     if (!explicitAlias && !playerTokens.some(token => sourceTokens.includes(token)))
       fail("Audit source name does not match the player or a documented alias: " + teamId + " / " + player.name);
