@@ -76,3 +76,14 @@ test("offline Daily demo is playable without exposing verified answer rosters", 
   assert.match(main, /!dailyExclusions\.has\(item\.id\)/);
   assert.match(main, /item\.verified&&!dailyExclusions\.has\(item\.id\)/);
 });
+
+
+test("game controls are explicitly enabled and Daily demo Give Up shows a round result", async () => {
+  const main = await read("dist/assets/js/main.js");
+  assert.match(main, /function enableGuessControls\(\)/);
+  assert.match(main, /input\.removeAttribute\("disabled"\)/);
+  assert.match(main, /button\.removeAttribute\("disabled"\)/);
+  assert.match(main, /\$\("#result-score"\)\.textContent=found\.size\+" \/ "+team\.players\.length/);
+  assert.match(main, /\$\("#result-home"\)\.textContent=dailyState\.current>=3\?"VIEW FINAL RESULTS":"NEXT TEAM"/);
+  assert.match(main, /if\(dailyState\?\.demo\)\{/);
+});
