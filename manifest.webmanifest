@@ -2,12 +2,12 @@
   "id": "./",
   "name": "FOOTBALL ARCADE",
   "short_name": "FOOTBALL ARCADE",
-  "description": "A retro World Cup squad recall game.",
+  "description": "A colourful World Cup squad challenge.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#071b13",
-  "theme_color": "#071b13",
+  "background_color": "#172b68",
+  "theme_color": "#172b68",
   "orientation": "portrait",
   "icons": [
     {
