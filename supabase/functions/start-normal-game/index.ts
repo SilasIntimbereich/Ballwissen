@@ -1,3 +1,23 @@
 import {createClient} from "https://esm.sh/@supabase/supabase-js@2";
 const cors={"Access-Control-Allow-Origin":"*","Access-Control-Allow-Headers":"authorization, apikey, content-type","Access-Control-Allow-Methods":"POST, OPTIONS"};
-Deno.serve(async req=>{if(req.method==="OPTIONS")return new Response("ok",{headers:cors});if(req.method!=="POST")return Response.json({error:"POST required"},{status:405,headers:cors});const url=Deno.env.get("SUPABASE_URL")!,anon=Deno.env.get("SUPABASE_ANON_KEY")!,service=Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;const client=createClient(url,anon,{global:{headers:{Authorization:req.headers.get("Authorization")||""}}});const {data:{user},error}=await client.auth.getUser();if(error||!user)return Response.json({error:"Sign in required"},{status:401,headers:cors});const {teamId}=await req.json();const db=createClient(url,service);const {data:team}=await db.from("arcade_teams").select("id,team_name,tournament_year").eq("id",teamId).eq("verified",true).maybeSingle();const {data:answers}=await db.from("arcade_team_answers").select("roster").eq("team_id",teamId).maybeSingle();if(!team||!answers)return Response.json({error:"Verified team not available"},{status:404,headers:cors});const {data:session,error:insertError}=await db.from("normal_game_sessions").insert({user_id:user.id,team_id:teamId}).select("id,started_at").single();if(insertError)return Response.json({error:"Could not start game"},{status:500,headers:cors});return Response.json({sessionId:session.id,team,total:(answers.roster||[]).length,seconds:120},{headers:cors});});
+const json=(value:unknown,status=200)=>new Response(JSON.stringify(value),{status,headers:{...cors,"Content-Type":"application/json"}});
+Deno.serve(async req=>{
+ if(req.method==="OPTIONS")return new Response("ok",{headers:cors});
+ if(req.method!=="POST")return json({error:"POST required"},405);
+ const url=Deno.env.get("SUPABASE_URL")!,anon=Deno.env.get("SUPABASE_ANON_KEY")!,service=Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+ const client=createClient(url,anon,{global:{headers:{Authorization:req.headers.get("Authorization")||""}}});
+ const {data:{user},error}=await client.auth.getUser();
+ if(error||!user)return json({error:"Sign in required"},401);
+ const body=await req.json();
+ if(typeof body.teamId!=="string"||body.teamId.length>100)return json({error:"Invalid teamId"},400);
+ const db=createClient(url,service);
+ const {data:team}=await db.from("arcade_teams").select("id").eq("id",body.teamId).eq("verified",true).maybeSingle();
+ if(!team)return json({error:"Verified team not available"},404);
+ const {data:answers,error:answerError}=await db.from("arcade_team_answers").select("roster").eq("team_id",body.teamId).maybeSingle();
+ const roster=(answers?.roster||[]) as Array<{id?:string,position?:string,club?:string,rarity?:string}>;
+ if(answerError||!Array.isArray(roster)||roster.length<1||roster.some(p=>!p.id))return json({error:"Verified answer roster unavailable"},503);
+ const {data:session,error:insertError}=await db.from("normal_game_sessions").insert({user_id:user.id,team_id:body.teamId}).select("id").single();
+ if(insertError)return json({error:"Could not start game" },500);
+ const hints=roster.map(p=>({id:p.id,position:p.position||"",club:p.club||"",rarity:p.rarity||null}));
+ return json({sessionId:session.id,total:roster.length,seconds:120,hints});
+});
