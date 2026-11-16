@@ -137,6 +137,17 @@ for (const [path,functionName] of edgeWiring) {
   if (!(await readText(path)).includes('rpc("' + functionName + '"'))
     fail("Edge Function is not wired to atomic database action: " + path);
 }
+const dataModule = await readText("assets/js/data.js");
+const serviceWorker = await readText("sw.js");
+for (const filename of ["historical-squads.json","worldcup-2026.json","team-difficulty.json","roster-audit.json"]) {
+  if (!dataModule.includes("./data/" + filename))
+    fail("Frontend data loader does not load required file: " + filename);
+  if (!serviceWorker.includes("./data/" + filename))
+    fail("Service worker does not cache required data file: " + filename);
+}
+if (dataModule.includes("public-teams.json") || dataModule.includes("practice-rosters.json") ||
+    serviceWorker.includes("public-teams.json") || serviceWorker.includes("practice-rosters.json"))
+  fail("Frontend or service worker references missing generated data files.");
 for (const excluded of dailyExclusions.teams) {
   if (!migration.includes("'" + excluded.id + "'"))
     fail("Server-side Daily exclusion migration is missing " + excluded.id);
