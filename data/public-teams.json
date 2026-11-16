@@ -1,0 +1,2165 @@
+{
+  "generatedAt": "2026-11-16",
+  "teams": [
+    {
+      "id": "argentina-2002",
+      "name": "Argentina",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "belgium-2002",
+      "name": "Belgium",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "brazil-2002",
+      "name": "Brazil",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "cameroon-2002",
+      "name": "Cameroon",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "china-2002",
+      "name": "China",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "legendary",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "costa-rica-2002",
+      "name": "Costa Rica",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "croatia-2002",
+      "name": "Croatia",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "denmark-2002",
+      "name": "Denmark",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "ecuador-2002",
+      "name": "Ecuador",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "england-2002",
+      "name": "England",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "france-2002",
+      "name": "France",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "germany-2002",
+      "name": "Germany",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "italy-2002",
+      "name": "Italy",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "japan-2002",
+      "name": "Japan",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "mexico-2002",
+      "name": "Mexico",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "nigeria-2002",
+      "name": "Nigeria",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "paraguay-2002",
+      "name": "Paraguay",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "poland-2002",
+      "name": "Poland",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "portugal-2002",
+      "name": "Portugal",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "republic-of-ireland-2002",
+      "name": "Republic of Ireland",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "russia-2002",
+      "name": "Russia",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "saudi-arabia-2002",
+      "name": "Saudi Arabia",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "senegal-2002",
+      "name": "Senegal",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "slovenia-2002",
+      "name": "Slovenia",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "legendary",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "south-africa-2002",
+      "name": "South Africa",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "south-korea-2002",
+      "name": "South Korea",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "spain-2002",
+      "name": "Spain",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "sweden-2002",
+      "name": "Sweden",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "tunisia-2002",
+      "name": "Tunisia",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "turkey-2002",
+      "name": "Turkey",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "united-states-2002",
+      "name": "United States",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "uruguay-2002",
+      "name": "Uruguay",
+      "year": 2002,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "angola-2006",
+      "name": "Angola",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "legendary",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "argentina-2006",
+      "name": "Argentina",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "australia-2006",
+      "name": "Australia",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "brazil-2006",
+      "name": "Brazil",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "costa-rica-2006",
+      "name": "Costa Rica",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "croatia-2006",
+      "name": "Croatia",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "czech-republic-2006",
+      "name": "Czech Republic",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "ecuador-2006",
+      "name": "Ecuador",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "england-2006",
+      "name": "England",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "france-2006",
+      "name": "France",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "germany-2006",
+      "name": "Germany",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "ghana-2006",
+      "name": "Ghana",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "iran-2006",
+      "name": "Iran",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "italy-2006",
+      "name": "Italy",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "ivory-coast-2006",
+      "name": "Ivory Coast",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "japan-2006",
+      "name": "Japan",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "mexico-2006",
+      "name": "Mexico",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "netherlands-2006",
+      "name": "Netherlands",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "paraguay-2006",
+      "name": "Paraguay",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "poland-2006",
+      "name": "Poland",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "portugal-2006",
+      "name": "Portugal",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "saudi-arabia-2006",
+      "name": "Saudi Arabia",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "serbia-and-montenegro-2006",
+      "name": "Serbia and Montenegro",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "south-korea-2006",
+      "name": "South Korea",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "spain-2006",
+      "name": "Spain",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "sweden-2006",
+      "name": "Sweden",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "switzerland-2006",
+      "name": "Switzerland",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "togo-2006",
+      "name": "Togo",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "legendary",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "trinidad-and-tobago-2006",
+      "name": "Trinidad and Tobago",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "legendary",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "tunisia-2006",
+      "name": "Tunisia",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "ukraine-2006",
+      "name": "Ukraine",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "united-states-2006",
+      "name": "United States",
+      "year": 2006,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "algeria-2010",
+      "name": "Algeria",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "argentina-2010",
+      "name": "Argentina",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "australia-2010",
+      "name": "Australia",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "brazil-2010",
+      "name": "Brazil",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "cameroon-2010",
+      "name": "Cameroon",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "chile-2010",
+      "name": "Chile",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "denmark-2010",
+      "name": "Denmark",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "england-2010",
+      "name": "England",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "france-2010",
+      "name": "France",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "germany-2010",
+      "name": "Germany",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "ghana-2010",
+      "name": "Ghana",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "greece-2010",
+      "name": "Greece",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "honduras-2010",
+      "name": "Honduras",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "legendary",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "italy-2010",
+      "name": "Italy",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "ivory-coast-2010",
+      "name": "Ivory Coast",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "japan-2010",
+      "name": "Japan",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "mexico-2010",
+      "name": "Mexico",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "netherlands-2010",
+      "name": "Netherlands",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "new-zealand-2010",
+      "name": "New Zealand",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "nigeria-2010",
+      "name": "Nigeria",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "north-korea-2010",
+      "name": "North Korea",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "legendary",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "paraguay-2010",
+      "name": "Paraguay",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "portugal-2010",
+      "name": "Portugal",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "serbia-2010",
+      "name": "Serbia",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "slovakia-2010",
+      "name": "Slovakia",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "legendary",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "slovenia-2010",
+      "name": "Slovenia",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "legendary",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "south-africa-2010",
+      "name": "South Africa",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "south-korea-2010",
+      "name": "South Korea",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "spain-2010",
+      "name": "Spain",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "switzerland-2010",
+      "name": "Switzerland",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "united-states-2010",
+      "name": "United States",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "uruguay-2010",
+      "name": "Uruguay",
+      "year": 2010,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "algeria-2014",
+      "name": "Algeria",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "argentina-2014",
+      "name": "Argentina",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "australia-2014",
+      "name": "Australia",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "belgium-2014",
+      "name": "Belgium",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "bosnia-and-herzegovina-2014",
+      "name": "Bosnia and Herzegovina",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "brazil-2014",
+      "name": "Brazil",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "cameroon-2014",
+      "name": "Cameroon",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "chile-2014",
+      "name": "Chile",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "colombia-2014",
+      "name": "Colombia",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "costa-rica-2014",
+      "name": "Costa Rica",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "croatia-2014",
+      "name": "Croatia",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "ecuador-2014",
+      "name": "Ecuador",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "england-2014",
+      "name": "England",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "france-2014",
+      "name": "France",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "germany-2014",
+      "name": "Germany",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "ghana-2014",
+      "name": "Ghana",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "greece-2014",
+      "name": "Greece",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "honduras-2014",
+      "name": "Honduras",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "legendary",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "iran-2014",
+      "name": "Iran",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "italy-2014",
+      "name": "Italy",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "ivory-coast-2014",
+      "name": "Ivory Coast",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "japan-2014",
+      "name": "Japan",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "mexico-2014",
+      "name": "Mexico",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "netherlands-2014",
+      "name": "Netherlands",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "nigeria-2014",
+      "name": "Nigeria",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "portugal-2014",
+      "name": "Portugal",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "russia-2014",
+      "name": "Russia",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "south-korea-2014",
+      "name": "South Korea",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "spain-2014",
+      "name": "Spain",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "switzerland-2014",
+      "name": "Switzerland",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "united-states-2014",
+      "name": "United States",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "uruguay-2014",
+      "name": "Uruguay",
+      "year": 2014,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "argentina-2018",
+      "name": "Argentina",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "australia-2018",
+      "name": "Australia",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "belgium-2018",
+      "name": "Belgium",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "brazil-2018",
+      "name": "Brazil",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "colombia-2018",
+      "name": "Colombia",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "costa-rica-2018",
+      "name": "Costa Rica",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "croatia-2018",
+      "name": "Croatia",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "denmark-2018",
+      "name": "Denmark",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "egypt-2018",
+      "name": "Egypt",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "england-2018",
+      "name": "England",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "france-2018",
+      "name": "France",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "germany-2018",
+      "name": "Germany",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "iceland-2018",
+      "name": "Iceland",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "iran-2018",
+      "name": "Iran",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "japan-2018",
+      "name": "Japan",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "mexico-2018",
+      "name": "Mexico",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "morocco-2018",
+      "name": "Morocco",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "nigeria-2018",
+      "name": "Nigeria",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "panama-2018",
+      "name": "Panama",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "legendary",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "peru-2018",
+      "name": "Peru",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "poland-2018",
+      "name": "Poland",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "portugal-2018",
+      "name": "Portugal",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "russia-2018",
+      "name": "Russia",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "saudi-arabia-2018",
+      "name": "Saudi Arabia",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "senegal-2018",
+      "name": "Senegal",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "serbia-2018",
+      "name": "Serbia",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "south-korea-2018",
+      "name": "South Korea",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "spain-2018",
+      "name": "Spain",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "sweden-2018",
+      "name": "Sweden",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "switzerland-2018",
+      "name": "Switzerland",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "tunisia-2018",
+      "name": "Tunisia",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "uruguay-2018",
+      "name": "Uruguay",
+      "year": 2018,
+      "total": 23,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "argentina-2022",
+      "name": "Argentina",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "australia-2022",
+      "name": "Australia",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "belgium-2022",
+      "name": "Belgium",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "brazil-2022",
+      "name": "Brazil",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "cameroon-2022",
+      "name": "Cameroon",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "canada-2022",
+      "name": "Canada",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "costa-rica-2022",
+      "name": "Costa Rica",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "croatia-2022",
+      "name": "Croatia",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "denmark-2022",
+      "name": "Denmark",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "ecuador-2022",
+      "name": "Ecuador",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "england-2022",
+      "name": "England",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "france-2022",
+      "name": "France",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "germany-2022",
+      "name": "Germany",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "ghana-2022",
+      "name": "Ghana",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "iran-2022",
+      "name": "Iran",
+      "year": 2022,
+      "total": 25,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "japan-2022",
+      "name": "Japan",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "mexico-2022",
+      "name": "Mexico",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "morocco-2022",
+      "name": "Morocco",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "netherlands-2022",
+      "name": "Netherlands",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "poland-2022",
+      "name": "Poland",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "portugal-2022",
+      "name": "Portugal",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "qatar-2022",
+      "name": "Qatar",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "saudi-arabia-2022",
+      "name": "Saudi Arabia",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "senegal-2022",
+      "name": "Senegal",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "serbia-2022",
+      "name": "Serbia",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "south-korea-2022",
+      "name": "South Korea",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "spain-2022",
+      "name": "Spain",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "switzerland-2022",
+      "name": "Switzerland",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "tunisia-2022",
+      "name": "Tunisia",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": true
+    },
+    {
+      "id": "united-states-2022",
+      "name": "United States",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "uruguay-2022",
+      "name": "Uruguay",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "wales-2022",
+      "name": "Wales",
+      "year": 2022,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "czech-republic-2026",
+      "name": "Czech Republic",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": true,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "mexico-2026",
+      "name": "Mexico",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": true,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "south-africa-2026",
+      "name": "South Africa",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "south-korea-2026",
+      "name": "South Korea",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "bosnia-and-herzegovina-2026",
+      "name": "Bosnia and Herzegovina",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "canada-2026",
+      "name": "Canada",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "qatar-2026",
+      "name": "Qatar",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "switzerland-2026",
+      "name": "Switzerland",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "brazil-2026",
+      "name": "Brazil",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": true,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "haiti-2026",
+      "name": "Haiti",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "legendary",
+      "verified": true,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "morocco-2026",
+      "name": "Morocco",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "scotland-2026",
+      "name": "Scotland",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "australia-2026",
+      "name": "Australia",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": true,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "paraguay-2026",
+      "name": "Paraguay",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "turkey-2026",
+      "name": "Turkey",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "united-states-2026",
+      "name": "United States",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "curacao-2026",
+      "name": "Curaçao",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "legendary",
+      "verified": true,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "ecuador-2026",
+      "name": "Ecuador",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "germany-2026",
+      "name": "Germany",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": true,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "ivory-coast-2026",
+      "name": "Ivory Coast",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "japan-2026",
+      "name": "Japan",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": true,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "netherlands-2026",
+      "name": "Netherlands",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "sweden-2026",
+      "name": "Sweden",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "tunisia-2026",
+      "name": "Tunisia",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "belgium-2026",
+      "name": "Belgium",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": true,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "egypt-2026",
+      "name": "Egypt",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "iran-2026",
+      "name": "Iran",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "new-zealand-2026",
+      "name": "New Zealand",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "cape-verde-2026",
+      "name": "Cape Verde",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "legendary",
+      "verified": true,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "saudi-arabia-2026",
+      "name": "Saudi Arabia",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "spain-2026",
+      "name": "Spain",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": true,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "uruguay-2026",
+      "name": "Uruguay",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "france-2026",
+      "name": "France",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": true,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "iraq-2026",
+      "name": "Iraq",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "norway-2026",
+      "name": "Norway",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "senegal-2026",
+      "name": "Senegal",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "algeria-2026",
+      "name": "Algeria",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": true,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "argentina-2026",
+      "name": "Argentina",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": true,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "austria-2026",
+      "name": "Austria",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": true,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "jordan-2026",
+      "name": "Jordan",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "legendary",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "colombia-2026",
+      "name": "Colombia",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "dr-congo-2026",
+      "name": "DR Congo",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "portugal-2026",
+      "name": "Portugal",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": true,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "uzbekistan-2026",
+      "name": "Uzbekistan",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "legendary",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "croatia-2026",
+      "name": "Croatia",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "england-2026",
+      "name": "England",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "common",
+      "verified": true,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "ghana-2026",
+      "name": "Ghana",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "niche",
+      "verified": false,
+      "excludedFromDaily": false
+    },
+    {
+      "id": "panama-2026",
+      "name": "Panama",
+      "year": 2026,
+      "total": 26,
+      "teamDifficulty": "legendary",
+      "verified": false,
+      "excludedFromDaily": false
+    }
+  ]
+}
