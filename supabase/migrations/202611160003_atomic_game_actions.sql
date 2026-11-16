@@ -145,9 +145,9 @@ begin
     raise exception 'Daily answer roster unavailable';
   end if;
 
-  select score,found_player_ids into v_team_score,v_found
-  from public.daily_attempt_teams
-  where attempt_id=p_attempt_id and sequence=p_sequence;
+  select dat.score,dat.found_player_ids into v_team_score,v_found
+  from public.daily_attempt_teams dat
+  where dat.attempt_id=p_attempt_id and dat.sequence=p_sequence;
   v_team_score := coalesce(v_team_score,0);
   v_found := coalesce(v_found,'{}'::text[]);
   v_team_total := jsonb_array_length(v_roster);
