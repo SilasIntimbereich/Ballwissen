@@ -138,7 +138,7 @@ try{
  await timerPage.waitForFunction(()=>document.querySelector("#data-status")?.textContent.includes("240"));
  await timerPage.locator('[data-mode="easy"]').click();
  await timerPage.locator("#year").selectOption("2018");
- await timerPage.locator(".team-button").filter({hasText:/^Argentina\b/}).click();
+ await timerPage.locator("#team-grid .team-button").getByText("Argentina",{exact:true}).click();
  await timerPage.clock.runFor(120_000);
  await timerPage.waitForFunction(()=>!document.querySelector("#result").classList.contains("hidden"));
  assert.match(await timerPage.locator("#result-message").textContent(),/Time is up/);
@@ -159,7 +159,7 @@ try{
  await offlinePage.waitForFunction(()=>document.querySelector("#data-status")?.textContent.includes("240"));
  await offlinePage.locator('[data-mode="easy"]').click();
  await offlinePage.locator("#year").selectOption("2018");
- await offlinePage.locator(".team-button").filter({hasText:/^Argentina\b/}).click();
+ await offlinePage.locator("#team-grid .team-button").getByText("Argentina",{exact:true}).click();
  await offlinePage.locator("#guess").fill("Messi");await offlinePage.locator("#guess").press("Enter");
  await offlinePage.waitForFunction(()=>document.querySelector("#score").textContent==="1");
  assert.deepEqual(offlineErrors,[],"cached app must run after an offline reload");
