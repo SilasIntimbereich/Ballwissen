@@ -56,6 +56,9 @@ begin
   if exists (select 1 from public.daily_excluded_squads x where x.team_id=p_team_id) then
     raise exception 'Excluded Daily squad';
   end if;
+  if not exists (select 1 from public.arcade_teams t where t.id=p_team_id and t.verified=true) then
+    raise exception 'Daily squad is not verified';
+  end if;
 
   select roster into v_roster
   from public.arcade_team_answers
@@ -149,6 +152,9 @@ begin
   end if;
   if exists (select 1 from public.daily_excluded_squads x where x.team_id=v_team_id) then
     raise exception 'Excluded Daily squad';
+  end if;
+  if not exists (select 1 from public.arcade_teams t where t.id=v_team_id and t.verified=true) then
+    raise exception 'Daily squad is not verified';
   end if;
 
   select roster into v_roster
