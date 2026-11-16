@@ -17,6 +17,8 @@
 - [x] Data validation checks exactly 50 unique exclusion IDs, team names and years against imported historical squads and the SQL migration
 - [x] Player-level audit ledger added; browser eligibility and Supabase sync are fail-closed until every player, position and tournament-time club has primary/secondary sources
 - [x] Safe DOM rendering for roster hints; untrusted club text is not injected as HTML
+- [x] Atomic database operations serialize Daily guesses/completions and normal guesses/results to prevent race conditions and duplicate result submissions
+- [x] Score distribution buckets are ordered numerically; peer percentile excludes the current attempt from its denominator
 - [x] Supabase migration and Edge Function source files for private answers, Daily attempts, normal sessions and leaderboard/statistics
 - [x] Frontend request wiring for Supabase-backed features
 - [x] iPhone setup and deployment documentation
