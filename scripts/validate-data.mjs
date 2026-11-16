@@ -111,6 +111,15 @@ const allTeams = [
   }))
 ];
 const allTeamsById = new Map(allTeams.map(t => [t.id, t]));
+const excludedIds = new Set(dailyExclusions.teams.map(t => t.id));
+const eligibleDailyByTier = Object.fromEntries(tierEntries.map(([tier]) => [tier, 0]));
+for (const team of allTeams) {
+  const tier = tierEntries.find(([, names]) => names.includes(team.name))?.[0];
+  if (tier && !excludedIds.has(team.id)) eligibleDailyByTier[tier]++;
+}
+for (const [tier, count] of Object.entries(eligibleDailyByTier)) {
+  if (count < 3) fail("Fewer than three non-excluded squads remain for Daily " + tier + ": " + count);
+}
 for (const [teamId, record] of Object.entries(audit.teams)) {
   if (record.status !== "verified") continue;
   const team = allTeamsById.get(teamId);
@@ -148,4 +157,5 @@ async function readText(path) {
 
 console.log("Structural validation passed: 192 historical teams / " + historicalPlayers +
   " source-listed players; 48 teams / 1,248 rows in 2026; 50 exact Daily exclusions are present in both JSON and the server-side SQL migration.");
+console.log("Potential non-excluded Daily pool: " + Object.entries(eligibleDailyByTier).map(([tier,count])=>tier+"="+count).join(", ") + ". These are candidates only; at least three fully audited teams per tier are still required before publishing Daily challenges.");
 console.log("Historical clubs remain intentionally blank and all roster datasets remain unverified pending player-by-player independent audits.");
