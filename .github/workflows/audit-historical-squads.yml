@@ -1,0 +1,51 @@
+name: Audit historical World Cup squads and clubs
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/historical-squads.json"
+      - "scripts/audit-historical-fifa-pdfs.mjs"
+      - ".github/workflows/audit-historical-squads.yml"
+  schedule:
+    - cron: "41 5 * * 1"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install PDF parser
+        run: npm install --no-save pdfjs-dist@^5.4.394
+      - name: Compare 160 squads with FIFA final PDFs
+        run: node scripts/audit-historical-fifa-pdfs.mjs
+      - name: Commit audit report and club candidates
+        if: always()
+        run: |
+          if [ -f artifacts/historical-fifa-audit.json ] && [ -f artifacts/historical-club-candidates.json ]; then
+            mkdir -p reports
+            cp artifacts/historical-fifa-audit.json reports/historical-fifa-audit.json
+            cp artifacts/historical-club-candidates.json reports/historical-club-candidates.json
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add reports/historical-fifa-audit.json reports/historical-club-candidates.json
+            if ! git diff --cached --quiet; then
+              git commit -m "Update historical FIFA squad audit report"
+              git pull --rebase origin main
+              git push origin HEAD:main
+            fi
+          fi
+      - name: Upload full audit artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: historical-fifa-roster-audit
+          path: |
+            artifacts/historical-fifa-audit.json
+            artifacts/historical-club-candidates.json
+          if-no-files-found: warn
+          retention-days: 30
