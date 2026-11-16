@@ -13,7 +13,7 @@ This repository includes a GitHub Actions workflow so no computer or terminal is
 
 1. Open the repository in Safari.
 2. Tap **Actions**.
-3. Select **Import verified historical World Cup squads**.
+3. Select **Import historical World Cup squads (structural checks)**.
 4. Tap **Run workflow**, then the green confirmation button.
 5. Wait for the workflow to finish. It validates that every selected men's tournament has 32 teams and plausible roster sizes. If validation fails, it stops rather than committing partial data.
 6. Return to the Code tab and confirm that `data/historical-squads.json` now contains the imported tournaments.
@@ -30,12 +30,12 @@ The source is the Fjelstul World Cup Database via DataHub, licensed CC BY-SA 4.0
 ## 3. Create Supabase backend
 1. Create a Supabase project.
 2. Apply all repository migrations in order using the **Deploy Supabase backend** GitHub Actions workflow. The newer `202611160001_daily_squad_exclusions.sql` migration is required: it installs the exact 50 excluded squad IDs in PostgreSQL and enforces the exclusion inside the server-side Daily publisher. Do not deploy only the first migration.
-4. Enable Anonymous Sign-Ins under Authentication → Providers.
-5. In GitHub → Settings → Secrets and variables → Actions, add these repository secrets: `SUPABASE_ACCESS_TOKEN`, `SUPABASE_PROJECT_ID`, `SUPABASE_DB_PASSWORD`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`. Never paste the service-role key into a normal repository file.
-6. Open GitHub → Actions → **Deploy Supabase backend** → **Run workflow**. This applies migrations, sets server-side secrets and deploys the Edge Functions.
-7. Open GitHub → Actions → **Sync verified squads to Supabase** → **Run workflow**. This uploads team metadata and private answer rosters using the service-role key from GitHub Secrets.
-8. Review the curated team difficulty mapping in `data/team-difficulty.json`. It is separate from player rarity and can be adjusted before daily challenges are published.
-9. Run `select public.publish_daily_challenges(current_date);` in Supabase SQL Editor after at least three verified teams exist in each tier. To schedule it daily at 00:05 UTC, enable the `pg_cron` extension and run `select cron.schedule('football-arcade-daily','5 0 * * *','select public.publish_daily_challenges(current_date);');`.
+3. Enable Anonymous Sign-Ins under Authentication → Providers.
+4. In GitHub → Settings → Secrets and variables → Actions, add these repository secrets: `SUPABASE_ACCESS_TOKEN`, `SUPABASE_PROJECT_ID`, `SUPABASE_DB_PASSWORD`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`. Never paste the service-role key into a normal repository file.
+5. Open GitHub → Actions → **Deploy Supabase backend** → **Run workflow**. This applies migrations, sets server-side secrets and deploys the Edge Functions.
+6. Open GitHub → Actions → **Sync verified squads to Supabase** → **Run workflow**. This uploads team metadata and private answer rosters using the service-role key from GitHub Secrets.
+7. Review the curated team difficulty mapping in `data/team-difficulty.json`. It is separate from player rarity and can be adjusted before daily challenges are published.
+8. Run `select public.publish_daily_challenges(current_date);` in Supabase SQL Editor after at least three verified teams exist in each tier. To schedule it daily at 00:05 UTC, enable the `pg_cron` extension and run `select cron.schedule('football-arcade-daily','5 0 * * *','select public.publish_daily_challenges(current_date);');`.
 
 The daily and normal-mode frontends are wired to the Edge Functions, but this is not yet a production-tested service. The functions are intended to keep answer rosters server-side; verify RLS and timer behavior in a real Supabase project before launch.
 
