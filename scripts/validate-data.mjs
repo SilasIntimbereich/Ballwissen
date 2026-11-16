@@ -110,6 +110,11 @@ for (const excluded of dailyExclusions.teams) {
   if (!migration.includes("'" + excluded.id + "'"))
     fail("Server-side Daily exclusion migration is missing " + excluded.id);
 }
+if (!/delete from public\\.daily_challenges/i.test(migration))
+  fail("Daily exclusion migration must purge previously scheduled excluded squads.");
+if (!/create trigger enforce_daily_squad_exclusions/i.test(migration) ||
+    !/create or replace function public\\.reject_excluded_daily_squad/i.test(migration))
+  fail("Daily exclusion migration is missing the database-level exclusion trigger.");
 const normalize = value => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
 const allTeams = [
   ...historicalTeams,
@@ -134,6 +139,13 @@ for (const [teamId, record] of Object.entries(audit.teams)) {
   if (!team) fail("Audit ledger marks an unknown team verified: " + teamId);
   if (!Array.isArray(record.players) || record.players.length !== team.players.length)
     fail("Verified audit row count mismatch: " + teamId);
+  const auditKeys = record.players.map(r => Number(r.number) + "|" + normalize(r.playerName));
+  if (new Set(auditKeys).size !== auditKeys.length)
+    fail("Verified audit contains duplicate player rows: " + teamId);
+  for (const row of record.players) {
+    if (!team.players.some(p => Number(p.number) === Number(row.number) && normalize(p.name) === normalize(row.playerName)))
+      fail("Verified audit contains an extra player row: " + teamId + " / " + row.playerName);
+  }
   for (const player of team.players) {
     const row = record.players.find(r => Number(r.number) === Number(player.number) && normalize(r.playerName) === normalize(player.name));
     if (!row || !["matched", "corrected"].includes(row.status))
