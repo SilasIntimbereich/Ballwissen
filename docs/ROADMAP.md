@@ -8,6 +8,9 @@
 - [x] Imported historical data: 192 teams and 4,511 source-listed player rows
 - [x] 2026 snapshot: 48 teams and 1,248 player rows
 - [x] Separate team-difficulty map, now covering all imported historical and 2026 teams
+- [x] Fixed 50-squad exclusion list for all Daily modes; excluded editions remain playable in Normal modes
+- [x] Database-side Daily publishing filter prevents excluded squads from entering any Daily schedule
+- [x] Data validation checks exactly 50 unique exclusion IDs against imported historical squads
 - [x] Supabase migration and Edge Function source files for private answers, Daily attempts, normal sessions and leaderboard/statistics
 - [x] Frontend request wiring for Supabase-backed features
 - [x] iPhone setup and deployment documentation
@@ -17,11 +20,12 @@
 - [ ] Source and audit historical club-at-tournament data; current historical source does not include clubs
 - [ ] Audit all 1,248 2026 players against FIFA's final squad PDF
 - [ ] Curate player rarity tiers with evidence; player rarity values are currently unassigned
+- [ ] Playtest and review the provisional 50-squad Daily exclusion list before release
 - [ ] Independently review team-difficulty tiers after playtesting
 - [ ] Deploy Supabase migration and Edge Functions to a real project
 - [ ] Sync team metadata and private answer rosters to Supabase
 - [ ] Add at least three independently verified teams to each Daily tier before publishing Daily schedules
-- [ ] Fix/verify Daily attempt resume behavior after reload and server/browser timer boundaries
+- [ ] Implement and verify Daily attempt resume behavior after reload and server/browser timer boundaries
 - [ ] Run end-to-end tests for RLS, attempt uniqueness, concurrency, timer boundaries, scoring and mobile Safari
 - [ ] Configure public Supabase URL and anon key in the frontend
 - [ ] Deploy to Netlify and verify the production site on iPhone
