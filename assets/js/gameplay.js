@@ -19,13 +19,15 @@ export function submitGuess(round, guess, matcher) {
     return { status: duplicate ? "duplicate" : "incorrect" };
   }
   round.found.add(index);
+  const complete = round.found.size === round.players.length;
+  if (complete) round.ended = true;
   return {
     status: "correct",
     index,
     player: round.players[index],
     score: round.found.size,
     total: round.players.length,
-    complete: round.found.size === round.players.length
+    complete
   };
 }
 
