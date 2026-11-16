@@ -30,6 +30,7 @@
 - [ ] Audit all 1,248 2026 players against FIFA's final squad PDF
 - [ ] Curate player rarity tiers with evidence; player rarity values are currently unassigned
 - [ ] Playtest and review the provisional 50-squad Daily exclusion list before release
+- [ ] Expand and playtest the Daily Legendary pool: only 6 non-excluded team-year candidates currently remain, so three-team daily sets would repeat quickly
 - [ ] Independently review team-difficulty tiers after playtesting
 - [ ] Deploy Supabase migration and Edge Functions to a real project
 - [ ] Sync team metadata and private answer rosters to Supabase
