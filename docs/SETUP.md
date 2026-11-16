@@ -24,7 +24,7 @@ The source is the Fjelstul World Cup Database via DataHub, licensed CC BY-SA 4.0
 1. Create a Netlify account.
 2. Choose **Add new site → Import an existing project**.
 3. Connect GitHub and select `SilasIntimbereich/Ballwissen`.
-4. Build command: leave blank. Publish directory: `.`.
+4. Build command: `npm run build:public`. Publish directory: `dist`. The build excludes full answer rosters for every verified team.
 5. Deploy. Netlify will redeploy when the GitHub repository changes.
 
 ## 3. Create Supabase backend
