@@ -30,3 +30,23 @@ jobs:
             echo "Checking $file"
             deno check "$file"
           done
+
+  fifa-roster-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install audit dependencies
+        run: npm ci
+      - name: Compare all 48 squads with FIFA's final PDF
+        run: npm run audit:2026
+      - name: Upload full player-by-player audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fifa-2026-roster-audit
+          path: artifacts/fifa-2026-audit.json
+          if-no-files-found: warn
