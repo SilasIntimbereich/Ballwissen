@@ -10,6 +10,9 @@
 - [x] Separate team-difficulty map, now covering all imported historical and 2026 teams
 - [x] Fixed 50-squad exclusion list for all Daily modes; excluded editions remain playable in Normal modes
 - [x] Database-side Daily publishing filter prevents excluded squads from entering any Daily schedule
+- [x] Daily attempts can resume after reload with found players and remaining server time restored
+- [x] Expired Daily teams are finalized from server time after the user returns
+- [x] Historical importer strips source placeholder tokens from player names; current imported file cleaned
 - [x] Data validation checks exactly 50 unique exclusion IDs against imported historical squads
 - [x] Supabase migration and Edge Function source files for private answers, Daily attempts, normal sessions and leaderboard/statistics
 - [x] Frontend request wiring for Supabase-backed features
@@ -25,7 +28,7 @@
 - [ ] Deploy Supabase migration and Edge Functions to a real project
 - [ ] Sync team metadata and private answer rosters to Supabase
 - [ ] Add at least three independently verified teams to each Daily tier before publishing Daily schedules
-- [ ] Implement and verify Daily attempt resume behavior after reload and server/browser timer boundaries
+- [ ] End-to-end test Daily attempt resume and server/browser timer boundaries against a deployed Supabase project
 - [ ] Run end-to-end tests for RLS, attempt uniqueness, concurrency, timer boundaries, scoring and mobile Safari
 - [ ] Configure public Supabase URL and anon key in the frontend
 - [ ] Deploy to Netlify and verify the production site on iPhone
