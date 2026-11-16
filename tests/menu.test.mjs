@@ -46,6 +46,6 @@ test("gameplay keeps the roster visible and handles all end states", async () =>
   assert.match(main, /Every squad member is now revealed\./);
   assert.match(main, /cardForPlayer\(player\.id\)\|\|/);
   assert.match(main, /const onlineLocked=selected\.verified&&!supabase/);
-  assert.match(css, /\/\* Gameplay usability fix: keep the revealed roster visible after Give Up/time-up\. \*\//);
+  assert.ok(css.includes("Gameplay usability fix: keep the revealed roster visible"));
   assert.match(css, /\.result\{\s*position:relative/);
 });
