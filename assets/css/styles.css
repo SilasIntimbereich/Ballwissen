@@ -17,3 +17,6 @@
 .result-stats{width:min(560px,100%);margin-top:12px;text-align:left}.stat-row{display:grid;grid-template-columns:1fr auto;gap:8px;font-size:14px;padding:4px 0;color:#d7e3d6}.stat-track{grid-column:1/-1;height:7px;background:#1c3326}.stat-fill{height:100%;background:var(--green)}.stat-percentile{font:8px "Press Start 2P";color:var(--green);text-align:center;margin:12px 0}
 
 .leaderboard-self{grid-column:1/-1;color:var(--green);font:8px 'Press Start 2P';line-height:1.8;margin:0}
+
+.mode-card:disabled{opacity:.42;cursor:not-allowed;transform:none;border-color:#34483a;filter:saturate(.45)}
+.mode-card:disabled:hover,.mode-card:disabled:focus-visible{transform:none;background:#0b2119ef;border-color:#34483a}
