@@ -1,30 +1,63 @@
 # FOOTBALL ARCADE V4
 
-Mobile-first retro World Cup squad quiz, built for iPhone and desktop.
+A mobile-first World Cup squad memory game with a colourful, angular retro-football look. V4 is being prepared as a **local-first static release**. Online accounts, ranked scores, leaderboards and backend gameplay are intentionally disabled for this release.
 
-## Current implementation
-- Normal Easy and Hard modes with a 120-second timer, fuzzy name matching, duplicate protection, Give Up and reveal states.
-- 2026 squad data loaded: 48 national teams and 1,248 registered-player records.
-- Historical 2002–2022 squad importer with per-tournament roster checks, duplicate/name validation and a GitHub Actions workflow.
-- Player-level audit ledger that gates ranked access until every player, position and tournament-time club has independent source checks.
-- Supabase migration and Edge Function foundations for Daily challenges, private server-side answer checking, real team statistics and weekly leaderboard.
-- iPhone-oriented setup guide and source attribution.
+## What is playable
 
-## Important status
-This is an active implementation, not yet a finished public launch. Historical club-at-tournament hints are not present in the upstream squads CSV and remain unavailable until a separate reliable, licensed source is integrated. Historical roster records are imported but deliberately marked unverified for online ranking until independently audited in `data/roster-audit.json`; the 2022 source contains 831 rather than 832 player rows. Twenty 2026 teams have passed player-by-player checks; the remaining 28 are still unverified. Verified teams span all three Daily difficulty tiers (Common 10, Niche 4, Legendary 6). A PDF.js audit workflow now compares all 48 final FIFA squad pages against the imported snapshot and uploads a discrepancy report. The public Netlify build excludes all verified answer names; normal ranked guesses and missed-player reveals are handled server-side. Unverified squads remain local practice only. Daily and normal online gameplay, score distributions, percentiles and the weekly leaderboard still require backend deployment, data sync and end-to-end testing. The fixed 50-squad Daily exclusion list is enforced by PostgreSQL, not only frontend data.
+- **Daily Common, Daily Niche and Daily Legendary:** three teams from the selected difficulty tier, with a stable daily selection on the device. The curated list of 50 excluded squad editions is never used.
+- **Normal Easy and Hard:** choose any World Cup edition and national team. Easy shows position hints and club details where the source contains them; Hard hides the hints.
+- **Practice:** the same complete squads with no timer.
+- **World Cup Challenge:** choose a tournament and team.
+- **Gameplay:** surname and compound-surname matching, accent-insensitive names, minor typo tolerance, duplicate and incorrect-guess feedback, shirt numbers, player rarity labels, a 120-second timer, Give Up, complete roster reveal, perfect-run results and final Daily results.
+- **Local statistics and settings:** games played, players found, best accuracy, reset, compact layout and reduced motion. They are stored on the current device only.
+- **Offline support:** the service worker caches the app and squad data after the first successful load.
 
-## Run the historical data import from iPhone
-Open GitHub → Actions → **Import historical World Cup squads (structural checks)** → **Run workflow**. The workflow downloads the Fjelstul/DataHub dataset, checks all 32 teams per historical tournament, validates player names and roster sizes (including the 2022 Iran source roster), confirms the 2026 dataset, then commits the generated JSON only if all checks pass. Historical club fields remain null because the upstream squads CSV does not contain them.
+All games are local and unranked. Because answers are bundled for offline play, player names are visible in the downloaded static data. Do not use this release for competitive or ranked play.
 
-## Documentation
-- [iPhone setup and deployment](docs/SETUP.md)
-- [Data sources and licensing](docs/DATA_SOURCES.md)
-- [Independent roster and club audit](docs/ROSTER_AUDIT.md)
-- [Implementation checklist](docs/ROADMAP.md)
-- [Data attribution](data/ATTRIBUTION.txt)
+## Squad data
 
-## Data licensing
-Historical squad data is adapted from the Fjelstul World Cup Database via DataHub under CC BY-SA 4.0. The 2026 squad snapshot is sourced from the repository documented in DATA_SOURCES.md and is cross-referenced to FIFA's official 1,248-player/48-team final squad announcement. Verify the full FIFA lists before production launch.
+| Data | Coverage | Status |
+|---|---:|---|
+| Historical World Cups, 2002–2022 | 192 teams / 4,511 player records | Imported from the Fjelstul World Cup Database; position and shirt number are present. The upstream source does not provide tournament-time club values. |
+| World Cup 2026 | 48 teams / 1,248 player records | 26 players per team. 20 teams have been independently reviewed against FIFA squad documents; the remaining 28 are labelled practice data. Club hints are included where supplied. |
+| Daily exclusions | 50 squad editions | Checked against the squad IDs and excluded from all three Daily tiers. |
 
-## Deploy
-Frontend: Netlify. Backend: Supabase. Never expose the Supabase service-role key in browser code.
+The 2022 Iran squad contains 25 players in the source data; this is not padded with an invented player. Historical squads and 2026 squads are not presented as independently verified where the audit has not been completed.
+
+## Run and validate
+
+Requirements: Node.js 20 or newer.
+
+~~~sh
+npm test
+npm run build
+~~~
+
+The test command checks JavaScript syntax, source-data structure, all 5,759 player-name matches, public build contents, all 240 squad records, Daily exclusions and regression tests.
+
+For a real browser smoke test:
+
+~~~sh
+npm install --no-save playwright
+npx playwright install --with-deps chromium
+npm run test:browser
+~~~
+
+The browser suite checks the mobile layout, all tournament/team selectors, Easy, Hard, Practice, all Daily tiers, Give Up, timeout, results, local statistics, settings and a cold offline reload. GitHub Actions runs these checks on changes to main and the V4 branch.
+
+## Build and publish
+
+~~~sh
+npm run build
+~~~
+
+The static site is written to dist/. Netlify is configured to publish that folder. No Supabase URL, anon key, service-role key or backend deployment is needed for local gameplay. The online backend code and migrations are retained for a later phase but are not loaded by the browser app.
+
+Before enabling ranked play, the project needs independently audited squads, private server-side answer validation, deployed database migrations and Edge Functions, and a separate end-to-end online test suite.
+
+## Sources and licensing
+
+- Historical squads: [Fjelstul World Cup Database via DataHub](https://datahub.io/football/worldcup), licensed [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+- 2026 squad snapshot: [Erick Alfaro's World Cup 2026 dataset](https://github.com/erickalfaro/world-cup-data-2026), based on [OpenFootball](https://github.com/openfootball/worldcup.json) squad data, which is public domain.
+- The app footer also displays these sources and the current audit coverage.
+
