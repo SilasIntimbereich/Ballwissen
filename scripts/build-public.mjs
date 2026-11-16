@@ -84,6 +84,7 @@ await cp("assets", "dist/assets", { recursive: true });
 await cp("index.html", "dist/index.html");
 await cp("manifest.webmanifest", "dist/manifest.webmanifest");
 await cp("sw.js", "dist/sw.js");
+await cp("data/daily-exclusions.json", "dist/data/daily-exclusions.json");
 await writeFile("dist/data/public-teams.json", JSON.stringify({ version: 1, teams: publicTeams }, null, 2) + "\n");
 await writeFile("dist/data/practice-rosters.json", JSON.stringify({ version: 1, teams: practiceTeams }, null, 2) + "\n");
 
