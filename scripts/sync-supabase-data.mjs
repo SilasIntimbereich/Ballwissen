@@ -39,6 +39,11 @@ function verifiedByAudit(team,teamId){
   if(!row)throw new Error("Verified audit has no exact name/number match for "+teamId+": "+player.name);
   if(!["matched","corrected"].includes(row.status)||!String(row.sourceName||"").trim())
    throw new Error("Unresolved player audit status or missing source name for "+teamId+": "+player.name);
+  const sourceTokens=String(row.sourceName).normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+  const playerTokens=String(player.name).normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+  const explicitAlias=(row.sourceNameAliases||[]).some(alias=>normalize(alias)===normalize(player.name));
+  if(!explicitAlias&&!playerTokens.some(token=>sourceTokens.includes(token)))
+   throw new Error("Audit source name does not match the player or a documented alias for "+teamId+": "+player.name);
   if(row.position!==player.position)
    throw new Error("Audited position differs from game data for "+teamId+": "+player.name);
   if(!Object.hasOwn(row,"clubAtTournament")||(row.clubAtTournament??null)!==(player.club??null))
