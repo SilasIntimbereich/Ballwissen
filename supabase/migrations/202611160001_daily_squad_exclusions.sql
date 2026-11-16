@@ -127,6 +127,9 @@ begin
   if exists (select 1 from public.daily_excluded_squads x where x.team_id=new.team_id) then
     raise exception 'Daily challenge cannot include excluded squad %', new.team_id;
   end if;
+  if not exists (select 1 from public.arcade_teams t where t.id=new.team_id and t.verified=true) then
+    raise exception 'Daily challenge requires verified squad %', new.team_id;
+  end if;
   return new;
 end;
 $$;
