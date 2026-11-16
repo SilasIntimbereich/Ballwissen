@@ -45,7 +45,7 @@ for (const year of [2002, 2006, 2010, 2014, 2018, 2022]) {
     const names = team.players.map(p => p.name?.trim());
     if (names.some(n => !n))
       fail(year + " " + team.name + ": empty player name.");
-    if (names.some(n => /\\bnot applicable\\b/i.test(n)))
+    if (names.some(n => /\bnot applicable\b/i.test(n)))
       fail(year + " " + team.name + ": source placeholder leaked into player name.");
     if (team.players.some(p => !positions.has(p.position)))
       fail(year + " " + team.name + ": missing or invalid player position.");
