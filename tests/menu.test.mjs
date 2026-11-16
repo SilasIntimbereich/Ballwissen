@@ -70,7 +70,7 @@ test("offline Daily demo is playable without exposing verified answer rosters", 
   assert.match(main, /demoFallback=pool\.length<3/);
   assert.match(main, /mixed test pool/);
   assert.match(main, /dailyState\.demo/);
-  assert.match(main, /team\.players\.findIndex/);
+  assert.match(main, /submitGuess\(roundState,value,matches\)/);
   assert.match(main, /Three local practice squads played/);
   assert.match(sw, /daily-exclusions\.json/);
   assert.match(main, /!dailyExclusions\.has\(item\.id\)/);
