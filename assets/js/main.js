@@ -71,7 +71,7 @@ async function acceptDailyGuess(value){
  if(!data.correct){$("#feedback").textContent=data.duplicate?"Already found.":"Not in this squad. Try another name.";return;}
  const player=data.player;found.add(player.id);const card=cardForPlayer(player.id);
  if(card){card.classList.add("found");setPlayerRarity(card,player.rarity);card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=dailyState.mode==="daily-legendary"?"FOUND":formatHint(player.position,player.club);}
- $("#score").textContent=data.score;$("#feedback").textContent="Correct! "+player.name+" found.";if(data.score===data.total)await finishDailyTeam(false);
+ $("#score").textContent=data.score;$("#feedback").textContent="Correct! "+player.name+" found.";if(data.score===data.total)await finishDailyTeam(true);
 }
 async function finishDailyTeam(giveUp){
  if(ended)return;ended=true;clearInterval(tick);$("#guess").disabled=true;$("#guess-btn").disabled=true;$("#give-up").disabled=true;
@@ -96,7 +96,7 @@ function renderStats(payload){
 async function finish(giveUp,completed=false){
  if(dailyState){await finishDailyTeam(giveUp);return;}if(ended)return;ended=true;clearInterval(tick);$("#guess").disabled=true;$("#guess-btn").disabled=true;$("#give-up").disabled=true;
  if(normalSessionId){
-  const response=await supabase.functions.invoke("submit-normal-result",{body:{sessionId:normalSessionId,giveUp}});
+  const response=await supabase.functions.invoke("submit-normal-result",{body:{sessionId:normalSessionId,giveUp:giveUp||completed}});
   if(response.error){ended=false;$("#give-up").disabled=false;$("#give-up").textContent="RETRY SUBMIT";$("#feedback").textContent="Could not submit the online result. Tap RETRY SUBMIT.";return;}
   const data=response.data;
   (data.missedPlayers||[]).forEach(player=>{const card=cardForPlayer(player.id);if(!card||card.classList.contains("found"))return;card.classList.add("missed");setPlayerRarity(card,player.rarity);card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=mode==="easy"?formatHint(player.position,player.club):"NOT FOUND";});
