@@ -59,13 +59,14 @@ test("normal gameplay is local, input-enabled and handles every end state", asyn
   assert.match(main, /input\.removeAttribute\("disabled"\)/);
   assert.match(main, /button\.removeAttribute\("disabled"\)/);
   assert.match(main, /if\(practiceOnly\)\{\$\("#timer"\)\.textContent="∞";return;\}/);
-  assert.match(main, /ACCURACY · /);\n  assert.match(main, /PRACTICE · NO TIMER/);
+  assert.match(main, /ACCURACY · /);
+  assert.match(main, /PRACTICE · NO TIMER/);
   assert.doesNotMatch(main, /const onlineLocked=selected\.verified&&!supabase/);
   assert.ok(css.includes("Gameplay usability fix: keep the revealed roster visible"));
   assert.match(css, /\.result\{\s*position:relative/);
 });
 
-test("Daily modes use local squads and the shared gameplay engine", async () => {
+test("Daily modes use local squads, deterministic selection and the shared gameplay engine", async () => {
   const main = await read("dist/assets/js/main.js");
   const data = await read("dist/assets/js/data.js");
   const sw = await read("dist/sw.js");
@@ -73,6 +74,8 @@ test("Daily modes use local squads and the shared gameplay engine", async () => 
   assert.match(main, /DAILY DEMO/);
   assert.match(main, /Local unranked challenge with three squads from this tier/);
   assert.match(main, /demoFallback=pool\.length<3/);
+  assert.match(main, /function dailyRandom\(tier\)/);
+  assert.match(main, /const random=dailyRandom\(tier\)/);
   assert.match(main, /dailyState\.demo/);
   assert.match(main, /submitGuess\(roundState,value,matches\)/);
   assert.match(main, /Three local practice squads played/);
