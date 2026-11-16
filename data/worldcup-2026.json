@@ -10188,7 +10188,10 @@
       "team": "Jordan",
       "teamCode": "JOR",
       "group": "J",
-      "clubCountry": "IRQ"
+      "clubCountry": "IRQ",
+      "aliases": [
+        "Mohammad Abuhasheesh"
+      ]
     },
     {
       "name": "Abdallah Nasib",
@@ -10208,7 +10211,10 @@
       "team": "Jordan",
       "teamCode": "JOR",
       "group": "J",
-      "clubCountry": "JOR"
+      "clubCountry": "JOR",
+      "aliases": [
+        "Husam Abudahab"
+      ]
     },
     {
       "name": "Yazan Al-Arab",
@@ -10218,7 +10224,10 @@
       "team": "Jordan",
       "teamCode": "JOR",
       "group": "J",
-      "clubCountry": "KOR"
+      "clubCountry": "KOR",
+      "aliases": [
+        "Yazan Alarab"
+      ]
     },
     {
       "name": "Amer Jamous",
@@ -10238,7 +10247,10 @@
       "team": "Jordan",
       "teamCode": "JOR",
       "group": "J",
-      "clubCountry": "MAR"
+      "clubCountry": "MAR",
+      "aliases": [
+        "Mohammad Abuzraiq"
+      ]
     },
     {
       "name": "Noor Al-Rawabdeh",
@@ -10248,7 +10260,10 @@
       "team": "Jordan",
       "teamCode": "JOR",
       "group": "J",
-      "clubCountry": "MAS"
+      "clubCountry": "MAS",
+      "aliases": [
+        "Noor AlRawabdeh"
+      ]
     },
     {
       "name": "Ali Olwan",
@@ -10268,7 +10283,10 @@
       "team": "Jordan",
       "teamCode": "JOR",
       "group": "J",
-      "clubCountry": "FRA"
+      "clubCountry": "FRA",
+      "aliases": [
+        "Mousa Altamari"
+      ]
     },
     {
       "name": "Odeh Al-Fakhouri",
@@ -10278,7 +10296,10 @@
       "team": "Jordan",
       "teamCode": "JOR",
       "group": "J",
-      "clubCountry": "EGY"
+      "clubCountry": "EGY",
+      "aliases": [
+        "Odeh Fakhoury"
+      ]
     },
     {
       "name": "Nour Bani Attiah",
@@ -10288,7 +10309,11 @@
       "team": "Jordan",
       "teamCode": "JOR",
       "group": "J",
-      "clubCountry": "JOR"
+      "clubCountry": "JOR",
+      "aliases": [
+        "Nour Baniateyah",
+        "Noureddin Bani Ateyah"
+      ]
     },
     {
       "name": "Mahmoud Al-Mardi",
@@ -10298,7 +10323,10 @@
       "team": "Jordan",
       "teamCode": "JOR",
       "group": "J",
-      "clubCountry": "JOR"
+      "clubCountry": "JOR",
+      "aliases": [
+        "Mahmoud Almardi"
+      ]
     },
     {
       "name": "Rajaei Ayed",
@@ -10328,7 +10356,11 @@
       "team": "Jordan",
       "teamCode": "JOR",
       "group": "J",
-      "clubCountry": "MAS"
+      "clubCountry": "MAS",
+      "aliases": [
+        "Mohammad Abualnadi",
+        "Mohammad Abu Al-Nadi"
+      ]
     },
     {
       "name": "Salim Obaid",
@@ -10338,7 +10370,10 @@
       "team": "Jordan",
       "teamCode": "JOR",
       "group": "J",
-      "clubCountry": "JOR"
+      "clubCountry": "JOR",
+      "aliases": [
+        "Saleem Obaid"
+      ]
     },
     {
       "name": "Mohammad Ahmed Mohammad Taha",
@@ -10348,7 +10383,10 @@
       "team": "Jordan",
       "teamCode": "JOR",
       "group": "J",
-      "clubCountry": "JOR"
+      "clubCountry": "JOR",
+      "aliases": [
+        "Mohammad Abughoush"
+      ]
     },
     {
       "name": "Saed Al-Rosan",
@@ -10358,7 +10396,10 @@
       "team": "Jordan",
       "teamCode": "JOR",
       "group": "J",
-      "clubCountry": "JOR"
+      "clubCountry": "JOR",
+      "aliases": [
+        "Saed Alrosan"
+      ]
     },
     {
       "name": "Mohannad Abu Taha",
@@ -10368,7 +10409,10 @@
       "team": "Jordan",
       "teamCode": "JOR",
       "group": "J",
-      "clubCountry": "IRQ"
+      "clubCountry": "IRQ",
+      "aliases": [
+        "Mohannad Abutaha"
+      ]
     },
     {
       "name": "Nizar Al-Rashdan",
@@ -10378,7 +10422,10 @@
       "team": "Jordan",
       "teamCode": "JOR",
       "group": "J",
-      "clubCountry": "QAT"
+      "clubCountry": "QAT",
+      "aliases": [
+        "Nizar Alrashdan"
+      ]
     },
     {
       "name": "Abdallah Al-Fakhouri",
@@ -10388,7 +10435,10 @@
       "team": "Jordan",
       "teamCode": "JOR",
       "group": "J",
-      "clubCountry": "JOR"
+      "clubCountry": "JOR",
+      "aliases": [
+        "Abdallah Alfakhouri"
+      ]
     },
     {
       "name": "Ihsan Haddad",
@@ -10398,7 +10448,10 @@
       "team": "Jordan",
       "teamCode": "JOR",
       "group": "J",
-      "clubCountry": "JOR"
+      "clubCountry": "JOR",
+      "aliases": [
+        "Ehsan Haddad"
+      ]
     },
     {
       "name": "Ali Azaizeh",
@@ -10418,7 +10471,10 @@
       "team": "Jordan",
       "teamCode": "JOR",
       "group": "J",
-      "clubCountry": "JOR"
+      "clubCountry": "JOR",
+      "aliases": [
+        "Mohammad Aldaoud"
+      ]
     },
     {
       "name": "Anas Badawi",
@@ -11301,9 +11357,9 @@
       "clubCountry": "IRN"
     },
     {
-      "name": "Jaloliddin Masharipov",
+      "name": "Ruslanbek Jiyanov",
       "position": "MF",
-      "club": "Esteghlal Tehran FC",
+      "club": "PFC Navbahor Namangan",
       "number": 10,
       "team": "Uzbekistan",
       "teamCode": "UZB",
@@ -11328,7 +11384,10 @@
       "team": "Uzbekistan",
       "teamCode": "UZB",
       "group": "K",
-      "clubCountry": "UZB"
+      "clubCountry": "UZB",
+      "aliases": [
+        "Abduvakhid Nematov"
+      ]
     },
     {
       "name": "Sherzod Nasrullaev",
@@ -11448,7 +11507,10 @@
       "team": "Uzbekistan",
       "teamCode": "UZB",
       "group": "K",
-      "clubCountry": "UZB"
+      "clubCountry": "UZB",
+      "aliases": [
+        "Behruzjon Karimov"
+      ]
     },
     {
       "name": "Avazbek Ulmasaliev",
@@ -11458,7 +11520,10 @@
       "team": "Uzbekistan",
       "teamCode": "UZB",
       "group": "K",
-      "clubCountry": "UZB"
+      "clubCountry": "UZB",
+      "aliases": [
+        "Avazbek Ulmasaliyev"
+      ]
     },
     {
       "name": "Jakhongir Urozov",
