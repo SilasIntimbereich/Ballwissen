@@ -9,10 +9,14 @@ Deno.serve(async req=>{
  const {data:{user},error:userError}=await userClient.auth.getUser();if(userError||!user)return json({error:"Sign in required"},401);
  const {mode}=await req.json();if(!["daily-common","daily-niche","daily-legendary"].includes(mode))return json({error:"Invalid daily mode"},400);
  const admin=createClient(url,service),today=new Date().toISOString().slice(0,10);
+ const {data:excludedRows,error:exclusionError}=await admin.from("daily_excluded_squads").select("team_id");
+ if(exclusionError||!excludedRows)return json({error:"Daily exclusion rules are unavailable"},503);
+ const excludedIds=new Set(excludedRows.map(row=>row.team_id));
  const {data:existing}=await admin.from("daily_attempts").select("id,score,total,completed_teams,finished_at,current_team_started_at").eq("user_id",user.id).eq("challenge_date",today).eq("mode",mode).maybeSingle();
  if(existing?.finished_at)return json({error:"Already played today",attempt:existing},409);
  const {data:challenges,error}=await admin.from("daily_challenges").select("sequence,team_id,arcade_teams(team_name,tournament_year)").eq("challenge_date",today).eq("mode",mode).order("sequence");
  if(error||!challenges||challenges.length!==3)return json({error:"Today's three-team challenge is not configured"},503);
+ if(challenges.some(c=>excludedIds.has(c.team_id)))return json({error:"Daily schedule contains a prohibited squad"},503);
  let attemptId=existing?.id;
  if(!attemptId){
   const {data:attempt,error:insertError}=await admin.from("daily_attempts").insert({user_id:user.id,challenge_date:today,mode,total:0}).select("id").single();
