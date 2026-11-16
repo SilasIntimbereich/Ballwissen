@@ -1,4 +1,4 @@
-const CACHE_NAME="football-arcade-v4-shell-7";
+const CACHE_NAME="football-arcade-v4-shell-8";
 const APP_SHELL=[
   "./",
   "./index.html",
@@ -25,5 +25,5 @@ self.addEventListener("fetch",event=>{
   event.respondWith(fetch(request).then(response=>{
     if(response.ok){const copy=response.clone();caches.open(CACHE_NAME).then(cache=>cache.put(request,copy));}
     return response;
-  }).catch(()=>caches.match(request).then(cached=>cached||caches.match("./index.html"))));
+  }).catch(()=>caches.match(request).then(cached=>cached||(request.mode==="navigate"?caches.match("./index.html"):Response.error()))));
 });
