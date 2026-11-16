@@ -77,6 +77,14 @@ for (const team of allTeams) {
   practiceTeams.push({ id: team.id, players });
 }
 if (publicTeams.length !== 240) throw new Error("Expected 240 total squads, got " + publicTeams.length);
+if (practiceTeams.length !== publicTeams.length) throw new Error("Every public squad must have a local roster.");
+const localById = new Map(practiceTeams.map(team => [team.id, team]));
+if (localById.size !== publicTeams.length) throw new Error("Duplicate or missing local roster IDs.");
+for (const team of publicTeams) {
+  const local = localById.get(team.id);
+  if (!local || !Array.isArray(local.players) || local.players.length !== team.total || !team.total)
+    throw new Error("Local roster is incomplete: " + team.id);
+}
 
 await rm("dist", { recursive: true, force: true });
 await mkdir("dist/data", { recursive: true });
