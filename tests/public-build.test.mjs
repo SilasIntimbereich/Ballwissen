@@ -22,7 +22,7 @@ test("all 240 squads have complete local rosters for unranked offline gameplay",
  }
 });
 
-test("raw source roster files are absent from the public deployment",async()=>{
+test("public build includes complete data attribution and license notes",async()=>{\n const attribution=await readFile("dist/data/ATTRIBUTION.txt","utf8");\n assert.match(attribution,/CC BY-SA 4.0/);\n assert.match(attribution,/OpenFootball/);\n assert.match(attribution,/answer rosters in dist\\/data\\/practice-rosters\\.json/);\n});\n\ntest("raw source roster files are absent from the public deployment",async()=>{
  for(const path of ["dist/data/worldcup-2026.json","dist/data/historical-squads.json","dist/data/roster-audit.json"]){
   await assert.rejects(access(path));
  }
