@@ -111,6 +111,21 @@ if (!statisticsMigration.includes("order by bucket_start") ||
     !statisticsMigration.includes("count(*)-1") ||
     !statisticsMigration.includes("s.points desc,s.user_id"))
   fail("Statistics ordering, peer-percentile or deterministic leaderboard fix is missing.");
+const atomicMigration = await readText("supabase/migrations/202611160003_atomic_game_actions.sql");
+for (const functionName of ["record_daily_player_guess","complete_daily_team","record_normal_player_guess","finish_normal_game_session"]) {
+  if (!atomicMigration.includes("function public." + functionName))
+    fail("Atomic game-action database function is missing: " + functionName);
+}
+const edgeWiring = [
+  ["supabase/functions/daily-guess/index.ts","record_daily_player_guess"],
+  ["supabase/functions/submit-daily/index.ts","complete_daily_team"],
+  ["supabase/functions/normal-guess/index.ts","record_normal_player_guess"],
+  ["supabase/functions/submit-normal-result/index.ts","finish_normal_game_session"]
+];
+for (const [path,functionName] of edgeWiring) {
+  if (!(await readText(path)).includes('rpc("' + functionName + '"'))
+    fail("Edge Function is not wired to atomic database action: " + path);
+}
 for (const excluded of dailyExclusions.teams) {
   if (!migration.includes("'" + excluded.id + "'"))
     fail("Server-side Daily exclusion migration is missing " + excluded.id);
