@@ -235,6 +235,12 @@ if (!netlifyConfig.includes('publish = "dist"') ||
     serviceWorker.includes("./data/worldcup-2026.json") ||
     serviceWorker.includes("./data/historical-squads.json"))
   fail("Netlify and PWA must publish/cache only the filtered public build.");
+const independentDailyMigration = await readText("supabase/migrations/202611160005_independent_daily_tiers.sql");
+if (!independentDailyMigration.includes("if selected_count<3") ||
+    !independentDailyMigration.includes("continue;") ||
+    !independentDailyMigration.includes("daily-common") ||
+    !independentDailyMigration.includes("daily-legendary"))
+  fail("Daily publisher must publish ready tiers independently and skip tiers below three verified squads.");
 const iran = hist.tournaments[2022].find(t => t.name === "Iran");
 if (!iran || iran.players.length !== 25) fail("2022 Iran source roster check failed.");
 const allTeamNames = new Set([
