@@ -2444,14 +2444,18 @@
       "clubCountry": "ENG"
     },
     {
-      "name": "Louicius Deedson",
+      "name": "Deedson Louicius",
       "position": "FW",
       "club": "FC Dallas",
       "number": 11,
       "team": "Haiti",
       "teamCode": "HAI",
       "group": "C",
-      "clubCountry": "USA"
+      "clubCountry": "USA",
+      "aliases": [
+        "Louicius Deedson",
+        "Deedson Vixamar"
+      ]
     },
     {
       "name": "Alexandre Pierre",
@@ -2464,24 +2468,30 @@
       "clubCountry": "FRA"
     },
     {
-      "name": "Duke Lacroix",
+      "name": "Markhus Lacroix",
       "position": "DF",
       "club": "Colorado Springs Switchbacks FC",
       "number": 13,
       "team": "Haiti",
       "teamCode": "HAI",
       "group": "C",
-      "clubCountry": "USA"
+      "clubCountry": "USA",
+      "aliases": [
+        "Duke Lacroix"
+      ]
     },
     {
-      "name": "Leverton Pierre",
-      "position": "MF",
+      "name": "Garven Metusala",
+      "position": "DF",
       "club": "Colorado Springs Switchbacks FC",
       "number": 14,
       "team": "Haiti",
       "teamCode": "HAI",
       "group": "C",
-      "clubCountry": "USA"
+      "clubCountry": "USA",
+      "aliases": [
+        "Garven-Michee Metusala"
+      ]
     },
     {
       "name": "Ruben Providence",
@@ -4251,7 +4261,10 @@
       "team": "Curaçao",
       "teamCode": "CUW",
       "group": "E",
-      "clubCountry": "USA"
+      "clubCountry": "USA",
+      "aliases": [
+        "Juergen Locadia"
+      ]
     },
     {
       "name": "Leandro Bacuna",
@@ -7304,24 +7317,32 @@
       "clubCountry": "POR"
     },
     {
-      "name": "Diney",
+      "name": "Diney Borges",
       "position": "DF",
       "club": "Al Bataeh Club",
       "number": 3,
       "team": "Cape Verde",
       "teamCode": "CPV",
       "group": "H",
-      "clubCountry": "UAE"
+      "clubCountry": "UAE",
+      "aliases": [
+        "Diney"
+      ]
     },
     {
-      "name": "Roberto Lopes",
+      "name": "Pico Lopes",
       "position": "DF",
       "club": "Shamrock Rovers FC",
       "number": 4,
       "team": "Cape Verde",
       "teamCode": "CPV",
       "group": "H",
-      "clubCountry": "IRL"
+      "clubCountry": "IRL",
+      "aliases": [
+        "Roberto Lopes",
+        "Roberto Lopez",
+        "Roberto Carlos Lopes"
+      ]
     },
     {
       "name": "Logan Costa",
@@ -7371,7 +7392,10 @@
       "team": "Cape Verde",
       "teamCode": "CPV",
       "group": "H",
-      "clubCountry": "RUS"
+      "clubCountry": "RUS",
+      "aliases": [
+        "Gilson Tavares"
+      ]
     },
     {
       "name": "Jamiro Monteiro",
@@ -7441,7 +7465,10 @@
       "team": "Cape Verde",
       "teamCode": "CPV",
       "group": "H",
-      "clubCountry": "POR"
+      "clubCountry": "POR",
+      "aliases": [
+        "Jair Semedo Monteiro"
+      ]
     },
     {
       "name": "Willy Semedo",
