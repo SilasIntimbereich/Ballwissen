@@ -1239,6 +1239,252 @@
           "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
         }
       ]
+    },
+    "argentina-2026": {
+      "status": "verified",
+      "tournament": 2026,
+      "teamNameInDataset": "Argentina",
+      "teamNameInFifaPdf": "Argentina (ARG)",
+      "reviewedAt": "2026-11-16",
+      "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
+      "secondarySource": "https://datencenter.dfb.de/en/competitions/fifa-world-cup/seasons/2026-in-usa%2Fmexico%2Fcanada/teams/argentina?datacenter_name=data-center",
+      "notes": "All 26 players were checked by shirt number and identity against FIFA's final squad PDF (page 2) and the DFB data center. Position codes and tournament-time clubs were checked against FIFA. The DFB's historical tournament squad page confirms shirt numbers and player identities. A mismatch was found and corrected before verification: Nicolás González (#15) is FW in FIFA's final list and DFB grouping, not MF as the upstream snapshot had recorded.",
+      "players": [
+        {
+          "playerName": "Juan Musso",
+          "sourceName": "MUSSO Juan",
+          "number": 1,
+          "position": "GK",
+          "clubAtTournament": "Atlético De Madrid",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Marcos Nicolás Senesi Baron",
+          "sourceName": "SENESI Marcos",
+          "number": 2,
+          "position": "DF",
+          "clubAtTournament": "AFC Bournemouth",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Nicolás Tagliafico",
+          "sourceName": "TAGLIAFICO Nicolas",
+          "number": 3,
+          "position": "DF",
+          "clubAtTournament": "Olympique Lyonnais",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Gonzalo Montiel",
+          "sourceName": "MONTIEL Gonzalo",
+          "number": 4,
+          "position": "DF",
+          "clubAtTournament": "CA River Plate",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Leandro Paredes",
+          "sourceName": "PAREDES Leandro",
+          "number": 5,
+          "position": "MF",
+          "clubAtTournament": "CA Boca Juniors",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Lisandro Martínez",
+          "sourceName": "MARTINEZ Lisandro",
+          "number": 6,
+          "position": "DF",
+          "clubAtTournament": "Manchester United FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Rodrigo De Paul",
+          "sourceName": "DE PAUL Rodrigo",
+          "number": 7,
+          "position": "MF",
+          "clubAtTournament": "Inter Miami CF",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Valentín Barco",
+          "sourceName": "BARCO Valentin",
+          "number": 8,
+          "position": "MF",
+          "clubAtTournament": "RC Strasbourg",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Julián Alvarez",
+          "sourceName": "ALVAREZ Julian",
+          "number": 9,
+          "position": "FW",
+          "clubAtTournament": "Atlético De Madrid",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Lionel Messi",
+          "sourceName": "MESSI Lionel",
+          "number": 10,
+          "position": "FW",
+          "clubAtTournament": "Inter Miami CF",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Giovani Lo Celso",
+          "sourceName": "LO CELSO Giovani",
+          "number": 11,
+          "position": "MF",
+          "clubAtTournament": "Real Betis",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Gerónimo Rulli",
+          "sourceName": "RULLI Geronimo",
+          "number": 12,
+          "position": "GK",
+          "clubAtTournament": "Olympique Marseille",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Cristian Romero",
+          "sourceName": "ROMERO Cristian",
+          "number": 13,
+          "position": "DF",
+          "clubAtTournament": "Tottenham Hotspur FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Exequiel Palacios",
+          "sourceName": "PALACIOS Exequiel",
+          "number": 14,
+          "position": "MF",
+          "clubAtTournament": "Bayer 04 Leverkusen",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Nicolás González",
+          "sourceName": "GONZALEZ Nico",
+          "number": 15,
+          "position": "FW",
+          "clubAtTournament": "Atlético De Madrid",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Thiago Almada",
+          "sourceName": "ALMADA Thiago",
+          "number": 16,
+          "position": "FW",
+          "clubAtTournament": "Atlético De Madrid",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Giuliano Simeone",
+          "sourceName": "SIMEONE Giuliano",
+          "number": 17,
+          "position": "FW",
+          "clubAtTournament": "Atlético De Madrid",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Nico Paz",
+          "sourceName": "PAZ Nico",
+          "number": 18,
+          "position": "FW",
+          "clubAtTournament": "Como",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Nicolás Otamendi",
+          "sourceName": "OTAMENDI Nicolas",
+          "number": 19,
+          "position": "DF",
+          "clubAtTournament": "SL Benfica",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Alexis Mac Allister",
+          "sourceName": "MAC ALLISTER Alexis",
+          "number": 20,
+          "position": "MF",
+          "clubAtTournament": "Liverpool FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "José Manuel López",
+          "sourceName": "LOPEZ Jose Manuel",
+          "number": 21,
+          "position": "FW",
+          "clubAtTournament": "SE Palmeiras",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Lautaro Martínez",
+          "sourceName": "MARTINEZ Lautaro",
+          "number": 22,
+          "position": "FW",
+          "clubAtTournament": "FC Internazionale Milano",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Emiliano Martínez",
+          "sourceName": "MARTINEZ Emiliano",
+          "number": 23,
+          "position": "GK",
+          "clubAtTournament": "Aston Villa FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Enzo Fernández",
+          "sourceName": "FERNANDEZ Enzo",
+          "number": 24,
+          "position": "MF",
+          "clubAtTournament": "Chelsea FC",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Facundo Medina",
+          "sourceName": "MEDINA Facundo",
+          "number": 25,
+          "position": "DF",
+          "clubAtTournament": "Olympique Marseille",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        },
+        {
+          "playerName": "Nahuel Molina",
+          "sourceName": "MOLINA Nahuel",
+          "number": 26,
+          "position": "DF",
+          "clubAtTournament": "Atlético De Madrid",
+          "status": "matched",
+          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+        }
+      ]
     }
   }
 }
