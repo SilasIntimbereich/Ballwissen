@@ -96,5 +96,23 @@ $$;
 revoke all on function public.publish_daily_challenges(date) from public;
 grant execute on function public.publish_daily_challenges(date) to service_role;
 
+
+-- Defense in depth: even a future publisher or manual insert cannot schedule an excluded squad.
+create or replace function public.reject_excluded_daily_squad()
+returns trigger language plpgsql security definer set search_path=public
+as $
+begin
+  if exists (select 1 from public.daily_excluded_squads x where x.team_id=new.team_id) then
+    raise exception 'Daily challenge cannot include excluded squad %', new.team_id;
+  end if;
+  return new;
+end;
+$;
+drop trigger if exists enforce_daily_squad_exclusions on public.daily_challenges;
+create trigger enforce_daily_squad_exclusions
+before insert or update of team_id on public.daily_challenges
+for each row execute function public.reject_excluded_daily_squad();
+revoke all on function public.reject_excluded_daily_squad() from public, anon, authenticated;
+
 -- Only the privileged publisher and service-role backend can inspect the exclusion table.
 revoke all on public.daily_excluded_squads from anon, authenticated;
