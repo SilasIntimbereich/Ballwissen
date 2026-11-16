@@ -747,6 +747,252 @@
           "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
         }
       ]
+    },
+    "france-2026": {
+      "status": "verified",
+      "tournament": 2026,
+      "teamNameInDataset": "France",
+      "teamNameInFifaPdf": "France (FRA)",
+      "reviewedAt": "2026-11-16",
+      "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
+      "secondarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
+      "notes": "All 26 roster rows were compared manually by shirt number, player identity, position and tournament-time club against FIFA's final squad PDF (page 19) and NBC Sports' confirmed France squad list. The secondary article groups players by position differently for Cherki and Akliouche, but the player identities and clubs agree with FIFA's final list; FIFA's position codes are retained.",
+      "players": [
+        {
+          "playerName": "Brice Samba",
+          "sourceName": "SAMBA Brice",
+          "number": 1,
+          "position": "GK",
+          "clubAtTournament": "Stade Rennais FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Malo Gusto",
+          "sourceName": "GUSTO Malo",
+          "number": 2,
+          "position": "DF",
+          "clubAtTournament": "Chelsea FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Lucas Digne",
+          "sourceName": "DIGNE Lucas",
+          "number": 3,
+          "position": "DF",
+          "clubAtTournament": "Aston Villa FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Dayot Upamecano",
+          "sourceName": "UPAMECANO Dayot",
+          "number": 4,
+          "position": "DF",
+          "clubAtTournament": "FC Bayern München",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Jules Koundé",
+          "sourceName": "KOUNDE Jules",
+          "number": 5,
+          "position": "DF",
+          "clubAtTournament": "FC Barcelona",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Manu Koné",
+          "sourceName": "KONE Manu",
+          "number": 6,
+          "position": "MF",
+          "clubAtTournament": "AS Roma",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Ousmane Dembélé",
+          "sourceName": "DEMBELE Ousmane",
+          "number": 7,
+          "position": "FW",
+          "clubAtTournament": "Paris Saint-Germain",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Aurélien Tchouaméni",
+          "sourceName": "TCHOUAMENI Aurelien",
+          "number": 8,
+          "position": "MF",
+          "clubAtTournament": "Real Madrid C. F.",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Marcus Thuram",
+          "sourceName": "THURAM Marcus",
+          "number": 9,
+          "position": "FW",
+          "clubAtTournament": "FC Internazionale Milano",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Kylian Mbappé",
+          "sourceName": "MBAPPE Kylian",
+          "number": 10,
+          "position": "FW",
+          "clubAtTournament": "Real Madrid C. F.",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Michael Olise",
+          "sourceName": "OLISE Michael",
+          "number": 11,
+          "position": "FW",
+          "clubAtTournament": "FC Bayern München",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Bradley Barcola",
+          "sourceName": "BARCOLA Bradley",
+          "number": 12,
+          "position": "FW",
+          "clubAtTournament": "Paris Saint-Germain",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "N'Golo Kanté",
+          "sourceName": "KANTE Ngolo",
+          "number": 13,
+          "position": "MF",
+          "clubAtTournament": "Fenerbahçe SK",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Adrien Rabiot",
+          "sourceName": "RABIOT Adrien",
+          "number": 14,
+          "position": "MF",
+          "clubAtTournament": "AC Milan",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Ibrahima Konaté",
+          "sourceName": "KONATE Ibrahima",
+          "number": 15,
+          "position": "DF",
+          "clubAtTournament": "Liverpool FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Mike Maignan",
+          "sourceName": "MAIGNAN Mike",
+          "number": 16,
+          "position": "GK",
+          "clubAtTournament": "AC Milan",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "William Saliba",
+          "sourceName": "SALIBA William",
+          "number": 17,
+          "position": "DF",
+          "clubAtTournament": "Arsenal FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Warren Zaïre-Emery",
+          "sourceName": "ZAIRE-EMERY Warren",
+          "number": 18,
+          "position": "MF",
+          "clubAtTournament": "Paris Saint-Germain",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Théo Hernandez",
+          "sourceName": "HERNANDEZ Theo",
+          "number": 19,
+          "position": "DF",
+          "clubAtTournament": "Al Hilal SC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Désiré Doué",
+          "sourceName": "DOUE Desire",
+          "number": 20,
+          "position": "FW",
+          "clubAtTournament": "Paris Saint-Germain",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Lucas Hernandez",
+          "sourceName": "HERNANDEZ Lucas",
+          "number": 21,
+          "position": "DF",
+          "clubAtTournament": "Paris Saint-Germain",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Jean-Philippe Mateta",
+          "sourceName": "MATETA Jean-Philippe",
+          "number": 22,
+          "position": "FW",
+          "clubAtTournament": "Crystal Palace FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Robin Risser",
+          "sourceName": "RISSER Robin",
+          "number": 23,
+          "position": "GK",
+          "clubAtTournament": "RC Lens",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Rayan Cherki",
+          "sourceName": "CHERKI Rayan",
+          "number": 24,
+          "position": "MF",
+          "clubAtTournament": "Manchester City FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Maghnes Akliouche",
+          "sourceName": "AKLIOUCHE Maghnes",
+          "number": 25,
+          "position": "MF",
+          "clubAtTournament": "AS Monaco",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        },
+        {
+          "playerName": "Maxence Lacroix",
+          "sourceName": "LACROIX Maxence",
+          "number": 26,
+          "position": "DF",
+          "clubAtTournament": "Crystal Palace FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
+        }
+      ]
     }
   }
 }
