@@ -993,6 +993,252 @@
           "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
         }
       ]
+    },
+    "brazil-2026": {
+      "status": "verified",
+      "tournament": 2026,
+      "teamNameInDataset": "Brazil",
+      "teamNameInFifaPdf": "Brazil (BRA)",
+      "reviewedAt": "2026-11-16",
+      "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
+      "secondarySource": "https://www.cbf.com.br/selecao-brasileira/noticias/selecao-masculina/a/ederson-e-convocado-pela-selecao-para-a-copa-do-mundo",
+      "notes": "All 26 roster rows were compared manually by shirt number, player identity, FIFA position code and tournament-time club against FIFA's final squad PDF (page 7). The CBF's 7 June announcement confirms midfielder Éderson was called up to replace injured Wesley. This resolves the older preliminary CBF/press lists that still included Wesley and omitted Éderson Silva. The dataset contains both Éderson Silva (#2, Atalanta, MF) and Ederson Moraes (#23, Fenerbahçe, GK), as does FIFA's final list.",
+      "players": [
+        {
+          "playerName": "Alisson",
+          "sourceName": "ALISSON",
+          "number": 1,
+          "position": "GK",
+          "clubAtTournament": "Liverpool FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Éderson Silva",
+          "sourceName": "EDERSON SILVA",
+          "number": 2,
+          "position": "MF",
+          "clubAtTournament": "Atalanta Bergamo",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Gabriel Magalhães",
+          "sourceName": "GABRIEL MAGALHAES",
+          "number": 3,
+          "position": "DF",
+          "clubAtTournament": "Arsenal FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Marquinhos",
+          "sourceName": "MARQUINHOS",
+          "number": 4,
+          "position": "DF",
+          "clubAtTournament": "Paris Saint-Germain",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Casemiro",
+          "sourceName": "CASEMIRO",
+          "number": 5,
+          "position": "MF",
+          "clubAtTournament": "Manchester United FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Alex Sandro",
+          "sourceName": "ALEX SANDRO",
+          "number": 6,
+          "position": "DF",
+          "clubAtTournament": "CR Flamengo",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Vinícius Júnior",
+          "sourceName": "VINICIUS JUNIOR",
+          "number": 7,
+          "position": "FW",
+          "clubAtTournament": "Real Madrid C. F.",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Bruno Guimarães",
+          "sourceName": "BRUNO GUIMARAES",
+          "number": 8,
+          "position": "MF",
+          "clubAtTournament": "Newcastle United FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Matheus Cunha",
+          "sourceName": "MATHEUS CUNHA",
+          "number": 9,
+          "position": "FW",
+          "clubAtTournament": "Manchester United FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Neymar",
+          "sourceName": "NEYMAR JR",
+          "number": 10,
+          "position": "FW",
+          "clubAtTournament": "Santos FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Raphinha",
+          "sourceName": "RAPHINHA",
+          "number": 11,
+          "position": "FW",
+          "clubAtTournament": "FC Barcelona",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Weverton",
+          "sourceName": "WEVERTON",
+          "number": 12,
+          "position": "GK",
+          "clubAtTournament": "Grêmio FBPA",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Danilo Luiz",
+          "sourceName": "DANILO",
+          "number": 13,
+          "position": "DF",
+          "clubAtTournament": "CR Flamengo",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Bremer",
+          "sourceName": "BREMER",
+          "number": 14,
+          "position": "DF",
+          "clubAtTournament": "Juventus FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Léo Pereira",
+          "sourceName": "LEO PEREIRA",
+          "number": 15,
+          "position": "DF",
+          "clubAtTournament": "CR Flamengo",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Douglas Santos",
+          "sourceName": "DOUGLAS SANTOS",
+          "number": 16,
+          "position": "DF",
+          "clubAtTournament": "FC Zenit St. Petersburg",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Fabinho",
+          "sourceName": "FABINHO",
+          "number": 17,
+          "position": "MF",
+          "clubAtTournament": "Al Ittihad",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Danilo Santos",
+          "sourceName": "DANILO SANTOS",
+          "number": 18,
+          "position": "MF",
+          "clubAtTournament": "Botafogo",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Endrick",
+          "sourceName": "ENDRICK",
+          "number": 19,
+          "position": "FW",
+          "clubAtTournament": "Olympique Lyonnais",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Lucas Paquetá",
+          "sourceName": "LUCAS PAQUETA",
+          "number": 20,
+          "position": "MF",
+          "clubAtTournament": "CR Flamengo",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Luiz Henrique",
+          "sourceName": "LUIZ HENRIQUE",
+          "number": 21,
+          "position": "FW",
+          "clubAtTournament": "FC Zenit St. Petersburg",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Gabriel Martinelli",
+          "sourceName": "GABRIEL MARTINELLI",
+          "number": 22,
+          "position": "FW",
+          "clubAtTournament": "Arsenal FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Ederson Moraes",
+          "sourceName": "EDERSON",
+          "number": 23,
+          "position": "GK",
+          "clubAtTournament": "Fenerbahçe SK",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Roger Ibañez",
+          "sourceName": "ROGER IBANEZ",
+          "number": 24,
+          "position": "DF",
+          "clubAtTournament": "Al Ahli FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Igor Thiago",
+          "sourceName": "IGOR THIAGO",
+          "number": 25,
+          "position": "FW",
+          "clubAtTournament": "Brentford FC",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        },
+        {
+          "playerName": "Rayan",
+          "sourceName": "RAYAN",
+          "number": 26,
+          "position": "FW",
+          "clubAtTournament": "AFC Bournemouth",
+          "status": "matched",
+          "notes": "FIFA final squad PDF and CBF replacement notice cross-check."
+        }
+      ]
     }
   }
 }
