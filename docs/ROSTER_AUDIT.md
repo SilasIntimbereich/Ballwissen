@@ -28,7 +28,7 @@ Use official FIFA squad-list documents as the primary source for final player li
 
 ## 2026 FIFA PDF spot-check (not a full audit)
 
-The official FIFA final squad PDF is https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf. It contains 48 team pages and player, position and club fields. FIFA's announcement confirms 48 teams, 1,248 players and 449 represented clubs: https://www.fifa.com/en/articles/fifa-world-cup-2026-squads-confirmed. A manual spot-check of the repository snapshot against the official PDF found matching player names, positions and club identities in the reviewed rows for Germany and France, and the opening portion of the Australia and Brazil lists. Examples include Germany's Manuel Neuer / FC Bayern München and France's Brice Samba / Stade Rennais FC. This is only a spot-check: it does not verify all 1,248 player records, all club strings, or every team's completeness. Keep each remaining 2026 team unverified until a complete machine-assisted and discrepancy-reviewed comparison exists; Czechia, Australia, Germany and France are the only teams currently marked verified.
+The official FIFA final squad PDF is https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf. It contains 48 team pages and player, position and club fields. FIFA's announcement confirms 48 teams, 1,248 players and 449 represented clubs: https://www.fifa.com/en/articles/fifa-world-cup-2026-squads-confirmed. A manual spot-check of the repository snapshot against the official PDF found matching player names, positions and club identities in the reviewed rows for Germany and France, and the opening portion of the Australia and Brazil lists. Examples include Germany's Manuel Neuer / FC Bayern München and France's Brice Samba / Stade Rennais FC. This is only a spot-check: it does not verify all 1,248 player records, all club strings, or every team's completeness. Keep each remaining 2026 team unverified until a complete machine-assisted and discrepancy-reviewed comparison exists; Czechia, Australia, Germany, France and Brazil are the only teams currently marked verified.
 
 ## Current repository data status (2026-11-16)
 
@@ -73,7 +73,9 @@ The FIFA final PDF (page 20) lists Assan Ouédraogo as player 25 and does not li
 
 ## Independently verified teams
 
-**Czechia / Czech Republic (2026): 26 of 26 players verified.** Each player was checked by shirt number, player identity, position and tournament-time club against FIFA's final squad PDF (page 15) and NBC Sports' confirmed squad list. FIFA labels the team “Czechia (CZE)”; the source snapshot uses “Czech Republic”, with the same FIFA code. The player-level records are stored in `data/roster-audit.json`. This verifies one team, not the entire 2026 tournament.
+**Czechia / Czech Republic (2026): 26 of 26 players verified.** Each player was checked by shirt number, player identity, position and tournament-time club against FIFA's final squad PDF (page 15) and NBC Sports' confirmed squad list. FIFA labels the team “Czechia (CZE)”; the source snapshot uses “Czech Republic”, with the same FIFA code. **Brazil (2026): 26 of 26 players verified.** All names, shirt numbers, FIFA positions and tournament-time clubs match FIFA's final PDF (page 7). The CBF's 7 June notice confirms Éderson Silva replaced injured Wesley. This resolves earlier preliminary lists that still showed Wesley. The two different players Éderson Silva (#2, MF) and Ederson Moraes (#23, GK) are both present and correctly distinguished.
+
+The player-level records are stored in `data/roster-audit.json`. This verifies one team, not the entire 2026 tournament.
 
 ## Daily exclusion enforcement
 
