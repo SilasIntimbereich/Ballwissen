@@ -17,6 +17,15 @@ function formatHint(position,club){return [position,club].filter(value=>typeof v
 function updateTimer(){$("#timer").textContent=String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");}
 function resetGameView(){found=new Set();seconds=120;ended=false;$("#result").classList.add("hidden");$("#result-stats").innerHTML="";$("#score").textContent="0";$("#guess").value="";$("#guess").disabled=false;$("#guess-btn").disabled=false;$("#give-up").disabled=false;$("#give-up").textContent="GIVE UP";$("#roster").innerHTML="";$("#feedback").textContent="Type a player name and press enter.";}
 function cardForPlayer(id){return [...document.querySelectorAll(".player-card[data-player-id]")].find(card=>card.dataset.playerId===id)||null;}
+function setPlayerRarity(card,rarity){
+ if(!card||!rarity)return;
+ const className="rarity-"+rarity.toLowerCase().replaceAll(" ","-");
+ card.classList.add(className);
+ let label=card.querySelector(".player-rarity");
+ if(!label){label=document.createElement("span");label.className="player-rarity";card.querySelector(".player-info").append(label);}
+ label.textContent=rarity.toUpperCase();
+ label.className="player-rarity "+className;
+}
 function addPlayerCard(index,hint,id){const card=document.createElement("div");card.className="player-card";card.dataset.index=index;if(id)card.dataset.playerId=id;const number=document.createElement("span");number.className="player-number";number.textContent=String(index+1).padStart(2,"0");const info=document.createElement("div");info.className="player-info";const name=document.createElement("div");name.className="player-name";name.textContent="???";const detail=document.createElement("div");detail.className="player-hint";detail.textContent=hint||"HIDDEN PLAYER";info.append(name,detail);card.append(number,info);$("#roster").append(card);return card;}
 function renderNormalRoster(){if(normalSessionId&&Array.isArray(normalHints)){normalHints.forEach((hint,index)=>addPlayerCard(index,mode==="easy"?formatHint(hint.position,hint.club):"HIDDEN PLAYER",hint.id));$("#total").textContent=String(team.total);return;}team.players.forEach((player,index)=>addPlayerCard(index,mode==="easy"?formatHint(player.position,player.club):"HIDDEN PLAYER"));$("#total").textContent=String(team.players.length);}
 function renderDailyRoster(dailyTeam){dailyTeam.hints.forEach((hint,index)=>addPlayerCard(index,mode==="daily-legendary"?"HIDDEN PLAYER":formatHint(hint.position,hint.club),hint.id));$("#total").textContent=String(dailyTeam.total);}
@@ -41,14 +50,14 @@ function startDailyTeam(sequence,resume=null){
  const dailyTeam=dailyState.teams.find(item=>item.sequence===sequence);if(!dailyTeam){finishDailyOverall();return;}
  dailyState.current=sequence;team={id:dailyTeam.teamId,name:dailyTeam.teamName,year:dailyTeam.year,total:dailyTeam.total,players:[],hints:dailyTeam.hints};normalSessionId=null;normalHints=null;resetGameView();
  $("#game-team").textContent=dailyTeam.teamName.toUpperCase();$("#game-tournament").textContent="DAILY TEAM "+sequence+" / 3";$("#game-mode").textContent=dailyState.mode.replace("daily-","DAILY ").toUpperCase();$("#game-heading").textContent="NAME THE SQUAD";renderDailyRoster(dailyTeam);
- if(resume){seconds=resume.remainingSeconds??120;(resume.foundPlayers||[]).forEach(player=>{found.add(player.id);const card=cardForPlayer(player.id);if(card){card.classList.add("found");card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=dailyState.mode==="daily-legendary"?"FOUND":formatHint(player.position,player.club);}});$("#score").textContent=String(found.size);$("#feedback").textContent="Daily challenge resumed. Your remaining time is restored.";}
+ if(resume){seconds=resume.remainingSeconds??120;(resume.foundPlayers||[]).forEach(player=>{found.add(player.id);const card=cardForPlayer(player.id);if(card){card.classList.add("found");setPlayerRarity(card,player.rarity);card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=dailyState.mode==="daily-legendary"?"FOUND":formatHint(player.position,player.club);}});$("#score").textContent=String(found.size);$("#feedback").textContent="Daily challenge resumed. Your remaining time is restored.";}
  show("game");updateTimer();if(resume&&seconds<=0){finishDailyTeam(false);return;}startClock();$("#guess").focus();
 }
 async function acceptDailyGuess(value){
  const response=await supabase.functions.invoke("daily-guess",{body:{attemptId:dailyState.attemptId,sequence:dailyState.current,guess:value}});if(response.error)throw response.error;const data=response.data;
  if(!data.correct){$("#feedback").textContent=data.duplicate?"Already found.":"Not in this squad. Try another name.";return;}
  const player=data.player;found.add(player.id);const card=cardForPlayer(player.id);
- if(card){card.classList.add("found");if(player.rarity)card.classList.add("rarity-"+player.rarity.toLowerCase().replaceAll(" ","-"));card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=dailyState.mode==="daily-legendary"?"FOUND":formatHint(player.position,player.club);}
+ if(card){card.classList.add("found");setPlayerRarity(card,player.rarity);card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=dailyState.mode==="daily-legendary"?"FOUND":formatHint(player.position,player.club);}
  $("#score").textContent=data.score;$("#feedback").textContent="Correct! "+player.name+" found.";if(data.score===data.total)await finishDailyTeam(true);
 }
 async function finishDailyTeam(giveUp){
@@ -71,10 +80,10 @@ async function finish(giveUp){
   const response=await supabase.functions.invoke("submit-normal-result",{body:{sessionId:normalSessionId,giveUp}});
   if(response.error){ended=false;$("#give-up").disabled=false;$("#give-up").textContent="RETRY SUBMIT";$("#feedback").textContent="Could not submit the online result. Tap RETRY SUBMIT.";return;}
   const data=response.data;
-  (data.missedPlayers||[]).forEach(player=>{const card=cardForPlayer(player.id);if(!card||card.classList.contains("found"))return;card.classList.add("missed");card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=mode==="easy"?formatHint(player.position,player.club):"NOT FOUND";});
+  (data.missedPlayers||[]).forEach(player=>{const card=cardForPlayer(player.id);if(!card||card.classList.contains("found"))return;card.classList.add("missed");setPlayerRarity(card,player.rarity);card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=mode==="easy"?formatHint(player.position,player.club):"NOT FOUND";});
   $("#result-score").textContent=data.score+" / "+data.total;$("#result-message").textContent=giveUp?"You gave up. Every squad member is now revealed.":"Time is up. The full squad has been revealed.";renderStats(data);$("#result").classList.remove("hidden");return;
  }
- team.players.forEach((player,index)=>{if(found.has(index))return;const card=document.querySelector('.player-card[data-index="'+index+'"]');if(!card)return;card.classList.add("missed");card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=mode==="easy"?formatHint(player.position,player.club):"NOT FOUND";});
+ team.players.forEach((player,index)=>{if(found.has(index))return;const card=document.querySelector('.player-card[data-index="'+index+'"]');if(!card)return;card.classList.add("missed");setPlayerRarity(card,player.rarity);card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=mode==="easy"?formatHint(player.position,player.club):"NOT FOUND";});
  $("#result-score").textContent=found.size+" / "+team.players.length;$("#result-message").textContent=giveUp?"You gave up. Every squad member is now revealed.":"Time is up. The full squad has been revealed.";$("#result").classList.remove("hidden");
 }
 $("#guess-form").addEventListener("submit",async event=>{
@@ -85,12 +94,12 @@ $("#guess-form").addEventListener("submit",async event=>{
    const response=await supabase.functions.invoke("normal-guess",{body:{sessionId:normalSessionId,guess:value}});if(response.error)throw response.error;const data=response.data;
    if(!data.correct){$("#feedback").textContent=data.duplicate?"Already found.":"Not in this squad. Try another name.";return;}
    const player=data.player;found.add(player.id);const card=cardForPlayer(player.id);
-   if(card){card.classList.add("found");if(player.rarity)card.classList.add("rarity-"+player.rarity.toLowerCase().replaceAll(" ","-"));card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=mode==="easy"?formatHint(player.position,player.club):"FOUND";}
+   if(card){card.classList.add("found");setPlayerRarity(card,player.rarity);card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=mode==="easy"?formatHint(player.position,player.club):"FOUND";}
    $("#score").textContent=data.score;$("#feedback").textContent="Correct! "+player.name+" found.";if(data.score===data.total)await finish(true);
   }else{
    const index=team.players.findIndex((player,i)=>!found.has(i)&&matches(value,player));
    if(index<0){$("#feedback").textContent="Not in this squad. Try another name.";$("#guess").select();return;}
-   found.add(index);const player=team.players[index],card=document.querySelector('.player-card[data-index="'+index+'"]');card.classList.add("found");if(player.rarity)card.classList.add("rarity-"+player.rarity.toLowerCase().replaceAll(" ","-"));card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=formatHint(player.position,player.club);$("#score").textContent=found.size;$("#feedback").textContent="Correct! "+player.name+" found.";if(found.size===team.players.length)await finish(true);
+   found.add(index);const player=team.players[index],card=document.querySelector('.player-card[data-index="'+index+'"]');card.classList.add("found");setPlayerRarity(card,player.rarity);card.querySelector(".player-name").textContent=player.name;card.querySelector(".player-hint").textContent=formatHint(player.position,player.club);$("#score").textContent=found.size;$("#feedback").textContent="Correct! "+player.name+" found.";if(found.size===team.players.length)await finish(true);
   }
   $("#guess").value="";
  }catch(error){$("#feedback").textContent=error.message||"Could not check this guess.";}
