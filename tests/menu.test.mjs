@@ -66,7 +66,7 @@ test("offline Daily demo is playable without exposing verified answer rosters", 
   assert.match(data, /dailyExclusions=new Set/);
   assert.match(main, /if\(!supabase\)\{/);
   assert.match(main, /DAILY DEMO/);
-  assert.match(main, /Local unranked demo with three practice squads/);
+  assert.match(main, /Local unranked demo with three squads from this tier/);
   assert.match(main, /demoFallback=pool\.length<3/);
   assert.match(main, /mixed test pool/);
   assert.match(main, /dailyState\.demo/);
