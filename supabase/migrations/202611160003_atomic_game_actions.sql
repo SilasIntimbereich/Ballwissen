@@ -1,4 +1,17 @@
 -- Serialize scored guesses and completion operations to prevent races and duplicate submissions.
+-- Score distributions represent unique players per squad, not repeated attempts.
+with ranked_results as (
+  select id,row_number() over(partition by user_id,team_id order by played_at desc,id desc) as rn
+  from public.normal_game_results
+  where user_id is not null
+)
+delete from public.normal_game_results r
+using ranked_results x
+where r.id=x.id and x.rn>1;
+create unique index if not exists normal_results_user_team_unique_idx
+on public.normal_game_results(user_id,team_id)
+where user_id is not null;
+
 create or replace function public.record_daily_player_guess(
   p_attempt_id uuid,
   p_user_id uuid,
@@ -283,7 +296,9 @@ begin
   set finished_at=v_now
   where id=p_session_id;
   insert into public.normal_game_results(user_id,team_id,score,total)
-  values(p_user_id,v_session.team_id,v_score,v_total);
+  values(p_user_id,v_session.team_id,v_score,v_total)
+  on conflict(user_id,team_id) where user_id is not null
+  do update set score=excluded.score,total=excluded.total,played_at=excluded.played_at;
 
   return query select v_session.team_id,v_score,v_total;
 end;
