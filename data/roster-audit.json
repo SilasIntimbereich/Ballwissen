@@ -501,6 +501,252 @@
           "notes": "FIFA final squad PDF and NBC Sports confirmed squad list cross-check."
         }
       ]
+    },
+    "germany-2026": {
+      "status": "verified",
+      "tournament": 2026,
+      "teamNameInDataset": "Germany",
+      "teamNameInFifaPdf": "Germany (GER)",
+      "reviewedAt": "2026-11-16",
+      "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
+      "secondarySource": "https://www.dfb.de/news/karl-faellt-fuer-wm-aus-ouedraogo-nachnominiert",
+      "notes": "All 26 roster rows were compared manually by shirt number, player identity, position and tournament-time club against FIFA's final squad PDF (page 20). The DFB's 5 June 2026 announcement independently confirms that Lennart Karl was injured and Assan Ouédraogo replaced him. The DFB's 2 June squad-number announcement initially listed Karl, so the replacement notice is essential to confirm the final roster. NBC Sports' 11 June list also still includes Karl; it is treated as stale for this final-squad check.",
+      "players": [
+        {
+          "playerName": "Manuel Neuer",
+          "sourceName": "NEUER Manuel",
+          "number": 1,
+          "position": "GK",
+          "clubAtTournament": "FC Bayern München",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Antonio Rüdiger",
+          "sourceName": "RUEDIGER Antonio",
+          "number": 2,
+          "position": "DF",
+          "clubAtTournament": "Real Madrid C. F.",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Waldemar Anton",
+          "sourceName": "ANTON Waldemar",
+          "number": 3,
+          "position": "DF",
+          "clubAtTournament": "Borussia Dortmund",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Jonathan Tah",
+          "sourceName": "TAH Jonathan",
+          "number": 4,
+          "position": "DF",
+          "clubAtTournament": "FC Bayern München",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Aleksandar Pavlović",
+          "sourceName": "PAVLOVIC Aleksandar",
+          "number": 5,
+          "position": "MF",
+          "clubAtTournament": "FC Bayern München",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Joshua Kimmich",
+          "sourceName": "KIMMICH Joshua",
+          "number": 6,
+          "position": "DF",
+          "clubAtTournament": "FC Bayern München",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Kai Havertz",
+          "sourceName": "HAVERTZ Kai",
+          "number": 7,
+          "position": "FW",
+          "clubAtTournament": "Arsenal FC",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Leon Goretzka",
+          "sourceName": "GORETZKA Leon",
+          "number": 8,
+          "position": "MF",
+          "clubAtTournament": "FC Bayern München",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Jamie Leweling",
+          "sourceName": "LEWELING Jamie",
+          "number": 9,
+          "position": "MF",
+          "clubAtTournament": "VfB Stuttgart",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Jamal Musiala",
+          "sourceName": "MUSIALA Jamal",
+          "number": 10,
+          "position": "MF",
+          "clubAtTournament": "FC Bayern München",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Nick Woltemade",
+          "sourceName": "WOLTEMADE Nick",
+          "number": 11,
+          "position": "FW",
+          "clubAtTournament": "Newcastle United FC",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Oliver Baumann",
+          "sourceName": "BAUMANN Oliver",
+          "number": 12,
+          "position": "GK",
+          "clubAtTournament": "TSG Hoffenheim",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Pascal Groß",
+          "sourceName": "GROSS Pascal",
+          "number": 13,
+          "position": "MF",
+          "clubAtTournament": "Brighton & Hove Albion FC",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Maximilian Beier",
+          "sourceName": "BEIER Maximilian",
+          "number": 14,
+          "position": "FW",
+          "clubAtTournament": "Borussia Dortmund",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Nico Schlotterbeck",
+          "sourceName": "SCHLOTTERBECK Nico",
+          "number": 15,
+          "position": "DF",
+          "clubAtTournament": "Borussia Dortmund",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Angelo Stiller",
+          "sourceName": "STILLER Angelo",
+          "number": 16,
+          "position": "MF",
+          "clubAtTournament": "VfB Stuttgart",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Florian Wirtz",
+          "sourceName": "WIRTZ Florian",
+          "number": 17,
+          "position": "MF",
+          "clubAtTournament": "Liverpool FC",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Nathaniel Brown",
+          "sourceName": "BROWN Nathaniel",
+          "number": 18,
+          "position": "DF",
+          "clubAtTournament": "Eintracht Frankfurt",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Leroy Sané",
+          "sourceName": "SANE Leroy",
+          "number": 19,
+          "position": "MF",
+          "clubAtTournament": "Galatasaray SK",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Nadiem Amiri",
+          "sourceName": "AMIRI Nadiem",
+          "number": 20,
+          "position": "MF",
+          "clubAtTournament": "1. FSV Mainz 05",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Alexander Nübel",
+          "sourceName": "NUEBEL Alexander",
+          "number": 21,
+          "position": "GK",
+          "clubAtTournament": "VfB Stuttgart",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "David Raum",
+          "sourceName": "RAUM David",
+          "number": 22,
+          "position": "DF",
+          "clubAtTournament": "RB Leipzig",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Felix Nmecha",
+          "sourceName": "NMECHA Felix",
+          "number": 23,
+          "position": "MF",
+          "clubAtTournament": "Borussia Dortmund",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Malick Thiaw",
+          "sourceName": "THIAW Malick",
+          "number": 24,
+          "position": "DF",
+          "clubAtTournament": "Newcastle United FC",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Assan Ouédraogo",
+          "sourceName": "OUEDRAOGO Assan",
+          "number": 25,
+          "position": "MF",
+          "clubAtTournament": "RB Leipzig",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        },
+        {
+          "playerName": "Deniz Undav",
+          "sourceName": "UNDAV Deniz",
+          "number": 26,
+          "position": "FW",
+          "clubAtTournament": "VfB Stuttgart",
+          "status": "matched",
+          "notes": "Matched to FIFA final squad PDF; DFB replacement notice resolves the Karl/Ouédraogo change."
+        }
+      ]
     }
   }
 }
