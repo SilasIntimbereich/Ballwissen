@@ -28,6 +28,7 @@ test("home menu exposes every offline mode and utility screen", async () => {
   assert.ok(css.includes("h1 span{background:none;color:#f0c64a"));
   const serviceWorker = await read("dist/sw.js");
   assert.match(serviceWorker, /\.\/assets\/js\/menu\.js/);
+  assert.match(serviceWorker, /ATTRIBUTION\.txt/);
 });
 
 test("public build includes a complete local roster for every tournament team", async () => {
