@@ -29,7 +29,7 @@ The source is the Fjelstul World Cup Database via DataHub, licensed CC BY-SA 4.0
 
 ## 3. Create Supabase backend
 1. Create a Supabase project.
-2. Apply `supabase/migrations/202611150001_v4_online_features.sql` using the repository's **Deploy Supabase backend** GitHub Actions workflow. Do not manually run both schema files; the V4 migration is the deployment path.
+2. Apply all repository migrations in order using the **Deploy Supabase backend** GitHub Actions workflow. The newer `202611160001_daily_squad_exclusions.sql` migration is required: it installs the exact 50 excluded squad IDs in PostgreSQL and enforces the exclusion inside the server-side Daily publisher. Do not deploy only the first migration.
 4. Enable Anonymous Sign-Ins under Authentication → Providers.
 5. In GitHub → Settings → Secrets and variables → Actions, add these repository secrets: `SUPABASE_ACCESS_TOKEN`, `SUPABASE_PROJECT_ID`, `SUPABASE_DB_PASSWORD`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`. Never paste the service-role key into a normal repository file.
 6. Open GitHub → Actions → **Deploy Supabase backend** → **Run workflow**. This applies migrations, sets server-side secrets and deploys the Edge Functions.
@@ -44,7 +44,7 @@ Edit `assets/js/config.js` and enter your Supabase project URL and anon key. The
 
 ## Security and release checks
 - Never expose the Supabase service-role key in GitHub files, Netlify environment variables used by browser code, or client JavaScript.
-- Do not publish a Daily challenge until three teams exist for each difficulty tier.
+- Do not publish a Daily challenge until three eligible, verified, non-excluded teams exist for each difficulty tier. The publisher now excludes all 50 configured squad IDs server-side; the JSON list alone is not the security boundary.
 - Do not present statistics or leaderboard rows as real until results are being submitted and verified.
 - Test one-attempt-per-day, time boundaries, duplicate guesses, wrong guesses, mobile Safari and network failures before public launch.
 - The game UI is wired to the API, but online modes are not production-ready until the backend is deployed, the rosters are audited and synced, Daily tiers are populated, and end-to-end tests pass.
