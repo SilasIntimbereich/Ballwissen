@@ -55,6 +55,19 @@ async function startGame(selected){
  enableGuessControls();$("#guess").focus();startClock();
 }
 function startClock(){clearInterval(tick);if(practiceOnly){$("#timer").textContent="∞";return;}tick=setInterval(()=>{seconds=Math.max(0,seconds-1);updateTimer();if(seconds<=0)finish(false);},1000);}
+function dailyRandom(tier){
+ const now=new Date();
+ const key=[now.getFullYear(),String(now.getMonth()+1).padStart(2,"0"),String(now.getDate()).padStart(2,"0"),tier].join("-");
+ let seed=2166136261;
+ for(const character of key)seed=Math.imul(seed^character.charCodeAt(0),16777619);
+ return ()=>{
+  seed+=0x6D2B79F5;
+  let value=seed;
+  value=Math.imul(value^value>>>15,value|1);
+  value^=value+Math.imul(value^value>>>7,value|61);
+  return ((value^value>>>14)>>>0)/4294967296;
+ };
+}
 async function startDaily(modeName){
  practiceOnly=false;
  if(!supabase){
@@ -63,7 +76,7 @@ async function startDaily(modeName){
   let pool=allDemoTeams.filter(item=>item.teamDifficulty===tier),demoFallback=pool.length<3;
   if(demoFallback)pool=allDemoTeams;
   if(pool.length<3){$("#online-message").textContent="Not enough eligible local practice squads are available for this Daily demo.";show("online");return;}
-  for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
+  const random=dailyRandom(tier);for(let i=pool.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
   const teams=pool.slice(0,3).map((selected,index)=>({
    sequence:index+1,teamId:selected.id,teamName:selected.name,year:selected.year,total:selected.players.length,
    players:selected.players,
