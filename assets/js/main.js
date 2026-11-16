@@ -44,7 +44,7 @@ async function startGame(selected){
  dailyState=null;normalSessionId=null;normalHints=null;mode=mode==="hard"?"hard":"easy";team=selected;
  $("#result").dataset.resultKind="practice";resetGameView();
  $("#game-team").textContent=team.name.toUpperCase();$("#game-tournament").textContent="WORLD CUP "+team.year;
- $("#game-mode").textContent=mode==="easy"?"NORMAL EASY":"NORMAL HARD";
+ $("#game-mode").textContent=practiceOnly?"PRACTICE · NO TIMER":mode==="easy"?"NORMAL EASY":"NORMAL HARD";
  $("#game-heading").textContent="NAME THE SQUAD";show("game");clearInterval(tick);updateTimer();
  if(!Array.isArray(team.players)||!team.players.length){
   $("#online-message").textContent="This squad has no local roster data yet. It will become playable when its squad data is added.";
