@@ -40,7 +40,9 @@ The official FIFA final squad PDF is https://fdp.fifa.org/assetspublic/ce281/pdf
 
 ## Audit output expected before launch
 
-The machine-readable ledger is `data/roster-audit.json`. A team may use `status: verified` only when every player has a corresponding row and all checks below pass. The sync script rechecks the ledger before writing `arcade_teams.verified=true`; it does not trust a bare boolean in the roster JSON.\n\nProduce a machine-readable audit file with one record per player:
+The machine-readable ledger is `data/roster-audit.json`. A team may use `status: verified` only when every player has a corresponding row and all checks below pass. The sync script rechecks the ledger before writing `arcade_teams.verified=true`; it does not trust a bare boolean in the roster JSON.
+
+Produce a machine-readable audit file with one record per player:
 `{ tournament, teamId, playerName, sourceName, number, position, clubAtTournament, primarySource, secondarySource, status, notes }`
 
 Allowed statuses: `matched`, `corrected`, `unresolved`, `missing`, `extra`. A verified team needs exactly one audit row per roster player, a matching shirt number and normalized player name, identical position and club fields, and both primary and secondary HTTPS source URLs.
@@ -69,4 +71,6 @@ This scan is a structural check only. It does not constitute a player-by-player 
 
 **Czechia / Czech Republic (2026): 26 of 26 players verified.** Each player was checked by shirt number, player identity, position and tournament-time club against FIFA's final squad PDF (page 15) and NBC Sports' confirmed squad list. FIFA labels the team “Czechia (CZE)”; the source snapshot uses “Czech Republic”, with the same FIFA code. The player-level records are stored in `data/roster-audit.json`. This verifies one team, not the entire 2026 tournament.
 
-## Daily exclusion enforcement\n\nThe 50 tournament-specific exclusions are stored in `data/daily-exclusions.json`. Migration `supabase/migrations/202611160001_daily_squad_exclusions.sql` copies the exact IDs into `public.daily_excluded_squads`, replaces `publish_daily_challenges` with a server-side `NOT EXISTS` exclusion, and installs a database trigger that rejects any insert/update attempting to schedule an excluded squad. The migration deliberately has no foreign key because migrations are deployed before the roster sync. RLS is enabled and direct `anon`/`authenticated` access is revoked. `scripts/validate-data.mjs` now checks that every one of the 50 JSON IDs is present in the SQL migration and matches a real historical team name/year. This is a code-level check; the migration still needs to be applied to the actual Supabase project before the live backend is protected.
+## Daily exclusion enforcement
+
+The 50 tournament-specific exclusions are stored in `data/daily-exclusions.json`. Migration `supabase/migrations/202611160001_daily_squad_exclusions.sql` copies the exact IDs into `public.daily_excluded_squads`, replaces `publish_daily_challenges` with a server-side `NOT EXISTS` exclusion, and installs a database trigger that rejects any insert/update attempting to schedule an excluded squad. The migration deliberately has no foreign key because migrations are deployed before the roster sync. RLS is enabled and direct `anon`/`authenticated` access is revoked. `scripts/validate-data.mjs` now checks that every one of the 50 JSON IDs is present in the SQL migration and matches a real historical team name/year. This is a code-level check; the migration still needs to be applied to the actual Supabase project before the live backend is protected.
