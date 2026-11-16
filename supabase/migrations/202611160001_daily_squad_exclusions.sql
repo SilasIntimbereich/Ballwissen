@@ -62,6 +62,9 @@ insert into public.daily_excluded_squads(team_id,team_name,tournament_year) valu
 on conflict(team_id) do update
 set team_name=excluded.team_name,tournament_year=excluded.tournament_year;
 
+create unique index if not exists daily_challenges_date_mode_team_unique_idx
+on public.daily_challenges(challenge_date,mode,team_id);
+
 -- Remove any challenge rows that may have been published before this migration.
 delete from public.daily_challenges
 where team_id in (select team_id from public.daily_excluded_squads);
