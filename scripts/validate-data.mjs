@@ -142,7 +142,7 @@ for (const [teamId, record] of Object.entries(audit.teams)) {
   if (record.status !== "verified") continue;
   const team = allTeamsById.get(teamId);
   if (!team) fail("Audit ledger marks an unknown team verified: " + teamId);
-  if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(record.reviewedAt || ""))
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(record.reviewedAt || ""))
     fail("Verified audit requires an ISO review date: " + teamId);
   if (!Array.isArray(record.players) || record.players.length !== team.players.length)
     fail("Verified audit row count mismatch: " + teamId);
