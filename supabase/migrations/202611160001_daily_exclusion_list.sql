@@ -1,7 +1,7 @@
 -- V4: hard exclusion of the 50 least-recallable individual World Cup squads from all Daily modes.
 -- These teams remain available in Normal Easy and Normal Hard.
 create table if not exists public.daily_excluded_teams (
- team_id text primary key references public.arcade_teams(id) on delete cascade,
+ team_id text primary key,
  team_name text not null,
  tournament_year int not null,
  reason text not null default 'Curated very-high-difficulty exclusion'
