@@ -1,0 +1,33 @@
+name: Audit 2026 squads against FIFA PDF
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/worldcup-2026.json"
+      - "scripts/audit-2026-fifa-pdf.mjs"
+      - ".github/workflows/audit-2026-squads.yml"
+  schedule:
+    - cron: "17 5 * * 1"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install PDF parser
+        run: npm install --no-save pdfjs-dist@^5.4.394
+      - name: Compare every FIFA final squad row
+        run: node scripts/audit-2026-fifa-pdf.mjs
+      - name: Upload complete comparison report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fifa-2026-roster-audit
+          path: artifacts/fifa-2026-audit.json
+          if-no-files-found: warn
+          retention-days: 30
