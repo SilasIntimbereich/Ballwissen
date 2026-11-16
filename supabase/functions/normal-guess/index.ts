@@ -15,6 +15,8 @@ Deno.serve(async req=>{
  const db=createClient(url,service);
  const {data:session}=await db.from("normal_game_sessions").select("*").eq("id",sessionId).eq("user_id",user.id).is("finished_at",null).maybeSingle();
  if(!session)return json({error:"Game session not found or finished"},404);
+ const {data:verifiedTeam}=await db.from("arcade_teams").select("id").eq("id",session.team_id).eq("verified",true).maybeSingle();
+ if(!verifiedTeam)return json({error:"This squad is no longer verified"},409);
  const elapsed=(Date.now()-new Date(session.started_at).getTime())/1000;
  if(elapsed<0||elapsed>120)return json({error:"Time is up"},410);
  const {data:answer}=await db.from("arcade_team_answers").select("roster").eq("team_id",session.team_id).maybeSingle();
