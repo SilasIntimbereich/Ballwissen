@@ -12,6 +12,8 @@ const validHttps=value=>{try{return new URL(value).protocol==="https:";}catch{re
 function verifiedByAudit(team,teamId){
  const record=audit.teams?.[teamId];
  if(!record||record.status!=="verified")return false;
+ if(record.tournament!==team.year||record.teamNameInDataset!==team.name||!String(record.teamNameInFifaPdf||"").trim())
+  throw new Error("Audit tournament/team identity metadata mismatch for "+teamId);
  if(!/^\d{4}-\d{2}-\d{2}$/.test(record.reviewedAt||""))
   throw new Error("Verified audit requires an ISO review date for "+teamId);
  const rows=record.players;
@@ -50,7 +52,7 @@ for(const file of files){
    if(!byTeam.has(p.team))byTeam.set(p.team,[]);
    byTeam.get(p.team).push({name:p.player||p.name,position:p.pos||p.position,club:p.club||null,number:p.number||null});
   }
-  groups={2026:[...byTeam.entries()].map(([name,players])=>({id:name.toLowerCase().replace(/[^a-z0-9]+/g,"-")+"-2026",name,players}))};
+  groups={2026:[...byTeam.entries()].map(([name,players])=>({id:name.toLowerCase().replace(/[^a-z0-9]+/g,"-")+"-2026",name,year:2026,players}))};
  }
  for(const [year,teams] of Object.entries(groups)){
   for(const team of teams){
