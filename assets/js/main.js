@@ -9,20 +9,18 @@ let mode="easy",team=null,found=new Set(),roundState=null,submitting=false,secon
 async function ensureAuth(){if(!supabase)throw new Error("Supabase is not configured.");const current=await supabase.auth.getSession();if(!current.data.session){const auth=await supabase.auth.signInAnonymously();if(auth.error)throw auth.error;}}
 function show(id){["home","select","game","online","stats","settings"].forEach(screen=>$("#"+screen)?.classList.toggle("active",screen===id));window.scrollTo(0,0);}
 function renderTeams(){
- const year=Number($("#year").value),allTeams=tournaments[year]||[],teams=practiceOnly?allTeams.filter(item=>!item.verified&&item.players.length):allTeams,status=datasetStatus[year];
+ const year=Number($("#year").value),allTeams=tournaments[year]||[],teams=allTeams.filter(item=>item.players.length);
  $("#team-grid").innerHTML="";
- $("#select-note").textContent=practiceOnly?(teams.length?"Practice mode shows locally playable, unverified squads. These rounds are unranked.":"No local practice squads are available for this tournament yet."):(teams.length?(status.verified?"All squads independently audited.":status.auditPending?(year===2026?status.verifiedTeams+" of 48 teams independently audited; "+(48-status.verifiedTeams)+" remain pending.":status.verifiedTeams+" of "+teams.length+" historical teams independently audited; the rest are practice-only."):"Practice squads."):"Historical squads for this tournament are not yet imported. No invented teams are shown.");
+ $("#select-note").textContent=teams.length
+  ?"All available squads are playable locally. Games are unranked and work without an account."
+  :"No local squads are available for this tournament yet.";
  teams.forEach(selected=>{
   const button=document.createElement("button");button.className="team-button";
   const name=document.createElement("span");name.textContent=selected.name;
   const meta=document.createElement("small");
-  const onlineLocked=selected.verified&&!supabase;
-  meta.textContent=onlineLocked
-   ?"Verified roster · online backend not connected"
-   :selected.total+" players · "+selected.teamDifficulty+" difficulty · "+(selected.verified?"online verified":"practice only");
+  meta.textContent=selected.total+" players · "+selected.teamDifficulty+" difficulty · local practice";
   button.append(name,meta);
-  if(onlineLocked){button.disabled=true;button.title="This verified squad needs the secure online backend. Choose Practice Mode for playable local squads.";}
-  else button.onclick=()=>startGame(selected);
+  button.onclick=()=>startGame(selected);
   $("#team-grid").append(button);
  });
 }
@@ -44,21 +42,24 @@ function addPlayerCard(index,hint,id){const card=document.createElement("div");c
 function renderNormalRoster(){if(normalSessionId&&Array.isArray(normalHints)){normalHints.forEach((hint,index)=>addPlayerCard(index,mode==="easy"?formatHint(hint.position,hint.club):"HIDDEN PLAYER",hint.id));$("#total").textContent=String(team.total);return;}team.players.forEach((player,index)=>addPlayerCard(index,mode==="easy"?formatHint(player.position,player.club):"HIDDEN PLAYER"));$("#total").textContent=String(team.players.length);}
 function renderDailyRoster(dailyTeam){dailyTeam.hints.forEach((hint,index)=>addPlayerCard(index,mode==="daily-legendary"?"HIDDEN PLAYER":formatHint(hint.position,hint.club),hint.id));$("#total").textContent=String(dailyTeam.total);}
 async function startGame(selected){
- dailyState=null;normalSessionId=null;normalHints=null;mode=mode==="hard"?"hard":"easy";team=selected;$("#result").dataset.resultKind=team.verified?"online":"practice";resetGameView();
- $("#game-team").textContent=team.name.toUpperCase();$("#game-tournament").textContent="WORLD CUP "+team.year;$("#game-mode").textContent=mode==="easy"?"NORMAL EASY":"NORMAL HARD";$("#game-heading").textContent="NAME THE SQUAD";show("game");clearInterval(tick);updateTimer();
- if(team.verified){
-  if(!supabase){$("#online-message").textContent="This verified squad is protected for online play. Connect Supabase to start it; its answer list is not shipped to the browser.";show("online");return;}
-  $("#guess").disabled=true;$("#guess-btn").disabled=true;$("#give-up").disabled=true;$("#feedback").textContent="Starting secure online session...";
-  try{await ensureAuth();const response=await supabase.functions.invoke("start-normal-game",{body:{teamId:team.id}});if(response.error)throw response.error;normalSessionId=response.data.sessionId;normalHints=response.data.hints||[];team.total=response.data.total;if(!normalSessionId||normalHints.length!==team.total)throw new Error("Secure roster hints are incomplete.");resetGameView();renderNormalRoster();$("#feedback").textContent="Online session active. Correct guesses are checked by the server.";}
-  catch(error){$("#online-message").textContent=error.message||"Secure online session unavailable. Try again after the backend is deployed.";show("online");return;}
- }else{if(!team.players.length){$("#online-message").textContent="This practice roster is unavailable in the public build.";show("online");return;}roundState=createRound(team.players);found=roundState.found;renderNormalRoster();$("#feedback").textContent="Practice round. This unverified squad is not ranked."; }
+ dailyState=null;normalSessionId=null;normalHints=null;mode=mode==="hard"?"hard":"easy";team=selected;
+ $("#result").dataset.resultKind="practice";resetGameView();
+ $("#game-team").textContent=team.name.toUpperCase();$("#game-tournament").textContent="WORLD CUP "+team.year;
+ $("#game-mode").textContent=mode==="easy"?"NORMAL EASY":"NORMAL HARD";
+ $("#game-heading").textContent="NAME THE SQUAD";show("game");clearInterval(tick);updateTimer();
+ if(!Array.isArray(team.players)||!team.players.length){
+  $("#online-message").textContent="This squad has no local roster data yet. It will become playable when its squad data is added.";
+  show("online");return;
+ }
+ roundState=createRound(team.players);found=roundState.found;renderNormalRoster();
+ $("#feedback").textContent="Local practice round · unranked.";
  enableGuessControls();$("#guess").focus();startClock();
 }
 function startClock(){clearInterval(tick);tick=setInterval(()=>{seconds=Math.max(0,seconds-1);updateTimer();if(seconds<=0)finish(false);},1000);}
 async function startDaily(modeName){
  if(!supabase){
   const tier=modeName.replace("daily-","");
-  const allDemoTeams=Object.values(tournaments).flat().filter(item=>!item.verified&&!dailyExclusions.has(item.id)&&item.players.length);
+  const allDemoTeams=Object.values(tournaments).flat().filter(item=>!dailyExclusions.has(item.id)&&item.players.length);
   let pool=allDemoTeams.filter(item=>item.teamDifficulty===tier),demoFallback=pool.length<3;
   if(demoFallback)pool=allDemoTeams;
   if(pool.length<3){$("#online-message").textContent="Not enough eligible local practice squads are available for this Daily demo.";show("online");return;}
@@ -178,14 +179,14 @@ document.querySelectorAll("[data-mode]").forEach(button=>button.onclick=()=>{con
 const allTeams=Object.values(tournaments).flat(),verifiedTeams=allTeams.filter(item=>item.verified).length;
 const dailyCounts={common:0,niche:0,legendary:0},demoCounts={common:0,niche:0,legendary:0};
 allTeams.filter(item=>item.verified&&!dailyExclusions.has(item.id)).forEach(item=>{if(Object.hasOwn(dailyCounts,item.teamDifficulty))dailyCounts[item.teamDifficulty]++;});
-allTeams.filter(item=>!item.verified&&!dailyExclusions.has(item.id)&&item.players.length).forEach(item=>{if(Object.hasOwn(demoCounts,item.teamDifficulty))demoCounts[item.teamDifficulty]++;});
+allTeams.filter(item=>!dailyExclusions.has(item.id)&&item.players.length).forEach(item=>{if(Object.hasOwn(demoCounts,item.teamDifficulty))demoCounts[item.teamDifficulty]++;});
 for(const tier of ["common","niche","legendary"]){
  const button=document.querySelector('[data-mode="daily-'+tier+'"]');
- const ready=supabase?dailyCounts[tier]>=3:(demoCounts[tier]>=3||Object.values(demoCounts).reduce((sum,count)=>sum+count,0)>=3);
+ const ready=demoCounts[tier]>=3||Object.values(demoCounts).reduce((sum,count)=>sum+count,0)>=3;
  button.disabled=!ready;
- button.title=supabase?(ready?"At least three verified, non-excluded squads are available.":"Daily mode locked until three eligible squads in this tier are independently verified."):(ready?(demoCounts[tier]>=3?"Local unranked demo with three squads from this tier.":"Local unranked demo using a mixed test pool because this tier has too few practice squads."):"Daily demo needs at least three eligible practice squads.");
+ button.title=ready?(demoCounts[tier]>=3?"Local unranked challenge with three squads from this tier.":"Local unranked challenge using a mixed pool because this tier has too few squads."):"Daily mode needs at least three eligible local squads.";
  if(!supabase&&ready)button.querySelector("small").textContent=demoCounts[tier]>=3?"3-team local demo · unranked":"3-team mixed test pool · unranked";
 }
 const readyTiers=["common","niche","legendary"].filter(tier=>dailyCounts[tier]>=3);
-$("#data-status").textContent="ROSTER AUDIT: "+verifiedTeams+"/"+allTeams.length+" VERIFIED · "+(supabase?"ONLINE DAILY: "+(readyTiers.length?readyTiers.join(" + ").toUpperCase():"NONE"):"LOCAL DAILY DEMO: "+Object.keys(demoCounts).filter(tier=>demoCounts[tier]>=3).join(" + ").toUpperCase());
+$("#data-status").textContent="LOCAL SQUADS: "+allTeams.filter(item=>item.players.length).length+" · ONLINE FEATURES COMING LATER";
 renderTeams();loadWeeklyLeaderboard();
