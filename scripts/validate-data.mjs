@@ -122,16 +122,7 @@ for (const functionName of ["record_daily_player_guess","complete_daily_team","r
 if (!atomicMigration.includes("normal_results_user_team_unique_idx") ||
     !atomicMigration.includes("on conflict(user_id,team_id) where user_id is not null"))
   fail("Normal-mode statistics must count one latest result per player and squad.");
-const atomicChecks = [
-  ["supabase/functions/daily-guess/index.ts","record_daily_player_guess"],
-  ["supabase/functions/submit-daily/index.ts","complete_daily_team"],
-  ["supabase/functions/normal-guess/index.ts","record_normal_player_guess"],
-  ["supabase/functions/submit-normal-result/index.ts","finish_normal_game_session"]
-];
-for (const [path,functionName] of atomicChecks) {
-  if (!(await readText(path)).includes('rpc("' + functionName + '"'))
-    fail("Edge Function is not wired to atomic game action: " + path);
-}
+
 const edgeWiring = [
   ["supabase/functions/daily-guess/index.ts","record_daily_player_guess"],
   ["supabase/functions/submit-daily/index.ts","complete_daily_team"],
