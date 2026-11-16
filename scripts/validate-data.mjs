@@ -101,6 +101,11 @@ if (!migration.includes("create trigger enforce_daily_squad_exclusions") ||
 const dailyFunction = await readText("supabase/functions/daily-challenge/index.ts");
 if (!dailyFunction.includes("daily_excluded_squads") || !dailyFunction.includes("excludedIds.has"))
   fail("Daily challenge API must fail closed when an excluded squad is scheduled.");
+const statisticsMigration = await readText("supabase/migrations/202611160002_statistics_integrity.sql");
+if (!statisticsMigration.includes("order by bucket_start") ||
+    !statisticsMigration.includes("count(*)-1") ||
+    !statisticsMigration.includes("s.points desc,s.user_id"))
+  fail("Statistics ordering, peer-percentile or deterministic leaderboard fix is missing.");
 for (const excluded of dailyExclusions.teams) {
   if (!migration.includes("'" + excluded.id + "'"))
     fail("Server-side Daily exclusion migration is missing " + excluded.id);
