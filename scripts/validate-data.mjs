@@ -98,6 +98,9 @@ const migration = await readText("supabase/migrations/202611160001_daily_squad_e
 if (!migration.includes("create trigger enforce_daily_squad_exclusions") ||
     !migration.includes("Daily challenge cannot include excluded squad"))
   fail("Daily exclusion database trigger is missing.");
+const dailyFunction = await readText("supabase/functions/daily-challenge/index.ts");
+if (!dailyFunction.includes("daily_excluded_squads") || !dailyFunction.includes("excludedIds.has"))
+  fail("Daily challenge API must fail closed when an excluded squad is scheduled.");
 for (const excluded of dailyExclusions.teams) {
   if (!migration.includes("'" + excluded.id + "'"))
     fail("Server-side Daily exclusion migration is missing " + excluded.id);
