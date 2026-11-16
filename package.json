@@ -7,7 +7,7 @@
     "import:historical": "node scripts/import-historical-squads.mjs",
     "validate:data": "node scripts/validate-data.mjs",
     "sync:supabase": "node scripts/sync-supabase-data.mjs",
-    "check": "node --check assets/js/data.js && node --check assets/js/matching.js && node --check assets/js/main.js && node --check assets/js/leaderboard.js && node --check sw.js && node --check scripts/import-historical-squads.mjs && node --check scripts/validate-data.mjs && node --check scripts/sync-supabase-data.mjs && node --check scripts/audit-2026-fifa-pdf.mjs && node --check scripts/build-public.mjs",
+    "check": "node --check assets/js/data.js && node --check assets/js/matching.js && node --check assets/js/main.js && node --check assets/js/leaderboard.js && node --check sw.js && node --check scripts/import-historical-squads.mjs && node --check scripts/validate-data.mjs && node --check scripts/sync-supabase-data.mjs && node --check scripts/audit-2026-fifa-pdf.mjs && node --check scripts/build-public.mjs && node --check scripts/player-rarity.mjs",
     "test": "npm run check && npm run validate:data && npm run build:public && node --test tests/*.test.mjs",
     "audit:2026": "node scripts/audit-2026-fifa-pdf.mjs",
     "build:public": "node scripts/build-public.mjs"
