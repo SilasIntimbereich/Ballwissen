@@ -16,12 +16,5 @@ for(const meta of publicData.teams||[]){
  tournaments[meta.year].push({...meta,players:practiceById.get(meta.id)||[]});
 }
 for(const year of Object.keys(tournaments))tournaments[year].sort((a,b)=>a.name.localeCompare(b.name));
-export const datasetStatus=Object.fromEntries(Object.entries(tournaments).map(([year,teams])=>[year,{
- teams:teams.length,
- players:teams.reduce((total,team)=>total+team.total,0),
- verified:teams.length>0&&teams.every(team=>team.verified),
- verifiedTeams:teams.filter(team=>team.verified).length,
- auditPending:teams.some(team=>!team.verified)
-}]));
 export const dailyExclusions=new Set((exclusionsData.teams||[]).map(item=>item.id));
 export {tournaments};
