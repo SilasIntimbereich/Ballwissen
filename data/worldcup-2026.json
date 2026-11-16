@@ -1,7 +1,7 @@
 {
   "year": 2026,
   "source": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/squads.csv",
-  "sourceDescription": "Third-party structured snapshot documented as official registered 26-player squads; snapshot 2026-07-03. Independent name-by-name comparison with FIFA's final PDF remains pending.",
+  "sourceDescription": "Third-party snapshot of the 48 registered 26-player squads, dated 2026-07-03. Twenty teams have been independently reviewed against FIFA squad documents; the remaining 28 are unverified practice data.",
   "players": [
     {
       "name": "Matěj Kovář",

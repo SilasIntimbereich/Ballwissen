@@ -1,7 +1,7 @@
 name: Validate FOOTBALL ARCADE
 on:
   push:
-    branches: [main]
+    branches: [main, v4-arcade-menu-pass]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -17,6 +17,12 @@ jobs:
           node-version: 22
       - name: Run syntax, data and player-matching tests
         run: npm test
+      - name: Install Chromium for real browser tests
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium webkit
+      - name: Test mobile gameplay and offline reload
+        run: npm run test:browser
   edge-functions:
     runs-on: ubuntu-latest
     steps:

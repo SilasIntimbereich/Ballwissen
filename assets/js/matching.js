@@ -11,11 +11,31 @@ function distance(a,b){
  }
  return row[b.length];
 }
-export function matches(guess,player){
+const surnameParticles=new Set(["da","das","de","del","della","di","dos","du","la","le","van","von","bin","al","el","st"]);
+function surnameForms(value){
+ const words=String(value??"").trim().split(/\s+/).filter(Boolean);
+ if(!words.length)return [];
+ const forms=[normalize(words.at(-1))];
+ let start=words.length-1;
+ while(start>0&&surnameParticles.has(normalize(words[start-1])))start--;
+ if(start<words.length-1)forms.push(normalize(words.slice(start).join(" ")));
+ return [...new Set(forms.filter(form=>form.length>=4))];
+}
+function nameTargets(player){
+ return [player?.name,...(player?.aliases||[])].filter(Boolean).map(normalize);
+}
+export function matches(guess,player,squad=[player]){
  const input=normalize(guess);
- if(!input)return false;
- const targets=[player.name,...(player.aliases||[])].filter(Boolean).map(normalize);
+ if(!input||!player)return false;
+ const targets=nameTargets(player);
  if(targets.includes(input))return true;
+ const ownSurnames=[...surnameForms(player.name),...(player.aliases||[]).flatMap(surnameForms)];
+ if(ownSurnames.includes(input)){
+  const candidates=(Array.isArray(squad)?squad:[player]).filter(candidate=>
+   [...surnameForms(candidate?.name),...(candidate?.aliases||[]).flatMap(surnameForms)].includes(input)
+  );
+  if(candidates.length===1&&candidates[0]===player)return true;
+ }
  if(input.length<4)return false;
  return targets.some(target=>
   (Math.min(input.length,target.length)>=6&&distance(input,target)<=1)||

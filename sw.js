@@ -1,16 +1,18 @@
-const CACHE_NAME="football-arcade-v4-shell-8";
+const CACHE_NAME="football-arcade-v4-shell-24";
 const APP_SHELL=[
   "./",
   "./index.html",
   "./manifest.webmanifest",
   "./assets/css/styles.css",
-  "./assets/js/config.js",
   "./assets/js/main.js",
+  "./assets/js/gameplay.js",
   "./assets/js/matching.js",
   "./assets/js/data.js",
-  "./assets/js/leaderboard.js",
+  "./assets/js/menu.js",
   "./data/public-teams.json",
   "./data/practice-rosters.json",
+  "./data/daily-exclusions.json",
+  "./data/ATTRIBUTION.txt",
   "./assets/icons/football-arcade.svg"
 ];
 self.addEventListener("install",event=>{
