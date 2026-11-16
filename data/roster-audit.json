@@ -1001,8 +1001,8 @@
       "teamNameInFifaPdf": "Brazil (BRA)",
       "reviewedAt": "2026-11-16",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
-      "secondarySource": "https://www.cbf.com.br/selecao-brasileira/noticias/selecao-masculina/a/ederson-e-convocado-pela-selecao-para-a-copa-do-mundo",
-      "notes": "All 26 roster rows were compared manually by shirt number, player identity, FIFA position code and tournament-time club against FIFA's final squad PDF (page 7). The CBF's 7 June announcement confirms midfielder Éderson was called up to replace injured Wesley. This resolves the older preliminary CBF/press lists that still included Wesley and omitted Éderson Silva. The dataset contains both Éderson Silva (#2, Atalanta, MF) and Ederson Moraes (#23, Fenerbahçe, GK), as does FIFA's final list.",
+      "secondarySource": "https://datencenter.dfb.de/en/competitions/fifa-world-cup/seasons/2026-in-usa%2Fmexico%2Fcanada/teams/brazil?datacenter_name=data-center",
+      "notes": "All 26 roster rows were compared by shirt number, player identity, FIFA position code and tournament-time club against FIFA's final squad PDF (page 7) and the DFB data center's Brazil tournament roster. The CBF's 7 June replacement notice confirms midfielder Éderson Silva was called up for injured Wesley. The final FIFA list and DFB roster include Éderson Silva (#2) and Ederson Moraes (#23) as two different players.",
       "players": [
         {
           "playerName": "Alisson",
@@ -1248,7 +1248,7 @@
       "reviewedAt": "2026-11-16",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://datencenter.dfb.de/en/competitions/fifa-world-cup/seasons/2026-in-usa%2Fmexico%2Fcanada/teams/argentina?datacenter_name=data-center",
-      "notes": "All 26 players were checked by shirt number and identity against FIFA's final squad PDF (page 2) and the DFB data center. Position codes and tournament-time clubs were checked against FIFA. The DFB's historical tournament squad page confirms shirt numbers and player identities. A mismatch was found and corrected before verification: Nicolás González (#15) is FW in FIFA's final list and DFB grouping, not MF as the upstream snapshot had recorded.",
+      "notes": "All 26 players were checked by shirt number and identity against FIFA's final squad PDF (page 2) and the DFB data center's Argentina tournament roster. Position codes and tournament-time clubs are taken from FIFA. The DFB groups Nicolás González (#15) under Sturm, while FIFA's official squad-list position code is MF; FIFA's code is retained. Marcos Senesi (#2) is DF in the FIFA final list and the game data has been corrected from the upstream MF value.",
       "players": [
         {
           "playerName": "Juan Musso",
@@ -1380,10 +1380,10 @@
           "playerName": "Nicolás González",
           "sourceName": "GONZALEZ Nico",
           "number": 15,
-          "position": "FW",
+          "position": "MF",
           "clubAtTournament": "Atlético De Madrid",
           "status": "matched",
-          "notes": "Matched by shirt number and identity to FIFA final squad PDF and DFB tournament roster; position and club from FIFA."
+          "notes": "FIFA final squad PDF lists the official position code as MF. DFB groups him under Sturm in its tactical roster view; the FIFA squad-list position code is retained."
         },
         {
           "playerName": "Thiago Almada",
