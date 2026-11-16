@@ -14,7 +14,7 @@ for (const p of data.players) {
   byCode.get(p.teamCode).push(p);
 }
 const normalize = s => String(s || "").replace(/\u00ad/g, "ffi").replace(/«/g, "fi").replace(/ı/g, "i").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
-const tokens = s => normalize(s).match(/[a-z0-9]+/g) || [];
+const tokens = s => String(s || "").replace(/\u00ad/g, "ffi").replace(/«/g, "fi").replace(/ı/g, "i").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().match(/[a-z0-9]+/g) || [];
 const clubKey = s => normalize(String(s || "").replace(/\s*\([A-Z]{3}\)\s*$/, ""));
 const report = { source: PDF_URL, pages: pdf.numPages, generatedAt: new Date().toISOString(), teams: [], summary: {} };
 
