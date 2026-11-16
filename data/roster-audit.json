@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "pending",
+  "status": "partial",
   "description": "Player-level independent audit ledger. A team is eligible for ranked play only when every player has a matched/corrected audit row, exact tournament position and club value, and primary plus secondary source URLs. Never set a team status to verified based on row counts alone.",
   "allowedPlayerStatuses": [
     "matched",
@@ -509,8 +509,8 @@
       "teamNameInFifaPdf": "Germany (GER)",
       "reviewedAt": "2026-11-16",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
-      "secondarySource": "https://www.dfb.de/news/karl-faellt-fuer-wm-aus-ouedraogo-nachnominiert",
-      "notes": "All 26 roster rows were compared manually by shirt number, player identity, position and tournament-time club against FIFA's final squad PDF (page 20). The DFB's 5 June 2026 announcement independently confirms that Lennart Karl was injured and Assan Ouédraogo replaced him. The DFB's 2 June squad-number announcement initially listed Karl, so the replacement notice is essential to confirm the final roster. NBC Sports' 11 June list also still includes Karl; it is treated as stale for this final-squad check.",
+      "secondarySource": "https://www.bundesliga.com/en/bundesliga/news/players-squads-2026-world-cup-usa-mexico-canada-germany-37368",
+      "notes": "All 26 roster rows were compared by shirt number, player identity, position and tournament-time club against FIFA's final squad PDF (page 20). Bundesliga.com's 11 June final-squad list independently confirms all 26 names, including Assan Ouédraogo. The DFB's 5 June replacement notice independently confirms that Lennart Karl was injured and Ouédraogo replaced him. The DFB's 2 June squad-number announcement and NBC Sports' 11 June list still include Karl, so both are treated as stale for final-squad membership.",
       "players": [
         {
           "playerName": "Manuel Neuer",
