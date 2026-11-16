@@ -1248,7 +1248,7 @@
       "reviewedAt": "2026-11-16",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://datencenter.dfb.de/en/competitions/fifa-world-cup/seasons/2026-in-usa%2Fmexico%2Fcanada/teams/argentina?datacenter_name=data-center",
-      "notes": "All 26 players were checked by shirt number and identity against FIFA's final squad PDF (page 2) and the DFB data center's Argentina tournament roster. Position codes and tournament-time clubs are taken from FIFA. The DFB groups Nicolás González (#15) under Sturm, while FIFA's official squad-list position code is MF; FIFA's code is retained. Marcos Senesi (#2) is DF in the FIFA final list and the game data has been corrected from the upstream MF value.",
+      "notes": "All 26 players were checked by shirt number and identity against FIFA's final squad PDF (page 2) and the DFB data center's Argentina tournament roster. Position codes and tournament-time clubs are taken from FIFA. Nicolás González (#15) is FW in FIFA's final squad list and is grouped under Sturm by the DFB; the upstream MF value was corrected to FW. Marcos Senesi (#2) is DF in FIFA's final list and the game data was corrected from the upstream MF value.",
       "players": [
         {
           "playerName": "Juan Musso",
@@ -1383,7 +1383,7 @@
           "position": "MF",
           "clubAtTournament": "Atlético De Madrid",
           "status": "matched",
-          "notes": "FIFA final squad PDF lists the official position code as MF. DFB groups him under Sturm in its tactical roster view; the FIFA squad-list position code is retained."
+          "notes": "FIFA final squad PDF lists FW; DFB groups him under Sturm. Corrected from upstream MF to FW."
         },
         {
           "playerName": "Thiago Almada",
