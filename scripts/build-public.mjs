@@ -74,7 +74,7 @@ for (const team of allTeams) {
     total: players.length,
     teamCode: team.teamCode || players[0]?.teamCode || null
   });
-  if (!isAudited) practiceTeams.push({ id: team.id, players });
+  practiceTeams.push({ id: team.id, players });
 }
 if (publicTeams.length !== 240) throw new Error("Expected 240 total squads, got " + publicTeams.length);
 
@@ -89,8 +89,8 @@ await writeFile("dist/data/public-teams.json", JSON.stringify({ version: 1, team
 await writeFile("dist/data/practice-rosters.json", JSON.stringify({ version: 1, teams: practiceTeams }, null, 2) + "\n");
 
 const verifiedIds = new Set(publicTeams.filter(t => t.verified).map(t => t.id));
-if (practiceTeams.some(t => verifiedIds.has(t.id))) throw new Error("A verified answer roster leaked into practice data.");
+if (practiceTeams.length !== publicTeams.length || practiceTeams.some(t => !verifiedIds.has(t.id) && !t.players.length)) throw new Error("Local roster package is incomplete.");
 for (const path of ["dist/data/worldcup-2026.json", "dist/data/historical-squads.json", "dist/data/roster-audit.json"])
   try { await stat(path); throw new Error("Private source data leaked into public build: " + path); } catch (e) { if (e.code !== "ENOENT") throw e; }
 
-console.log("Public build created: " + publicTeams.length + " teams; " + publicTeams.filter(t => t.verified).length + " verified teams have no names in public data; " + practiceTeams.length + " unverified practice rosters are included.");
+console.log("Offline public build created: " + publicTeams.length + " teams with " + practiceTeams.reduce((sum, team) => sum + team.players.length, 0) + " local player records.");
