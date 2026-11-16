@@ -20,7 +20,7 @@ test("home menu exposes all seven selectable destinations", async () => {
   assert.match(css, /\.stadium\{[^}]*pointer-events:none/);
   assert.match(css, /\.utility-grid\{display:grid/);
   assert.match(css, /button:focus-visible/);
-  assert.match(css, /h1 span\\{background:none;color:#f0c64a/);
+  assert.ok(css.includes("h1 span{background:none;color:#f0c64a"));
   const serviceWorker = await read("dist/sw.js");
   assert.match(serviceWorker, /\.\/assets\/js\/menu\.js/);
 });
