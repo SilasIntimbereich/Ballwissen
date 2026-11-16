@@ -234,9 +234,10 @@ if (!normalGuessFunction.includes("eq(\"verified\",true)"))
   fail("Normal guess endpoint must reject squads that are no longer verified.");
 if (publicDataModule.includes("worldcup-2026.json") || publicDataModule.includes("historical-squads.json"))
   fail("Browser data module must never fetch source roster files.");
-if (!publicBuilder.includes("if (!isAudited) practiceTeams.push") ||
+if (!publicBuilder.includes("practiceTeams.push({ id: team.id, players });") ||
+    !publicBuilder.includes("Local roster is incomplete") ||
     !publicBuilder.includes("Private source data leaked into public build"))
-  fail("Public build must exclude every verified answer roster and raw source data.");
+  fail("Public build must include a complete local roster for every team and exclude raw source data.");
 if (!netlifyConfig.includes('publish = "dist"') ||
     serviceWorker.includes("./data/worldcup-2026.json") ||
     serviceWorker.includes("./data/historical-squads.json"))
