@@ -80,7 +80,7 @@ for (const excluded of dailyExclusions.teams) {
   if (!migration.includes("'" + excluded.id + "'"))
     fail("Server-side Daily exclusion migration is missing " + excluded.id);
 }
-const normalize = value => String(value || "").normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
+const normalize = value => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
 const allTeams = [
   ...historicalTeams,
   ...[...teams.entries()].map(([name, players]) => ({
