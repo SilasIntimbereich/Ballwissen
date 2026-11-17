@@ -5,9 +5,9 @@ import { namesMatch } from "./historical-player-name-match.mjs";
 
 const SOURCES=[
  {year:2006,url:"https://www.fifadata.com/document/fwc/2006/PDF/FWC_2006_SquadLists.pdf",format:"old-dot"},
- {year:2010,url:"https://www.fifadata.com/document/fwc/2010/PDF_BackUp_2010_06_13/FWC_2010_SquadLists.pdf",format:"2010"},
- {year:2014,url:"https://www.fifadata.com/document/fwc/2014/pdf/fwc_2014_squadlists.pdf?cid=facebook_fifaworldcup",format:"old-dot"},
- {year:2018,url:"https://www.fifadata.com/document/fwc/2018/pdf/FWC_2018_SQUADLISTS.pdf",format:"old-dot"},
+ {year:2010,url:"https://www.fifadata.com/document/fwc/2010/PDF_BackUp_2010_06_13/FWC_2010_SquadLists.pdf",urls:["https://www.fifadata.com/document/fwc/2010/PDF_BackUp_2010_06_13/FWC_2010_SquadLists.pdf","https://web.archive.org/web/20100616010702id_/http://www.fifa.com/mm/document/tournament/competition/01/22/85/78/fwc_2010_squadlists.pdf"],format:"2010"},
+ {year:2014,url:"https://www.fifadata.com/document/fwc/2014/pdf/fwc_2014_squadlists.pdf?cid=facebook_fifaworldcup",urls:["https://www.fifadata.com/document/fwc/2014/pdf/fwc_2014_squadlists.pdf?cid=facebook_fifaworldcup","https://www.fifadata.com/document/FWC/2014/pdf/FWC_2014_SquadLists.pdf"],format:"old-dot"},
+ {year:2018,url:"https://www.fifadata.com/document/fwc/2018/pdf/FWC_2018_SQUADLISTS.pdf",urls:["https://www.fifadata.com/document/fwc/2018/pdf/FWC_2018_SQUADLISTS.pdf","https://web.archive.org/web/20190611000407id_/https://tournament.fifadata.com/documents/FWC/2018/pdf/FWC_2018_SQUADLISTS.PDF","https://tournament.fifadata.com/documents/FWC/2018/pdf/FWC_2018_SQUADLISTS.PDF"],format:"old-dot"},
  {year:2022,url:"https://fdp.fifa.org/assetspublic/ce44/pdf/SquadLists-English.pdf",format:"2022"}
 ];
 const historical=JSON.parse(await readFile("data/historical-squads.json","utf8"));
@@ -98,9 +98,14 @@ for(const source of SOURCES){
  const teamByKey=new Map(teamsForYear.map(team=>[teamKey(team.name),team]));
  const tournamentReport={year:source.year,url:source.url,pdfPages:0,teams:[],sourceStatus:"pending"};
  let response;
- try{
-  response=await fetchWithRetry(source.url,{headers:{"User-Agent":"FootballArcadeHistoricalRosterAudit/1.0"}});
- }catch(error){
+ let usedUrl=null;
+ const fetchErrors=[];
+ for(const url of source.urls||[source.url]){
+  try{response=await fetchWithRetry(url,{headers:{"User-Agent":"FootballArcadeHistoricalRosterAudit/1.0"}});usedUrl=url;break;}
+  catch(error){fetchErrors.push(url+": "+String(error));}
+ }
+ if(!response){
+  const error=new Error(fetchErrors.join(" | "));
   tournamentReport.sourceStatus="unavailable";
   tournamentReport.sourceError=String(error);
   tournamentReport.teams=teamsForYear.map(team=>({
@@ -113,6 +118,7 @@ for(const source of SOURCES){
   report.tournaments.push(tournamentReport);
   continue;
  }
+ tournamentReport.url=usedUrl||source.url;
  const pdf=await pdfjs.getDocument({data:new Uint8Array(await response.arrayBuffer()),useSystemFonts:true,isEvalSupported:false}).promise;
  tournamentReport.pdfPages=pdf.numPages;
  tournamentReport.sourceStatus="available";
