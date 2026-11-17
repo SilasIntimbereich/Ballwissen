@@ -8,12 +8,12 @@ const clubPrefixes=new Set(["fc","cf","ca","cr","se","sl","rsc","bsc","rc","rcd"
 const clubSuffixes=new Set(["fc","cf","sc","sfc","afc","calcio","bsc","jk","as"]);
 const clubAliases={
  atlantau:"atlantaunited",brightonha:"brightonhovealbion",hearts:"heartofmidlothian",melbournec:"melbournecity",
- staderennais:"rennes",galatasaraysk:"galatasaray",fenerbahcesk:"fenerbahce",pumasunam:"unam",
+ staderennais:"rennes",rennais:"rennes",galatasaraysk:"galatasaray",fenerbahcesk:"fenerbahce",pumasunam:"unam",
  aristhessaloniki:"aris",besiktasjk:"besiktas",minnesotau:"minnesotaunited",gdchaves:"chaves",
  kmsrdeinze:"deinze",estroyes:"troyes",adsancarlos:"sancarlos",adguanacasteca:"guanacasteca",
  cincinnatti:"cincinnati",gnkdinamozagreb:"dinamozagreb",ussassuolo:"sassuolo",tsg1899hoffenheim:"1899hoffenheim",
- ogcnice:"nice",atalantabergamo:"atalanta",herthabsc:"herthaberlin",sdaucas:"aucas",
- perspolistehran:"persepolis",aekathens:"aek",stadereims:"reims",urawareds:"urawareddiamonds",
+ ogcnice:"nice",atalantabergamo:"atalanta",herthabsc:"herthaberlin",hertha:"herthaberlin",sdaucas:"aucas",
+ perspolistehran:"persepolis",aekathens:"aek",mainz05:"mainz",olympiakos:"olympiacos",esperancetunis:"esperance",stadereims:"reims",urawareds:"urawareddiamonds",
  uscremonese:"cremonese",wolverhamptonw:"wolverhamptonwanderers",feyenoordrotterdam:"feyenoord",
  legiawarsaw:"legiawarszawa",clermontfoot:"clermont",birminghamc:"birminghamcity",sportingbraga:"braga",
  queensparkrangers:"qpr",olympiacospiraeus:"olympiacos",nottinghamf:"nottinghamforest",
