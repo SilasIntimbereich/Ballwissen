@@ -44,8 +44,8 @@ for (let pageNo = 1; pageNo <= pdf.numPages; pageNo++) {
   const fifaRows = [];
   const unparsed = [];
   for (const line of lines) {
-    const m = line.match(/^(\d{1,2})\s+(GK|DF|MF|FW)\s+(.+?)\s+(\d{2}\/\d{2}\/\d{4})\s+(.+?)\s+(\d{3})\s+(\d+)\s+(\d+)$/);
-    if (m) fifaRows.push({ number: Number(m[1]), position: m[2], nameArea: m[3], club: m[5], line });
+    const m = line.match(/^(\d{1,2})\s+(GK|DF|MF|FW)\s+(.+?)\s+(\d{2}\/\d{2}\/\d{4})\s+(?:(.+?)\s+)?(\d{3})\s+(\d+)\s+(\d+)$/);
+    if (m) fifaRows.push({ number: Number(m[1]), position: m[2], nameArea: m[3], club: m[5] || null, line });
     else if (/^\d{1,2}\s+(GK|DF|MF|FW)\s+/.test(line)) unparsed.push(line);
   }
   const mismatches = [];
