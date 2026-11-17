@@ -4,10 +4,12 @@ const POSITION_LEGEND=/^GK\\s*:\\s*Goalkeeper.*DF\\s*:\\s*Defender.*MF\\s*:\\s*M
 const DATE_HEADING=/^(?:DOB:|POS:|DATE OF BIRTH|(?:MONDAY|TUESDAY|WEDNESDAY|THURSDAY|FRIDAY|SATURDAY|SUNDAY)\\s+\\d{1,2}\\s+\\w+\\s+\\d{4})/i;
 
 const TEAM_ALIASES=new Map([
-  ["iriran","iran"],["korearepublic","southkorea"],["koreademocraticpeoplesrepublic","northkorea"],
-  ["cotedivoire","ivorycoast"],["usa","unitedstates"],["unitedstatesofamerica","unitedstates"],
+  ["iriran","iran"],["korearepublic","southkorea"],["koreadpr","northkorea"],
+  ["koreademocraticpeoplesrepublic","northkorea"],["cotedivoire","ivorycoast"],
+  ["usa","unitedstates"],["unitedstatesofamerica","unitedstates"],
   ["czechia","czechrepublic"],["chinesepr","china"],["chinapr","china"],
-  ["bosniaherzegovina","bosniaandherzegovina"],["republicofireland","ireland"]
+  ["bosniaherzegovina","bosniaandherzegovina"],["republicofireland","ireland"],
+  ["trinidadtobago","trinidadandtobago"]
 ]);
 
 const FIFA_CODES=new Map(Object.entries({
