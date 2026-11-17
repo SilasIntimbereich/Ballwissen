@@ -62,7 +62,7 @@ function clubKey(s){
   glasgowceltic:"celtic",alhelal:"alhilal",alhilal:"alhilal",monaco:"monaco",
   "1fckaiserslautern":"kaiserslautern",kaiserslautern:"kaiserslautern",
   parisstgermain:"parissaintgermain",parissaintgermain:"parissaintgermain",
-  realm Mallorca:"realmallorca",mallorca:"realmallorca",
+  realmMallorca:"realmallorca",mallorca:"realmallorca",
   "realvalladolid":"valladolid",valladolid:"valladolid",
   cologne:"koln",koln:"koln",nacionaluru:"nacional",
   betis:"realbetis",realbetis:"realbetis",santoslaguna:"santoslaguna"
