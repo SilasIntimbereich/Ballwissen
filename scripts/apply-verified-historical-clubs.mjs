@@ -64,7 +64,7 @@ for (const year of ["2010", "2014", "2018"]) {
       continue;
     }
     applyTeam(Number(year), teamAudit.teamId, teamAudit, candidateTeam.players || [],
-      ["FIFA final squad-list PDF", yearAudit.source]);
+      [teamAudit.verificationLevel, yearAudit.source, teamAudit.planetSource]);
   }
 }
 
