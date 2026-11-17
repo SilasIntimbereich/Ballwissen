@@ -2,7 +2,7 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { namesMatch } from "./historical-player-name-match.mjs";
 
 const SOURCE_URL = "https://www.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2022-world-cup/2022-fifa-world-cup-playing-squad-details-with-kit-number-position-age-caps-and-club-affiliation/";
-const normalize = value => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
+const normalize = value => String(value || "").replace(/[æÆ]/g,"ae").replace(/[øØ]/g,"o").replace(/[åÅ]/g,"a").replace(/[łŁ]/g,"l").replace(/[ß]/g,"ss").replace(/[œŒ]/g,"oe").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
 const teamAliases = { iriran:"iran", korearepublic:"southkorea", usa:"unitedstates", koreadpr:"northkorea", chinapr:"china" };
 const clubPrefix = new Set(["fc","cf","ca","cr","se","sl","rsc","bsc","rc","rcd","vfl","sfc","ac","cd","afc","sc","club"]);
 const clubSuffix = new Set(["fc","cf","sc","sfc","afc","calcio"]);
