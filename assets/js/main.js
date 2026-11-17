@@ -128,7 +128,7 @@ async function acceptDailyGuess(value){
  }
  const index=outcome.index,player=outcome.player,card=cardForPlayer(team.id+":"+index);
  if(card){
-  card.classList.add("found");setPlayerRarity(card,player.rarity,index);announcePlayer(player,player.rarity);
+  card.classList.add("found");setPlayerRarity(card,player.rarity,index);announcePlayer(player,player.rarity);announcePlayer(player,player.rarity);
   card.querySelector(".player-name").textContent=player.name;
   card.querySelector(".player-hint").textContent=dailyState.mode==="daily-legendary"?"FOUND":formatHint(player.position,player.club);
  }
