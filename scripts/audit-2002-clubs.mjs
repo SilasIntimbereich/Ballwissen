@@ -129,7 +129,7 @@ try {
       item.clubMismatches.length === 0;
     item.positionsClean = item.rosterComplete && item.positionMatches === players.length &&
       item.positionMismatches.length === 0;
-    item.clubCandidatesComplete = item.rsssfRosterClean && item.clubsClean && item.positionsClean;
+    item.clubCandidatesComplete = Boolean(candidateTeam) && item.rsssfRosterClean && item.clubsClean && item.positionsClean;
 
     if (item.clubCandidatesComplete && candidateTeam) {
       for (const assignment of assignments) {
