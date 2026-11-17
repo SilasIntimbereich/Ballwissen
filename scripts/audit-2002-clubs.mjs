@@ -5,6 +5,8 @@ import { parseWikipediaSquads } from "./historical-wikipedia-squads.mjs";
 const SOURCE_URL = "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads";
 const historical = JSON.parse(await readFile("data/historical-squads.json", "utf8"));
 const candidateData = JSON.parse(await readFile("artifacts/historical-club-candidates.json", "utf8"));
+const fifaRosterAudit = JSON.parse(await readFile("artifacts/2002-fifa-roster-audit.json", "utf8"));
+const fifaVerifiedTeams = new Set((fifaRosterAudit.teams || []).filter(team => team.rosterClean).map(team => team.teamId));
 const teams = historical.tournaments["2002"] || [];
 const report = {
   year: 2002,
@@ -34,6 +36,7 @@ try {
     const item = {
       teamId: team.id,
       teamName: team.name,
+      rosterIdentityVerified: fifaVerifiedTeams.has(team.id),
       sourcePlayerCount: rows.length,
       datasetPlayerCount: players.length,
       matchedPlayers: 0,
@@ -57,7 +60,7 @@ try {
         item.positionDifferences.push({ number: Number(player.number), player: player.name, datasetPosition: player.position, sourcePosition: row.position });
       }
       const candidatePlayer = candidateTeam?.players?.find(entry => Number(entry.number) === Number(player.number));
-      if (candidatePlayer && row.club) {
+      if (candidatePlayer && row.club && fifaVerifiedTeams.has(team.id)) {
         candidatePlayer.club = row.club;
         candidatePlayer.clubSource = SOURCE_URL;
         item.clubsAssigned++;
@@ -72,13 +75,14 @@ try {
       }
     }
     item.rosterComplete = rows.length === 23 && item.matchedPlayers === players.length && item.mismatches.length === 0;
-    item.clubCandidatesComplete = item.rosterComplete && item.clubsAssigned === players.length;
+    item.clubCandidatesComplete = item.rosterIdentityVerified && item.rosterComplete && item.clubsAssigned === players.length;
     report.teams.push(item);
   }
 
   report.summary = {
     expectedTeams: 32,
     parsedTeams: parsed.size,
+    fifaRosterVerifiedTeams: fifaVerifiedTeams.size,
     teamsWith23SourcePlayers: report.teams.filter(team => team.sourcePlayerCount === 23).length,
     rosterCleanTeams: report.teams.filter(team => team.rosterComplete).length,
     teamsWithAllClubCandidates: report.teams.filter(team => team.clubCandidatesComplete).length,
