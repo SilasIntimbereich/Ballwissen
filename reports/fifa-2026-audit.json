@@ -1,7 +1,7 @@
 {
   "source": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
   "pages": 48,
-  "generatedAt": "2026-11-16T19:13:13.355Z",
+  "generatedAt": "2026-11-17T15:20:26.422Z",
   "teams": [
     {
       "page": 1,
@@ -42,16 +42,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 1,
-      "mismatches": [
-        {
-          "number": 19,
-          "player": "Nicolás Otamendi",
-          "field": "club",
-          "fifa": "SL Ben\u0000ca (POR)",
-          "dataset": "SL Benfica"
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -107,16 +99,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 1,
-      "mismatches": [
-        {
-          "number": 14,
-          "player": "Dodi Lukébakio",
-          "field": "club",
-          "fifa": "SL Ben\u0000ca (POR)",
-          "dataset": "SL Benfica"
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -128,15 +112,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 2,
+      "mismatchCount": 1,
       "mismatches": [
-        {
-          "number": 7,
-          "player": "Amar Dedić",
-          "field": "club",
-          "fifa": "SL Ben\u0000ca (POR)",
-          "dataset": "SL Benfica"
-        },
         {
           "number": 24,
           "player": "Nidal Čelik",
@@ -170,16 +147,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 1,
-      "mismatches": [
-        {
-          "number": 13,
-          "player": "Sidny Lopes Cabral",
-          "field": "club",
-          "fifa": "SL Ben\u0000ca (POR)",
-          "dataset": "SL Benfica"
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -220,23 +189,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 2,
-      "mismatches": [
-        {
-          "number": 6,
-          "player": "Richard Ríos",
-          "field": "club",
-          "fifa": "SL Ben\u0000ca (POR)",
-          "dataset": "SL Benfica"
-        },
-        {
-          "number": 24,
-          "player": "Álvaro Montero",
-          "field": "club",
-          "fifa": "CA Vélez Sars\u0000eld (ARG)",
-          "dataset": "CA Vélez Sarsfield"
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -296,15 +250,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 2,
+      "mismatchCount": 1,
       "mismatches": [
-        {
-          "number": 11,
-          "player": "Jeremy Antonisse",
-          "field": "club",
-          "fifa": "AE Ki\u0000sia FC (GRE)",
-          "dataset": "AE Kifisia FC"
-        },
         {
           "number": 21,
           "player": "Tahith Chong",
@@ -337,16 +284,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 1,
-      "mismatches": [
-        {
-          "number": 12,
-          "player": "Moisés Ramírez",
-          "field": "club",
-          "fifa": "AE Ki\u0000sia FC (GRE)",
-          "dataset": "AE Kifisia FC"
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -968,23 +907,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 2,
-      "mismatches": [
-        {
-          "number": 14,
-          "player": "Fredrik Aursnes",
-          "field": "club",
-          "fifa": "SL Ben\u0000ca (POR)",
-          "dataset": "SL Benfica"
-        },
-        {
-          "number": 21,
-          "player": "Andreas Schjelderup",
-          "field": "club",
-          "fifa": "SL Ben\u0000ca (POR)",
-          "dataset": "SL Benfica"
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -1031,16 +955,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 1,
-      "mismatches": [
-        {
-          "number": 4,
-          "player": "Tomás Araújo",
-          "field": "club",
-          "fifa": "SL Ben\u0000ca (POR)",
-          "dataset": "SL Benfica"
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -1462,8 +1378,16 @@
   "summary": {
     "pdfPages": 48,
     "parsedTeams": 47,
-    "teamsWithNoMismatches": 20,
-    "totalMismatches": 102,
-    "teamsMissingFromDataset": []
+    "teamsWithNoMismatches": 27,
+    "totalMismatches": 91,
+    "teamsMissingFromDataset": [],
+    "teamsWithUnresolvedDifferences": 21,
+    "mismatchCountsByField": {
+      "name": 85,
+      "position": 2,
+      "club": 3,
+      "missing_fifa_row": 1
+    },
+    "note": "This is an extraction and comparison report, not an independent approval ledger. Name, position and club differences remain unresolved until manually checked against independent sources."
   }
 }
