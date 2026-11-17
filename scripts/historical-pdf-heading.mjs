@@ -59,7 +59,10 @@ export function extractTeamHeading(lines,knownTeams=[]){
   .map(line=>String(line||"").replace(/\s+/g," ").trim())
   .filter(Boolean);
  const known=new Set(knownTeams.map(canonicalTeamKey));
- const countryCodeHeading=values.find(line=>{
+ // Country headings belong near the top of the FIFA page. Do not accept
+ // a country name mentioned later in a player or club description.
+ const headingLines=values.slice(0,12);
+ const countryCodeHeading=headingLines.find(line=>{
   if(!usableHeading(line))return false;
   const match=line.match(/^(.*?)\s*\(([A-Z]{3})\)\s*$/);
   if(!match)return false;
@@ -67,5 +70,5 @@ export function extractTeamHeading(lines,knownTeams=[]){
   return known.has(key)&&FIFA_CODES.get(key)===match[2];
  });
  if(countryCodeHeading)return countryCodeHeading;
- return values.find(line=>usableHeading(line)&&known.has(canonicalTeamKey(line)))||"";
+ return headingLines.find(line=>usableHeading(line)&&known.has(canonicalTeamKey(line)))||"";
 }
