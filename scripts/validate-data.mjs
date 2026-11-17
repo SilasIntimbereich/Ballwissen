@@ -265,4 +265,9 @@ async function readText(path) {
 console.log("Structural validation passed: 192 historical teams / " + historicalPlayers +
   " source-listed players; 48 teams / 1,248 rows in 2026; 50 exact Daily exclusions are present in both JSON and the server-side SQL migration.");
 console.log("Potential non-excluded Daily pool: " + Object.entries(eligibleDailyByTier).map(([tier,count])=>tier+"="+count).join(", ") + ". These are candidates only; at least three fully audited teams per tier are still required before publishing Daily challenges.");
-console.log("Historical club fields remain blank pending independent audits. The 2026 dataset has " + Object.values(audit.teams).filter(r => r.status === "verified").length + " fully audited team(s); all other squads remain unverified.");
+const historicalAuditedTeams = historicalTeams.filter(team => audit.teams?.[team.id]?.status === "verified");
+const historicalAuditedPlayerRows = historicalAuditedTeams.reduce((sum, team) => sum + team.players.length, 0);
+const historicalClubRows = historicalAuditedTeams.reduce((sum, team) => sum + team.players.filter(player => Boolean(player.club)).length, 0);
+const worldCupAuditedTeams = Object.values(audit.teams).filter(record => record.status === "verified" && Number(record.tournament) === 2026).length;
+console.log("Audit status: " + historicalAuditedTeams.length + "/192 historical teams verified (" + historicalAuditedPlayerRows + " player rows; " + historicalClubRows + " tournament-time club values); " + worldCupAuditedTeams + "/48 2026 teams verified.");
+console.log("Unverified historical teams remain practice-only for ranked and Daily modes; missing historical club values must not be guessed.")
