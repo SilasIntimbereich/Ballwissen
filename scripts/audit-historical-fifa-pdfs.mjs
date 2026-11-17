@@ -6,7 +6,7 @@ import { namesMatch } from "./historical-player-name-match.mjs";
 const SOURCES=[
  {year:2006,url:"https://www.fifadata.com/document/fwc/2006/PDF/FWC_2006_SquadLists.pdf",format:"old-dot"},
  {year:2010,url:"https://www.fifadata.com/document/fwc/2010/PDF_BackUp_2010_06_13/FWC_2010_SquadLists.pdf",format:"2010"},
- {year:2014,url:"http://www.fifadata.com/document/FWC/2014/pdf/FWC_2014_SquadLists.pdf",format:"old-dot"},
+ {year:2014,url:"https://www.fifadata.com/document/fwc/2014/pdf/fwc_2014_squadlists.pdf?cid=facebook_fifaworldcup",format:"old-dot"},
  {year:2018,url:"https://www.fifadata.com/document/fwc/2018/pdf/FWC_2018_SQUADLISTS.pdf",format:"old-dot"},
  {year:2022,url:"https://fdp.fifa.org/assetspublic/ce44/pdf/SquadLists-English.pdf",format:"2022"}
 ];
