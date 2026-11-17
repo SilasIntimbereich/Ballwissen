@@ -8,7 +8,7 @@ const audit2022 = JSON.parse(await readFile("artifacts/2022-independent-club-aud
 const audit2002Clubs = JSON.parse(await readFile("artifacts/2002-club-audit.json", "utf8"));
 const report = {
   generatedAt: new Date().toISOString(),
-  rule: "Apply club and position values only when FIFA primary roster data and an independent secondary squad archive agree for every player in the team.",
+  rule: "Apply club and position values only when the required independent archives agree player-by-player; any available FIFA PDF candidate must not conflict. 2002 additionally requires the final RSSSF roster check.",
   appliedTeams: [],
   skippedTeams: [],
   summary: {}
