@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parsePlanetWorldCupSquad } from "../scripts/planet-world-cup-squad.mjs";
+import { parsePlanetWorldCupSquad, decodePlanetWorldCupResponse } from "../scripts/planet-world-cup-squad.mjs";
 
 test("parses Planet World Cup 2002 players, positions and tournament clubs", () => {
   const html = `
@@ -14,4 +14,13 @@ test("parses Planet World Cup 2002 players, positions and tournament clubs", () 
     { number: 6, position: "MF", name: "Christian Ziege", club: "Tottenham Hotspur" },
     { number: 8, position: "MF", name: "Dietmar Hamann", club: "Liverpool" }
   ]);
+});
+
+test("decodes archive response using its declared charset", async () => {
+  const bytes = new TextEncoder().encode("Müller");
+  const response = {
+    headers: { get: () => "text/html; charset=utf-8" },
+    arrayBuffer: async () => bytes.buffer
+  };
+  assert.equal(await decodePlanetWorldCupResponse(response), "Müller");
 });
