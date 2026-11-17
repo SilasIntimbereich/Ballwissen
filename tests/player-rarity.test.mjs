@@ -107,3 +107,22 @@ test("a Legendary squad with fewer than three eligible players does not invent e
  assert.equal(rosters.teams[0].players.filter(player=>player.rarity==="Ball Knowledge").length,1);
  assert.equal(rosters.teams[0].players.filter(player=>player.rarity==="Legendary").length,0);
 });
+
+
+test("uses higher shirt numbers as a deterministic obscurity tie-breaker",()=>{
+ const rosters={teams:[{id:"legendary-tie",players:[
+  {name:"Unknown One",number:1,position:"FW"},
+  {name:"Unknown Seven",number:7,position:"FW"},
+  {name:"Unknown Eighteen",number:18,position:"FW"},
+  {name:"Unknown TwentyTwo",number:22,position:"FW"},
+  {name:"Lionel Messi",number:10,position:"FW"}
+ ]}]};
+ const metadata={teams:[{id:"legendary-tie",year:2026,teamDifficulty:"legendary"}]};
+ assignRosterRarities(rosters,metadata);
+ const byNumber=new Map(rosters.teams[0].players.map(player=>[player.number,player.rarity]));
+ assert.equal(byNumber.get(22),"Ball Knowledge");
+ assert.equal(byNumber.get(18),"Legendary");
+ assert.equal(byNumber.get(7),"Legendary");
+ assert.equal(byNumber.get(1),"Niche");
+ assert.equal(byNumber.get(10),"Common");
+});
