@@ -30,8 +30,8 @@ The resolver uses curated recognition names, cross-tournament appearances, squad
 
 | Data | Coverage | Status |
 |---|---:|---|
-| Historical World Cups, 2002–2022 | 192 teams / 4,511 player records | Imported from the Fjelstul World Cup Database; position and shirt number are present. The upstream source does not provide tournament-time club values. |
-| World Cup 2026 | 48 teams / 1,248 player records | 26 players per team. 20 teams have been independently reviewed against FIFA squad documents; the remaining 28 are labelled practice data. Club hints are included where supplied. |
+| Historical World Cups, 2002–2022 | 192 teams / 4,511 player records | 44 teams / 1,015 player records have complete player-level identity, position, tournament-club and two-source audits. The remaining 148 teams are practice-only; their clubs are not presented as verified. |
+| World Cup 2026 | 48 teams / 1,248 player records | All 48 teams have been reviewed against FIFA final squad lists and independent OpenFootball data; 26 players per team. |
 | Daily exclusions | 50 squad editions | Checked against the squad IDs and excluded from all three Daily tiers. |
 
 The 2022 Iran squad contains 25 players in the source data; this is not padded with an invented player. Historical squads and 2026 squads are not presented as independently verified where the audit has not been completed.
