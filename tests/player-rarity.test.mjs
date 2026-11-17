@@ -68,3 +68,16 @@ test("Legendary rarity labels are available per eligible squad, not globally cap
 test("rarity scoring clamps invalid evidence instead of producing unstable tiers",()=>{
  assert.equal(rarityFromEvidence({caps:Infinity,goals:-100,majorAwards:NaN,globalRecognition:0,clubProfile:0}),"Ball Knowledge");
 });
+
+test("counts transliterated spellings as the same player across tournaments",()=>{
+ const rosters={teams:[
+  {id:"team-2010",players:[{name:"Kjær",position:"FW",number:9}]},
+  {id:"team-2018",players:[{name:"Kjaer",position:"FW",number:9}]}
+ ]};
+ const metadata={teams:[
+  {id:"team-2010",year:2010,teamDifficulty:"niche"},
+  {id:"team-2018",year:2018,teamDifficulty:"niche"}
+ ]};
+ assignRosterRarities(rosters,metadata);
+ for(const team of rosters.teams)assert.equal(team.players[0].rarity,"Rare");
+});
