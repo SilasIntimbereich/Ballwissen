@@ -96,7 +96,7 @@ for (const [year, config] of Object.entries(sources)) {
         wikipediaPlayerCount: wikiRows.length, planetPlayerCount: planetRows.length,
         datasetPlayerCount: players.length, matchedPlayers: 0,
         clubMatches: 0, clubMismatches: [], positionMatches: 0, positionMismatches: [],
-        fifaCandidatePlayers: 0, fifaCandidateMatches: 0, fifaCandidateMismatches: [],
+        fifaPdfCandidatePlayers: 0, fifaPdfCandidateMatches: 0, fifaPdfCandidateMismatches: [],
         mismatches: [], clubsAssigned: 0
       };
       const assignments = [];
@@ -135,13 +135,13 @@ for (const [year, config] of Object.entries(sources)) {
         }
 
         const fifaCandidate = candidateByNumber.get(number);
-        if (fifaCandidate?.club) {
-          item.fifaCandidatePlayers++;
+        if (fifaCandidate?.club && fifaCandidate?.clubSource) {
+          item.fifaPdfCandidatePlayers++;
           if (normalizeHistoricalClub(fifaCandidate.club) === planetClub) {
-            item.fifaCandidateMatches++;
+            item.fifaPdfCandidateMatches++;
           } else {
-            item.fifaCandidateMismatches.push({ number, player: player.name,
-              fifaClub: fifaCandidate.club, planetClub: planet.club });
+            item.fifaPdfCandidateMismatches.push({ number, player: player.name,
+              fifaClub: fifaCandidate.club, planetClub: planet.club, fifaSource: fifaCandidate.clubSource });
           }
         }
         assignments.push({ candidatePlayer: fifaCandidate, planet, wiki });
@@ -164,9 +164,9 @@ for (const [year, config] of Object.entries(sources)) {
         item.clubMismatches.length === 0;
       item.positionsClean = item.rosterClean && item.positionMatches === players.length &&
         item.positionMismatches.length === 0;
-      item.fifaPdfAgreement = item.fifaCandidatePlayers === 0 ? "unavailable" :
-        item.fifaCandidateMismatches.length ? "mismatch" :
-        item.fifaCandidatePlayers === players.length ? "complete" : "partial_agreement";
+      item.fifaPdfAgreement = item.fifaPdfCandidatePlayers === 0 ? "unavailable" :
+        item.fifaPdfCandidateMismatches.length ? "mismatch" :
+        item.fifaPdfCandidatePlayers === players.length ? "complete" : "partial_agreement";
       item.independentArchivesAgree = item.rosterClean && item.clubsClean && item.positionsClean;
       item.fullyCrossChecked = item.independentArchivesAgree && item.fifaPdfAgreement !== "mismatch";
       item.verificationLevel = item.fullyCrossChecked
@@ -200,7 +200,7 @@ for (const [year, config] of Object.entries(sources)) {
       clubMatches: yearReport.teams.reduce((sum, team) => sum + team.clubMatches, 0),
       clubMismatches: yearReport.teams.reduce((sum, team) => sum + team.clubMismatches.length, 0),
       positionMismatches: yearReport.teams.reduce((sum, team) => sum + team.positionMismatches.length, 0),
-      fifaCandidateMismatches: yearReport.teams.reduce((sum, team) => sum + team.fifaCandidateMismatches.length, 0),
+      fifaPdfCandidateMismatches: yearReport.teams.reduce((sum, team) => sum + team.fifaPdfCandidateMismatches.length, 0),
       unresolvedMismatches: yearReport.teams.reduce((sum, team) => sum + team.mismatches.length, 0),
       clubCandidatesAssigned: yearReport.teams.reduce((sum, team) => sum + team.clubsAssigned, 0)
     };
@@ -216,7 +216,7 @@ for (const [year, config] of Object.entries(sources)) {
       independentArchivesAgreeTeams: 0, fullyCrossCheckedTeams: 0,
       teamsWithCompleteFifaPdfComparison: 0, matchedPlayers: 0,
       clubMatches: 0, clubMismatches: 0, positionMismatches: 0,
-      fifaCandidateMismatches: 0, unresolvedMismatches: 0, clubCandidatesAssigned: 0
+      fifaPdfCandidateMismatches: 0, unresolvedMismatches: 0, clubCandidatesAssigned: 0
     };
   }
   report.tournaments[year] = yearReport;
@@ -228,7 +228,7 @@ report.summary = {
   fullyCrossCheckedTeams: Object.values(report.tournaments).reduce((sum, item) => sum + (item.summary.fullyCrossCheckedTeams || 0), 0),
   clubCandidatesAssigned: Object.values(report.tournaments).reduce((sum, item) => sum + (item.summary.clubCandidatesAssigned || 0), 0),
   clubMismatches: Object.values(report.tournaments).reduce((sum, item) => sum + (item.summary.clubMismatches || 0), 0),
-  fifaCandidateMismatches: Object.values(report.tournaments).reduce((sum, item) => sum + (item.summary.fifaCandidateMismatches || 0), 0),
+  fifaPdfCandidateMismatches: Object.values(report.tournaments).reduce((sum, item) => sum + (item.summary.fifaPdfCandidateMismatches || 0), 0),
   unavailableWikipediaSources: Object.values(report.tournaments).filter(item => item.sourceStatus !== "available").length
 };
 await mkdir("artifacts", { recursive: true });
