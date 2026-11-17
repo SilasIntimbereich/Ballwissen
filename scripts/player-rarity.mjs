@@ -5,6 +5,7 @@ export const normalizePlayerName = value => String(value || "")
   .toLowerCase().replace(/[^a-z0-9]+/g, " ").trim().replace(/\s+/g, " ");
 
 const slug = value => normalizePlayerName(value).replace(/ /g, "-");
+export const teamIdFor2026 = teamName => slug(teamName) + "-2026";
 
 function tierFor(teamName, difficulty) {
   for (const [tier, names] of Object.entries(difficulty?.tiers || {})) {
@@ -32,7 +33,7 @@ export function createPlayerRarityResolver(historical, worldCup2026, difficulty)
     grouped2026.get(teamName).push({ name: player.name || player.player, position: player.position || player.pos, number: player.number, aliases: player.aliases || [] });
   }
   for (const [teamName, players] of grouped2026) {
-    const id = slug(teamName) + "-2026";
+    const id = teamIdFor2026(teamName);
     rosters.teams.push({ id, players });
     metadata.push({ id, year: 2026, teamDifficulty: tierFor(teamName, difficulty) });
   }
