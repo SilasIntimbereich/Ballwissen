@@ -48,6 +48,12 @@ test("rejects exact aliases that collide with another squad member",()=>{
  assert.equal(matches("CR7",squad[1],squad),false);
 });
 
+test("preserves the first exact match for duplicate canonical names",()=>{
+ const squad=[{name:"Nam-chol Pak"},{name:"Nam-Chol Pak"}];
+ assert.equal(matches("Nam-chol Pak",squad[0],squad),true);
+ assert.equal(matches("Nam-chol Pak",squad[1],squad),false);
+});
+
 test("keeps a unique typo match when only one squad member is close",()=>{
  const squad=[{name:"Cristiano Ronaldo"},{name:"Lionel Messi"},{name:"Neymar Junior"}];
  assert.equal(matches("Cristiano Ronald",squad[0],squad),true);
