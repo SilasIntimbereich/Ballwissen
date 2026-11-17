@@ -19,9 +19,10 @@ test("team-aware rarity keeps France 2018 familiar and elite tiers scarce",async
  assert.equal(all.length,5759);
  assert.deepEqual(Object.keys(counts).filter(tier=>counts[tier]>0).sort(),["Ball Knowledge","Common","Legendary","Niche","Rare"].sort());
  const legendaryTeams=rosters.teams.filter(team=>publicData.teams.find(meta=>meta.id===team.id)?.teamDifficulty==="legendary");
- assert.ok(counts.Legendary<=legendaryTeams.length*2);
- assert.ok(counts["Ball Knowledge"]<=legendaryTeams.length);
- assert.ok(counts["Ball Knowledge"]>=legendaryTeams.length-2);
+ for(const team of legendaryTeams){
+  assert.equal(team.players.filter(player=>player.rarity==="Ball Knowledge").length,1,team.id+" must have one Ball Knowledge pick");
+  assert.equal(team.players.filter(player=>player.rarity==="Legendary").length,2,team.id+" must have two Legendary picks");
+ }
  const france=rosters.teams.find(team=>team.id==="france-2018");
  assert.ok(france.players.filter(player=>player.rarity==="Common").length>=20);
  assert.equal(france.players.find(player=>/kylian mbapp/i.test(player.name)).rarity,"Common");
