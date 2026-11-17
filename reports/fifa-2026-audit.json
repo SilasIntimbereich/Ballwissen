@@ -1,7 +1,7 @@
 {
   "source": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
   "pages": 48,
-  "generatedAt": "2026-11-17T15:20:26.422Z",
+  "generatedAt": "2026-11-17T15:32:20.136Z",
   "teams": [
     {
       "page": 1,
@@ -12,25 +12,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 2,
-      "mismatches": [
-        {
-          "number": 17,
-          "player": "Rafik Belghali",
-          "field": "name",
-          "fifa": "BELGHALI Ra\u0000k Ra\u0000k BELGHALI BELGHALI",
-          "dataset": "Rafik Belghali",
-          "aliases": []
-        },
-        {
-          "number": 24,
-          "player": "Yacine Titraoui",
-          "field": "name",
-          "fifa": "TITRAOUI Yassine Yassine M E G TITRAOUI TITRAOUI",
-          "dataset": "Yacine Titraoui",
-          "aliases": []
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -55,17 +38,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 1,
-      "mismatches": [
-        {
-          "number": 14,
-          "player": "Cammy Devlin",
-          "field": "name",
-          "fifa": "DEVLIN Cameron Cameron Peter DEVLIN DEVLIN",
-          "dataset": "Cammy Devlin",
-          "aliases": []
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -77,17 +51,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 1,
-      "mismatches": [
-        {
-          "number": 16,
-          "player": "Phillipp Mwene",
-          "field": "name",
-          "fifa": "MWENE Phillip Phillip MWENE MWENE",
-          "dataset": "Phillipp Mwene",
-          "aliases": []
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -112,17 +77,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 1,
-      "mismatches": [
-        {
-          "number": 24,
-          "player": "Nidal Čelik",
-          "field": "name",
-          "fifa": "MALIC Arjan Arjan MALIĆ MALIĆ",
-          "dataset": "Nidal Čelik",
-          "aliases": []
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -160,24 +116,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 2,
-      "mismatches": [
-        {
-          "number": 3,
-          "player": "Alfie Jones",
-          "field": "name",
-          "fifa": "JONES Al\u0000e Al\u0000e Charles JONES JONES",
-          "dataset": "Alfie Jones",
-          "aliases": []
-        },
-        {
-          "number": 26,
-          "player": "Jayden Nelson",
-          "field": "position",
-          "fifa": "FW",
-          "dataset": "MF"
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -202,17 +142,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 1,
-      "mismatches": [
-        {
-          "number": 13,
-          "player": "Meschak Elia",
-          "field": "name",
-          "fifa": "ELIA Meschack Meschack Lina ELIA MESCHACK",
-          "dataset": "Meschak Elia",
-          "aliases": []
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -297,65 +228,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 7,
-      "mismatches": [
-        {
-          "number": 1,
-          "player": "Mohamed El Shenawy",
-          "field": "name",
-          "fifa": "MOHAMED ELSHENAWY Mohamed Elsayed Mohamed ELSHENAWY GOMAA M. ELSHENAWY",
-          "dataset": "Mohamed El Shenawy",
-          "aliases": []
-        },
-        {
-          "number": 6,
-          "player": "Mohamed Abdelmonem",
-          "field": "name",
-          "fifa": "MOHAMED ABDELMONEIM Mohamed Abdelmoneim Elsayed M AHMED M. ABDELMONIEM",
-          "dataset": "Mohamed Abdelmonem",
-          "aliases": []
-        },
-        {
-          "number": 11,
-          "player": "Mostafa Ziko",
-          "field": "name",
-          "fifa": "MOSTAFA ZICO Mostafa Mohamed Zaky ABDELRAOUF ZICO",
-          "dataset": "Mostafa Ziko",
-          "aliases": []
-        },
-        {
-          "number": 16,
-          "player": "El Mahdy Soliman",
-          "field": "name",
-          "fifa": "MAHDY SOLIMAN Mahdy Mohamed Soliman IBRAHIM M. SOLIMAN",
-          "dataset": "El Mahdy Soliman",
-          "aliases": []
-        },
-        {
-          "number": 17,
-          "player": "Mohanad Lasheen",
-          "field": "name",
-          "fifa": "MOHANAD LASHIN Mohanad Mostafa Ahmed A LASHIN M. LASHIN",
-          "dataset": "Mohanad Lasheen",
-          "aliases": []
-        },
-        {
-          "number": 19,
-          "player": "Marwan Attia",
-          "field": "name",
-          "fifa": "MARAWAN ATTIA Marawan Attia Fahim GHALLAB M. ATTIA",
-          "dataset": "Marwan Attia",
-          "aliases": []
-        },
-        {
-          "number": 23,
-          "player": "Mostafa Shobeir",
-          "field": "name",
-          "fifa": "MOSTAFA SHOUBIR Mostafa Ahmed Abdelaziz Mohame SHOUBIR SHOUBIR",
-          "dataset": "Mostafa Shobeir",
-          "aliases": []
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -432,47 +306,17 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 9,
+      "mismatchCount": 3,
       "mismatches": [
-        {
-          "number": 3,
-          "player": "Ehsan Hajsafi",
-          "field": "name",
-          "fifa": "HAJISAFI Ehsan Ehsan HAJI SAFI E. HAJISAFI",
-          "dataset": "Ehsan Hajsafi",
-          "aliases": []
-        },
-        {
-          "number": 8,
-          "player": "Mohammad Mohebi",
-          "field": "name",
-          "fifa": "MOHEBBI Mohammad Mohammad MOHEBBI M. MOHEBBI",
-          "dataset": "Mohammad Mohebi",
-          "aliases": []
-        },
         {
           "number": 13,
           "player": "Hossein Kanaanizadegan",
           "field": "name",
           "fifa": "KANANI Hossein Mohammadhossein KANANI ZADEGAN KANANI",
           "dataset": "Hossein Kanaanizadegan",
-          "aliases": []
-        },
-        {
-          "number": 15,
-          "player": "Rouzbeh Cheshmi",
-          "field": "name",
-          "fifa": "CHESHMI Roozbeh Roozbeh CHESHMI ROOZBEH",
-          "dataset": "Rouzbeh Cheshmi",
-          "aliases": []
-        },
-        {
-          "number": 17,
-          "player": "Aria Yousefi",
-          "field": "name",
-          "fifa": "YOUSEFI Arya Arya YOUSEFI ARYA",
-          "dataset": "Aria Yousefi",
-          "aliases": []
+          "aliases": [
+            "Hossein Kanaani"
+          ]
         },
         {
           "number": 20,
@@ -480,15 +324,9 @@
           "field": "name",
           "fifa": "MOGHANLOO Shahriyar Shahriyar MOGHANLOO SHAHRIYAR",
           "dataset": "Shahriyar Moghanlou",
-          "aliases": []
-        },
-        {
-          "number": 24,
-          "player": "Dennis Eckert",
-          "field": "name",
-          "fifa": "DARGAHI Dennis Dennis DARGAHI DARGAHI",
-          "dataset": "Dennis Eckert",
-          "aliases": []
+          "aliases": [
+            "Shahriar Moghanlou"
+          ]
         },
         {
           "number": 25,
@@ -496,15 +334,9 @@
           "field": "name",
           "fifa": "IRI Danial Danial IRI DANIAL",
           "dataset": "Danial Eiri",
-          "aliases": []
-        },
-        {
-          "number": 26,
-          "player": "Amirmohammad Razzaghinia",
-          "field": "name",
-          "fifa": "RAZAGHINIA Amirmohammad Amirmohammad RAZAGHINIA RAZAGH",
-          "dataset": "Amirmohammad Razzaghinia",
-          "aliases": []
+          "aliases": [
+            "Daniyal Eiri"
+          ]
         }
       ],
       "unparsedRows": []
@@ -518,33 +350,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 3,
-      "mismatches": [
-        {
-          "number": 6,
-          "player": "Manaf Younis",
-          "field": "name",
-          "fifa": "MUNAF YOUNUS Munaf Younus Hashim AL-TEKREETI MUNAF",
-          "dataset": "Manaf Younis",
-          "aliases": []
-        },
-        {
-          "number": 15,
-          "player": "Ahmed Maknzi",
-          "field": "name",
-          "fifa": "AHMED MAKNAZI Ahmed Hasan Maknazi AL-DEESHAWEE AHMED H.",
-          "dataset": "Ahmed Maknzi",
-          "aliases": []
-        },
-        {
-          "number": 24,
-          "player": "Zaid Ismail",
-          "field": "name",
-          "fifa": "ZAID ISMAEL Zaid Ismael Khaleel AL-DULAIMI ZAID I.",
-          "dataset": "Zaid Ismail",
-          "aliases": []
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -556,17 +363,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 1,
-      "mismatches": [
-        {
-          "number": 4,
-          "player": "Kō Itakura",
-          "field": "name",
-          "fifa": "ITAKURA Kou Kou ITAKURA ITAKURA",
-          "dataset": "Kō Itakura",
-          "aliases": []
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -578,19 +376,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 1,
-      "mismatches": [
-        {
-          "number": 22,
-          "player": "Abdallah Al-Fakhouri",
-          "field": "name",
-          "fifa": "ABDALLAH ALFAKHORI Abdallah Ra'ed Mahmoud ALFAKHORI ALFAKHORI",
-          "dataset": "Abdallah Al-Fakhouri",
-          "aliases": [
-            "Abdallah Alfakhouri"
-          ]
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -602,185 +389,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 22,
-      "mismatches": [
-        {
-          "number": 1,
-          "player": "Kim Seung-gyu",
-          "field": "name",
-          "fifa": "KIM Seunggyu Seunggyu KIM SEUNGGYU",
-          "dataset": "Kim Seung-gyu",
-          "aliases": []
-        },
-        {
-          "number": 2,
-          "player": "Lee Han-beom",
-          "field": "name",
-          "fifa": "LEE Hanbeom Hanbeom LEE HANBEOM",
-          "dataset": "Lee Han-beom",
-          "aliases": []
-        },
-        {
-          "number": 3,
-          "player": "Lee Gi-hyuk",
-          "field": "name",
-          "fifa": "LEE Gihyuk Gihyuk LEE GIHYUK",
-          "dataset": "Lee Gi-hyuk",
-          "aliases": []
-        },
-        {
-          "number": 4,
-          "player": "Kim Min-jae",
-          "field": "name",
-          "fifa": "KIM Minjae Minjae KIM MINJAE",
-          "dataset": "Kim Min-jae",
-          "aliases": []
-        },
-        {
-          "number": 5,
-          "player": "Kim Tae-hyeon",
-          "field": "name",
-          "fifa": "KIM Taehyeon Taehyeon KIM TAEHYEON",
-          "dataset": "Kim Tae-hyeon",
-          "aliases": []
-        },
-        {
-          "number": 6,
-          "player": "Hwang In-beom",
-          "field": "name",
-          "fifa": "HWANG Inbeom Inbeom HWANG INBEOM",
-          "dataset": "Hwang In-beom",
-          "aliases": []
-        },
-        {
-          "number": 8,
-          "player": "Paik Seung-ho",
-          "field": "name",
-          "fifa": "PAIK Seungho Seungho PAIK SEUNGHO",
-          "dataset": "Paik Seung-ho",
-          "aliases": []
-        },
-        {
-          "number": 9,
-          "player": "Cho Gue-sung",
-          "field": "name",
-          "fifa": "CHO Guesung Guesung CHO GUESUNG",
-          "dataset": "Cho Gue-sung",
-          "aliases": []
-        },
-        {
-          "number": 12,
-          "player": "Song Bum-keun",
-          "field": "name",
-          "fifa": "SONG Bumkeun Bumkeun SONG BUMKEUN",
-          "dataset": "Song Bum-keun",
-          "aliases": []
-        },
-        {
-          "number": 13,
-          "player": "Lee Tae-seok",
-          "field": "name",
-          "fifa": "LEE Taeseok Taeseok LEE TAESEOK",
-          "dataset": "Lee Tae-seok",
-          "aliases": []
-        },
-        {
-          "number": 14,
-          "player": "Cho Wi-je",
-          "field": "name",
-          "fifa": "CHO Wije Wije CHO WIJE",
-          "dataset": "Cho Wi-je",
-          "aliases": []
-        },
-        {
-          "number": 15,
-          "player": "Kim Moon-hwan",
-          "field": "name",
-          "fifa": "KIM Moonhwan Moonhwan KIM MOONHWAN",
-          "dataset": "Kim Moon-hwan",
-          "aliases": []
-        },
-        {
-          "number": 16,
-          "player": "Park Jin-seob",
-          "field": "name",
-          "fifa": "PARK Jinseob Jinseob PARK JINSEOB",
-          "dataset": "Park Jin-seob",
-          "aliases": []
-        },
-        {
-          "number": 17,
-          "player": "Bae Jun-ho",
-          "field": "name",
-          "fifa": "BAE Junho Junho BAE JUNHO",
-          "dataset": "Bae Jun-ho",
-          "aliases": []
-        },
-        {
-          "number": 18,
-          "player": "Oh Hyeon-gyu",
-          "field": "name",
-          "fifa": "OH Hyeongyu Hyeongyu OH HYEONGYU",
-          "dataset": "Oh Hyeon-gyu",
-          "aliases": []
-        },
-        {
-          "number": 19,
-          "player": "Lee Kang-in",
-          "field": "name",
-          "fifa": "LEE Kangin Kangin LEE KANGIN",
-          "dataset": "Lee Kang-in",
-          "aliases": []
-        },
-        {
-          "number": 20,
-          "player": "Yang Hyun-jun",
-          "field": "name",
-          "fifa": "YANG Hyunjun Hyunjun YANG HYUNJUN",
-          "dataset": "Yang Hyun-jun",
-          "aliases": []
-        },
-        {
-          "number": 21,
-          "player": "Jo Hyeon-woo",
-          "field": "name",
-          "fifa": "JO Hyeonwoo Hyeonwoo JO HYEONWOO",
-          "dataset": "Jo Hyeon-woo",
-          "aliases": []
-        },
-        {
-          "number": 22,
-          "player": "Seol Young-woo",
-          "field": "name",
-          "fifa": "SEOL Youngwoo Youngwoo SEOL YOUNGWOO",
-          "dataset": "Seol Young-woo",
-          "aliases": []
-        },
-        {
-          "number": 24,
-          "player": "Kim Jin-gyu",
-          "field": "name",
-          "fifa": "KIM Jingyu Jingyu KIM JINGYU",
-          "dataset": "Kim Jin-gyu",
-          "aliases": []
-        },
-        {
-          "number": 25,
-          "player": "Eom Ji-sung",
-          "field": "name",
-          "fifa": "EOM Jisung Jisung EOM JISUNG",
-          "dataset": "Eom Ji-sung",
-          "aliases": []
-        },
-        {
-          "number": 26,
-          "player": "Lee Dong-gyeong",
-          "field": "name",
-          "fifa": "LEE Donggyeong Donggyeong LEE DONGGYEONG",
-          "dataset": "Lee Dong-gyeong",
-          "aliases": []
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -805,41 +415,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 4,
-      "mismatches": [
-        {
-          "number": 5,
-          "player": "Nayef Aguerd",
-          "field": "name",
-          "fifa": "SAADANE Marwane Marwane SAADANE SAADANE",
-          "dataset": "Nayef Aguerd",
-          "aliases": []
-        },
-        {
-          "number": 9,
-          "player": "Soufiane Rahimi",
-          "field": "name",
-          "fifa": "RAHIMI Sou\u0000ane Sou\u0000ane RAHIMI RAHIMI",
-          "dataset": "Soufiane Rahimi",
-          "aliases": []
-        },
-        {
-          "number": 12,
-          "player": "Munir Mohamedi",
-          "field": "name",
-          "fifa": "EL KAJOUI Munir Monir EL KAJOUI EL KAJOUI",
-          "dataset": "Munir Mohamedi",
-          "aliases": []
-        },
-        {
-          "number": 17,
-          "player": "Abde Ezzalzouli",
-          "field": "name",
-          "fifa": "SBAI Amine Mohamed Amine SBAI SBAÏ",
-          "dataset": "Abde Ezzalzouli",
-          "aliases": []
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -864,7 +441,7 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 4,
+      "mismatchCount": 1,
       "mismatches": [
         {
           "number": 4,
@@ -872,28 +449,6 @@
           "field": "club",
           "fifa": "She\u0000eld United FC (ENG)",
           "dataset": "Sheffield United FC"
-        },
-        {
-          "number": 7,
-          "player": "Matthew Garbett",
-          "field": "name",
-          "fifa": "ROGERSON Logan Logan Tipene ROGERSON ROGERSON",
-          "dataset": "Matthew Garbett",
-          "aliases": []
-        },
-        {
-          "number": 7,
-          "player": "Matthew Garbett",
-          "field": "position",
-          "fifa": "FW",
-          "dataset": "MF"
-        },
-        {
-          "number": 7,
-          "player": "Matthew Garbett",
-          "field": "club",
-          "fifa": "Auckland FC (NZL)",
-          "dataset": "Peterborough United FC"
         }
       ],
       "unparsedRows": []
@@ -933,17 +488,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 1,
-      "mismatches": [
-        {
-          "number": 17,
-          "player": "Kaku",
-          "field": "name",
-          "fifa": "ROMERO GAMARRA Alejandro Alejandro Sebastian ROMERO GAMARRA R. GAMARRA",
-          "dataset": "Kaku",
-          "aliases": []
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -968,49 +514,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 5,
-      "mismatches": [
-        {
-          "number": 1,
-          "player": "Mahmud Abunada",
-          "field": "name",
-          "fifa": "MAHMOUD ABUNADA Mahmoud Ibrahim M ABUNADA ABUNADA",
-          "dataset": "Mahmud Abunada",
-          "aliases": []
-        },
-        {
-          "number": 10,
-          "player": "Hassan Al-Haydos",
-          "field": "name",
-          "fifa": "HASSAN ALHAYDOS Hasan Khalid H ALHAYDOS ALHAYDOS",
-          "dataset": "Hassan Al-Haydos",
-          "aliases": []
-        },
-        {
-          "number": 13,
-          "player": "Ayoub Al-Oui",
-          "field": "name",
-          "fifa": "AYOUB ALOUI Ayoub Mohamed ALOUI AYOUB",
-          "dataset": "Ayoub Al-Oui",
-          "aliases": []
-        },
-        {
-          "number": 17,
-          "player": "Ahmed Al-Ganehi",
-          "field": "name",
-          "fifa": "AHMED ALGANEHI Ahmed Mohamed H K ALGANEHI A. ALGANEHI",
-          "dataset": "Ahmed Al-Ganehi",
-          "aliases": []
-        },
-        {
-          "number": 25,
-          "player": "Al-Hashmi Al-Hussain",
-          "field": "name",
-          "fifa": "ALHASHMI ALHUSSEIN Alhashmi Alhussein A MOHIALDIN ALHASHMI",
-          "dataset": "Al-Hashmi Al-Hussain",
-          "aliases": []
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -1022,175 +527,17 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 21,
+      "mismatchCount": 1,
       "mismatches": [
-        {
-          "number": 1,
-          "player": "Nawaf Al-Aqidi",
-          "field": "name",
-          "fifa": "NAWAF ALAQIDI Nawaf Dhahi F ALAQIDI ALAQIDI",
-          "dataset": "Nawaf Al-Aqidi",
-          "aliases": []
-        },
-        {
-          "number": 4,
-          "player": "Abdulelah Al-Amri",
-          "field": "name",
-          "fifa": "ABDULELAH ALAMRI Abdulelah Ali A ALAMRI ALAMRI",
-          "dataset": "Abdulelah Al-Amri",
-          "aliases": []
-        },
-        {
-          "number": 5,
-          "player": "Hassan Al-Tambakti",
-          "field": "name",
-          "fifa": "HASSAN ALTAMBAKTI Hassan Mohammed O ALTAMBAKTI ALTAMBAKTI",
-          "dataset": "Hassan Al-Tambakti",
-          "aliases": []
-        },
-        {
-          "number": 6,
-          "player": "Nasser Al-Dawsari",
-          "field": "name",
-          "fifa": "NASSER ALDAWSARI Nasser Essa S ALDAWSARI NASSER",
-          "dataset": "Nasser Al-Dawsari",
-          "aliases": []
-        },
-        {
-          "number": 7,
-          "player": "Musab Al-Juwayr",
-          "field": "name",
-          "fifa": "MUSAB ALJUWAYR Musab Fahad Z ALJUWAYR MUSAB",
-          "dataset": "Musab Al-Juwayr",
-          "aliases": []
-        },
-        {
-          "number": 8,
-          "player": "Ayman Yahya",
-          "field": "name",
-          "fifa": "AIMAN YAHYA Aiman Yahya Y AHMED AIMAN",
-          "dataset": "Ayman Yahya",
-          "aliases": []
-        },
         {
           "number": 9,
           "player": "Firas Al-Buraikan",
           "field": "name",
           "fifa": "FERAS ALBRIKAN Feras Tariq N ALBRIKAN FERAS",
           "dataset": "Firas Al-Buraikan",
-          "aliases": []
-        },
-        {
-          "number": 10,
-          "player": "Salem Al-Dawsari",
-          "field": "name",
-          "fifa": "SALEM ALDAWSARI Salem Mohammed S ALDAWSARI SALEM",
-          "dataset": "Salem Al-Dawsari",
-          "aliases": []
-        },
-        {
-          "number": 11,
-          "player": "Saleh Al-Shehri",
-          "field": "name",
-          "fifa": "SALEH ALSHEHRI Saleh Khalid M ALSHEHRI ALSHEHRI",
-          "dataset": "Saleh Al-Shehri",
-          "aliases": []
-        },
-        {
-          "number": 13,
-          "player": "Nawaf Boushal",
-          "field": "name",
-          "fifa": "NAWAF BU WASHL Nawaf Meshari M BU WASHL NAWAF",
-          "dataset": "Nawaf Boushal",
-          "aliases": []
-        },
-        {
-          "number": 14,
-          "player": "Hassan Kadesh",
-          "field": "name",
-          "fifa": "HASSAN KADISH Hassan Kadish Y MAHBUB KADISH",
-          "dataset": "Hassan Kadesh",
-          "aliases": []
-        },
-        {
-          "number": 15,
-          "player": "Abdullah Al-Khaibari",
-          "field": "name",
-          "fifa": "ABDULLAH ALKHAIBARI Abdullah Mohammed H ALKHAIBARI ALKHAIBARI",
-          "dataset": "Abdullah Al-Khaibari",
-          "aliases": []
-        },
-        {
-          "number": 16,
-          "player": "Ziyad Al-Johani",
-          "field": "name",
-          "fifa": "ZIYAD ALJOHANI Ziyad Mubarak E ALJOHANI ZIYAD",
-          "dataset": "Ziyad Al-Johani",
-          "aliases": []
-        },
-        {
-          "number": 17,
-          "player": "Khalid Al-Ghannam",
-          "field": "name",
-          "fifa": "KHALID ALGHANNAM Khalid Essa M ALGHANNAM KHALID",
-          "dataset": "Khalid Al-Ghannam",
-          "aliases": []
-        },
-        {
-          "number": 18,
-          "player": "Alaa Al-Hejji",
-          "field": "name",
-          "fifa": "ALA ALHAJJI Ala Mohsen A ALHAJJI ALHAJJI",
-          "dataset": "Alaa Al-Hejji",
-          "aliases": []
-        },
-        {
-          "number": 19,
-          "player": "Abdullah Al-Hamdan",
-          "field": "name",
-          "fifa": "ABDULLAH ALHAMDDAN Abdullah Abdulrahman A ALHAMDDAN ALHAMDDAN",
-          "dataset": "Abdullah Al-Hamdan",
-          "aliases": []
-        },
-        {
-          "number": 21,
-          "player": "Mohammed Al-Owais",
-          "field": "name",
-          "fifa": "MOHAMMED ALOWAIS Mohammed Khalil I ALOWAIS ALOWAIS",
-          "dataset": "Mohammed Al-Owais",
-          "aliases": []
-        },
-        {
-          "number": 22,
-          "player": "Ahmed Al-Kassar",
-          "field": "name",
-          "fifa": "AHMED ALKASSAR Ahmed Ali H ALKASSAR ALKASSAR",
-          "dataset": "Ahmed Al-Kassar",
-          "aliases": []
-        },
-        {
-          "number": 24,
-          "player": "Moteb Al-Harbi",
-          "field": "name",
-          "fifa": "MOTEB ALHARBI Moteb Saad S ALHARBI MOTEB",
-          "dataset": "Moteb Al-Harbi",
-          "aliases": []
-        },
-        {
-          "number": 25,
-          "player": "Jehad Thakri",
-          "field": "name",
-          "fifa": "JEHAD THIKRI Jehad Abdullatif A THIKRI JEHAD",
-          "dataset": "Jehad Thakri",
-          "aliases": []
-        },
-        {
-          "number": 26,
-          "player": "Mohammed Abu Al-Shamat",
-          "field": "name",
-          "fifa": "MOHAMMED ABU ALSHAMAT Mohammed Waheeb S ABU ALSHAMAT MOHAMMED",
-          "dataset": "Mohammed Abu Al-Shamat",
-          "aliases": []
+          "aliases": [
+            "Feras Al-Buraikan"
+          ]
         }
       ],
       "unparsedRows": []
@@ -1226,23 +573,21 @@
       "code": "RSA",
       "heading": "South Africa (RSA)",
       "datasetTeam": "South Africa",
-      "fifaPlayerRows": 25,
+      "fifaPlayerRows": 26,
       "datasetPlayerRows": 26,
-      "parsed": false,
-      "rowCountMatches": false,
+      "parsed": true,
+      "rowCountMatches": true,
       "mismatchCount": 1,
       "mismatches": [
         {
           "number": 23,
           "player": "Jayden Adams",
-          "field": "missing_fifa_row",
+          "field": "club",
           "fifa": null,
-          "dataset": "Jayden Adams"
+          "dataset": "Mamelodi Sundowns FC"
         }
       ],
-      "unparsedRows": [
-        "23 MF ADAMS Jayden Jayden Oswin ADAMS ADAMS 05/05/2001 177 11 2"
-      ]
+      "unparsedRows": []
     },
     {
       "page": 41,
@@ -1292,25 +637,8 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 2,
-      "mismatches": [
-        {
-          "number": 5,
-          "player": "Adem Arous",
-          "field": "name",
-          "fifa": "AROUS Adam Adam AROUS AROUS",
-          "dataset": "Adem Arous",
-          "aliases": []
-        },
-        {
-          "number": 21,
-          "player": "Mohamed Amine Ben Hamida",
-          "field": "name",
-          "fifa": "BEN HMIDA Mohamed Amine Mohamed Amine BEN HMIDA BEN HMIDA",
-          "dataset": "Mohamed Amine Ben Hamida",
-          "aliases": []
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     },
     {
@@ -1361,32 +689,21 @@
       "datasetPlayerRows": 26,
       "parsed": true,
       "rowCountMatches": true,
-      "mismatchCount": 1,
-      "mismatches": [
-        {
-          "number": 9,
-          "player": "Odiljon Hamrobekov",
-          "field": "name",
-          "fifa": "XAMROBEKOV Odiljon Odiljon XAMROBEKOV XAMROBEKOV",
-          "dataset": "Odiljon Hamrobekov",
-          "aliases": []
-        }
-      ],
+      "mismatchCount": 0,
+      "mismatches": [],
       "unparsedRows": []
     }
   ],
   "summary": {
     "pdfPages": 48,
-    "parsedTeams": 47,
-    "teamsWithNoMismatches": 27,
-    "totalMismatches": 91,
+    "parsedTeams": 48,
+    "teamsWithNoMismatches": 43,
+    "totalMismatches": 7,
     "teamsMissingFromDataset": [],
-    "teamsWithUnresolvedDifferences": 21,
+    "teamsWithUnresolvedDifferences": 5,
     "mismatchCountsByField": {
-      "name": 85,
-      "position": 2,
       "club": 3,
-      "missing_fifa_row": 1
+      "name": 4
     },
     "note": "This is an extraction and comparison report, not an independent approval ledger. Name, position and club differences remain unresolved until manually checked against independent sources."
   }
