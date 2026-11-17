@@ -9,6 +9,8 @@ on:
       - "scripts/historical-player-name-match.mjs"
       - "scripts/audit-2002-rosters.mjs"
       - "scripts/audit-2022-independent-clubs.mjs"
+      - "scripts/historical-wikipedia-squads.mjs"
+      - "scripts/audit-2002-clubs.mjs"
       - ".github/workflows/audit-historical-squads.yml"
   pull_request:
     branches: [main]
@@ -41,15 +43,18 @@ jobs:
         run: node scripts/audit-2022-independent-clubs.mjs
       - name: Cross-check 2002 squads against RSSSF
         run: node scripts/audit-2002-rosters.mjs
+      - name: Cross-check 2002 tournament clubs against squad archive
+        run: node scripts/audit-2002-clubs.mjs
       - name: Commit audit report and club candidates
         if: github.event_name == 'push' && always()
         run: |
-          if [ -f artifacts/historical-fifa-audit.json ] && [ -f artifacts/historical-club-candidates.json ] && [ -f artifacts/2002-roster-audit.json ] && [ -f artifacts/2022-independent-club-audit.json ]; then
+          if [ -f artifacts/historical-fifa-audit.json ] && [ -f artifacts/historical-club-candidates.json ] && [ -f artifacts/2002-roster-audit.json ] && [ -f artifacts/2022-independent-club-audit.json ] && [ -f artifacts/2002-club-audit.json ]; then
             mkdir -p reports
             cp artifacts/historical-fifa-audit.json reports/historical-fifa-audit.json
             cp artifacts/historical-club-candidates.json reports/historical-club-candidates.json
             cp artifacts/2002-roster-audit.json reports/2002-roster-audit.json
-            cp artifacts/2022-independent-club-audit.json reports/2022-independent-club-audit.json
+            cp artifacts/2022-independent-club-audit.json reports/2022-independent-club-audit.json reports/2002-club-audit.json
+            cp artifacts/2002-club-audit.json reports/2002-club-audit.json
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add reports/historical-fifa-audit.json reports/historical-club-candidates.json reports/2002-roster-audit.json reports/2022-independent-club-audit.json
@@ -69,5 +74,6 @@ jobs:
             artifacts/historical-club-candidates.json
             artifacts/2002-roster-audit.json
             artifacts/2022-independent-club-audit.json
+            artifacts/2002-club-audit.json
           if-no-files-found: warn
           retention-days: 30
