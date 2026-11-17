@@ -98,12 +98,20 @@ function parsePlanet(html){
  }
  return {rows,unparsed};
 }
+function normalizePosition(value){
+ const p=String(value||"").trim().toUpperCase().replace(/[^A-Z]/g,"");
+ if(["G","GK","GKP","GOALKEEPER"].includes(p))return "GK";
+ if(["D","DF","DEF","DEFENDER","CB","LCB","RCB","LB","RB","RWB","LWB","CENTREBACK","CENTERBACK","FULLBACK","RIGHTBACK","LEFTBACK"].includes(p))return "DF";
+ if(["M","MF","MID","MIDFIELDER","DM","CDM","CM","LCM","RCM","AM","CAM","LAM","RAM","LM","RM","ATTACKINGMIDFIELDER","DEFENSIVEMIDFIELDER","CENTRALMIDFIELDER"].includes(p))return "MF";
+ if(["F","FW","FORWARD","ST","CF","STRIKER","LW","RW","LF","RF","WINGER"].includes(p))return "FW";
+ return null;
+}
 function parseFootballSquads(html){
  const rows=[],unparsed=[];
  for(const tr of html.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)){
   const cells=[...tr[1].matchAll(/<td\b[^>]*>([\s\S]*?)<\/td>/gi)].map(m=>textFromHtml(m[1]));
   if(cells.length>=8&&/^\d{1,2}$/.test(cells[0])){
-   const pos=({G:"GK",GK:"GK",GOALKEEPER:"GK",D:"DF",DF:"DF",DEFENDER:"DF",M:"MF",MF:"MF",MIDFIELDER:"MF",F:"FW",FW:"FW",FORWARD:"FW",STRIKER:"FW"})[cells[2].toUpperCase()]||null;
+   const pos=cells.slice(2,-1).map(normalizePosition).find(Boolean)||null;
    rows.push({number:Number(cells[0]),name:cells[1],position:pos,club:cells[cells.length-1]});
   }
  }
