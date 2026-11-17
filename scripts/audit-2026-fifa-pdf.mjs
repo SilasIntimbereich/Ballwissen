@@ -208,8 +208,8 @@ if (fullyMatchedTeams.length === 48) {
     };
   }
 }
-await writeFile("artifacts/roster-audit-updated.json", JSON.stringify(auditLedger, null, 2) + "\n");
 await mkdir("artifacts", { recursive: true });
+await writeFile("artifacts/roster-audit-updated.json", JSON.stringify(auditLedger, null, 2) + "\n");
 await writeFile("artifacts/fifa-2026-audit.json", JSON.stringify(report, null, 2) + "\n");
 console.log(JSON.stringify(report.summary, null, 2));
 const failedTeams = report.teams.filter(t => !t.code || !t.parsed || !t.rowCountMatches || t.unparsedRows.length > 0 || t.mismatches.some(item => ["player", "missing_fifa_row"].includes(item.field)));
