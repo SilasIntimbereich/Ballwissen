@@ -42,7 +42,7 @@ const MANUAL_NAME_ALIASES={
  "japan-2022":{4:["Kou Itakura"]},
  "morocco-2022":{12:["Munir El Kajoui"],23:["Bilal El Khannouss"],25:["Yahya Attiat Allah"]},
  "qatar-2022":{2:["Pedro Miguel"],8:["Ali Asadalla"],13:["Musaab Khidir"],17:["Ismail Mohamad"],21:["Yousof Hassan"],26:["Moustafa Tarek"]},
- "saudi-arabia-2022":{1:["Mohammed Alyami"],5:["Ali Albulayhi"],6:["Mohammed Alburayk"],9:["Feras Albrikan"],13:["Yasir Alshahrani"],16:["Sami Alnaji"],18:["Nawaf Alabid"],19:["Hatan Bahbri"],20:["Abdulrahman Alobud"]},
+ "saudi-arabia-2022":{1:["Mohammed Alyami"],5:["Ali Albulayhi"],6:["Mohammed Alburayk"],9:["Feras Albrikan"],13:["Yasir Alshahrani"],16:["Sami Alnaji"],8:["Abdulelah Al-Malki"],18:["Nawaf Alabid"],19:["Hatan Bahbri"],20:["Abdulrahman Alobud"]},
  "tunisia-2022":{18:["Ghaylen Chaaleli"]}
 };
 const MANUAL_ALIAS_SOURCES={
