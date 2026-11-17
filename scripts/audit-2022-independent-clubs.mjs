@@ -111,7 +111,7 @@ const report={year:2022,primarySource:"https://fdp.fifa.org/assetspublic/ce44/pd
 let indexHtml;
 try{indexHtml=await fetchText(SOURCE_INDEX);}catch(error){
  report.sourceStatus="unavailable";report.sourceError=String(error);
- report.summary={sourceRows:0,teamsFound:0,teams:32,fullyCrossCheckedTeams:0,clubMismatches:0,nameMismatches:0,missingRows:0};
+ report.summary={sourceRows:0,teamsFound:0,teams:32,fullyCrossCheckedTeams:0,clubMismatches:0,nameMismatches:0,positionMismatches:0,missingRows:0};
  await mkdir("artifacts",{recursive:true});await writeFile("artifacts/2022-independent-club-audit.json",JSON.stringify(report,null,2)+String.fromCharCode(10));
  console.log(JSON.stringify(report.summary,null,2));process.exit(0);
 }
