@@ -46,8 +46,12 @@ export function namesMatch(playerName, sourceName) {
     .map(normalize)
     .filter(Boolean);
   if (!playerParts.length) return false;
-  if (playerParts.every(part => sourceTokens.includes(part))) return true;
   const compactPlayer = normalize(playerName);
   const compactSource = normalize(source);
+  if (compactPlayer && compactPlayer === compactSource) return true;
+  // A short mononym or surname is too ambiguous to approve from a larger PDF
+  // text line. It must match the source text exactly or be resolved manually.
+  if (playerParts.length === 1 && compactPlayer.length < 4) return false;
+  if (playerParts.every(part => sourceTokens.includes(part))) return true;
   return compactPlayer.length >= 5 && compactSource.includes(compactPlayer);
 }
