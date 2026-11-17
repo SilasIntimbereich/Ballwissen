@@ -2,7 +2,7 @@ name: Export playable FOOTBALL ARCADE V4 ZIP
 on:
   push:
     branches:
-      - export/playable-game-zip
+      - export/playable-zip-latest
   workflow_dispatch:
 permissions:
   contents: read
