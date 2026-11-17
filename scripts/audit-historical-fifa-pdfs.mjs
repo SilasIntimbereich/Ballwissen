@@ -74,10 +74,27 @@ for(const source of SOURCES){
   });
   continue;
  }
- const response=await fetchWithRetry(source.url,{headers:{"User-Agent":"FootballArcadeHistoricalRosterAudit/1.0"}});
- const pdf=await pdfjs.getDocument({data:new Uint8Array(await response.arrayBuffer()),useSystemFonts:true,isEvalSupported:false}).promise;
  const teamByKey=new Map(teamsForYear.map(team=>[teamKey(team.name),team]));
- const tournamentReport={year:source.year,url:source.url,pdfPages:pdf.numPages,teams:[]};
+ const tournamentReport={year:source.year,url:source.url,pdfPages:0,teams:[],sourceStatus:"pending"};
+ let response;
+ try{
+  response=await fetchWithRetry(source.url,{headers:{"User-Agent":"FootballArcadeHistoricalRosterAudit/1.0"}});
+ }catch(error){
+  tournamentReport.sourceStatus="unavailable";
+  tournamentReport.sourceError=String(error);
+  tournamentReport.teams=teamsForYear.map(team=>({
+   page:null,teamId:team.id,teamName:team.name,pdfHeading:null,
+   fifaRows:0,dataHubRows:team.players.length,clean:false,sourceUnavailable:true,
+   clubValuesParsed:0,mismatchCount:1,
+   mismatches:[{field:"source_unavailable",reason:String(error)}],candidates:[]
+  }));
+  tournamentReport.summary={pages:0,teamsMapped:0,teamsClean:0,totalMismatches:tournamentReport.teams.length};
+  report.tournaments.push(tournamentReport);
+  continue;
+ }
+ const pdf=await pdfjs.getDocument({data:new Uint8Array(await response.arrayBuffer()),useSystemFonts:true,isEvalSupported:false}).promise;
+ tournamentReport.pdfPages=pdf.numPages;
+ tournamentReport.sourceStatus="available";
  for(let pageNo=1;pageNo<=pdf.numPages;pageNo++){
   const page=await pdf.getPage(pageNo),content=await page.getTextContent();
   const items=content.items.filter(item=>"str" in item&&item.str.trim()).map(item=>({x:item.transform[4],y:item.transform[5],text:item.str.trim()})).sort((a,b)=>b.y-a.y||a.x-b.x);
@@ -125,10 +142,11 @@ report.summary={
  teamsMapped:report.tournaments.reduce((n,t)=>n+t.summary.teamsMapped,0),
  teamsClean:report.tournaments.reduce((n,t)=>n+t.summary.teamsClean,0),
  totalMismatches:report.tournaments.reduce((n,t)=>n+t.summary.totalMismatches,0),
- clubCandidates:report.tournaments.reduce((n,t)=>n+t.teams.reduce((m,team)=>m+team.clubValuesParsed,0),0)
+ clubCandidates:report.tournaments.reduce((n,t)=>n+t.teams.reduce((m,team)=>m+team.clubValuesParsed,0),0),
+ sourceUnavailableTeams:report.tournaments.reduce((n,t)=>n+t.teams.filter(team=>team.sourceUnavailable).length,0)
 };
 await mkdir("artifacts",{recursive:true});
 await writeFile("artifacts/historical-fifa-audit.json",JSON.stringify(report,null,2)+"\n");
 await writeFile("artifacts/historical-club-candidates.json",JSON.stringify(candidateData,null,2)+"\n");
 console.log(JSON.stringify(report.summary,null,2));
-if(report.summary.teams!==160||report.summary.teamsMapped!==160)throw new Error("Historical FIFA PDF parser did not map all 160 teams. Inspect audit report.");
+if(report.summary.tournaments!==5||report.summary.teams!==160)throw new Error("Historical FIFA audit did not account for all 160 expected teams. Inspect audit report.");
