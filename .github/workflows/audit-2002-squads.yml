@@ -1,0 +1,31 @@
+name: Audit 2002 World Cup squads and clubs
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/historical-squads.json"
+      - "scripts/audit-2002-squads.mjs"
+      - ".github/workflows/audit-2002-squads.yml"
+  schedule:
+    - cron: "41 5 * * 2"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Compare 2002 squads against Planet World Cup and FootballSquads
+        run: node scripts/audit-2002-squads.mjs
+      - name: Upload complete comparison report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: 2002-world-cup-roster-audit
+          path: artifacts/2002-roster-club-audit.json
+          if-no-files-found: warn
+          retention-days: 30
