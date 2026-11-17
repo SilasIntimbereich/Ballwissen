@@ -45,7 +45,11 @@ export function matches(guess,player,squad=[player]){
  const targets=nameTargets(player);
  if(targets.includes(input)){
   const candidates=(Array.isArray(squad)?squad:[player]).filter(candidate=>nameTargets(candidate).includes(input));
-  return candidates.length===1&&candidates[0]===player;
+  if(candidates.length===1)return true;
+  // Keep the first entry for genuinely duplicated canonical names playable;
+  // aliases that collide with somebody else's name remain ambiguous.
+  const sameCanonicalName=candidates.every(candidate=>normalize(candidate?.name)===input);
+  return sameCanonicalName&&candidates[0]===player;
  }
 
  const ownSurnames=surnameTargets(player);
