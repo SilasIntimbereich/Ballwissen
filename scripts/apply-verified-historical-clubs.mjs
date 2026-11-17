@@ -106,7 +106,7 @@ function applyTeam(year, teamId, candidatePlayers, sources, evidencePlayers, fif
       return;
     }
 
-    const candidateSourceName = candidate.sourceName || candidate.name;
+    const candidateSourceName = candidate.sourceName || null;
     if (candidateSourceName && evidence.identityMatches !== true && !namesMatch(player.name, candidateSourceName)) {
       report.skippedTeams.push({ year, teamId, teamName: dataTeam.name, reason: "FIFA candidate name conflicts with the independent player identity checks" });
       return;
