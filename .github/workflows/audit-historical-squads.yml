@@ -6,6 +6,8 @@ on:
       - "data/historical-squads.json"
       - "scripts/audit-historical-fifa-pdfs.mjs"
       - ".github/workflows/audit-historical-squads.yml"
+  pull_request:
+    branches: [main]
   schedule:
     - cron: "41 5 * * 1"
   workflow_dispatch:
@@ -24,7 +26,7 @@ jobs:
       - name: Compare 160 squads with FIFA final PDFs
         run: node scripts/audit-historical-fifa-pdfs.mjs
       - name: Commit audit report and club candidates
-        if: always()
+        if: always() && github.event_name != 'pull_request'
         run: |
           if [ -f artifacts/historical-fifa-audit.json ] && [ -f artifacts/historical-club-candidates.json ]; then
             mkdir -p reports
