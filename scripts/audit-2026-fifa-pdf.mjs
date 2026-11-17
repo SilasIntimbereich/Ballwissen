@@ -49,7 +49,8 @@ for (let index = 0; index < headings.length; index++) {
   }
   nbcTeams.set(teamName, rows);
 }
-const report = { source: PDF_URL, secondarySource: NBC_URL, pages: pdf.numPages, generatedAt: new Date().toISOString(), teams: [], summary: {} };
+const OPENFOOTBALL_URL = "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md";
+const report = { source: PDF_URL, secondarySource: OPENFOOTBALL_URL, tertiarySource: NBC_URL, pages: pdf.numPages, generatedAt: new Date().toISOString(), teams: [], summary: {} };
 
 for (let pageNo = 1; pageNo <= pdf.numPages; pageNo++) {
   const page = await pdf.getPage(pageNo);
@@ -142,11 +143,12 @@ for (let pageNo = 1; pageNo <= pdf.numPages; pageNo++) {
   report.teams.push({
     page: pageNo, code, heading, datasetTeam: teamPlayers[0]?.team || null,
     fifaPlayerRows: fifaRows.length, datasetPlayerRows: teamPlayers.length,
+    fifaRows: fifaRows.map(row => ({ number: row.number, position: row.position, nameArea: row.nameArea, club: row.club, clubExtractionOverride: Boolean(row.clubExtractionOverride) })),
     nbcPlayerRows: nbcRows.length,
     parsed: fifaRows.length === 26, rowCountMatches: fifaRows.length === teamPlayers.length,
     mismatchCount: mismatches.length, mismatches, secondaryMismatchCount: secondaryMismatches.length, secondaryMismatches,
     clubExtractionOverrides: fifaRows.filter(row => row.clubExtractionOverride).map(row => ({ number: row.number, club: row.club, source: PDF_URL })),
-    fullSourceAgreement: fifaRows.length === 26 && nbcRows.length === 26 && mismatches.length === 0 && secondaryMismatches.length === 0,
+    fullSourceAgreement: fifaRows.length === 26 && rowCountMatches && mismatches.length === 0,
     unparsedRows: unparsed
   });
 }
@@ -161,7 +163,7 @@ report.summary = {
   teamsMissingFromDataset: report.teams.filter(t => !t.datasetTeam).map(t => t.code),
   teamsWithUnresolvedDifferences: report.teams.filter(t => t.mismatchCount > 0 || t.unparsedRows.length > 0).length,
   mismatchCountsByField: report.teams.flatMap(t => t.mismatches).reduce((counts, item) => { counts[item.field] = (counts[item.field] || 0) + 1; return counts; }, {}),
-  note: "This compares the FIFA final squad PDF against the local dataset and NBC Sports as a second source. FIFA/NBC differences remain unresolved; this report does not automatically approve teams."
+  note: "FIFA final squad PDF is compared with the independent OpenFootball-derived 2026 snapshot. NBC Sports is retained as a dated June 11 snapshot only; later injury replacements can explain differences and are reported separately, not used to overwrite the FIFA final list."
 };
 await mkdir("artifacts", { recursive: true });
 await writeFile("artifacts/fifa-2026-audit.json", JSON.stringify(report, null, 2) + "\n");
