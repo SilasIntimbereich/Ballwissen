@@ -14,6 +14,18 @@ A mobile-first World Cup squad memory game with a colourful, angular retro-footb
 
 All games are local and unranked. Because answers are bundled for offline play, player names are visible in the downloaded static data. Do not use this release for competitive or ranked play.
 
+## Player rarity
+
+Rarity represents recall difficulty, not player quality. The assignment is deterministic and shared by the browser and server-side resolver:
+
+- **Common:** globally familiar names, repeated World Cup appearances, or the familiar core of a common-difficulty squad.
+- **Rare:** less familiar reserve picks in common squads or players appearing in multiple tournaments.
+- **Niche:** less familiar players in niche and legendary-difficulty squads.
+- **Legendary:** the two hardest eligible recall picks in each legendary-difficulty squad.
+- **Ball Knowledge:** the single hardest eligible recall pick in each legendary-difficulty squad.
+
+The resolver uses curated recognition names, cross-tournament appearances, squad difficulty, goalkeeper depth and shirt number as a tie-breaker. It does not treat a high shirt number alone as proof that a player is obscure.
+
 ## Squad data
 
 | Data | Coverage | Status |
