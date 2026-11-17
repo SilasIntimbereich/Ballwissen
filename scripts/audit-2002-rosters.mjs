@@ -1,6 +1,6 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 
-const SOURCE_URL = "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt";
+const SOURCE_URL = "https://www.rsssf.org/tables/2002full.html";
 const normalize = value => String(value || "")
   .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
   .toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -77,7 +77,23 @@ if (!response.ok) {
   process.exit(0);
 }
 
-const sourceText = await response.text();
+const contentType=response.headers.get("content-type")||"";
+const bytes=await response.arrayBuffer();
+const decoder=/charset=(?:iso-8859-1|windows-1252)/i.test(contentType)?new TextDecoder("windows-1252"):new TextDecoder("utf-8");
+const rawHtml=decoder.decode(bytes);
+const sourceText=rawHtml
+  .replace(/<script[\\s\\S]*?<\\/script>/gi," ")
+  .replace(/<style[\\s\\S]*?<\\/style>/gi," ")
+  .replace(/<br\\s*\\/?\\s*>/gi,"\\n")
+  .replace(/<\\/(?:p|div|h[1-6]|li|pre|tr)>/gi,"\\n")
+  .replace(/<[^>]*>/g," ")
+  .replace(/&nbsp;/gi," ")
+  .replace(/&amp;/gi,"&")
+  .replace(/&eacute;/gi,"é").replace(/&Eacute;/g,"É")
+  .replace(/&ouml;/gi,"ö").replace(/&Ouml;/g,"Ö")
+  .replace(/&uuml;/gi,"ü").replace(/&Uuml;/g,"Ü")
+  .replace(/&#(\\d+);/g,(_,n)=>String.fromCodePoint(Number(n)))
+  .replace(/\\r/g,"");
 const squads = parseSquads(sourceText, teams);
 const report = {
   year: 2002, source: SOURCE_URL, sourceStatus: "available",
