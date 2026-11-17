@@ -9,6 +9,7 @@ test("extracts a country-code heading from Qatar 2022 FIFA pages",()=>{
 test("supports FIFA's country display aliases when the code is correct",()=>{
  assert.equal(extractTeamHeading(["IR Iran (IRN)","SQUAD LIST"],["Iran"]),"IR Iran (IRN)");
  assert.equal(extractTeamHeading(["Korea Republic (KOR)","SQUAD LIST"],["South Korea"]),"Korea Republic (KOR)");
+ assert.equal(extractTeamHeading(["Korea DPR (PRK)","SQUAD LIST"],["North Korea"]),"Korea DPR (PRK)");
 });
 
 test("rejects a known country paired with another country's FIFA code",()=>{
