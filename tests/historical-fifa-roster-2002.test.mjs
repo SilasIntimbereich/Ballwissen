@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parseFifa2002Roster } from "../scripts/historical-fifa-roster-2002.mjs";
+import { parseFifa2002Roster, isCleanFifa2002RosterAudit } from "../scripts/historical-fifa-roster-2002.mjs";
 
 test("parses FIFA's 2002 roster table by country code, number, position and display name", () => {
   const teams = [
@@ -29,7 +29,6 @@ test("parses FIFA's 2002 roster table by country code, number, position and disp
 
 
 test("does not mark a roster clean when any position differs",()=>{
- const {isCleanFifa2002RosterAudit}=await import("../scripts/historical-fifa-roster-2002.mjs");
  const valid={sourcePlayerCount:23,matchedPlayers:23,nameMismatches:[],missingFromSource:[],missingFromDataset:[],positionDifferences:[]};
  assert.equal(isCleanFifa2002RosterAudit(valid,23),true);
  assert.equal(isCleanFifa2002RosterAudit({...valid,positionDifferences:[{number:1}]},23),false);
