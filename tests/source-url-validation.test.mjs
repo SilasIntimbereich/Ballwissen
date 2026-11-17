@@ -19,6 +19,11 @@ test("does not count an archived copy as an independent publisher",()=>{
  assert.equal(hasIndependentHttpsSources(["https://www.fifa.com/squad.pdf","https://web.archive.org/web/20100616010702id_/http://www.fifa.com/squad.pdf"]),false);
 });
 
+test("rejects malformed archive wrappers instead of counting archive.org as a publisher",()=>{
+ assert.equal(normalizeHttpsHost("https://web.archive.org/not-a-capture/fifa.com"),null);
+ assert.equal(hasIndependentHttpsSources(["https://www.fifa.com/squad.pdf","https://web.archive.org/not-a-capture/fifa.com"]),false);
+});
+
 test("accepts independent HTTPS publishers, including multi-label country domains",()=>{
  assert.equal(normalizeHttpsHost("https://www.footballsquads.co.uk/worldcup/"),"footballsquads.co.uk");
  assert.equal(normalizeHttpsHost("https://www.rsssf.org/tables/"),"rsssf.org");
