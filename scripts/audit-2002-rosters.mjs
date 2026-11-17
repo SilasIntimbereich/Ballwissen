@@ -197,18 +197,27 @@ for (const team of teams) {
 
   for (const player of datasetNames) {
     const key = normalize(player);
-    let sourceName = sourceNames.find(name => normalize(name) === key);
+    let sourceName = sourceNames.find(name => !matchedSourceNames.has(name) && normalize(name) === key);
     let matchType = "exact";
     if (!sourceName) {
       const alias = playerAliases.get(normalize(team.name) + "|" + key);
       if (alias) {
-        sourceName = sourceNames.find(name => normalize(name) === alias);
+        sourceName = sourceNames.find(name => !matchedSourceNames.has(name) && normalize(name) === alias);
         if (sourceName) matchType = "manual-alias";
       }
     }
     if (!sourceName) {
-      sourceName = sourceNames.find(name => namesMatch(player, name));
-      if (sourceName) matchType = "normalized-name";
+      const candidates = sourceNames.filter(name => !matchedSourceNames.has(name) &&
+        (namesMatch(player, name) || namesMatch(name, player)));
+      if (candidates.length === 1) {
+        const candidate = candidates[0];
+        const competingPlayers = datasetNames.filter(other => other !== player &&
+          (namesMatch(other, candidate) || namesMatch(candidate, other)));
+        if (competingPlayers.length === 0) {
+          sourceName = candidate;
+          matchType = "unique-token-subset";
+        }
+      }
     }
     if (sourceName) {
       matched.push({ datasetName: player, sourceName, match: matchType });
