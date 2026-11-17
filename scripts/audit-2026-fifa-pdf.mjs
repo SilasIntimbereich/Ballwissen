@@ -15,8 +15,40 @@ for (const p of data.players) {
 }
 const normalize = s => String(s || "").replace(/[\u0000«]/g, "fi").replace(/\u00ad/g, "ffi").replace(/ı/g, "i").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
 const tokens = s => String(s || "").replace(/[\u0000«]/g, "fi").replace(/\u00ad/g, "ffi").replace(/ı/g, "i").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().match(/[a-z0-9]+/g) || [];
-const clubKey = s => normalize(String(s || "").replace(/\s*\([A-Z]{3}\)\s*$/, ""));
-const report = { source: PDF_URL, pages: pdf.numPages, generatedAt: new Date().toISOString(), teams: [], summary: {} };
+const clubKey = s => normalize(String(s || "").replace(/\u0000/g, "ffi").replace(/\s*\([A-Z]{3}\)\s*$/, ""));
+const NBC_URL = "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams";
+const nbcResponse = await fetch(NBC_URL, { headers: { "User-Agent": "FootballArcadeRosterAudit/1.0" } });
+if (!nbcResponse.ok) throw new Error("NBC secondary squad source failed: HTTP " + nbcResponse.status);
+const nbcHtml = await nbcResponse.text();
+const htmlText = html => String(html || "")
+  .replace(/<br\s*\/?>/gi, "\n").replace(/<\/(?:p|div|li)>/gi, "\n")
+  .replace(/<[^>]+>/g, " ").replace(/&nbsp;|&#160;/gi, " ").replace(/&amp;/gi, "&")
+  .replace(/&quot;/gi, '"').replace(/&#39;|&apos;/gi, "'")
+  .replace(/[ \t]+/g, " ").replace(/\n+/g, "\n").trim();
+const teamNameKey = value => {
+  const key = normalize(value);
+  const aliases = { czechia: "czechrepublic", curacao: "curacao", cotedivoire: "ivorycoast", korearepublic: "southkorea", congodr: "drcongo", usa: "unitedstates", unitedstatesofamerica: "unitedstates", iriran: "iran" };
+  return aliases[key] || key;
+};
+const nbcTeams = new Map();
+const headings = [...nbcHtml.matchAll(/<h[2-4]\b[^>]*>([\s\S]*?)<\/h[2-4]>/gi)];
+const allTeamNames = [...new Set(data.players.map(player => player.team))];
+for (let index = 0; index < headings.length; index++) {
+  const heading = htmlText(headings[index][1]);
+  const key = teamNameKey(heading);
+  const teamName = allTeamNames.find(name => teamNameKey(name) === key);
+  if (!teamName) continue;
+  const start = headings[index].index + headings[index][0].length;
+  const end = headings[index + 1]?.index ?? nbcHtml.length;
+  const section = htmlText(nbcHtml.slice(start, end));
+  const rows = [];
+  for (const match of section.matchAll(/(Goalkeepers|Defenders|Midfielders|Forwards|Strikers)\s*:\s*([\s\S]*?)(?=(?:Goalkeepers|Defenders|Midfielders|Forwards|Strikers)\s*:|$)/gi)) {
+    const position = ({ goalkeepers: "GK", defenders: "DF", midfielders: "MF", forwards: "FW", strikers: "FW" })[match[1].toLowerCase()];
+    for (const entry of match[2].matchAll(/([^,()]+?)\s*\(([^()]*)\)/g)) rows.push({ name: entry[1].trim(), club: entry[2].trim(), position });
+  }
+  nbcTeams.set(teamName, rows);
+}
+const report = { source: PDF_URL, secondarySource: NBC_URL, pages: pdf.numPages, generatedAt: new Date().toISOString(), teams: [], summary: {} };
 
 for (let pageNo = 1; pageNo <= pdf.numPages; pageNo++) {
   const page = await pdf.getPage(pageNo);
@@ -49,6 +81,7 @@ for (let pageNo = 1; pageNo <= pdf.numPages; pageNo++) {
     else if (/^\d{1,2}\s+(GK|DF|MF|FW)\s+/.test(line)) unparsed.push(line);
   }
   const mismatches = [];
+  const secondaryMismatches = [];
   const matchedNumbers = new Set();
   for (const row of fifaRows) {
     const player = teamPlayers.find(p => Number(p.number) === row.number);
@@ -77,22 +110,56 @@ for (let pageNo = 1; pageNo <= pdf.numPages; pageNo++) {
   for (const p of teamPlayers) {
     if (!matchedNumbers.has(Number(p.number))) mismatches.push({ number: Number(p.number), player: p.name, field: "missing_fifa_row", fifa: null, dataset: p.name });
   }
+  const nbcRows = nbcTeams.get(teamPlayers[0]?.team) || [];
+  const nbcUsed = new Set();
+  const nbcNameMatches = (player, row) => {
+    const variants = [player.name, ...(Array.isArray(player.aliases) ? player.aliases : [])];
+    const source = normalize(row.name);
+    return variants.some(value => {
+      const key = normalize(value);
+      if (key && (source.includes(key) || key.includes(source))) return true;
+      const parts = tokens(value);
+      const sourceParts = new Set(tokens(row.name));
+      return parts.length > 0 && parts.every(part => sourceParts.has(part));
+    });
+  };
+  for (const player of teamPlayers) {
+    const candidates = nbcRows.map((row, index) => ({ row, index })).filter(item => nbcNameMatches(player, item.row));
+    const match = candidates.length === 1 ? candidates[0] : null;
+    if (!match) {
+      secondaryMismatches.push({ number: player.number, player: player.name, field: candidates.length ? "ambiguous_nbc_player" : "missing_nbc_player", candidates: candidates.map(item => item.row.name) });
+      continue;
+    }
+    nbcUsed.add(match.index);
+    if (match.row.position !== player.position) secondaryMismatches.push({ number: player.number, player: player.name, field: "nbc_position", nbc: match.row.position, dataset: player.position });
+    const nbcClub = clubKey(match.row.club), datasetClub = clubKey(player.club);
+    if (!nbcClub || !datasetClub || !(nbcClub === datasetClub || nbcClub.includes(datasetClub) || datasetClub.includes(nbcClub))) {
+      secondaryMismatches.push({ number: player.number, player: player.name, field: "nbc_club", nbc: match.row.club, dataset: player.club });
+    }
+  }
+  nbcRows.forEach((row, index) => { if (!nbcUsed.has(index)) secondaryMismatches.push({ player: row.name, field: "extra_nbc_player", position: row.position, club: row.club }); });
   report.teams.push({
     page: pageNo, code, heading, datasetTeam: teamPlayers[0]?.team || null,
     fifaPlayerRows: fifaRows.length, datasetPlayerRows: teamPlayers.length,
+    nbcPlayerRows: nbcRows.length,
     parsed: fifaRows.length === 26, rowCountMatches: fifaRows.length === teamPlayers.length,
-    mismatchCount: mismatches.length, mismatches, unparsedRows: unparsed
+    mismatchCount: mismatches.length, mismatches, secondaryMismatchCount: secondaryMismatches.length, secondaryMismatches,
+    fullSourceAgreement: fifaRows.length === 26 && nbcRows.length === 26 && mismatches.length === 0 && secondaryMismatches.length === 0,
+    unparsedRows: unparsed
   });
 }
 report.summary = {
   pdfPages: pdf.numPages,
   parsedTeams: report.teams.filter(t => t.code && t.parsed).length,
   teamsWithNoMismatches: report.teams.filter(t => t.code && t.parsed && t.rowCountMatches && t.mismatchCount === 0).length,
+  nbcTeamsParsed: report.teams.filter(t => t.nbcPlayerRows === 26).length,
+  teamsWithFullSourceAgreement: report.teams.filter(t => t.fullSourceAgreement).length,
+  secondaryMismatches: report.teams.reduce((n, t) => n + t.secondaryMismatchCount, 0),
   totalMismatches: report.teams.reduce((n, t) => n + t.mismatchCount, 0),
   teamsMissingFromDataset: report.teams.filter(t => !t.datasetTeam).map(t => t.code),
   teamsWithUnresolvedDifferences: report.teams.filter(t => t.mismatchCount > 0 || t.unparsedRows.length > 0).length,
   mismatchCountsByField: report.teams.flatMap(t => t.mismatches).reduce((counts, item) => { counts[item.field] = (counts[item.field] || 0) + 1; return counts; }, {}),
-  note: "This is an extraction and comparison report, not an independent approval ledger. Name, position and club differences remain unresolved until manually checked against independent sources."
+  note: "This compares the FIFA final squad PDF against the local dataset and NBC Sports as a second source. FIFA/NBC differences remain unresolved; this report does not automatically approve teams."
 };
 await mkdir("artifacts", { recursive: true });
 await writeFile("artifacts/fifa-2026-audit.json", JSON.stringify(report, null, 2) + "\n");
