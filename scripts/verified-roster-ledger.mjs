@@ -53,3 +53,17 @@ export function isCompleteVerifiedRosterLedger(team, entry, expectedYear) {
     );
   });
 }
+
+
+/**
+ * A stale "verified" marker must never survive after its evidence stops
+ * matching the live roster. Keep the audit row for review, but revoke the
+ * trust state so downstream builds cannot treat it as approved.
+ */
+export function downgradeIncompleteVerifiedRosterLedger(team, entry, expectedYear) {
+  if (!entry || entry.status !== "verified" ||
+      isCompleteVerifiedRosterLedger(team, entry, expectedYear)) return false;
+  entry.status = "needs_review";
+  entry.verificationIssue = "Stored player-level evidence no longer matches the current squad data";
+  return true;
+}
