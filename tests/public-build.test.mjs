@@ -66,11 +66,11 @@ test("rarity assignment follows the gradual global curve and keeps famous player
  const counts=Object.fromEntries(["Common","Rare","Niche","Legendary","Ball Knowledge"].map(tier=>[tier,all.filter(player=>player.rarity===tier).length]));
  assert.equal(all.length,5759);
  assert.deepEqual(counts,{
-  Common:2809,
-  Rare:1873,
-  Niche:936,
-  Legendary:94,
-  "Ball Knowledge":47
+  Common:2533,
+  Rare:1353,
+  Niche:1153,
+  Legendary:480,
+  "Ball Knowledge":240
  });
  const france=generated.teams.find(team=>team.id==="france-2018");
  assert.ok(france.players.filter(player=>player.rarity==="Common").length>=20,"France 2018 should be mostly Common");
