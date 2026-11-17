@@ -28,7 +28,8 @@ function nameTargets(player){
   .filter(Boolean).map(normalize).filter(Boolean);
 }
 function surnameTargets(player){
- return [...new Set([...(surnameForms(player?.name)),...(player?.aliases||[]).flatMap(surnameForms)])];
+ const aliases=Array.isArray(player?.aliases)?player.aliases:[];
+ return [...new Set([...surnameForms(player?.name),...aliases.flatMap(surnameForms)])];
 }
 function fuzzyTargets(input,player){
  return nameTargets(player).some(target=>{
