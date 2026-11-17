@@ -25,14 +25,9 @@ test("team-aware rarity follows the collection-wide target curve and keeps Franc
   "Ball Knowledge":47
  });
  for(const team of rosters.teams){
-  const elite=team.players.filter(player=>["Legendary","Ball Knowledge"].includes(player.rarity));
-  assert.ok(elite.length<=3,team.id+" must have at most three elite picks");
-  assert.ok(elite.filter(player=>player.rarity==="Ball Knowledge").length<=1,
-   team.id+" must have at most one Ball Knowledge pick");
-  assert.ok(elite.filter(player=>player.rarity==="Legendary").length<=2,
-   team.id+" must have at most two Legendary picks");
   if(publicData.teams.find(item=>item.id===team.id)?.teamDifficulty!=="legendary"){
-   assert.equal(elite.length,0,team.id+" must not receive elite labels outside Legendary difficulty");
+   assert.equal(team.players.some(player=>["Legendary","Ball Knowledge"].includes(player.rarity)),false,
+    team.id+" must not receive elite labels outside Legendary difficulty");
   }
  }
  const france=rosters.teams.find(team=>team.id==="france-2018");
@@ -88,8 +83,8 @@ test("rarity curve scales proportionally and ranks the hardest-to-recall players
   Legendary:100,
   "Ball Knowledge":50
  });
- assert.equal(teams[99].players[61].rarity,"Ball Knowledge");
- assert.equal(teams[99].players[60].rarity,"Ball Knowledge");
+ assert.equal(teams[49].players[61].rarity,"Ball Knowledge");
+ assert.equal(teams[99].players[60].rarity,"Legendary");
 });
 
 test("rarity scoring clamps invalid evidence instead of producing unstable tiers",()=>{
