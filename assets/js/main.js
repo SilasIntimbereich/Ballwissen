@@ -93,7 +93,8 @@ function startDailyTeam(sequence){
  team={id:dailyTeam.teamId,name:dailyTeam.teamName,year:dailyTeam.year,total:dailyTeam.total,players:dailyTeam.players,hints:dailyTeam.hints};
  resetGameView();roundState=createRound(team.players);found=roundState.found;
  $("#game-team").textContent=dailyTeam.teamName.toUpperCase();
- $("#game-tournament").textContent="DAILY TEAM "+sequence+" / 3";
+ const dailyLabel=dailyState.mode.replace("daily-","").toUpperCase();
+ $("#game-tournament").textContent="WORLD CUP "+dailyTeam.year+" · DAILY "+dailyLabel+" · "+sequence+"/3";
  $("#game-mode").textContent="DAILY · "+dailyState.mode.replace("daily-","").toUpperCase();
  $("#game-heading").textContent="NAME THE SQUAD";renderDailyRoster(dailyTeam);
  $("#feedback").textContent="Local daily challenge · unranked.";
