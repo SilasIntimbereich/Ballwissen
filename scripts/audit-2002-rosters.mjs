@@ -14,8 +14,8 @@ const teamAliases = {
 const playerAliases = new Map([
   ["cameroon|alioumboukar", "boukaralioum"],
   ["china|qian", "anqi"],
-  ["brazil|robertocarlosii", "robertocarlos"],
-  ["brazil|ricardinhoii", "ricardinho"]
+  ["brazil|robertocarlos", "robertocarlosii"],
+  ["brazil|ricardinho", "ricardinhoii"]
 ]);
 
 function parseSquads(text, teams) {
