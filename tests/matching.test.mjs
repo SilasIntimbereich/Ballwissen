@@ -54,6 +54,13 @@ test("preserves the first exact match for duplicate canonical names",()=>{
  assert.equal(matches("Nam-chol Pak",squad[1],squad),false);
 });
 
+test("uses shirt numbers to disambiguate duplicate player names",()=>{
+ const squad=[{name:"Nam-chol Pak",number:4},{name:"Nam-Chol Pak",number:14}];
+ assert.equal(matches("Nam-chol Pak #4",squad[0],squad),true);
+ assert.equal(matches("#14 Nam-chol Pak",squad[1],squad),true);
+ assert.equal(matches("Nam-chol Pak 14",squad[0],squad),false);
+});
+
 test("keeps a unique typo match when only one squad member is close",()=>{
  const squad=[{name:"Cristiano Ronaldo"},{name:"Lionel Messi"},{name:"Neymar Junior"}];
  assert.equal(matches("Cristiano Ronald",squad[0],squad),true);
