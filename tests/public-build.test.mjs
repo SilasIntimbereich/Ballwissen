@@ -34,3 +34,25 @@ test("raw source roster files are absent from the public deployment",async()=>{
   await assert.rejects(access(path));
  }
 });
+
+test("every player in every verified squad has a valid rarity assignment",()=>{
+ const allowed=new Set(["Common","Rare","Niche","Legendary","Ball Knowledge"]);
+ let verifiedTeams=0,verifiedPlayers=0,allPlayers=0;
+ for(const team of publicData.teams){
+  const local=localById.get(team.id);
+  for(const player of local.players){
+   allPlayers++;
+   assert.ok(allowed.has(player.rarity),"Missing or invalid rarity: "+team.id+" / "+player.name);
+  }
+  if(team.verified){
+   verifiedTeams++;
+   verifiedPlayers+=local.players.length;
+   for(const player of local.players){
+    assert.ok(allowed.has(player.rarity),"Verified player has no rarity: "+team.id+" / "+player.name);
+   }
+  }
+ }
+ assert.ok(verifiedTeams>0,"At least one independently verified squad must be present");
+ assert.ok(verifiedPlayers>0,"Verified squads must contain player records");
+ assert.equal(allPlayers,5759,"Every source roster player must be packaged with a rarity");
+});
