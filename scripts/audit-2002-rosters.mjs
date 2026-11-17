@@ -22,7 +22,7 @@ const playerAliases = new Map([
 export function parseSquads(sourceText, teams) {
   const expected = new Map(teams.map(team => [normalize(team.name), team]));
   const lines = sourceText.split(/\r?\n/);
-  const start = lines.findIndex(line => /^==\s*Squads\b/i.test(line.trim()));
+  const start = lines.findIndex(line => /^Squads\s*$/i.test(line.trim()));
   if (start < 0) throw new Error("RSSSF squad section not found");
 
   const squads = new Map();
@@ -82,18 +82,18 @@ const bytes=await response.arrayBuffer();
 const decoder=/charset=(?:iso-8859-1|windows-1252)/i.test(contentType)?new TextDecoder("windows-1252"):new TextDecoder("utf-8");
 const rawHtml=decoder.decode(bytes);
 const sourceText=rawHtml
-  .replace(/<script[\\s\\S]*?<\\/script>/gi," ")
-  .replace(/<style[\\s\\S]*?<\\/style>/gi," ")
-  .replace(/<br\\s*\\/?\\s*>/gi,"\\n")
-  .replace(/<\\/(?:p|div|h[1-6]|li|pre|tr)>/gi,"\\n")
+  .replace(/<script[\s\S]*?<\/script>/gi," ")
+  .replace(/<style[\s\S]*?<\/style>/gi," ")
+  .replace(/<br\s*\/?\s*>/gi,"\n")
+  .replace(/<\/(?:p|div|h[1-6]|li|pre|tr)>/gi,"\n")
   .replace(/<[^>]*>/g," ")
   .replace(/&nbsp;/gi," ")
   .replace(/&amp;/gi,"&")
   .replace(/&eacute;/gi,"é").replace(/&Eacute;/g,"É")
   .replace(/&ouml;/gi,"ö").replace(/&Ouml;/g,"Ö")
   .replace(/&uuml;/gi,"ü").replace(/&Uuml;/g,"Ü")
-  .replace(/&#(\\d+);/g,(_,n)=>String.fromCodePoint(Number(n)))
-  .replace(/\\r/g,"");
+  .replace(/&#(\d+);/g,(_,n)=>String.fromCodePoint(Number(n)))
+  .replace(/\r/g,"");
 const squads = parseSquads(sourceText, teams);
 const report = {
   year: 2002, source: SOURCE_URL, sourceStatus: "available",
