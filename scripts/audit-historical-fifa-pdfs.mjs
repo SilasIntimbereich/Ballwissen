@@ -165,6 +165,8 @@ for(const source of SOURCES){
     const player=team.players.find(p=>Number(p.number)===candidate.number);
     player.club=candidate.clubAtTournament;
     player.position=candidate.position;
+    player.clubSource=usedUrl;
+    player.positionSource=usedUrl;
    }
   }
   tournamentReport.teams.push({page:pageNo,teamId:team?.id||null,teamName:team?.name||null,pdfHeading:heading,fifaRows:fifaRows.length,dataHubRows:expected,rosterIdentityClean,fullyAudited,clubValuesParsed:candidates.filter(row=>row.clubAtTournament).length,mismatchCount:mismatches.length,mismatches,candidates});
