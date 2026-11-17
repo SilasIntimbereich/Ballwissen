@@ -115,9 +115,17 @@ export function assignRosterRarities(rosters,publicData){
     ["Rare",rareTarget]
   ];
   let cursor=0;
+  const elitePerTeam=new Map();
   for(const [tier,requested] of nonCommonTargets){
-    const count=Math.min(requested,Math.max(0,rarityCandidates.length-cursor));
-    for(let i=0;i<count;i++)rarityCandidates[cursor++].player.rarity=tier;
+    let assigned=0;
+    while(assigned<requested&&cursor<rarityCandidates.length){
+      const candidate=rarityCandidates[cursor++];
+      const teamCount=elitePerTeam.get(candidate.teamId)||0;
+      if(teamCount>=10)continue;
+      candidate.player.rarity=tier;
+      elitePerTeam.set(candidate.teamId,teamCount+1);
+      assigned++;
+    }
   }
   for(;cursor<rarityCandidates.length;cursor++)rarityCandidates[cursor].player.rarity="Common";
 
