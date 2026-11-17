@@ -1,7 +1,7 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { namesMatch } from "./historical-player-name-match.mjs";
 import { parseWikipediaSquads, normalizeHistoricalClub } from "./historical-wikipedia-squads.mjs";
-import { parsePlanetWorldCupSquad } from "./planet-world-cup-squad.mjs";
+import { parsePlanetWorldCupSquad, decodePlanetWorldCupResponse } from "./planet-world-cup-squad.mjs";
 
 const WIKIPEDIA_URL = "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads";
 const slugs = {
@@ -53,7 +53,7 @@ try {
           signal: AbortSignal.timeout(15000)
         });
         if (!planetResponse.ok) throw new Error("HTTP " + planetResponse.status);
-        planetRows = parsePlanetWorldCupSquad(new TextDecoder("windows-1252").decode(await planetResponse.arrayBuffer()));
+        planetRows = parsePlanetWorldCupSquad(await decodePlanetWorldCupResponse(planetResponse));
         planetStatus = planetRows.length ? "available" : "parsed_no_players";
       } catch (error) {
         planetError = String(error);
