@@ -17,8 +17,8 @@ const clubAliases = {
 };
 
 function decodeEntities(value) {
-  const named = { "&amp;":"&", "&nbsp;":" ", "&quot;":"\"", "&#39;":"'", "&apos;":"'", "&lt;":"<", "&gt;":">", "&eacute;":"é", "&Eacute;":"É", "&ouml;":"ö", "&Ouml;":"Ö", "&uuml;":"ü", "&Uuml;":"Ü", "&aacute;":"á", "&Aacute;":"Á", "&ntilde;":"ñ", "&Ntilde;":"Ñ", "&ccedil;":"ç", "&Ccedil;":"Ç" };
-  return value.replace(/&(?:amp|nbsp|quot|apos|lt|gt|eacute|Eacute|ouml|Ouml|uuml|Uuml|aacute|Aacute|ntilde|Ntilde|ccedil|Ccedil);|&#\d+;|&#x[\da-f]+;/gi, entity => {
+  const named = { "&amp;":"&", "&nbsp;":" ", "&quot;":"\"", "&#39;":"'", "&apos;":"'", "&lt;":"<", "&gt;":">", "&eacute;":"é", "&Eacute;":"É", "&ouml;":"ö", "&Ouml;":"Ö", "&uuml;":"ü", "&Uuml;":"Ü", "&aacute;":"á", "&Aacute;":"Á", "&iacute;":"í", "&Iacute;":"Í", "&uacute;":"ú", "&Uacute;":"Ú", "&agrave;":"à", "&Agrave;":"À", "&egrave;":"è", "&Egrave;":"È", "&euml;":"ë", "&Euml;":"Ë", "&atilde;":"ã", "&Atilde;":"Ã", "&ocirc;":"ô", "&Ocirc;":"Ô", "&ecirc;":"ê", "&Ecirc;":"Ê", "&ograve;":"ò", "&Ograve;":"Ò", "&ntilde;":"ñ", "&Ntilde;":"Ñ", "&ccedil;":"ç", "&Ccedil;":"Ç" };
+  return value.replace(/&(?:amp|nbsp|quot|apos|lt|gt|eacute|Eacute|ouml|Ouml|uuml|Uuml|aacute|Aacute|iacute|Iacute|uacute|Uacute|agrave|Agrave|egrave|Egrave|euml|Euml|atilde|Atilde|ocirc|Ocirc|ecirc|Ecirc|ograve|Ograve|ntilde|Ntilde|ccedil|Ccedil);|&#\d+;|&#x[\da-f]+;/gi, entity => {
     if (named[entity]) return named[entity];
     const numeric = entity.match(/^&#(x[\da-f]+|\d+);$/i);
     if (!numeric) return entity;
