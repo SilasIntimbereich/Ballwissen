@@ -4,12 +4,14 @@ import { namesMatch } from "./historical-player-name-match.mjs";
 const SOURCE_URL = "https://www.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2022-world-cup/2022-fifa-world-cup-playing-squad-details-with-kit-number-position-age-caps-and-club-affiliation/";
 const normalize = value => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
 const teamAliases = { iriran:"iran", korearepublic:"southkorea", usa:"unitedstates", "koreadpr":"northkorea" };
-const clubPrefix = new Set(["fc","cf","ca","cr","se","sl","rsc","bsc","rc","vfl","sfc","ac","cd","afc","sc"]);
+const clubPrefix = new Set(["fc","cf","ca","cr","se","sl","rsc","bsc","rc","rcd","vfl","sfc","ac","cd","afc","sc","club"]);
 const clubSuffix = new Set(["fc","cf","sc","sfc","afc","calcio"]);
 const clubAliases = {
   bayer04leverkusen:"bayerleverkusen",
   bayernmunchen:"bayernmunich",
-  slbenca:"benfica",
+  benca:"benfica",
+  kobenhavn:"copenhagen",
+  koln:"cologne",
   olympiquelyon:"lyon",
   olympiquemarseille:"marseille"
 };
@@ -93,7 +95,7 @@ for(const team of teams){
   const fullyCrossChecked=sourceTeam.length===26&&comparisons.length===26&&mismatches.length===0;
   report.teams.push({teamId:team.id,teamName:team.name,sourcePlayerCount:sourceTeam.length,fullyCrossChecked,clubMatches:comparisons.filter(x=>x.clubMatches).length,clubMismatches:comparisons.filter(x=>!x.clubMatches).length,nameMismatches:comparisons.filter(x=>!x.identityMatches).length,mismatches,comparisons});
 }
-report.summary={sourceRows:sourceRows.length,teamsFound:sourceByTeam.size,teams:report.teams.length,fullyCrossCheckedTeams:report.teams.filter(t=>t.fullyCrossChecked).length,clubMismatches:report.teams.reduce((n,t)=>n+t.clubMismatches,0),nameMismatches:report.teams.reduce((n,t)=>n+t.nameMismatches,0),missingRows:report.teams.reduce((n,t)=>n+t.mismatches.filter(m=>m.field.startsWith("missing")).length,0)};
+report.summary={sourceRows:sourceRows.length,teamsFound:sourceByTeam.size,teams:report.teams.length,fullyCrossCheckedTeams:report.teams.filter(t=>t.fullyCrossChecked).length,clubMismatches:report.teams.reduce((n,t)=>n+t.clubMismatches,0),nameMismatches:report.teams.reduce((n,t)=>n+t.nameMismatches,0),positionDifferences:report.teams.reduce((n,t)=>n+t.comparisons.filter(row=>!row.positionMatches).length,0),missingRows:report.teams.reduce((n,t)=>n+t.mismatches.filter(m=>m.field.startsWith("missing")).length,0)};
 await mkdir("artifacts",{recursive:true});
 await writeFile("artifacts/2022-independent-club-audit.json",JSON.stringify(report,null,2)+"\n");
 console.log(JSON.stringify(report.summary,null,2));
