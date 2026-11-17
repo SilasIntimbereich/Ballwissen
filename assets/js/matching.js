@@ -43,7 +43,10 @@ export function matches(guess,player,squad=[player]){
  const input=normalize(guess);
  if(!input||!player)return false;
  const targets=nameTargets(player);
- if(targets.includes(input))return true;
+ if(targets.includes(input)){
+  const candidates=(Array.isArray(squad)?squad:[player]).filter(candidate=>nameTargets(candidate).includes(input));
+  return candidates.length===1&&candidates[0]===player;
+ }
 
  const ownSurnames=surnameTargets(player);
  if(ownSurnames.includes(input)){
