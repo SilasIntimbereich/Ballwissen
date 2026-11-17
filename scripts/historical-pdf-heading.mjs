@@ -61,7 +61,7 @@ export function extractTeamHeading(lines,knownTeams=[]){
  const known=new Set(knownTeams.map(canonicalTeamKey));
  // Country headings belong near the top of the FIFA page. Do not accept
  // a country name mentioned later in a player or club description.
- const headingLines=values.slice(0,12);
+ const headingLines=values.slice(0,8);
  const countryCodeHeading=headingLines.find(line=>{
   if(!usableHeading(line))return false;
   const match=line.match(/^(.*?)\s*\(([A-Z]{3})\)\s*$/);
