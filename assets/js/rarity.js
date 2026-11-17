@@ -84,7 +84,11 @@ export function assignRosterRarities(rosters,publicData){
         });
       }
     }
-    eliteCandidatesForTeam.sort((a,b)=>b.score-a.score||a.index-b.index);
+    eliteCandidatesForTeam.sort((a,b)=>
+      b.score-a.score||
+      (Number(b.player.number)||0)-(Number(a.player.number)||0)||
+      a.index-b.index
+    );
     // Each Legendary-difficulty squad gets up to three elite recall picks:
     // one Ball Knowledge and two Legendary. Familiar stars stay Common.
     eliteCandidatesForTeam.slice(0,1).forEach(({player})=>{player.rarity="Ball Knowledge";});
