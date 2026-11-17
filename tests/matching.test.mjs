@@ -48,6 +48,6 @@ test("keeps a unique typo match when only one squad member is close",()=>{
 });
 
 test("supports aliases when checking ambiguous surname forms",()=>{
- const squad=[{name:"Joao Cancelo",aliases:["João Pedro Cavaco Cancelo"]},{name:"Bernardo Silva"}];
- assert.equal(matches("Cavaco Cancelo",squad[0],squad),true);
+ const squad=[{name:"Joao Pedro dos Santos",aliases:["João Pedro dos Santos"]},{name:"Bernardo Silva"}];
+ assert.equal(matches("Dos Santos",squad[0],squad),true);
 });
