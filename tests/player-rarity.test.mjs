@@ -18,8 +18,10 @@ test("team-aware rarity keeps France 2018 familiar and elite tiers scarce",async
  const counts=Object.fromEntries(["Common","Rare","Niche","Legendary","Ball Knowledge"].map(tier=>[tier,all.filter(player=>player.rarity===tier).length]));
  assert.equal(all.length,5759);
  assert.deepEqual(Object.keys(counts).filter(tier=>counts[tier]>0).sort(),["Ball Knowledge","Common","Legendary","Niche","Rare"].sort());
- assert.ok(counts.Legendary<=10);
- assert.ok(counts["Ball Knowledge"]<=4);
+ const legendaryTeams=rosters.teams.filter(team=>publicData.teams.find(meta=>meta.id===team.id)?.teamDifficulty==="legendary");
+ assert.ok(counts.Legendary<=legendaryTeams.length*2);
+ assert.ok(counts["Ball Knowledge"]<=legendaryTeams.length);
+ assert.ok(counts["Ball Knowledge"]>=legendaryTeams.length-2);
  const france=rosters.teams.find(team=>team.id==="france-2018");
  assert.ok(france.players.filter(player=>player.rarity==="Common").length>=20);
  assert.equal(france.players.find(player=>/kylian mbapp/i.test(player.name)).rarity,"Common");
@@ -47,4 +49,21 @@ test("Supabase resolver uses the same team-aware rarity algorithm as the browser
   checked++;
  }
  assert.ok(checked>5700);
+});
+
+test("Legendary rarity labels are available per eligible squad, not globally capped",()=>{
+ const rosters={teams:[
+  {id:"team-a",players:[{name:"Unknown One",number:1,position:"FW"},{name:"Unknown Two",number:2,position:"FW"},{name:"Unknown Three",number:23,position:"GK"},{name:"Known Star",number:10,position:"FW"}]},
+  {id:"team-b",players:[{name:"Unknown Four",number:1,position:"FW"},{name:"Unknown Five",number:2,position:"FW"},{name:"Unknown Six",number:23,position:"GK"}]}
+ ]};
+ const metadata={teams:[{id:"team-a",year:2018,teamDifficulty:"legendary"},{id:"team-b",year:2022,teamDifficulty:"legendary"}]};
+ assignRosterRarities(rosters,metadata);
+ for(const team of rosters.teams){
+  assert.equal(team.players.filter(player=>player.rarity==="Ball Knowledge").length,1);
+  assert.equal(team.players.filter(player=>player.rarity==="Legendary").length,2);
+ }
+});
+
+test("rarity scoring clamps invalid evidence instead of producing unstable tiers",()=>{
+ assert.equal(rarityFromEvidence({caps:Infinity,goals:-100,majorAwards:NaN,globalRecognition:0,clubProfile:0}),"Ball Knowledge");
 });
