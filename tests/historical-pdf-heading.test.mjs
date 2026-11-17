@@ -6,6 +6,15 @@ test("extracts a country-code heading from Qatar 2022 FIFA pages",()=>{
  assert.equal(extractTeamHeading(["FIFA World Cup Qatar 2022","SQUAD LIST","Argentina (ARG)","# POS NAME DOB CLUB"],["Argentina"]),"Argentina (ARG)");
 });
 
+test("supports FIFA's country display aliases when the code is correct",()=>{
+ assert.equal(extractTeamHeading(["IR Iran (IRN)","SQUAD LIST"],["Iran"]),"IR Iran (IRN)");
+ assert.equal(extractTeamHeading(["Korea Republic (KOR)","SQUAD LIST"],["South Korea"]),"Korea Republic (KOR)");
+});
+
+test("rejects a known country paired with another country's FIFA code",()=>{
+ assert.equal(extractTeamHeading(["Argentina (BRA)","SQUAD LIST"],["Argentina"]),"");
+});
+
 test("supports older FIFA pages with List of Players followed by a country",()=>{
  assert.equal(extractTeamHeading(["FIFA World Cup South Africa 2010","List of Players","South Africa","# Position Player Club"],["South Africa"]),"South Africa");
 });
