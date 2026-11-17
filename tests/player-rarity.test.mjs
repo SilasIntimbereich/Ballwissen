@@ -25,6 +25,9 @@ test("team-aware rarity keeps France 2018 familiar and assigns elite picks per L
    team.id+" must have at most one Ball Knowledge pick");
   assert.ok(elite.filter(player=>player.rarity==="Legendary").length<=2,
    team.id+" must have at most two Legendary picks");
+  if(publicData.teams.find(item=>item.id===team.id)?.teamDifficulty!=="legendary"){
+   assert.equal(elite.length,0,team.id+" must not receive elite labels outside Legendary difficulty");
+  }
  }
  const france=rosters.teams.find(team=>team.id==="france-2018");
  assert.ok(france.players.filter(player=>player.rarity==="Common").length>=20);
@@ -91,4 +94,16 @@ test("counts transliterated spellings as the same player across tournaments",()=
  ]};
  assignRosterRarities(rosters,metadata);
  for(const team of rosters.teams)assert.equal(team.players[0].rarity,"Rare");
+});
+
+
+test("a Legendary squad with fewer than three eligible players does not invent elite picks",()=>{
+ const rosters={teams:[{id:"small-legendary",players:[
+  {name:"Unknown Reserve",number:23,position:"FW"},
+  {name:"Lionel Messi",number:10,position:"FW"}
+ ]}]};
+ const metadata={teams:[{id:"small-legendary",year:2026,teamDifficulty:"legendary"}]};
+ assignRosterRarities(rosters,metadata);
+ assert.equal(rosters.teams[0].players.filter(player=>player.rarity==="Ball Knowledge").length,1);
+ assert.equal(rosters.teams[0].players.filter(player=>player.rarity==="Legendary").length,0);
 });
