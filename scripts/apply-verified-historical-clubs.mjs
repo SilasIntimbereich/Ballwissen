@@ -1,4 +1,6 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { namesMatch } from "./historical-player-name-match.mjs";
+import { normalizeHistoricalClub } from "./historical-wikipedia-squads.mjs";
 
 const dataset = JSON.parse(await readFile("data/historical-squads.json", "utf8"));
 const candidates = JSON.parse(await readFile("artifacts/historical-club-candidates.json", "utf8"));
@@ -11,7 +13,7 @@ rosterAudit.teams ||= {};
 
 const report = {
   generatedAt: new Date().toISOString(),
-  rule: "Only teams with complete player-by-player source agreement receive club and position data. Existing club values without a complete verified ledger entry are cleared. Available FIFA PDF candidates must not conflict with the independent archives.",
+  rule: "Only complete player-by-player identity, club and position agreement across at least two independent HTTPS sources is applied. Incomplete evidence never overwrites existing squad data.",
   appliedTeams: [],
   skippedTeams: [],
   clearedTeams: [],
@@ -20,74 +22,147 @@ const report = {
 let dataChanged = false;
 let ledgerChanged = false;
 
+const normalizePosition = value => {
+  const position = String(value || "").trim().toUpperCase().replace(/[^A-Z]/g, "");
+  return position === "MD" ? "MF" : position;
+};
+const validHttps = value => {
+  try { return new URL(value).protocol === "https:"; } catch { return false; }
+};
+
 function ledgerIsVerified(team) {
   const entry = rosterAudit.teams?.[team.id];
+  const heading = entry?.teamNameInFifaPdf || entry?.teamNameInPrimarySource;
   return entry?.status === "verified" &&
+    entry.tournament === team.year &&
+    entry.teamNameInDataset === team.name &&
+    typeof heading === "string" && heading.trim() &&
+    /^\d{4}-\d{2}-\d{2}$/.test(entry.reviewedAt || "") &&
     Array.isArray(entry.players) &&
     entry.players.length === (team.players || []).length &&
     entry.players.every(row =>
       ["matched", "corrected"].includes(row.status) &&
-      typeof row.clubAtTournament === "string" && row.clubAtTournament.trim()
-    ) &&
-    typeof entry.primarySource === "string" && entry.primarySource.trim() &&
-    typeof entry.secondarySource === "string" && entry.secondarySource.trim();
+      typeof row.sourceName === "string" && row.sourceName.trim() &&
+      typeof row.clubAtTournament === "string" && row.clubAtTournament.trim() &&
+      typeof row.position === "string" && row.position.trim() &&
+      validHttps(row.primarySource || entry.primarySource) &&
+      validHttps(row.secondarySource || entry.secondarySource)
+    );
 }
 
-function applyTeam(year, teamId, candidatePlayers, sources) {
+function applyTeam(year, teamId, candidatePlayers, sources, evidencePlayers, fifaHeading, primaryHeading) {
   const dataTeam = dataset.tournaments[String(year)]?.find(team => team.id === teamId);
   if (!dataTeam) {
     report.skippedTeams.push({ year, teamId, reason: "Team not found in historical dataset" });
     return;
   }
-  const byNumber = new Map(candidatePlayers.map(player => [Number(player.number), player]));
-  const updates = [];
-  for (const player of dataTeam.players || []) {
-    const candidate = byNumber.get(Number(player.number));
-    if (!candidate || typeof candidate.club !== "string" || !candidate.club.trim() ||
-        typeof candidate.position !== "string" || !candidate.position.trim()) {
-      report.skippedTeams.push({ year, teamId, teamName: dataTeam.name,
-        reason: "Not every player has a verified club and position candidate" });
-      return;
-    }
-    updates.push({ player, candidate });
-  }
-  if (updates.length !== dataTeam.players.length) {
-    report.skippedTeams.push({ year, teamId, teamName: dataTeam.name, reason: "Player count mismatch" });
+  const sourceList = [...new Set((sources || []).filter(value => typeof value === "string" && value.trim() && validHttps(value)))];
+  if (sourceList.length < 2) {
+    report.skippedTeams.push({ year, teamId, teamName: dataTeam.name, reason: "At least two independent HTTPS sources are required" });
     return;
   }
 
+  const candidateRows = Array.isArray(candidatePlayers) ? candidatePlayers : [];
+  const evidenceRows = Array.isArray(evidencePlayers) ? evidencePlayers : [];
+  const candidateByNumber = new Map(candidateRows.map(player => [Number(player.number), player]));
+  const evidenceByNumber = new Map(evidenceRows.map(player => [Number(player.number), player]));
+  if (candidateByNumber.size !== candidateRows.length || evidenceByNumber.size !== evidenceRows.length ||
+      candidateRows.length !== dataTeam.players.length || evidenceRows.length !== dataTeam.players.length) {
+    report.skippedTeams.push({ year, teamId, teamName: dataTeam.name, reason: "Candidate/evidence rows are incomplete or contain duplicate shirt numbers" });
+    return;
+  }
+
+  const updates = [];
+  for (const player of dataTeam.players || []) {
+    const number = Number(player.number);
+    const candidate = candidateByNumber.get(number);
+    const evidence = evidenceByNumber.get(number);
+    if (!candidate || !evidence || evidence.identityMatches === false) {
+      report.skippedTeams.push({ year, teamId, teamName: dataTeam.name, reason: "A player is missing a positive identity cross-check" });
+      return;
+    }
+
+    const wikiName = evidence.wikipediaName || evidence.sourceName || evidence.secondaryName;
+    const planetName = evidence.planetName || evidence.secondaryName || evidence.sourceName;
+    const hasIndependentIdentity = evidence.identityMatches === true ||
+      (wikiName && planetName && namesMatch(player.name, wikiName) && namesMatch(player.name, planetName));
+    const clubA = evidence.wikipediaClub || evidence.fifaClub;
+    const clubB = evidence.planetClub || evidence.secondaryClub;
+    const clubMatches = evidence.clubMatches === true ||
+      Boolean(clubA && clubB && normalizeHistoricalClub(clubA) &&
+        normalizeHistoricalClub(clubA) === normalizeHistoricalClub(clubB));
+    const positionA = normalizePosition(evidence.wikipediaPosition || evidence.fifaPosition);
+    const positionB = normalizePosition(evidence.planetPosition || evidence.secondaryPosition);
+    const positionMatches = evidence.positionMatches === true ||
+      Boolean(positionA && positionB && positionA === positionB);
+    const club = evidence.planetClub || evidence.secondaryClub || candidate.clubAtTournament || candidate.club;
+    const position = evidence.planetPosition || evidence.secondaryPosition || candidate.position;
+    if (!hasIndependentIdentity || !clubMatches || !positionMatches ||
+        typeof club !== "string" || !club.trim() ||
+        typeof position !== "string" || !normalizePosition(position)) {
+      report.skippedTeams.push({ year, teamId, teamName: dataTeam.name, reason: "Player identity, club or position did not agree across sources" });
+      return;
+    }
+
+    const candidateSourceName = candidate.sourceName || candidate.name;
+    if (candidateSourceName && evidence.identityMatches !== true && !namesMatch(player.name, candidateSourceName)) {
+      report.skippedTeams.push({ year, teamId, teamName: dataTeam.name, reason: "FIFA candidate name conflicts with the independent player identity checks" });
+      return;
+    }
+    const sourceName = candidateSourceName && (namesMatch(player.name, candidateSourceName) || evidence.identityMatches === true)
+      ? candidateSourceName
+      : planetName || wikiName || player.name;
+    if (!sourceName) {
+      report.skippedTeams.push({ year, teamId, teamName: dataTeam.name, reason: "A source display name is missing" });
+      return;
+    }
+    updates.push({
+      player,
+      number,
+      sourceName,
+      club: club.trim(),
+      position: normalizePosition(position),
+      status: normalizeHistoricalClub(sourceName) === normalizeHistoricalClub(player.name) ? "matched" : "corrected"
+    });
+  }
+
+  const prior = rosterAudit.teams[teamId] || {};
+  const priorRows = Array.isArray(prior.players) ? prior.players : [];
+  const priorByNumber = new Map(priorRows.map(row => [Number(row.number), row]));
+  const ledgerRows = updates.map(({ player, number, sourceName, club, position, status }) => {
+    const priorRow = priorByNumber.get(number) || {};
+    return {
+      ...priorRow,
+      number,
+      playerName: player.name,
+      sourceName,
+      sourceNameAliases: [...new Set([player.name, ...(priorRow.sourceNameAliases || [])])],
+      status,
+      position,
+      clubAtTournament: club,
+      primarySource: sourceList[0],
+      secondarySource: sourceList[1]
+    };
+  });
+
   let playerUpdates = 0;
-  for (const { player, candidate } of updates) {
-    if (player.club !== candidate.club || player.position !== candidate.position) playerUpdates++;
-    player.club = candidate.club;
-    player.position = candidate.position;
+  for (const { player, club, position } of updates) {
+    if (player.club !== club || player.position !== position) playerUpdates++;
+    player.club = club;
+    player.position = position;
     delete player.clubSource;
     delete player.positionSource;
   }
   if (playerUpdates) dataChanged = true;
 
-  const sourceList = [...new Set(sources.filter(value => typeof value === "string" && value.trim()))];
-  const prior = rosterAudit.teams[teamId] || {};
-  const priorRows = Array.isArray(prior.players) ? prior.players : [];
-  const priorByNumber = new Map(priorRows.map(row => [Number(row.number), row]));
-  const ledgerRows = updates.map(({ player, candidate }) => {
-    const priorRow = priorByNumber.get(Number(player.number)) || {};
-    const sourceName = candidate.sourceName || candidate.name || priorRow.sourceName || player.name;
-    return {
-      ...priorRow,
-      number: Number(player.number),
-      playerName: player.name,
-      sourceName,
-      status: ["matched", "corrected"].includes(priorRow.status) ? priorRow.status : "matched",
-      position: player.position,
-      clubAtTournament: player.club,
-      primarySource: sourceList[0],
-      secondarySource: sourceList[1]
-    };
-  });
+  const teamNameInFifaPdf = fifaHeading || prior.teamNameInFifaPdf || null;
   rosterAudit.teams[teamId] = {
     ...prior,
     status: "verified",
+    tournament: Number(year),
+    teamNameInDataset: dataTeam.name,
+    ...(teamNameInFifaPdf ? { teamNameInFifaPdf } : { teamNameInPrimarySource: primaryHeading || dataTeam.name }),
+    reviewedAt: new Date().toISOString().slice(0, 10),
     primarySource: sourceList[0],
     secondarySource: sourceList[1],
     additionalSources: sourceList.slice(2),
@@ -116,9 +191,12 @@ for (const year of ["2010", "2014", "2018"]) {
       report.skippedTeams.push({ year: Number(year), teamId: teamAudit.teamId, reason: "Verified candidate team missing" });
       continue;
     }
+    const fifaTeam = fifaTournament?.teams?.find(team => team.teamId === teamAudit.teamId);
+    const fifaHeading = teamAudit.fifaPdfAgreement !== "unavailable" ? fifaTeam?.pdfHeading : null;
     const sources = [teamAudit.planetSource, yearAudit.source];
-    if (teamAudit.fifaPdfAgreement !== "unavailable" && fifaTournament?.url) sources.push(fifaTournament.url);
-    applyTeam(Number(year), teamAudit.teamId, candidateTeam.players || [], sources);
+    if (fifaHeading && fifaTournament?.url) sources.push(fifaTournament.url);
+    applyTeam(Number(year), teamAudit.teamId, candidateTeam.players || [], sources,
+      teamAudit.playerChecks || [], fifaHeading, teamAudit.teamName);
   }
 }
 
@@ -130,12 +208,12 @@ for (const teamAudit of audit2002Clubs.teams || []) {
   }
   const candidateTeam = candidates.tournaments?.["2002"]?.find(team => team.id === teamAudit.teamId);
   if (!candidateTeam) {
-    report.skippedTeams.push({ year: 2002, teamId: teamAudit.teamId, teamName: teamAudit.teamName,
-      reason: "Verified 2002 club candidate team missing" });
+    report.skippedTeams.push({ year: 2002, teamId: teamAudit.teamId, reason: "Verified 2002 club candidate team missing" });
     continue;
   }
   applyTeam(2002, teamAudit.teamId, candidateTeam.players || [],
-    [teamAudit.planetSource, "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads", "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt"]);
+    [teamAudit.planetSource, "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads", "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt"],
+    teamAudit.playerChecks || [], null, teamAudit.teamName);
 }
 
 const fifa2022 = fifaAudit.tournaments?.find(tournament => Number(tournament.year) === 2022);
@@ -153,11 +231,21 @@ for (const teamAudit of audit2022.teams || []) {
   }
   const candidatePlayers = (fifaTeam.candidates || [])
     .filter(player => player.status === "matched" && player.clubAtTournament)
-    .map(player => ({ number: player.number, club: player.clubAtTournament, position: player.position }));
+    .map(player => ({
+      number: player.number,
+      sourceName: player.sourceName,
+      clubAtTournament: player.clubAtTournament,
+      position: player.position
+    }));
+  const evidencePlayers = (teamAudit.comparisons || []).map(comparison => ({
+    ...comparison,
+    identityMatches: comparison.identityMatches === true,
+    sourceName: fifaTeam.candidates?.find(player => Number(player.number) === Number(comparison.number))?.sourceName
+  }));
   applyTeam(2022, teamAudit.teamId, candidatePlayers, [
     fifaTournamentSource(fifaAudit),
     "https://www.footballsquads.co.uk/national/worldcup/wc2022.htm"
-  ]);
+  ], evidencePlayers, fifaTeam.pdfHeading || null, teamAudit.teamName);
 }
 
 function fifaTournamentSource(audit) {
@@ -165,10 +253,10 @@ function fifaTournamentSource(audit) {
     "https://fdp.fifa.org/assetspublic/ce44/pdf/SquadLists-English.pdf";
 }
 
-// Clear historical club hints unless the team has a complete, source-backed audit ledger.
+// Remove unverified club hints rather than presenting them as tournament-time facts.
 for (const [year, teams] of Object.entries(dataset.tournaments || {})) {
   for (const team of teams || []) {
-    if (ledgerIsVerified(team)) continue;
+    if (ledgerIsVerified({ ...team, year: Number(year) })) continue;
     const rowsWithClubs = (team.players || []).filter(player => player.club);
     if (!rowsWithClubs.length) continue;
     for (const player of team.players || []) {
