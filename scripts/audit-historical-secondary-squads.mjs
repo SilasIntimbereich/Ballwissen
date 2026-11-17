@@ -1,7 +1,7 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { namesMatch } from "./historical-player-name-match.mjs";
 import { parseWikipediaSquads, normalizeHistoricalClub } from "./historical-wikipedia-squads.mjs";
-import { parsePlanetWorldCupSquad } from "./planet-world-cup-squad.mjs";
+import { parsePlanetWorldCupSquad, decodePlanetWorldCupResponse } from "./planet-world-cup-squad.mjs";
 
 const sources = {
   2010: {
@@ -78,7 +78,7 @@ for (const [year, config] of Object.entries(sources)) {
             signal: AbortSignal.timeout(15000)
           });
           if (!planetResponse.ok) throw new Error("HTTP " + planetResponse.status);
-          planetRows = parsePlanetWorldCupSquad(new TextDecoder("windows-1252").decode(await planetResponse.arrayBuffer()));
+          planetRows = parsePlanetWorldCupSquad(await decodePlanetWorldCupResponse(planetResponse));
           planetStatus = planetRows.length ? "available" : "parsed_no_players";
         } catch (error) {
           planetError = String(error);
