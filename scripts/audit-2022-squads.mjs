@@ -44,12 +44,12 @@ function clubKey(s){
   atletico:"atleticomadrid",atleticomadrid:"atleticomadrid",
   tottenham:"tottenhamhotspur",tottenhamhotspur:"tottenhamhotspur",
   inter:"internazionale",intermilan:"internazionale",internazionale:"internazionale",
-  bayernmunich:"bayern",bayern:"bayern",bayerleverkusen:"bayerleverkusen",bayer04leverkusen:"bayerleverkusen",
-  realbetis:"betis",betis:"betis",psv:"psveindhoven",psveindhoven:"psveindhoven",
-  sevilla:"sevilla",manchestercity:"manchestercity",manchesterunited:"manchesterunited",
+  bayernmunich:"bayern",bayernmunchen:"bayern",bayern:"bayern",bayerleverkusen:"bayerleverkusen",bayer04leverkusen:"bayerleverkusen",
+  realbetis:"betis",betis:"betis",psv:"psveindhoven",psveindhoven:"psveindhoven",psg:"parissaintgermain",parisstgermain:"parissaintgermain",
+  sevilla:"sevilla",manchestercity:"manchestercity",mancity:"manchestercity",manutd:"manchesterunited",manchesterunited:"manchesterunited",
   villarreal:"villarreal",barcelona:"barcelona",realmadrid:"realmadrid",
   ajax:"ajax",porto:"porto",benfica:"benfica",sportingcp:"sportinglisbon",sportinglisbon:"sportinglisbon",
-  antwerp:"royalantwerp",royalantwerp:"royalantwerp",brighton:"brightonhovealbion",brightonandhovealbion:"brightonhovealbion",
+  antwerp:"royalantwerp",royalantwerp:"royalantwerp",brighton:"brightonhovealbion",brightonandhovealbion:"brightonhovealbion",lilleosc:"lille",
   marseille:"marseille",olympiquemarseille:"marseille",monaco:"monaco",asmonaco:"monaco",
   alahli:"alahli",alahly:"alahli",alsadd:"alsadd",alduhail:"alduhail",alhilal:"alhilal",
   celtic:"celtic",stpauli:"stpauli",fcstpauli:"stpauli",newcastleunited:"newcastleunited",
@@ -93,7 +93,7 @@ function parseGoal(html,teams){
   for(const tr of section.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)){
    const cells=[...tr[1].matchAll(/<t[dh]\b[^>]*>([\s\S]*?)<\/t[dh]>/gi)].map(m=>htmlText(m[1]));
    if(cells.length<4)continue;
-   const position=normalizePosition(cells[0]),name=cells[1],club=cells[cells.length-1];
+   const position=normalizePosition(cells[0]),name=cells[1],club=cells.slice(3).reverse().find(value=>value.trim())||"";
    if(position&&name&&club)rows.push({position,name,club});
   }
   result.set(item.team.id,rows);
