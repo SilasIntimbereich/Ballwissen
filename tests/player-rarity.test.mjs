@@ -25,9 +25,10 @@ test("team-aware rarity follows the collection-wide target curve and keeps Franc
   "Ball Knowledge":47
  });
  for(const team of rosters.teams){
+  const elite=team.players.filter(player=>["Legendary","Ball Knowledge"].includes(player.rarity));
+  assert.ok(elite.length<=10,team.id+" must not be overloaded with elite picks");
   if(publicData.teams.find(item=>item.id===team.id)?.teamDifficulty!=="legendary"){
-   assert.equal(team.players.some(player=>["Legendary","Ball Knowledge"].includes(player.rarity)),false,
-    team.id+" must not receive elite labels outside Legendary difficulty");
+   assert.equal(elite.length,0,team.id+" must not receive elite labels outside Legendary difficulty");
   }
  }
  const france=rosters.teams.find(team=>team.id==="france-2018");
