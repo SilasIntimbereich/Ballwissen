@@ -58,6 +58,8 @@ try{
  await page.waitForFunction(()=>document.querySelector("#score").textContent==="1");
  assert.ok(await page.locator(".player-card.found .player-rarity").count()===1,"found players must show their rarity label");
  assert.ok(["COMMON","RARE","NICHE","LEGENDARY","BALL KNOWLEDGE"].includes((await page.locator(".player-card.found .player-rarity").textContent()).trim()));
+ assert.equal(await page.locator("#rarity-alert").isVisible(),true,"the top reveal ticker must appear after a correct guess");
+ assert.match(await page.locator("#rarity-alert").textContent(),/Lionel Messi/);
  await page.locator("#guess").fill("Di Maria");await page.locator("#guess").press("Enter");
  await page.waitForFunction(()=>document.querySelector("#score").textContent==="2");
  await page.locator("#guess").fill("Messi");await page.locator("#guess").press("Enter");
