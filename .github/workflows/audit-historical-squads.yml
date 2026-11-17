@@ -57,7 +57,7 @@ jobs:
         run: node scripts/audit-2022-independent-clubs.mjs
       - name: Cross-check 2002 squads against RSSSF
         run: node scripts/audit-2002-rosters.mjs
-      - name: Cross-check 2002 squads against FIFA official roster release
+      - name: Supplementary check against the third-party 24 May 2002 roster reproduction
         run: node scripts/audit-2002-fifa-rosters.mjs
       - name: Cross-check 2002 tournament clubs against squad archive
         run: node scripts/audit-2002-clubs.mjs
