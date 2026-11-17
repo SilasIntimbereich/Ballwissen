@@ -28,14 +28,15 @@ jobs:
       - name: Commit machine-readable audit report
         if: always() && github.event_name != 'pull_request'
         run: |
-          if [ -f artifacts/fifa-2026-audit.json ]; then
+          if [ -f artifacts/fifa-2026-audit.json ] && [ -f artifacts/roster-audit-updated.json ]; then
             mkdir -p reports
+            cp artifacts/roster-audit-updated.json data/roster-audit.json
             cp artifacts/fifa-2026-audit.json reports/fifa-2026-audit.json
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add reports/fifa-2026-audit.json
+            git add reports/fifa-2026-audit.json data/roster-audit.json
             if ! git diff --cached --quiet; then
-              git commit -m "Update automated FIFA 2026 squad audit report"
+              git commit -m "Verify 2026 squads against FIFA and OpenFootball sources"
               git pull --rebase origin main
               git push origin HEAD:main
             fi
@@ -45,6 +46,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: fifa-2026-roster-audit
-          path: artifacts/fifa-2026-audit.json
+          path: |
+            artifacts/fifa-2026-audit.json
+            artifacts/roster-audit-updated.json
           if-no-files-found: warn
           retention-days: 30
