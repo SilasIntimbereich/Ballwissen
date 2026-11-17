@@ -59,7 +59,11 @@ for (let pageNo = 1; pageNo <= pdf.numPages; pageNo++) {
     matchedNumbers.add(row.number);
     const sourceTokens = new Set(tokens(row.nameArea));
     const nameVariants = [player.name, ...(Array.isArray(player.aliases) ? player.aliases : [])].map(tokens);
-    const normalizedSourceName = normalize(row.nameArea);\n    const nameMatches = nameVariants.some(variant => {\n      const normalizedVariant = normalize(variant.join(" "));\n      return variant.length > 0 && (normalizedSourceName.includes(normalizedVariant) || variant.every(token => sourceTokens.has(token)));\n    });
+    const normalizedSourceName = normalize(row.nameArea);
+    const nameMatches = nameVariants.some(variant => {
+      const normalizedVariant = normalize(variant.join(" "));
+      return variant.length > 0 && (normalizedSourceName.includes(normalizedVariant) || variant.every(token => sourceTokens.has(token)));
+    });
     if (!nameMatches) {
       mismatches.push({ number: row.number, player: player.name, field: "name", fifa: row.nameArea, dataset: player.name, aliases: player.aliases || [] });
     }
