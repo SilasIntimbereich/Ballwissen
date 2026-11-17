@@ -81,7 +81,7 @@ export function assignRosterRarities(rosters,publicData){
       if(!recognised){
         // A smooth global curve: squad difficulty and recall evidence influence
         // rank, while the collection-wide quotas determine the final tier.
-        const difficultyWeight=difficulty==="legendary"?20:difficulty==="niche"?0:-30;
+        const difficultyWeight=difficulty==="legendary"?80:difficulty==="niche"?0:-40;
         rarityCandidates.push({
           player,index,teamId:String(squad.id||""),
           score:rarityPriority(player,appearances,thirdKeepers.has(player))+difficultyWeight+
