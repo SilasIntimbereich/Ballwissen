@@ -56,7 +56,7 @@ export function assignRosterRarities(rosters,publicData){
     }
   }
 
-  const eliteCandidates=[];
+  const rarityCandidates=[];
 
   for(const squad of teams){
     const difficulty=metadata.get(squad.id)?.teamDifficulty||"niche";
@@ -78,45 +78,48 @@ export function assignRosterRarities(rosters,publicData){
       else rarity=repeated?"Rare":"Niche";
 
       player.rarity=rarity;
-      if(difficulty==="legendary"&&!recognised){
-        eliteCandidates.push({
+      if(!recognised){
+        // A smooth global curve: squad difficulty and recall evidence influence
+        // rank, while the collection-wide quotas determine the final tier.
+        const difficultyWeight=difficulty==="legendary"?20:difficulty==="niche"?0:-30;
+        rarityCandidates.push({
           player,index,teamId:String(squad.id||""),
-          score:rarityPriority(player,appearances,thirdKeepers.has(player))
+          score:rarityPriority(player,appearances,thirdKeepers.has(player))+difficultyWeight+
+            (repeated?-12:0)
         });
       }
     }
   }
 
-  // Elite labels are globally scarce, not repeated for every Legendary-difficulty
-  // squad. This keeps the complete 5,759-player collection within fixed limits.
-  const compareCandidates=(a,b)=>
+  const total=teams.reduce((sum,team)=>sum+(Array.isArray(team.players)?team.players.length:0),0);
+  const target=(amount)=>Math.round(total*amount/6150);
+  const ballKnowledgeTarget=target(50);
+  const legendaryTarget=target(100);
+  const nicheTarget=target(1000);
+  const rareTarget=target(2000);
+
+  // Recognised players are protected as Common. All remaining places are
+  // filled from the most difficult-to-recall players, producing one smooth,
+  // deterministic collection-wide rarity curve.
+  rarityCandidates.sort((a,b)=>
     b.score-a.score||
     (Number(b.player.number)||0)-(Number(a.player.number)||0)||
     a.teamId.localeCompare(b.teamId)||
-    a.index-b.index;
-  eliteCandidates.sort(compareCandidates);
+    a.index-b.index
+  );
 
-  const ballKnowledgeTeams=new Set();
-  let ballKnowledgeAssigned=0;
-  for(const candidate of eliteCandidates){
-    if(ballKnowledgeAssigned>=4)break;
-    if(ballKnowledgeTeams.has(candidate.teamId))continue;
-    candidate.player.rarity="Ball Knowledge";
-    ballKnowledgeTeams.add(candidate.teamId);
-    ballKnowledgeAssigned++;
+  const nonCommonTargets=[
+    ["Ball Knowledge",ballKnowledgeTarget],
+    ["Legendary",legendaryTarget],
+    ["Niche",nicheTarget],
+    ["Rare",rareTarget]
+  ];
+  let cursor=0;
+  for(const [tier,requested] of nonCommonTargets){
+    const count=Math.min(requested,Math.max(0,rarityCandidates.length-cursor));
+    for(let i=0;i<count;i++)rarityCandidates[cursor++].player.rarity=tier;
   }
-
-  const legendaryPerTeam=new Map();
-  let legendaryAssigned=0;
-  for(const candidate of eliteCandidates){
-    if(legendaryAssigned>=10)break;
-    if(candidate.player.rarity==="Ball Knowledge")continue;
-    const count=legendaryPerTeam.get(candidate.teamId)||0;
-    if(count>=2)continue;
-    candidate.player.rarity="Legendary";
-    legendaryPerTeam.set(candidate.teamId,count+1);
-    legendaryAssigned++;
-  }
+  for(;cursor<rarityCandidates.length;cursor++)rarityCandidates[cursor].player.rarity="Common";
 
   return rosters;
 }
