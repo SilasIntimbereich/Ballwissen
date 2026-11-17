@@ -6,6 +6,20 @@ test("normalizes accents, punctuation and spacing",()=>{
  assert.equal(normalize("Kylian Mbappé"),"kylianmbappe");
  assert.equal(normalize("N'Golo Kanté"),"ngolokante");
 });
+test("normalizes common non-decomposing Latin letters",()=>{
+ assert.equal(normalize("Kjær"),"kjaer");
+ assert.equal(normalize("Nørgaard"),"norgaard");
+ assert.equal(normalize("Łukasz"),"lukasz");
+ assert.equal(normalize("Straße"),"strasse");
+ assert.equal(normalize("João"),"joao");
+});
+test("accepts ASCII transliterations of player names",()=>{
+ assert.equal(matches("Kjaer",{name:"Kjær"}),true);
+ assert.equal(matches("Norgaard",{name:"Nørgaard"}),true);
+ assert.equal(matches("Lukasz Piszczek",{name:"Łukasz Piszczek"}),true);
+ assert.equal(matches("Przemyslaw Frankowski",{name:"Przemysław Frankowski"}),true);
+});
+
 test("accepts exact names despite accents and punctuation",()=>{
  assert.equal(matches("Kylian Mbappe",{name:"Kylian Mbappé"}),true);
  assert.equal(matches("N Golo Kante",{name:"N'Golo Kanté"}),true);
