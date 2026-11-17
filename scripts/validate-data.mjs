@@ -209,9 +209,12 @@ for (const [teamId, record] of Object.entries(audit.teams)) {
       fail("Verified audit club mismatch: " + teamId + " / " + player.name);
     const primary = row.primarySource || record.primarySource;
     const secondary = row.secondarySource || record.secondarySource;
-    if (![primary, secondary].every(value => {
-      try { return new URL(value).protocol === "https:"; } catch { return false; }
-    })) fail("Verified audit requires primary and secondary HTTPS sources: " + teamId + " / " + player.name);
+    const sourceHosts = [primary, secondary].map(value => {
+      try { const url = new URL(value); return url.protocol === "https:" ? url.hostname.toLowerCase().replace(/^www\\./, "") : null; }
+      catch { return null; }
+    });
+    if (sourceHosts.some(host => !host) || new Set(sourceHosts).size < 2)
+      fail("Verified audit requires two independent HTTPS source hosts: " + teamId + " / " + player.name);
   }
 }
 const secureRosterMigration = await readText("supabase/migrations/202611160004_secure_public_rosters.sql");
