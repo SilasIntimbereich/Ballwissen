@@ -33,6 +33,7 @@ export function namesMatch(playerName, sourceName) {
     .replace(/[åÅ]/g, "a")
     .replace(/[łŁ]/g, "l")
     .replace(/[ß]/g, "ss")
+    .replace(/[ıİ]/g, "i")
     .replace(/[œŒ]/g, "oe")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
