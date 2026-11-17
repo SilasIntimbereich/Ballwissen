@@ -25,7 +25,7 @@ test("does not mistake generic PDF labels or table headings for a country",()=>{
 });
 
 test("does not mistake a country mentioned in the body for the page heading",()=>{
- assert.equal(extractTeamHeading(["FIFA World Cup Qatar 2022","SQUAD LIST","PLAYER","DOB","CLUB","Coach","Official match details","Argentina"],["Argentina"]),"");
+ assert.equal(extractTeamHeading(["FIFA World Cup Qatar 2022","SQUAD LIST","PLAYER","DOB","CLUB","Coach","Official match details","Tournament notes","Roster details","Argentina"],["Argentina"]),"");
 });
 
 test("fails closed when a page has unrelated headings or an unknown country code",()=>{
