@@ -69,7 +69,7 @@ test("normal gameplay is local, input-enabled and handles every end state", asyn
   assert.match(main, /function enableGuessControls\(\)/);
   assert.match(main, /input\.removeAttribute\("disabled"\)/);
   assert.match(main, /button\.removeAttribute\("disabled"\)/);
-  assert.match(main, /if\(practiceOnly\)\{\$\("#timer"\)\.textContent="∞";return;\}/);
+  assert.match(main, /if\(practiceOnly\)\{const timer=\$\("#timer"\);timer\.textContent="∞";timer\.classList\.remove\("timer-warning","timer-critical"\);timer\.setAttribute\("aria-label","Practice mode, no time limit"\);return;\}/);
   assert.match(main, /ACCURACY · /);
   assert.match(main, /PRACTICE · NO TIMER/);
   assert.doesNotMatch(main, /supabase|normalSessionId|normalHints/);
