@@ -170,7 +170,8 @@ report.summary = {
   datasetPlayers: report.teams.reduce((sum, team) => sum + team.datasetPlayerCount, 0),
   matchedPlayers: report.teams.reduce((sum, team) => sum + team.matchedCount, 0),
   unresolvedDifferences: report.teams.reduce((sum, team) =>
-    sum + team.missingFromSource.length + team.missingFromDataset.length, 0)
+    sum + team.missingFromSource.length + team.missingFromDataset.length, 0),
+  sourceOverrides: report.teams.filter(team => team.sourceUrl !== SOURCE_URL).length
 };
 
 await mkdir("artifacts", { recursive: true });
