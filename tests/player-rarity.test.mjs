@@ -18,18 +18,17 @@ test("team-aware rarity follows the collection-wide target curve and keeps Franc
  const counts=Object.fromEntries(["Common","Rare","Niche","Legendary","Ball Knowledge"].map(tier=>[tier,all.filter(player=>player.rarity===tier).length]));
  assert.equal(all.length,5759);
  assert.deepEqual(counts,{
-  Common:2809,
-  Rare:1873,
-  Niche:936,
-  Legendary:94,
-  "Ball Knowledge":47
+  Common:2533,
+  Rare:1353,
+  Niche:1153,
+  Legendary:480,
+  "Ball Knowledge":240
  });
  for(const team of rosters.teams){
   const elite=team.players.filter(player=>["Legendary","Ball Knowledge"].includes(player.rarity));
-  assert.ok(elite.length<=10,team.id+" must not be overloaded with elite picks");
-  if(publicData.teams.find(item=>item.id===team.id)?.teamDifficulty!=="legendary"){
-   assert.equal(elite.length,0,team.id+" must not receive elite labels outside Legendary difficulty");
-  }
+  assert.equal(elite.length,3,team.id+" must have exactly three squad-specific elite picks");
+  assert.equal(elite.filter(player=>player.rarity==="Ball Knowledge").length,1);
+  assert.equal(elite.filter(player=>player.rarity==="Legendary").length,2);
  }
  const france=rosters.teams.find(team=>team.id==="france-2018");
  assert.ok(france.players.filter(player=>player.rarity==="Common").length>=20);
@@ -78,14 +77,16 @@ test("rarity curve scales proportionally and ranks the hardest-to-recall players
  ]));
  assert.equal(all.length,6150);
  assert.deepEqual(counts,{
-  Common:3000,
-  Rare:2000,
-  Niche:1000,
-  Legendary:100,
-  "Ball Knowledge":50
+  Common:3174,
+  Rare:1445,
+  Niche:1231,
+  Legendary:200,
+  "Ball Knowledge":100
  });
- assert.equal(teams[49].players[61].rarity,"Ball Knowledge");
- assert.equal(teams[99].players[60].rarity,"Legendary");
+ for(const team of teams){
+  assert.equal(team.players.filter(player=>player.rarity==="Ball Knowledge").length,1);
+  assert.equal(team.players.filter(player=>player.rarity==="Legendary").length,2);
+ }
 });
 
 test("rarity scoring clamps invalid evidence instead of producing unstable tiers",()=>{
