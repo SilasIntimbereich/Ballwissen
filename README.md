@@ -30,7 +30,7 @@ The resolver uses curated recognition names, cross-tournament appearances, squad
 
 | Data | Coverage | Status |
 |---|---:|---|
-| Historical World Cups, 2002–2022 | 192 teams / 4,511 player records | 44 teams / 1,015 player records have complete player-level identity, position, tournament-club and two-source audits. The remaining 148 teams are practice-only; their clubs are not presented as verified. |
+| Historical World Cups, 2002–2022 | 192 teams / 4,511 player records | At the current audit snapshot, 44 teams / 1,015 player records have complete player-level identity, position, tournament-club and two-source audits. The remaining 148 teams are practice-only; their clubs are not presented as verified. |
 | World Cup 2026 | 48 teams / 1,248 player records | All 48 teams have been reviewed against FIFA final squad lists and independent OpenFootball data; 26 players per team. |
 | Daily exclusions | 50 squad editions | Checked against the squad IDs and excluded from all three Daily tiers. |
 
