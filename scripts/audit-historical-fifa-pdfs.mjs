@@ -12,14 +12,14 @@ const SOURCES=[
 const historical=JSON.parse(await readFile("data/historical-squads.json","utf8"));
 const rosterAudit=JSON.parse(await readFile("data/roster-audit.json","utf8"));
 
-async function fetchWithRetry(url, options, attempts = 4) {
+async function fetchWithRetry(url, options, attempts = 2) {
  let lastError;
  for (let attempt = 1; attempt <= attempts; attempt++) {
   try {
-   const response = await fetch(url, options);
+   const response = await fetch(url, {...options, signal: AbortSignal.timeout(15000)});
    if (response.ok) return response;
    lastError = new Error("HTTP " + response.status);
-   if (response.status < 500 && response.status !== 429) break;
+   if ((response.status < 500 && response.status !== 429) || response.status === 522) break;
   } catch (error) { lastError = error; }
   if (attempt < attempts) await new Promise(resolve => setTimeout(resolve, attempt * 1500));
  }
