@@ -2,6 +2,7 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { namesMatch } from "./historical-player-name-match.mjs";
 import { normalizeHistoricalClub } from "./historical-wikipedia-squads.mjs";
 import { hasIndependentHttpsSources, isHttpsUrl } from "./source-url-validation.mjs";
+import { isCompleteVerifiedRosterLedger } from "./verified-roster-ledger.mjs";
 
 const dataset = JSON.parse(await readFile("data/historical-squads.json", "utf8"));
 const candidates = JSON.parse(await readFile("artifacts/historical-club-candidates.json", "utf8"));
@@ -32,24 +33,7 @@ const normalizeName = value => String(value || "").normalize("NFD")
 
 
 function ledgerIsVerified(team) {
-  const entry = rosterAudit.teams?.[team.id];
-  const heading = entry?.teamNameInFifaPdf || entry?.teamNameInPrimarySource;
-  return entry?.status === "verified" &&
-    entry.tournament === team.year &&
-    entry.teamNameInDataset === team.name &&
-    typeof heading === "string" && heading.trim() &&
-    /^\d{4}-\d{2}-\d{2}$/.test(entry.reviewedAt || "") &&
-    Array.isArray(entry.players) &&
-    entry.players.length === (team.players || []).length &&
-    entry.players.every(row =>
-      ["matched", "corrected"].includes(row.status) &&
-      typeof row.sourceName === "string" && row.sourceName.trim() &&
-      typeof row.clubAtTournament === "string" && row.clubAtTournament.trim() &&
-      typeof row.position === "string" && row.position.trim() &&
-      isHttpsUrl(row.primarySource || entry.primarySource) &&
-      isHttpsUrl(row.secondarySource || entry.secondarySource) &&
-      hasIndependentHttpsSources([row.primarySource || entry.primarySource, row.secondarySource || entry.secondarySource])
-    );
+  return isCompleteVerifiedRosterLedger(team, rosterAudit.teams?.[team.id], team.year);
 }
 
 function applyTeam(year, teamId, candidatePlayers, sources, evidencePlayers, fifaHeading, primaryHeading) {
