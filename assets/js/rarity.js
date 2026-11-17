@@ -12,4 +12,78 @@ export function rarityFromEvidence({caps=0,goals=0,majorAwards=0,globalRecogniti
   if(profile>=9)return "Legendary";
   return "Ball Knowledge";
 }
-// This rubric is a starting point, not an automatic truth machine. Curate and record evidence.
+// This rubric is a starting point, not an automatic truth machine. Curate and record evidence.export function assignRosterRarities(rosters, publicData) {
+  const metadata = new Map((publicData?.teams || []).map(team => [team.id, team]));
+  const appearances = new Map();
+
+  for (const squad of rosters?.teams || []) {
+    const year = metadata.get(squad.id)?.year;
+    for (const player of squad.players || []) {
+      const key = normalise(player.name);
+      if (!appearances.has(key)) appearances.set(key, new Set());
+      appearances.get(key).add(year);
+    }
+  }
+
+  const exceptionalCandidates = [];
+
+  for (const squad of rosters?.teams || []) {
+    const team = metadata.get(squad.id) || {};
+    const difficulty = team.teamDifficulty || "niche";
+    const players = squad.players || [];
+    const keepers = players
+      .filter(player => String(player.position || "").toUpperCase() === "GK")
+      .sort((a, b) => (Number(a.number) || 99) - (Number(b.number) || 99));
+    const thirdKeepers = new Set(keepers.slice(2).map(player => normalise(player.name)));
+
+    for (const [index, player] of players.entries()) {
+      const name = normalise(player.name);
+      const number = Number(player.number) || index + 1;
+      const repeatCount = appearances.get(name)?.size || 0;
+      const recognised = COMMON_NAMES.has(name) || repeatCount >= 3;
+      const repeated = repeatCount >= 2;
+      const thirdKeeper = thirdKeepers.has(name);
+
+      if (recognised) {
+        player.rarity = "Common";
+        continue;
+      }
+
+      if (difficulty === "common") {
+        player.rarity = number >= 22 ? "Rare" : "Common";
+        continue;
+      }
+
+      if (difficulty === "niche") {
+        player.rarity = repeated ? "Rare" : number >= 20 ? "Niche" : "Rare";
+        continue;
+      }
+
+      player.rarity = repeated ? "Rare" : "Niche";
+
+      if (difficulty === "legendary") {
+        exceptionalCandidates.push({
+          player,
+          teamId: squad.id,
+          score: (thirdKeeper ? 100 : 0) + number * 2 + (repeatCount === 0 ? 10 : 0)
+        });
+      }
+    }
+  }
+
+  const bestPerTeam = new Map();
+  exceptionalCandidates
+    .sort((a, b) => b.score - a.score || a.teamId.localeCompare(b.teamId))
+    .forEach(candidate => {
+      if (!bestPerTeam.has(candidate.teamId)) bestPerTeam.set(candidate.teamId, candidate);
+    });
+
+  const elite = [...bestPerTeam.values()].sort(
+    (a, b) => b.score - a.score || a.teamId.localeCompare(b.teamId)
+  );
+
+  elite.slice(0, 4).forEach(({ player }) => { player.rarity = "Ball Knowledge"; });
+  elite.slice(4, 14).forEach(({ player }) => { player.rarity = "Legendary"; });
+
+  return rosters;
+}
