@@ -4,6 +4,17 @@ import * as pdfjs from "pdfjs-dist/legacy/build/pdf.mjs";
 const PDF_URL="https://fdp.fifa.org/assetspublic/ce44/pdf/SquadLists-English.pdf";
 const GOAL_URL="https://www.goal.com/en/lists/world-cup-2022-squads/blt5286b592f720ce72";
 const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+async function fetchBytes(url){
+ let lastError;
+ for(let attempt=0;attempt<4;attempt++){
+  try{
+   const response=await fetch(url,{headers:{"User-Agent":"FootballArcade2022RosterAudit/1.0"},signal:AbortSignal.timeout(30000)});
+   if(!response.ok)throw new Error("HTTP "+response.status);
+   return new Uint8Array(await response.arrayBuffer());
+  }catch(error){lastError=error;if(attempt<3)await sleep(500*(2**attempt));}
+ }
+ throw new Error("Could not fetch "+url+": "+lastError);
+}
 async function fetchText(url){
  let lastError;
  for(let attempt=0;attempt<4;attempt++){
@@ -95,4 +106,91 @@ const rosterAudit=JSON.parse(await readFile("data/roster-audit.json","utf8"));
 const teams=historical.tournaments["2022"];
 const goalHtml=await fetchText(GOAL_URL);
 const goalTeams=parseGoal(goalHtml,teams);
-const pdfBytes=new Uint8Array(await (await fetchText(PDF_URL)).arrayBuffer?.()||[]);
+const pdfBytes=await fetchBytes(PDF_URL);
+
+const pdf=await pdfjs.getDocument({data:pdfBytes,useSystemFonts:true,isEvalSupported:false}).promise;
+const report={source:PDF_URL,secondarySource:GOAL_URL,generatedAt:new Date().toISOString(),pages:pdf.numPages,teams:[],summary:{}};
+for(let pageNo=1;pageNo<=pdf.numPages;pageNo++){
+ const page=await pdf.getPage(pageNo),content=await page.getTextContent();
+ const items=content.items.filter(item=>"str" in item&&item.str.trim()).map(item=>({x:item.transform[4],y:item.transform[5],text:item.str.trim()})).sort((a,b)=>b.y-a.y||a.x-b.x);
+ const groups=[];
+ for(const item of items){
+  let group=groups[groups.length-1];
+  if(!group||Math.abs(group.y-item.y)>2.5){group={y:item.y,items:[]};groups.push(group);}
+  group.items.push(item);group.y=group.items.reduce((sum,entry)=>sum+entry.y,0)/group.items.length;
+ }
+ const lines=groups.map(group=>group.items.sort((a,b)=>a.x-b.x).map(item=>item.text).join(" ").replace(/\s+/g," ").trim());
+ const heading=lines.find(line=>/\([A-Z]{3}\)$/.test(line)&&!/^#/.test(line));
+ const headingName=heading?.replace(/\s*\([A-Z]{3}\)$/,"").trim()||"";
+ const team=teams.find(t=>teamKey(t.name)===teamKey(headingName));
+ const teamRows=team?.players||[];
+ const fifaRows=[],unparsed=[];
+ for(const line of lines){
+  const m=line.match(/^(\d{1,2})\s+(GK|DF|MF|FW)\s+(.+?)\s+(\d{2}\/\d{2}\/\d{4})\s+(.+?)\s+(\d{3})\s+(\d+)\s+(\d+)$/);
+  if(m){
+   const clubMatch=m[5].match(/\s*\(([A-Z]{3})\)\s*$/);
+   fifaRows.push({number:Number(m[1]),position:m[2],nameArea:m[3],club:m[5].replace(/\s*\([A-Z]{3}\)\s*$/,"").trim(),clubCountry:clubMatch?.[1]||null,line});
+  }else if(/^\d{1,2}\s+(GK|DF|MF|FW)\s+/.test(line))unparsed.push(line);
+ }
+ const goalRows=team?goalTeams.get(team.id)||[]:[];
+ const mismatches=[];
+ if(!team)mismatches.push({field:"team_mapping",pdfHeading:heading});
+ if(fifaRows.length!==teamRows.length)mismatches.push({field:"fifa_row_count",fifa:fifaRows.length,dataset:teamRows.length});
+ if(goalRows.length!==26)mismatches.push({field:"goal_row_count",goal:goalRows.length,dataset:26});
+ const goalUsed=new Set();
+ const byNumber=new Map(fifaRows.map(row=>[row.number,row]));
+ for(const player of teamRows){
+  const fifa=byNumber.get(Number(player.number));
+  if(!fifa){mismatches.push({number:player.number,player:player.name,field:"missing_fifa_row"});continue;}
+  if(!namesMatch(player.name,fifa.nameArea))mismatches.push({number:player.number,player:player.name,field:"fifa_name",sourceName:fifa.nameArea});
+  if(player.position!==fifa.position)mismatches.push({number:player.number,player:player.name,field:"fifa_position",sourcePosition:fifa.position,datasetPosition:player.position});
+  const candidates=goalRows.map((row,index)=>({row,index})).filter(item=>namesMatch(player.name,item.row.name));
+  const match=candidates.length===1?candidates[0]:null;
+  if(!match){mismatches.push({number:player.number,player:player.name,field:candidates.length?"ambiguous_goal_player":"missing_goal_player",candidates:candidates.map(x=>x.row.name)});continue;}
+  goalUsed.add(match.index);
+  if(match.row.position!==fifa.position)mismatches.push({number:player.number,player:player.name,field:"goal_position",goal:match.row.position,fifa:fifa.position});
+  if(!clubMatches(fifa.club,match.row.club))mismatches.push({number:player.number,player:player.name,field:"club_sources_disagree",fifaClub:fifa.club,goalClub:match.row.club});
+ }
+ goalRows.forEach((row,index)=>{if(!goalUsed.has(index))mismatches.push({player:row.name,field:"extra_goal_player",position:row.position,club:row.club});});
+ const clean=Boolean(team)&&fifaRows.length===26&&goalRows.length===26&&mismatches.length===0&&unparsed.length===0;
+ const item={page:pageNo,pdfHeading:heading,teamId:team?.id||null,teamName:team?.name||null,fifaRows:fifaRows.map(({number,position,nameArea,club,clubCountry})=>({number,position,nameArea,club,clubCountry})),goalRows,unparsedRows:unparsed,mismatches,clean};
+ report.teams.push(item);
+ if(clean){
+  const candidateTeam=candidateData.tournaments["2022"].find(row=>row.id===team.id);
+  const auditPlayers=[];
+  for(const player of candidateTeam.players){
+   const source=byNumber.get(Number(player.number));
+   player.club=source.club||null;
+   player.clubCountry=source.clubCountry||null;
+   auditPlayers.push({
+    playerName:player.name,sourceName:source.nameArea,sourceNameAliases:[player.name],
+    number:Number(player.number),position:player.position,clubAtTournament:player.club,
+    status:"matched",
+    notes:"Player, shirt number, position and tournament-time club match between FIFA's final squad PDF and Goal.com's independent tournament squad list."
+   });
+  }
+  rosterAudit.teams[team.id]={
+   status:"verified",tournament:2022,teamNameInDataset:team.name,
+   teamNameInFifaPdf:heading,reviewedAt:report.generatedAt.slice(0,10),
+   primarySource:PDF_URL,secondarySource:GOAL_URL,tertiarySource:"https://datahub.io/football/worldcup",
+   notes:"All 26 player rows match across FIFA's final squad PDF and Goal.com's independent squad list by identity, position and tournament-time club. The DataHub-derived dataset independently matches player names, shirt numbers and positions.",
+   players:auditPlayers
+  };
+ }
+}
+report.summary={
+ teams:report.teams.length,
+ parsedFifaTeams:report.teams.filter(t=>t.fifaRows.length===26).length,
+ parsedGoalTeams:report.teams.filter(t=>t.goalRows.length===26).length,
+ cleanTeams:report.teams.filter(t=>t.clean).length,
+ totalMismatches:report.teams.reduce((n,t)=>n+t.mismatches.length,0),
+ unresolvedTeams:report.teams.filter(t=>!t.clean).map(t=>t.teamName||t.pdfHeading||"Unknown")
+};
+await mkdir("artifacts",{recursive:true});
+await writeFile("artifacts/2022-roster-club-audit.json",JSON.stringify(report,null,2)+"\n");
+await writeFile("artifacts/historical-squads-updated.json",JSON.stringify(candidateData,null,2)+"\n");
+await writeFile("artifacts/roster-audit-updated.json",JSON.stringify(rosterAudit,null,2)+"\n");
+console.log(JSON.stringify(report.summary,null,2));
+if(report.teams.length!==32||report.summary.parsedFifaTeams!==32||report.summary.parsedGoalTeams!==32){
+ throw new Error("The 2022 audit could not parse all 32 FIFA and Goal team lists. Inspect the audit artifact.");
+}
