@@ -2,6 +2,7 @@ import {mkdir,writeFile,readFile} from "node:fs/promises";
 import * as pdfjs from "pdfjs-dist/legacy/build/pdf.mjs";
 import { extractTeamHeading } from "./historical-pdf-heading.mjs";
 import { namesMatch } from "./historical-player-name-match.mjs";
+import { hasIndependentHttpsSources } from "./source-url-validation.mjs";
 
 const SOURCES=[
  {year:2006,url:"https://www.fifadata.com/document/fwc/2006/PDF/FWC_2006_SquadLists.pdf",format:"old-dot"},
@@ -168,7 +169,16 @@ for(const source of SOURCES){
   const expected=team?.players.length||0;
   const rosterIdentityClean=Boolean(team)&&fifaRows.length===expected&&mismatches.length===0&&candidates.length===expected&&candidates.every(row=>row.status==="matched");
   const ledgerEntry=team?rosterAudit.teams?.[team.id]:null;
-  const fullyAudited=Boolean(ledgerEntry?.status==="verified"&&Array.isArray(ledgerEntry.players)&&ledgerEntry.players.length===expected&&ledgerEntry.players.every(row=>["matched","corrected"].includes(row.status)&&typeof row.clubAtTournament==="string"&&row.clubAtTournament.trim())&&typeof ledgerEntry.primarySource==="string"&&typeof ledgerEntry.secondarySource==="string");
+  const ledgerRows=Array.isArray(ledgerEntry?.players)?ledgerEntry.players:[];
+  const ledgerNumbers=new Set(ledgerRows.map(row=>Number(row.number)));
+  const fullyAudited=Boolean(ledgerEntry?.status==="verified"&&ledgerRows.length===expected&&ledgerNumbers.size===expected&&team&&
+   ledgerRows.every(row=>{
+    const player=team.players.find(candidate=>Number(candidate.number)===Number(row.number));
+    return Boolean(player&&normalize(player.name)===normalize(row.playerName)&&
+     ["matched","corrected"].includes(row.status)&&typeof row.clubAtTournament==="string"&&row.clubAtTournament.trim()&&
+     typeof row.position==="string"&&positionMap[row.position]&&
+     hasIndependentHttpsSources([row.primarySource||ledgerEntry.primarySource,row.secondarySource||ledgerEntry.secondarySource]));
+   }));
   if(rosterIdentityClean){
    for(const candidate of candidates){
     const player=team.players.find(p=>Number(p.number)===candidate.number);
