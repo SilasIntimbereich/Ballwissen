@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import { isCompleteVerifiedRosterLedger } from "../scripts/verified-roster-ledger.mjs";
 
 const team = {
@@ -79,4 +80,35 @@ test("downgrades stale verified markers instead of leaving invalid trust metadat
   assert.match(stale.verificationIssue, /no longer matches/i);
   assert.equal(downgradeIncompleteVerifiedRosterLedger(team, validEntry, 2018), false);
   assert.equal(validEntry.status, "verified");
+});
+
+test("every currently verified historical and 2026 team passes the strict ledger guard", async () => {
+  const [audit, historical, worldCup2026] = await Promise.all([
+    readFile("data/roster-audit.json", "utf8").then(JSON.parse),
+    readFile("data/historical-squads.json", "utf8").then(JSON.parse),
+    readFile("data/worldcup-2026.json", "utf8").then(JSON.parse)
+  ]);
+  const teams = Object.values(historical.tournaments).flat();
+  const grouped = new Map();
+  for (const player of worldCup2026.players) {
+    if (!grouped.has(player.team)) grouped.set(player.team, []);
+    grouped.get(player.team).push({
+      name: player.player || player.name,
+      position: player.pos || player.position,
+      club: player.club || null,
+      number: Number(player.number)
+    });
+  }
+  const slug = value => String(value).normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  for (const [name, players] of grouped) {
+    teams.push({ id: slug(name) + "-2026", name, year: 2026, players });
+  }
+  const byId = new Map(teams.map(team => [team.id, team]));
+  const verified = Object.entries(audit.teams).filter(([, entry]) => entry.status === "verified");
+  for (const [id, entry] of verified) {
+    const team = byId.get(id);
+    assert.ok(team, "verified team must exist in the data: " + id);
+    assert.equal(isCompleteVerifiedRosterLedger(team, entry, team.year), true, id);
+  }
 });
