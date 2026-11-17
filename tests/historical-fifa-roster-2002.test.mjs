@@ -26,3 +26,12 @@ test("parses FIFA's 2002 roster table by country code, number, position and disp
     { number: 13, position: "DF", name: "BELLETTI" }
   ]);
 });
+
+
+test("does not mark a roster clean when any position differs",()=>{
+ const {isCleanFifa2002RosterAudit}=await import("../scripts/historical-fifa-roster-2002.mjs");
+ const valid={sourcePlayerCount:23,matchedPlayers:23,nameMismatches:[],missingFromSource:[],missingFromDataset:[],positionDifferences:[]};
+ assert.equal(isCleanFifa2002RosterAudit(valid,23),true);
+ assert.equal(isCleanFifa2002RosterAudit({...valid,positionDifferences:[{number:1}]},23),false);
+ assert.equal(isCleanFifa2002RosterAudit({...valid,sourcePlayerCount:22},23),false);
+});
