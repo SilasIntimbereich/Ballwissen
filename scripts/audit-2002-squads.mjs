@@ -64,7 +64,7 @@ function clubKey(s){
   inter:"internazionale",internazionale:"internazionale",
   milan:"acmilan",acmilan:"acmilan",
   parisstgermain:"parissaintgermain",parissaintgermain:"parissaintgermain",
-  kaiserslautern:"kaiserslautern",1fckaiserslautern:"kaiserslautern",
+  kaiserslautern:"kaiserslautern","1fckaiserslautern":"kaiserslautern",
   valladolid:"realvalladolid",realvalladolid:"realvalladolid",
   mallorca:"realm Mallorca".toLowerCase().replace(/[^a-z0-9]/g,""),
   unattached:"unattached",noclub:"unattached"
