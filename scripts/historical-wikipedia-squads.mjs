@@ -12,7 +12,7 @@ const teamAliases = {
 
 function plainText(value) {
   return String(value || "")
-    .replace(/<sup\b[^>]*>[\s\S]*?<\/sup>/gi, "")
+    .replace(/<sup\b[^>]*>\s*(?:<a\b[^>]*>)?\[\d+\](?:<\/a>)?\s*<\/sup>/gi, "")
     .replace(/<span\b[^>]*class=["'][^"']*flagicon[^"']*["'][^>]*>[\s\S]*?<\/span>/gi, "")
     .replace(/<img\b[^>]*>/gi, "")
     .replace(/<[^>]+>/g, " ")
