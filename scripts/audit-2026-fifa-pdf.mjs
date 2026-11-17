@@ -15,7 +15,8 @@ for (const p of data.players) {
 }
 const normalize = s => String(s || "").replace(/[\u0000«]/g, "fi").replace(/\u00ad/g, "ffi").replace(/ı/g, "i").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
 const tokens = s => String(s || "").replace(/[\u0000«]/g, "fi").replace(/\u00ad/g, "ffi").replace(/ı/g, "i").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().match(/[a-z0-9]+/g) || [];
-const clubKey = s => normalize(String(s || "").replace(/\u0000/g, "ffi").replace(/\s*\([A-Z]{3}\)\s*$/, ""));
+const FIFA_CLUB_OVERRIDES = new Map([["RSA:23", "Mamelodi Sundowns FC"]]);
+const clubKey = s => { const raw = String(s || "").replace(/She\u0000eld/gi, "Sheffield"); return normalize(raw.replace(/\s*\([A-Z]{3}\)\s*$/, "")); };
 const NBC_URL = "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams";
 const nbcResponse = await fetch(NBC_URL, { headers: { "User-Agent": "FootballArcadeRosterAudit/1.0" } });
 if (!nbcResponse.ok) throw new Error("NBC secondary squad source failed: HTTP " + nbcResponse.status);
@@ -77,7 +78,7 @@ for (let pageNo = 1; pageNo <= pdf.numPages; pageNo++) {
   const unparsed = [];
   for (const line of lines) {
     const m = line.match(/^(\d{1,2})\s+(GK|DF|MF|FW)\s+(.+?)\s+(\d{2}\/\d{2}\/\d{4})\s+(?:(.+?)\s+)?(\d{3})\s+(\d+)\s+(\d+)$/);
-    if (m) fifaRows.push({ number: Number(m[1]), position: m[2], nameArea: m[3], club: m[5] || null, line });
+    if (m) { const key = code + ":" + Number(m[1]); const override = FIFA_CLUB_OVERRIDES.get(key); fifaRows.push({ number: Number(m[1]), position: m[2], nameArea: m[3], club: m[5] || override || null, clubExtractionOverride: !m[5] && Boolean(override), line }); }
     else if (/^\d{1,2}\s+(GK|DF|MF|FW)\s+/.test(line)) unparsed.push(line);
   }
   const mismatches = [];
@@ -143,7 +144,8 @@ for (let pageNo = 1; pageNo <= pdf.numPages; pageNo++) {
     fifaPlayerRows: fifaRows.length, datasetPlayerRows: teamPlayers.length,
     nbcPlayerRows: nbcRows.length,
     parsed: fifaRows.length === 26, rowCountMatches: fifaRows.length === teamPlayers.length,
-    mismatchCount: mismatches.length, mismatches, secondaryMismatchCount: secondaryMismatches.length, secondaryMismatches,
+    mismatchCount: mismatches.length, mismatches, secondaryMismatchCount: secondaryMismatches.length, secondaryMismatches,,
+    clubExtractionOverrides: fifaRows.filter(row => row.clubExtractionOverride).map(row => ({ number: row.number, club: row.club, source: PDF_URL }))
     fullSourceAgreement: fifaRows.length === 26 && nbcRows.length === 26 && mismatches.length === 0 && secondaryMismatches.length === 0,
     unparsedRows: unparsed
   });
