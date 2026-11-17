@@ -13,8 +13,18 @@ function normalize(value) {
     .replace(/[^a-z0-9]/g, "");
 }
 
+// Explicit, reviewed display-name variants found in the 2006 final squad PDF.
+const manualNameEquivalents = new Set([
+  ["Juan Pablo Sorín", "Juan Sorin"],
+  ["Juan Román Riquelme", "Juan Riquelme"],
+  ["Leo Franco", "Leonardo Franco"],
+  ["Lucho González", "Luis Gonzalez"]
+].map(([a, b]) => [normalize(a), normalize(b)].sort().join("|")));
+
 export function namesMatch(playerName, sourceName) {
   const source = String(sourceName || "");
+  const manualPair = [normalize(playerName), normalize(source)].sort().join("|");
+  if (manualNameEquivalents.has(manualPair)) return true;
   const sourceTokens = source
     .replace(/\u0000/g, "fi")
     .replace(/[æÆ]/g, "ae")
