@@ -6,11 +6,20 @@ on:
       - "data/historical-squads.json"
       - "scripts/audit-historical-fifa-pdfs.mjs"
       - "scripts/historical-pdf-heading.mjs"
+      - "scripts/historical-player-name-match.mjs"
       - "scripts/audit-2002-rosters.mjs"
       - "scripts/audit-2022-independent-clubs.mjs"
       - ".github/workflows/audit-historical-squads.yml"
   pull_request:
     branches: [main]
+    paths:
+      - "data/historical-squads.json"
+      - "scripts/audit-historical-fifa-pdfs.mjs"
+      - "scripts/historical-pdf-heading.mjs"
+      - "scripts/historical-player-name-match.mjs"
+      - "scripts/audit-2002-rosters.mjs"
+      - "scripts/audit-2022-independent-clubs.mjs"
+      - ".github/workflows/audit-historical-squads.yml"
   schedule:
     - cron: "41 5 * * 1"
   workflow_dispatch:
