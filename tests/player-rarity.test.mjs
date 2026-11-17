@@ -8,7 +8,7 @@ test("evidence scoring recognises an internationally established player",()=>{
  assert.equal(rarityFromEvidence({caps:100,majorAwards:5,globalRecognition:5,clubProfile:5}),"Common");
 });
 
-test("team-aware rarity keeps France 2018 familiar and assigns elite picks per Legendary squad",async()=>{
+test("team-aware rarity follows the collection-wide target curve and keeps France 2018 familiar",async()=>{
  const [publicData,rosters]=await Promise.all([
   readFile("dist/data/public-teams.json","utf8").then(JSON.parse),
   readFile("dist/data/practice-rosters.json","utf8").then(JSON.parse)
@@ -17,7 +17,13 @@ test("team-aware rarity keeps France 2018 familiar and assigns elite picks per L
  const all=rosters.teams.flatMap(team=>team.players);
  const counts=Object.fromEntries(["Common","Rare","Niche","Legendary","Ball Knowledge"].map(tier=>[tier,all.filter(player=>player.rarity===tier).length]));
  assert.equal(all.length,5759);
- assert.deepEqual(Object.keys(counts).filter(tier=>counts[tier]>0).sort(),["Ball Knowledge","Common","Legendary","Niche","Rare"].sort());
+ assert.deepEqual(counts,{
+  Common:2809,
+  Rare:1873,
+  Niche:936,
+  Legendary:94,
+  "Ball Knowledge":47
+ });
  for(const team of rosters.teams){
   const elite=team.players.filter(player=>["Legendary","Ball Knowledge"].includes(player.rarity));
   assert.ok(elite.length<=3,team.id+" must have at most three elite picks");
@@ -58,25 +64,32 @@ test("Supabase resolver uses the same team-aware rarity algorithm as the browser
  assert.ok(checked>5700);
 });
 
-test("elite rarity tiers stay globally scarce while picks remain spread across Legendary squads",()=>{
- const rosters={teams:Array.from({length:8},(_,i)=>({
-  id:"team-"+i,
-  players:[
-   {name:"Unknown "+i+" A",number:1,position:"FW"},
-   {name:"Unknown "+i+" B",number:2,position:"FW"},
-   {name:"Unknown "+i+" C",number:23,position:"GK"},
-   {name:"Lionel Messi",number:10,position:"FW"}
-  ]
- }))};
- const metadata={teams:rosters.teams.map((team,i)=>({id:team.id,year:2000+i*4,teamDifficulty:"legendary"}))};
+test("rarity curve scales proportionally and ranks the hardest-to-recall players highest",()=>{
+ const teams=Array.from({length:100},(_,teamIndex)=>({
+  id:"team-"+String(teamIndex).padStart(3,"0"),
+  players:Array.from({length:teamIndex<50?62:61},(_,playerIndex)=>({
+   name:"Unknown "+teamIndex+" Player "+playerIndex,
+   number:playerIndex+1,
+   position:"FW"
+  }))
+ }));
+ const rosters={teams};
+ const metadata={teams:teams.map(team=>({id:team.id,year:2000,teamDifficulty:"legendary"}))};
  assignRosterRarities(rosters,metadata);
- const all=rosters.teams.flatMap(team=>team.players);
- assert.equal(all.filter(player=>player.rarity==="Ball Knowledge").length,4);
- assert.equal(all.filter(player=>player.rarity==="Legendary").length,10);
- for(const team of rosters.teams){
-  assert.ok(team.players.filter(player=>player.rarity==="Ball Knowledge").length<=1);
-  assert.ok(team.players.filter(player=>player.rarity==="Legendary").length<=2);
- }
+ const all=teams.flatMap(team=>team.players);
+ const counts=Object.fromEntries(["Common","Rare","Niche","Legendary","Ball Knowledge"].map(tier=>[
+  tier,all.filter(player=>player.rarity===tier).length
+ ]));
+ assert.equal(all.length,6150);
+ assert.deepEqual(counts,{
+  Common:3000,
+  Rare:2000,
+  Niche:1000,
+  Legendary:100,
+  "Ball Knowledge":50
+ });
+ assert.equal(teams[99].players[61].rarity,"Ball Knowledge");
+ assert.equal(teams[99].players[60].rarity,"Ball Knowledge");
 });
 
 test("rarity scoring clamps invalid evidence instead of producing unstable tiers",()=>{
@@ -97,32 +110,16 @@ test("counts transliterated spellings as the same player across tournaments",()=
 });
 
 
-test("a Legendary squad with fewer than three eligible players does not invent elite picks",()=>{
+test("small rosters do not invent elite tiers when the proportional quota rounds to zero",()=>{
  const rosters={teams:[{id:"small-legendary",players:[
   {name:"Unknown Reserve",number:23,position:"FW"},
   {name:"Lionel Messi",number:10,position:"FW"}
  ]}]};
  const metadata={teams:[{id:"small-legendary",year:2026,teamDifficulty:"legendary"}]};
  assignRosterRarities(rosters,metadata);
- assert.equal(rosters.teams[0].players.filter(player=>player.rarity==="Ball Knowledge").length,1);
+ assert.equal(rosters.teams[0].players.filter(player=>player.rarity==="Ball Knowledge").length,0);
  assert.equal(rosters.teams[0].players.filter(player=>player.rarity==="Legendary").length,0);
 });
 
 
-test("uses higher shirt numbers as a deterministic obscurity tie-breaker",()=>{
- const rosters={teams:[{id:"legendary-tie",players:[
-  {name:"Unknown One",number:1,position:"FW"},
-  {name:"Unknown Seven",number:7,position:"FW"},
-  {name:"Unknown Eighteen",number:18,position:"FW"},
-  {name:"Unknown TwentyTwo",number:22,position:"FW"},
-  {name:"Lionel Messi",number:10,position:"FW"}
- ]}]};
- const metadata={teams:[{id:"legendary-tie",year:2026,teamDifficulty:"legendary"}]};
- assignRosterRarities(rosters,metadata);
- const byNumber=new Map(rosters.teams[0].players.map(player=>[player.number,player.rarity]));
- assert.equal(byNumber.get(22),"Ball Knowledge");
- assert.equal(byNumber.get(18),"Legendary");
- assert.equal(byNumber.get(7),"Legendary");
- assert.equal(byNumber.get(1),"Niche");
- assert.equal(byNumber.get(10),"Common");
-});
+
