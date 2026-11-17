@@ -39,7 +39,7 @@ try {
         continue;
       }
       if (rowIndex < 0) {
-        rowIndex = rows.findIndex((row, index) => !used.has(index) && namesMatch(player.name, row.name));
+        rowIndex = rows.findIndex((row, index) => !used.has(index) && row.number === null && namesMatch(player.name, row.name));
       }
       if (rowIndex < 0) {
         item.missingFromSource.push({ number, datasetName: player.name });
