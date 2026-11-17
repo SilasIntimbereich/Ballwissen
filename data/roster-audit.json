@@ -7213,219 +7213,362 @@
       "tournament": 2018,
       "teamNameInDataset": "Germany",
       "teamNameInFifaPdf": "Germany",
-      "reviewedAt": "2026-11-16",
-      "primarySource": "https://www.fifadata.com/document/fwc/2018/pdf/FWC_2018_SQUADLISTS.pdf",
-      "secondarySource": "https://www.11v11.com/competitions/fifa-world-cup/2018/squads/germany/",
+      "reviewedAt": "2026-11-17",
+      "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+      "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads",
       "notes": "All 23 roster rows were checked by shirt number, player identity and club against FIFA's final 2018 squad PDF and independently cross-checked against 11v11's Germany 2018 squad database. BBC Sport's confirmed squad article was used as a further check of squad membership and clubs. Normalized club display names are used in the game data.",
       "players": [
         {
           "playerName": "Manuel Neuer",
-          "sourceName": "MANUEL NEUER",
+          "sourceName": "Manuel Neuer",
           "number": 1,
           "position": "GK",
-          "clubAtTournament": "Bayern München",
+          "clubAtTournament": "Bayern Munich",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Manuel Neuer"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Marvin Plattenhardt",
-          "sourceName": "MARVIN PLATTENHARDT",
+          "sourceName": "Marvin Plattenhardt",
           "number": 2,
           "position": "DF",
-          "clubAtTournament": "Hertha BSC",
+          "clubAtTournament": "Hertha BSC Berlin",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Marvin Plattenhardt"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Jonas Hector",
-          "sourceName": "JONAS HECTOR",
+          "sourceName": "Jonas Hector",
           "number": 3,
           "position": "DF",
-          "clubAtTournament": "1. FC Köln",
+          "clubAtTournament": "1.FC Cologne",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Jonas Hector"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Matthias Ginter",
-          "sourceName": "MATTHIAS GINTER",
+          "sourceName": "Matthias Ginter",
           "number": 4,
           "position": "DF",
-          "clubAtTournament": "Borussia Mönchengladbach",
+          "clubAtTournament": "Borussia M'Gladbach",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Matthias Ginter"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Mats Hummels",
-          "sourceName": "MATS HUMMELS",
+          "sourceName": "Mats Hummels",
           "number": 5,
           "position": "DF",
-          "clubAtTournament": "Bayern München",
+          "clubAtTournament": "Bayern Munich",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Mats Hummels"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Sami Khedira",
-          "sourceName": "SAMI KHEDIRA",
+          "sourceName": "Sami Khedira",
           "number": 6,
           "position": "MF",
           "clubAtTournament": "Juventus",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Sami Khedira"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Julian Draxler",
-          "sourceName": "JULIAN DRAXLER",
+          "sourceName": "Julian Draxler",
           "number": 7,
           "position": "MF",
-          "clubAtTournament": "Paris Saint-Germain",
+          "clubAtTournament": "Paris St Germain",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Julian Draxler"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Toni Kroos",
-          "sourceName": "TONI KROOS",
+          "sourceName": "Toni Kroos",
           "number": 8,
           "position": "MF",
           "clubAtTournament": "Real Madrid",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Toni Kroos"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Timo Werner",
-          "sourceName": "TIMO WERNER",
+          "sourceName": "Timo Werner",
           "number": 9,
           "position": "FW",
           "clubAtTournament": "RB Leipzig",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Timo Werner"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Mesut Özil",
-          "sourceName": "MESUT OZIL",
+          "sourceName": "Mesut Özil",
           "number": 10,
           "position": "MF",
           "clubAtTournament": "Arsenal",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Mesut Özil"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Marco Reus",
-          "sourceName": "MARCO REUS",
+          "sourceName": "Marco Reus",
           "number": 11,
           "position": "FW",
           "clubAtTournament": "Borussia Dortmund",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Marco Reus"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Kevin Trapp",
-          "sourceName": "KEVIN TRAPP",
+          "sourceName": "Kevin Trapp",
           "number": 12,
           "position": "GK",
-          "clubAtTournament": "Paris Saint-Germain",
+          "clubAtTournament": "Paris St Germain",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Kevin Trapp"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Thomas Müller",
-          "sourceName": "THOMAS MULLER",
+          "sourceName": "Thomas Müller",
           "number": 13,
           "position": "MF",
-          "clubAtTournament": "Bayern München",
+          "clubAtTournament": "Bayern Munich",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Thomas Müller"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Leon Goretzka",
-          "sourceName": "LEON GORETZKA",
+          "sourceName": "Leon Goretzka",
           "number": 14,
           "position": "MF",
           "clubAtTournament": "Schalke 04",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Leon Goretzka"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Niklas Süle",
-          "sourceName": "NIKLAS SULE",
+          "sourceName": "Niklas Süle",
           "number": 15,
           "position": "DF",
-          "clubAtTournament": "Bayern München",
+          "clubAtTournament": "Bayern Munich",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Niklas Süle"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Antonio Rüdiger",
-          "sourceName": "ANTONIO RUDIGER",
+          "sourceName": "Antonio Rüdiger",
           "number": 16,
           "position": "DF",
           "clubAtTournament": "Chelsea",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Antonio Rüdiger"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Jérôme Boateng",
-          "sourceName": "JEROME BOATENG",
+          "sourceName": "Jerome Boateng",
           "number": 17,
           "position": "DF",
-          "clubAtTournament": "Bayern München",
+          "clubAtTournament": "Bayern Munich",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Jérôme Boateng",
+            "Jerome Boateng"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Joshua Kimmich",
-          "sourceName": "JOSHUA KIMMICH",
+          "sourceName": "Joshua Kimmich",
           "number": 18,
           "position": "DF",
-          "clubAtTournament": "Bayern München",
+          "clubAtTournament": "Bayern Munich",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Joshua Kimmich"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Sebastian Rudy",
-          "sourceName": "SEBASTIAN RUDY",
+          "sourceName": "Sebastian Rudy",
           "number": 19,
           "position": "MF",
-          "clubAtTournament": "Bayern München",
+          "clubAtTournament": "Bayern Munich",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Sebastian Rudy"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Julian Brandt",
-          "sourceName": "JULIAN BRANDT",
+          "sourceName": "Julian Brandt",
           "number": 20,
           "position": "MF",
           "clubAtTournament": "Bayer Leverkusen",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Julian Brandt"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "İlkay Gündoğan",
-          "sourceName": "ILKAY GUNDOGAN",
+          "sourceName": "Ilkay Gündogan",
           "number": 21,
           "position": "MF",
           "clubAtTournament": "Manchester City",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "İlkay Gündoğan",
+            "Ilkay Gündogan"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Marc-André ter Stegen",
-          "sourceName": "MARC-ANDRE TER STEGEN",
+          "sourceName": "Marc-Andre Ter Stegen",
           "number": 22,
           "position": "GK",
           "clubAtTournament": "Barcelona",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Marc-André ter Stegen",
+            "Marc-Andre Ter Stegen"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Mario Gómez",
-          "sourceName": "MARIO GOMEZ",
+          "sourceName": "Mario Gomez",
           "number": 23,
           "position": "FW",
           "clubAtTournament": "VfB Stuttgart",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list."
+          "notes": "Matched by shirt number, identity and club in FIFA's final squad PDF; independently cross-checked against 11v11's 2018 Germany squad database and BBC Sport's confirmed squad list.",
+          "sourceNameAliases": [
+            "Mario Gómez",
+            "Mario Gomez"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         }
-      ]
+      ],
+      "additionalSources": []
     },
     "germany-2022": {
       "status": "verified",
@@ -15562,219 +15705,358 @@
       "tournament": 2010,
       "teamNameInDataset": "England",
       "teamNameInFifaPdf": "England",
-      "reviewedAt": "2026-11-16",
-      "primarySource": "https://www.fifadata.com/document/fwc/2010/PDF_BackUp_2010_06_13/FWC_2010_SquadLists.pdf",
-      "secondarySource": "https://www.myfootballfacts.com/world-football/england/england-national-team/england-world-cup-2010-squad/",
+      "reviewedAt": "2026-11-17",
+      "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+      "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads",
       "notes": "All 23 players were checked by shirt number, identity and club against FIFA's final squad PDF and MyFootballFacts' complete England 2010 squad record. 11v11 and The Soccer World Cups were used as further checks. Joe Hart's loan is explicitly resolved: Manchester City was his parent club, but FIFA and the contemporary season record list Birmingham City, where he played during the 2009-10 season and at the tournament.",
       "players": [
         {
           "playerName": "David James",
-          "sourceName": "DAVID JAMES",
+          "sourceName": "David James",
           "number": 1,
           "position": "GK",
           "clubAtTournament": "Portsmouth",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "David James"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Glen Johnson",
-          "sourceName": "GLEN JOHNSON",
+          "sourceName": "Glen Johnson",
           "number": 2,
           "position": "DF",
           "clubAtTournament": "Liverpool",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "Glen Johnson"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Ashley Cole",
-          "sourceName": "ASHLEY COLE",
+          "sourceName": "Ashley Cole",
           "number": 3,
           "position": "DF",
           "clubAtTournament": "Chelsea",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "Ashley Cole"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Steven Gerrard",
-          "sourceName": "STEVEN GERRARD",
+          "sourceName": "Steven Gerrard",
           "number": 4,
           "position": "MF",
           "clubAtTournament": "Liverpool",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "Steven Gerrard"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Michael Dawson",
-          "sourceName": "MICHAEL DAWSON",
+          "sourceName": "Michael Dawson",
           "number": 5,
           "position": "DF",
           "clubAtTournament": "Tottenham Hotspur",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "Michael Dawson"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "John Terry",
-          "sourceName": "JOHN TERRY",
+          "sourceName": "John Terry",
           "number": 6,
           "position": "DF",
           "clubAtTournament": "Chelsea",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "John Terry"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Aaron Lennon",
-          "sourceName": "AARON LENNON",
+          "sourceName": "Aaron Lennon",
           "number": 7,
           "position": "MF",
           "clubAtTournament": "Tottenham Hotspur",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "Aaron Lennon"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Frank Lampard",
-          "sourceName": "FRANK LAMPARD",
+          "sourceName": "Frank Lampard",
           "number": 8,
           "position": "MF",
           "clubAtTournament": "Chelsea",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "Frank Lampard"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Peter Crouch",
-          "sourceName": "PETER CROUCH",
+          "sourceName": "Peter Crouch",
           "number": 9,
           "position": "FW",
           "clubAtTournament": "Tottenham Hotspur",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "Peter Crouch"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Wayne Rooney",
-          "sourceName": "WAYNE ROONEY",
+          "sourceName": "Wayne Rooney",
           "number": 10,
           "position": "FW",
           "clubAtTournament": "Manchester United",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "Wayne Rooney"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Joe Cole",
-          "sourceName": "JOE COLE",
+          "sourceName": "Joe Cole",
           "number": 11,
           "position": "MF",
           "clubAtTournament": "Chelsea",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "Joe Cole"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Robert Green",
-          "sourceName": "ROBERT GREEN",
+          "sourceName": "Robert Green",
           "number": 12,
           "position": "GK",
           "clubAtTournament": "West Ham United",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "Robert Green"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Stephen Warnock",
-          "sourceName": "STEPHEN WARNOCK",
+          "sourceName": "Stephen Warnock",
           "number": 13,
           "position": "DF",
           "clubAtTournament": "Aston Villa",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "Stephen Warnock"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Gareth Barry",
-          "sourceName": "GARETH BARRY",
+          "sourceName": "Gareth Barry",
           "number": 14,
           "position": "MF",
           "clubAtTournament": "Manchester City",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "Gareth Barry"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Matthew Upson",
-          "sourceName": "MATTHEW UPSON",
+          "sourceName": "Matthew Upson",
           "number": 15,
           "position": "DF",
           "clubAtTournament": "West Ham United",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "Matthew Upson"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "James Milner",
-          "sourceName": "JAMES MILNER",
+          "sourceName": "James Milner",
           "number": 16,
           "position": "MF",
           "clubAtTournament": "Aston Villa",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "James Milner"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Shaun Wright-Phillips",
-          "sourceName": "SHAUN WRIGHT-PHILLIPS",
+          "sourceName": "Shaun Wright-Phillips",
           "number": 17,
           "position": "MF",
           "clubAtTournament": "Manchester City",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "Shaun Wright-Phillips"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Jamie Carragher",
-          "sourceName": "JAMIE CARRAGHER",
+          "sourceName": "Jamie Carragher",
           "number": 18,
           "position": "DF",
           "clubAtTournament": "Liverpool",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "Jamie Carragher"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Jermain Defoe",
-          "sourceName": "JERMAIN DEFOE",
+          "sourceName": "Jermain Defoe",
           "number": 19,
           "position": "FW",
           "clubAtTournament": "Tottenham Hotspur",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "Jermain Defoe"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Ledley King",
-          "sourceName": "LEDLEY KING",
+          "sourceName": "Ledley King",
           "number": 20,
           "position": "DF",
           "clubAtTournament": "Tottenham Hotspur",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "Ledley King"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Emile Heskey",
-          "sourceName": "EMILE HESKEY",
+          "sourceName": "Emile Heskey",
           "number": 21,
           "position": "FW",
           "clubAtTournament": "Aston Villa",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "Emile Heskey"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Michael Carrick",
-          "sourceName": "MICHAEL CARRICK",
+          "sourceName": "Michael Carrick",
           "number": 22,
           "position": "MF",
           "clubAtTournament": "Manchester United",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club cross-checked against MyFootballFacts' final 23-player list and The Soccer World Cups.",
+          "sourceNameAliases": [
+            "Michael Carrick"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Joe Hart",
-          "sourceName": "JOE HART",
+          "sourceName": "Joe Hart",
           "number": 23,
           "position": "GK",
           "clubAtTournament": "Birmingham City",
-          "status": "corrected",
-          "notes": "11v11 lists Manchester City, but FIFA's final 2010 squad PDF, MyFootballFacts and The Soccer World Cups list Birmingham City. Hart was on loan at Birmingham City during the 2009-10 season and at the World Cup; tournament-time club is Birmingham City."
+          "status": "matched",
+          "notes": "11v11 lists Manchester City, but FIFA's final 2010 squad PDF, MyFootballFacts and The Soccer World Cups list Birmingham City. Hart was on loan at Birmingham City during the 2009-10 season and at the World Cup; tournament-time club is Birmingham City.",
+          "sourceNameAliases": [
+            "Joe Hart"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         }
-      ]
+      ],
+      "additionalSources": []
     },
     "france-2010": {
       "status": "verified",
@@ -16000,218 +16282,359 @@
       "tournament": 2010,
       "teamNameInDataset": "Italy",
       "teamNameInFifaPdf": "Italy",
-      "reviewedAt": "2026-11-16",
-      "primarySource": "https://www.fifadata.com/document/fwc/2010/PDF_BackUp_2010_06_13/FWC_2010_SquadLists.pdf",
-      "secondarySource": "https://www.theguardian.com/football/2010/jun/01/world-cup-group-f-africa",
+      "reviewedAt": "2026-11-17",
+      "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+      "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads",
       "notes": "All 23 players were checked by shirt number, identity and club against FIFA's final 2010 squad PDF and The Guardian's 1 June 2010 final 23-player Italy squad list. UEFA, Planet World Cup and 11v11 were used as further checks. The audit uses the tournament-time club affiliation, not subsequent transfers.",
       "players": [
         {
           "playerName": "Gianluigi Buffon",
-          "sourceName": "GIANLUIGI BUFFON",
+          "sourceName": "Gianluigi Buffon",
           "number": 1,
           "position": "GK",
           "clubAtTournament": "Juventus",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Gianluigi Buffon"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Christian Maggio",
-          "sourceName": "CHRISTIAN MAGGIO",
+          "sourceName": "Christian Maggio",
           "number": 2,
           "position": "DF",
           "clubAtTournament": "Napoli",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Christian Maggio"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Domenico Criscito",
-          "sourceName": "DOMENICO CRISCITO",
+          "sourceName": "Domenico Criscito",
           "number": 3,
           "position": "DF",
           "clubAtTournament": "Genoa",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Domenico Criscito"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Giorgio Chiellini",
-          "sourceName": "GIORGIO CHIELLINI",
+          "sourceName": "Giorgio Chiellini",
           "number": 4,
           "position": "DF",
           "clubAtTournament": "Juventus",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Giorgio Chiellini"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Fabio Cannavaro",
-          "sourceName": "FABIO CANNAVARO",
+          "sourceName": "Fabio Cannavaro",
           "number": 5,
           "position": "DF",
           "clubAtTournament": "Juventus",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Fabio Cannavaro"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Daniele De Rossi",
-          "sourceName": "DANIELE DE ROSSI",
+          "sourceName": "Daniele De Rossi",
           "number": 6,
           "position": "MF",
           "clubAtTournament": "AS Roma",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Daniele De Rossi"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Simone Pepe",
-          "sourceName": "SIMONE PEPE",
+          "sourceName": "Simone Pepe",
           "number": 7,
           "position": "MF",
           "clubAtTournament": "Udinese",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Simone Pepe"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Gennaro Gattuso",
-          "sourceName": "GENNARO GATTUSO",
+          "sourceName": "Gennaro Gattuso",
           "number": 8,
           "position": "MF",
           "clubAtTournament": "AC Milan",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Gennaro Gattuso"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Vincenzo Iaquinta",
-          "sourceName": "VINCENZO IAQUINTA",
+          "sourceName": "Vincenzo Iaquinta",
           "number": 9,
           "position": "FW",
           "clubAtTournament": "Juventus",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Vincenzo Iaquinta"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Antonio Di Natale",
-          "sourceName": "ANTONIO DI NATALE",
+          "sourceName": "Antonio Di Natale",
           "number": 10,
           "position": "FW",
           "clubAtTournament": "Udinese",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Antonio Di Natale"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Alberto Gilardino",
-          "sourceName": "ALBERTO GILARDINO",
+          "sourceName": "Alberto Gilardino",
           "number": 11,
           "position": "FW",
-          "clubAtTournament": "Fiorentina",
+          "clubAtTournament": "AC Fiorentina",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Alberto Gilardino"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Federico Marchetti",
-          "sourceName": "FEDERICO MARCHETTI",
+          "sourceName": "Federico Marchetti",
           "number": 12,
           "position": "GK",
           "clubAtTournament": "Cagliari",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Federico Marchetti"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Salvatore Bocchetti",
-          "sourceName": "SALVATORE BOCCHETTI",
+          "sourceName": "Salvatore Bocchetti",
           "number": 13,
           "position": "DF",
           "clubAtTournament": "Genoa",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Salvatore Bocchetti"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Morgan De Sanctis",
-          "sourceName": "MORGAN DE SANCTIS",
+          "sourceName": "Morgan De Sanctis",
           "number": 14,
           "position": "GK",
           "clubAtTournament": "Napoli",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Morgan De Sanctis"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Claudio Marchisio",
-          "sourceName": "CLAUDIO MARCHISIO",
+          "sourceName": "Claudio Marchisio",
           "number": 15,
           "position": "MF",
           "clubAtTournament": "Juventus",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Claudio Marchisio"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Mauro Camoranesi",
-          "sourceName": "MAURO CAMORANESI",
+          "sourceName": "Mauro Camoranesi",
           "number": 16,
           "position": "MF",
           "clubAtTournament": "Juventus",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Mauro Camoranesi"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Angelo Palombo",
-          "sourceName": "ANGELO PALOMBO",
+          "sourceName": "Angelo Palombo",
           "number": 17,
           "position": "MF",
           "clubAtTournament": "Sampdoria",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Angelo Palombo"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Fabio Quagliarella",
-          "sourceName": "FABIO QUAGLIARELLA",
+          "sourceName": "Fabio Quagliarella",
           "number": 18,
           "position": "FW",
           "clubAtTournament": "Napoli",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Fabio Quagliarella"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Gianluca Zambrotta",
-          "sourceName": "GIANLUCA ZAMBROTTA",
+          "sourceName": "Gianluca Zambrotta",
           "number": 19,
           "position": "DF",
           "clubAtTournament": "AC Milan",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Gianluca Zambrotta"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Giampaolo Pazzini",
-          "sourceName": "GIAMPAOLO PAZZINI",
+          "sourceName": "Giampaolo Pazzini",
           "number": 20,
           "position": "FW",
           "clubAtTournament": "Sampdoria",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Giampaolo Pazzini"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Andrea Pirlo",
-          "sourceName": "ANDREA PIRLO",
+          "sourceName": "Andrea Pirlo",
           "number": 21,
           "position": "MF",
           "clubAtTournament": "AC Milan",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Andrea Pirlo"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Riccardo Montolivo",
-          "sourceName": "RICCARDO MONTOLIVO",
+          "sourceName": "Riccardo Montolivo",
           "number": 22,
           "position": "MF",
-          "clubAtTournament": "Fiorentina",
+          "clubAtTournament": "AC Fiorentina",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Riccardo Montolivo"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Leonardo Bonucci",
-          "sourceName": "LEONARDO BONUCCI",
+          "sourceName": "Leonardo Bonucci",
           "number": 23,
           "position": "DF",
           "clubAtTournament": "Bari",
           "status": "matched",
-          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup."
+          "notes": "Matched by shirt number and identity in FIFA's final 2010 squad PDF; club independently cross-checked against The Guardian's 1 June final 23-player Italy list, UEFA's squad confirmation and Planet World Cup.",
+          "sourceNameAliases": [
+            "Leonardo Bonucci"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         }
+      ],
+      "additionalSources": [
+        "https://web.archive.org/web/20100616010702id_/http://www.fifa.com/mm/document/tournament/competition/01/22/85/78/fwc_2010_squadlists.pdf"
       ]
     },
     "bosnia-and-herzegovina-2026": {
@@ -25366,6 +25789,1712 @@
           "clubAtTournament": "Club América",
           "status": "matched",
           "notes": "FIFA final squad PDF and OpenFootball snapshot agree on player identity, number, position and club."
+        }
+      ]
+    },
+    "england-2018": {
+      "status": "verified",
+      "tournament": 2018,
+      "teamNameInDataset": "England",
+      "teamNameInPrimarySource": "England",
+      "reviewedAt": "2026-11-17",
+      "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+      "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads",
+      "additionalSources": [],
+      "players": [
+        {
+          "number": 1,
+          "playerName": "Jordan Pickford",
+          "sourceName": "Jordan Pickford",
+          "sourceNameAliases": [
+            "Jordan Pickford"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "GK",
+          "clubAtTournament": "Everton",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 2,
+          "playerName": "Kyle Walker",
+          "sourceName": "Kyle Walker",
+          "sourceNameAliases": [
+            "Kyle Walker"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Manchester City",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 3,
+          "playerName": "Danny Rose",
+          "sourceName": "Danny Rose",
+          "sourceNameAliases": [
+            "Danny Rose"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Tottenham Hotspur",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 4,
+          "playerName": "Eric Dier",
+          "sourceName": "Eric Dier",
+          "sourceNameAliases": [
+            "Eric Dier"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Tottenham Hotspur",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 5,
+          "playerName": "John Stones",
+          "sourceName": "John Stones",
+          "sourceNameAliases": [
+            "John Stones"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Manchester City",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 6,
+          "playerName": "Harry Maguire",
+          "sourceName": "Harry Maguire",
+          "sourceNameAliases": [
+            "Harry Maguire"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Leicester City",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 7,
+          "playerName": "Jesse Lingard",
+          "sourceName": "Jesse Lingard",
+          "sourceNameAliases": [
+            "Jesse Lingard"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Manchester United",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 8,
+          "playerName": "Jordan Henderson",
+          "sourceName": "Jordan Henderson",
+          "sourceNameAliases": [
+            "Jordan Henderson"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Liverpool",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 9,
+          "playerName": "Harry Kane",
+          "sourceName": "Harry Kane",
+          "sourceNameAliases": [
+            "Harry Kane"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Tottenham Hotspur",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 10,
+          "playerName": "Raheem Sterling",
+          "sourceName": "Raheem Sterling",
+          "sourceNameAliases": [
+            "Raheem Sterling"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Manchester City",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 11,
+          "playerName": "Jamie Vardy",
+          "sourceName": "Jamie Vardy",
+          "sourceNameAliases": [
+            "Jamie Vardy"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Leicester City",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 12,
+          "playerName": "Kieran Trippier",
+          "sourceName": "Kieran Trippier",
+          "sourceNameAliases": [
+            "Kieran Trippier"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Tottenham Hotspur",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 13,
+          "playerName": "Jack Butland",
+          "sourceName": "Jack Butland",
+          "sourceNameAliases": [
+            "Jack Butland"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "GK",
+          "clubAtTournament": "Stoke City",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 14,
+          "playerName": "Danny Welbeck",
+          "sourceName": "Danny Welbeck",
+          "sourceNameAliases": [
+            "Danny Welbeck"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Arsenal",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 15,
+          "playerName": "Gary Cahill",
+          "sourceName": "Gary Cahill",
+          "sourceNameAliases": [
+            "Gary Cahill"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Chelsea",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 16,
+          "playerName": "Phil Jones",
+          "sourceName": "Phil Jones",
+          "sourceNameAliases": [
+            "Phil Jones"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Manchester United",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 17,
+          "playerName": "Fabian Delph",
+          "sourceName": "Fabian Delph",
+          "sourceNameAliases": [
+            "Fabian Delph"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Manchester City",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 18,
+          "playerName": "Ashley Young",
+          "sourceName": "Ashley Young",
+          "sourceNameAliases": [
+            "Ashley Young"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Manchester United",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 19,
+          "playerName": "Marcus Rashford",
+          "sourceName": "Marcus Rashford",
+          "sourceNameAliases": [
+            "Marcus Rashford"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Manchester United",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 20,
+          "playerName": "Dele Alli",
+          "sourceName": "Dele Alli",
+          "sourceNameAliases": [
+            "Dele Alli"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Tottenham Hotspur",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 21,
+          "playerName": "Ruben Loftus-Cheek",
+          "sourceName": "Ruben Loftus-Cheek",
+          "sourceNameAliases": [
+            "Ruben Loftus-Cheek"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Crystal Palace",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 22,
+          "playerName": "Trent Alexander-Arnold",
+          "sourceName": "Trent Alexander-Arnold",
+          "sourceNameAliases": [
+            "Trent Alexander-Arnold"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Liverpool",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 23,
+          "playerName": "Nick Pope",
+          "sourceName": "Nick Pope",
+          "sourceNameAliases": [
+            "Nick Pope"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "GK",
+          "clubAtTournament": "Burnley",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_eng18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        }
+      ]
+    },
+    "france-2018": {
+      "status": "verified",
+      "tournament": 2018,
+      "teamNameInDataset": "France",
+      "teamNameInPrimarySource": "France",
+      "reviewedAt": "2026-11-17",
+      "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+      "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads",
+      "additionalSources": [],
+      "players": [
+        {
+          "number": 1,
+          "playerName": "Hugo Lloris",
+          "sourceName": "Hugo Lloris",
+          "sourceNameAliases": [
+            "Hugo Lloris"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "GK",
+          "clubAtTournament": "Tottenham Hotspur",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 2,
+          "playerName": "Benjamin Pavard",
+          "sourceName": "Benjamin Pavard",
+          "sourceNameAliases": [
+            "Benjamin Pavard"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "VfB Stuttgart",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 3,
+          "playerName": "Presnel Kimpembe",
+          "sourceName": "Presnel Kimpembe",
+          "sourceNameAliases": [
+            "Presnel Kimpembe"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Paris St Germain",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 4,
+          "playerName": "Raphaël Varane",
+          "sourceName": "Raphaël Varane",
+          "sourceNameAliases": [
+            "Raphaël Varane"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Real Madrid",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 5,
+          "playerName": "Samuel Umtiti",
+          "sourceName": "Samuel Umtiti",
+          "sourceNameAliases": [
+            "Samuel Umtiti"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Barcelona",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 6,
+          "playerName": "Paul Pogba",
+          "sourceName": "Paul Pogba",
+          "sourceNameAliases": [
+            "Paul Pogba"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Manchester United",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 7,
+          "playerName": "Antoine Griezmann",
+          "sourceName": "Antoine Griezmann",
+          "sourceNameAliases": [
+            "Antoine Griezmann"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Atletico Madrid",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 8,
+          "playerName": "Thomas Lemar",
+          "sourceName": "Thomas Lemar",
+          "sourceNameAliases": [
+            "Thomas Lemar"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "AS Monaco",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 9,
+          "playerName": "Olivier Giroud",
+          "sourceName": "Olivier Giroud",
+          "sourceNameAliases": [
+            "Olivier Giroud"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Chelsea",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 10,
+          "playerName": "Kylian Mbappé",
+          "sourceName": "Kylian Mbappe",
+          "sourceNameAliases": [
+            "Kylian Mbappé",
+            "Kylian Mbappe"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Paris St Germain",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 11,
+          "playerName": "Ousmane Dembélé",
+          "sourceName": "Ousmane Dembele",
+          "sourceNameAliases": [
+            "Ousmane Dembélé",
+            "Ousmane Dembele"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Barcelona",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 12,
+          "playerName": "Corentin Tolisso",
+          "sourceName": "Corentin Tolisso",
+          "sourceNameAliases": [
+            "Corentin Tolisso"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Bayern Munich",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 13,
+          "playerName": "N'Golo Kanté",
+          "sourceName": "Ngolo Kante",
+          "sourceNameAliases": [
+            "N'Golo Kanté",
+            "Ngolo Kante"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Chelsea",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 14,
+          "playerName": "Blaise Matuidi",
+          "sourceName": "Blaise Matuidi",
+          "sourceNameAliases": [
+            "Blaise Matuidi"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Juventus",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 15,
+          "playerName": "Steven Nzonzi",
+          "sourceName": "Steven Nzonzi",
+          "sourceNameAliases": [
+            "Steven Nzonzi"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Sevilla",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 16,
+          "playerName": "Steve Mandanda",
+          "sourceName": "Steve Mandanda",
+          "sourceNameAliases": [
+            "Steve Mandanda"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "GK",
+          "clubAtTournament": "Olympique Marseille",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 17,
+          "playerName": "Adil Rami",
+          "sourceName": "Adil Rami",
+          "sourceNameAliases": [
+            "Adil Rami"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Olympique Marseille",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 18,
+          "playerName": "Nabil Fekir",
+          "sourceName": "Nabil Fekir",
+          "sourceNameAliases": [
+            "Nabil Fekir"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Olympique Lyon",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 19,
+          "playerName": "Djibril Sidibé",
+          "sourceName": "Djibril Sidibe",
+          "sourceNameAliases": [
+            "Djibril Sidibé",
+            "Djibril Sidibe"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "AS Monaco",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 20,
+          "playerName": "Florian Thauvin",
+          "sourceName": "Florian Thauvin",
+          "sourceNameAliases": [
+            "Florian Thauvin"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Olympique Marseille",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 21,
+          "playerName": "Lucas Hernandez",
+          "sourceName": "Lucas Hernandez",
+          "sourceNameAliases": [
+            "Lucas Hernandez"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Atletico Madrid",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 22,
+          "playerName": "Benjamin Mendy",
+          "sourceName": "Benjamin Mendy",
+          "sourceNameAliases": [
+            "Benjamin Mendy"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Manchester City",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 23,
+          "playerName": "Alphonse Areola",
+          "sourceName": "Alphonse Areola",
+          "sourceNameAliases": [
+            "Alphonse Areola"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "GK",
+          "clubAtTournament": "Paris St Germain",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        }
+      ]
+    },
+    "portugal-2018": {
+      "status": "verified",
+      "tournament": 2018,
+      "teamNameInDataset": "Portugal",
+      "teamNameInPrimarySource": "Portugal",
+      "reviewedAt": "2026-11-17",
+      "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+      "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads",
+      "additionalSources": [],
+      "players": [
+        {
+          "number": 1,
+          "playerName": "Rui Patrício",
+          "sourceName": "RUI PATRICIO",
+          "sourceNameAliases": [
+            "Rui Patrício",
+            "RUI PATRICIO"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "GK",
+          "clubAtTournament": "Sporting Lisbon",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 2,
+          "playerName": "Bruno Alves",
+          "sourceName": "BRUNO ALVES",
+          "sourceNameAliases": [
+            "Bruno Alves",
+            "BRUNO ALVES"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Glasgow Rangers",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 3,
+          "playerName": "Pepe",
+          "sourceName": "PEPE Lima Ferreira",
+          "sourceNameAliases": [
+            "Pepe",
+            "PEPE Lima Ferreira"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "corrected",
+          "position": "DF",
+          "clubAtTournament": "Besiktas",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 4,
+          "playerName": "Manuel Fernandes",
+          "sourceName": "MANUEL FERNANDES",
+          "sourceNameAliases": [
+            "Manuel Fernandes",
+            "MANUEL FERNANDES"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Lokomotiv Moscow",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 5,
+          "playerName": "Raphaël Guerreiro",
+          "sourceName": "RAPHAEL GUERREIRO",
+          "sourceNameAliases": [
+            "Raphaël Guerreiro",
+            "RAPHAEL GUERREIRO"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Borussia Dortmund",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 6,
+          "playerName": "José Fonte",
+          "sourceName": "JOSE FONTE",
+          "sourceNameAliases": [
+            "José Fonte",
+            "JOSE FONTE"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Dalian Yifang",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 7,
+          "playerName": "Cristiano Ronaldo",
+          "sourceName": "CRISTIANO RONALDO",
+          "sourceNameAliases": [
+            "Cristiano Ronaldo",
+            "CRISTIANO RONALDO"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Real Madrid",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 8,
+          "playerName": "João Moutinho",
+          "sourceName": "JOAO MOUTINHO",
+          "sourceNameAliases": [
+            "João Moutinho",
+            "JOAO MOUTINHO"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "AS Monaco",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 9,
+          "playerName": "André Silva",
+          "sourceName": "ANDRE SILVA",
+          "sourceNameAliases": [
+            "André Silva",
+            "ANDRE SILVA"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "AC Milan",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 10,
+          "playerName": "João Mário",
+          "sourceName": "JOAO MARIO Naval",
+          "sourceNameAliases": [
+            "João Mário",
+            "JOAO MARIO Naval"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "corrected",
+          "position": "MF",
+          "clubAtTournament": "West Ham United",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 11,
+          "playerName": "Bernardo Silva",
+          "sourceName": "BERNARDO SILVA",
+          "sourceNameAliases": [
+            "Bernardo Silva",
+            "BERNARDO SILVA"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Manchester City",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 12,
+          "playerName": "Anthony Lopes",
+          "sourceName": "ANTHONY LOPES",
+          "sourceNameAliases": [
+            "Anthony Lopes",
+            "ANTHONY LOPES"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "GK",
+          "clubAtTournament": "Olympique Lyon",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 13,
+          "playerName": "Rúben Dias",
+          "sourceName": "RUBEN DIAS",
+          "sourceNameAliases": [
+            "Rúben Dias",
+            "RUBEN DIAS"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Benfica",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 14,
+          "playerName": "William Carvalho",
+          "sourceName": "WILLIAM Carvalho",
+          "sourceNameAliases": [
+            "William Carvalho",
+            "WILLIAM Carvalho"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Sporting Lisbon",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 15,
+          "playerName": "Ricardo Pereira",
+          "sourceName": "RICARDO Pereira",
+          "sourceNameAliases": [
+            "Ricardo Pereira",
+            "RICARDO Pereira"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Porto",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 16,
+          "playerName": "Bruno Fernandes",
+          "sourceName": "BRUNO FERNANDES",
+          "sourceNameAliases": [
+            "Bruno Fernandes",
+            "BRUNO FERNANDES"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Sporting Lisbon",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 17,
+          "playerName": "Gonçalo Guedes",
+          "sourceName": "GONCALO GUEDES",
+          "sourceNameAliases": [
+            "Gonçalo Guedes",
+            "GONCALO GUEDES"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Valencia",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 18,
+          "playerName": "Gelson Martins",
+          "sourceName": "GELSON MARTINS",
+          "sourceNameAliases": [
+            "Gelson Martins",
+            "GELSON MARTINS"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Sporting Lisbon",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 19,
+          "playerName": "Mário Rui",
+          "sourceName": "MARIO RUI Silva",
+          "sourceNameAliases": [
+            "Mário Rui",
+            "MARIO RUI Silva"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "corrected",
+          "position": "DF",
+          "clubAtTournament": "Napoli",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 20,
+          "playerName": "Ricardo Quaresma",
+          "sourceName": "Ricardo QUARESMA",
+          "sourceNameAliases": [
+            "Ricardo Quaresma",
+            "Ricardo QUARESMA"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Besiktas",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 21,
+          "playerName": "Cédric",
+          "sourceName": "CEDRIC Alves",
+          "sourceNameAliases": [
+            "Cédric",
+            "CEDRIC Alves"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "corrected",
+          "position": "DF",
+          "clubAtTournament": "Southampton",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 22,
+          "playerName": "Beto",
+          "sourceName": "BETO Bastos Pimparel",
+          "sourceNameAliases": [
+            "Beto",
+            "BETO Bastos Pimparel"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "corrected",
+          "position": "GK",
+          "clubAtTournament": "Göztepe",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 23,
+          "playerName": "Adrien Silva",
+          "sourceName": "ADRIEN SILVA",
+          "sourceNameAliases": [
+            "Adrien Silva",
+            "ADRIEN SILVA"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Leicester City",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        }
+      ]
+    },
+    "england-2002": {
+      "status": "verified",
+      "tournament": 2002,
+      "teamNameInDataset": "England",
+      "teamNameInPrimarySource": "England",
+      "reviewedAt": "2026-11-17",
+      "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+      "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads",
+      "additionalSources": [
+        "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt"
+      ],
+      "players": [
+        {
+          "number": 1,
+          "playerName": "David Seaman",
+          "sourceName": "David Seaman",
+          "sourceNameAliases": [
+            "David Seaman"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "GK",
+          "clubAtTournament": "Arsenal",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 2,
+          "playerName": "Danny Mills",
+          "sourceName": "Danny Mills",
+          "sourceNameAliases": [
+            "Danny Mills"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Leeds United",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 3,
+          "playerName": "Ashley Cole",
+          "sourceName": "Ashley Cole",
+          "sourceNameAliases": [
+            "Ashley Cole"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Arsenal",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 4,
+          "playerName": "Trevor Sinclair",
+          "sourceName": "Trevor Sinclair",
+          "sourceNameAliases": [
+            "Trevor Sinclair"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "West Ham United",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 5,
+          "playerName": "Rio Ferdinand",
+          "sourceName": "Rio Ferdinand",
+          "sourceNameAliases": [
+            "Rio Ferdinand"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Leeds United",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 6,
+          "playerName": "Sol Campbell",
+          "sourceName": "Sol Campbell",
+          "sourceNameAliases": [
+            "Sol Campbell"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Arsenal",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 7,
+          "playerName": "David Beckham",
+          "sourceName": "David Beckham",
+          "sourceNameAliases": [
+            "David Beckham"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Manchester United",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 8,
+          "playerName": "Paul Scholes",
+          "sourceName": "Paul Scholes",
+          "sourceNameAliases": [
+            "Paul Scholes"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Manchester United",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 9,
+          "playerName": "Robbie Fowler",
+          "sourceName": "Robbie Fowler",
+          "sourceNameAliases": [
+            "Robbie Fowler"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Leeds United",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 10,
+          "playerName": "Michael Owen",
+          "sourceName": "Michael Owen",
+          "sourceNameAliases": [
+            "Michael Owen"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Liverpool",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 11,
+          "playerName": "Emile Heskey",
+          "sourceName": "Emile Heskey",
+          "sourceNameAliases": [
+            "Emile Heskey"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Liverpool",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 12,
+          "playerName": "Wes Brown",
+          "sourceName": "Wes Brown",
+          "sourceNameAliases": [
+            "Wes Brown"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Manchester United",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 13,
+          "playerName": "Nigel Martyn",
+          "sourceName": "Nigel Martyn",
+          "sourceNameAliases": [
+            "Nigel Martyn"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "GK",
+          "clubAtTournament": "Leeds United",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 14,
+          "playerName": "Wayne Bridge",
+          "sourceName": "Wayne Bridge",
+          "sourceNameAliases": [
+            "Wayne Bridge"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Southampton",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 15,
+          "playerName": "Martin Keown",
+          "sourceName": "Martin Keown",
+          "sourceNameAliases": [
+            "Martin Keown"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Arsenal",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 16,
+          "playerName": "Gareth Southgate",
+          "sourceName": "Gareth Southgate",
+          "sourceNameAliases": [
+            "Gareth Southgate"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Middlesbrough",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 17,
+          "playerName": "Teddy Sheringham",
+          "sourceName": "Teddy Sheringham",
+          "sourceNameAliases": [
+            "Teddy Sheringham"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Tottenham Hotspur",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 18,
+          "playerName": "Owen Hargreaves",
+          "sourceName": "Owen Hargreaves",
+          "sourceNameAliases": [
+            "Owen Hargreaves"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Bayern Munich",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 19,
+          "playerName": "Joe Cole",
+          "sourceName": "Joe Cole",
+          "sourceNameAliases": [
+            "Joe Cole"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "West Ham United",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 20,
+          "playerName": "Darius Vassell",
+          "sourceName": "Darius Vassell",
+          "sourceNameAliases": [
+            "Darius Vassell"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Aston Villa",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 21,
+          "playerName": "Nicky Butt",
+          "sourceName": "Nicky Butt",
+          "sourceNameAliases": [
+            "Nicky Butt"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Manchester United",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 22,
+          "playerName": "David James",
+          "sourceName": "David James",
+          "sourceNameAliases": [
+            "David James"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "GK",
+          "clubAtTournament": "West Ham United",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 23,
+          "playerName": "Kieron Dyer",
+          "sourceName": "Kieron Dyer",
+          "sourceNameAliases": [
+            "Kieron Dyer"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Newcastle United",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        }
+      ]
+    },
+    "france-2002": {
+      "status": "verified",
+      "tournament": 2002,
+      "teamNameInDataset": "France",
+      "teamNameInPrimarySource": "France",
+      "reviewedAt": "2026-11-17",
+      "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+      "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads",
+      "additionalSources": [
+        "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt"
+      ],
+      "players": [
+        {
+          "number": 1,
+          "playerName": "Ulrich Ramé",
+          "sourceName": "Ulrich Rame",
+          "sourceNameAliases": [
+            "Ulrich Ramé",
+            "Ulrich Rame"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "GK",
+          "clubAtTournament": "Girondins Bordeaux",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 2,
+          "playerName": "Vincent Candela",
+          "sourceName": "Vincent Candela",
+          "sourceNameAliases": [
+            "Vincent Candela"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "AS Roma",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 3,
+          "playerName": "Bixente Lizarazu",
+          "sourceName": "Bixente Lizarazu",
+          "sourceNameAliases": [
+            "Bixente Lizarazu"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Bayern Munich",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 4,
+          "playerName": "Patrick Vieira",
+          "sourceName": "Patrick Vieira",
+          "sourceNameAliases": [
+            "Patrick Vieira"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Arsenal",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 5,
+          "playerName": "Philippe Christanval",
+          "sourceName": "Philippe Christanval",
+          "sourceNameAliases": [
+            "Philippe Christanval"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Barcelona",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 6,
+          "playerName": "Youri Djorkaeff",
+          "sourceName": "Youri Djorkaeff",
+          "sourceNameAliases": [
+            "Youri Djorkaeff"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Bolton Wanderers",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 7,
+          "playerName": "Claude Makélélé",
+          "sourceName": "Claude Makelele",
+          "sourceNameAliases": [
+            "Claude Makélélé",
+            "Claude Makelele"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Real Madrid",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 8,
+          "playerName": "Marcel Desailly",
+          "sourceName": "Marcel Desailly",
+          "sourceNameAliases": [
+            "Marcel Desailly"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Chelsea",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 9,
+          "playerName": "Djibril Cissé",
+          "sourceName": "Djibril Cisse",
+          "sourceNameAliases": [
+            "Djibril Cissé",
+            "Djibril Cisse"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Auxerre",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 10,
+          "playerName": "Zinedine Zidane",
+          "sourceName": "Zinedine Zidane",
+          "sourceNameAliases": [
+            "Zinedine Zidane"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Real Madrid",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 11,
+          "playerName": "Sylvain Wiltord",
+          "sourceName": "Sylvain Wiltord",
+          "sourceNameAliases": [
+            "Sylvain Wiltord"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Arsenal",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 12,
+          "playerName": "Thierry Henry",
+          "sourceName": "Thierry Henry",
+          "sourceNameAliases": [
+            "Thierry Henry"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Arsenal",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 13,
+          "playerName": "Mikaël Silvestre",
+          "sourceName": "Mikael Silvestre",
+          "sourceNameAliases": [
+            "Mikaël Silvestre",
+            "Mikael Silvestre"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Manchester United",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 14,
+          "playerName": "Alain Boghossian",
+          "sourceName": "Alain Boghossian",
+          "sourceNameAliases": [
+            "Alain Boghossian"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Parma",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 15,
+          "playerName": "Lilian Thuram",
+          "sourceName": "Lilian Thuram",
+          "sourceNameAliases": [
+            "Lilian Thuram"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Juventus",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 16,
+          "playerName": "Fabien Barthez",
+          "sourceName": "Fabien Barthez",
+          "sourceNameAliases": [
+            "Fabien Barthez"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "GK",
+          "clubAtTournament": "Manchester United",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 17,
+          "playerName": "Emmanuel Petit",
+          "sourceName": "Emmanuel Petit",
+          "sourceNameAliases": [
+            "Emmanuel Petit"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Chelsea",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 18,
+          "playerName": "Frank Leboeuf",
+          "sourceName": "Frank Leboeuf",
+          "sourceNameAliases": [
+            "Frank Leboeuf"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Olympique Marseille",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 19,
+          "playerName": "Willy Sagnol",
+          "sourceName": "Willy Sagnol",
+          "sourceNameAliases": [
+            "Willy Sagnol"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Bayern Munich",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 20,
+          "playerName": "David Trezeguet",
+          "sourceName": "David Trezeguet",
+          "sourceNameAliases": [
+            "David Trezeguet"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Juventus",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 21,
+          "playerName": "Christophe Dugarry",
+          "sourceName": "Christophe Dugarry",
+          "sourceNameAliases": [
+            "Christophe Dugarry"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Girondins Bordeaux",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 22,
+          "playerName": "Johan Micoud",
+          "sourceName": "Johan Micoud",
+          "sourceNameAliases": [
+            "Johan Micoud"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Parma",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 23,
+          "playerName": "Grégory Coupet",
+          "sourceName": "Gregory Coupet",
+          "sourceNameAliases": [
+            "Grégory Coupet",
+            "Gregory Coupet"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "GK",
+          "clubAtTournament": "Lyon",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2002/squad_fra02.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
         }
       ]
     }
