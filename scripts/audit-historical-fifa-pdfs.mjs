@@ -9,6 +9,20 @@ const SOURCES=[
  {year:2022,url:"https://fdp.fifa.org/assetspublic/ce44/pdf/SquadLists-English.pdf",format:"2022"}
 ];
 const historical=JSON.parse(await readFile("data/historical-squads.json","utf8"));
+
+async function fetchWithRetry(url, options, attempts = 4) {
+ let lastError;
+ for (let attempt = 1; attempt <= attempts; attempt++) {
+  try {
+   const response = await fetch(url, options);
+   if (response.ok) return response;
+   lastError = new Error("HTTP " + response.status);
+   if (response.status < 500 && response.status !== 429) break;
+  } catch (error) { lastError = error; }
+  if (attempt < attempts) await new Promise(resolve => setTimeout(resolve, attempt * 1500));
+ }
+ throw new Error("FIFA source unavailable after " + attempts + " attempts: " + url + " (" + (lastError?.message || "unknown error") + ")");
+}
 const normalize=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");
 const tokens=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
 const teamAliases={
@@ -41,8 +55,7 @@ function parseRows(lines,format){
 const report={generatedAt:new Date().toISOString(),sourceNote:"FIFA final squad-list PDFs cross-checked against the independent DataHub World Cup squad dataset.",tournaments:[],summary:{}};
 const candidateData=structuredClone(historical);
 for(const source of SOURCES){
- const response=await fetch(source.url,{headers:{"User-Agent":"FootballArcadeHistoricalRosterAudit/1.0"}});
- if(!response.ok)throw new Error(source.year+" FIFA PDF download failed: HTTP "+response.status);
+ const response=await fetchWithRetry(source.url,{headers:{"User-Agent":"FootballArcadeHistoricalRosterAudit/1.0"}});
  const pdf=await pdfjs.getDocument({data:new Uint8Array(await response.arrayBuffer()),useSystemFonts:true,isEvalSupported:false}).promise;
  const teamsForYear=historical.tournaments[String(source.year)]||[];
  const teamByKey=new Map(teamsForYear.map(team=>[teamKey(team.name),team]));
