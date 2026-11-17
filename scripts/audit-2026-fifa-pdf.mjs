@@ -197,7 +197,7 @@ if (fullyMatchedTeams.length === 48) {
         return {
           playerName: player.name,
           sourceName: source?.nameArea || player.name,
-          sourceNameAliases: player.aliases || [],
+          sourceNameAliases: [player.name, ...(player.aliases || [])],
           number: Number(player.number),
           position: player.position,
           clubAtTournament: player.club ?? null,
