@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {readFile,access} from "node:fs/promises";
+import {assignRosterRarities} from "../assets/js/rarity.js";
 
 const publicData=JSON.parse(await readFile("dist/data/public-teams.json","utf8"));
 const localData=JSON.parse(await readFile("dist/data/practice-rosters.json","utf8"));
@@ -55,4 +56,18 @@ test("every player in every verified squad has a valid rarity assignment",()=>{
  assert.ok(verifiedTeams>0,"At least one independently verified squad must be present");
  assert.ok(verifiedPlayers>0,"Verified squads must contain player records");
  assert.equal(allPlayers,5759,"Every source roster player must be packaged with a rarity");
+});
+
+
+test("rarity assignment keeps elite tiers genuinely scarce and famous players Common",()=>{
+ const generated=structuredClone(localData);
+ assignRosterRarities(generated,publicData);
+ const all=generated.teams.flatMap(team=>team.players);
+ const counts=Object.fromEntries(["Common","Rare","Niche","Legendary","Ball Knowledge"].map(tier=>[tier,all.filter(player=>player.rarity===tier).length]));
+ assert.equal(all.length,5759);
+ assert.ok(counts["Legendary"]<=10,"Legendary must stay extremely rare");
+ assert.ok(counts["Ball Knowledge"]<=4,"Ball Knowledge must be exceptionally rare");
+ const france=generated.teams.find(team=>team.id==="france-2018");
+ assert.ok(france.players.filter(player=>player.rarity==="Common").length>=20,"France 2018 should be mostly Common");
+ assert.equal(france.players.find(player=>/kylian mbapp/i.test(player.name)).rarity,"Common");
 });
