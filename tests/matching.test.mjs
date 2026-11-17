@@ -42,6 +42,12 @@ test("rejects typo guesses that could match two players",()=>{
  assert.equal(matches("Alex Mende",squad[1],squad),false);
 });
 
+test("rejects exact aliases that collide with another squad member",()=>{
+ const squad=[{name:"Cristiano Ronaldo",aliases:["CR7"]},{name:"CR7"}];
+ assert.equal(matches("CR7",squad[0],squad),false);
+ assert.equal(matches("CR7",squad[1],squad),false);
+});
+
 test("keeps a unique typo match when only one squad member is close",()=>{
  const squad=[{name:"Cristiano Ronaldo"},{name:"Lionel Messi"},{name:"Neymar Junior"}];
  assert.equal(matches("Cristiano Ronald",squad[0],squad),true);
