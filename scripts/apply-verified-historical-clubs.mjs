@@ -1,6 +1,7 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { namesMatch } from "./historical-player-name-match.mjs";
 import { normalizeHistoricalClub } from "./historical-wikipedia-squads.mjs";
+import { hasIndependentHttpsSources, isHttpsUrl } from "./source-url-validation.mjs";
 
 const dataset = JSON.parse(await readFile("data/historical-squads.json", "utf8"));
 const candidates = JSON.parse(await readFile("artifacts/historical-club-candidates.json", "utf8"));
@@ -28,16 +29,7 @@ const normalizePosition = value => {
 };
 const normalizeName = value => String(value || "").normalize("NFD")
   .replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
-const validHttps = value => {
-  try { return new URL(value).protocol === "https:"; } catch { return false; }
-};
-const distinctHttpsHosts = values => {
-  const hosts = values.map(value => {
-    try { const url = new URL(value); return url.protocol === "https:" ? url.hostname.toLowerCase().replace(/^www\\./, "") : null; }
-    catch { return null; }
-  });
-  return hosts.every(Boolean) && new Set(hosts).size >= 2;
-};
+
 
 function ledgerIsVerified(team) {
   const entry = rosterAudit.teams?.[team.id];
@@ -56,7 +48,7 @@ function ledgerIsVerified(team) {
       typeof row.position === "string" && row.position.trim() &&
       validHttps(row.primarySource || entry.primarySource) &&
       validHttps(row.secondarySource || entry.secondarySource) &&
-      distinctHttpsHosts([row.primarySource || entry.primarySource, row.secondarySource || entry.secondarySource])
+      hasIndependentHttpsSources([row.primarySource || entry.primarySource, row.secondarySource || entry.secondarySource])
     );
 }
 
@@ -66,8 +58,8 @@ function applyTeam(year, teamId, candidatePlayers, sources, evidencePlayers, fif
     report.skippedTeams.push({ year, teamId, reason: "Team not found in historical dataset" });
     return;
   }
-  const sourceList = [...new Set((sources || []).filter(value => typeof value === "string" && value.trim() && validHttps(value)))];
-  if (sourceList.length < 2 || !distinctHttpsHosts(sourceList)) {
+  const sourceList = [...new Set((sources || []).filter(value => typeof value === "string" && value.trim() && isHttpsUrl(value)))];
+  if (sourceList.length < 2 || !hasIndependentHttpsSources(sourceList)) {
     report.skippedTeams.push({ year, teamId, teamName: dataTeam.name, reason: "At least two independent HTTPS source hosts are required" });
     return;
   }
