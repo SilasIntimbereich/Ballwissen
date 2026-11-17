@@ -13,8 +13,8 @@ for (const p of data.players) {
   if (!byCode.has(p.teamCode)) byCode.set(p.teamCode, []);
   byCode.get(p.teamCode).push(p);
 }
-const normalize = s => String(s || "").replace(/\u00ad/g, "ffi").replace(/\u0000/g, "fi").replace(/«/g, "fi").replace(/ı/g, "i").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
-const tokens = s => String(s || "").replace(/\u00ad/g, "ffi").replace(/«/g, "fi").replace(/ı/g, "i").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().match(/[a-z0-9]+/g) || [];
+const normalize = s => String(s || "").replace(/[\u0000«]/g, "fi").replace(/\u00ad/g, "ffi").replace(/ı/g, "i").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
+const tokens = s => String(s || "").replace(/[\u0000«]/g, "fi").replace(/\u00ad/g, "ffi").replace(/ı/g, "i").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().match(/[a-z0-9]+/g) || [];
 const clubKey = s => normalize(String(s || "").replace(/\s*\([A-Z]{3}\)\s*$/, ""));
 const report = { source: PDF_URL, pages: pdf.numPages, generatedAt: new Date().toISOString(), teams: [], summary: {} };
 
@@ -44,8 +44,8 @@ for (let pageNo = 1; pageNo <= pdf.numPages; pageNo++) {
   const fifaRows = [];
   const unparsed = [];
   for (const line of lines) {
-    const m = line.match(/^(\d{1,2})\s+(GK|DF|MF|FW)\s+(.+?)\s+(\d{2}\/\d{2}\/\d{4})\s+(.+?)\s+(\d{3})\s+(\d+)\s+(\d+)$/);
-    if (m) fifaRows.push({ number: Number(m[1]), position: m[2], nameArea: m[3], club: m[5], line });
+    const m = line.match(/^(\d{1,2})\s+(GK|DF|MF|FW)\s+(.+?)\s+(\d{2}\/\d{2}\/\d{4})\s+(?:(.+?)\s+)?(\d{3})\s+(\d+)\s+(\d+)$/);
+    if (m) fifaRows.push({ number: Number(m[1]), position: m[2], nameArea: m[3], club: m[5] || null, line });
     else if (/^\d{1,2}\s+(GK|DF|MF|FW)\s+/.test(line)) unparsed.push(line);
   }
   const mismatches = [];
@@ -59,7 +59,11 @@ for (let pageNo = 1; pageNo <= pdf.numPages; pageNo++) {
     matchedNumbers.add(row.number);
     const sourceTokens = new Set(tokens(row.nameArea));
     const nameVariants = [player.name, ...(Array.isArray(player.aliases) ? player.aliases : [])].map(tokens);
-    const nameMatches = nameVariants.some(variant => variant.length > 0 && variant.every(token => sourceTokens.has(token)));
+    const normalizedSourceName = normalize(row.nameArea);
+    const nameMatches = nameVariants.some(variant => {
+      const normalizedVariant = normalize(variant.join(" "));
+      return variant.length > 0 && (normalizedSourceName.includes(normalizedVariant) || variant.every(token => sourceTokens.has(token)));
+    });
     if (!nameMatches) {
       mismatches.push({ number: row.number, player: player.name, field: "name", fifa: row.nameArea, dataset: player.name, aliases: player.aliases || [] });
     }
