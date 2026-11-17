@@ -180,7 +180,7 @@ for(const team of teams){
   }
   rosterAudit.teams[team.id]={
    status:"verified",tournament:2002,teamNameInDataset:team.name,
-   teamNameInFifaPdf:"Planet World Cup / FootballSquads: "+team.name,
+   teamNameInPrimarySource:team.name,
    reviewedAt:new Date().toISOString().slice(0,10),
    primarySource:item.planetUrl,secondarySource:item.footballSquadsUrl,
    tertiarySource:"https://datahub.io/football/worldcup",
