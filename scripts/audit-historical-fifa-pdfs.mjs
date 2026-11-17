@@ -17,7 +17,7 @@ async function fetchWithRetry(url, options, attempts = 2) {
  let lastError;
  for (let attempt = 1; attempt <= attempts; attempt++) {
   try {
-   const response = await fetch(url, {...options, signal: AbortSignal.timeout(15000)});
+   const response = await fetch(url, {...options, signal: AbortSignal.timeout(45000)});
    if (response.ok) return response;
    lastError = new Error("HTTP " + response.status);
    if ((response.status < 500 && response.status !== 429) || response.status === 522) break;
