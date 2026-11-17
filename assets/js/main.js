@@ -29,7 +29,7 @@ function updateTimer(){
  timer.setAttribute("aria-label","Time remaining "+Math.floor(seconds/60)+" minutes "+(seconds%60)+" seconds");
  }
 function enableGuessControls(){const input=$("#guess"),button=$("#guess-btn");input.disabled=false;input.readOnly=false;input.removeAttribute("disabled");button.disabled=false;button.removeAttribute("disabled");}
-function resetGameView(){found=new Set();roundState=null;submitting=false;seconds=120;ended=false;$("#result").classList.add("hidden");$("#result-stats").innerHTML="";$("#score").textContent="0";$("#guess").value="";enableGuessControls();$("#give-up").disabled=false;$("#give-up").textContent="GIVE UP";$("#roster").innerHTML="";$("#rarity-alert")?.classList.add("hidden");document.body.classList.remove("ball-knowledge-hit");$("#feedback").textContent="Type a player name and press enter.";}
+function resetGameView(){found=new Set();roundState=null;submitting=false;seconds=120;ended=false;$("#result").classList.add("hidden");$("#result-stats").innerHTML="";$("#score").textContent="0";$("#guess").value="";enableGuessControls();$("#give-up").disabled=false;$("#give-up").textContent="GIVE UP";$("#roster").innerHTML="";$("#rarity-alert")?.classList.add("hidden");document.body.classList.remove("ball-knowledge-hit");$("#feedback").textContent="Type a player name. Add the shirt number if names overlap.";}
 function cardForPlayer(id){return [...document.querySelectorAll(".player-card[data-player-id]")].find(card=>card.dataset.playerId===id)||null;}
 function setPlayerRarity(card,rarity,revealIndex=0){
  if(!card||!rarity)return;
