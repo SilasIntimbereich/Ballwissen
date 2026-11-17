@@ -3,7 +3,7 @@ import { namesMatch } from "./historical-player-name-match.mjs";
 import { parseFifa2002Roster } from "./historical-fifa-roster-2002.mjs";
 
 const SOURCE_URL = "https://www.lacancha.com/Roster.html";
-const SOURCE_NOTE = "The page labels this table as official player rosters released by FIFA on 24 May 2002. It is used for roster identity, shirt number and position, not club affiliations.";
+const SOURCE_NOTE = "The page labels this table as a FIFA roster release dated 24 May 2002. It predates some late tournament replacements, so it is a supplementary identity/number/position check, not final approval. Club affiliations are not taken from this page.";
 const historical = JSON.parse(await readFile("data/historical-squads.json", "utf8"));
 const teams = historical.tournaments["2002"] || [];
 const report = {
