@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { hasIndependentHttpsSources } from "./source-url-validation.mjs";
+import { isVerifiedPlayerSourceName } from "./verified-roster-ledger.mjs";
 const read = async path => JSON.parse(await readFile(path, "utf8"));
 const fail = message => { throw new Error(message); };
 const positions = new Set(["GK", "DF", "MF", "FW"]);
