@@ -6,6 +6,8 @@ on:
       - "data/historical-squads.json"
       - "scripts/audit-2002-squads.mjs"
       - ".github/workflows/audit-2002-squads.yml"
+  pull_request:
+    branches: [main]
   schedule:
     - cron: "41 5 * * 2"
   workflow_dispatch:
