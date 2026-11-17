@@ -5,6 +5,7 @@ const candidates = JSON.parse(await readFile("artifacts/historical-club-candidat
 const fifaAudit = JSON.parse(await readFile("artifacts/historical-fifa-audit.json", "utf8"));
 const secondaryAudit = JSON.parse(await readFile("artifacts/historical-secondary-squad-audit.json", "utf8"));
 const audit2022 = JSON.parse(await readFile("artifacts/2022-independent-club-audit.json", "utf8"));
+const audit2002Clubs = JSON.parse(await readFile("artifacts/2002-club-audit.json", "utf8"));
 const report = {
   generatedAt: new Date().toISOString(),
   rule: "Apply club and position values only when FIFA primary roster data and an independent secondary squad archive agree for every player in the team.",
@@ -65,6 +66,22 @@ for (const year of ["2010", "2014", "2018"]) {
     applyTeam(Number(year), teamAudit.teamId, teamAudit, candidateTeam.players || [],
       ["FIFA final squad-list PDF", yearAudit.source]);
   }
+}
+
+for (const teamAudit of audit2002Clubs.teams || []) {
+  if (!teamAudit.clubCandidatesComplete) {
+    report.skippedTeams.push({ year: 2002, teamId: teamAudit.teamId, teamName: teamAudit.teamName,
+      reason: "Final RSSSF roster, Planet World Cup and Wikipedia club/position checks did not all agree" });
+    continue;
+  }
+  const candidateTeam = candidates.tournaments?.["2002"]?.find(team => team.id === teamAudit.teamId);
+  if (!candidateTeam) {
+    report.skippedTeams.push({ year: 2002, teamId: teamAudit.teamId, teamName: teamAudit.teamName,
+      reason: "Verified 2002 club candidate team missing" });
+    continue;
+  }
+  applyTeam(2002, teamAudit.teamId, teamAudit, candidateTeam.players || [],
+    ["RSSSF final squad list", teamAudit.planetSource, "Wikipedia 2002 squad table"]);
 }
 
 const fifa2022 = fifaAudit.tournaments?.find(tournament => Number(tournament.year) === 2022);
