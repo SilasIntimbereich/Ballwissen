@@ -40,17 +40,30 @@ test("normalizes club prefixes and suffixes without merging distinct clubs", () 
 test("parses country squads nested beneath World Cup group headings",()=>{
  const teams=[{id:"egypt-2018",name:"Egypt"},{id:"russia-2018",name:"Russia"}];
  const html=`
-  <h3><span class="mw-headline">Group A</span></h3>
-  <h4><span class="mw-headline">Egypt</span></h4>
+  <h2><span class="mw-headline">Group A</span></h2>
+  <h3><span class="mw-headline">Egypt</span></h3>
   <p>Coach: Héctor Cúper</p>
   <table><tr><th>No.</th><th>Pos.</th><th>Player</th><th>DOB</th><th>Caps</th><th>Goals</th><th>Club</th></tr>
    <tr><td>1</td><td>1 GK</td><td>Essam El Hadary</td><td>date</td><td>158</td><td>0</td><td>Al Taawoun</td></tr>
   </table>
-  <h4><span class="mw-headline">Russia</span></h4>
+  <h3><span class="mw-headline">Russia</span></h3>
   <table><tr><td>1</td><td>1 GK</td><td>Igor Akinfeev</td><td>date</td><td>106</td><td>0</td><td>CSKA Moscow</td></tr></table>
-  <h3><span class="mw-headline">Group B</span></h3>
+  <h2><span class="mw-headline">Group B</span></h2>
  `;
  const parsed=parseWikipediaSquads(html,teams);
  assert.deepEqual(parsed.get("egypt-2018"),[{number:1,position:"GK",name:"Essam El Hadary",club:"Al Taawoun"}]);
  assert.deepEqual(parsed.get("russia-2018"),[{number:1,position:"GK",name:"Igor Akinfeev",club:"CSKA Moscow"}]);
+});
+
+
+test("also supports deeper nested country headings",()=>{
+ const teams=[{id:"egypt-2018",name:"Egypt"}];
+ const html=`
+  <h3>Group A</h3>
+  <h4>Egypt</h4>
+  <table><tr><td>1</td><td>1 GK</td><td>Essam El Hadary</td><td>date</td><td>158</td><td>0</td><td>Al Taawoun</td></tr></table>
+  <h3>Group B</h3>
+ `;
+ const parsed=parseWikipediaSquads(html,teams);
+ assert.deepEqual(parsed.get("egypt-2018"),[{number:1,position:"GK",name:"Essam El Hadary",club:"Al Taawoun"}]);
 });
