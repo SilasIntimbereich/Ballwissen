@@ -40,7 +40,7 @@ function linksFrom(html,pattern){
  return out;
 }
 const normalize=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");
-const tokens=s=>normalize(s).match(/[a-z0-9]+/g)||[];
+const tokens=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().match(/[a-z0-9]+/g)||[];
 function teamKey(s){
  const n=normalize(s);
  const aliases={
@@ -52,6 +52,23 @@ function teamKey(s){
  return aliases[n]||n;
 }
 function clubKey(s){
+ let n=normalize(String(s||"").replace(/\([^)]*\)/g,"").replace(/\[[A-Z]{3}\]/g,""));
+ n=n.replace(/^(rsc|sc|fc|afc|as|ac|vfb|sv|1fc)/,"").replace(/(fc|cf|afc)$/,"");
+ const aliases={
+  manchesteru:"manchesterunited",newcastleu:"newcastleunited",westhamu:"westhamunited",
+  tottenhamh:"tottenhamhotspur",boltonw:"boltonwanderers",leedsu:"leedsunited",
+  coventryc:"coventrycity",asroma:"roma",acmilan:"milan",inter:"internazionale",
+  hellasverona:"verona",girondinsbordeaux:"bordeaux",deportivoalajuelense:"alajuelense",
+  glasgowceltic:"celtic",alhelal:"alhilal",alhilal:"alhilal",monaco:"monaco",
+  "1fckaiserslautern":"kaiserslautern",kaiserslautern:"kaiserslautern",
+  parisstgermain:"parissaintgermain",parissaintgermain:"parissaintgermain",
+  realm Mallorca:"realmallorca",mallorca:"realmallorca",
+  "realvalladolid":"valladolid",valladolid:"valladolid",
+  cologne:"koln",koln:"koln",nacionaluru:"nacional",
+  betis:"realbetis",realbetis:"realbetis",santoslaguna:"santoslaguna"
+ };
+ return aliases[n]||n;
+}
  let n=normalize(String(s||"").replace(/\([^)]*\)/g,""));
  const aliases={
   manchesteru:"manchesterunited",manchesterunitedfc:"manchesterunited",
@@ -72,6 +89,13 @@ function clubKey(s){
  return aliases[n]||n;
 }
 function namesMatch(a,b){
+ const aa=normalize(a),bb=normalize(b);
+ if(aa&&bb&&(aa.includes(bb)||bb.includes(aa)))return true;
+ const at=tokens(a),bt=tokens(b);
+ const shared=at.filter(token=>bt.includes(token));
+ if(at.length===1||bt.length===1)return shared.length===1;
+ return shared.length>=2;
+}
  const aa=normalize(a),bb=normalize(b);
  if(aa&&bb&&(aa.includes(bb)||bb.includes(aa)))return true;
  const at=tokens(a),bt=new Set(tokens(b));
