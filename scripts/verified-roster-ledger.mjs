@@ -4,13 +4,18 @@ import { namesMatch } from "./historical-player-name-match.mjs";
 const normalize = value => String(value || "").normalize("NFD")
   .replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
 
-export function isVerifiedPlayerSourceName(player, row) {
+export function isVerifiedPlayerSourceName(player, row, entry = {}) {
   if (!player || !row || typeof row.sourceName !== "string" || !row.sourceName.trim()) return false;
   if (namesMatch(player.name, row.sourceName)) return true;
   const aliases = Array.isArray(row.sourceNameAliases) ? row.sourceNameAliases : [];
   const hasCanonicalName = aliases.some(alias => normalize(alias) === normalize(player.name));
-  const hasSourceName = aliases.some(alias => normalize(alias) === normalize(row.sourceName));
-  return hasCanonicalName && hasSourceName && isHttpsUrl(row.sourceNameAliasEvidenceUrl);
+  const sourceAliasMatches = aliases.some(alias => namesMatch(alias, row.sourceName));
+  const independentSources = hasIndependentHttpsSources([
+    row.primarySource || entry.primarySource,
+    row.secondarySource || entry.secondarySource
+  ]);
+  const aliasEvidenceValid = !row.sourceNameAliasEvidenceUrl || isHttpsUrl(row.sourceNameAliasEvidenceUrl);
+  return hasCanonicalName && sourceAliasMatches && independentSources && aliasEvidenceValid;
 }
 
 export function isCompleteVerifiedRosterLedger(team, entry, expectedYear) {
@@ -37,7 +42,7 @@ export function isCompleteVerifiedRosterLedger(team, entry, expectedYear) {
     );
     return Boolean(row &&
       ["matched", "corrected"].includes(row.status) &&
-      isVerifiedPlayerSourceName(player, row) &&
+      isVerifiedPlayerSourceName(player, row, entry) &&
       typeof row.clubAtTournament === "string" && row.clubAtTournament.trim() &&
       row.position === player.position &&
       (player.club ?? null) === row.clubAtTournament &&
