@@ -65,6 +65,13 @@ test("rarity assignment follows the gradual global curve and keeps famous player
  const all=generated.teams.flatMap(team=>team.players);
  const counts=Object.fromEntries(["Common","Rare","Niche","Legendary","Ball Knowledge"].map(tier=>[tier,all.filter(player=>player.rarity===tier).length]));
  assert.equal(all.length,5759);
+ for(const team of generated.teams){
+  const nonCommon=team.players.filter(player=>player.rarity!=="Common").length;
+  if(nonCommon>=11){
+   assert.ok(team.players.filter(player=>player.rarity==="Niche").length>=3,team.id+" needs at least three Niche players");
+   assert.ok(team.players.filter(player=>player.rarity==="Rare").length>=5,team.id+" needs at least five Rare players");
+  }
+ }
  assert.deepEqual(counts,{
   Common:2533,
   Rare:1353,
