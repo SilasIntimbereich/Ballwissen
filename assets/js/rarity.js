@@ -37,15 +37,15 @@ function rarityPriority(player,appearances,thirdKeeper){
   const names=playerNames(player);
   const appearancesCount=Math.max(0,...names.map(name=>appearances.get(name)?.size||0));
   const number=Number(player.number)||0;
-  // Higher score means a deeper-cut recall challenge. Shirt number is only a
-  // tie-breaker; one-off tournament appearances and reserve keepers carry more weight.
-  return (appearancesCount<=1?40:0)+(thirdKeeper?35:0)+(number>=23?Math.min(15,number-22):0);
+  return (appearancesCount===0?40:appearancesCount===1?25:0)+
+    (thirdKeeper?35:0)+(number>=23?Math.min(15,number-22):0);
 }
 
 export function assignRosterRarities(rosters,publicData){
   const teams=Array.isArray(rosters?.teams)?rosters.teams:[];
   const metadata=new Map((publicData?.teams||[]).map(team=>[team.id,team]));
   const appearances=new Map();
+  const eliteCandidates=[];
 
   for(const squad of teams){
     const year=metadata.get(squad.id)?.year;
@@ -62,9 +62,9 @@ export function assignRosterRarities(rosters,publicData){
     const players=Array.isArray(squad.players)?squad.players:[];
     const keepers=players.filter(player=>String(player.position||"").toUpperCase()==="GK")
       .sort((a,b)=>(Number(a.number)||99)-(Number(b.number)||99));
-    const thirdKeepers=new Set(keepers.slice(2).map(player=>player));
+    const thirdKeepers=new Set(keepers.slice(2));
+    let bestCandidate=null;
 
-    const candidates=[];
     for(const [index,player] of players.entries()){
       const names=playerNames(player);
       const appearancesCount=Math.max(0,...names.map(name=>appearances.get(name)?.size||0));
@@ -79,21 +79,23 @@ export function assignRosterRarities(rosters,publicData){
 
       player.rarity=rarity;
       if(difficulty==="legendary"&&!recognised){
-        candidates.push({
-          player,index,
+        const candidate={
+          player,index,teamId:String(squad.id||""),
           score:rarityPriority(player,appearances,thirdKeepers.has(player))
-        });
+        };
+        if(!bestCandidate||candidate.score>bestCandidate.score||
+          (candidate.score===bestCandidate.score&&candidate.index<bestCandidate.index)){
+          bestCandidate=candidate;
+        }
       }
     }
-
-    // Reserve elite labels for genuinely obscure players in Legendary squads.
-    // Per-team quotas make the tier meaningful in every Daily Legendary round,
-    // rather than allowing a handful of players worldwide to consume all labels.
-    if(difficulty==="legendary"){
-      candidates.sort((a,b)=>b.score-a.score||a.index-b.index);
-      if(candidates[0])candidates[0].player.rarity="Ball Knowledge";
-      candidates.slice(1,3).forEach(({player})=>{player.rarity="Legendary";});
-    }
+    if(bestCandidate)eliteCandidates.push(bestCandidate);
   }
+
+  // Keep elite labels genuinely scarce across the complete game dataset.
+  // At most one elite player is selected per Legendary squad.
+  eliteCandidates.sort((a,b)=>b.score-a.score||a.teamId.localeCompare(b.teamId)||a.index-b.index);
+  eliteCandidates.slice(0,4).forEach(({player})=>{player.rarity="Ball Knowledge";});
+  eliteCandidates.slice(4,14).forEach(({player})=>{player.rarity="Legendary";});
   return rosters;
 }
