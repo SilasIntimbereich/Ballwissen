@@ -2,56 +2,36 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { namesMatch } from "./historical-player-name-match.mjs";
 
 const SOURCE_INDEX="https://www.footballsquads.co.uk/national/worldcup/wc2022.htm";
-const normalize=value=>String(value||"").replace(/[æÆ]/g,"ae").replace(/[øØ]/g,"o").replace(/[åÅ]/g,"a").replace(/[łŁ]/g,"l").replace(/[ß]/g,"ss").replace(/[œŒ]/g,"oe").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");
+const normalize=value=>String(value||"").replace(/\u0000/g,"fi").replace(/[æÆ]/g,"ae").replace(/[øØ]/g,"o").replace(/[åÅ]/g,"a").replace(/[łŁ]/g,"l").replace(/[ß]/g,"ss").replace(/[œŒ]/g,"oe").replace(/[đĐ]/g,"dj").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");
 const teamAliases={iriran:"iran",korearepublic:"southkorea",usa:"unitedstates",koreadpr:"northkorea",chinapr:"china",repofireland:"republicofireland"};
-const clubPrefixes=new Set(["fc","cf","ca","cr","se","sl","rsc","bsc","rc","rcd","vfl","sfc","ac","cd","afc","sc","club","as","ss","ssc"]);
-const clubSuffixes=new Set(["fc","cf","sc","sfc","afc","calcio"]);
+const clubPrefixes=new Set(["fc","cf","ca","cr","se","sl","rsc","bsc","rc","rcd","vfl","sfc","ac","cd","afc","sc","club","as","ss","ssc","gd","kmsr","es","sd","ad","us","gnk","tsg","ogc","fsv","sv","fk","aj","acf","vfb","stade","al"]);
+const clubSuffixes=new Set(["fc","cf","sc","sfc","afc","calcio","bsc","jk","as"]);
 const clubAliases={
- manchesterc:"manchestercity",manchesteru:"manchesterunited",newcastleu:"newcastleunited",westhamu:"westhamunited",
- alhilalsfc:"alhilal",alhilalksa:"alhilal",brightonha:"brightonhovealbion",staderennais:"rennes",rennes:"rennes",
- gnkdinamozagreb:"dinamozagreb",wolverhamptonw:"wolverhamptonwanderers",nottinghamf:"nottinghamforest",
- jeonbukhyundaimotors:"jeonbukhyundai",galatasaraysk:"galatasaray",atalantabergamo:"atalanta",aekathens:"aek",
- acffiorentina:"fiorentina",heartofmidlothian:"hearts",melbournec:"melbournecity",besiktasjk:"besiktas",
- olympiacospiraeus:"olympiacos",swanseac:"swanseacity",fkcrvenazvezda:"crvenazvezda",vfb stuttgart:"stuttgart",
- perspolistehran:"persepolis",esteghlaltehran:"esteghlal",ucsampdoria:"sampdoria",wydadcasablanca:"wydad",
- fsvmainz05:"mainz",esperancetunis:"esperance",dundeeu:"dundeeunited",odensebk:"odense",fenerbahcesk:"fenerbahce",
- estroyes:"troyes",lilleosc:"lille",tsg1899hoffenheim:"hoffenheim",ogcnice:"nice",brondbyif:"brondby",
- svwerderbremen:"werderbremen",clermontfoot:"clermont",feyenoordrotterdam:"feyenoord",angerssco:"angers",
- alittihadfc:"alittihadksa",queensparkrangers:"qpr",legiawarsaw:"legiawarszawa",birminghamcity:"birmingham",
- ussalernitana:"salernitana",alarabisc:"alarabiqat",alahlisc:"alahliqatar",montpellierhsc:"montpellier",
- alkuwaitsc:"alkuwait",nashvillesoccerclub:"nashvillesc",cardiffcity:"cardiff",adelaideu:"adelaideunited",
- adelaideunited:"adelaideunited",atlantau:"atlantaunited",atlantautd:"atlantaunited",minnesotau:"minnesotaunited",
- minnesotaunited:"minnesotaunited",pumasunam:"unam",aristessaloniki:"aris",kvmechelen:"mechelen",
- gdchaves:"chaves",kmsrdeinze:"deinze",adsancarlos:"sancarlos",adguanacasteca:"guanacasteca",
- admunicipalgrecia:"municipalgrecia",ussassuolo:"sassuolo",hnkhajduksplit:"hajduksplit",nkosijek:"osijek",
- herthabsc:"herthaberlin",fcunionberlin:"unionberlin",sdaucas:"aucas",lduquito:"lduquito",
- ajauxerre:"auxerre",kaseupen:"eupen",bristolc:"bristolcity",bristolcity:"bristolcity",vejlebk:"vejle",
- acomonia:"omonia",sportingcharleroi:"charleroi",shababalhliclub:"shababalahlidubai",
- shababalahlidubai:"shababalahlidubai",sdponferradina:"ponferradina",stadereims:"reims",
- urawareds:"urawarediamonds",fcschalke04:"schalke",sinttruidenvv:"sinttruiden",uscremonese:"cremonese",
- stadebrest:"brest",scbraga:"sportingbraga",pafosfc:"pafos",paoksaloniki:"paok",udalmeria:"almeria",
- shandonglunengtaishan:"shandongtaishan",ferencvarositc:"ferencvaros",fckoln:"cologne",koln:"cologne",
- smcaen:"caen",lutont:"lutontown",lutontown:"lutontown",antalyasporas:"antalyaspor",norwichc:"norwichcity",
- norwichcity:"norwichcity",newyorkc:"newyorkcity",newyorkcity:"newyorkcity",orlandoc:"orlandocity",
- orlandocity:"orlandocity",swindont:"swindontown",swindontown:"swindontown",huddersfieldt:"huddersfieldtown",
- huddersfieldtown:"huddersfieldtown",sheffieldu:"sheffieldunited",sheffieldunited:"sheffieldunited",
- birminghamc:"birminghamcity",birminghamcity:"birminghamcity",cardiffc:"cardiffcity",cardiffcity:"cardiffcity",
- stokec:"stokecity",stokecity:"stokecity",staderennaisfc:"rennes",alahlisaq:"alahliqatar",alahlisc:"alahliqatar",
- alkuwait:"alkuwait",kuwait:"alkuwait",alarabisc:"alarabiqat",alarabiqat:"alarabiqat",alittihadksa:"alittihadksa",
- alahlisaudi:"alahlisaudi",alahliegy:"alahlyegypt",alahlyegy:"alahlyegypt",alhilal:"alhilal",alain:"alain",
- tottenhamh:"tottenhamhotspur",leicesterc:"leicestercity",boltonw:"boltonwanderers",leedsu:"leedsunited",
- coventryc:"coventrycity",ipswicht:"ipswichtown",blackburnr:"blackburnrovers",charltona:"charltonathletic",
+ atlantau:"atlantaunited",brightonha:"brightonhovealbion",hearts:"heartofmidlothian",melbournec:"melbournecity",
+ staderennais:"rennes",galatasaraysk:"galatasaray",fenerbahcesk:"fenerbahce",pumasunam:"unam",
+ aristhessaloniki:"aris",besiktasjk:"besiktas",minnesotau:"minnesotaunited",gdchaves:"chaves",
+ kmsrdeinze:"deinze",estroyes:"troyes",adsancarlos:"sancarlos",adguanacasteca:"guanacasteca",
+ cincinnatti:"cincinnati",gnkdinamozagreb:"dinamozagreb",ussassuolo:"sassuolo",tsg1899hoffenheim:"1899hoffenheim",
+ ogcnice:"nice",atalantabergamo:"atalanta",herthabsc:"herthaberlin",sdaucas:"aucas",
+ perspolistehran:"persepolis",aekathens:"aek",stadereims:"reims",urawareds:"urawareddiamonds",
+ uscremonese:"cremonese",wolverhamptonw:"wolverhamptonwanderers",feyenoordrotterdam:"feyenoord",
+ legiawarsaw:"legiawarszawa",clermontfoot:"clermont",birminghamc:"birminghamcity",sportingbraga:"braga",
+ queensparkrangers:"qpr",olympiacospiraeus:"olympiacos",nottinghamf:"nottinghamforest",
+ ussalernitana:"salernitana",fkcrvenazvezda:"crvenazvezda",acffiorentina:"fiorentina",
+ jeonbukhyundaimotors:"jeonbukhyundai",fsvmainz05:"mainz",nashvillesoccerclub:"nashvillesc",
+ lutont:"lutontown",antalyasporas:"antalyaspor",swanseac:"swanseacity",brightonhovealbion:"brightonhovealbion",
  bayer04leverkusen:"bayerleverkusen",bayernmunchen:"bayernmunich",bmonchengladbach:"borussiamonchengladbach",
  borussiadortmund:"dortmund",eintrachtfrankfurt:"frankfurt",fckobenhavn:"copenhagen",kobenhavn:"copenhagen",
- fcbayernmunchen:"bayernmunich",hellasverona:"verona",girondinsbordeaux:"bordeaux",
- deportivoalajuelense:"alajuelense",glasgowceltic:"celtic",glasgowrangers:"rangers",asmonaco:"monaco",
+ fckoln:"cologne",koln:"cologne",fcbayernmunchen:"bayernmunich",hellasverona:"verona",
+ girondinsbordeaux:"bordeaux",deportivoalajuelense:"alajuelense",glasgowceltic:"celtic",glasgowrangers:"rangers",
  betis:"realbetis",inter:"internazionale",acmilan:"milan",parisstgermain:"parissaintgermain",
  parissaintgermain:"parissaintgermain",realmallorca:"mallorca",mallorca:"mallorca",realvalladolid:"valladolid",
  valladolid:"valladolid",nacionaluru:"nacional",ajaxamsterdam:"ajax",sportingcp:"sportinglisbon",
  sportinglisbon:"sportinglisbon",olympiquelyon:"lyon",olympiquemarseille:"marseille",benca:"benfica",
- manchestercity:"manchestercity",alduhail:"alduhail",alsadd:"alsadd",alnassr:"alnassr",alwahda:"alwahda",
- dynamokyiv:"dynamokyiv",dinamokiev:"dynamokyiv",shakhtardonetsk:"shakhtar",shakhtar:"shakhtar",
- unattached:"unattached",noclub:"unattached"
+ manchesterc:"manchestercity",manchesteru:"manchesterunited",newcastleu:"newcastleunited",westhamu:"westhamunited",
+ tottenhamh:"tottenhamhotspur",leicesterc:"leicestercity",boltonw:"boltonwanderers",leedsu:"leedsunited",
+ coventryc:"coventrycity",ipswicht:"ipswichtown",blackburnr:"blackburnrovers",charltona:"charltonathletic",
+ alahlisaudi:"ahli",alkuwait:"kuwait",qpr:"qpr",unam:"unam",velezsarsfield:"velezsarsfield"
 };
 
 function decode(value){
@@ -83,7 +63,8 @@ function linksFrom(html,pattern){
 }
 function teamKey(value){const key=normalize(value);return teamAliases[key]||key;}
 export function clubKey(value){
- let parts=String(value||"").replace(/\([^)]*\)/g,"").replace(/\[[^\]]*\]/g,"").split(/\s+/).map(normalize).filter(Boolean);
+ const raw=String(value||"").replace(/\u0000/g,"fi").replace(/\[[^\]]*\]/g,"").replace(/\([^)]*\)/g,"");
+ let parts=raw.split(/\s+/).map(normalize).filter(Boolean);
  while(parts.length&&clubPrefixes.has(parts[0]))parts.shift();
  while(parts.length&&clubSuffixes.has(parts[parts.length-1]))parts.pop();
  const key=parts.join("");
@@ -128,6 +109,24 @@ try{indexHtml=await fetchText(SOURCE_INDEX);}catch(error){
 const links=linksFrom(indexHtml,/\.htm/i);
 const linkByTeam=new Map();
 for(const link of links){const team=teams.find(t=>teamKey(t.name)===teamKey(link.label));if(team)linkByTeam.set(team.id,link);}
+const manualNameAliases={
+ "argentina-2022":{17:["Alejandro Gomez"]},
+ "australia-2022":{1:["Mat Ryan"],7:["Matthew Leckie"]},
+ "cameroon-2022":{21:["Jean-Charles Castelleto"]},
+ "ghana-2022":{7:["Abdul Fatawu"]},
+ "mexico-2022":{10:["Ernesto Vega"]},
+ "morocco-2022":{12:["Munir"],19:["Yousseff En-Nesyri"]},
+ "portugal-2022":{22:["Diego Costa"]},
+ "qatar-2022":{26:["Mostafa Tarek"]},
+ "saudi-arabia-2022":{5:["Ali Al-Bulayhi"],6:["Mohammed Al-Burayk"],8:["Abdulelah Al-Malki"],9:["Feras Al-Brikan"],13:["Yasir Al-Shahrani"],17:["Hassan Tambakti"],18:["Nawaf Al-Abid"],19:["Hatan Bahbri"],20:["Abdulrahman Al-Obud"]},
+ "serbia-2022":{15:["Srdjan Babic"],21:["Filip Djuričić"]},
+ "south-korea-2022":{10:["Lee Jae-Song"]},
+ "spain-2022":{17:["Yéremi Pino"],20:["Daniel Carvajal"]},
+ "switzerland-2022":{18:["Eray Cümart"]},
+ "tunisia-2022":{25:["Anis Slimane"]},
+ "uruguay-2022":{18:["Maximiliano Gomez"]},
+ "wales-2022":{18:["Jonathan Williams"],26:["Matt Smith"]}
+};
 const fifaTournament=fifaAudit.tournaments.find(t=>t.year===2022);
 let totalRows=0;
 for(const team of teams){
@@ -145,7 +144,7 @@ for(const team of teams){
   const player=playerByNumber.get(row.number),fifa=fifaCandidates.get(row.number);
   if(!player||!fifa){item.mismatches.push({number:row.number,field:"missing_player_or_fifa_candidate",sourceName:row.name});continue;}
   matchedNumbers.add(row.number);
-  const identityMatches=namesMatch(player.name,row.name)||namesMatch(fifa.sourceName,row.name);
+  const aliasVariants=manualNameAliases[team.id]?.[row.number]||[];\n  const identityMatches=namesMatch(player.name,row.name)||namesMatch(fifa.sourceName,row.name)||aliasVariants.some(alias=>namesMatch(alias,row.name));
   const fifaClub=String(fifa.clubAtTournament||"");
   const clubMatches=clubKey(fifaClub)===clubKey(row.club);
   const positionMatches=fifa.position===row.position;
