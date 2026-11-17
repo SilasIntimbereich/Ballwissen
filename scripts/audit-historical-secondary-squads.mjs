@@ -168,7 +168,7 @@ for (const [year, config] of Object.entries(sources)) {
         item.fifaPdfCandidateMismatches.length ? "mismatch" :
         item.fifaPdfCandidatePlayers === players.length ? "complete" : "partial_agreement";
       item.independentArchivesAgree = item.rosterClean && item.clubsClean && item.positionsClean;
-      item.fullyCrossChecked = item.independentArchivesAgree && item.fifaPdfAgreement !== "mismatch";
+      item.fullyCrossChecked = Boolean(candidateTeam) && item.independentArchivesAgree && item.fifaPdfAgreement !== "mismatch";
       item.verificationLevel = item.fullyCrossChecked
         ? item.fifaPdfAgreement === "complete" ? "FIFA PDF + two independent archives" :
           item.fifaPdfAgreement === "partial_agreement" ? "two independent archives + partial FIFA PDF agreement" :
