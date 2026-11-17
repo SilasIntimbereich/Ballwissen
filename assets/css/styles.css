@@ -781,3 +781,8 @@ body.reduce-motion .timer.timer-critical{animation:none!important}
 /* Preserve the distinct Normal-mode colour accents after grouping cards into their own grid. */
 .normal-grid .mode-card:nth-child(1){background-color:rgba(40,107,73,.82)!important}
 .normal-grid .mode-card:nth-child(2){background-color:rgba(169,83,46,.82)!important}
+
+/* The old six-column card span must not leak into the nested mobile mode grids. */
+@media(max-width:650px){
+ .daily-grid .mode-card,.normal-grid .mode-card{grid-column:span 1!important}
+}
