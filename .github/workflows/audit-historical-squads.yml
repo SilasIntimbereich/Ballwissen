@@ -17,6 +17,7 @@ on:
       - "scripts/planet-world-cup-squad.mjs"
       - "scripts/audit-historical-secondary-squads.mjs"
       - "scripts/apply-verified-historical-clubs.mjs"
+      - "scripts/source-url-validation.mjs"
       - ".github/workflows/audit-historical-squads.yml"
   pull_request:
     branches: [main]
@@ -35,6 +36,7 @@ on:
       - "scripts/planet-world-cup-squad.mjs"
       - "scripts/audit-historical-secondary-squads.mjs"
       - "scripts/apply-verified-historical-clubs.mjs"
+      - "scripts/source-url-validation.mjs"
       - ".github/workflows/audit-historical-squads.yml"
   schedule:
     - cron: "41 5 * * 1"
