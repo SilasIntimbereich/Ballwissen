@@ -53,8 +53,23 @@ function parseRows(html) {
 const historical=JSON.parse(await readFile("data/historical-squads.json","utf8"));
 const fifaAudit=JSON.parse(await readFile("artifacts/historical-fifa-audit.json","utf8"));
 const teams=historical.tournaments["2022"]||[];
-const response=await fetch(SOURCE_URL,{headers:{"User-Agent":"FootballArcade2022IndependentClubAudit/1.0"},signal:AbortSignal.timeout(20000)});
-if(!response.ok) throw new Error("MyFootballFacts 2022 source unavailable: HTTP "+response.status);
+let response;
+try{
+  response=await fetch(SOURCE_URL,{headers:{"User-Agent":"FootballArcade2022IndependentClubAudit/1.0"},signal:AbortSignal.timeout(20000)});
+}catch(error){
+  const report={year:2022,primarySource:"https://fdp.fifa.org/assetspublic/ce44/pdf/SquadLists-English.pdf",secondarySource:SOURCE_URL,sourceStatus:"unavailable",sourceError:String(error),generatedAt:new Date().toISOString(),teams:[],summary:{sourceRows:0,teamsFound:0,teams:32,fullyCrossCheckedTeams:0,clubMismatches:0,nameMismatches:0,missingRows:0}};
+  await mkdir("artifacts",{recursive:true});
+  await writeFile("artifacts/2022-independent-club-audit.json",JSON.stringify(report,null,2)+"\\n");
+  console.log(JSON.stringify(report.summary,null,2));
+  process.exit(0);
+}
+if(!response.ok){
+  const report={year:2022,primarySource:"https://fdp.fifa.org/assetspublic/ce44/pdf/SquadLists-English.pdf",secondarySource:SOURCE_URL,sourceStatus:"unavailable",httpStatus:response.status,generatedAt:new Date().toISOString(),teams:[],summary:{sourceRows:0,teamsFound:0,teams:32,fullyCrossCheckedTeams:0,clubMismatches:0,nameMismatches:0,missingRows:0}};
+  await mkdir("artifacts",{recursive:true});
+  await writeFile("artifacts/2022-independent-club-audit.json",JSON.stringify(report,null,2)+"\\n");
+  console.log(JSON.stringify(report.summary,null,2));
+  process.exit(0);
+}
 const html=await response.text();
 const sourceRows=parseRows(html);
 if(sourceRows.length<800) throw new Error("MyFootballFacts page parser found only "+sourceRows.length+" player rows; expected at least 800.");
