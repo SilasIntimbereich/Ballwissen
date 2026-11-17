@@ -58,7 +58,7 @@ test("Supabase resolver uses the same team-aware rarity algorithm as the browser
  assert.ok(checked>5700);
 });
 
-test("each Legendary squad receives one Ball Knowledge and two Legendary picks when eligible",()=>{
+test("elite rarity tiers stay globally scarce while picks remain spread across Legendary squads",()=>{
  const rosters={teams:Array.from({length:8},(_,i)=>({
   id:"team-"+i,
   players:[
