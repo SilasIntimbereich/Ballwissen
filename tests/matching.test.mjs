@@ -23,10 +23,10 @@ test("rejects very short guesses and unrelated names",()=>{
  assert.equal(matches("Ronaldo",{name:"Ronaldo Nazario"}),false);
 });
 
-import {tournaments} from "../assets/js/data.js";
+import {readFile} from "node:fs/promises";\nconst worldCup2026=JSON.parse(await readFile(new URL("../data/worldcup-2026.json",import.meta.url),"utf8"));
 
 test("accepts FIFA display-name variants for corrected 2026 squads",()=>{
- const player=(team,number)=>tournaments[2026].find(row=>row.name===team).players.find(row=>row.number===number);
+ const player=(team,number)=>worldCup2026.players.find(row=>row.team===team&&row.number===number);
  assert.equal(matches("Arjan Malic",player("Bosnia and Herzegovina",24)),true);
  assert.equal(matches("Marwane Saadane",player("Morocco",5)),true);
  assert.equal(matches("Amine Sbai",player("Morocco",17)),true);
