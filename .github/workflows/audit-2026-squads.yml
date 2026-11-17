@@ -6,6 +6,8 @@ on:
       - "data/worldcup-2026.json"
       - "scripts/audit-2026-fifa-pdf.mjs"
       - ".github/workflows/audit-2026-squads.yml"
+  pull_request:
+    branches: [main]
   schedule:
     - cron: "17 5 * * 1"
   workflow_dispatch:
@@ -24,7 +26,7 @@ jobs:
       - name: Compare every FIFA final squad row
         run: node scripts/audit-2026-fifa-pdf.mjs
       - name: Commit machine-readable audit report
-        if: always()
+        if: always() && github.event_name != 'pull_request'
         run: |
           if [ -f artifacts/fifa-2026-audit.json ]; then
             mkdir -p reports
