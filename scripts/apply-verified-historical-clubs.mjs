@@ -126,7 +126,7 @@ function applyTeam(year, teamId, candidatePlayers, sources, evidencePlayers, fif
       playerName: player.name,
       sourceName,
       sourceNameAliases: [...new Set([...sourceNameAliases, ...(priorRow.sourceNameAliases || [])])],
-      ...(sourceNameAliasEvidenceUrl ? { sourceNameAliasEvidenceUrl } : {}),
+      sourceNameAliasEvidenceUrl: sourceNameAliasEvidenceUrl || null,
       status,
       position,
       clubAtTournament: club,
