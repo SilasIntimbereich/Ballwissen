@@ -1274,7 +1274,7 @@
       "clubCountry": "GER"
     },
     {
-      "name": "Nidal Čelik",
+      "name": "Arjan Malić",
       "position": "DF",
       "club": "SK Sturm Graz",
       "number": 24,
@@ -1331,7 +1331,10 @@
       "team": "Canada",
       "teamCode": "CAN",
       "group": "B",
-      "clubCountry": "ENG"
+      "clubCountry": "ENG",
+      "aliases": [
+        "Alfie Jones"
+      ]
     },
     {
       "name": "Luc de Fougerolles",
@@ -1571,7 +1574,10 @@
       "team": "Qatar",
       "teamCode": "QAT",
       "group": "B",
-      "clubCountry": "QAT"
+      "clubCountry": "QAT",
+      "aliases": [
+        "Mahmoud Abunada"
+      ]
     },
     {
       "name": "Pedro Miguel",
@@ -1661,7 +1667,10 @@
       "team": "Qatar",
       "teamCode": "QAT",
       "group": "B",
-      "clubCountry": "QAT"
+      "clubCountry": "QAT",
+      "aliases": [
+        "Hasan Al-Haydos"
+      ]
     },
     {
       "name": "Akram Afif",
@@ -1691,7 +1700,10 @@
       "team": "Qatar",
       "teamCode": "QAT",
       "group": "B",
-      "clubCountry": "QAT"
+      "clubCountry": "QAT",
+      "aliases": [
+        "Ayoub Aloui"
+      ]
     },
     {
       "name": "Homam Ahmed",
@@ -1731,7 +1743,10 @@
       "team": "Qatar",
       "teamCode": "QAT",
       "group": "B",
-      "clubCountry": "QAT"
+      "clubCountry": "QAT",
+      "aliases": [
+        "Ahmed Al-Ghanehi"
+      ]
     },
     {
       "name": "Sultan Al-Brake",
@@ -1811,7 +1826,10 @@
       "team": "Qatar",
       "teamCode": "QAT",
       "group": "B",
-      "clubCountry": "QAT"
+      "clubCountry": "QAT",
+      "aliases": [
+        "Al-Hashmi Al-Hussein"
+      ]
     },
     {
       "name": "Mohamed Manai",
@@ -2654,7 +2672,7 @@
       "clubCountry": "ESP"
     },
     {
-      "name": "Nayef Aguerd",
+      "name": "Marwane Saadane",
       "position": "DF",
       "club": "Al Fateh SC",
       "number": 5,
@@ -2731,7 +2749,10 @@
       "team": "Morocco",
       "teamCode": "MAR",
       "group": "C",
-      "clubCountry": "MAR"
+      "clubCountry": "MAR",
+      "aliases": [
+        "Munir El Kajoui"
+      ]
     },
     {
       "name": "Zakaria El Ouahdi",
@@ -2774,7 +2795,7 @@
       "clubCountry": "FRA"
     },
     {
-      "name": "Abde Ezzalzouli",
+      "name": "Amine Sbai",
       "position": "FW",
       "club": "Angers SCO",
       "number": 17,
@@ -3271,7 +3292,10 @@
       "team": "Australia",
       "teamCode": "AUS",
       "group": "D",
-      "clubCountry": "SCO"
+      "clubCountry": "SCO",
+      "aliases": [
+        "Cameron Devlin"
+      ]
     },
     {
       "name": "Kai Trewin",
@@ -3561,7 +3585,10 @@
       "team": "Paraguay",
       "teamCode": "PAR",
       "group": "D",
-      "clubCountry": "UAE"
+      "clubCountry": "UAE",
+      "aliases": [
+        "Alejandro Romero Gamarra"
+      ]
     },
     {
       "name": "Álex Arce",
@@ -5254,7 +5281,10 @@
       "team": "Japan",
       "teamCode": "JPN",
       "group": "F",
-      "clubCountry": "NED"
+      "clubCountry": "NED",
+      "aliases": [
+        "Kou Itakura"
+      ]
     },
     {
       "name": "Yūto Nagatomo",
@@ -6044,7 +6074,10 @@
       "team": "Tunisia",
       "teamCode": "TUN",
       "group": "F",
-      "clubCountry": "TUR"
+      "clubCountry": "TUR",
+      "aliases": [
+        "Adam Arous"
+      ]
     },
     {
       "name": "Dylan Bronn",
@@ -6204,7 +6237,10 @@
       "team": "Tunisia",
       "teamCode": "TUN",
       "group": "F",
-      "clubCountry": "TUN"
+      "clubCountry": "TUN",
+      "aliases": [
+        "Mohamed Amine Ben Hmida"
+      ]
     },
     {
       "name": "Sabri Ben Hessen",
@@ -6524,7 +6560,10 @@
       "team": "Egypt",
       "teamCode": "EGY",
       "group": "G",
-      "clubCountry": "EGY"
+      "clubCountry": "EGY",
+      "aliases": [
+        "Mohamed Elshenawy"
+      ]
     },
     {
       "name": "Yasser Ibrahim",
@@ -6574,7 +6613,10 @@
       "team": "Egypt",
       "teamCode": "EGY",
       "group": "G",
-      "clubCountry": "FRA"
+      "clubCountry": "FRA",
+      "aliases": [
+        "Mohamed Abdelmoneim"
+      ]
     },
     {
       "name": "Trézéguet",
@@ -6624,7 +6666,10 @@
       "team": "Egypt",
       "teamCode": "EGY",
       "group": "G",
-      "clubCountry": "EGY"
+      "clubCountry": "EGY",
+      "aliases": [
+        "Mostafa Zico"
+      ]
     },
     {
       "name": "Haissem Hassan",
@@ -6674,7 +6719,10 @@
       "team": "Egypt",
       "teamCode": "EGY",
       "group": "G",
-      "clubCountry": "EGY"
+      "clubCountry": "EGY",
+      "aliases": [
+        "Mahdy Soliman"
+      ]
     },
     {
       "name": "Mohanad Lasheen",
@@ -6684,7 +6732,10 @@
       "team": "Egypt",
       "teamCode": "EGY",
       "group": "G",
-      "clubCountry": "EGY"
+      "clubCountry": "EGY",
+      "aliases": [
+        "Mohanad Lashin"
+      ]
     },
     {
       "name": "Nabil Emad",
@@ -6704,7 +6755,10 @@
       "team": "Egypt",
       "teamCode": "EGY",
       "group": "G",
-      "clubCountry": "EGY"
+      "clubCountry": "EGY",
+      "aliases": [
+        "Marawan Attia"
+      ]
     },
     {
       "name": "Ibrahim Adel",
@@ -6744,7 +6798,10 @@
       "team": "Egypt",
       "teamCode": "EGY",
       "group": "G",
-      "clubCountry": "EGY"
+      "clubCountry": "EGY",
+      "aliases": [
+        "Mostafa Shoubir"
+      ]
     },
     {
       "name": "Tarek Alaa",
@@ -6804,7 +6861,10 @@
       "team": "Iran",
       "teamCode": "IRN",
       "group": "G",
-      "clubCountry": "IRN"
+      "clubCountry": "IRN",
+      "aliases": [
+        "Ehsan Haji Safi"
+      ]
     },
     {
       "name": "Shojae Khalilzadeh",
@@ -6854,7 +6914,10 @@
       "team": "Iran",
       "teamCode": "IRN",
       "group": "G",
-      "clubCountry": "RUS"
+      "clubCountry": "RUS",
+      "aliases": [
+        "Mohammad Mohebbi"
+      ]
     },
     {
       "name": "Mehdi Taremi",
@@ -6904,7 +6967,10 @@
       "team": "Iran",
       "teamCode": "IRN",
       "group": "G",
-      "clubCountry": "IRN"
+      "clubCountry": "IRN",
+      "aliases": [
+        "Hossein Kanaani"
+      ]
     },
     {
       "name": "Saman Ghoddos",
@@ -6924,7 +6990,10 @@
       "team": "Iran",
       "teamCode": "IRN",
       "group": "G",
-      "clubCountry": "IRN"
+      "clubCountry": "IRN",
+      "aliases": [
+        "Roozbeh Cheshmi"
+      ]
     },
     {
       "name": "Mehdi Torabi",
@@ -6944,7 +7013,10 @@
       "team": "Iran",
       "teamCode": "IRN",
       "group": "G",
-      "clubCountry": "IRN"
+      "clubCountry": "IRN",
+      "aliases": [
+        "Arya Yousefi"
+      ]
     },
     {
       "name": "Amirhossein Hosseinzadeh",
@@ -6974,7 +7046,10 @@
       "team": "Iran",
       "teamCode": "IRN",
       "group": "G",
-      "clubCountry": "UAE"
+      "clubCountry": "UAE",
+      "aliases": [
+        "Shahriar Moghanlou"
+      ]
     },
     {
       "name": "Mohammad Ghorbani",
@@ -7014,7 +7089,10 @@
       "team": "Iran",
       "teamCode": "IRN",
       "group": "G",
-      "clubCountry": "BEL"
+      "clubCountry": "BEL",
+      "aliases": [
+        "Dennis Dargahi"
+      ]
     },
     {
       "name": "Danial Eiri",
@@ -7024,7 +7102,10 @@
       "team": "Iran",
       "teamCode": "IRN",
       "group": "G",
-      "clubCountry": "IRN"
+      "clubCountry": "IRN",
+      "aliases": [
+        "Daniyal Eiri"
+      ]
     },
     {
       "name": "Amirmohammad Razzaghinia",
@@ -7034,7 +7115,10 @@
       "team": "Iran",
       "teamCode": "IRN",
       "group": "G",
-      "clubCountry": "IRN"
+      "clubCountry": "IRN",
+      "aliases": [
+        "Amir Mohammad Razaghinia"
+      ]
     },
     {
       "name": "Max Crocombe",
@@ -7097,14 +7181,14 @@
       "clubCountry": "NOR"
     },
     {
-      "name": "Matthew Garbett",
-      "position": "MF",
-      "club": "Peterborough United FC",
+      "name": "Logan Rogerson",
+      "position": "FW",
+      "club": "Auckland FC",
       "number": 7,
       "team": "New Zealand",
       "teamCode": "NZL",
       "group": "G",
-      "clubCountry": "ENG"
+      "clubCountry": "NZL"
     },
     {
       "name": "Marko Stamenić",
@@ -7578,7 +7662,10 @@
       "team": "Saudi Arabia",
       "teamCode": "KSA",
       "group": "H",
-      "clubCountry": "KSA"
+      "clubCountry": "KSA",
+      "aliases": [
+        "Nawaf Al-Aqidi"
+      ]
     },
     {
       "name": "Ali Majrashi",
@@ -7608,7 +7695,10 @@
       "team": "Saudi Arabia",
       "teamCode": "KSA",
       "group": "H",
-      "clubCountry": "KSA"
+      "clubCountry": "KSA",
+      "aliases": [
+        "Abdulelah Al-Amri"
+      ]
     },
     {
       "name": "Hassan Al-Tambakti",
@@ -7618,7 +7708,10 @@
       "team": "Saudi Arabia",
       "teamCode": "KSA",
       "group": "H",
-      "clubCountry": "KSA"
+      "clubCountry": "KSA",
+      "aliases": [
+        "Hassan Al-Tambakti"
+      ]
     },
     {
       "name": "Nasser Al-Dawsari",
@@ -7628,7 +7721,10 @@
       "team": "Saudi Arabia",
       "teamCode": "KSA",
       "group": "H",
-      "clubCountry": "KSA"
+      "clubCountry": "KSA",
+      "aliases": [
+        "Nasser Al-Dawsari"
+      ]
     },
     {
       "name": "Musab Al-Juwayr",
@@ -7638,7 +7734,10 @@
       "team": "Saudi Arabia",
       "teamCode": "KSA",
       "group": "H",
-      "clubCountry": "KSA"
+      "clubCountry": "KSA",
+      "aliases": [
+        "Musab Al-Juwayr"
+      ]
     },
     {
       "name": "Ayman Yahya",
@@ -7648,7 +7747,10 @@
       "team": "Saudi Arabia",
       "teamCode": "KSA",
       "group": "H",
-      "clubCountry": "KSA"
+      "clubCountry": "KSA",
+      "aliases": [
+        "Aiman Yahya"
+      ]
     },
     {
       "name": "Firas Al-Buraikan",
@@ -7658,7 +7760,10 @@
       "team": "Saudi Arabia",
       "teamCode": "KSA",
       "group": "H",
-      "clubCountry": "KSA"
+      "clubCountry": "KSA",
+      "aliases": [
+        "Feras Al-Buraikan"
+      ]
     },
     {
       "name": "Salem Al-Dawsari",
@@ -7668,7 +7773,10 @@
       "team": "Saudi Arabia",
       "teamCode": "KSA",
       "group": "H",
-      "clubCountry": "KSA"
+      "clubCountry": "KSA",
+      "aliases": [
+        "Salem Al-Dawsari"
+      ]
     },
     {
       "name": "Saleh Al-Shehri",
@@ -7678,7 +7786,10 @@
       "team": "Saudi Arabia",
       "teamCode": "KSA",
       "group": "H",
-      "clubCountry": "KSA"
+      "clubCountry": "KSA",
+      "aliases": [
+        "Saleh Al-Shehri"
+      ]
     },
     {
       "name": "Saud Abdulhamid",
@@ -7698,7 +7809,10 @@
       "team": "Saudi Arabia",
       "teamCode": "KSA",
       "group": "H",
-      "clubCountry": "KSA"
+      "clubCountry": "KSA",
+      "aliases": [
+        "Nawaf Bu Washl"
+      ]
     },
     {
       "name": "Hassan Kadesh",
@@ -7708,7 +7822,10 @@
       "team": "Saudi Arabia",
       "teamCode": "KSA",
       "group": "H",
-      "clubCountry": "KSA"
+      "clubCountry": "KSA",
+      "aliases": [
+        "Hassan Kadish"
+      ]
     },
     {
       "name": "Abdullah Al-Khaibari",
@@ -7718,7 +7835,10 @@
       "team": "Saudi Arabia",
       "teamCode": "KSA",
       "group": "H",
-      "clubCountry": "KSA"
+      "clubCountry": "KSA",
+      "aliases": [
+        "Abdullah Al-Khaibari"
+      ]
     },
     {
       "name": "Ziyad Al-Johani",
@@ -7728,7 +7848,10 @@
       "team": "Saudi Arabia",
       "teamCode": "KSA",
       "group": "H",
-      "clubCountry": "KSA"
+      "clubCountry": "KSA",
+      "aliases": [
+        "Ziyad Al-Johani"
+      ]
     },
     {
       "name": "Khalid Al-Ghannam",
@@ -7738,7 +7861,10 @@
       "team": "Saudi Arabia",
       "teamCode": "KSA",
       "group": "H",
-      "clubCountry": "KSA"
+      "clubCountry": "KSA",
+      "aliases": [
+        "Khalid Al-Ghannam"
+      ]
     },
     {
       "name": "Alaa Al-Hejji",
@@ -7748,7 +7874,10 @@
       "team": "Saudi Arabia",
       "teamCode": "KSA",
       "group": "H",
-      "clubCountry": "KSA"
+      "clubCountry": "KSA",
+      "aliases": [
+        "Ala Al-Hajji"
+      ]
     },
     {
       "name": "Abdullah Al-Hamdan",
@@ -7758,7 +7887,10 @@
       "team": "Saudi Arabia",
       "teamCode": "KSA",
       "group": "H",
-      "clubCountry": "KSA"
+      "clubCountry": "KSA",
+      "aliases": [
+        "Abdullah Al-Hamddan"
+      ]
     },
     {
       "name": "Sultan Mandash",
@@ -7778,7 +7910,10 @@
       "team": "Saudi Arabia",
       "teamCode": "KSA",
       "group": "H",
-      "clubCountry": "KSA"
+      "clubCountry": "KSA",
+      "aliases": [
+        "Mohammed Al-Owais"
+      ]
     },
     {
       "name": "Ahmed Al-Kassar",
@@ -7788,7 +7923,10 @@
       "team": "Saudi Arabia",
       "teamCode": "KSA",
       "group": "H",
-      "clubCountry": "KSA"
+      "clubCountry": "KSA",
+      "aliases": [
+        "Ahmed Al-Kassar"
+      ]
     },
     {
       "name": "Mohamed Kanno",
@@ -7808,7 +7946,10 @@
       "team": "Saudi Arabia",
       "teamCode": "KSA",
       "group": "H",
-      "clubCountry": "KSA"
+      "clubCountry": "KSA",
+      "aliases": [
+        "Moteb Al-Harbi"
+      ]
     },
     {
       "name": "Jehad Thakri",
@@ -7818,7 +7959,10 @@
       "team": "Saudi Arabia",
       "teamCode": "KSA",
       "group": "H",
-      "clubCountry": "KSA"
+      "clubCountry": "KSA",
+      "aliases": [
+        "Jehad Thikri"
+      ]
     },
     {
       "name": "Mohammed Abu Al-Shamat",
@@ -7828,7 +7972,10 @@
       "team": "Saudi Arabia",
       "teamCode": "KSA",
       "group": "H",
-      "clubCountry": "KSA"
+      "clubCountry": "KSA",
+      "aliases": [
+        "Mohammed Abu Al-Shamat"
+      ]
     },
     {
       "name": "David Raya",
@@ -8668,7 +8815,10 @@
       "team": "Iraq",
       "teamCode": "IRQ",
       "group": "I",
-      "clubCountry": "IRQ"
+      "clubCountry": "IRQ",
+      "aliases": [
+        "Munaf Younus"
+      ]
     },
     {
       "name": "Youssef Amyn",
@@ -8758,7 +8908,10 @@
       "team": "Iraq",
       "teamCode": "IRQ",
       "group": "I",
-      "clubCountry": "IRQ"
+      "clubCountry": "IRQ",
+      "aliases": [
+        "Ahmed Maknazi"
+      ]
     },
     {
       "name": "Amir Al-Ammari",
@@ -8848,7 +9001,10 @@
       "team": "Iraq",
       "teamCode": "IRQ",
       "group": "I",
-      "clubCountry": "IRQ"
+      "clubCountry": "IRQ",
+      "aliases": [
+        "Zaid Ismael"
+      ]
     },
     {
       "name": "Mustafa Saadoon",
@@ -9558,7 +9714,10 @@
       "team": "Algeria",
       "teamCode": "ALG",
       "group": "J",
-      "clubCountry": "ITA"
+      "clubCountry": "ITA",
+      "aliases": [
+        "Rafik Belghali"
+      ]
     },
     {
       "name": "Mohamed Amoura",
@@ -9628,7 +9787,10 @@
       "team": "Algeria",
       "teamCode": "ALG",
       "group": "J",
-      "clubCountry": "BEL"
+      "clubCountry": "BEL",
+      "aliases": [
+        "Yassine Titraoui"
+      ]
     },
     {
       "name": "Farès Ghedjemis",
@@ -10068,7 +10230,10 @@
       "team": "Austria",
       "teamCode": "AUT",
       "group": "J",
-      "clubCountry": "GER"
+      "clubCountry": "GER",
+      "aliases": [
+        "Phillip Mwene"
+      ]
     },
     {
       "name": "Carney Chukwuemeka",
@@ -10437,7 +10602,8 @@
       "group": "J",
       "clubCountry": "JOR",
       "aliases": [
-        "Abdallah Alfakhouri"
+        "Abdallah Alfakhouri",
+        "Abdallah Alfakhori"
       ]
     },
     {
@@ -10874,7 +11040,10 @@
       "team": "DR Congo",
       "teamCode": "COD",
       "group": "K",
-      "clubCountry": "TUR"
+      "clubCountry": "TUR",
+      "aliases": [
+        "Meschack Elia"
+      ]
     },
     {
       "name": "Noah Sadiki",
@@ -11354,7 +11523,10 @@
       "team": "Uzbekistan",
       "teamCode": "UZB",
       "group": "K",
-      "clubCountry": "IRN"
+      "clubCountry": "IRN",
+      "aliases": [
+        "Odiljon Xamrobekov"
+      ]
     },
     {
       "name": "Ruslanbek Jiyanov",
