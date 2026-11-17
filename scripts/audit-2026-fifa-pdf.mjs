@@ -13,7 +13,7 @@ for (const p of data.players) {
   if (!byCode.has(p.teamCode)) byCode.set(p.teamCode, []);
   byCode.get(p.teamCode).push(p);
 }
-const normalize = s => String(s || "").replace(/\u00ad/g, "ffi").replace(/«/g, "fi").replace(/ı/g, "i").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
+const normalize = s => String(s || "").replace(/\u00ad/g, "ffi").replace(/\u0000/g, "fi").replace(/«/g, "fi").replace(/ı/g, "i").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
 const tokens = s => String(s || "").replace(/\u00ad/g, "ffi").replace(/«/g, "fi").replace(/ı/g, "i").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().match(/[a-z0-9]+/g) || [];
 const clubKey = s => normalize(String(s || "").replace(/\s*\([A-Z]{3}\)\s*$/, ""));
 const report = { source: PDF_URL, pages: pdf.numPages, generatedAt: new Date().toISOString(), teams: [], summary: {} };
@@ -85,12 +85,15 @@ report.summary = {
   parsedTeams: report.teams.filter(t => t.code && t.parsed).length,
   teamsWithNoMismatches: report.teams.filter(t => t.code && t.parsed && t.rowCountMatches && t.mismatchCount === 0).length,
   totalMismatches: report.teams.reduce((n, t) => n + t.mismatchCount, 0),
-  teamsMissingFromDataset: report.teams.filter(t => !t.datasetTeam).map(t => t.code)
+  teamsMissingFromDataset: report.teams.filter(t => !t.datasetTeam).map(t => t.code),
+  teamsWithUnresolvedDifferences: report.teams.filter(t => t.mismatchCount > 0 || t.unparsedRows.length > 0).length,
+  mismatchCountsByField: report.teams.flatMap(t => t.mismatches).reduce((counts, item) => { counts[item.field] = (counts[item.field] || 0) + 1; return counts; }, {}),
+  note: "This is an extraction and comparison report, not an independent approval ledger. Name/club differences remain unresolved until manually checked against independent sources."
 };
 await mkdir("artifacts", { recursive: true });
 await writeFile("artifacts/fifa-2026-audit.json", JSON.stringify(report, null, 2) + "\n");
 console.log(JSON.stringify(report.summary, null, 2));
-const failedTeams = report.teams.filter(t => !t.code || !t.parsed || !t.rowCountMatches || t.mismatchCount > 0);
+const failedTeams = report.teams.filter(t => !t.code || !t.parsed || !t.rowCountMatches || t.unparsedRows.length > 0 || t.mismatches.some(item => ["player", "position", "missing_fifa_row"].includes(item.field)));
 if (failedTeams.length) {
   console.error("FIFA roster discrepancies:");
   for (const team of failedTeams) {
