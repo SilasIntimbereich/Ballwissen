@@ -1,6 +1,6 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { namesMatch } from "./historical-player-name-match.mjs";
-import { parseFifa2002Roster } from "./historical-fifa-roster-2002.mjs";
+import { parseFifa2002Roster, isCleanFifa2002RosterAudit } from "./historical-fifa-roster-2002.mjs";
 
 const SOURCE_URL = "https://www.lacancha.com/Roster.html";
 const SOURCE_NOTE = "A third-party page reproduces a roster release dated 24 May 2002; this is not a direct FIFA-hosted document and it predates late tournament replacements. Treat it only as a supplementary identity/number/position cross-check, never as final-roster authority. Club affiliations are not taken from this page.";
@@ -57,9 +57,10 @@ try {
     rows.forEach((row, index) => {
       if (!used.has(index)) item.missingFromDataset.push({ number: row.number, sourceName: row.name });
     });
-    item.rosterClean = rows.length === 23 && item.matchedPlayers === players.length &&
-      item.nameMismatches.length === 0 && item.missingFromSource.length === 0 &&
-      item.missingFromDataset.length === 0;
+    item.rosterClean = isCleanFifa2002RosterAudit({
+      ...item,
+      sourcePlayerCount: rows.length
+    }, players.length);
     report.teams.push(item);
   }
 
