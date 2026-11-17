@@ -18,6 +18,7 @@ on:
       - "scripts/audit-historical-secondary-squads.mjs"
       - "scripts/apply-verified-historical-clubs.mjs"
       - "scripts/source-url-validation.mjs"
+      - "scripts/verified-roster-ledger.mjs"
       - ".github/workflows/audit-historical-squads.yml"
   pull_request:
     branches: [main]
@@ -37,6 +38,7 @@ on:
       - "scripts/audit-historical-secondary-squads.mjs"
       - "scripts/apply-verified-historical-clubs.mjs"
       - "scripts/source-url-validation.mjs"
+      - "scripts/verified-roster-ledger.mjs"
       - ".github/workflows/audit-historical-squads.yml"
   schedule:
     - cron: "41 5 * * 1"
