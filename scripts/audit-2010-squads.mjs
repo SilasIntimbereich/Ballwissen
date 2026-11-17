@@ -44,7 +44,7 @@ const tokens=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").to
 function teamKey(s){
  const n=normalize(s);
  const aliases={
-  repofireland:"republicofireland",ireland:"republicofireland",cotedivoire:"ivorycoast",holland:"netherlands",
+  repofireland:"republicofireland",ireland:"republicofireland",cotedivoire:"ivorycoast",ctedivoire:"ivorycoast",holland:"netherlands",
   usa:"unitedstates",unitedstatesofamerica:"unitedstates",
   korearepublic:"southkorea",korea:"southkorea",koreadpr:"northkorea",
   chinapr:"china"
@@ -53,7 +53,7 @@ function teamKey(s){
 }
 function clubKey(s){
  let n=normalize(String(s||"").replace(/\([^)]*\)/g,"").replace(/\[[A-Z]{3}\]/g,""));
- n=n.replace(/^(rsc|sc|fc|afc|as|ac|vfb|sv|1fc)/,"").replace(/(fc|cf|afc)$/,"");
+ n=n.replace(/^(rsc|sc|fc|afc|as|ac|vfb|vfl|sv|1fc)/,"").replace(/(fc|cf|afc)$/,"");
  const aliases={
   manchesteru:"manchesterunited",newcastleu:"newcastleunited",westhamu:"westhamunited",
   tottenhamh:"tottenhamhotspur",boltonw:"boltonwanderers",leedsu:"leedsunited",
@@ -68,6 +68,12 @@ function clubKey(s){
   "1fckaiserslautern":"kaiserslautern",kaiserslautern:"kaiserslautern",
   realmallorca:"mallorca",mallorca:"mallorca",realvalladolid:"valladolid",valladolid:"valladolid",
   cologne:"koln",koln:"koln",nacionaluru:"nacional",santoslaguna:"santoslaguna",
+  stokeC:"stokecity",stokec:"stokecity",stokecity:"stokecity",
+  suwonbluewings:"suwonsamsungbluewings",suwonsamsungbluewings:"suwonsamsungbluewings",
+  ulsanhyundai:"ulsanhyundaihorangi",ulsanhyundaihorangi:"ulsanhyundaihorangi",
+  legiawarsaw:"legiawarszawa",legiawarszawa:"legiawarszawa",
+  bmonchengladbach:"borussiamonchengladbach",borussiamonchengladbach:"borussiamonchengladbach",
+  zrich:"zurich",zurich:"zurich",atleticolon:"colon",colon:"colon",
   unattached:"unattached",noclub:"unattached"
  };
  return aliases[n]||n;
@@ -97,7 +103,7 @@ function parseFootballSquads(html){
  for(const tr of html.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)){
   const cells=[...tr[1].matchAll(/<td\b[^>]*>([\s\S]*?)<\/td>/gi)].map(m=>textFromHtml(m[1]));
   if(cells.length>=8&&/^\d{1,2}$/.test(cells[0])){
-   const pos={G:"GK",D:"DF",M:"MF",F:"FW"}[cells[2].toUpperCase()]||null;
+   const pos=({G:"GK",GK:"GK",GOALKEEPER:"GK",D:"DF",DF:"DF",DEFENDER:"DF",M:"MF",MF:"MF",MIDFIELDER:"MF",F:"FW",FW:"FW",FORWARD:"FW",STRIKER:"FW"})[cells[2].toUpperCase()]||null;
    rows.push({number:Number(cells[0]),name:cells[1],position:pos,club:cells[cells.length-1]});
   }
  }
