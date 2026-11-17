@@ -16,3 +16,11 @@ test("does not silently accept a nickname or a different first name", () => {
   assert.equal(namesMatch("Papu Gómez", "GOMEZ Alejandro Alejandro Dario GÓMEZ GÓMEZ"), false);
   assert.equal(namesMatch("Sebas Méndez", "MENDEZ Jhegson Jhegson Sebastián MÉNDEZ CARABALÍ MENDEZ"), false);
 });
+
+test("normalizes Nordic and Polish romanization and splits hyphenated names", () => {
+  assert.equal(namesMatch("Simon Kjær", "KJAER Simon Simon Thorup KJÆR KJÆR"), true);
+  assert.equal(namesMatch("Christian Nørgaard", "NORGAARD Christian Christian Thers NØRGAARD NØRGAARD"), true);
+  assert.equal(namesMatch("Przemysław Frankowski", "FRANKOWSKI Przemyslaw Przemysław Adam FRANKOWSKI"), true);
+  assert.equal(namesMatch("Jean-Pierre Nsame", "NSAME Jean-Pierre Jean Pierre Junior NSAME"), true);
+  assert.equal(namesMatch("Cameron Carter-Vickers", "CARTER-VICKERS Cameron Cameron Robert CARTER-VICKERS"), true);
+});
