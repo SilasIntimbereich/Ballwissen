@@ -79,11 +79,6 @@ function namesMatch(a,b){
  if(at.length===1||bt.length===1)return shared.length===1;
  return shared.length>=2;
 }
- const aa=normalize(a),bb=normalize(b);
- if(aa&&bb&&(aa.includes(bb)||bb.includes(aa)))return true;
- const at=tokens(a),bt=new Set(tokens(b));
- return at.length>0&&at.every(token=>bt.has(token));
-}
 function parsePlanet(html){
  const pre=html.match(/<pre\b[^>]*>([\s\S]*?)<\/pre>/i)?.[1]||html;
  const text=textFromHtml(pre),rows=[],unparsed=[];
