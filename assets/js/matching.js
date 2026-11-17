@@ -40,13 +40,28 @@ function fuzzyTargets(input,player){
 }
 
 export function matches(guess,player,squad=[player]){
- const input=normalize(guess);
- if(!input||!player)return false;
+ if(!player)return false;
+ let raw=String(guess??"").trim();
+ let requestedNumber=null;
+ const trailingNumber=raw.match(/\s+#?(\d{1,2})$/);
+ const leadingNumber=raw.match(/^#?(\d{1,2})\s+/);
+ if(trailingNumber){
+  requestedNumber=Number(trailingNumber[1]);
+  raw=raw.slice(0,trailingNumber.index).trim();
+ }else if(leadingNumber){
+  requestedNumber=Number(leadingNumber[1]);
+  raw=raw.slice(leadingNumber[0].length).trim();
+ }
+ if(requestedNumber!==null&&Number(player.number)!==requestedNumber)return false;
+ const input=normalize(raw);
+ if(!input)return false;
+ const fullSquad=Array.isArray(squad)?squad:[player];
+ const candidatesForGuess=requestedNumber===null?fullSquad:fullSquad.filter(candidate=>Number(candidate.number)===requestedNumber);
  const targets=nameTargets(player);
  if(targets.includes(input)){
-  const candidates=(Array.isArray(squad)?squad:[player]).filter(candidate=>nameTargets(candidate).includes(input));
+  const candidates=candidatesForGuess.filter(candidate=>nameTargets(candidate).includes(input));
   if(candidates.length===1)return true;
-  // Keep the first entry for genuinely duplicated canonical names playable;
+  // Keep the first entry for genuinely duplicated canonical names;
   // aliases that collide with somebody else's name remain ambiguous.
   const sameCanonicalName=candidates.every(candidate=>normalize(candidate?.name)===input);
   return sameCanonicalName&&candidates[0]===player;
@@ -54,7 +69,7 @@ export function matches(guess,player,squad=[player]){
 
  const ownSurnames=surnameTargets(player);
  if(ownSurnames.includes(input)){
-  const candidates=(Array.isArray(squad)?squad:[player]).filter(candidate=>surnameTargets(candidate).includes(input));
+  const candidates=candidatesForGuess.filter(candidate=>surnameTargets(candidate).includes(input));
   if(candidates.length===1&&candidates[0]===player)return true;
  }
  if(input.length<4)return false;
@@ -62,6 +77,6 @@ export function matches(guess,player,squad=[player]){
  // Fuzzy matching is deliberately conservative: if a typo could point to
  // two players in this squad, ask for a more specific name instead of guessing.
  if(!fuzzyTargets(input,player))return false;
- const candidates=(Array.isArray(squad)?squad:[player]).filter(candidate=>fuzzyTargets(input,candidate));
+ const candidates=candidatesForGuess.filter(candidate=>fuzzyTargets(input,candidate));
  return candidates.length===1&&candidates[0]===player;
 }
