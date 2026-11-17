@@ -11,6 +11,7 @@ on:
       - "scripts/audit-2022-independent-clubs.mjs"
       - "scripts/historical-wikipedia-squads.mjs"
       - "scripts/audit-2002-clubs.mjs"
+      - "scripts/audit-historical-secondary-squads.mjs"
       - ".github/workflows/audit-historical-squads.yml"
   pull_request:
     branches: [main]
@@ -23,6 +24,7 @@ on:
       - "scripts/audit-2022-independent-clubs.mjs"
       - "scripts/historical-wikipedia-squads.mjs"
       - "scripts/audit-2002-clubs.mjs"
+      - "scripts/audit-historical-secondary-squads.mjs"
       - ".github/workflows/audit-historical-squads.yml"
   schedule:
     - cron: "41 5 * * 1"
@@ -47,16 +49,19 @@ jobs:
         run: node scripts/audit-2002-rosters.mjs
       - name: Cross-check 2002 tournament clubs against squad archive
         run: node scripts/audit-2002-clubs.mjs
+      - name: Cross-check 2010, 2014 and 2018 squads and clubs against independent archives
+        run: node scripts/audit-historical-secondary-squads.mjs
       - name: Commit audit report and club candidates
         if: github.event_name == 'push' && always()
         run: |
-          if [ -f artifacts/historical-fifa-audit.json ] && [ -f artifacts/historical-club-candidates.json ] && [ -f artifacts/2002-roster-audit.json ] && [ -f artifacts/2022-independent-club-audit.json ] && [ -f artifacts/2002-club-audit.json ]; then
+          if [ -f artifacts/historical-fifa-audit.json ] && [ -f artifacts/historical-club-candidates.json ] && [ -f artifacts/2002-roster-audit.json ] && [ -f artifacts/2022-independent-club-audit.json ] && [ -f artifacts/2002-club-audit.json ] && [ -f artifacts/historical-secondary-squad-audit.json ]; then
             mkdir -p reports
             cp artifacts/historical-fifa-audit.json reports/historical-fifa-audit.json
             cp artifacts/historical-club-candidates.json reports/historical-club-candidates.json
             cp artifacts/2002-roster-audit.json reports/2002-roster-audit.json
             cp artifacts/2022-independent-club-audit.json reports/2022-independent-club-audit.json
-            cp artifacts/2002-club-audit.json reports/2002-club-audit.json
+            cp artifacts/2002-club-audit.json reports/2002-club-audit.json reports/historical-secondary-squad-audit.json
+            cp artifacts/historical-secondary-squad-audit.json reports/historical-secondary-squad-audit.json
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add reports/historical-fifa-audit.json reports/historical-club-candidates.json reports/2002-roster-audit.json reports/2022-independent-club-audit.json reports/2002-club-audit.json
@@ -77,5 +82,6 @@ jobs:
             artifacts/2002-roster-audit.json
             artifacts/2022-independent-club-audit.json
             artifacts/2002-club-audit.json
+            artifacts/historical-secondary-squad-audit.json
           if-no-files-found: warn
           retention-days: 30
