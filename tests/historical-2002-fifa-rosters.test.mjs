@@ -18,6 +18,7 @@ test("parses Slovenia's FIFA code SVN and numbered roster rows", () => {
     { number: 1, position: "GK", name: "SIMEUNOVIC Marko" }
   ]);
   assert.deepEqual(parsed.get("argentina-2002"), [
-    { number: 1, position: "GK", name: "BURGOS German" }
+    { number: 1, position: "GK", name: "BURGOS German" },
+    { number: null, position: "GK", name: "BONANO Roberto" }
   ]);
 });
