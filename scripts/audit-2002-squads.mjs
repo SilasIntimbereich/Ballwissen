@@ -111,6 +111,8 @@ function parseFootballSquads(html){
  return {rows,unparsed};
 }
 const historical=JSON.parse(await readFile("data/historical-squads.json","utf8"));
+const candidateData=structuredClone(historical);
+const rosterAudit=JSON.parse(await readFile("data/roster-audit.json","utf8"));
 const teams=historical.tournaments["2002"];
 const planetHtml=await fetchText(PLANET_INDEX);
 const footballHtml=await fetchText(FOOTBALL_INDEX);
@@ -160,6 +162,32 @@ for(const team of teams){
  for(const row of item.footballRows)if(!team.players.some(p=>Number(p.number)===row.number))item.mismatches.push({number:row.number,field:"extra_football_squads_row",sourceName:row.name});
  item.clean=item.planetRows.length===23&&item.footballRows.length===23&&item.mismatches.length===0;
  item.candidateClubs=item.clean?item.planetRows.map(row=>({number:row.number,club:row.club})): [];
+ if(item.clean){
+  const candidateTeam=candidateData.tournaments["2002"].find(row=>row.id===team.id);
+  const auditPlayers=[];
+  for(const player of candidateTeam.players){
+   const source=pByNumber.get(Number(player.number));
+   const country=source.club.match(/\(([A-Z]{3})\)\s*$/)?.[1]||null;
+   const club=source.club.replace(/\s*\([A-Z]{3}\)\s*$/,"").trim();
+   player.club=club||null;
+   player.clubCountry=country;
+   auditPlayers.push({
+    playerName:player.name,sourceName:source.name,sourceNameAliases:[player.name],
+    number:Number(player.number),position:player.position,clubAtTournament:player.club,
+    status:"matched",
+    notes:"Player, shirt number, position and tournament-time club match between Planet World Cup and FootballSquads."
+   });
+  }
+  rosterAudit.teams[team.id]={
+   status:"verified",tournament:2002,teamNameInDataset:team.name,
+   teamNameInFifaPdf:"Planet World Cup / FootballSquads: "+team.name,
+   reviewedAt:new Date().toISOString().slice(0,10),
+   primarySource:item.planetUrl,secondarySource:item.footballSquadsUrl,
+   tertiarySource:"https://datahub.io/football/worldcup",
+   notes:"All 23 player rows match across Planet World Cup and FootballSquads by shirt number, identity, position and tournament-time club. The DataHub-derived dataset independently matches the player names and positions.",
+   players:auditPlayers
+  };
+ }
  report.teams.push(item);
 }
 report.summary={
@@ -171,6 +199,8 @@ report.summary={
  unresolvedTeams:report.teams.filter(t=>!t.clean).map(t=>t.teamName)
 };
 await mkdir("artifacts",{recursive:true});
+await writeFile("artifacts/historical-squads-updated.json",JSON.stringify(candidateData,null,2)+"\n");
+await writeFile("artifacts/roster-audit-updated.json",JSON.stringify(rosterAudit,null,2)+"\n");
 await writeFile("artifacts/2002-roster-club-audit.json",JSON.stringify(report,null,2)+"\n");
 console.log(JSON.stringify(report.summary,null,2));
 if(report.teams.length!==32||report.summary.planetTeams!==32||report.summary.footballSquadsTeams!==32){
