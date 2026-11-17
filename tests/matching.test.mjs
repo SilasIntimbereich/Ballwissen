@@ -62,10 +62,12 @@ test("rejects exact aliases that collide with another squad member",()=>{
  assert.equal(matches("CR7",squad[1],squad),false);
 });
 
-test("preserves the first exact match for duplicate canonical names",()=>{
- const squad=[{name:"Nam-chol Pak"},{name:"Nam-Chol Pak"}];
- assert.equal(matches("Nam-chol Pak",squad[0],squad),true);
+test("rejects duplicate canonical names unless a shirt number disambiguates them",()=>{
+ const squad=[{name:"Nam-chol Pak",number:4},{name:"Nam-Chol Pak",number:14}];
+ assert.equal(matches("Nam-chol Pak",squad[0],squad),false);
  assert.equal(matches("Nam-chol Pak",squad[1],squad),false);
+ assert.equal(matches("Nam-chol Pak #4",squad[0],squad),true);
+ assert.equal(matches("#14 Nam-chol Pak",squad[1],squad),true);
 });
 
 test("uses shirt numbers to disambiguate duplicate player names",()=>{
