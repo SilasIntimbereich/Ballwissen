@@ -12,42 +12,44 @@ const clubAliases={
  gnkdinamozagreb:"dinamozagreb",wolverhamptonw:"wolverhamptonwanderers",nottinghamf:"nottinghamforest",
  jeonbukhyundaimotors:"jeonbukhyundai",galatasaraysk:"galatasaray",atalantabergamo:"atalanta",aekathens:"aek",
  acffiorentina:"fiorentina",heartofmidlothian:"hearts",melbournec:"melbournecity",besiktasjk:"besiktas",
- olympiacospiraeus:"olympiacos",swanseac:"swanseacity",fkcrvenazvezda:"crvenazvezda","vfb stuttgart":"stuttgart",
+ olympiacospiraeus:"olympiacos",swanseac:"swanseacity",fkcrvenazvezda:"crvenazvezda",vfb stuttgart:"stuttgart",
  perspolistehran:"persepolis",esteghlaltehran:"esteghlal",ucsampdoria:"sampdoria",wydadcasablanca:"wydad",
  fsvmainz05:"mainz",esperancetunis:"esperance",dundeeu:"dundeeunited",odensebk:"odense",fenerbahcesk:"fenerbahce",
  estroyes:"troyes",lilleosc:"lille",tsg1899hoffenheim:"hoffenheim",ogcnice:"nice",brondbyif:"brondby",
  svwerderbremen:"werderbremen",clermontfoot:"clermont",feyenoordrotterdam:"feyenoord",angerssco:"angers",
  alittihadfc:"alittihadksa",queensparkrangers:"qpr",legiawarsaw:"legiawarszawa",birminghamcity:"birmingham",
  ussalernitana:"salernitana",alarabisc:"alarabiqat",alahlisc:"alahliqatar",montpellierhsc:"montpellier",
- alkuwaitsc:"alkuwait",nashvillesoccerclub:"nashvillesc",cardiffcity:"cardiff","stoke city":"stokecity",
- adelaideunited:"adelaideunited",pumasunam:"unam",aristessaloniki:"aris",kvmechelen:"mechelen",
- minnesotaunited:"minnesotaunited",gdchaves:"chaves",kmsrdeinze:"deinze",adsancarlos:"sancarlos",
- adguanacasteca:"guanacasteca",admunicipalgrecia:"municipalgrecia",ussassuolo:"sassuolo",
- hnkhajduksplit:"hajduksplit",nkosijek:"osijek",herthabsc:"herthaberlin",fcunionberlin:"unionberlin",
- sdaucas:"aucas",lduquito:"lduquito",ajauxerre:"auxerre",kaseupen:"eupen",bristolcity:"bristolcity",
- vejlebk:"vejle",acomonia:"omonia",sportingcharleroi:"charleroi","shababal ahliclub":"shababalahlidubai",
- sdponferradina:"ponferradina",stadereims:"reims",urawareds:"urawarediamonds",fcschalke04:"schalke",
- sinttruidenvv:"sinttruiden",uscremonese:"cremonese",stadebrest:"brest",scbraga:"sportingbraga",
- pafosfc:"pafos",paoksaloniki:"paok",udalmeria:"almeria",shandonglunengtaishan:"shandongtaishan",
- olympiacospiraeusfc:"olympiacos",ferencvarositc:"ferencvaros",fckoln:"cologne",smcaen:"caen",
- lutontown:"luton",antalyasporas:"antalyaspor",norwichcity:"norwich",newyorkcity:"newyorkcity",
- orlandocity:"orlandocity",swindontown:"swindon",huddersfieldtown:"huddersfieldtown",
- sheffieldunited:"sheffieldunited",staderennaisfc:"rennes",alahlisaq:"alahli",alkuwait:"alkuwait",
- alarabiqatar:"alarabiqat",alittihadksa:"alittihadksa",alahlisaudi:"alahlisaudi",alahliegy:"alahlyegypt",
- alahlyegy:"alahlyegypt",alhilal:"alhilal",alain:"alain"
-
+ alkuwaitsc:"alkuwait",nashvillesoccerclub:"nashvillesc",cardiffcity:"cardiff",adelaideu:"adelaideunited",
+ adelaideunited:"adelaideunited",atlantau:"atlantaunited",atlantautd:"atlantaunited",minnesotau:"minnesotaunited",
+ minnesotaunited:"minnesotaunited",pumasunam:"unam",aristessaloniki:"aris",kvmechelen:"mechelen",
+ gdchaves:"chaves",kmsrdeinze:"deinze",adsancarlos:"sancarlos",adguanacasteca:"guanacasteca",
+ admunicipalgrecia:"municipalgrecia",ussassuolo:"sassuolo",hnkhajduksplit:"hajduksplit",nkosijek:"osijek",
+ herthabsc:"herthaberlin",fcunionberlin:"unionberlin",sdaucas:"aucas",lduquito:"lduquito",
+ ajauxerre:"auxerre",kaseupen:"eupen",bristolc:"bristolcity",bristolcity:"bristolcity",vejlebk:"vejle",
+ acomonia:"omonia",sportingcharleroi:"charleroi",shababalhliclub:"shababalahlidubai",
+ shababalahlidubai:"shababalahlidubai",sdponferradina:"ponferradina",stadereims:"reims",
+ urawareds:"urawarediamonds",fcschalke04:"schalke",sinttruidenvv:"sinttruiden",uscremonese:"cremonese",
+ stadebrest:"brest",scbraga:"sportingbraga",pafosfc:"pafos",paoksaloniki:"paok",udalmeria:"almeria",
+ shandonglunengtaishan:"shandongtaishan",ferencvarositc:"ferencvaros",fckoln:"cologne",koln:"cologne",
+ smcaen:"caen",lutont:"lutontown",lutontown:"lutontown",antalyasporas:"antalyaspor",norwichc:"norwichcity",
+ norwichcity:"norwichcity",newyorkc:"newyorkcity",newyorkcity:"newyorkcity",orlandoc:"orlandocity",
+ orlandocity:"orlandocity",swindont:"swindontown",swindontown:"swindontown",huddersfieldt:"huddersfieldtown",
+ huddersfieldtown:"huddersfieldtown",sheffieldu:"sheffieldunited",sheffieldunited:"sheffieldunited",
+ birminghamc:"birminghamcity",birminghamcity:"birminghamcity",cardiffc:"cardiffcity",cardiffcity:"cardiffcity",
+ stokec:"stokecity",stokecity:"stokecity",staderennaisfc:"rennes",alahlisaq:"alahliqatar",alahlisc:"alahliqatar",
+ alkuwait:"alkuwait",kuwait:"alkuwait",alarabisc:"alarabiqat",alarabiqat:"alarabiqat",alittihadksa:"alittihadksa",
+ alahlisaudi:"alahlisaudi",alahliegy:"alahlyegypt",alahlyegy:"alahlyegypt",alhilal:"alhilal",alain:"alain",
  tottenhamh:"tottenhamhotspur",leicesterc:"leicestercity",boltonw:"boltonwanderers",leedsu:"leedsunited",
  coventryc:"coventrycity",ipswicht:"ipswichtown",blackburnr:"blackburnrovers",charltona:"charltonathletic",
  bayer04leverkusen:"bayerleverkusen",bayernmunchen:"bayernmunich",bmonchengladbach:"borussiamonchengladbach",
  borussiadortmund:"dortmund",eintrachtfrankfurt:"frankfurt",fckobenhavn:"copenhagen",kobenhavn:"copenhagen",
- fckoln:"cologne",koln:"cologne",fcbayernmunchen:"bayernmunich",hellasverona:"verona",
- girondinsbordeaux:"bordeaux",deportivoalajuelense:"alajuelense",glasgowceltic:"celtic",glasgowrangers:"rangers",
- alhelal:"alhilal",alhilal:"alhilal",asmonaco:"monaco",betis:"realbetis",inter:"internazionale",
- acmilan:"milan",parisstgermain:"parissaintgermain",parissaintgermain:"parissaintgermain",
- realmallorca:"mallorca",mallorca:"mallorca",realvalladolid:"valladolid",valladolid:"valladolid",
- nacionaluru:"nacional",ajaxamsterdam:"ajax",sportingcp:"sportinglisbon",sportinglisbon:"sportinglisbon",
- olympiquelyon:"lyon",olympiquemarseille:"marseille",benca:"benfica",manchestercity:"manchestercity",
- alduhail:"alduhail",alsadd:"alsadd",alnassr:"alnassr",alain:"alain",alwahda:"alwahda",
+ fcbayernmunchen:"bayernmunich",hellasverona:"verona",girondinsbordeaux:"bordeaux",
+ deportivoalajuelense:"alajuelense",glasgowceltic:"celtic",glasgowrangers:"rangers",asmonaco:"monaco",
+ betis:"realbetis",inter:"internazionale",acmilan:"milan",parisstgermain:"parissaintgermain",
+ parissaintgermain:"parissaintgermain",realmallorca:"mallorca",mallorca:"mallorca",realvalladolid:"valladolid",
+ valladolid:"valladolid",nacionaluru:"nacional",ajaxamsterdam:"ajax",sportingcp:"sportinglisbon",
+ sportinglisbon:"sportinglisbon",olympiquelyon:"lyon",olympiquemarseille:"marseille",benca:"benfica",
+ manchestercity:"manchestercity",alduhail:"alduhail",alsadd:"alsadd",alnassr:"alnassr",alwahda:"alwahda",
  dynamokyiv:"dynamokyiv",dinamokiev:"dynamokyiv",shakhtardonetsk:"shakhtar",shakhtar:"shakhtar",
  unattached:"unattached",noclub:"unattached"
 };
@@ -80,8 +82,8 @@ function linksFrom(html,pattern){
  return out;
 }
 function teamKey(value){const key=normalize(value);return teamAliases[key]||key;}
-function clubKey(value){
- let parts=String(value||"").replace(/\([^)]*\)/g,"").split(/\s+/).map(normalize).filter(Boolean);
+export function clubKey(value){
+ let parts=String(value||"").replace(/\([^)]*\)/g,"").replace(/\[[^\]]*\]/g,"").split(/\s+/).map(normalize).filter(Boolean);
  while(parts.length&&clubPrefixes.has(parts[0]))parts.shift();
  while(parts.length&&clubSuffixes.has(parts[parts.length-1]))parts.pop();
  const key=parts.join("");
