@@ -59,7 +59,7 @@ for(const source of SOURCES){
  const teamsForYear=historical.tournaments[String(source.year)]||[];
  if(source.year===2006&&teamsForYear.length===32&&teamsForYear.every(team=>{
   const audited=rosterAudit.teams?.[team.id];
-  return audited?.status==="verified"&&Array.isArray(audited.players)&&audited.players.length===team.players.length&&audited.players.every(row=>row.status==="matched"&&row.clubAtTournament);
+  return audited?.status==="verified"&&Array.isArray(audited.players)&&audited.players.length===team.players.length&&audited.players.every(row=>["matched","corrected"].includes(row.status)&&typeof row.clubAtTournament==="string"&&row.clubAtTournament.trim());
  })){
   const teams=teamsForYear.map(team=>({
    page:null,teamId:team.id,teamName:team.name,pdfHeading:team.name,
