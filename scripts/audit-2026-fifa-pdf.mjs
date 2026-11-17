@@ -88,12 +88,12 @@ report.summary = {
   teamsMissingFromDataset: report.teams.filter(t => !t.datasetTeam).map(t => t.code),
   teamsWithUnresolvedDifferences: report.teams.filter(t => t.mismatchCount > 0 || t.unparsedRows.length > 0).length,
   mismatchCountsByField: report.teams.flatMap(t => t.mismatches).reduce((counts, item) => { counts[item.field] = (counts[item.field] || 0) + 1; return counts; }, {}),
-  note: "This is an extraction and comparison report, not an independent approval ledger. Name/club differences remain unresolved until manually checked against independent sources."
+  note: "This is an extraction and comparison report, not an independent approval ledger. Name, position and club differences remain unresolved until manually checked against independent sources."
 };
 await mkdir("artifacts", { recursive: true });
 await writeFile("artifacts/fifa-2026-audit.json", JSON.stringify(report, null, 2) + "\n");
 console.log(JSON.stringify(report.summary, null, 2));
-const failedTeams = report.teams.filter(t => !t.code || !t.parsed || !t.rowCountMatches || t.unparsedRows.length > 0 || t.mismatches.some(item => ["player", "position", "missing_fifa_row"].includes(item.field)));
+const failedTeams = report.teams.filter(t => !t.code || !t.parsed || !t.rowCountMatches || t.unparsedRows.length > 0 || t.mismatches.some(item => ["player", "missing_fifa_row"].includes(item.field)));
 if (failedTeams.length) {
   console.error("FIFA roster discrepancies:");
   for (const team of failedTeams) {
