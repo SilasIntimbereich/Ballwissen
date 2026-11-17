@@ -553,3 +553,79 @@ h1 span{background:none;color:#f0c64a;-webkit-background-clip:border-box;backgro
 
 .data-attribution{display:block;max-width:920px;margin:12px auto 0;color:#b8c4d2;font-size:13px;line-height:1.5;text-align:center}
 .data-attribution a{color:#f0c64a;text-decoration:underline;text-underline-offset:3px}
+
+
+/* FINAL ARCADE ART PASS: handcrafted pixel stadium + translucent cabinet controls */
+:root{--arcade-cream:#fff4d5;--arcade-ink:#081a18;--arcade-green:#174c36;--arcade-line:rgba(255,244,213,.48);--arcade-glass:rgba(10,35,43,.78)}
+body{background:#0b211b;color:var(--arcade-cream)}
+.stadium{background:radial-gradient(ellipse at 50% 75%,rgba(55,157,91,.22),transparent 43%),linear-gradient(180deg,#102d42 0%,#183c4a 37%,#163e32 68%,#0a211b 100%);image-rendering:pixelated}
+.stadium:before,.stadium:after{display:block;filter:none;opacity:.13;border-radius:0;width:100%;height:45%;max-width:none;max-height:none;animation:none}
+.stadium:before{top:0;left:0;background:repeating-linear-gradient(90deg,transparent 0 5.8%,rgba(255,231,166,.12) 5.8% 6%,transparent 6% 11.6%),repeating-linear-gradient(0deg,transparent 0 18px,rgba(255,255,255,.09) 18px 20px)}
+.stadium:after{top:0;right:0;background:radial-gradient(ellipse at 50% 0,rgba(255,218,120,.25),transparent 55%)}
+.lights{opacity:.85;background:linear-gradient(180deg,rgba(6,20,28,.3),transparent 36%),radial-gradient(ellipse at 8% 8%,#fff4d5 0 3px,transparent 5px),radial-gradient(ellipse at 92% 8%,#fff4d5 0 3px,transparent 5px),linear-gradient(112deg,transparent 6%,rgba(255,247,208,.16) 18%,transparent 30%),linear-gradient(248deg,transparent 6%,rgba(255,247,208,.16) 18%,transparent 30%)}
+.lights:before{display:block;opacity:.28;background-image:radial-gradient(circle,#f5d66e 0 1.5px,transparent 2.5px),radial-gradient(circle,#f3f0d7 0 1px,transparent 2px),radial-gradient(circle,#d65c48 0 1.5px,transparent 2.5px),radial-gradient(circle,#65c8a0 0 1.5px,transparent 2.5px);background-size:13px 17px,19px 23px,29px 19px,37px 29px}
+.stands{left:-5%;right:-5%;bottom:18%;height:34%;border-radius:50% 50% 0 0/18% 18% 0 0;background:repeating-linear-gradient(0deg,rgba(8,26,29,.94) 0 8px,rgba(35,76,70,.96) 8px 11px,rgba(11,37,39,.96) 11px 18px),linear-gradient(90deg,#173f50,#285a50,#173f50);transform:perspective(900px) rotateX(-10deg);box-shadow:0 -5px 0 #e7d8aa,0 -11px 0 #0b211b,0 -18px 35px rgba(0,0,0,.45);overflow:hidden}
+.crowd{inset:8% 3% 9%;opacity:1;animation:crowd-wave 7s steps(3,end) infinite alternate;background:radial-gradient(ellipse,#f1d17a 0 2px,transparent 3px) 0 0/17px 13px,radial-gradient(ellipse,#e7e4d2 0 2px,transparent 3px) 7px 4px/23px 17px,radial-gradient(ellipse,#d95d4d 0 2px,transparent 3px) 4px 8px/29px 19px,radial-gradient(ellipse,#64c99c 0 2px,transparent 3px) 12px 2px/31px 23px,repeating-linear-gradient(90deg,transparent 0 74px,rgba(255,239,190,.16) 74px 78px,transparent 78px 112px)}
+.pitch{left:-9%;right:-9%;bottom:-43%;height:68%;background:repeating-linear-gradient(90deg,#167b48 0 12%,#218b50 12% 24%);border-top:4px solid rgba(240,239,205,.72);box-shadow:0 -20px 0 rgba(5,23,19,.7),0 -35px 75px rgba(31,180,107,.15)}
+.pitch:before{border:3px solid rgba(238,245,207,.48);border-bottom:0}.pitch-line{background:rgba(238,245,207,.28)}.scanlines{opacity:.13}
+.shell{max-width:1160px;padding-top:16px}.topbar{border-bottom:2px solid rgba(255,244,213,.45);padding-bottom:11px}
+.brand{letter-spacing:0;text-shadow:2px 2px #061b17,3px 3px rgba(0,0,0,.45)}
+.brand-mark{background:#f5d66e;color:#112b25;border:2px solid #071c18;outline:1px solid #f5d66e;border-radius:2px;clip-path:none;box-shadow:3px 3px 0 #061510,inset 0 1px 0 #fff2c2}
+.top-tag{color:#f5d66e;text-shadow:2px 2px #071b16}.screen{padding:24px 0}.hero{padding:12px 0 18px}.hero h1{font-size:clamp(18px,3.8vw,34px);line-height:1.55}.hero-copy{font-size:19px;margin:8px auto;color:#f4f0dc}
+.eyebrow{color:#f5d66e;text-shadow:2px 2px #09221b}
+.mode-groups{max-width:980px;margin:0 auto;display:grid;gap:15px}
+.mode-section{padding:11px 13px 13px;background:rgba(5,24,29,.44);border:1px solid rgba(255,244,213,.24);border-radius:5px;box-shadow:0 9px 24px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.mode-section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 2px 10px;padding-bottom:8px;border-bottom:1px solid rgba(255,244,213,.22);color:#f5d66e;font:7px/1.7 "Press Start 2P";letter-spacing:.2px}
+.mode-section-head small{font:600 13px "Barlow Condensed",sans-serif;color:#d4e4d7;letter-spacing:.5px}
+.mode-grid{display:grid;gap:10px;max-width:none;margin:0}.daily-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.normal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.mode-card,.mode-card:nth-child(n){grid-column:auto;min-height:126px;padding:13px 14px 12px;position:relative;isolation:isolate;overflow:hidden;color:#fff7df;text-align:left;display:flex;flex-direction:column;align-items:flex-start;border:1px solid rgba(255,245,210,.58);border-radius:4px;background:linear-gradient(180deg,rgba(72,117,109,.63),rgba(12,48,51,.86));box-shadow:0 4px 0 rgba(4,16,15,.92),0 7px 0 rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -3px 0 rgba(0,0,0,.22);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);transition:transform .14s steps(2,end),box-shadow .14s steps(2,end),filter .14s}
+.mode-card:before{display:block;content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.18),transparent 34%),repeating-linear-gradient(0deg,transparent 0 5px,rgba(255,255,255,.025) 5px 6px);border-radius:inherit}
+.mode-card:after{content:"";position:absolute;z-index:-1;left:0;right:0;bottom:0;height:4px;background:#e8d477}
+.mode-card:nth-child(1){background:linear-gradient(180deg,rgba(27,117,130,.78),rgba(11,55,67,.9))}.mode-card:nth-child(1):after{background:#67d8d0}
+.mode-card:nth-child(2){background:linear-gradient(180deg,rgba(103,79,139,.8),rgba(47,37,82,.92))}.mode-card:nth-child(2):after{background:#c4a1ee}
+.mode-card:nth-child(3){background:linear-gradient(180deg,rgba(150,89,76,.82),rgba(76,39,51,.93))}.mode-card:nth-child(3):after{background:#f3c96a}
+.mode-card:nth-child(4){background:linear-gradient(180deg,rgba(47,120,79,.82),rgba(18,62,51,.94))}.mode-card:nth-child(4):after{background:#8bda82}
+.mode-card:nth-child(5){background:linear-gradient(180deg,rgba(150,91,47,.82),rgba(79,46,37,.94))}.mode-card:nth-child(5):after{background:#ef9a56}
+.mode-card strong{font:clamp(8px,.9vw,10px)/1.8 "Press Start 2P";margin:8px 0 4px;color:#fff8e6;text-shadow:2px 2px #142c28}
+.mode-card small{font-size:15px;line-height:1.15;font-weight:600;color:#e6eee0}.mode-card b{font:7px/1.8 "Press Start 2P";margin-top:auto;padding-top:9px;color:#f9e8a4;text-shadow:1px 1px #142c28}.mode-kicker{font-size:6px;color:#e6e4c9}
+.mode-card:hover,.mode-card:focus-visible{transform:translateY(-3px);filter:brightness(1.13);border-color:#fff4c7;box-shadow:0 6px 0 rgba(4,16,15,.92),0 10px 0 rgba(0,0,0,.24),0 0 0 2px rgba(255,244,213,.12),inset 0 1px 0 #fff8;outline:none}
+.mode-card:active{transform:translateY(2px);box-shadow:0 1px 0 #04100f,inset 0 2px 5px #061a18}.mode-card:disabled{opacity:.42;filter:grayscale(.55);cursor:not-allowed}
+.utility-grid{max-width:980px;margin:13px auto 0;gap:9px}
+.utility-card{border-radius:4px!important;border:1px solid rgba(255,244,213,.42)!important;background:rgba(12,37,40,.78)!important;box-shadow:0 4px 0 #061713,inset 0 1px 0 #ffffff22!important;backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+.utility-card:hover{transform:translateY(-2px);filter:brightness(1.14)}.local-play-panel{max-width:980px;margin:13px auto 0;background:rgba(9,31,32,.72);border-radius:4px;backdrop-filter:blur(8px)}
+.home-footer{max-width:980px;margin:12px auto 0;width:100%}
+.back,.team-button,.give-up,.primary-btn,.guess-form button,.secondary-action{border-radius:3px!important;border:1px solid rgba(255,245,211,.55)!important;box-shadow:0 4px 0 rgba(3,15,13,.9),inset 0 1px 0 rgba(255,255,255,.3)!important}
+.back{background:rgba(20,57,57,.82)!important;color:#fff4d5}.team-button{background:linear-gradient(180deg,rgba(49,103,103,.86),rgba(13,47,52,.94));color:#fff5dc}.team-button:hover{transform:translateY(-2px);filter:brightness(1.16)}
+.game-title{margin:20px 0 12px}.game-head{padding:9px 10px;background:rgba(6,27,30,.56);border:1px solid rgba(255,244,213,.25);border-radius:4px;backdrop-filter:blur(7px)}
+.timer{border-radius:3px;border:1px solid #fff0bd;background:#f1d36d;box-shadow:0 4px 0 #72552c;color:#142b25}
+.rarity-legend{gap:6px;margin:-1px 0 11px}.rarity-legend span{border-radius:2px;background:rgba(5,25,28,.76);padding:5px 6px}
+.guess-form{padding:5px;background:rgba(5,25,28,.58);border:1px solid rgba(255,244,213,.35);border-radius:4px;backdrop-filter:blur(7px)}
+.guess-form input{background:#fff5dc!important;color:#172b2b!important;border:2px solid #d6c89e!important;border-radius:2px!important;box-shadow:inset 0 2px 4px rgba(18,38,31,.12);font-size:19px;font-weight:700}
+.guess-form input::placeholder{color:#65736b;opacity:1}.guess-form input:focus{outline:3px solid #68d8d0;outline-offset:1px}
+.guess-form button,.primary-btn{background:#f1d36d!important;color:#152b24!important}
+.player-card{border-radius:3px;background:rgba(9,39,44,.84);border:1px solid rgba(255,244,213,.28);box-shadow:0 3px 0 rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(5px)}
+.player-card.found{background:rgba(24,103,70,.9);border-color:#a7e18d}.player-card.missed{background:rgba(105,47,55,.91);border-color:#e89a8e}
+.result{background:rgba(7,25,27,.96);backdrop-filter:blur(12px)}.leaderboard-panel{border-radius:4px;background:rgba(10,35,39,.78);backdrop-filter:blur(8px)}
+.site-footer{color:#e5e6d3}.home-footer,.site-footer{text-shadow:1px 2px #061b16}
+@media(max-width:650px){
+ .shell{padding:12px}.screen{padding:17px 0}.hero{padding:8px 0 13px}.hero-copy{font-size:16px}.mode-groups{gap:10px}
+ .mode-section{padding:9px 8px 10px}.mode-section-head{font-size:6px;margin-bottom:8px}.mode-section-head small{font-size:12px}
+ .daily-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.normal-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+ .mode-card,.mode-card:nth-child(n){min-height:124px;padding:9px 7px 8px}.mode-card strong{font:7px/1.65 "Press Start 2P";margin:7px 0 4px;overflow-wrap:anywhere}
+ .mode-card small{font-size:13px;line-height:1.1}.mode-card b{font:6px/1.7 "Press Start 2P";padding-top:7px}.mode-kicker{font-size:5px}
+ .utility-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.utility-card{padding:10px!important}
+ .local-play-panel{margin-top:10px;padding:12px}.home-footer{margin-top:10px}.roster{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+ .player-card{padding:8px;min-height:52px}.player-name{font-size:16px}.player-hint{font-size:12px}.game-title{margin:14px 0 10px}
+ .rarity-legend span{font-size:5px}
+}
+@media(max-width:370px){
+ .mode-card,.mode-card:nth-child(n){min-height:132px;padding:8px 5px}.mode-card strong{font-size:6px}.mode-card small{font-size:12px}.mode-card b{font-size:5px}
+ .mode-section-head small{font-size:10px}.roster{grid-template-columns:1fr}
+}
+@keyframes rarity-card-reveal{0%{transform:translateY(7px) scale(.94);filter:brightness(1);box-shadow:0 0 0 rgba(255,255,255,0)}35%{transform:translateY(-2px) scale(1.035);filter:brightness(1.55);box-shadow:0 0 22px var(--rarity-glow,rgba(255,255,255,.3)),inset 0 0 0 1px rgba(255,255,255,.55)}68%{transform:scale(.995);filter:brightness(1.15)}100%{transform:translateY(0) scale(1);filter:brightness(1)}}
+.player-card.rarity-reveal{animation:rarity-card-reveal .72s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--reveal-delay,0ms)}
+.player-card.rarity-common{--rarity-glow:rgba(169,245,107,.42)}.player-card.rarity-rare{--rarity-glow:rgba(85,228,255,.52)}.player-card.rarity-niche{--rarity-glow:rgba(198,154,255,.55)}.player-card.rarity-legendary{--rarity-glow:rgba(255,228,94,.65)}.player-card.rarity-ball-knowledge{--rarity-glow:rgba(255,142,158,.62)}
+.player-rarity{padding:2px 4px;width:max-content;max-width:100%;background:rgba(0,0,0,.24);border:1px solid currentColor;border-radius:2px;text-shadow:0 0 8px currentColor}
+.player-card.rarity-legendary.rarity-reveal{box-shadow:0 0 18px rgba(255,211,110,.38),inset 0 0 0 1px #ffd36e}
+@media(prefers-reduced-motion:reduce){.player-card.rarity-reveal{animation:none!important}.crowd,.lights:before{animation:none!important}}
+body.reduce-motion .player-card.rarity-reveal{animation:none!important}
