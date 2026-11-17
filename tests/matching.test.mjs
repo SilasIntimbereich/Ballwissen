@@ -35,3 +35,19 @@ test("accepts FIFA display-name variants for corrected 2026 squads",()=>{
  assert.equal(matches("Dennis Dargahi",player("Iran",24)),true);
  assert.equal(matches("Cameron Devlin",player("Australia",14)),true);
 });
+
+test("rejects typo guesses that could match two players",()=>{
+ const squad=[{name:"Alex Mendez"},{name:"Alex Mendes"}];
+ assert.equal(matches("Alex Mende",squad[0],squad),false);
+ assert.equal(matches("Alex Mende",squad[1],squad),false);
+});
+
+test("keeps a unique typo match when only one squad member is close",()=>{
+ const squad=[{name:"Cristiano Ronaldo"},{name:"Lionel Messi"},{name:"Neymar Junior"}];
+ assert.equal(matches("Cristiano Ronald",squad[0],squad),true);
+});
+
+test("supports aliases when checking ambiguous surname forms",()=>{
+ const squad=[{name:"Joao Cancelo",aliases:["João Pedro Cavaco Cancelo"]},{name:"Bernardo Silva"}];
+ assert.equal(matches("Cavaco Cancelo",squad[0],squad),true);
+});
