@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, writeFile, readFile } from "node:fs/promises";
 import * as pdfjs from "pdfjs-dist/legacy/build/pdf.mjs";
 
 const PDF_URL = "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf";
@@ -7,7 +7,8 @@ if (!response.ok) throw new Error("FIFA PDF download failed: HTTP " + response.s
 const bytes = new Uint8Array(await response.arrayBuffer());
 const pdf = await pdfjs.getDocument({ data: bytes, useSystemFonts: true, isEvalSupported: false }).promise;
 
-const data = JSON.parse(await (await import("node:fs/promises")).readFile("data/worldcup-2026.json", "utf8"));
+const data = JSON.parse(await readFile("data/worldcup-2026.json", "utf8"));
+const auditLedger = JSON.parse(await readFile("data/roster-audit.json", "utf8"));
 const byCode = new Map();
 for (const p of data.players) {
   if (!byCode.has(p.teamCode)) byCode.set(p.teamCode, []);
@@ -165,6 +166,49 @@ report.summary = {
   mismatchCountsByField: report.teams.flatMap(t => t.mismatches).reduce((counts, item) => { counts[item.field] = (counts[item.field] || 0) + 1; return counts; }, {}),
   note: "FIFA final squad PDF is compared with the independent OpenFootball-derived 2026 snapshot. NBC Sports is retained as a dated June 11 snapshot only; later injury replacements can explain differences and are reported separately, not used to overwrite the FIFA final list."
 };
+const slug = value => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const replacementNotes = {
+  "Bosnia and Herzegovina:24": { note: "Arjan Malić replaced Nidal Čelik after an injury before the tournament; FIFA's final squad list and the federation replacement report confirm the change.", source: "https://nap.ba/de/post/barbarez-napravio-promjenu-u-sastavu-pred-pocetak-svjetskog-prvenstva" },
+  "Morocco:5": { note: "Marwane Saadane replaced the injured Nayef Aguerd before Morocco's opener.", source: "https://www.reuters.com/sports/soccer/morocco-forced-into-two-injury-changes-ahead-world-cup-opener-2026-06-11/" },
+  "Morocco:17": { note: "Amine Sbai replaced the injured Abde Ezzalzouli before Morocco's opener.", source: "https://www.reuters.com/sports/soccer/morocco-forced-into-two-injury-changes-ahead-world-cup-opener-2026-06-11/" },
+  "New Zealand:7": { note: "Logan Rogerson replaced the injured Matthew Garbett in New Zealand's squad.", source: "https://aucklandfc.co.nz/news/logan-rogerson-called-up-to-all-whites/" },
+  "Canada:26": { note: "Position uses FIFA's official FW classification; some secondary roster lists classify Jayden Nelson as a midfielder.", source: PDF_URL }
+};
+const fullyMatchedTeams = report.teams.filter(team => team.fullSourceAgreement);
+if (fullyMatchedTeams.length === 48) {
+  for (const teamReport of fullyMatchedTeams) {
+    const teamName = teamReport.datasetTeam;
+    const teamId = slug(teamName) + "-2026";
+    const players = data.players.filter(player => player.team === teamName).sort((a, b) => Number(a.number) - Number(b.number));
+    const fifaByNumber = new Map(teamReport.fifaRows.map(row => [Number(row.number), row]));
+    auditLedger.teams[teamId] = {
+      status: "verified",
+      tournament: 2026,
+      teamNameInDataset: teamName,
+      teamNameInFifaPdf: teamReport.heading,
+      reviewedAt: report.generatedAt.slice(0, 10),
+      primarySource: PDF_URL,
+      secondarySource: OPENFOOTBALL_URL,
+      tertiarySource: NBC_URL,
+      notes: "All 26 players were cross-checked by shirt number, identity, position and tournament-time club against FIFA's final squad PDF and the independent OpenFootball-derived 2026 squad snapshot. NBC's June 11 list is retained as a dated tertiary comparison; later injury replacements and classification differences are documented at player level and do not override FIFA's final list.",
+      players: players.map(player => {
+        const source = fifaByNumber.get(Number(player.number));
+        const correction = replacementNotes[teamName + ":" + Number(player.number)];
+        return {
+          playerName: player.name,
+          sourceName: source?.nameArea || player.name,
+          sourceNameAliases: player.aliases || [],
+          number: Number(player.number),
+          position: player.position,
+          clubAtTournament: player.club ?? null,
+          status: correction ? "corrected" : "matched",
+          notes: correction ? correction.note + " Source: " + correction.source : "FIFA final squad PDF and OpenFootball snapshot agree on player identity, number, position and club."
+        };
+      })
+    };
+  }
+}
+await writeFile("artifacts/roster-audit-updated.json", JSON.stringify(auditLedger, null, 2) + "\n");
 await mkdir("artifacts", { recursive: true });
 await writeFile("artifacts/fifa-2026-audit.json", JSON.stringify(report, null, 2) + "\n");
 console.log(JSON.stringify(report.summary, null, 2));
