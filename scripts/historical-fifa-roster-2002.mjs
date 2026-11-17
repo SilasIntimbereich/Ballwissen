@@ -50,3 +50,13 @@ export function parseFifa2002Roster(html, teams) {
   }
   return result;
 }
+
+export function isCleanFifa2002RosterAudit(item, expectedPlayerCount) {
+  return Boolean(item &&
+    item.sourcePlayerCount === 23 &&
+    item.matchedPlayers === expectedPlayerCount &&
+    item.nameMismatches?.length === 0 &&
+    item.missingFromSource?.length === 0 &&
+    item.missingFromDataset?.length === 0 &&
+    item.positionDifferences?.length === 0);
+}
