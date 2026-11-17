@@ -34,7 +34,10 @@ export function normalizeHttpsHost(value){
   try{
     const url=new URL(value);
     if(url.protocol!=="https:"||!url.hostname)return null;
+    const isArchive=/(^|\\.)web\\.archive\\.org$/i.test(url.hostname);
     const original=archivedOriginalHost(url);
+    // Never treat a malformed archive wrapper as an independent publisher.
+    if(isArchive&&!original)return null;
     const domain=registrableDomain(original||url.hostname);
     if(!domain)return null;
     return PUBLISHER_ALIASES.get(domain)||domain;
