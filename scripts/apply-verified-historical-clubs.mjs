@@ -76,13 +76,13 @@ function applyTeam(year, teamId, candidatePlayers, sources) {
     return {
       ...priorRow,
       number: Number(player.number),
-      playerName: priorRow.playerName || priorRow.name || player.name,
+      playerName: player.name,
       sourceName,
       status: ["matched", "corrected"].includes(priorRow.status) ? priorRow.status : "matched",
       position: player.position,
       clubAtTournament: player.club,
-      primarySource: priorRow.primarySource || sourceList[0],
-      secondarySource: priorRow.secondarySource || sourceList[1]
+      primarySource: sourceList[0],
+      secondarySource: sourceList[1]
     };
   });
   rosterAudit.teams[teamId] = {
