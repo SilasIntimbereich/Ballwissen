@@ -149,7 +149,7 @@ for (let pageNo = 1; pageNo <= pdf.numPages; pageNo++) {
     parsed: fifaRows.length === 26, rowCountMatches: fifaRows.length === teamPlayers.length,
     mismatchCount: mismatches.length, mismatches, secondaryMismatchCount: secondaryMismatches.length, secondaryMismatches,
     clubExtractionOverrides: fifaRows.filter(row => row.clubExtractionOverride).map(row => ({ number: row.number, club: row.club, source: PDF_URL })),
-    fullSourceAgreement: fifaRows.length === 26 && rowCountMatches && mismatches.length === 0,
+    fullSourceAgreement: fifaRows.length === 26 && fifaRows.length === teamPlayers.length && mismatches.length === 0,
     unparsedRows: unparsed
   });
 }
