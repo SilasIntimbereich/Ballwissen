@@ -53,7 +53,7 @@ try {
           signal: AbortSignal.timeout(15000)
         });
         if (!planetResponse.ok) throw new Error("HTTP " + planetResponse.status);
-        planetRows = parsePlanetWorldCupSquad(await planetResponse.text());
+        planetRows = parsePlanetWorldCupSquad(new TextDecoder("windows-1252").decode(await planetResponse.arrayBuffer()));
         planetStatus = planetRows.length ? "available" : "parsed_no_players";
       } catch (error) {
         planetError = String(error);
