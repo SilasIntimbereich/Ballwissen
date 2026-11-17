@@ -2,7 +2,7 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { namesMatch } from "./historical-player-name-match.mjs";
 import { normalizeHistoricalClub } from "./historical-wikipedia-squads.mjs";
 import { hasIndependentHttpsSources, isHttpsUrl } from "./source-url-validation.mjs";
-import { isCompleteVerifiedRosterLedger } from "./verified-roster-ledger.mjs";
+import { isCompleteVerifiedRosterLedger, downgradeIncompleteVerifiedRosterLedger } from "./verified-roster-ledger.mjs";
 
 const dataset = JSON.parse(await readFile("data/historical-squads.json", "utf8"));
 const candidates = JSON.parse(await readFile("artifacts/historical-club-candidates.json", "utf8"));
@@ -19,6 +19,7 @@ const report = {
   appliedTeams: [],
   skippedTeams: [],
   clearedTeams: [],
+  downgradedTeams: [],
   summary: {}
 };
 let dataChanged = false;
@@ -248,7 +249,16 @@ function fifaTournamentSource(audit) {
 // Remove unverified club hints rather than presenting them as tournament-time facts.
 for (const [year, teams] of Object.entries(dataset.tournaments || {})) {
   for (const team of teams || []) {
-    if (ledgerIsVerified({ ...team, year: Number(year) })) continue;
+    const auditEntry = rosterAudit.teams?.[team.id];
+    const teamWithYear = { ...team, year: Number(year) };
+    if (ledgerIsVerified(teamWithYear)) continue;
+    if (downgradeIncompleteVerifiedRosterLedger(teamWithYear, auditEntry, Number(year))) {
+      ledgerChanged = true;
+      report.downgradedTeams.push({
+        year: Number(year), teamId: team.id, teamName: team.name,
+        reason: auditEntry.verificationIssue
+      });
+    }
     const rowsWithClubs = (team.players || []).filter(player => player.club);
     if (!rowsWithClubs.length) continue;
     for (const player of team.players || []) {
@@ -272,6 +282,7 @@ report.summary = {
   appliedTeams: report.appliedTeams.length,
   skippedTeams: report.skippedTeams.length,
   clearedTeams: report.clearedTeams.length,
+  downgradedTeams: report.downgradedTeams.length,
   playerRowsUpdated: report.appliedTeams.reduce((sum, team) => sum + team.playerRowsUpdated, 0),
   playerRowsCleared: report.clearedTeams.reduce((sum, team) => sum + team.playerRowsCleared, 0),
   dataFileChanged: dataChanged,
