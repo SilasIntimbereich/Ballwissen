@@ -57,7 +57,7 @@ export function parseWikipediaSquads(html, teams) {
       const cells = [...match[1].matchAll(/<(?:td|th)\b[^>]*>([\s\S]*?)<\/(?:td|th)>/gi)]
         .map(cell => plainText(cell[1]));
       if (cells.length < 6 || !/^\d{1,2}$/.test(cells[0])) continue;
-      const position = cells[1].match(/\b(GK|DF|MF|FW)\b/i)?.[1]?.toUpperCase() || null;
+      const position = cells[1].match(/(GK|DF|MF|FW)/i)?.[1]?.toUpperCase() || null;
       const name = cells[2].replace(/\s*\(c\)$/i, "").trim();
       const club = cells[cells.length - 1].trim();
       if (!name) continue;
