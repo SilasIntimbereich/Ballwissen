@@ -684,3 +684,90 @@ body.ball-knowledge-hit .game-head{border-color:#ff8e9e;box-shadow:0 0 0 3px #f7
 @media(max-width:650px){.rarity-alert{margin:8px 0 10px;min-height:54px;padding:8px 9px;gap:8px}.rarity-alert-copy b{font-size:17px}.rarity-alert-copy strong,.rarity-alert>small{font-size:6px}.rarity-alert-icon{font-size:20px}.rarity-alert.rarity-ball-knowledge{min-height:68px}}
 @media(prefers-reduced-motion:reduce){.rarity-alert.is-active,.rarity-alert.rarity-ball-knowledge,.rarity-alert.rarity-ball-knowledge:before,.rarity-alert.rarity-ball-knowledge:after,.rarity-alert.rarity-ball-knowledge .rarity-alert-icon,body.ball-knowledge-hit .stadium{animation:none!important}}
 body.reduce-motion .rarity-alert.is-active,body.reduce-motion .rarity-alert.rarity-ball-knowledge,body.reduce-motion .rarity-alert.rarity-ball-knowledge:before,body.reduce-motion .rarity-alert.rarity-ball-knowledge:after,body.reduce-motion .rarity-alert.rarity-ball-knowledge .rarity-alert-icon{animation:none!important}
+
+
+/* V5 local-play polish: denser pixel crowd, translucent arcade controls and clearer game feedback. */
+.stands{isolation:isolate}
+.stands:before{
+ content:"";position:absolute;z-index:2;left:8%;right:8%;top:7%;height:8px;
+ background:repeating-linear-gradient(90deg,#e7d9ad 0 36px,#a94d42 36px 72px,#e7d9ad 72px 108px,#2b78a0 108px 144px);
+ border:2px solid #101d31;box-shadow:0 3px 0 #071713;
+}
+.crowd{position:relative;isolation:isolate}
+.crowd:before,.crowd:after{
+ content:"";position:absolute;inset:0;pointer-events:none;image-rendering:pixelated;
+}
+.crowd:before{
+ background-image:
+  radial-gradient(circle,#f2d06b 0 2px,transparent 2.7px),
+  radial-gradient(circle,#e9e3ca 0 2px,transparent 2.7px),
+  radial-gradient(circle,#d85b51 0 2px,transparent 2.7px),
+  radial-gradient(circle,#4b9bcb 0 2px,transparent 2.7px),
+  radial-gradient(circle,#8dc879 0 2px,transparent 2.7px),
+  radial-gradient(circle,#b28acb 0 2px,transparent 2.7px);
+ background-size:17px 15px,23px 19px,29px 17px,19px 23px,31px 21px,37px 25px;
+ background-position:0 1px,7px 5px,12px 11px,3px 13px,17px 2px,22px 9px;
+ opacity:.9;
+}
+.crowd:after{
+ inset:auto 3% 4%;height:18%;
+ background:repeating-linear-gradient(90deg,transparent 0 26px,#e7d9ad 26px 31px,transparent 31px 54px);
+ border-top:2px solid #f1d36d;opacity:.72;
+}
+.lights:after{
+ content:"WORLD CUP  •  FOOTBALL ARCADE";
+ position:absolute;top:7%;left:50%;transform:translateX(-50%);
+ padding:7px 12px;background:rgba(8,24,34,.82);border:2px solid #e8d8a6;
+ box-shadow:3px 3px 0 #061713;color:#f1d36d;
+ font:7px/1.6 "Press Start 2P";white-space:nowrap;letter-spacing:.3px;
+}
+.mode-card,.mode-card:nth-child(n){
+ background-color:rgba(24,72,75,.78)!important;background-image:none!important;
+ border:2px solid rgba(242,231,196,.82)!important;
+ box-shadow:4px 4px 0 rgba(3,15,13,.88),inset 0 1px 0 rgba(255,255,255,.32),inset 0 -3px 0 rgba(0,0,0,.24)!important;
+ backdrop-filter:blur(7px)!important;-webkit-backdrop-filter:blur(7px)!important;
+}
+.mode-card:nth-child(1){background-color:rgba(23,109,125,.78)!important}
+.mode-card:nth-child(2){background-color:rgba(85,66,127,.8)!important}
+.mode-card:nth-child(3){background-color:rgba(139,61,61,.82)!important}
+.mode-card:nth-child(4){background-color:rgba(40,107,73,.82)!important}
+.mode-card:nth-child(5){background-color:rgba(169,83,46,.82)!important}
+.mode-card:before{
+ display:block!important;content:"";position:absolute;z-index:-1;inset:5px;
+ border:1px solid rgba(255,255,255,.13);pointer-events:none;background:none!important;
+}
+.mode-card:hover,.mode-card:focus-visible{
+ transform:translate(-2px,-2px);filter:brightness(1.12);
+ box-shadow:6px 6px 0 rgba(3,15,13,.9),inset 0 1px 0 rgba(255,255,255,.4),0 0 0 2px rgba(255,244,213,.22)!important;
+}
+.mode-card:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #061713!important}
+.utility-card,.back,.team-button,.give-up,.primary-btn,.guess-form button,.secondary-action{
+ background-color:rgba(17,54,52,.84)!important;
+ border:2px solid rgba(235,224,190,.72)!important;
+ box-shadow:3px 3px 0 rgba(3,15,13,.9),inset 0 1px 0 rgba(255,255,255,.22)!important;
+ backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+}
+.guess-form button,.primary-btn{background-color:#f1d36d!important}
+.give-up{background-color:rgba(143,49,53,.9)!important}
+.team-button{background-color:rgba(29,82,65,.88)!important;background-image:none!important}
+.player-card{backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.player-card.found{border-width:2px}
+.player-card.missed{border-width:2px}
+.game-actions{gap:12px}
+#feedback{min-width:0;line-height:1.35}
+.guess-form input:disabled{opacity:.7;cursor:not-allowed}
+button:focus-visible,select:focus-visible,input:focus-visible{
+ outline:3px solid #f1d36d;outline-offset:3px;
+}
+button:disabled{cursor:not-allowed}
+@media(max-width:650px){
+ .lights:after{top:6%;font-size:5px;padding:5px 7px}
+ .stands:before{left:5%;right:5%;height:6px}
+ .crowd:before{background-size:14px 13px,19px 17px,23px 15px,16px 19px,25px 18px,29px 21px;opacity:.82}
+ .mode-card,.mode-card:nth-child(n){backdrop-filter:blur(5px)!important;-webkit-backdrop-filter:blur(5px)!important}
+ .game-actions{align-items:flex-start}
+}
+@media(prefers-reduced-motion:reduce){
+ .crowd:before,.crowd:after{animation:none!important}
+}
+body.reduce-motion .crowd:before,body.reduce-motion .crowd:after{animation:none!important}
