@@ -79,7 +79,7 @@ const playerAliases = new Map([
   ["tunisia|imedmhadhebi", "imedmhedhebi"],
   ["tunisia|slimbenachour", "selimbenachour"],
   ["tunisia|ahmedjaouachi", "ahmedeljaouachi"],
-  ["turkey|mustaf izzet".replace(/ /g, ""), "muzzyizzet"],
+  ["turkey|mustafa izzet".replace(/ /g, ""), "muzzyizzet"],
   ["turkey|zaferozgultekin", "zaferozgultekin"]
 ]);
 
