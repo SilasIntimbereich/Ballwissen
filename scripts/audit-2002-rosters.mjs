@@ -1,4 +1,5 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { namesMatch } from "./historical-player-name-match.mjs";
 
 const SOURCE_URL = "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt";
 const normalize = value => String(value || "")
@@ -56,6 +57,21 @@ export function parseSquads(sourceText, teams) {
   return squads;
 }
 
+
+function parsePlanetWorldCupEngland(html) {
+  const text=html
+    .replace(/<script[\s\S]*?<\/script>/gi," ")
+    .replace(/<style[\s\S]*?<\/style>/gi," ")
+    .replace(/<br\s*\/?\s*>/gi,"\n")
+    .replace(/<[^>]*>/g," ");
+  const names=[];
+  for(const line of text.split(/\r?\n/)){
+    const match=line.match(/^\s*\d{1,2}\s+(?:GK|DF|MD|FW)\s+(.+?)\s{2,}\d{1,2}\s+[A-Za-z]{3}\s+\d{4}\b/);
+    if(match) names.push(match[1].trim());
+  }
+  return names;
+}
+
 const historical = JSON.parse(await readFile("data/historical-squads.json", "utf8"));
 const teams = historical.tournaments["2002"] || [];
 const response = await fetch(SOURCE_URL, {
@@ -78,6 +94,23 @@ if (!response.ok) {
 
 const sourceText = await response.text();
 const squads = parseSquads(sourceText, teams);
+const teamSourceUrls=new Map(teams.map(team=>[team.id,SOURCE_URL]));
+const teamSourceNotes=new Map();
+const england=teams.find(team=>normalize(team.name)==="england");
+if(england){
+  const englandUrl="https://www.planetworldcup.com/CUPS/2002/squad_eng02.html";
+  try{
+    const englandResponse=await fetch(englandUrl,{headers:{"User-Agent":"FootballArcadeRosterAudit/1.0"},signal:AbortSignal.timeout(15000)});
+    if(englandResponse.ok){
+      const englandNames=parsePlanetWorldCupEngland(await englandResponse.text());
+      if(englandNames.length===23){
+        squads.set(england.id,englandNames);
+        teamSourceUrls.set(england.id,englandUrl);
+        teamSourceNotes.set(england.id,"Planet World Cup final England squad used instead of the RSSSF page, which retains Danny Murphy from the pre-replacement list; Trevor Sinclair is in the final 23.");
+      }
+    }
+  }catch{}
+}
 const report = {
   year: 2002, source: SOURCE_URL, sourceStatus: "available",
   generatedAt: new Date().toISOString(), teams: [], summary: {}
@@ -86,44 +119,44 @@ const report = {
 for (const team of teams) {
   const sourceNames = squads.get(team.id) || [];
   const datasetNames = team.players.map(player => player.name);
-  const sourceSet = new Set(sourceNames.map(normalize));
-  const datasetSet = new Set(datasetNames.map(normalize));
   const matched = [];
+  const matchedSourceNames = new Set();
   const missingFromSource = [];
   const missingFromDataset = [];
 
   for (const player of datasetNames) {
     const key = normalize(player);
-    if (sourceSet.has(key)) {
-      matched.push({ datasetName: player, sourceName: sourceNames.find(name => normalize(name) === key) });
-      continue;
+    let sourceName = sourceNames.find(name => normalize(name) === key);
+    let matchType = "exact";
+    if (!sourceName) {
+      const alias = playerAliases.get(normalize(team.name) + "|" + key);
+      if (alias) {
+        sourceName = sourceNames.find(name => normalize(name) === alias);
+        if (sourceName) matchType = "manual-alias";
+      }
     }
-    const alias = playerAliases.get(normalize(team.name) + "|" + key);
-    if (alias && sourceSet.has(alias)) {
-      matched.push({
-        datasetName: player,
-        sourceName: sourceNames.find(name => normalize(name) === alias),
-        match: "manual-alias"
-      });
+    if (!sourceName) {
+      sourceName = sourceNames.find(name => namesMatch(player, name));
+      if (sourceName) matchType = "normalized-name";
+    }
+    if (sourceName) {
+      matched.push({ datasetName: player, sourceName, match: matchType });
+      matchedSourceNames.add(sourceName);
     } else {
       missingFromSource.push(player);
     }
   }
-
   for (const name of sourceNames) {
-    const key = normalize(name);
-    if (!datasetSet.has(key) && !matched.some(row => normalize(row.sourceName) === key)) {
-      missingFromDataset.push(name);
-    }
+    if (!matchedSourceNames.has(name)) missingFromDataset.push(name);
   }
-
   report.teams.push({
     teamId: team.id, teamName: team.name,
+    sourceUrl: teamSourceUrls.get(team.id)||SOURCE_URL,
+    sourceNote: teamSourceNotes.get(team.id)||null,
     sourcePlayerCount: sourceNames.length, datasetPlayerCount: datasetNames.length,
     matchedCount: matched.length, missingFromSource, missingFromDataset,
     sourceComplete: sourceNames.length === 23,
-    rosterClean: sourceNames.length === 23 && matched.length === 23 &&
-      missingFromSource.length === 0 && missingFromDataset.length === 0,
+    rosterClean: sourceNames.length === 23 && matched.length === 23 && missingFromSource.length === 0 && missingFromDataset.length === 0,
     matched
   });
 }
