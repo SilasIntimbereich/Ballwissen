@@ -20,7 +20,14 @@ function renderTeams(){
  });
 }
 function formatHint(position,club){return [position,club].filter(value=>typeof value==="string"&&value.trim()&&value.trim().toLowerCase()!=="null").join(" · ")||"HIDDEN PLAYER";}
-function updateTimer(){$("#timer").textContent=String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");}
+function updateTimer(){
+ const timer=$("#timer");
+ const display=String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");
+ timer.textContent=display;
+ timer.classList.toggle("timer-warning",seconds<=30&&seconds>10);
+ timer.classList.toggle("timer-critical",seconds<=10);
+ timer.setAttribute("aria-label","Time remaining "+Math.floor(seconds/60)+" minutes "+(seconds%60)+" seconds");
+ }
 function enableGuessControls(){const input=$("#guess"),button=$("#guess-btn");input.disabled=false;input.readOnly=false;input.removeAttribute("disabled");button.disabled=false;button.removeAttribute("disabled");}
 function resetGameView(){found=new Set();roundState=null;submitting=false;seconds=120;ended=false;$("#result").classList.add("hidden");$("#result-stats").innerHTML="";$("#score").textContent="0";$("#guess").value="";enableGuessControls();$("#give-up").disabled=false;$("#give-up").textContent="GIVE UP";$("#roster").innerHTML="";$("#rarity-alert")?.classList.add("hidden");document.body.classList.remove("ball-knowledge-hit");$("#feedback").textContent="Type a player name and press enter.";}
 function cardForPlayer(id){return [...document.querySelectorAll(".player-card[data-player-id]")].find(card=>card.dataset.playerId===id)||null;}
@@ -72,7 +79,7 @@ async function startGame(selected){
  $("#feedback").textContent="Local practice round · unranked.";
  enableGuessControls();$("#guess").focus();startClock();
 }
-function startClock(){clearInterval(tick);if(practiceOnly){$("#timer").textContent="∞";return;}tick=setInterval(()=>{seconds=Math.max(0,seconds-1);updateTimer();if(seconds<=0)finish(false);},1000);}
+function startClock(){clearInterval(tick);if(practiceOnly){const timer=$("#timer");timer.textContent="∞";timer.classList.remove("timer-warning","timer-critical");timer.setAttribute("aria-label","Practice mode, no time limit");return;}tick=setInterval(()=>{seconds=Math.max(0,seconds-1);updateTimer();if(seconds<=0)finish(false);},1000);}
 function dailyRandom(tier){
  const now=new Date();
  const key=[now.getFullYear(),String(now.getMonth()+1).padStart(2,"0"),String(now.getDate()).padStart(2,"0"),tier].join("-");
