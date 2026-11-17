@@ -97,7 +97,7 @@ for (const [year, config] of Object.entries(sources)) {
         datasetPlayerCount: players.length, matchedPlayers: 0,
         clubMatches: 0, clubMismatches: [], positionMatches: 0, positionMismatches: [],
         fifaPdfCandidatePlayers: 0, fifaPdfCandidateMatches: 0, fifaPdfCandidateMismatches: [],
-        mismatches: [], clubsAssigned: 0
+        mismatches: [], playerChecks: [], clubsAssigned: 0
       };
       const assignments = [];
 
@@ -127,12 +127,21 @@ for (const [year, config] of Object.entries(sources)) {
             planetWorldCupClub: planet.club, canonicalWikipediaClub: wikiClub, canonicalPlanetClub: planetClub });
         }
         const planetPosition = planet.position === "MD" ? "MF" : planet.position;
-        if (wiki.position && planetPosition && wiki.position === planetPosition) {
+        const clubMatches = Boolean(wiki.club && planet.club && wikiClub && wikiClub === planetClub);
+        const positionMatches = Boolean(wiki.position && planetPosition && wiki.position === planetPosition);
+        if (positionMatches) {
           item.positionMatches++;
         } else {
           item.positionMismatches.push({ number, player: player.name,
             wikipediaPosition: wiki.position, planetWorldCupPosition: planetPosition });
         }
+        item.playerChecks.push({
+          number, playerName: player.name,
+          wikipediaName: wiki.name, planetName: planet.name,
+          wikipediaClub: wiki.club, planetClub: planet.club,
+          wikipediaPosition: wiki.position, planetPosition,
+          clubMatches, positionMatches
+        });
 
         const fifaCandidate = candidateByNumber.get(number);
         if (fifaCandidate?.club && fifaCandidate?.clubSource) {
