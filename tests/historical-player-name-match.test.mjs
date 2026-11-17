@@ -31,3 +31,9 @@ test("accepts explicitly reviewed FIFA display-name variants from the 2006 squad
   assert.equal(namesMatch("Leo Franco", "Leonardo FRANCO"), true);
   assert.equal(namesMatch("Lucho González", "Luis GONZALEZ"), true);
 });
+
+test("normalizes Turkish dotless i in FIFA display names", () => {
+  assert.equal(namesMatch("Kenan Yıldız", "YILDIZ Kenan Kenan YILDIZ YILDIZ"), true);
+  assert.equal(namesMatch("Altay Bayındır", "BAYINDIR Altay Altay BAYINDIR ALTAY"), true);
+  assert.equal(namesMatch("Ferdi Kadıoğlu", "KADIOGLU Ferdi Ferdi Erenay KADIOĞLU F. KADIOĞLU"), true);
+});
