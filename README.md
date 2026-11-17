@@ -8,7 +8,7 @@ A mobile-first World Cup squad memory game with a colourful, angular retro-footb
 - **Normal Easy and Hard:** choose any World Cup edition and national team. Easy shows position hints and club details where the source contains them; Hard hides the hints.
 - **Practice:** the same complete squads with no timer.
 - **World Cup Challenge:** choose a tournament and team.
-- **Gameplay:** surname and compound-surname matching, accent-insensitive names, minor typo tolerance, duplicate and incorrect-guess feedback, shirt numbers, player rarity labels, a 120-second timer, Give Up, complete roster reveal, perfect-run results and final Daily results.
+- **Gameplay:** surname and compound-surname matching, accent-insensitive names, minor typo tolerance, duplicate and incorrect-guess feedback, shirt-number disambiguation for duplicate names, player rarity labels, a 120-second timer, Give Up, complete roster reveal, perfect-run results and final Daily results.
 - **Local statistics and settings:** games played, players found, best accuracy, reset, compact layout and reduced motion. They are stored on the current device only.
 - **Offline support:** the service worker caches the app and squad data after the first successful load.
 
