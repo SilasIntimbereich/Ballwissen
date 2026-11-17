@@ -65,7 +65,7 @@ test("each Legendary squad receives one Ball Knowledge and two Legendary picks w
    {name:"Unknown "+i+" A",number:1,position:"FW"},
    {name:"Unknown "+i+" B",number:2,position:"FW"},
    {name:"Unknown "+i+" C",number:23,position:"GK"},
-   {name:"Known Star "+i,number:10,position:"FW"}
+   {name:"Lionel Messi",number:10,position:"FW"}
   ]
  }))};
  const metadata={teams:rosters.teams.map((team,i)=>({id:team.id,year:2000+i*4,teamDifficulty:"legendary"}))};
