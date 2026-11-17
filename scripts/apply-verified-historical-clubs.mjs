@@ -66,19 +66,32 @@ function applyTeam(year, teamId, candidatePlayers, sources) {
   }
   if (playerUpdates) dataChanged = true;
 
-  const sourceList = sources.filter(value => typeof value === "string" && value.trim());
+  const sourceList = [...new Set(sources.filter(value => typeof value === "string" && value.trim()))];
   const prior = rosterAudit.teams[teamId] || {};
+  const priorRows = Array.isArray(prior.players) ? prior.players : [];
+  const priorByNumber = new Map(priorRows.map(row => [Number(row.number), row]));
+  const ledgerRows = updates.map(({ player, candidate }) => {
+    const priorRow = priorByNumber.get(Number(player.number)) || {};
+    const sourceName = candidate.sourceName || candidate.name || priorRow.sourceName || player.name;
+    return {
+      ...priorRow,
+      number: Number(player.number),
+      playerName: priorRow.playerName || priorRow.name || player.name,
+      sourceName,
+      status: ["matched", "corrected"].includes(priorRow.status) ? priorRow.status : "matched",
+      position: player.position,
+      clubAtTournament: player.club,
+      primarySource: priorRow.primarySource || sourceList[0],
+      secondarySource: priorRow.secondarySource || sourceList[1]
+    };
+  });
   rosterAudit.teams[teamId] = {
     ...prior,
     status: "verified",
     primarySource: sourceList[0],
-    secondarySource: sourceList.slice(1).join(" | "),
-    players: updates.map(({ player }) => ({
-      number: Number(player.number),
-      name: player.name,
-      status: "matched",
-      clubAtTournament: player.club
-    }))
+    secondarySource: sourceList[1],
+    additionalSources: sourceList.slice(2),
+    players: ledgerRows
   };
   ledgerChanged = true;
 
