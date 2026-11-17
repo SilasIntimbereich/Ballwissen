@@ -46,3 +46,21 @@ test("rejects incomplete, mismatched or duplicate player rows", () => {
     ...validEntry, players: [{ ...validEntry.players[0], number: 99 }]
   }, 2018), false);
 });
+
+test("accepts a different source display name only with a documented alias and HTTPS evidence", () => {
+  const aliased = {
+    ...validEntry,
+    players: [{
+      ...validEntry.players[0],
+      sourceName: "Alejandro Gomez",
+      sourceNameAliases: ["Hugo Lloris", "Alejandro Gomez"],
+      sourceNameAliasEvidenceUrl: "https://www.dfb.de/worldcup/argentina"
+    }]
+  };
+  assert.equal(isCompleteVerifiedRosterLedger(team, aliased, 2018), true);
+  const undocumented = {
+    ...aliased,
+    players: [{ ...aliased.players[0], sourceNameAliasEvidenceUrl: null }]
+  };
+  assert.equal(isCompleteVerifiedRosterLedger(team, undocumented, 2018), false);
+});
