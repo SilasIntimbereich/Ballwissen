@@ -86,11 +86,11 @@ jobs:
             cp artifacts/2002-fifa-roster-audit.json reports/2002-fifa-roster-audit.json
             cp artifacts/2022-independent-club-audit.json reports/2022-independent-club-audit.json
             cp artifacts/2002-club-audit.json reports/2002-club-audit.json
-            cp artifacts/historical-secondary-squad-audit.json reports/historical-secondary-squad-audit.json reports/verified-historical-club-application.json
+            cp artifacts/historical-secondary-squad-audit.json reports/historical-secondary-squad-audit.json
             cp artifacts/verified-historical-club-application.json reports/verified-historical-club-application.json
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add reports/historical-fifa-audit.json reports/historical-club-candidates.json reports/2002-roster-audit.json reports/2002-fifa-roster-audit.json reports/2022-independent-club-audit.json reports/2002-club-audit.json reports/historical-secondary-squad-audit.json
+            git add reports/historical-fifa-audit.json reports/historical-club-candidates.json reports/2002-roster-audit.json reports/2002-fifa-roster-audit.json reports/2022-independent-club-audit.json reports/2002-club-audit.json reports/historical-secondary-squad-audit.json reports/verified-historical-club-application.json
             if ! git diff --cached --quiet; then
               git commit -m "Update historical FIFA squad audit report"
               git pull --rebase origin main
