@@ -4,8 +4,8 @@ import { namesMatch } from "./historical-player-name-match.mjs";
 const SOURCE_INDEX="https://www.footballsquads.co.uk/national/worldcup/wc2022.htm";
 const normalize=value=>String(value||"").replace(/\u0000/g,"fi").replace(/[æÆ]/g,"ae").replace(/[øØ]/g,"o").replace(/[åÅ]/g,"a").replace(/[łŁ]/g,"l").replace(/[ß]/g,"ss").replace(/[œŒ]/g,"oe").replace(/[đĐ]/g,"dj").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");
 const teamAliases={iriran:"iran",korearepublic:"southkorea",usa:"unitedstates",koreadpr:"northkorea",chinapr:"china",repofireland:"republicofireland"};
-const clubPrefixes=new Set(["fc","cf","ca","cr","se","sl","rsc","bsc","rc","rcd","vfl","sfc","ac","cd","afc","sc","club","as","ss","ssc","gd","kmsr","es","sd","ad","us","gnk","tsg","ogc","fsv","sv","fk","aj","acf","vfb","stade","al"]);
-const clubSuffixes=new Set(["fc","cf","sc","sfc","afc","calcio","bsc","jk","as"]);
+const clubPrefixes=new Set(["1","1fc","fc","cf","ca","cr","se","sl","rsc","bsc","rc","rcd","vfl","sfc","ac","cd","afc","sc","club","as","ss","ssc","gd","kmsr","es","sd","ad","us","usc","uc","ud","gnk","tsg","ogc","fsv","sv","fk","aj","acf","vfb","stade","al","hnk","nk","kv","kas","if","bk","vv"]);
+const clubSuffixes=new Set(["fc","cf","sc","sfc","afc","calcio","bsc","jk","as","if","bk","vv","sk","hsc","osc","sco"]);
 const clubAliases={
  atlantau:"atlantaunited",brightonha:"brightonhovealbion",hearts:"heartofmidlothian",melbournec:"melbournecity",
  staderennais:"rennes",rennais:"rennes",galatasaraysk:"galatasaray",fenerbahcesk:"fenerbahce",pumasunam:"unam",
@@ -30,6 +30,11 @@ const clubAliases={
  sportinglisbon:"sportinglisbon",olympiquelyon:"lyon",olympiquemarseille:"marseille",benca:"benfica",
  manchesterc:"manchestercity",manchesteru:"manchesterunited",newcastleu:"newcastleunited",westhamu:"westhamunited",
  tottenhamh:"tottenhamhotspur",leicesterc:"leicestercity",boltonw:"boltonwanderers",leedsu:"leedsunited",
+ dundeeu:"dundeeunited",stokec:"stokecity",bristolc:"bristolcity",norwichc:"norwichcity",newyorkc:"newyorkcity",
+ orlandoc:"orlandocity",swindont:"swindontown",cardiffc:"cardiffcity",sheffieldu:"sheffieldunited",
+ birminghamc:"birminghamcity",adelaideu:"adelaideunited",lutont:"lutontown",melbournec:"melbournecity",
+ minnesotau:"minnesotaunited",atlantau:"atlantaunited",swanseac:"swanseacity",shandonglunengtaishan:"shandongtaishan",
+ schalke04:"schalke",paoksaloniki:"paok",omonianicosia:"omonia",
  coventryc:"coventrycity",ipswicht:"ipswichtown",blackburnr:"blackburnrovers",charltona:"charltonathletic",
  alahlisaudi:"ahli",alkuwait:"kuwait",qpr:"qpr",unam:"unam",velezsarsfield:"velezsarsfield"
 };
@@ -63,8 +68,11 @@ function linksFrom(html,pattern){
 }
 function teamKey(value){const key=normalize(value);return teamAliases[key]||key;}
 export function clubKey(value){
- const raw=String(value||"").replace(/\u0000/g,"fi").replace(/\[[^\]]*\]/g,"").replace(/\([^)]*\)/g,"");
- let parts=raw.split(/\s+/).map(normalize).filter(Boolean);
+ const raw=String(value||"").replace(/\u0000/g,"fi").replace(/\[[^\]]*\]/g,"").replace(/\([^)]*\)/g,"")
+  .replace(/[æÆ]/g,"ae").replace(/[øØ]/g,"o").replace(/[åÅ]/g,"a").replace(/[łŁ]/g,"l")
+  .replace(/[ß]/g,"ss").replace(/[œŒ]/g,"oe").replace(/[đĐ]/g,"dj")
+  .normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
+ let parts=raw.split(/\s+/).filter(Boolean);
  while(parts.length&&clubPrefixes.has(parts[0]))parts.shift();
  while(parts.length&&clubSuffixes.has(parts[parts.length-1]))parts.pop();
  const key=parts.join("");
