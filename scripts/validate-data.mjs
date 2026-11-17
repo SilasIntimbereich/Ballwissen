@@ -181,7 +181,7 @@ for (const [teamId, record] of Object.entries(audit.teams)) {
   if (record.status !== "verified") continue;
   const team = allTeamsById.get(teamId);
   if (!team) fail("Audit ledger marks an unknown team verified: " + teamId);
-  if (record.tournament !== team.year || record.teamNameInDataset !== team.name || !String(record.teamNameInFifaPdf || "").trim())
+  if (record.tournament !== team.year || record.teamNameInDataset !== team.name || !String(record.teamNameInFifaPdf || record.teamNameInPrimarySource || "").trim())
     fail("Verified audit tournament/team identity metadata mismatch: " + teamId);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(record.reviewedAt || ""))
     fail("Verified audit requires an ISO review date: " + teamId);
