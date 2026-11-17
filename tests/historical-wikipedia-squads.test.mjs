@@ -27,4 +27,9 @@ test("normalizes club prefixes and suffixes without merging distinct clubs", () 
   assert.equal(normalizeHistoricalClub("Al Nassr FC"), "nassr");
   assert.equal(normalizeHistoricalClub("Alavés"), "alaves");
   assert.equal(normalizeHistoricalClub("Bayern München"), "bayernmunich");
+  assert.equal(normalizeHistoricalClub("Borussia M'Gladbach"), "monchengladbach");
+  assert.equal(normalizeHistoricalClub("Borussia Mönchengladbach"), "monchengladbach");
+  assert.equal(normalizeHistoricalClub("Al-Helal"), "hilal");
+  assert.equal(normalizeHistoricalClub("Al-Nasser"), "nassr");
+  assert.equal(normalizeHistoricalClub("Hertha BSC Berlin"), "herthaberlin");
 });
