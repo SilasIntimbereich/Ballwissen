@@ -71,10 +71,12 @@ export function parseWikipediaSquads(html, teams) {
 
 export function normalizeHistoricalClub(value) {
   const key = normalize(value)
-    .replace(/^(?:afc|fc|cf|ac|sc|as|ss|us|cd|rc|rsc|bsc|vfl|sv|fk|nk|hnk|uc|ud|sd|tsg|ogc|kv|kas|1fc|1|sl|ssc|vfb|usc)/, "")
+    .replace(/^(?:afc|fc|cf|ac|sc|as|ss|us|cd|rc|rsc|bsc|vfl|sv|fk|nk|hnk|uc|ud|sd|tsg|ogc|kv|kas|1fc|1|sl|ssc|al|vfb|usc)/, "")
     .replace(/(?:fc|cf|sc|afc|sfc|if|bk|jk|vv|calcio|hsc|osc|sco)$/, "");
   const aliases = {
     bayernmunchen: "bayernmunich",
+    bayer04leverkusen: "bayerleverkusen",
+    intermilano: "internazionale",
     inter: "internazionale",
     psg: "parissaintgermain",
     parisstgermain: "parissaintgermain",
@@ -83,6 +85,8 @@ export function normalizeHistoricalClub(value) {
     olympiquemarseille: "marseille",
     athleticclub: "athleticbilbao",
     sportingcp: "sportinglisbon",
+    deportivoalaves: "alaves",
+    realzaragoza: "zaragoza",
     realbetis: "betis",
     realvalladolid: "valladolid",
     realmallorca: "mallorca",
