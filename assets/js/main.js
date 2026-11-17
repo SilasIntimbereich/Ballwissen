@@ -24,10 +24,12 @@ function updateTimer(){$("#timer").textContent=String(Math.floor(seconds/60)).pa
 function enableGuessControls(){const input=$("#guess"),button=$("#guess-btn");input.disabled=false;input.readOnly=false;input.removeAttribute("disabled");button.disabled=false;button.removeAttribute("disabled");}
 function resetGameView(){found=new Set();roundState=null;submitting=false;seconds=120;ended=false;$("#result").classList.add("hidden");$("#result-stats").innerHTML="";$("#score").textContent="0";$("#guess").value="";enableGuessControls();$("#give-up").disabled=false;$("#give-up").textContent="GIVE UP";$("#roster").innerHTML="";$("#feedback").textContent="Type a player name and press enter.";}
 function cardForPlayer(id){return [...document.querySelectorAll(".player-card[data-player-id]")].find(card=>card.dataset.playerId===id)||null;}
-function setPlayerRarity(card,rarity){
+function setPlayerRarity(card,rarity,revealIndex=0){
  if(!card||!rarity)return;
  const className="rarity-"+rarity.toLowerCase().replaceAll(" ","-");
- card.classList.add(className);
+ card.classList.remove("rarity-common","rarity-rare","rarity-niche","rarity-legendary","rarity-ball-knowledge","rarity-reveal");
+ card.classList.add(className,"rarity-reveal");
+ card.style.setProperty("--reveal-delay",Math.min(900,Math.max(0,revealIndex)*48)+"ms");
  let label=card.querySelector(".player-rarity");
  if(!label){label=document.createElement("span");label.className="player-rarity";card.querySelector(".player-info").append(label);}
  label.textContent=rarity.toUpperCase();
@@ -105,7 +107,7 @@ async function acceptDailyGuess(value){
  }
  const index=outcome.index,player=outcome.player,card=cardForPlayer(team.id+":"+index);
  if(card){
-  card.classList.add("found");setPlayerRarity(card,player.rarity);
+  card.classList.add("found");setPlayerRarity(card,player.rarity,index);
   card.querySelector(".player-name").textContent=player.name;
   card.querySelector(".player-hint").textContent=dailyState.mode==="daily-legendary"?"FOUND":formatHint(player.position,player.club);
  }
@@ -118,7 +120,7 @@ async function finishDailyTeam(giveUp){
  const revealed=revealRound(roundState);
  revealed.missed.forEach(({player,index})=>{
   const card=cardForPlayer(team.id+":"+index);if(!card)return;
-  card.classList.add("missed");setPlayerRarity(card,player.rarity);
+  card.classList.add("missed");setPlayerRarity(card,player.rarity,index);
   card.querySelector(".player-name").textContent=player.name;
   card.querySelector(".player-hint").textContent=dailyState.mode==="daily-legendary"?"NOT FOUND":formatHint(player.position,player.club);
  });
@@ -153,7 +155,7 @@ async function finish(giveUp,completed=false){
  const revealed=revealRound(roundState);
  revealed.missed.forEach(({player,index})=>{
   const card=document.querySelector('.player-card[data-index="'+index+'"]');if(!card)return;
-  card.classList.add("missed");setPlayerRarity(card,player.rarity);
+  card.classList.add("missed");setPlayerRarity(card,player.rarity,index);
   card.querySelector(".player-name").textContent=player.name;
   card.querySelector(".player-hint").textContent=mode==="easy"?formatHint(player.position,player.club):"NOT FOUND";
  });
@@ -178,7 +180,7 @@ $("#guess-form").addEventListener("submit",async event=>{
    const index=outcome.index,player=outcome.player;
    const card=document.querySelector('.player-card[data-index="'+index+'"]');
    if(card){
-    card.classList.add("found");setPlayerRarity(card,player.rarity);
+    card.classList.add("found");setPlayerRarity(card,player.rarity,index);
     card.querySelector(".player-name").textContent=player.name;
     card.querySelector(".player-hint").textContent=mode==="easy"?formatHint(player.position,player.club):"FOUND";
    }
