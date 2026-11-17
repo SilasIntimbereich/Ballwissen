@@ -70,7 +70,7 @@ export function assignRosterRarities(rosters,publicData){
       let rarity;
 
       if(recognised)rarity="Common";
-      else if(difficulty==="common")rarity=repeated?"Common":"Rare";
+      else if(difficulty==="common")rarity=(thirdKeepers.has(player)||Number(player.number)>=23)&&!repeated?"Rare":"Common";
       else if(difficulty==="niche")rarity=repeated?"Rare":"Niche";
       else rarity=repeated?"Rare":"Niche";
 
