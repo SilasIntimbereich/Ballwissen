@@ -145,7 +145,7 @@ for (let pageNo = 1; pageNo <= pdf.numPages; pageNo++) {
     nbcPlayerRows: nbcRows.length,
     parsed: fifaRows.length === 26, rowCountMatches: fifaRows.length === teamPlayers.length,
     mismatchCount: mismatches.length, mismatches, secondaryMismatchCount: secondaryMismatches.length, secondaryMismatches,
-    clubExtractionOverrides: fifaRows.filter(row => row.clubExtractionOverride).map(row => ({ number: row.number, club: row.club, source: PDF_URL }))
+    clubExtractionOverrides: fifaRows.filter(row => row.clubExtractionOverride).map(row => ({ number: row.number, club: row.club, source: PDF_URL })),
     fullSourceAgreement: fifaRows.length === 26 && nbcRows.length === 26 && mismatches.length === 0 && secondaryMismatches.length === 0,
     unparsedRows: unparsed
   });
