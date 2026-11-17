@@ -1,4 +1,5 @@
 import { readFile } from "node:fs/promises";
+import { hasIndependentHttpsSources } from "./source-url-validation.mjs";
 const read = async path => JSON.parse(await readFile(path, "utf8"));
 const fail = message => { throw new Error(message); };
 const positions = new Set(["GK", "DF", "MF", "FW"]);
@@ -209,11 +210,7 @@ for (const [teamId, record] of Object.entries(audit.teams)) {
       fail("Verified audit club mismatch: " + teamId + " / " + player.name);
     const primary = row.primarySource || record.primarySource;
     const secondary = row.secondarySource || record.secondarySource;
-    const sourceHosts = [primary, secondary].map(value => {
-      try { const url = new URL(value); return url.protocol === "https:" ? url.hostname.toLowerCase().replace(/^www\\./, "") : null; }
-      catch { return null; }
-    });
-    if (sourceHosts.some(host => !host) || new Set(sourceHosts).size < 2)
+    if (!hasIndependentHttpsSources([primary, secondary]))
       fail("Verified audit requires two independent HTTPS source hosts: " + teamId + " / " + player.name);
   }
 }
