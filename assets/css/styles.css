@@ -629,3 +629,29 @@ body{background:#0b211b;color:var(--arcade-cream)}
 .player-card.rarity-legendary.rarity-reveal{box-shadow:0 0 18px rgba(255,211,110,.38),inset 0 0 0 1px #ffd36e}
 @media(prefers-reduced-motion:reduce){.player-card.rarity-reveal{animation:none!important}.crowd,.lights:before{animation:none!important}}
 body.reduce-motion .player-card.rarity-reveal{animation:none!important}
+
+/* Final flat-colour menu pass: no gradient backgrounds on any top-level mode tile. */
+.mode-card,.mode-card:nth-child(n){
+  background-color:#245b65!important;background-image:none!important;
+  border:2px solid #e8d8a6!important;
+  box-shadow:4px 4px 0 #071713,inset 0 1px 0 rgba(255,255,255,.16)!important;
+  backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+}
+.mode-card:nth-child(1){background-color:#176d7d!important}
+.mode-card:nth-child(2){background-color:#55427f!important}
+.mode-card:nth-child(3){background-color:#8b3d3d!important}
+.mode-card:nth-child(4){background-color:#286b49!important}
+.mode-card:nth-child(5){background-color:#a9532e!important}
+.mode-card:before{display:none!important;background-image:none!important}
+.mode-card:after{background-image:none!important}
+.mode-card:nth-child(1):after{background-color:#64d5d0!important}
+.mode-card:nth-child(2):after{background-color:#c5a4f1!important}
+.mode-card:nth-child(3):after{background-color:#f1d36d!important}
+.mode-card:nth-child(4):after{background-color:#9bdc83!important}
+.mode-card:nth-child(5):after{background-color:#f0a15c!important}
+.mode-card:hover,.mode-card:focus-visible{background-image:none!important;filter:brightness(1.12);box-shadow:6px 6px 0 #071713,0 0 0 2px #fff4!important}
+.mode-card:active{background-image:none!important;filter:brightness(.96)}
+.game-meta{min-width:130px;gap:5px;padding:3px 8px}
+.game-meta span:first-child{font:700 17px/1.1 "Barlow Condensed",sans-serif;color:#fff5dc;letter-spacing:.6px}
+.game-meta span:last-child{font:7px/1.7 "Press Start 2P";color:#f1d36d}
+@media(max-width:650px){.game-meta{min-width:0;gap:7px}.game-meta span:first-child{font-size:18px}.game-meta span:last-child{font-size:6px}}
