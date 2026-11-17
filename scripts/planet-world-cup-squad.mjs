@@ -1,3 +1,9 @@
+export async function decodePlanetWorldCupResponse(response) {
+  const contentType = response.headers?.get("content-type") || "";
+  const charset = contentType.match(/charset\s*=\s*["']?([^;"'\s]+)/i)?.[1] || "windows-1252";
+  return new TextDecoder(charset).decode(await response.arrayBuffer());
+}
+
 function decode(value) {
   return String(value || "")
     .replace(/&nbsp;|&#160;/gi, " ")
