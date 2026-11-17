@@ -3,7 +3,7 @@ import { namesMatch } from "./historical-player-name-match.mjs";
 
 const SOURCE_URL = "https://www.myfootballfacts.com/world-football/fifa/world-cup/fifa-world-cup-by-year/2022-world-cup/2022-fifa-world-cup-playing-squad-details-with-kit-number-position-age-caps-and-club-affiliation/";
 const normalize = value => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
-const teamAliases = { iriran:"iran", korearepublic:"southkorea", usa:"unitedstates", "koreadpr":"northkorea" };
+const teamAliases = { iriran:"iran", korearepublic:"southkorea", usa:"unitedstates", koreadpr:"northkorea", chinapr:"china" };
 const clubPrefix = new Set(["fc","cf","ca","cr","se","sl","rsc","bsc","rc","rcd","vfl","sfc","ac","cd","afc","sc","club"]);
 const clubSuffix = new Set(["fc","cf","sc","sfc","afc","calcio"]);
 const clubAliases = {
@@ -42,10 +42,17 @@ function canonicalTeam(value) {
 }
 function parseRows(html) {
   const rows=[];
+  let currentTeam=null;
   for (const match of html.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)) {
-    const cells=[...match[1].matchAll(/<td\b[^>]*>([\s\S]*?)<\/td>/gi)].map(m=>cellText(m[1]));
+    const cells=[...match[1].matchAll(/<t[dh]\b[^>]*>([\s\S]*?)<\/t[dh]>/gi)].map(m=>cellText(m[1]));
+    if(cells.length===1){
+      const heading=cells[0].match(/^(.+?)\s+\(Group\s+[A-H]\)$/i);
+      if(heading){currentTeam=heading[1].trim();continue;}
+      if(/^Manager:/i.test(cells[0])) continue;
+    }
     if(cells.length!==8 || !/^\d{1,2}$/.test(cells[0]) || !/^(GK|DF|MF|FW)$/i.test(cells[1])) continue;
-    rows.push({number:Number(cells[0]),position:cells[1].toUpperCase(),name:cells[2],club:cells[6],teamName:cells[7]});
+    if(!currentTeam) continue;
+    rows.push({number:Number(cells[0]),position:cells[1].toUpperCase(),name:cells[2],club:cells[6],teamName:currentTeam,clubCountry:cells[7]});
   }
   return rows;
 }
