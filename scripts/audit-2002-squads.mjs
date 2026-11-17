@@ -52,25 +52,6 @@ function teamKey(s){
  return aliases[n]||n;
 }
 function clubKey(s){
- let n=normalize(String(s||"").replace(/\([^)]*\)/g,"").replace(/\[[A-Z]{3}\]/g,""));
- n=n.replace(/^(rsc|sc|fc|afc|as|ac|vfb|sv|1fc)/,"").replace(/(fc|cf|afc)$/,"");
- const aliases={
-  manchesteru:"manchesterunited",newcastleu:"newcastleunited",westhamu:"westhamunited",
-  tottenhamh:"tottenhamhotspur",boltonw:"boltonwanderers",leedsu:"leedsunited",
-  coventryc:"coventrycity",asroma:"roma",acmilan:"milan",inter:"internazionale",
-  hellasverona:"verona",girondinsbordeaux:"bordeaux",deportivoalajuelense:"alajuelense",
-  glasgowceltic:"celtic",alhelal:"alhilal",alhilal:"alhilal",monaco:"monaco",
-  "1fckaiserslautern":"kaiserslautern",kaiserslautern:"kaiserslautern",
-  parisstgermain:"parissaintgermain",parissaintgermain:"parissaintgermain",
-  realmMallorca:"realmallorca",mallorca:"realmallorca",
-  "realvalladolid":"valladolid",valladolid:"valladolid",bayer04leverkusen:"bayerleverkusen",
-  ipswicht:"ipswichtown",blackburnr:"blackburnrovers",glasgowrangers:"rangers",
-  charltona:"charltonathletic",wolverhamptonwanderers:"wolves",
-  cologne:"koln",koln:"koln",nacionaluru:"nacional",
-  betis:"realbetis",realbetis:"realbetis",santoslaguna:"santoslaguna"
- };
- return aliases[n]||n;
-}
  let n=normalize(String(s||"").replace(/\([^)]*\)/g,""));
  const aliases={
   manchesteru:"manchesterunited",manchesterunitedfc:"manchesterunited",
