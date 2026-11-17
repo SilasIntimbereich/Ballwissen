@@ -80,6 +80,11 @@ test("keeps a unique typo match when only one squad member is close",()=>{
  assert.equal(matches("Cristiano Ronald",squad[0],squad),true);
 });
 
+test("recognizes compound surnames with van der particles",()=>{
+ assert.equal(matches("Der Vaart",{name:"Rafael van der Vaart"}),true);
+ assert.equal(matches("Van der Vaart",{name:"Rafael van der Vaart"}),true);
+});
+ 
 test("supports aliases when checking ambiguous surname forms",()=>{
  const squad=[{name:"Joao Pedro dos Santos",aliases:["João Pedro dos Santos"]},{name:"Bernardo Silva"}];
  assert.equal(matches("Dos Santos",squad[0],squad),true);
