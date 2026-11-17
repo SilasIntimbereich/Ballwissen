@@ -6,7 +6,7 @@ function usableHeading(line) {
   return Boolean(value) &&
     value.length <= 80 &&
     !GENERIC_HEADING.test(value) &&
-    !TABLE_HEADING.test(value) &&
+    !TABLE_HEADING.test(value) &&\n    !POSITION_LEGEND.test(value) &&
     !/^\d+\s/.test(value) &&
     !/^(?:coach|head coach|manager)\b/i.test(value);
 }
@@ -16,7 +16,7 @@ function usableHeading(line) {
  * FIFA's older PDFs use "List of Players" followed by a country name;
  * Qatar 2022 uses the generic "SQUAD LIST" label and a country-code heading.
  */
-export function extractTeamHeading(lines) {
+export function extractTeamHeading(lines, knownTeams = []) {
   const values = (Array.isArray(lines) ? lines : [])
     .map(line => String(line || "").replace(/\s+/g, " ").trim())
     .filter(Boolean);
