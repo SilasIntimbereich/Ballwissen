@@ -63,7 +63,9 @@ function clubKey(s){
   "1fckaiserslautern":"kaiserslautern",kaiserslautern:"kaiserslautern",
   parisstgermain:"parissaintgermain",parissaintgermain:"parissaintgermain",
   realmMallorca:"realmallorca",mallorca:"realmallorca",
-  "realvalladolid":"valladolid",valladolid:"valladolid",
+  "realvalladolid":"valladolid",valladolid:"valladolid",bayer04leverkusen:"bayerleverkusen",
+  ipswicht:"ipswichtown",blackburnr:"blackburnrovers",glasgowrangers:"rangers",
+  charltona:"charltonathletic",wolverhamptonwanderers:"wolves",
   cologne:"koln",koln:"koln",nacionaluru:"nacional",
   betis:"realbetis",realbetis:"realbetis",santoslaguna:"santoslaguna"
  };
