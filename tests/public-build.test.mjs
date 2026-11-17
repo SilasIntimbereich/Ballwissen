@@ -80,6 +80,10 @@ test("rarity assignment follows the gradual global curve and keeps famous player
   "Ball Knowledge":240
  });
  const france=generated.teams.find(team=>team.id==="france-2018");
- assert.ok(france.players.filter(player=>player.rarity==="Common").length>=20,"France 2018 should be mostly Common");
- assert.equal(france.players.find(player=>/kylian mbapp/i.test(player.name)).rarity,"Common");
+ const famousFrancePlayers=["Hugo Lloris","Raphaël Varane","Paul Pogba","Antoine Griezmann","Olivier Giroud","Kylian Mbappé","Ousmane Dembélé","N'Golo Kanté","Steve Mandanda"];
+ for(const name of famousFrancePlayers){
+  assert.equal(france.players.find(player=>player.name===name)?.rarity,"Common",name+" must remain protected as Common");
+ }
+ assert.ok(france.players.filter(player=>player.rarity==="Niche").length>=3,"France 2018 should retain its Niche minimum");
+ assert.ok(france.players.filter(player=>player.rarity==="Rare").length>=5,"France 2018 should retain its Rare minimum");
 });
