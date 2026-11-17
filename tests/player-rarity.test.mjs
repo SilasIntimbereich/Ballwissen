@@ -101,7 +101,8 @@ test("counts transliterated spellings as the same player across tournaments",()=
   {id:"team-2018",year:2018,teamDifficulty:"niche"}
  ]};
  assignRosterRarities(rosters,metadata);
- for(const team of rosters.teams)assert.equal(team.players[0].rarity,"Rare");
+ assert.equal(rosters.teams.filter(team=>team.players[0].rarity==="Rare").length,1);
+ assert.equal(rosters.teams.filter(team=>team.players[0].rarity==="Common").length,1);
 });
 
 
