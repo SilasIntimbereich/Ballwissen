@@ -1,0 +1,41 @@
+name: Export playable FOOTBALL ARCADE V4 ZIP
+on:
+  push:
+    branches:
+      - export/playable-game-zip
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build-and-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate squad data
+        run: node scripts/validate-data.mjs
+      - name: Build offline playable game
+        run: node scripts/build-public.mjs
+      - name: Run regression tests
+        run: node --test tests/*.test.mjs
+      - name: Package playable static site
+        run: |
+          cat > dist/START-HERE.txt <<'EOF'
+          FOOTBALL ARCADE V4
+
+          This is the ready-to-play static game package.
+          Extract the ZIP and open index.html through a local web server or upload the extracted folder to a static web host.
+          For iPhone, upload the extracted folder to a static host (for example Netlify) and open the resulting HTTPS URL in Safari.
+          The app is local-first and caches its files for offline play after the first successful load.
+          EOF
+          cd dist
+          zip -qr ../FOOTBALL_ARCADE_V4.zip .
+      - name: Upload playable ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: playable-football-arcade-v4
+          path: FOOTBALL_ARCADE_V4.zip
+          if-no-files-found: error
+          retention-days: 30
