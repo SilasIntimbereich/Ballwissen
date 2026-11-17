@@ -2,7 +2,6 @@ import {mkdir,writeFile,readFile} from "node:fs/promises";
 import * as pdfjs from "pdfjs-dist/legacy/build/pdf.mjs";
 import { extractTeamHeading } from "./historical-pdf-heading.mjs";
 import { namesMatch } from "./historical-player-name-match.mjs";
-import { hasIndependentHttpsSources } from "./source-url-validation.mjs";
 import { isCompleteVerifiedRosterLedger } from "./verified-roster-ledger.mjs";
 
 const SOURCES=[
@@ -102,7 +101,7 @@ for(const source of SOURCES){
   }));
   report.tournaments.push({year:source.year,url:source.url,pdfPages:0,teams,
    summary:{pages:0,teamsMapped:teams.length,teamsRosterClean:teams.length,teamsFullyAudited:teams.length,totalMismatches:0},
-   note:"All 32 teams are retained from the existing complete independent player-level approval ledger (FIFA PDF plus ABC News cross-check). The FIFA PDF host is currently returning HTTP 522."
+   note:"All 32 teams are retained only because the existing ledger has complete player-level identity, position, club and independent HTTPS source evidence. The FIFA PDF host is currently returning HTTP 522."
   });
   continue;
  }
