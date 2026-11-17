@@ -117,13 +117,44 @@ export function assignRosterRarities(rosters,publicData){
   const nicheTarget=ratio(1153);
   const rareTarget=ratio(1353);
 
-  // The 720 squad-specific elite places are additional. The 200-player
-  // adjustment is taken from Common and added to Rare; Niche is unchanged.
+  // First reserve at least three Niche and five Rare places per squad,
+  // whenever enough non-famous players remain after the three elite picks.
+  // Very famous/small squads are exceptions: never demote protected Common players.
+  const reservedPlayers=new Set();
+  let reservedNiche=0,reservedRare=0;
+  for(const squad of teams){
+    const squadCandidates=(candidatesByTeam.get(String(squad.id||""))||[])
+      .filter(candidate=>!elitePlayers.has(candidate))
+      .sort((a,b)=>b.score-a.score||
+        (Number(b.player.number)||0)-(Number(a.player.number)||0)||
+        a.index-b.index);
+    const nichePlaces=Math.min(3,squadCandidates.length);
+    for(let index=0;index<nichePlaces;index++){
+      squadCandidates[index].player.rarity="Niche";
+      reservedPlayers.add(squadCandidates[index]);
+      reservedNiche++;
+    }
+    const rarePlaces=Math.min(5,Math.max(0,squadCandidates.length-nichePlaces));
+    for(let index=0;index<rarePlaces;index++){
+      const candidate=squadCandidates[nichePlaces+index];
+      candidate.player.rarity="Rare";
+      reservedPlayers.add(candidate);
+      reservedRare++;
+    }
+  }
+
+  // Fill the remaining global quotas after the per-squad minimums.
+  // This preserves the intended overall curve without concentrating all
+  // Niche/Rare assignments in only a subset of national teams.
+  const unreserved=remaining.filter(candidate=>!reservedPlayers.has(candidate));
   let cursor=0;
-  for(;cursor<Math.min(nicheTarget,remaining.length);cursor++)remaining[cursor].player.rarity="Niche";
-  const rareEnd=Math.min(cursor+rareTarget,remaining.length);
-  for(;cursor<rareEnd;cursor++)remaining[cursor].player.rarity="Rare";
-  for(;cursor<remaining.length;cursor++)remaining[cursor].player.rarity="Common";
+  const additionalNiche=Math.max(0,nicheTarget-reservedNiche);
+  for(;cursor<Math.min(additionalNiche,unreserved.length);cursor++)
+    unreserved[cursor].player.rarity="Niche";
+  const additionalRare=Math.max(0,rareTarget-reservedRare);
+  const rareEnd=Math.min(cursor+additionalRare,unreserved.length);
+  for(;cursor<rareEnd;cursor++)unreserved[cursor].player.rarity="Rare";
+  for(;cursor<unreserved.length;cursor++)unreserved[cursor].player.rarity="Common";
 
   return rosters;
 }
