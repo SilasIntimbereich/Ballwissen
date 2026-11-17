@@ -1,5 +1,6 @@
 import {mkdir,writeFile,readFile} from "node:fs/promises";
 import * as pdfjs from "pdfjs-dist/legacy/build/pdf.mjs";
+import { extractTeamHeading } from "./historical-pdf-heading.mjs";
 
 const SOURCES=[
  {year:2006,url:"https://www.fifadata.com/document/fwc/2006/PDF/FWC_2006_SquadLists.pdf",format:"old-dot"},
@@ -83,9 +84,7 @@ for(const source of SOURCES){
   const groups=[];
   for(const item of items){let group=groups[groups.length-1];if(!group||Math.abs(group.y-item.y)>1.5){group={y:item.y,items:[]};groups.push(group);}group.items.push(item);group.y=group.items.reduce((sum,entry)=>sum+entry.y,0)/group.items.length;}
   const lines=groups.map(group=>group.items.sort((a,b)=>a.x-b.x).map(item=>item.text).join(" ").replace(/\s+/g," ").trim()).filter(Boolean);
-  const listIndex=lines.findIndex(line=>/List of Players/i.test(line));
-  let headingTail=listIndex>=0?lines[listIndex].replace(/^.*?List of Players/i,"").trim():"";
-  const heading=headingTail||lines.slice(Math.max(0,listIndex+1),Math.max(0,listIndex+7)).find(line=>line.length<60&&!/FIFA World Cup|DOB|POS|Club|Height|Caps|Goals|^#|^\d+\s/.test(line))||"";
+  const heading=extractTeamHeading(lines);
   const teamName=heading.replace(/\s*\([A-Z]{3}\)\s*$/,"").replace(/^SQUAD LIST/i,"").trim();
   const team=teamByKey.get(teamKey(heading))||teamByKey.get(teamKey(teamName));
   const fifaRows=parseRows(lines,source.format);
