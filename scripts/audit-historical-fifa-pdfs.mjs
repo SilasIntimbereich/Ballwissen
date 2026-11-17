@@ -3,6 +3,7 @@ import * as pdfjs from "pdfjs-dist/legacy/build/pdf.mjs";
 import { extractTeamHeading } from "./historical-pdf-heading.mjs";
 import { namesMatch } from "./historical-player-name-match.mjs";
 import { hasIndependentHttpsSources } from "./source-url-validation.mjs";
+import { isCompleteVerifiedRosterLedger } from "./verified-roster-ledger.mjs";
 
 const SOURCES=[
  {year:2006,url:"https://www.fifadata.com/document/fwc/2006/PDF/FWC_2006_SquadLists.pdf",format:"old-dot"},
@@ -91,7 +92,7 @@ for(const source of SOURCES){
  const teamsForYear=historical.tournaments[String(source.year)]||[];
  if(source.year===2006&&teamsForYear.length===32&&teamsForYear.every(team=>{
   const audited=rosterAudit.teams?.[team.id];
-  return audited?.status==="verified"&&Array.isArray(audited.players)&&audited.players.length===team.players.length&&audited.players.every(row=>["matched","corrected"].includes(row.status)&&typeof row.clubAtTournament==="string"&&row.clubAtTournament.trim());
+  return isCompleteVerifiedRosterLedger(team,audited,source.year);
  })){
   const teams=teamsForYear.map(team=>({
    page:null,teamId:team.id,teamName:team.name,pdfHeading:team.name,
@@ -169,16 +170,7 @@ for(const source of SOURCES){
   const expected=team?.players.length||0;
   const rosterIdentityClean=Boolean(team)&&fifaRows.length===expected&&mismatches.length===0&&candidates.length===expected&&candidates.every(row=>row.status==="matched");
   const ledgerEntry=team?rosterAudit.teams?.[team.id]:null;
-  const ledgerRows=Array.isArray(ledgerEntry?.players)?ledgerEntry.players:[];
-  const ledgerNumbers=new Set(ledgerRows.map(row=>Number(row.number)));
-  const fullyAudited=Boolean(ledgerEntry?.status==="verified"&&ledgerRows.length===expected&&ledgerNumbers.size===expected&&team&&
-   ledgerRows.every(row=>{
-    const player=team.players.find(candidate=>Number(candidate.number)===Number(row.number));
-    return Boolean(player&&normalize(player.name)===normalize(row.playerName)&&
-     ["matched","corrected"].includes(row.status)&&typeof row.clubAtTournament==="string"&&row.clubAtTournament.trim()&&
-     typeof row.position==="string"&&positionMap[row.position]&&
-     hasIndependentHttpsSources([row.primarySource||ledgerEntry.primarySource,row.secondarySource||ledgerEntry.secondarySource]));
-   }));
+  const fullyAudited=isCompleteVerifiedRosterLedger(team,ledgerEntry,source.year);
   if(rosterIdentityClean){
    for(const candidate of candidates){
     const player=team.players.find(p=>Number(p.number)===candidate.number);
