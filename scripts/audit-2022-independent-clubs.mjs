@@ -144,7 +144,8 @@ for(const team of teams){
   const player=playerByNumber.get(row.number),fifa=fifaCandidates.get(row.number);
   if(!player||!fifa){item.mismatches.push({number:row.number,field:"missing_player_or_fifa_candidate",sourceName:row.name});continue;}
   matchedNumbers.add(row.number);
-  const aliasVariants=manualNameAliases[team.id]?.[row.number]||[];\n  const identityMatches=namesMatch(player.name,row.name)||namesMatch(fifa.sourceName,row.name)||aliasVariants.some(alias=>namesMatch(alias,row.name));
+  const aliasVariants=manualNameAliases[team.id]?.[row.number]||[];
+  const identityMatches=namesMatch(player.name,row.name)||namesMatch(fifa.sourceName,row.name)||aliasVariants.some(alias=>namesMatch(alias,row.name));
   const fifaClub=String(fifa.clubAtTournament||"");
   const clubMatches=clubKey(fifaClub)===clubKey(row.club);
   const positionMatches=fifa.position===row.position;
