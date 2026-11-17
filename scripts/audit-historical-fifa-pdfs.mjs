@@ -98,7 +98,7 @@ for(const source of SOURCES){
    if(!player){mismatches.push({number:row.number,field:"player",fifa:row.nameArea,reason:"No DataHub player with this shirt number"});continue;}
    matchedNumbers.add(row.number);
    const sourceTokens=tokens(row.nameArea),playerTokens=tokens(player.name);
-   const nameMatches=playerTokens.some(token=>sourceTokens.includes(token));
+   const nameVariants=[player.name,...(Array.isArray(player.aliases)?player.aliases:[])].filter(Boolean);\n   const nameMatches=nameVariants.some(name=>tokens(name).every(token=>sourceTokens.includes(token)));
    const positionMatches=positionMap[player.position]===row.position;
    if(!nameMatches)mismatches.push({number:row.number,player:player.name,field:"name",fifa:row.nameArea,dataHub:player.name});
    if(!positionMatches)mismatches.push({number:row.number,player:player.name,field:"position",fifa:row.position,dataHub:player.position});
