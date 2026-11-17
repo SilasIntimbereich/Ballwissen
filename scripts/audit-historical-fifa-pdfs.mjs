@@ -7,7 +7,7 @@ const SOURCES=[
  {year:2006,url:"https://www.fifadata.com/document/fwc/2006/PDF/FWC_2006_SquadLists.pdf",format:"old-dot"},
  {year:2010,url:"https://www.fifadata.com/document/fwc/2010/PDF_BackUp_2010_06_13/FWC_2010_SquadLists.pdf",urls:["https://www.fifadata.com/document/fwc/2010/PDF_BackUp_2010_06_13/FWC_2010_SquadLists.pdf","https://web.archive.org/web/20100616010702id_/http://www.fifa.com/mm/document/tournament/competition/01/22/85/78/fwc_2010_squadlists.pdf"],format:"2010"},
  {year:2014,url:"https://www.fifadata.com/document/fwc/2014/pdf/fwc_2014_squadlists.pdf?cid=facebook_fifaworldcup",urls:["https://www.fifadata.com/document/fwc/2014/pdf/fwc_2014_squadlists.pdf?cid=facebook_fifaworldcup","https://www.fifadata.com/document/FWC/2014/pdf/FWC_2014_SquadLists.pdf"],format:"old-dot"},
- {year:2018,url:"https://www.fifadata.com/document/fwc/2018/pdf/FWC_2018_SQUADLISTS.pdf",urls:["https://www.fifadata.com/document/fwc/2018/pdf/FWC_2018_SQUADLISTS.pdf","https://web.archive.org/web/20190611000407id_/https://tournament.fifadata.com/documents/FWC/2018/pdf/FWC_2018_SQUADLISTS.PDF","https://tournament.fifadata.com/documents/FWC/2018/pdf/FWC_2018_SQUADLISTS.PDF"],format:"old-dot"},
+ {year:2018,url:"https://www.fifadata.com/document/fwc/2018/pdf/FWC_2018_SQUADLISTS.pdf",urls:["https://www.fifadata.com/document/fwc/2018/pdf/FWC_2018_SQUADLISTS.pdf","https://web.archive.org/web/20190611000407id_/https://tournament.fifadata.com/documents/FWC/2018/pdf/FWC_2018_SQUADLISTS.PDF","https://tournament.fifadata.com/documents/FWC/2018/pdf/FWC_2018_SQUADLISTS.PDF"],format:"2018"},
  {year:2022,url:"https://fdp.fifa.org/assetspublic/ce44/pdf/SquadLists-English.pdf",format:"2022"}
 ];
 const historical=JSON.parse(await readFile("data/historical-squads.json","utf8"));
@@ -64,6 +64,13 @@ function parseRows(lines,format){
   if(format==="2022"){
    m=line.match(/^(\d{1,2})\s+(GK|DF|MF|FW)\s+(.+?)\s+(\d{2}\/\d{2}\/\d{4})\s+(.+?)\s+(\d{3})\s+(\d+)\s+(\d+)$/);
    if(m)rows.push({number:Number(m[1]),position:m[2],nameArea:m[3],club:cleanClub(m[5]),line});
+  }else if(format==="2018"){
+   const text=lines.join(" ");
+   const pattern=/#\\s*(\\d{1,2})\\s*\\|\\s*FIFA Display Name\\s+([^|]+?)\\s*\\|\\s*Last Name\\s+([^|]*?)\\s*\\|\\s*First Name\\s+([^|]*?)\\s*\\|\\s*Shirt Name\\s+[^|]*?\\s*\\|\\s*DOB\\s+([\\d.]+)\\s*\\|\\s*POS\\s+(GK|DF|MF|FW)\\s*\\|\\s*Club\\s+([^|]+?)\\s*\\|\\s*Height\\s+\\d{2,3}/gi;
+   for(const match of text.matchAll(pattern)){
+    const nameArea=[match[2],match[4],match[3]].map(value=>value.trim()).filter(Boolean).join(" ");
+    rows.push({number:Number(match[1]),position:match[6],nameArea,club:cleanClub(match[7]),line:match[0]});
+   }
   }else if(format==="2010"){
    m=line.match(/^(\d{1,2})\s+(Goalkeeper|Defender|Midfielder|Forward)\s+(.+?)\s+(\d{1,2}\s+[A-Za-z]{3}\s+\d{4})\s+(.+?)\s+(\d{3})$/);
    if(m)rows.push({number:Number(m[1]),position:positionMap[m[2]],nameArea:m[3],club:cleanClub(m[5]),line});
@@ -128,7 +135,7 @@ for(const source of SOURCES){
   const groups=[];
   for(const item of items){let group=groups[groups.length-1];if(!group||Math.abs(group.y-item.y)>1.5){group={y:item.y,items:[]};groups.push(group);}group.items.push(item);group.y=group.items.reduce((sum,entry)=>sum+entry.y,0)/group.items.length;}
   const lines=groups.map(group=>group.items.sort((a,b)=>a.x-b.x).map(item=>item.text).join(" ").replace(/\s+/g," ").trim()).filter(Boolean);
-  const heading=extractTeamHeading(lines);
+  const heading=extractTeamHeading(lines,teamsForYear.map(team=>team.name));
   const teamName=heading.replace(/\s*\([A-Z]{3}\)\s*$/,"").replace(/^SQUAD LIST/i,"").trim();
   const team=teamByKey.get(teamKey(heading))||teamByKey.get(teamKey(teamName));
   const fifaRows=parseRows(lines,source.format);
