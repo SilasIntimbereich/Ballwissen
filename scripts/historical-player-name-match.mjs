@@ -1,6 +1,12 @@
 function normalize(value) {
   return String(value || "")
     .replace(/\u0000/g, "fi")
+    .replace(/[æÆ]/g, "ae")
+    .replace(/[øØ]/g, "o")
+    .replace(/[åÅ]/g, "a")
+    .replace(/[łŁ]/g, "l")
+    .replace(/[ß]/g, "ss")
+    .replace(/[œŒ]/g, "oe")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
@@ -11,6 +17,12 @@ export function namesMatch(playerName, sourceName) {
   const source = String(sourceName || "");
   const sourceTokens = source
     .replace(/\u0000/g, "fi")
+    .replace(/[æÆ]/g, "ae")
+    .replace(/[øØ]/g, "o")
+    .replace(/[åÅ]/g, "a")
+    .replace(/[łŁ]/g, "l")
+    .replace(/[ß]/g, "ss")
+    .replace(/[œŒ]/g, "oe")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
@@ -18,7 +30,7 @@ export function namesMatch(playerName, sourceName) {
     .filter(Boolean);
   const playerParts = String(playerName || "")
     .trim()
-    .split(/\s+/)
+    .split(/[\s-]+/)
     .map(normalize)
     .filter(Boolean);
   if (!playerParts.length) return false;
