@@ -26,7 +26,7 @@ const verified = team => {
     const row = record.players.find(item => Number(item.number) === Number(player.number) && normalize(item.playerName) === normalize(player.name));
     const sources = [row?.primarySource || record.primarySource, row?.secondarySource || record.secondarySource];
     if (!row || !["matched","corrected"].includes(row.status) ||
-        !isVerifiedPlayerSourceName(player, row) ||
+        !isVerifiedPlayerSourceName(player, row, record) ||
         row.position !== player.position || (row.clubAtTournament ?? null) !== (player.club ?? null) ||
         !hasIndependentHttpsSources(sources))
       throw new Error("Verified audit has an unresolved or incomplete player row: " + team.id + " / " + player.name);
