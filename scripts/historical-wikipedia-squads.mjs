@@ -70,7 +70,29 @@ export function parseWikipediaSquads(html, teams) {
 }
 
 export function normalizeHistoricalClub(value) {
-  return normalize(value)
-    .replace(/^(?:afc|fc|cf|ac|sc|as|ss|us|cd|rc|rsc|bsc|vfl|sv|fk|nk|hnk|uc|ud|sd|tsg|ogc|kv|kas|1fc|1)/, "")
-    .replace(/(?:fc|cf|sc|afc|sfc|if|bk|jk|vv|calcio)$/, "");
+  const key = normalize(value)
+    .replace(/^(?:afc|fc|cf|ac|sc|as|ss|us|cd|rc|rsc|bsc|vfl|sv|fk|nk|hnk|uc|ud|sd|tsg|ogc|kv|kas|1fc|1|sl|ssc|vfb|usc)/, "")
+    .replace(/(?:fc|cf|sc|afc|sfc|if|bk|jk|vv|calcio|hsc|osc|sco)$/, "");
+  const aliases = {
+    bayernmunchen: "bayernmunich",
+    inter: "internazionale",
+    psg: "parissaintgermain",
+    parisstgermain: "parissaintgermain",
+    girondinsbordeaux: "bordeaux",
+    olympiquelyon: "lyon",
+    olympiquemarseille: "marseille",
+    athleticclub: "athleticbilbao",
+    sportingcp: "sportinglisbon",
+    realbetis: "betis",
+    realvalladolid: "valladolid",
+    realmAllorca: "mallorca",
+    borussiadortmund: "dortmund",
+    borussiamonchengladbach: "monchengladbach",
+    bmonchengladbach: "monchengladbach",
+    fckoln: "cologne",
+    koln: "cologne",
+    manchesterutd: "manchesterunited",
+    mancity: "manchestercity"
+  };
+  return aliases[key] || key;
 }
