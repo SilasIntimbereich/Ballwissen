@@ -18,7 +18,7 @@ const clubAliases={
  legiawarsaw:"legiawarszawa",clermontfoot:"clermont",birminghamc:"birminghamcity",sportingbraga:"braga",
  queensparkrangers:"qpr",olympiacospiraeus:"olympiacos",nottinghamf:"nottinghamforest",
  ussalernitana:"salernitana",fkcrvenazvezda:"crvenazvezda",acffiorentina:"fiorentina",
- jeonbukhyundaimotors:"jeonbukhyundai",fsvmainz05:"mainz",nashvillesoccerclub:"nashvillesc",
+ jeonbukhyundaimotors:"jeonbukhyundai",fsvmainz05:"mainz",nashvillesoccerclub:"nashvillesc",nashville:"nashvillesc",
  lutont:"lutontown",antalyasporas:"antalyaspor",swanseac:"swanseacity",brightonhovealbion:"brightonhovealbion",
  bayer04leverkusen:"bayerleverkusen",bayernmunchen:"bayernmunich",bmonchengladbach:"borussiamonchengladbach",
  borussiadortmund:"dortmund",eintrachtfrankfurt:"frankfurt",fckobenhavn:"copenhagen",kobenhavn:"copenhagen",
