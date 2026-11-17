@@ -44,7 +44,7 @@ const tokens=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").to
 function teamKey(s){
  const n=normalize(s);
  const aliases={
-  repofireland:"republicofireland",ireland:"republicofireland",cotedivoire:"ivorycoast",bosniaherzegovina:"bosniaandherzegovina",
+  repofireland:"republicofireland",ireland:"republicofireland",cotedivoire:"ivorycoast",ctedivoire:"ivorycoast",bosniaherzegovina:"bosniaandherzegovina",
   usa:"unitedstates",unitedstatesofamerica:"unitedstates",
   korearepublic:"southkorea",korea:"southkorea",
   chinapr:"china"
