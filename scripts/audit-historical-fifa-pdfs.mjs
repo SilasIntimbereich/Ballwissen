@@ -45,6 +45,16 @@ const MANUAL_NAME_ALIASES={
  "saudi-arabia-2022":{1:["Mohammed Alyami"],5:["Ali Albulayhi"],6:["Mohammed Alburayk"],9:["Feras Albrikan"],13:["Yasir Alshahrani"],16:["Sami Alnaji"],18:["Nawaf Alabid"],19:["Hatan Bahbri"],20:["Abdulrahman Alobud"]},
  "tunisia-2022":{18:["Ghaylen Chaaleli"]}
 };
+const MANUAL_ALIAS_SOURCES={
+ "argentina-2022":"https://datencenter.dfb.de/en/competitions/fifa-world-cup/seasons/2022-in-qatar/teams/argentina?datacenter_name=data-center",
+ "ecuador-2022":"https://datencenter.dfb.de/en/competitions/fifa-world-cup/seasons/2022-in-qatar/teams/ecuador?datacenter_name=data-center",
+ "iran-2022":"https://datencenter.dfb.de/en/competitions/fifa-world-cup/seasons/2022-in-qatar/teams/iran?datacenter_name=data-center",
+ "japan-2022":"https://www.jfa.jp/samuraiblue/worldcup_2022/squad/",
+ "morocco-2022":"https://datencenter.dfb.de/en/competitions/fifa-world-cup/seasons/2022-in-qatar/teams/morocco?datacenter_name=data-center",
+ "qatar-2022":"https://www.olympic.qa/media-center/sanchez-names-qatar-squad-world-cup",
+ "saudi-arabia-2022":"https://datencenter.dfb.de/en/competitions/fifa-world-cup/seasons/2022-in-qatar/teams/saudi-arabia?datacenter_name=data-center",
+ "tunisia-2022":"https://prod.beinsports.com/en-mena/articles/tunisia-reveal-qatar-2022-squad"
+};
 const cleanClub=s=>{const value=String(s||"").replace(/\s*\([A-Z]{3}\)\s*$/,"").trim();return /^no club affiliation$/i.test(value)||/^no club$/i.test(value)?null:value||null;};
 
 function parseRows(lines,format){
@@ -131,7 +141,7 @@ for(const source of SOURCES){
    const positionMatches=positionMap[player.position]===row.position;
    if(!nameMatches)mismatches.push({number:row.number,player:player.name,field:"name",fifa:row.nameArea,dataHub:player.name});
    candidates.push({
-    number:row.number,playerName:player.name,sourceName:row.nameArea,matchedNameVariant:matchedVariant||null,
+    number:row.number,playerName:player.name,sourceName:row.nameArea,matchedNameVariant:matchedVariant||null,aliasEvidenceUrl:matchedVariant&&matchedVariant!==player.name?MANUAL_ALIAS_SOURCES[team.id]||null:null,
     position:row.position,positionChanged:!positionMatches,clubAtTournament:row.club,
     status:nameMatches?"matched":"unresolved",
     notes:!nameMatches?"Manual identity review required; club not promoted.":
