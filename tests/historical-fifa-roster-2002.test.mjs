@@ -33,4 +33,5 @@ test("does not mark a roster clean when any position differs",()=>{
  assert.equal(isCleanFifa2002RosterAudit(valid,23),true);
  assert.equal(isCleanFifa2002RosterAudit({...valid,positionDifferences:[{number:1}]},23),false);
  assert.equal(isCleanFifa2002RosterAudit({...valid,sourcePlayerCount:22},23),false);
+ assert.equal(isCleanFifa2002RosterAudit(valid,22),false);
 });
