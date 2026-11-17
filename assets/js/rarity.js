@@ -108,26 +108,34 @@ export function assignRosterRarities(rosters,publicData){
     a.index-b.index
   );
 
-  const nonCommonTargets=[
+  const eliteTargets=[
     ["Ball Knowledge",ballKnowledgeTarget],
-    ["Legendary",legendaryTarget],
-    ["Niche",nicheTarget],
-    ["Rare",rareTarget]
+    ["Legendary",legendaryTarget]
   ];
-  let cursor=0;
   const elitePerTeam=new Map();
-  for(const [tier,requested] of nonCommonTargets){
+  let remaining=rarityCandidates;
+  for(const [tier,requested] of eliteTargets){
     let assigned=0;
-    while(assigned<requested&&cursor<rarityCandidates.length){
-      const candidate=rarityCandidates[cursor++];
+    const deferred=[];
+    for(const candidate of remaining){
       const teamCount=elitePerTeam.get(candidate.teamId)||0;
-      if(teamCount>=10)continue;
-      candidate.player.rarity=tier;
-      elitePerTeam.set(candidate.teamId,teamCount+1);
-      assigned++;
+      if(assigned<requested&&teamCount<10){
+        candidate.player.rarity=tier;
+        elitePerTeam.set(candidate.teamId,teamCount+1);
+        assigned++;
+      }else deferred.push(candidate);
     }
+    remaining=deferred;
   }
-  for(;cursor<rarityCandidates.length;cursor++)rarityCandidates[cursor].player.rarity="Common";
+
+  const assignNext=(tier,requested)=>{
+    const count=Math.min(requested,remaining.length);
+    for(let i=0;i<count;i++)remaining[i].player.rarity=tier;
+    remaining=remaining.slice(count);
+  };
+  assignNext("Niche",nicheTarget);
+  assignNext("Rare",rareTarget);
+  for(const candidate of remaining)candidate.player.rarity="Common";
 
   return rosters;
 }
