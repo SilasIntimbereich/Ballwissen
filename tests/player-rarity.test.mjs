@@ -8,7 +8,7 @@ test("evidence scoring recognises an internationally established player",()=>{
  assert.equal(rarityFromEvidence({caps:100,majorAwards:5,globalRecognition:5,clubProfile:5}),"Common");
 });
 
-test("team-aware rarity keeps France 2018 familiar and elite tiers globally scarce",async()=>{
+test("team-aware rarity keeps France 2018 familiar and assigns elite picks per Legendary squad",async()=>{
  const [publicData,rosters]=await Promise.all([
   readFile("dist/data/public-teams.json","utf8").then(JSON.parse),
   readFile("dist/data/practice-rosters.json","utf8").then(JSON.parse)
@@ -18,11 +18,13 @@ test("team-aware rarity keeps France 2018 familiar and elite tiers globally scar
  const counts=Object.fromEntries(["Common","Rare","Niche","Legendary","Ball Knowledge"].map(tier=>[tier,all.filter(player=>player.rarity===tier).length]));
  assert.equal(all.length,5759);
  assert.deepEqual(Object.keys(counts).filter(tier=>counts[tier]>0).sort(),["Ball Knowledge","Common","Legendary","Niche","Rare"].sort());
- assert.ok(counts.Legendary<=10,"Legendary must remain globally scarce");
- assert.ok(counts["Ball Knowledge"]<=4,"Ball Knowledge must remain exceptionally rare");
  for(const team of rosters.teams){
-  assert.ok(team.players.filter(player=>["Legendary","Ball Knowledge"].includes(player.rarity)).length<=1,
-   team.id+" must not receive multiple elite labels");
+  const elite=team.players.filter(player=>["Legendary","Ball Knowledge"].includes(player.rarity));
+  assert.ok(elite.length<=3,team.id+" must have at most three elite picks");
+  assert.ok(elite.filter(player=>player.rarity==="Ball Knowledge").length<=1,
+   team.id+" must have at most one Ball Knowledge pick");
+  assert.ok(elite.filter(player=>player.rarity==="Legendary").length<=2,
+   team.id+" must have at most two Legendary picks");
  }
  const france=rosters.teams.find(team=>team.id==="france-2018");
  assert.ok(france.players.filter(player=>player.rarity==="Common").length>=20);
@@ -53,7 +55,7 @@ test("Supabase resolver uses the same team-aware rarity algorithm as the browser
  assert.ok(checked>5700);
 });
 
-test("Legendary labels are globally limited and never duplicated within one team",()=>{
+test("each Legendary squad receives one Ball Knowledge and two Legendary picks when eligible",()=>{
  const rosters={teams:Array.from({length:8},(_,i)=>({
   id:"team-"+i,
   players:[
@@ -66,10 +68,11 @@ test("Legendary labels are globally limited and never duplicated within one team
  const metadata={teams:rosters.teams.map((team,i)=>({id:team.id,year:2000+i*4,teamDifficulty:"legendary"}))};
  assignRosterRarities(rosters,metadata);
  const all=rosters.teams.flatMap(team=>team.players);
- assert.equal(all.filter(player=>player.rarity==="Ball Knowledge").length,4);
- assert.equal(all.filter(player=>player.rarity==="Legendary").length,4);
+ assert.equal(all.filter(player=>player.rarity==="Ball Knowledge").length,8);
+ assert.equal(all.filter(player=>player.rarity==="Legendary").length,16);
  for(const team of rosters.teams){
-  assert.ok(team.players.filter(player=>["Legendary","Ball Knowledge"].includes(player.rarity)).length<=1);
+  assert.equal(team.players.filter(player=>player.rarity==="Ball Knowledge").length,1);
+  assert.equal(team.players.filter(player=>player.rarity==="Legendary").length,2);
  }
 });
 
