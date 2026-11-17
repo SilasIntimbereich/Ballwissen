@@ -3,7 +3,7 @@ import { namesMatch } from "./historical-player-name-match.mjs";
 
 const SOURCE_INDEX="https://www.footballsquads.co.uk/national/worldcup/wc2022.htm";
 const normalize=value=>String(value||"").replace(/[æÆ]/g,"ae").replace(/[øØ]/g,"o").replace(/[åÅ]/g,"a").replace(/[łŁ]/g,"l").replace(/[ß]/g,"ss").replace(/[œŒ]/g,"oe").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");
-const teamAliases={iriran:"iran",korearepublic:"southkorea",usa:"unitedstates",koreadpr:"northkorea",chinapr:"china"};
+const teamAliases={iriran:"iran",korearepublic:"southkorea",usa:"unitedstates",koreadpr:"northkorea",chinapr:"china",repofireland:"republicofireland"};
 const clubPrefixes=new Set(["fc","cf","ca","cr","se","sl","rsc","bsc","rc","rcd","vfl","sfc","ac","cd","afc","sc","club","as","ss","ssc"]);
 const clubSuffixes=new Set(["fc","cf","sc","sfc","afc","calcio"]);
 const clubAliases={
