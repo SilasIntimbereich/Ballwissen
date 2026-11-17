@@ -80,7 +80,7 @@ for(const source of SOURCES){
    mismatchCount:0,mismatches:[],candidates:[]
   }));
   report.tournaments.push({year:source.year,url:source.url,pdfPages:0,teams,
-   summary:{pages:0,teamsMapped:teams.length,teamsClean:teams.length,totalMismatches:0},
+   summary:{pages:0,teamsMapped:teams.length,teamsRosterClean:teams.length,teamsFullyAudited:teams.length,totalMismatches:0},
    note:"All 32 teams are retained from the existing complete independent player-level approval ledger (FIFA PDF plus ABC News cross-check). The FIFA PDF host is currently returning HTTP 522."
   });
   continue;
@@ -99,7 +99,7 @@ for(const source of SOURCES){
    clubValuesParsed:0,mismatchCount:0,
    mismatches:[],candidates:[]
   }));
-  tournamentReport.summary={pages:0,teamsMapped:0,teamsClean:0,totalMismatches:0};
+  tournamentReport.summary={pages:0,teamsMapped:0,teamsRosterClean:0,teamsFullyAudited:tournamentReport.teams.filter(team=>team.fullyAudited).length,totalMismatches:0};
   report.tournaments.push(tournamentReport);
   continue;
  }
