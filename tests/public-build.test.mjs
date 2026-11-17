@@ -59,14 +59,19 @@ test("every player in every verified squad has a valid rarity assignment",()=>{
 });
 
 
-test("rarity assignment keeps elite tiers genuinely scarce and famous players Common",()=>{
+test("rarity assignment follows the gradual global curve and keeps famous players Common",()=>{
  const generated=structuredClone(localData);
  assignRosterRarities(generated,publicData);
  const all=generated.teams.flatMap(team=>team.players);
  const counts=Object.fromEntries(["Common","Rare","Niche","Legendary","Ball Knowledge"].map(tier=>[tier,all.filter(player=>player.rarity===tier).length]));
  assert.equal(all.length,5759);
- assert.ok(counts["Legendary"]<=10,"Legendary must stay extremely rare");
- assert.ok(counts["Ball Knowledge"]<=4,"Ball Knowledge must be exceptionally rare");
+ assert.deepEqual(counts,{
+  Common:2809,
+  Rare:1873,
+  Niche:936,
+  Legendary:94,
+  "Ball Knowledge":47
+ });
  const france=generated.teams.find(team=>team.id==="france-2018");
  assert.ok(france.players.filter(player=>player.rarity==="Common").length>=20,"France 2018 should be mostly Common");
  assert.equal(france.players.find(player=>/kylian mbapp/i.test(player.name)).rarity,"Common");
