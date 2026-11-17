@@ -26,6 +26,8 @@ const normalizePosition = value => {
   const position = String(value || "").trim().toUpperCase().replace(/[^A-Z]/g, "");
   return position === "MD" ? "MF" : position;
 };
+const normalizeName = value => String(value || "").normalize("NFD")
+  .replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
 const validHttps = value => {
   try { return new URL(value).protocol === "https:"; } catch { return false; }
 };
@@ -122,7 +124,7 @@ function applyTeam(year, teamId, candidatePlayers, sources, evidencePlayers, fif
       sourceName,
       club: club.trim(),
       position: normalizePosition(position),
-      status: normalizeHistoricalClub(sourceName) === normalizeHistoricalClub(player.name) ? "matched" : "corrected"
+      status: normalizeName(sourceName) === normalizeName(player.name) ? "matched" : "corrected"
     });
   }
 
