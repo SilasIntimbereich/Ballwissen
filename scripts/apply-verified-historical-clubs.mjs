@@ -91,21 +91,24 @@ function applyTeam(year, teamId, candidatePlayers, sources, evidencePlayers, fif
     }
 
     const candidateSourceName = candidate.sourceName || null;
-    if (candidateSourceName && evidence.identityMatches !== true && !namesMatch(player.name, candidateSourceName)) {
-      report.skippedTeams.push({ year, teamId, teamName: dataTeam.name, reason: "FIFA candidate name conflicts with the independent player identity checks" });
-      return;
-    }
-    const sourceName = candidateSourceName && (namesMatch(player.name, candidateSourceName) || evidence.identityMatches === true)
+    const matchedNameVariant = candidate.matchedNameVariant || null;
+    const candidateNameMatches = Boolean(candidateSourceName && namesMatch(player.name, candidateSourceName));
+    const candidateAliasMatches = Boolean(candidateSourceName && matchedNameVariant &&
+      namesMatch(matchedNameVariant, candidateSourceName) && isHttpsUrl(candidate.aliasEvidenceUrl));
+    const independentSourceName = [planetName, wikiName].find(value => value && namesMatch(player.name, value));
+    const sourceName = candidateNameMatches || candidateAliasMatches
       ? candidateSourceName
-      : planetName || wikiName || player.name;
+      : independentSourceName;
     if (!sourceName) {
-      report.skippedTeams.push({ year, teamId, teamName: dataTeam.name, reason: "A source display name is missing" });
+      report.skippedTeams.push({ year, teamId, teamName: dataTeam.name, reason: "No source display name could be reconciled to the player or a documented alias" });
       return;
     }
     updates.push({
       player,
       number,
       sourceName,
+      sourceNameAliases: [...new Set([player.name, ...(candidateAliasMatches ? [matchedNameVariant] : []), sourceName])],
+      sourceNameAliasEvidenceUrl: candidateAliasMatches ? candidate.aliasEvidenceUrl : null,
       club: club.trim(),
       position: normalizePosition(position),
       status: normalizeName(sourceName) === normalizeName(player.name) ? "matched" : "corrected"
@@ -115,14 +118,15 @@ function applyTeam(year, teamId, candidatePlayers, sources, evidencePlayers, fif
   const prior = rosterAudit.teams[teamId] || {};
   const priorRows = Array.isArray(prior.players) ? prior.players : [];
   const priorByNumber = new Map(priorRows.map(row => [Number(row.number), row]));
-  const ledgerRows = updates.map(({ player, number, sourceName, club, position, status }) => {
+  const ledgerRows = updates.map(({ player, number, sourceName, sourceNameAliases, sourceNameAliasEvidenceUrl, club, position, status }) => {
     const priorRow = priorByNumber.get(number) || {};
     return {
       ...priorRow,
       number,
       playerName: player.name,
       sourceName,
-      sourceNameAliases: [...new Set([player.name, ...(priorRow.sourceNameAliases || [])])],
+      sourceNameAliases: [...new Set([...sourceNameAliases, ...(priorRow.sourceNameAliases || [])])],
+      ...(sourceNameAliasEvidenceUrl ? { sourceNameAliasEvidenceUrl } : {}),
       status,
       position,
       clubAtTournament: club,
@@ -220,6 +224,8 @@ for (const teamAudit of audit2022.teams || []) {
     .map(player => ({
       number: player.number,
       sourceName: player.sourceName,
+      matchedNameVariant: player.matchedNameVariant,
+      aliasEvidenceUrl: player.aliasEvidenceUrl,
       clubAtTournament: player.clubAtTournament,
       position: player.position
     }));
