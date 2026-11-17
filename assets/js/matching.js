@@ -1,4 +1,8 @@
-export const normalize=value=>String(value??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");
+export const normalize=value=>String(value??"")
+ .replace(/[æÆ]/g,"ae").replace(/[œŒ]/g,"oe").replace(/[øØ]/g,"o")
+ .replace(/[łŁ]/g,"l").replace(/[ßẞ]/g,"ss").replace(/[đĐðÐ]/g,"d")
+ .replace(/[þÞ]/g,"th").replace(/[ıİ]/g,"i")
+ .normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");
 
 function distance(a,b){
  const row=Array.from({length:b.length+1},(_,i)=>i);
