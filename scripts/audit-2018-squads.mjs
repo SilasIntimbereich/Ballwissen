@@ -97,7 +97,7 @@ function parseFootballSquads(html){
  for(const tr of html.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)){
   const cells=[...tr[1].matchAll(/<td\b[^>]*>([\s\S]*?)<\/td>/gi)].map(m=>textFromHtml(m[1]));
   if(cells.length>=8&&/^\d{1,2}$/.test(cells[0])){
-   const pos={G:"GK",D:"DF",M:"MF",F:"FW"}[cells[2].toUpperCase()]||null;
+   const pos=({G:"GK",GK:"GK",GOALKEEPER:"GK",D:"DF",DF:"DF",DEFENDER:"DF",M:"MF",MF:"MF",MIDFIELDER:"MF",F:"FW",FW:"FW",FORWARD:"FW",STRIKER:"FW"})[cells[2].toUpperCase()]||null;
    rows.push({number:Number(cells[0]),name:cells[1],position:pos,club:cells[cells.length-1]});
   }
  }
