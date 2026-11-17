@@ -1,6 +1,6 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 
-const SOURCE_URL = "https://www.rsssf.org/tables/2002full.html";
+const SOURCE_URL = "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt";
 const normalize = value => String(value || "")
   .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
   .toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -22,7 +22,7 @@ const playerAliases = new Map([
 export function parseSquads(sourceText, teams) {
   const expected = new Map(teams.map(team => [normalize(team.name), team]));
   const lines = sourceText.split(/\r?\n/);
-  const start = lines.findIndex(line => /^Squads\s*$/i.test(line.trim()));
+  const start = lines.findIndex(line => /^==\s*Squads\b/i.test(line.trim()));
   if (start < 0) throw new Error("RSSSF squad section not found");
 
   const squads = new Map();
@@ -34,8 +34,7 @@ export function parseSquads(sourceText, teams) {
 
     const heading = line.replace(/\s+‹§[^›]+›$/, "").trim();
     const key = normalize(heading);
-    const mappedKey = teamAliases[key] || key;
-    const team = expected.get(mappedKey);
+    const team = expected.get(teamAliases[key] || key);
     if (team && heading === heading.toUpperCase()) {
       current = team;
       squads.set(team.id, []);
@@ -77,23 +76,7 @@ if (!response.ok) {
   process.exit(0);
 }
 
-const contentType=response.headers.get("content-type")||"";
-const bytes=await response.arrayBuffer();
-const decoder=/charset=(?:iso-8859-1|windows-1252)/i.test(contentType)?new TextDecoder("windows-1252"):new TextDecoder("utf-8");
-const rawHtml=decoder.decode(bytes);
-const sourceText=rawHtml
-  .replace(/<script[\s\S]*?<\/script>/gi," ")
-  .replace(/<style[\s\S]*?<\/style>/gi," ")
-  .replace(/<br\s*\/?\s*>/gi,"\n")
-  .replace(/<\/(?:p|div|h[1-6]|li|pre|tr)>/gi,"\n")
-  .replace(/<[^>]*>/g," ")
-  .replace(/&nbsp;/gi," ")
-  .replace(/&amp;/gi,"&")
-  .replace(/&eacute;/gi,"é").replace(/&Eacute;/g,"É")
-  .replace(/&ouml;/gi,"ö").replace(/&Ouml;/g,"Ö")
-  .replace(/&uuml;/gi,"ü").replace(/&Uuml;/g,"Ü")
-  .replace(/&#(\d+);/g,(_,n)=>String.fromCodePoint(Number(n)))
-  .replace(/\r/g,"");
+const sourceText = await response.text();
 const squads = parseSquads(sourceText, teams);
 const report = {
   year: 2002, source: SOURCE_URL, sourceStatus: "available",
