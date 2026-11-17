@@ -179,6 +179,7 @@ report.summary={
  sourceUnavailableTeams:report.tournaments.reduce((n,t)=>n+t.teams.filter(team=>team.sourceUnavailable).length,0)
 };
 await mkdir("artifacts",{recursive:true});
+candidateData.tournaments = historical.tournaments;
 await writeFile("artifacts/historical-fifa-audit.json",JSON.stringify(report,null,2)+"\n");
 await writeFile("artifacts/historical-club-candidates.json",JSON.stringify(candidateData,null,2)+"\n");
 console.log(JSON.stringify(report.summary,null,2));
