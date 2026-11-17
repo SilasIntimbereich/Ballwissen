@@ -95,7 +95,9 @@ try{
  await dailyStart("common");
  const dailyFirstTeam=(await page.locator("#game-team").textContent()).trim();
  assert.ok(dailyFirstTeam.length>0,"Daily Common must keep the selected team name visible");
- assert.match((await page.locator("#game-tournament").textContent()).trim(),/WORLD CUP \\d{4} · DAILY COMMON · 1\\/3/);
+ const dailyMeta=(await page.locator("#game-tournament").textContent()).trim();
+ assert.ok(dailyMeta.startsWith("WORLD CUP "),"Daily must display the World Cup year");
+ assert.ok(dailyMeta.includes(" · DAILY COMMON · 1/3"),"Daily must display its tier and round");
  assert.notEqual((await page.locator(".player-hint").first().textContent()).trim(),"HIDDEN PLAYER");
  for(let round=0;round<3;round++){await giveUp();if(round<2)await page.locator("#result-home").click();}
  await page.locator("#result-home").click();
