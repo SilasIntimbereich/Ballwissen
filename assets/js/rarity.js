@@ -98,9 +98,7 @@ export function assignRosterRarities(rosters,publicData){
       (Number(b.player.number)||0)-(Number(a.player.number)||0)||
       a.index-b.index
     );
-    if(candidates.length<3){
-      throw new Error("Squad has fewer than three eligible rarity candidates: "+squad.id);
-    }
+    if(candidates.length<3)continue;
     candidates[0].player.rarity="Ball Knowledge";
     candidates[1].player.rarity="Legendary";
     candidates[2].player.rarity="Legendary";
