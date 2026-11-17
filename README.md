@@ -39,7 +39,7 @@ For a real browser smoke test:
 
 ~~~sh
 npm install --no-save playwright
-npx playwright install --with-deps chromium
+npx playwright install --with-deps chromium webkit
 npm run test:browser
 ~~~
 
