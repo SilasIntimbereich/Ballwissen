@@ -30,7 +30,7 @@ const verified = team => {
     if (!row || !["matched","corrected"].includes(row.status) || !String(row.sourceName || "").trim() ||
         (!explicitAlias && !playerTokens.some(token => sourceTokens.includes(token))) ||
         row.position !== player.position || (row.clubAtTournament ?? null) !== (player.club ?? null) ||
-        !sources.every(source => { try { return new URL(source).protocol === "https:"; } catch { return false; } }))
+        !hasIndependentHttpsSources(sources))
       throw new Error("Verified audit has an unresolved or incomplete player row: " + team.id + " / " + player.name);
   }
   return true;
