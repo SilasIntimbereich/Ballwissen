@@ -15,7 +15,7 @@ const verified = team => {
   const record = audit.teams?.[team.id];
   if (!record || record.status !== "verified") return false;
   if (record.tournament !== team.year || record.teamNameInDataset !== team.name ||
-      !String(record.teamNameInFifaPdf || "").trim() || !/^\d{4}-\d{2}-\d{2}$/.test(record.reviewedAt || ""))
+      !String(record.teamNameInFifaPdf || record.teamNameInPrimarySource || "").trim() || !/^\d{4}-\d{2}-\d{2}$/.test(record.reviewedAt || ""))
     throw new Error("Verified audit metadata is incomplete: " + team.id);
   if (!Array.isArray(record.players) || record.players.length !== (team.players || []).length)
     throw new Error("Verified audit row count mismatch: " + team.id);
