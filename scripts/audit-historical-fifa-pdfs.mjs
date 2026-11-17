@@ -142,6 +142,7 @@ report.summary={
  teams:report.tournaments.reduce((n,t)=>n+t.teams.length,0),
  teamsMapped:report.tournaments.reduce((n,t)=>n+t.summary.teamsMapped,0),
  sourceUnavailableTeams:report.tournaments.reduce((n,t)=>n+t.teams.filter(team=>team.sourceUnavailable).length,0),
+ existingApprovedTeams:report.tournaments.reduce((n,t)=>n+t.teams.filter(team=>team.verifiedFromExistingLedger).length,0),
  teamsClean:report.tournaments.reduce((n,t)=>n+t.summary.teamsClean,0),
  totalMismatches:report.tournaments.reduce((n,t)=>n+t.summary.totalMismatches,0),
  clubCandidates:report.tournaments.reduce((n,t)=>n+t.teams.reduce((m,team)=>m+team.clubValuesParsed,0),0)
@@ -150,4 +151,4 @@ await mkdir("artifacts",{recursive:true});
 await writeFile("artifacts/historical-fifa-audit.json",JSON.stringify(report,null,2)+"\n");
 await writeFile("artifacts/historical-club-candidates.json",JSON.stringify(candidateData,null,2)+"\n");
 console.log(JSON.stringify(report.summary,null,2));
-if(report.summary.teams!==160||report.summary.teamsMapped+report.summary.sourceUnavailableTeams!==160)throw new Error("Historical audit did not account for all 160 teams. Inspect audit report.");
+if(report.summary.teams!==160||report.summary.teamsMapped+report.summary.sourceUnavailableTeams+report.summary.existingApprovedTeams!==160)throw new Error("Historical audit did not account for all 160 teams. Inspect audit report.");
