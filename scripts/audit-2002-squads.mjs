@@ -52,21 +52,22 @@ function teamKey(s){
  return aliases[n]||n;
 }
 function clubKey(s){
- let n=normalize(String(s||"").replace(/\([^)]*\)/g,""));
+ let n=normalize(String(s||"").replace(/\([^)]*\)/g,"").replace(/\[[A-Z]{3}\]/g,""));
+ n=n.replace(/^(rsc|sc|fc|afc|as|ac|vfb|sv|1fc)/,"").replace(/(fc|cf|afc)$/,"");
  const aliases={
-  manchesteru:"manchesterunited",manchesterunitedfc:"manchesterunited",
-  newcastleu:"newcastleunited",newcastleunitedfc:"newcastleunited",
-  westhamu:"westhamunited",westhamunitedfc:"westhamunited",
-  tottenhamh:"tottenhamhotspur",tottenhamhotspurfc:"tottenhamhotspur",
-  bayerleverkusen:"bayerleverkusen",bayer04leverkusen:"bayerleverkusen",
-  monaco:"asmonaco",asmonaco:"asmonaco",
-  betis:"realbetis",realbetis:"realbetis",
-  inter:"internazionale",internazionale:"internazionale",
-  milan:"acmilan",acmilan:"acmilan",
+  manchesteru:"manchesterunited",newcastleu:"newcastleunited",westhamu:"westhamunited",
+  tottenhamh:"tottenhamhotspur",boltonw:"boltonwanderers",leedsu:"leedsunited",
+  coventryc:"coventrycity",ipswicht:"ipswichtown",blackburnr:"blackburnrovers",
+  charltona:"charltonathletic",wolverhamptonwanderers:"wolves",
+  bayer04leverkusen:"bayerleverkusen",bayernmunich:"bayern",fcbayernmunchen:"bayern",
+  hellasverona:"verona",girondinsbordeaux:"bordeaux",deportivoalajuelense:"alajuelense",
+  glasgowceltic:"celtic",glasgowrangers:"rangers",alhelal:"alhilal",alhilal:"alhilal",
+  monaco:"monaco",asmonaco:"monaco",betis:"realbetis",realbetis:"realbetis",
+  inter:"internazionale",internazionale:"internazionale",milan:"milan",acmilan:"milan",
   parisstgermain:"parissaintgermain",parissaintgermain:"parissaintgermain",
-  kaiserslautern:"kaiserslautern","1fckaiserslautern":"kaiserslautern",
-  valladolid:"realvalladolid",realvalladolid:"realvalladolid",
-  mallorca:"realm Mallorca".toLowerCase().replace(/[^a-z0-9]/g,""),
+  "1fckaiserslautern":"kaiserslautern",kaiserslautern:"kaiserslautern",
+  realmallorca:"mallorca",mallorca:"mallorca",realvalladolid:"valladolid",valladolid:"valladolid",
+  cologne:"koln",koln:"koln",nacionaluru:"nacional",santoslaguna:"santoslaguna",
   unattached:"unattached",noclub:"unattached"
  };
  return aliases[n]||n;
