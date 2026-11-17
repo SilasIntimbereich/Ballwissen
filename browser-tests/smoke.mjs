@@ -50,6 +50,8 @@ try{
   await page.waitForFunction(()=>!document.querySelector("#result").classList.contains("hidden"));
  };
  await openTeam("easy",2018,"Argentina");
+ assert.equal((await page.locator("#game-team").textContent()).trim(),"ARGENTINA");
+ assert.match((await page.locator("#game-tournament").textContent()).trim(),/WORLD CUP 2018/);
  assert.equal(await page.locator(".player-card").count(),23);
  assert.equal(await page.locator("#guess").isEnabled(),true);
  await page.locator("#guess").fill("Messi");await page.locator("#guess").press("Enter");
@@ -90,6 +92,8 @@ try{
  };
  await dailyStart("common");
  const dailyFirstTeam=(await page.locator("#game-team").textContent()).trim();
+ assert.ok(dailyFirstTeam.length>0,"Daily Common must keep the selected team name visible");
+ assert.match((await page.locator("#game-tournament").textContent()).trim(),/WORLD CUP \\d{4} · DAILY COMMON · 1\\/3/);
  assert.notEqual((await page.locator(".player-hint").first().textContent()).trim(),"HIDDEN PLAYER");
  for(let round=0;round<3;round++){await giveUp();if(round<2)await page.locator("#result-home").click();}
  await page.locator("#result-home").click();
