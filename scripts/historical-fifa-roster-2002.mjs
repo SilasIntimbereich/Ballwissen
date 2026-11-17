@@ -53,6 +53,7 @@ export function parseFifa2002Roster(html, teams) {
 
 export function isCleanFifa2002RosterAudit(item, expectedPlayerCount) {
   return Boolean(item &&
+    expectedPlayerCount === 23 &&
     item.sourcePlayerCount === 23 &&
     item.matchedPlayers === expectedPlayerCount &&
     item.nameMismatches?.length === 0 &&
