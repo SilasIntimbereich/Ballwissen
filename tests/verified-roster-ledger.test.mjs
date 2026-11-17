@@ -68,3 +68,15 @@ test("accepts an explicit source-name alias backed by two independent sources", 
   };
   assert.equal(isCompleteVerifiedRosterLedger(team, invalidAliasEvidence, 2018), false);
 });
+
+
+test("downgrades stale verified markers instead of leaving invalid trust metadata", async () => {
+  const { downgradeIncompleteVerifiedRosterLedger } = await import("../scripts/verified-roster-ledger.mjs");
+  const stale = structuredClone(validEntry);
+  stale.players[0].clubAtTournament = "Old club";
+  assert.equal(downgradeIncompleteVerifiedRosterLedger(team, stale, 2018), true);
+  assert.equal(stale.status, "needs_review");
+  assert.match(stale.verificationIssue, /no longer matches/i);
+  assert.equal(downgradeIncompleteVerifiedRosterLedger(team, validEntry, 2018), false);
+  assert.equal(validEntry.status, "verified");
+});
