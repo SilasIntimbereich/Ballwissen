@@ -75,7 +75,7 @@ for(const source of SOURCES){
  })){
   const teams=teamsForYear.map(team=>({
    page:null,teamId:team.id,teamName:team.name,pdfHeading:team.name,
-   fifaRows:team.players.length,dataHubRows:team.players.length,clean:true,
+   fifaRows:team.players.length,dataHubRows:team.players.length,rosterIdentityClean:true,fullyAudited:true,
    verifiedFromExistingLedger:true,clubValuesParsed:team.players.filter(player=>player.club).length,
    mismatchCount:0,mismatches:[],candidates:[]
   }));
@@ -95,7 +95,7 @@ for(const source of SOURCES){
   tournamentReport.sourceError=String(error);
   tournamentReport.teams=teamsForYear.map(team=>({
    page:null,teamId:team.id,teamName:team.name,pdfHeading:null,
-   fifaRows:0,dataHubRows:team.players.length,clean:false,sourceUnavailable:true,
+   fifaRows:0,dataHubRows:team.players.length,rosterIdentityClean:false,fullyAudited:rosterAudit.teams?.[team.id]?.status==="verified",sourceUnavailable:true,
    clubValuesParsed:0,mismatchCount:0,
    mismatches:[],candidates:[]
   }));
@@ -141,17 +141,19 @@ for(const source of SOURCES){
   }
   if(team)for(const player of team.players)if(!matchedNumbers.has(Number(player.number)))mismatches.push({number:Number(player.number),player:player.name,field:"missing_fifa_row",dataHub:player.name});
   const expected=team?.players.length||0;
-  const clean=Boolean(team)&&fifaRows.length===expected&&mismatches.length===0&&candidates.length===expected&&candidates.every(row=>row.status==="matched");
-  if(clean){
+  const rosterIdentityClean=Boolean(team)&&fifaRows.length===expected&&mismatches.length===0&&candidates.length===expected&&candidates.every(row=>row.status==="matched");
+  const ledgerEntry=team?rosterAudit.teams?.[team.id]:null;
+  const fullyAudited=Boolean(ledgerEntry?.status==="verified"&&Array.isArray(ledgerEntry.players)&&ledgerEntry.players.length===expected&&ledgerEntry.players.every(row=>["matched","corrected"].includes(row.status)&&typeof row.clubAtTournament==="string"&&row.clubAtTournament.trim())&&typeof ledgerEntry.primarySource==="string"&&typeof ledgerEntry.secondarySource==="string");
+  if(rosterIdentityClean){
    for(const candidate of candidates){
     const player=team.players.find(p=>Number(p.number)===candidate.number);
     player.club=candidate.clubAtTournament;
     player.position=candidate.position;
    }
   }
-  tournamentReport.teams.push({page:pageNo,teamId:team?.id||null,teamName:team?.name||null,pdfHeading:heading,fifaRows:fifaRows.length,dataHubRows:expected,clean,clubValuesParsed:candidates.filter(row=>row.clubAtTournament).length,mismatchCount:mismatches.length,mismatches,candidates});
+  tournamentReport.teams.push({page:pageNo,teamId:team?.id||null,teamName:team?.name||null,pdfHeading:heading,fifaRows:fifaRows.length,dataHubRows:expected,rosterIdentityClean,fullyAudited,clubValuesParsed:candidates.filter(row=>row.clubAtTournament).length,mismatchCount:mismatches.length,mismatches,candidates});
  }
- tournamentReport.summary={pages:pdf.numPages,teamsMapped:tournamentReport.teams.filter(t=>t.teamId).length,teamsClean:tournamentReport.teams.filter(t=>t.clean).length,totalMismatches:tournamentReport.teams.reduce((n,t)=>n+t.mismatchCount,0)};
+ tournamentReport.summary={pages:pdf.numPages,teamsMapped:tournamentReport.teams.filter(t=>t.teamId).length,teamsRosterClean:tournamentReport.teams.filter(t=>t.rosterIdentityClean).length,teamsFullyAudited:tournamentReport.teams.filter(t=>t.fullyAudited).length,totalMismatches:tournamentReport.teams.reduce((n,t)=>n+t.mismatchCount,0)};
  report.tournaments.push(tournamentReport);
 }
 report.summary={
@@ -159,7 +161,8 @@ report.summary={
  pages:report.tournaments.reduce((n,t)=>n+t.pdfPages,0),
  teams:report.tournaments.reduce((n,t)=>n+t.teams.length,0),
  teamsMapped:report.tournaments.reduce((n,t)=>n+t.summary.teamsMapped,0),
- teamsClean:report.tournaments.reduce((n,t)=>n+t.summary.teamsClean,0),
+ teamsRosterClean:report.tournaments.reduce((n,t)=>n+t.summary.teamsRosterClean,0),
+ teamsFullyAudited:report.tournaments.reduce((n,t)=>n+t.summary.teamsFullyAudited,0),
  totalMismatches:report.tournaments.reduce((n,t)=>n+t.summary.totalMismatches,0),
  positionDifferences:report.tournaments.reduce((n,t)=>n+t.teams.reduce((m,team)=>m+(team.candidates||[]).filter(row=>row.positionChanged).length,0),0),
  clubCandidates:report.tournaments.reduce((n,t)=>n+t.teams.reduce((m,team)=>m+team.clubValuesParsed,0),0),
