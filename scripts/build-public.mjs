@@ -1,5 +1,6 @@
 import { assignRosterRarities } from "../assets/js/rarity.js";
 import { hasIndependentHttpsSources } from "./source-url-validation.mjs";
+import { isVerifiedPlayerSourceName } from "./verified-roster-ledger.mjs";
 import { cp, mkdir, readFile, rm, writeFile, stat } from "node:fs/promises";
 
 const readJson = async path => JSON.parse(await readFile(path, "utf8"));
