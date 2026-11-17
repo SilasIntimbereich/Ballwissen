@@ -37,3 +37,10 @@ test("normalizes Turkish dotless i in FIFA display names", () => {
   assert.equal(namesMatch("Altay Bayındır", "BAYINDIR Altay Altay BAYINDIR ALTAY"), true);
   assert.equal(namesMatch("Ferdi Kadıoğlu", "KADIOGLU Ferdi Ferdi Erenay KADIOĞLU F. KADIOĞLU"), true);
 });
+
+
+test("does not approve ambiguous short single-token names from a longer source line", () => {
+  assert.equal(namesMatch("Li", "LI Weifeng"), false);
+  assert.equal(namesMatch("Li", "Li"), true);
+  assert.equal(namesMatch("Kaka", "KAKA Ricardo Izecson dos Santos Leite"), true);
+});
