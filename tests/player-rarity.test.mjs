@@ -1,31 +1,25 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
-import {createPlayerRarityResolver} from "../scripts/player-rarity.mjs";
+import {assignRosterRarities,rarityFromEvidence} from "../assets/js/rarity.js";
 
-test("rarity uses appearance count and curated player overrides, not team difficulty",()=>{
- const historical={tournaments:{
-  2002:[{players:[{name:"Three Cup Player"},{name:"Two Cup Player"},{name:"Legend Icon"},{name:"Niche Pro"},{name:"One-Off Player"}]}],
-  2006:[{players:[{name:"Three Cup Player"},{name:"Two Cup Player"},{name:"Legend Icon"}]}],
-  2010:[{players:[{name:"Three Cup Player"}]}]
- }};
- const wc={players:[]};
- const resolve=createPlayerRarityResolver(historical,wc,{legendary:["Legend Icon"],niche:["Niche Pro"]});
- assert.equal(resolve({name:"Three Cup Player"}),"Common");
- assert.equal(resolve({name:"Two Cup Player"}),"Rare");
- assert.equal(resolve({name:"Niche Pro"}),"Niche");
- assert.equal(resolve({name:"Legend Icon"}),"Legendary");
- assert.equal(resolve({name:"One-Off Player"}),"Ball Knowledge");
+test("evidence scoring recognises an internationally established player",()=>{
+ assert.equal(rarityFromEvidence({caps:100,majorAwards:5,globalRecognition:5,clubProfile:5}),"Common");
 });
 
-test("every imported player receives one of the five rarity labels",async()=>{
- const [historical,wc,overrides]=await Promise.all([
-  readFile("data/historical-squads.json","utf8").then(JSON.parse),
-  readFile("data/worldcup-2026.json","utf8").then(JSON.parse),
-  readFile("data/player-rarity-overrides.json","utf8").then(JSON.parse)
+test("team-aware rarity keeps France 2018 familiar and elite tiers scarce",async()=>{
+ const [publicData,rosters]=await Promise.all([
+  readFile("dist/data/public-teams.json","utf8").then(JSON.parse),
+  readFile("dist/data/practice-rosters.json","utf8").then(JSON.parse)
  ]);
- const resolve=createPlayerRarityResolver(historical,wc,overrides);
- const players=[...Object.values(historical.tournaments).flatMap(teams=>teams.flatMap(team=>team.players)),...wc.players];
- const labels=new Set(players.map(resolve));
- assert.deepEqual([...labels].sort(),["Ball Knowledge","Common","Legendary","Niche","Rare"].sort());
+ assignRosterRarities(rosters,publicData);
+ const all=rosters.teams.flatMap(team=>team.players);
+ const counts=Object.fromEntries(["Common","Rare","Niche","Legendary","Ball Knowledge"].map(tier=>[tier,all.filter(player=>player.rarity===tier).length]));
+ assert.equal(all.length,5759);
+ assert.deepEqual(Object.keys(counts).filter(tier=>counts[tier]>0).sort(),["Ball Knowledge","Common","Legendary","Niche","Rare"].sort());
+ assert.ok(counts.Legendary<=10);
+ assert.ok(counts["Ball Knowledge"]<=4);
+ const france=rosters.teams.find(team=>team.id==="france-2018");
+ assert.ok(france.players.filter(player=>player.rarity==="Common").length>=20);
+ assert.equal(france.players.find(player=>/kylian mbapp/i.test(player.name)).rarity,"Common");
 });

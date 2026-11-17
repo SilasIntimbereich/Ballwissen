@@ -22,7 +22,7 @@ function renderTeams(){
 function formatHint(position,club){return [position,club].filter(value=>typeof value==="string"&&value.trim()&&value.trim().toLowerCase()!=="null").join(" · ")||"HIDDEN PLAYER";}
 function updateTimer(){$("#timer").textContent=String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");}
 function enableGuessControls(){const input=$("#guess"),button=$("#guess-btn");input.disabled=false;input.readOnly=false;input.removeAttribute("disabled");button.disabled=false;button.removeAttribute("disabled");}
-function resetGameView(){found=new Set();roundState=null;submitting=false;seconds=120;ended=false;$("#result").classList.add("hidden");$("#result-stats").innerHTML="";$("#score").textContent="0";$("#guess").value="";enableGuessControls();$("#give-up").disabled=false;$("#give-up").textContent="GIVE UP";$("#roster").innerHTML="";$("#feedback").textContent="Type a player name and press enter.";}
+function resetGameView(){found=new Set();roundState=null;submitting=false;seconds=120;ended=false;$("#result").classList.add("hidden");$("#result-stats").innerHTML="";$("#score").textContent="0";$("#guess").value="";enableGuessControls();$("#give-up").disabled=false;$("#give-up").textContent="GIVE UP";$("#roster").innerHTML="";$("#rarity-alert")?.classList.add("hidden");document.body.classList.remove("ball-knowledge-hit");$("#feedback").textContent="Type a player name and press enter.";}
 function cardForPlayer(id){return [...document.querySelectorAll(".player-card[data-player-id]")].find(card=>card.dataset.playerId===id)||null;}
 function setPlayerRarity(card,rarity,revealIndex=0){
  if(!card||!rarity)return;
@@ -34,6 +34,26 @@ function setPlayerRarity(card,rarity,revealIndex=0){
  if(!label){label=document.createElement("span");label.className="player-rarity";card.querySelector(".player-info").append(label);}
  label.textContent=rarity.toUpperCase();
  label.className="player-rarity "+className;
+}
+function announcePlayer(player,rarity){
+ const alert=$("#rarity-alert");
+ if(!alert||!player||!rarity)return;
+ const className="rarity-"+rarity.toLowerCase().replaceAll(" ","-");
+ alert.className="rarity-alert "+className;
+ alert.replaceChildren();
+ const icon=document.createElement("span");icon.className="rarity-alert-icon";
+ icon.textContent=rarity==="Ball Knowledge"?"✦ ✦ ✦":"★";
+ const copy=document.createElement("span");copy.className="rarity-alert-copy";
+ const heading=document.createElement("strong");heading.textContent=rarity==="Ball Knowledge"?"EXCEPTIONAL PULL":"PLAYER FOUND";
+ const name=document.createElement("b");name.textContent=player.name;
+ const tier=document.createElement("small");tier.textContent=rarity.toUpperCase();
+ copy.append(heading,name);alert.append(icon,copy,tier);
+ void alert.offsetWidth;alert.classList.add("is-active");
+ document.body.classList.remove("ball-knowledge-hit");
+ if(rarity==="Ball Knowledge"){
+  document.body.classList.add("ball-knowledge-hit");
+  window.setTimeout(()=>document.body.classList.remove("ball-knowledge-hit"),1600);
+ }
 }
 function addPlayerCard(index,hint,id,shirtNumber){const card=document.createElement("div");card.className="player-card";card.dataset.index=index;if(id)card.dataset.playerId=id;const number=document.createElement("span");number.className="player-number";number.textContent=String(Number.isInteger(Number(shirtNumber))&&Number(shirtNumber)>0?Number(shirtNumber):index+1).padStart(2,"0");const info=document.createElement("div");info.className="player-info";const name=document.createElement("div");name.className="player-name";name.textContent="???";const detail=document.createElement("div");detail.className="player-hint";detail.textContent=hint||"HIDDEN PLAYER";info.append(name,detail);card.append(number,info);$("#roster").append(card);return card;}
 function renderNormalRoster(){team.players.forEach((player,index)=>addPlayerCard(index,mode==="easy"?formatHint(player.position,player.club):"HIDDEN PLAYER",null,player.number));$("#total").textContent=String(team.players.length);}
@@ -93,7 +113,8 @@ function startDailyTeam(sequence){
  team={id:dailyTeam.teamId,name:dailyTeam.teamName,year:dailyTeam.year,total:dailyTeam.total,players:dailyTeam.players,hints:dailyTeam.hints};
  resetGameView();roundState=createRound(team.players);found=roundState.found;
  $("#game-team").textContent=dailyTeam.teamName.toUpperCase();
- $("#game-tournament").textContent="DAILY TEAM "+sequence+" / 3";
+ const dailyLabel=dailyState.mode.replace("daily-","").toUpperCase();
+ $("#game-tournament").textContent="WORLD CUP "+dailyTeam.year+" · DAILY "+dailyLabel+" · "+sequence+"/3";
  $("#game-mode").textContent="DAILY · "+dailyState.mode.replace("daily-","").toUpperCase();
  $("#game-heading").textContent="NAME THE SQUAD";renderDailyRoster(dailyTeam);
  $("#feedback").textContent="Local daily challenge · unranked.";
@@ -107,7 +128,7 @@ async function acceptDailyGuess(value){
  }
  const index=outcome.index,player=outcome.player,card=cardForPlayer(team.id+":"+index);
  if(card){
-  card.classList.add("found");setPlayerRarity(card,player.rarity,index);
+  card.classList.add("found");setPlayerRarity(card,player.rarity,index);announcePlayer(player,player.rarity);
   card.querySelector(".player-name").textContent=player.name;
   card.querySelector(".player-hint").textContent=dailyState.mode==="daily-legendary"?"FOUND":formatHint(player.position,player.club);
  }
@@ -180,7 +201,7 @@ $("#guess-form").addEventListener("submit",async event=>{
    const index=outcome.index,player=outcome.player;
    const card=document.querySelector('.player-card[data-index="'+index+'"]');
    if(card){
-    card.classList.add("found");setPlayerRarity(card,player.rarity,index);
+    card.classList.add("found");setPlayerRarity(card,player.rarity,index);announcePlayer(player,player.rarity);
     card.querySelector(".player-name").textContent=player.name;
     card.querySelector(".player-hint").textContent=mode==="easy"?formatHint(player.position,player.club):"FOUND";
    }

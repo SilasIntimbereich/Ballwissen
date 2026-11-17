@@ -1,4 +1,5 @@
 import {matches} from "./matching.js";
+import {assignRosterRarities} from "./rarity.js";
 export {matches};
 
 const [publicData,practiceData,exclusionsData]=await Promise.all([
@@ -9,6 +10,7 @@ const [publicData,practiceData,exclusionsData]=await Promise.all([
  console.error("Roster data could not be loaded. The menu will stay usable, but team selection is unavailable until the data files are deployed.",error);
  return [{teams:[]},{teams:[]},{teams:[]}];
 });
+assignRosterRarities(practiceData,publicData);
 const practiceById=new Map((practiceData.teams||[]).map(item=>[item.id,item.players||[]]));
 const tournaments={};
 for(const meta of publicData.teams||[]){

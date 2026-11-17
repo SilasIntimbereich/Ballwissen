@@ -28,6 +28,8 @@ try{
  page.on("pageerror",error=>errors.push(error.message));
  await page.goto(origin,{waitUntil:"domcontentloaded"});
  await page.waitForFunction(()=>document.querySelector("#data-status")?.textContent.includes("240"));
+ const tileBackgrounds=await page.locator(".mode-card").evaluateAll(cards=>cards.map(card=>getComputedStyle(card).backgroundImage));
+ assert.ok(tileBackgrounds.every(value=>value==="none"),"menu mode tiles must use flat colours, not gradients");
  assert.equal(await page.locator("[data-mode]").count(),7);
  assert.equal(await page.locator("[data-mode^='daily-']:not(:disabled)").count(),3);
  await page.locator('[data-mode="tournament"]').click();
@@ -50,12 +52,16 @@ try{
   await page.waitForFunction(()=>!document.querySelector("#result").classList.contains("hidden"));
  };
  await openTeam("easy",2018,"Argentina");
+ assert.equal((await page.locator("#game-team").textContent()).trim(),"ARGENTINA");
+ assert.match((await page.locator("#game-tournament").textContent()).trim(),/WORLD CUP 2018/);
  assert.equal(await page.locator(".player-card").count(),23);
  assert.equal(await page.locator("#guess").isEnabled(),true);
  await page.locator("#guess").fill("Messi");await page.locator("#guess").press("Enter");
  await page.waitForFunction(()=>document.querySelector("#score").textContent==="1");
  assert.ok(await page.locator(".player-card.found .player-rarity").count()===1,"found players must show their rarity label");
  assert.ok(["COMMON","RARE","NICHE","LEGENDARY","BALL KNOWLEDGE"].includes((await page.locator(".player-card.found .player-rarity").textContent()).trim()));
+ assert.equal(await page.locator("#rarity-alert").isVisible(),true,"the top reveal ticker must appear after a correct guess");
+ assert.match(await page.locator("#rarity-alert").textContent(),/Lionel Messi/);
  await page.locator("#guess").fill("Di Maria");await page.locator("#guess").press("Enter");
  await page.waitForFunction(()=>document.querySelector("#score").textContent==="2");
  await page.locator("#guess").fill("Messi");await page.locator("#guess").press("Enter");
@@ -90,6 +96,10 @@ try{
  };
  await dailyStart("common");
  const dailyFirstTeam=(await page.locator("#game-team").textContent()).trim();
+ assert.ok(dailyFirstTeam.length>0,"Daily Common must keep the selected team name visible");
+ const dailyMeta=(await page.locator("#game-tournament").textContent()).trim();
+ assert.ok(dailyMeta.startsWith("WORLD CUP "),"Daily must display the World Cup year");
+ assert.ok(dailyMeta.includes(" · DAILY COMMON · 1/3"),"Daily must display its tier and round");
  assert.notEqual((await page.locator(".player-hint").first().textContent()).trim(),"HIDDEN PLAYER");
  for(let round=0;round<3;round++){await giveUp();if(round<2)await page.locator("#result-home").click();}
  await page.locator("#result-home").click();
