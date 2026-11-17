@@ -114,7 +114,7 @@ for(const team of teams){
     comparisons.push({number:row.number,playerName:player.name,secondaryName:row.name,identityMatches,fifaPosition:fifa.position,secondaryPosition:row.position,positionMatches,fifaClub,secondaryClub:row.club,clubMatches,canonicalFifaClub:canonicalClub(fifaClub),canonicalSecondaryClub:canonicalClub(row.club)});
   }
   for(const player of team.players) if(!matchedNumbers.has(Number(player.number))) mismatches.push({number:Number(player.number),field:"missing_secondary_row",player:player.name});
-  const fullyCrossChecked=sourceTeam.length===26&&comparisons.length===26&&mismatches.length===0;
+  const fullyCrossChecked=sourceTeam.length===team.players.length&&comparisons.length===team.players.length&&mismatches.length===0;
   report.teams.push({teamId:team.id,teamName:team.name,sourcePlayerCount:sourceTeam.length,fullyCrossChecked,clubMatches:comparisons.filter(x=>x.clubMatches).length,clubMismatches:comparisons.filter(x=>!x.clubMatches).length,nameMismatches:comparisons.filter(x=>!x.identityMatches).length,mismatches,comparisons});
 }
 report.summary={sourceRows:sourceRows.length,teamsFound:sourceByTeam.size,teams:report.teams.length,fullyCrossCheckedTeams:report.teams.filter(t=>t.fullyCrossChecked).length,clubMismatches:report.teams.reduce((n,t)=>n+t.clubMismatches,0),nameMismatches:report.teams.reduce((n,t)=>n+t.nameMismatches,0),positionDifferences:report.teams.reduce((n,t)=>n+t.comparisons.filter(row=>!row.positionMatches).length,0),missingRows:report.teams.reduce((n,t)=>n+t.mismatches.filter(m=>m.field.startsWith("missing")).length,0)};
