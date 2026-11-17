@@ -24,3 +24,10 @@ test("normalizes Nordic and Polish romanization and splits hyphenated names", ()
   assert.equal(namesMatch("Jean-Pierre Nsame", "NSAME Jean-Pierre Jean Pierre Junior NSAME"), true);
   assert.equal(namesMatch("Cameron Carter-Vickers", "CARTER-VICKERS Cameron Cameron Robert CARTER-VICKERS"), true);
 });
+
+test("accepts explicitly reviewed FIFA display-name variants from the 2006 squad list", () => {
+  assert.equal(namesMatch("Juan Pablo Sorín", "Juan SORIN"), true);
+  assert.equal(namesMatch("Juan Román Riquelme", "Juan RIQUELME"), true);
+  assert.equal(namesMatch("Leo Franco", "Leonardo FRANCO"), true);
+  assert.equal(namesMatch("Lucho González", "Luis GONZALEZ"), true);
+});
