@@ -30,11 +30,11 @@ function textFromHtml(html){
 }
 function linksFrom(html,pattern){
  const out=[];
- for(const m of html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)){
-  const attrs=m[1],href=attrs.match(/\bhref\s*=\s*["']([^"']+)["']/i)?.[1];
+ const tags=[...html.matchAll(/<(a|area)\b([^>]*)>(?:([\s\S]*?)<\/a>)?/gi)];
+ for(const m of tags){
+  const attrs=m[2],inner=m[3]||"",href=attrs.match(/\bhref\s*=\s*["']([^"']+)["']/i)?.[1];
   if(!href||!pattern.test(href))continue;
-  const inner=m[2];
-  const label=textFromHtml(inner)||inner.match(/\balt\s*=\s*["']([^"']+)["']/i)?.[1]||attrs.match(/\btitle\s*=\s*["']([^"']+)["']/i)?.[1]||"";
+  const label=textFromHtml(inner)||inner.match(/\balt\s*=\s*["']([^"']+)["']/i)?.[1]||attrs.match(/\balt\s*=\s*["']([^"']+)["']/i)?.[1]||attrs.match(/\btitle\s*=\s*["']([^"']+)["']/i)?.[1]||"";
   out.push({href,label:decode(label)});
  }
  return out;
@@ -115,7 +115,7 @@ const teams=historical.tournaments["2002"];
 const planetHtml=await fetchText(PLANET_INDEX);
 const footballHtml=await fetchText(FOOTBALL_INDEX);
 const planetLinks=linksFrom(planetHtml,/squad_[a-z0-9]+02\.html/i);
-const footballLinks=linksFrom(footballHtml,/wc2002\/[^"'#?]+\.htm/i);
+const footballLinks=linksFrom(footballHtml,/\.htm/i).filter(link=>lookup(link.label));
 const report={sources:{planetIndex:PLANET_INDEX,footballSquadsIndex:FOOTBALL_INDEX},generatedAt:new Date().toISOString(),teams:[],summary:{}};
 const lookup=(label)=>{
  const key=teamKey(label);
