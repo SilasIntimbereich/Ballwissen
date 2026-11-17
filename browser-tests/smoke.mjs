@@ -28,6 +28,8 @@ try{
  page.on("pageerror",error=>errors.push(error.message));
  await page.goto(origin,{waitUntil:"domcontentloaded"});
  await page.waitForFunction(()=>document.querySelector("#data-status")?.textContent.includes("240"));
+ const tileBackgrounds=await page.locator(".mode-card").evaluateAll(cards=>cards.map(card=>getComputedStyle(card).backgroundImage));
+ assert.ok(tileBackgrounds.every(value=>value==="none"),"menu mode tiles must use flat colours, not gradients");
  assert.equal(await page.locator("[data-mode]").count(),7);
  assert.equal(await page.locator("[data-mode^='daily-']:not(:disabled)").count(),3);
  await page.locator('[data-mode="tournament"]').click();
