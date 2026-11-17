@@ -46,8 +46,8 @@ function ledgerIsVerified(team) {
       typeof row.sourceName === "string" && row.sourceName.trim() &&
       typeof row.clubAtTournament === "string" && row.clubAtTournament.trim() &&
       typeof row.position === "string" && row.position.trim() &&
-      validHttps(row.primarySource || entry.primarySource) &&
-      validHttps(row.secondarySource || entry.secondarySource) &&
+      isHttpsUrl(row.primarySource || entry.primarySource) &&
+      isHttpsUrl(row.secondarySource || entry.secondarySource) &&
       hasIndependentHttpsSources([row.primarySource || entry.primarySource, row.secondarySource || entry.secondarySource])
     );
 }
