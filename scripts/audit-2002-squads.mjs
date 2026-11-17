@@ -115,7 +115,6 @@ const teams=historical.tournaments["2002"];
 const planetHtml=await fetchText(PLANET_INDEX);
 const footballHtml=await fetchText(FOOTBALL_INDEX);
 const planetLinks=linksFrom(planetHtml,/squad_[a-z0-9]+02\.html/i);
-const footballLinks=linksFrom(footballHtml,/\.htm/i).filter(link=>lookup(link.label));
 const report={sources:{planetIndex:PLANET_INDEX,footballSquadsIndex:FOOTBALL_INDEX},generatedAt:new Date().toISOString(),teams:[],summary:{}};
 const lookup=(label)=>{
  const key=teamKey(label);
@@ -123,6 +122,7 @@ const lookup=(label)=>{
   (key==="republicofireland"?teams.find(t=>t.id==="republic-of-ireland-2002"):null)||
   (key==="unitedstates"?teams.find(t=>t.id==="united-states-2002"):null);
 };
+const footballLinks=linksFrom(footballHtml,/\.htm/i).filter(link=>lookup(link.label));
 const fetchCache=new Map();
 async function getPage(base,href){
  const url=new URL(href,base).href;
