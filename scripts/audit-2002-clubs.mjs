@@ -58,7 +58,7 @@ try {
       }
       const candidatePlayer = candidateTeam?.players?.find(entry => Number(entry.number) === Number(player.number));
       if (candidatePlayer && row.club) {
-        candidatePlayer.clubAtTournament = row.club;
+        candidatePlayer.club = row.club;
         candidatePlayer.clubSource = SOURCE_URL;
         item.clubsAssigned++;
       } else if (!row.club) {
