@@ -38,8 +38,12 @@ test("team-aware rarity follows the collection-wide target curve and keeps Franc
   }
  }
  const france=rosters.teams.find(team=>team.id==="france-2018");
- assert.ok(france.players.filter(player=>player.rarity==="Common").length>=20);
- assert.equal(france.players.find(player=>/kylian mbapp/i.test(player.name)).rarity,"Common");
+ const famousFrancePlayers=["Hugo Lloris","Raphaël Varane","Paul Pogba","Antoine Griezmann","Olivier Giroud","Kylian Mbappé","Ousmane Dembélé","N'Golo Kanté","Steve Mandanda"];
+ for(const name of famousFrancePlayers){
+  assert.equal(france.players.find(player=>player.name===name)?.rarity,"Common",name+" must remain protected as Common");
+ }
+ assert.ok(france.players.filter(player=>player.rarity==="Niche").length>=3);
+ assert.ok(france.players.filter(player=>player.rarity==="Rare").length>=5);
 });
 
 test("Supabase resolver uses the same team-aware rarity algorithm as the browser",async()=>{
@@ -102,16 +106,18 @@ test("rarity scoring clamps invalid evidence instead of producing unstable tiers
 
 test("counts transliterated spellings as the same player across tournaments",()=>{
  const rosters={teams:[
-  {id:"team-2010",players:[{name:"Kjær",position:"FW",number:9}]},
-  {id:"team-2018",players:[{name:"Kjaer",position:"FW",number:9}]}
+  {id:"team-2006",players:[{name:"Kjær",position:"FW",number:9}]},
+  {id:"team-2010",players:[{name:"Kjaer",position:"FW",number:9}]},
+  {id:"team-2014",players:[{name:"Kjær",position:"FW",number:9}]}
  ]};
  const metadata={teams:[
+  {id:"team-2006",year:2006,teamDifficulty:"niche"},
   {id:"team-2010",year:2010,teamDifficulty:"niche"},
-  {id:"team-2018",year:2018,teamDifficulty:"niche"}
+  {id:"team-2014",year:2014,teamDifficulty:"niche"}
  ]};
  assignRosterRarities(rosters,metadata);
- assert.equal(rosters.teams.filter(team=>team.players[0].rarity==="Rare").length,1);
- assert.equal(rosters.teams.filter(team=>team.players[0].rarity==="Common").length,1);
+ assert.ok(rosters.teams.every(team=>team.players[0].rarity==="Common"),
+  "All transliterated records must share the same three-tournament recognition history");
 });
 
 
