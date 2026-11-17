@@ -72,7 +72,7 @@ try {
       datasetPlayerCount: players.length, matchedPlayers: 0,
       clubMatches: 0, positionMatches: 0,
       mismatches: [], clubMismatches: [], positionMismatches: [],
-      clubsAssigned: 0
+      playerChecks: [], clubsAssigned: 0
     };
     const assignments = [];
 
@@ -102,12 +102,21 @@ try {
           planetWorldCupClub: planet.club, canonicalWikipediaClub: wikiClub, canonicalPlanetClub: planetClub });
       }
       const planetPosition = planet.position === "MD" ? "MF" : planet.position;
-      if (wiki.position && planetPosition && wiki.position === planetPosition) {
+      const clubMatches = Boolean(wiki.club && planet.club && wikiClub && wikiClub === planetClub);
+      const positionMatches = Boolean(wiki.position && planetPosition && wiki.position === planetPosition);
+      if (positionMatches) {
         item.positionMatches++;
       } else {
         item.positionMismatches.push({ number, player: player.name,
           wikipediaPosition: wiki.position, planetWorldCupPosition: planetPosition });
       }
+      item.playerChecks.push({
+        number, playerName: player.name,
+        wikipediaName: wiki.name, planetName: planet.name,
+        wikipediaClub: wiki.club, planetClub: planet.club,
+        wikipediaPosition: wiki.position, planetPosition,
+        clubMatches, positionMatches
+      });
       const candidatePlayer = candidateTeam?.players?.find(entry => Number(entry.number) === number);
       assignments.push({ candidatePlayer, planet, wiki });
     }
