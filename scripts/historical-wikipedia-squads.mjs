@@ -118,6 +118,7 @@ export function normalizeHistoricalClub(value) {
     alittihad: "ittihad",
     alshabab: "shabab",
     alwehdah: "wehda",
+    alwehda: "wehda",
     parisstgermain: "parissaintgermain",
     girondinsbordeaux: "bordeaux",
     olympiquelyon: "lyon",
