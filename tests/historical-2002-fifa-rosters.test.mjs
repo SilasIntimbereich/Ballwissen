@@ -6,7 +6,7 @@ test("parses Slovenia's FIFA code SVN and numbered roster rows", () => {
   const html = `
     <table>
       <tr><td>SVN</td><td>1</td><td>GK</td><td>SIMEUNOVIC Marko</td></tr>
-      <tr><td>ARG</td><td>1</td><td>GK</td><td>BURGOS German</td></tr>
+      <tr><td>ARG</td><td>1</td><td>GK</td><td>BURGOS German</td></tr>\n      <tr><td>ARG</td><td></td><td>GK</td><td>BONANO Roberto</td></tr>
     </table>`;
   const teams = [
     { id: "slovenia-2002", name: "Slovenia" },
