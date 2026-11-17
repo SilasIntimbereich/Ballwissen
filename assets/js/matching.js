@@ -17,7 +17,7 @@ function distance(a,b){
  return row[b.length];
 }
 
-const surnameParticles=new Set(["da","das","de","del","della","di","dos","du","la","le","van","von","bin","al","el","st"]);
+const surnameParticles=new Set(["da","das","de","del","della","der","den","di","dos","du","la","le","ter","ten","van","von","bin","al","el","st","zu","zum","zur"]);
 function surnameForms(value){
  const words=String(value??"").trim().split(/\s+/).filter(Boolean);
  if(!words.length)return [];
