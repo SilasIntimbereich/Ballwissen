@@ -6,9 +6,10 @@ const normalize = value => String(value || "")
   .toLowerCase().replace(/[^a-z0-9]/g, "");
 
 const teamAliases = {
-  ireland: "republic of ireland",
-  "south korea": "south korea",
-  "united states": "united states"
+  ireland: "republicofireland",
+  usa: "unitedstates",
+  chinapr: "china",
+  korearepublic: "southkorea"
 };
 
 const playerAliases = new Map([
@@ -32,8 +33,8 @@ function parseSquads(text, teams) {
     if (/^==\\s*Oldest and youngest/i.test(line)) break;
     const heading = line.replace(/\\s+‹§[^›]+›$/, "").trim();
     const key = normalize(heading);
-    const mappedName = key === "ireland" ? "republic of ireland" : heading;
-    const team = expected.get(normalize(mappedName));
+    const mappedKey = teamAliases[key] || key;
+    const team = [...expected.entries()].find(([teamKey]) => teamKey === mappedKey)?.[1];
     if (team && heading === heading.toUpperCase()) {
       current = team;
       squads.set(team.id, []);
