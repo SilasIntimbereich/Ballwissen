@@ -1,0 +1,49 @@
+name: Audit 2010 World Cup squads and clubs
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/historical-squads.json"
+      - "scripts/audit-2010-squads.mjs"
+      - ".github/workflows/audit-2010-squads.yml"
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "29 6 * * 2"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Compare 2010 squads against Planet World Cup and FootballSquads
+        run: node scripts/audit-2010-squads.mjs
+      - name: Commit only fully cross-verified 2010 teams
+        if: success() && github.event_name != 'pull_request'
+        run: |
+          cp artifacts/historical-squads-updated.json data/historical-squads.json
+          cp artifacts/roster-audit-updated.json data/roster-audit.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/historical-squads.json data/roster-audit.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Verify 2010 teams with independent squad sources"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Upload complete comparison report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: 2010-world-cup-roster-audit
+          path: |
+            artifacts/2010-roster-club-audit.json
+            artifacts/historical-squads-updated.json
+            artifacts/roster-audit-updated.json
+          if-no-files-found: warn
+          retention-days: 30
