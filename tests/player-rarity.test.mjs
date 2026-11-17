@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
 import {assignRosterRarities,rarityFromEvidence} from "../assets/js/rarity.js";
-import {createPlayerRarityResolver} from "../scripts/player-rarity.mjs";
+import {createPlayerRarityResolver,teamIdFor2026} from "../scripts/player-rarity.mjs";
 
 test("evidence scoring recognises an internationally established player",()=>{
  assert.equal(rarityFromEvidence({caps:100,majorAwards:5,globalRecognition:5,clubProfile:5}),"Common");
@@ -43,8 +43,7 @@ test("Supabase resolver uses the same team-aware rarity algorithm as the browser
   }
  }
  for(const player of worldCup2026.players||[]){
-  const slug=String(player.team).normalize("NFKD").replace(/[\\u0300-\\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
-  assert.ok(["Common","Rare","Niche","Legendary","Ball Knowledge"].includes(resolve(player,slug+"-2026")));
+  assert.ok(["Common","Rare","Niche","Legendary","Ball Knowledge"].includes(resolve(player,teamIdFor2026(player.team))));
   checked++;
  }
  assert.ok(checked>5700);
