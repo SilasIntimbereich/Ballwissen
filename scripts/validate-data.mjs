@@ -199,7 +199,7 @@ for (const [teamId, record] of Object.entries(audit.teams)) {
     const row = record.players.find(r => Number(r.number) === Number(player.number) && normalize(r.playerName) === normalize(player.name));
     if (!row || !["matched", "corrected"].includes(row.status) || !String(row.sourceName || "").trim())
       fail("Verified audit contains missing/unresolved player or source name: " + teamId + " / " + player.name);
-    if (!isVerifiedPlayerSourceName(player, row))
+    if (!isVerifiedPlayerSourceName(player, row, record))
       fail("Audit source name does not match the player or a documented evidence-backed alias: " + teamId + " / " + player.name);
     if (row.position !== player.position)
       fail("Verified audit position mismatch: " + teamId + " / " + player.name);
