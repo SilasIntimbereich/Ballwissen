@@ -54,6 +54,8 @@ try{
  assert.equal(await page.locator("#guess").isEnabled(),true);
  await page.locator("#guess").fill("Messi");await page.locator("#guess").press("Enter");
  await page.waitForFunction(()=>document.querySelector("#score").textContent==="1");
+ assert.ok(await page.locator(".player-card.found .player-rarity").count()===1,"found players must show their rarity label");
+ assert.ok(["COMMON","RARE","NICHE","LEGENDARY","BALL KNOWLEDGE"].includes((await page.locator(".player-card.found .player-rarity").textContent()).trim()));
  await page.locator("#guess").fill("Di Maria");await page.locator("#guess").press("Enter");
  await page.waitForFunction(()=>document.querySelector("#score").textContent==="2");
  await page.locator("#guess").fill("Messi");await page.locator("#guess").press("Enter");
@@ -63,6 +65,7 @@ try{
  await giveUp();
  assert.equal((await page.locator("#result-score").textContent()).trim(),"2 / 23");
  assert.equal(await page.locator(".player-card.missed").count(),21);
+ assert.equal(await page.locator(".player-card .player-rarity").count(),23,"every revealed player must display a rarity");
  await page.locator("#result-home").click();
  await page.locator('[data-open-screen="stats"]').click();
  assert.equal((await page.locator("#local-played").textContent()).trim(),"1");
