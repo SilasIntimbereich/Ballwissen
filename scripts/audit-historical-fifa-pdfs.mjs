@@ -35,6 +35,16 @@ const teamAliases={
 };
 const teamKey=s=>teamAliases[normalize(String(s||"").replace(/\s*\([A-Z]{3}\)\s*$/,"").replace(/^SQUAD LIST/i,""))]||normalize(String(s||"").replace(/\s*\([A-Z]{3}\)\s*$/,"").replace(/^SQUAD LIST/i,""));
 const positionMap={Goalkeeper:"GK",Defender:"DF",Midfielder:"MF",Forward:"FW",GK:"GK",DF:"DF",MF:"MF",FW:"FW"};
+const MANUAL_NAME_ALIASES={
+ "argentina-2022":{17:["Alejandro Gomez"]},
+ "ecuador-2022":{20:["Jhegson Mendez"]},
+ "iran-2022":{3:["Ehsan Haji Safi"],13:["Hossein Kanani Zadegan"],21:["Ahmad Noorollahi"]},
+ "japan-2022":{4:["Kou Itakura"]},
+ "morocco-2022":{12:["Munir El Kajoui"],23:["Bilal El Khannouss"],25:["Yahya Attiat Allah"]},
+ "qatar-2022":{2:["Pedro Miguel"],8:["Ali Asadalla"],13:["Musaab Khidir"],17:["Ismail Mohamad"],21:["Yousof Hassan"],26:["Moustafa Tarek"]},
+ "saudi-arabia-2022":{1:["Mohammed Alyami"],5:["Ali Albulayhi"],6:["Mohammed Alburayk"],9:["Feras Albrikan"],13:["Yasir Alshahrani"],16:["Sami Alnaji"],18:["Nawaf Alabid"],19:["Hatan Bahbri"],20:["Abdulrahman Alobud"]},
+ "tunisia-2022":{18:["Ghaylen Chaaleli"]}
+};
 const cleanClub=s=>{const value=String(s||"").replace(/\s*\([A-Z]{3}\)\s*$/,"").trim();return /^no club affiliation$/i.test(value)||/^no club$/i.test(value)?null:value||null;};
 
 function parseRows(lines,format){
@@ -114,20 +124,29 @@ for(const source of SOURCES){
    const player=team?.players.find(p=>Number(p.number)===row.number);
    if(!player){mismatches.push({number:row.number,field:"player",fifa:row.nameArea,reason:"No DataHub player with this shirt number"});continue;}
    matchedNumbers.add(row.number);
-   const nameVariants=[player.name,...(Array.isArray(player.aliases)?player.aliases:[])].filter(Boolean);
-   const nameMatches=nameVariants.some(name=>namesMatch(name,row.nameArea));
+   const manualAliases=MANUAL_NAME_ALIASES[team.id]?.[row.number]||[];
+   const nameVariants=[player.name,...(Array.isArray(player.aliases)?player.aliases:[]),...manualAliases].filter(Boolean);
+   const matchedVariant=nameVariants.find(name=>namesMatch(name,row.nameArea));
+   const nameMatches=Boolean(matchedVariant);
    const positionMatches=positionMap[player.position]===row.position;
    if(!nameMatches)mismatches.push({number:row.number,player:player.name,field:"name",fifa:row.nameArea,dataHub:player.name});
-   if(!positionMatches)mismatches.push({number:row.number,player:player.name,field:"position",fifa:row.position,dataHub:player.position});
-   candidates.push({number:row.number,playerName:player.name,sourceName:row.nameArea,position:row.position,clubAtTournament:row.club,status:nameMatches&&positionMatches?"matched":"unresolved",notes:nameMatches&&positionMatches?"FIFA shirt number, identity and position match the DataHub squad row.":"Manual review required; club not promoted until identity and position are resolved."});
+   candidates.push({
+    number:row.number,playerName:player.name,sourceName:row.nameArea,matchedNameVariant:matchedVariant||null,
+    position:row.position,positionChanged:!positionMatches,clubAtTournament:row.club,
+    status:nameMatches?"matched":"unresolved",
+    notes:!nameMatches?"Manual identity review required; club not promoted.":
+     (matchedVariant!==player.name?"FIFA legal/transliterated name reconciled to the dataset display name via an explicitly reviewed alias. " : "")+
+     (positionMatches?"Identity and shirt number match; FIFA position agrees.":"Identity and shirt number match; FIFA's final position category supersedes the dataset category.")
+   });
   }
   if(team)for(const player of team.players)if(!matchedNumbers.has(Number(player.number)))mismatches.push({number:Number(player.number),player:player.name,field:"missing_fifa_row",dataHub:player.name});
   const expected=team?.players.length||0;
-  const clean=Boolean(team)&&fifaRows.length===expected&&mismatches.length===0&&candidates.every(row=>row.status==="matched");
+  const clean=Boolean(team)&&fifaRows.length===expected&&mismatches.length===0&&candidates.length===expected&&candidates.every(row=>row.status==="matched");
   if(clean){
    for(const candidate of candidates){
     const player=team.players.find(p=>Number(p.number)===candidate.number);
     player.club=candidate.clubAtTournament;
+    player.position=candidate.position;
    }
   }
   tournamentReport.teams.push({page:pageNo,teamId:team?.id||null,teamName:team?.name||null,pdfHeading:heading,fifaRows:fifaRows.length,dataHubRows:expected,clean,clubValuesParsed:candidates.filter(row=>row.clubAtTournament).length,mismatchCount:mismatches.length,mismatches,candidates});
@@ -142,6 +161,7 @@ report.summary={
  teamsMapped:report.tournaments.reduce((n,t)=>n+t.summary.teamsMapped,0),
  teamsClean:report.tournaments.reduce((n,t)=>n+t.summary.teamsClean,0),
  totalMismatches:report.tournaments.reduce((n,t)=>n+t.summary.totalMismatches,0),
+ positionDifferences:report.tournaments.reduce((n,t)=>n+t.teams.reduce((m,team)=>m+(team.candidates||[]).filter(row=>row.positionChanged).length,0),0),
  clubCandidates:report.tournaments.reduce((n,t)=>n+t.teams.reduce((m,team)=>m+team.clubValuesParsed,0),0),
  sourceUnavailableTeams:report.tournaments.reduce((n,t)=>n+t.teams.filter(team=>team.sourceUnavailable).length,0)
 };
