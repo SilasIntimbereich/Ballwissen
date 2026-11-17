@@ -128,7 +128,7 @@ async function acceptDailyGuess(value){
  }
  const index=outcome.index,player=outcome.player,card=cardForPlayer(team.id+":"+index);
  if(card){
-  card.classList.add("found");setPlayerRarity(card,player.rarity,index);announcePlayer(player,player.rarity);announcePlayer(player,player.rarity);
+  card.classList.add("found");setPlayerRarity(card,player.rarity,index);announcePlayer(player,player.rarity);
   card.querySelector(".player-name").textContent=player.name;
   card.querySelector(".player-hint").textContent=dailyState.mode==="daily-legendary"?"FOUND":formatHint(player.position,player.club);
  }
@@ -201,7 +201,7 @@ $("#guess-form").addEventListener("submit",async event=>{
    const index=outcome.index,player=outcome.player;
    const card=document.querySelector('.player-card[data-index="'+index+'"]');
    if(card){
-    card.classList.add("found");setPlayerRarity(card,player.rarity,index);
+    card.classList.add("found");setPlayerRarity(card,player.rarity,index);announcePlayer(player,player.rarity);
     card.querySelector(".player-name").textContent=player.name;
     card.querySelector(".player-hint").textContent=mode==="easy"?formatHint(player.position,player.club):"FOUND";
    }
