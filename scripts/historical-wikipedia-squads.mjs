@@ -85,7 +85,7 @@ export function normalizeHistoricalClub(value) {
     sportingcp: "sportinglisbon",
     realbetis: "betis",
     realvalladolid: "valladolid",
-    realmAllorca: "mallorca",
+    realmallorca: "mallorca",
     borussiadortmund: "dortmund",
     borussiamonchengladbach: "monchengladbach",
     bmonchengladbach: "monchengladbach",
