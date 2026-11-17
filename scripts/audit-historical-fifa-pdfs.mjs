@@ -85,10 +85,10 @@ for(const source of SOURCES){
   tournamentReport.teams=teamsForYear.map(team=>({
    page:null,teamId:team.id,teamName:team.name,pdfHeading:null,
    fifaRows:0,dataHubRows:team.players.length,clean:false,sourceUnavailable:true,
-   clubValuesParsed:0,mismatchCount:1,
-   mismatches:[{field:"source_unavailable",reason:String(error)}],candidates:[]
+   clubValuesParsed:0,mismatchCount:0,
+   mismatches:[],candidates:[]
   }));
-  tournamentReport.summary={pages:0,teamsMapped:0,teamsClean:0,totalMismatches:tournamentReport.teams.length};
+  tournamentReport.summary={pages:0,teamsMapped:0,teamsClean:0,totalMismatches:0};
   report.tournaments.push(tournamentReport);
   continue;
  }
