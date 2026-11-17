@@ -22,9 +22,11 @@ function surnameForms(value){
  const words=String(value??"").trim().split(/\s+/).filter(Boolean);
  if(!words.length)return [];
  const forms=[normalize(words.at(-1))];
- let start=words.length-1;
- while(start>0&&surnameParticles.has(normalize(words[start-1])))start--;
- if(start<words.length-1)forms.push(normalize(words.slice(start).join(" ")));
+ // Preserve every valid compound-surname suffix, not only the longest one.
+ // For "van der Vaart", both "der Vaart" and "van der Vaart" are accepted.
+ for(let start=words.length-1;start>0&&surnameParticles.has(normalize(words[start-1]));start--){
+  forms.push(normalize(words.slice(start-1).join(" ")));
+ }
  return [...new Set(forms.filter(form=>form.length>=4))];
 }
 function nameTargets(player){
