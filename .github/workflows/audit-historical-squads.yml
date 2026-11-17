@@ -7,6 +7,7 @@ on:
       - "scripts/audit-historical-fifa-pdfs.mjs"
       - "scripts/historical-pdf-heading.mjs"
       - "scripts/audit-2002-rosters.mjs"
+      - "scripts/audit-2022-independent-clubs.mjs"
       - ".github/workflows/audit-historical-squads.yml"
   pull_request:
     branches: [main]
@@ -27,19 +28,22 @@ jobs:
         run: npm install --no-save pdfjs-dist@^5.4.394
       - name: Compare 160 squads with FIFA final PDFs
         run: node scripts/audit-historical-fifa-pdfs.mjs
+      - name: Cross-check 2022 club affiliations against an independent squad archive
+        run: node scripts/audit-2022-independent-clubs.mjs
       - name: Cross-check 2002 squads against RSSSF
         run: node scripts/audit-2002-rosters.mjs
       - name: Commit audit report and club candidates
         if: github.event_name == 'push' && always()
         run: |
-          if [ -f artifacts/historical-fifa-audit.json ] && [ -f artifacts/historical-club-candidates.json ] && [ -f artifacts/2002-roster-audit.json ]; then
+          if [ -f artifacts/historical-fifa-audit.json ] && [ -f artifacts/historical-club-candidates.json ] && [ -f artifacts/2002-roster-audit.json ] && [ -f artifacts/2022-independent-club-audit.json ]; then
             mkdir -p reports
             cp artifacts/historical-fifa-audit.json reports/historical-fifa-audit.json
             cp artifacts/historical-club-candidates.json reports/historical-club-candidates.json
             cp artifacts/2002-roster-audit.json reports/2002-roster-audit.json
+            cp artifacts/2022-independent-club-audit.json reports/2022-independent-club-audit.json
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add reports/historical-fifa-audit.json reports/historical-club-candidates.json reports/2002-roster-audit.json
+            git add reports/historical-fifa-audit.json reports/historical-club-candidates.json reports/2002-roster-audit.json reports/2022-independent-club-audit.json
             if ! git diff --cached --quiet; then
               git commit -m "Update historical FIFA squad audit report"
               git pull --rebase origin main
@@ -55,5 +59,6 @@ jobs:
             artifacts/historical-fifa-audit.json
             artifacts/historical-club-candidates.json
             artifacts/2002-roster-audit.json
+            artifacts/2022-independent-club-audit.json
           if-no-files-found: warn
           retention-days: 30
