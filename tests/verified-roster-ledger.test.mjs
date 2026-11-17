@@ -47,20 +47,24 @@ test("rejects incomplete, mismatched or duplicate player rows", () => {
   }, 2018), false);
 });
 
-test("accepts a different source display name only with a documented alias and HTTPS evidence", () => {
+test("accepts an explicit source-name alias backed by two independent sources", () => {
   const aliased = {
     ...validEntry,
     players: [{
       ...validEntry.players[0],
-      sourceName: "Alejandro Gomez",
-      sourceNameAliases: ["Hugo Lloris", "Alejandro Gomez"],
-      sourceNameAliasEvidenceUrl: "https://www.dfb.de/worldcup/argentina"
+      sourceName: "Hugo L.",
+      sourceNameAliases: ["Hugo Lloris", "Hugo L."]
     }]
   };
   assert.equal(isCompleteVerifiedRosterLedger(team, aliased, 2018), true);
   const undocumented = {
     ...aliased,
-    players: [{ ...aliased.players[0], sourceNameAliasEvidenceUrl: null }]
+    players: [{ ...aliased.players[0], sourceNameAliases: ["Hugo Lloris"] }]
   };
   assert.equal(isCompleteVerifiedRosterLedger(team, undocumented, 2018), false);
+  const invalidAliasEvidence = {
+    ...aliased,
+    players: [{ ...aliased.players[0], sourceNameAliasEvidenceUrl: "http://example.com/alias" }]
+  };
+  assert.equal(isCompleteVerifiedRosterLedger(team, invalidAliasEvidence, 2018), false);
 });
