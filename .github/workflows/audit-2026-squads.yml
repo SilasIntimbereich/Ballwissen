@@ -8,6 +8,10 @@ on:
       - ".github/workflows/audit-2026-squads.yml"
   pull_request:
     branches: [main]
+    paths:
+      - "data/worldcup-2026.json"
+      - "scripts/audit-2026-fifa-pdf.mjs"
+      - ".github/workflows/audit-2026-squads.yml"
   schedule:
     - cron: "17 5 * * 1"
   workflow_dispatch:
