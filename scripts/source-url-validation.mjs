@@ -44,12 +44,7 @@ export function normalizeHttpsHost(value){
 }
 
 export function isHttpsUrl(value){
-  try{
-    const url=new URL(value);
-    return url.protocol==="https:"&&Boolean(url.hostname);
-  }catch{
-    return false;
-  }
+  return normalizeHttpsHost(value)!==null;
 }
 
 export function hasIndependentHttpsSources(values){
