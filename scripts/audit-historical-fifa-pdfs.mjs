@@ -59,18 +59,20 @@ const cleanClub=s=>{const value=String(s||"").replace(/\s*\([A-Z]{3}\)\s*$/,"").
 
 function parseRows(lines,format){
  const rows=[];
+ if(format==="2018"){
+  const text=lines.join(" ");
+  const pattern=/#\s*(\d{1,2})\s*\|\s*FIFA Display Name\s+([^|]+?)\s*\|\s*Last Name\s+([^|]*?)\s*\|\s*First Name\s+([^|]*?)\s*\|\s*Shirt Name\s+[^|]*?\|\s*DOB\s+[\d.]+\s*\|\s*POS\s+(GK|DF|MF|FW)\s*\|\s*Club\s+([^|]+?)\s*\|\s*Height\s+\d{2,3}/gi;
+  for(const match of text.matchAll(pattern)){
+   const nameArea=[match[2],match[4],match[3]].map(value=>value.trim()).filter(Boolean).join(" ");
+   rows.push({number:Number(match[1]),position:match[5],nameArea,club:cleanClub(match[6]),line:match[0]});
+  }
+  return rows;
+ }
  for(const line of lines){
   let m;
   if(format==="2022"){
    m=line.match(/^(\d{1,2})\s+(GK|DF|MF|FW)\s+(.+?)\s+(\d{2}\/\d{2}\/\d{4})\s+(.+?)\s+(\d{3})\s+(\d+)\s+(\d+)$/);
    if(m)rows.push({number:Number(m[1]),position:m[2],nameArea:m[3],club:cleanClub(m[5]),line});
-  }else if(format==="2018"){
-   const text=lines.join(" ");
-   const pattern=/#\\s*(\\d{1,2})\\s*\\|\\s*FIFA Display Name\\s+([^|]+?)\\s*\\|\\s*Last Name\\s+([^|]*?)\\s*\\|\\s*First Name\\s+([^|]*?)\\s*\\|\\s*Shirt Name\\s+[^|]*?\\s*\\|\\s*DOB\\s+([\\d.]+)\\s*\\|\\s*POS\\s+(GK|DF|MF|FW)\\s*\\|\\s*Club\\s+([^|]+?)\\s*\\|\\s*Height\\s+\\d{2,3}/gi;
-   for(const match of text.matchAll(pattern)){
-    const nameArea=[match[2],match[4],match[3]].map(value=>value.trim()).filter(Boolean).join(" ");
-    rows.push({number:Number(match[1]),position:match[6],nameArea,club:cleanClub(match[7]),line:match[0]});
-   }
   }else if(format==="2010"){
    m=line.match(/^(\d{1,2})\s+(Goalkeeper|Defender|Midfielder|Forward)\s+(.+?)\s+(\d{1,2}\s+[A-Za-z]{3}\s+\d{4})\s+(.+?)\s+(\d{3})$/);
    if(m)rows.push({number:Number(m[1]),position:positionMap[m[2]],nameArea:m[3],club:cleanClub(m[5]),line});
