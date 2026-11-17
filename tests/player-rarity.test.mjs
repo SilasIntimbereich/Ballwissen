@@ -29,6 +29,13 @@ test("team-aware rarity follows the collection-wide target curve and keeps Franc
   assert.equal(elite.length,3,team.id+" must have exactly three squad-specific elite picks");
   assert.equal(elite.filter(player=>player.rarity==="Ball Knowledge").length,1);
   assert.equal(elite.filter(player=>player.rarity==="Legendary").length,2);
+  const niche=team.players.filter(player=>player.rarity==="Niche").length;
+  const rare=team.players.filter(player=>player.rarity==="Rare").length;
+  const nonCommon=team.players.filter(player=>player.rarity!=="Common").length;
+  if(nonCommon>=11){
+   assert.ok(niche>=3,team.id+" must have at least three Niche players when enough candidates exist");
+   assert.ok(rare>=5,team.id+" must have at least five Rare players when enough candidates exist");
+  }
  }
  const france=rosters.teams.find(team=>team.id==="france-2018");
  assert.ok(france.players.filter(player=>player.rarity==="Common").length>=20);
