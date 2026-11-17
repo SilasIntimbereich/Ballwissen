@@ -45,7 +45,6 @@ export function assignRosterRarities(rosters,publicData){
   const teams=Array.isArray(rosters?.teams)?rosters.teams:[];
   const metadata=new Map((publicData?.teams||[]).map(team=>[team.id,team]));
   const appearances=new Map();
-  const eliteCandidates=[];
 
   for(const squad of teams){
     const year=metadata.get(squad.id)?.year;
