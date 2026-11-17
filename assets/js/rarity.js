@@ -57,6 +57,7 @@ export function assignRosterRarities(rosters,publicData){
   }
 
   const rarityCandidates=[];
+  const candidatesByTeam=new Map();
 
   for(const squad of teams){
     const difficulty=metadata.get(squad.id)?.teamDifficulty||"niche";
@@ -70,72 +71,61 @@ export function assignRosterRarities(rosters,publicData){
       const appearancesCount=Math.max(0,...names.map(name=>appearances.get(name)?.size||0));
       const recognised=isRecognised(player,appearances);
       const repeated=appearancesCount>=2;
-      let rarity;
+      const difficultyWeight=difficulty==="legendary"?80:difficulty==="niche"?0:-40;
+      const candidate={
+        player,index,teamId:String(squad.id||""),
+        score:rarityPriority(player,appearances,thirdKeepers.has(player))+difficultyWeight+
+          (repeated?-12:0)
+      };
 
-      if(recognised)rarity="Common";
-      else if(difficulty==="common")rarity=(thirdKeepers.has(player)||Number(player.number)>=23)&&!repeated?"Rare":"Common";
-      else if(difficulty==="niche")rarity=repeated?"Rare":"Niche";
-      else rarity=repeated?"Rare":"Niche";
-
-      player.rarity=rarity;
-      if(!recognised){
-        // A smooth global curve: squad difficulty and recall evidence influence
-        // rank, while the collection-wide quotas determine the final tier.
-        const difficultyWeight=difficulty==="legendary"?80:difficulty==="niche"?0:-40;
-        rarityCandidates.push({
-          player,index,teamId:String(squad.id||""),
-          score:rarityPriority(player,appearances,thirdKeepers.has(player))+difficultyWeight+
-            (repeated?-12:0)
-        });
+      if(recognised){
+        player.rarity="Common";
+      }else{
+        player.rarity="Common";
+        rarityCandidates.push(candidate);
+        if(!candidatesByTeam.has(candidate.teamId))candidatesByTeam.set(candidate.teamId,[]);
+        candidatesByTeam.get(candidate.teamId).push(candidate);
       }
     }
   }
 
-  const total=teams.reduce((sum,team)=>sum+(Array.isArray(team.players)?team.players.length:0),0);
-  const target=(amount)=>Math.round(total*amount/6150);
-  const ballKnowledgeTarget=target(50);
-  const legendaryTarget=target(100);
-  const nicheTarget=target(1000);
-  const rareTarget=target(2000);
+  // Every squad contributes its three hardest-to-recall non-famous players:
+  // the rarest becomes Ball Knowledge, followed by two Legendary players.
+  const elitePlayers=new Set();
+  for(const squad of teams){
+    const candidates=(candidatesByTeam.get(String(squad.id||""))||[]).sort((a,b)=>
+      b.score-a.score||
+      (Number(b.player.number)||0)-(Number(a.player.number)||0)||
+      a.index-b.index
+    );
+    if(candidates.length<3){
+      throw new Error("Squad has fewer than three eligible rarity candidates: "+squad.id);
+    }
+    candidates[0].player.rarity="Ball Knowledge";
+    candidates[1].player.rarity="Legendary";
+    candidates[2].player.rarity="Legendary";
+    for(const candidate of candidates.slice(0,3))elitePlayers.add(candidate);
+  }
 
-  // Recognised players are protected as Common. All remaining places are
-  // filled from the most difficult-to-recall players, producing one smooth,
-  // deterministic collection-wide rarity curve.
-  rarityCandidates.sort((a,b)=>
+  const remaining=rarityCandidates.filter(candidate=>!elitePlayers.has(candidate)).sort((a,b)=>
     b.score-a.score||
     (Number(b.player.number)||0)-(Number(a.player.number)||0)||
     a.teamId.localeCompare(b.teamId)||
     a.index-b.index
   );
 
-  const eliteTargets=[
-    ["Ball Knowledge",ballKnowledgeTarget],
-    ["Legendary",legendaryTarget]
-  ];
-  const elitePerTeam=new Map();
-  let remaining=rarityCandidates;
-  for(const [tier,requested] of eliteTargets){
-    let assigned=0;
-    const deferred=[];
-    for(const candidate of remaining){
-      const teamCount=elitePerTeam.get(candidate.teamId)||0;
-      if(assigned<requested&&teamCount<10){
-        candidate.player.rarity=tier;
-        elitePerTeam.set(candidate.teamId,teamCount+1);
-        assigned++;
-      }else deferred.push(candidate);
-    }
-    remaining=deferred;
-  }
+  const total=teams.reduce((sum,team)=>sum+(Array.isArray(team.players)?team.players.length:0),0);
+  const ratio=(amount)=>Math.round(total*amount/5759);
+  const nicheTarget=ratio(1153);
+  const rareTarget=ratio(1353);
 
-  const assignNext=(tier,requested)=>{
-    const count=Math.min(requested,remaining.length);
-    for(let i=0;i<count;i++)remaining[i].player.rarity=tier;
-    remaining=remaining.slice(count);
-  };
-  assignNext("Niche",nicheTarget);
-  assignNext("Rare",rareTarget);
-  for(const candidate of remaining)candidate.player.rarity="Common";
+  // The 720 squad-specific elite places are additional. The 200-player
+  // adjustment is taken from Common and added to Rare; Niche is unchanged.
+  let cursor=0;
+  for(;cursor<Math.min(nicheTarget,remaining.length);cursor++)remaining[cursor].player.rarity="Niche";
+  const rareEnd=Math.min(cursor+rareTarget,remaining.length);
+  for(;cursor<rareEnd;cursor++)remaining[cursor].player.rarity="Rare";
+  for(;cursor<remaining.length;cursor++)remaining[cursor].player.rarity="Common";
 
   return rosters;
 }
