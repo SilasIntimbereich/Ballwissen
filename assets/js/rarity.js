@@ -63,7 +63,7 @@ export function assignRosterRarities(rosters,publicData){
     const keepers=players.filter(player=>String(player.position||"").toUpperCase()==="GK")
       .sort((a,b)=>(Number(a.number)||99)-(Number(b.number)||99));
     const thirdKeepers=new Set(keepers.slice(2));
-    let bestCandidate=null;
+    const eliteCandidatesForTeam=[];
 
     for(const [index,player] of players.entries()){
       const names=playerNames(player);
@@ -79,23 +79,18 @@ export function assignRosterRarities(rosters,publicData){
 
       player.rarity=rarity;
       if(difficulty==="legendary"&&!recognised){
-        const candidate={
+        eliteCandidatesForTeam.push({
           player,index,teamId:String(squad.id||""),
           score:rarityPriority(player,appearances,thirdKeepers.has(player))
-        };
-        if(!bestCandidate||candidate.score>bestCandidate.score||
-          (candidate.score===bestCandidate.score&&candidate.index<bestCandidate.index)){
-          bestCandidate=candidate;
-        }
+        });
       }
     }
-    if(bestCandidate)eliteCandidates.push(bestCandidate);
+    eliteCandidatesForTeam.sort((a,b)=>b.score-a.score||a.index-b.index);
+    // Each Legendary-difficulty squad gets up to three elite recall picks:
+    // one Ball Knowledge and two Legendary. Familiar stars stay Common.
+    eliteCandidatesForTeam.slice(0,1).forEach(({player})=>{player.rarity="Ball Knowledge";});
+    eliteCandidatesForTeam.slice(1,3).forEach(({player})=>{player.rarity="Legendary";});
   }
 
-  // Keep elite labels genuinely scarce across the complete game dataset.
-  // At most one elite player is selected per Legendary squad.
-  eliteCandidates.sort((a,b)=>b.score-a.score||a.teamId.localeCompare(b.teamId)||a.index-b.index);
-  eliteCandidates.slice(0,4).forEach(({player})=>{player.rarity="Ball Knowledge";});
-  eliteCandidates.slice(4,14).forEach(({player})=>{player.rarity="Legendary";});
   return rosters;
 }
