@@ -1,6 +1,7 @@
 import {mkdir,writeFile,readFile} from "node:fs/promises";
 import * as pdfjs from "pdfjs-dist/legacy/build/pdf.mjs";
 import { extractTeamHeading } from "./historical-pdf-heading.mjs";
+import { namesMatch } from "./historical-player-name-match.mjs";
 
 const SOURCES=[
  {year:2006,url:"https://www.fifadata.com/document/fwc/2006/PDF/FWC_2006_SquadLists.pdf",format:"old-dot"},
@@ -113,9 +114,8 @@ for(const source of SOURCES){
    const player=team?.players.find(p=>Number(p.number)===row.number);
    if(!player){mismatches.push({number:row.number,field:"player",fifa:row.nameArea,reason:"No DataHub player with this shirt number"});continue;}
    matchedNumbers.add(row.number);
-   const sourceTokens=tokens(row.nameArea),playerTokens=tokens(player.name);
    const nameVariants=[player.name,...(Array.isArray(player.aliases)?player.aliases:[])].filter(Boolean);
-   const nameMatches=nameVariants.some(name=>tokens(name).every(token=>sourceTokens.includes(token)));
+   const nameMatches=nameVariants.some(name=>namesMatch(name,row.nameArea));
    const positionMatches=positionMap[player.position]===row.position;
    if(!nameMatches)mismatches.push({number:row.number,player:player.name,field:"name",fifa:row.nameArea,dataHub:player.name});
    if(!positionMatches)mismatches.push({number:row.number,player:player.name,field:"position",fifa:row.position,dataHub:player.position});
