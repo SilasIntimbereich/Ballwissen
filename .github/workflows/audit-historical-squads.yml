@@ -14,6 +14,7 @@ on:
       - "scripts/historical-wikipedia-squads.mjs"
       - "scripts/audit-2002-clubs.mjs"
       - "scripts/audit-historical-secondary-squads.mjs"
+      - "scripts/apply-verified-historical-clubs.mjs"
       - ".github/workflows/audit-historical-squads.yml"
   pull_request:
     branches: [main]
@@ -29,6 +30,7 @@ on:
       - "scripts/historical-wikipedia-squads.mjs"
       - "scripts/audit-2002-clubs.mjs"
       - "scripts/audit-historical-secondary-squads.mjs"
+      - "scripts/apply-verified-historical-clubs.mjs"
       - ".github/workflows/audit-historical-squads.yml"
   schedule:
     - cron: "41 5 * * 1"
@@ -40,6 +42,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref }}
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -57,10 +61,24 @@ jobs:
         run: node scripts/audit-2002-clubs.mjs
       - name: Cross-check 2010, 2014 and 2018 squads and clubs against independent archives
         run: node scripts/audit-historical-secondary-squads.mjs
+      - name: Apply only fully cross-checked historical club data
+        run: node scripts/apply-verified-historical-clubs.mjs
+      - name: Validate data after verified club updates
+        run: npm test
+      - name: Commit verified club updates to pull request branch
+        if: github.event_name == 'pull_request' && success()
+        run: |
+          if ! git diff --quiet -- data/historical-squads.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/historical-squads.json
+            git commit -m "Apply independently verified historical club data"
+            git push origin "HEAD:${GITHUB_HEAD_REF}"
+          fi
       - name: Commit audit report and club candidates
         if: github.event_name == 'push' && always()
         run: |
-          if [ -f artifacts/historical-fifa-audit.json ] && [ -f artifacts/historical-club-candidates.json ] && [ -f artifacts/2002-roster-audit.json ] && [ -f artifacts/2002-fifa-roster-audit.json ] && [ -f artifacts/2022-independent-club-audit.json ] && [ -f artifacts/2002-club-audit.json ] && [ -f artifacts/historical-secondary-squad-audit.json ]; then
+          if [ -f artifacts/historical-fifa-audit.json ] && [ -f artifacts/historical-club-candidates.json ] && [ -f artifacts/2002-roster-audit.json ] && [ -f artifacts/2002-fifa-roster-audit.json ] && [ -f artifacts/2022-independent-club-audit.json ] && [ -f artifacts/2002-club-audit.json ] && [ -f artifacts/historical-secondary-squad-audit.json ] && [ -f artifacts/verified-historical-club-application.json ]; then
             mkdir -p reports
             cp artifacts/historical-fifa-audit.json reports/historical-fifa-audit.json
             cp artifacts/historical-club-candidates.json reports/historical-club-candidates.json
@@ -68,7 +86,8 @@ jobs:
             cp artifacts/2002-fifa-roster-audit.json reports/2002-fifa-roster-audit.json
             cp artifacts/2022-independent-club-audit.json reports/2022-independent-club-audit.json
             cp artifacts/2002-club-audit.json reports/2002-club-audit.json
-            cp artifacts/historical-secondary-squad-audit.json reports/historical-secondary-squad-audit.json
+            cp artifacts/historical-secondary-squad-audit.json reports/historical-secondary-squad-audit.json reports/verified-historical-club-application.json
+            cp artifacts/verified-historical-club-application.json reports/verified-historical-club-application.json
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add reports/historical-fifa-audit.json reports/historical-club-candidates.json reports/2002-roster-audit.json reports/2002-fifa-roster-audit.json reports/2022-independent-club-audit.json reports/2002-club-audit.json reports/historical-secondary-squad-audit.json
@@ -91,5 +110,6 @@ jobs:
             artifacts/2022-independent-club-audit.json
             artifacts/2002-club-audit.json
             artifacts/historical-secondary-squad-audit.json
+            artifacts/verified-historical-club-application.json
           if-no-files-found: warn
           retention-days: 30
