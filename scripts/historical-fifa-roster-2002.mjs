@@ -8,7 +8,7 @@ const codeToTeam = {
   ESP:"Spain", FRA:"France", GER:"Germany", IRL:"Republic of Ireland", ITA:"Italy",
   JPN:"Japan", KOR:"South Korea", KSA:"Saudi Arabia", MEX:"Mexico", NGA:"Nigeria",
   PAR:"Paraguay", POL:"Poland", POR:"Portugal", RUS:"Russia", SEN:"Senegal",
-  SLO:"Slovenia", RSA:"South Africa", SWE:"Sweden", TUN:"Tunisia", TUR:"Turkey",
+  SLO:"Slovenia", SVN:"Slovenia", RSA:"South Africa", SWE:"Sweden", TUN:"Tunisia", TUR:"Turkey",
   URU:"Uruguay", USA:"United States", NED:"Netherlands"
 };
 
