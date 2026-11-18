@@ -24,8 +24,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Install PDF parser
-        run: npm install --no-save pdfjs-dist@^5.4.394
+      - name: Install PDF parser in isolation
+        run: |
+          mkdir -p "$RUNNER_TEMP/pdf-parser"
+          npm install --prefix "$RUNNER_TEMP/pdf-parser" --no-save --package-lock=false pdfjs-dist@5.4.394
+          ln -s "$RUNNER_TEMP/pdf-parser/node_modules" "$GITHUB_WORKSPACE/node_modules"
       - name: Compare every FIFA final squad row
         run: node scripts/audit-2026-fifa-pdf.mjs
       - name: Commit machine-readable audit report
