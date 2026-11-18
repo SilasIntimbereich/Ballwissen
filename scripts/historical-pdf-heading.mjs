@@ -62,7 +62,7 @@ export function extractTeamHeading(lines,knownTeams=[]){
  // PDF.js does not guarantee visual reading order. Search the entire page
  // heading block, but stop at the first numbered player row so a country
  // mentioned in player/club text can never become the page heading.
- const firstPlayerIndex=values.findIndex(line=>/^#?\\s*\\d{1,2}\\s*\\|?\\s*(?:FIFA Display Name|[A-Z][A-Z]+\\s+.+?\\s+\\d{2}\\.\\d{2}\\.\\d{4}|GK|DF|MF|FW)\\b/i.test(line));
+ const firstPlayerIndex=values.findIndex(line=>/^#?\s*\d{1,2}\s*\|?\s*(?:FIFA Display Name|[A-Z][A-Z]+\s+.+?\s+\d{2}\.\d{2}\.\d{4}|GK|DF|MF|FW)\b/i.test(line));
  const headingLines=values.slice(0,firstPlayerIndex<0?values.length:firstPlayerIndex);
  const countryCodeHeading=headingLines.find(line=>{
   if(!usableHeading(line))return false;
