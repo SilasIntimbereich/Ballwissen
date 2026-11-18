@@ -1,9 +1,11 @@
-// Player rarity is based on recall difficulty, not player quality.
+// Player rarity describes how difficult a player is to recall, not their quality.
+// The same deterministic assignment is used by the browser and Supabase resolver.
 export const RARITY_TIERS=["Common","Rare","Niche","Legendary","Ball Knowledge"];
 
 export function rarityFromEvidence({caps=0,goals=0,majorAwards=0,globalRecognition=0,clubProfile=0}={}){
-  const profile=Math.min(100,caps)*0.25+Math.min(5,majorAwards)*5+
-    Math.min(5,globalRecognition)*5+Math.min(5,clubProfile)*3+Math.min(30,goals)*0.25;
+  const safe=value=>Number.isFinite(Number(value))?Math.max(0,Number(value)):0;
+  const profile=Math.min(100,safe(caps))*0.25+Math.min(5,safe(majorAwards))*5+
+    Math.min(5,safe(globalRecognition))*5+Math.min(5,safe(clubProfile))*3+Math.min(30,safe(goals))*0.25;
   if(profile>=45)return "Common";
   if(profile>=32)return "Rare";
   if(profile>=20)return "Niche";
@@ -12,64 +14,147 @@ export function rarityFromEvidence({caps=0,goals=0,majorAwards=0,globalRecogniti
 }
 
 const normalise=value=>String(value||"")
+  .replace(/[æÆ]/g,"ae").replace(/[œŒ]/g,"oe").replace(/[øØ]/g,"o")
+  .replace(/[łŁ]/g,"l").replace(/[ßẞ]/g,"ss").replace(/[đĐðÐ]/g,"d")
+  .replace(/[þÞ]/g,"th").replace(/[ıİ]/g,"i")
   .normalize("NFKD").replace(/[\u0300-\u036f]/g,"")
   .toLowerCase().replace(/[’']/g," ").replace(/[^a-z0-9]+/g," ").trim().replace(/\s+/g," ");
 
 const COMMON_NAMES=new Set(`
-Kylian Mbappe|Lionel Messi|Cristiano Ronaldo|Neymar|Luka Modric|Antoine Griezmann|Paul Pogba|N Golo Kante|Olivier Giroud|Hugo Lloris|Raphael Varane|Ousmane Dembele|Eden Hazard|Kevin De Bruyne|Romelu Lukaku|Thibaut Courtois|Sergio Ramos|Gerard Pique|Andres Iniesta|Xavi|Iker Casillas|David Villa|Fernando Torres|Carles Puyol|Zinedine Zidane|Thierry Henry|Ronaldinho|Ronaldo Nazario|Rivaldo|Kaka|Roberto Carlos|Cafu|Pele|Maradona|Robert Lewandowski|Manuel Neuer|Thomas Muller|Toni Kroos|Mesut Ozil|Miroslav Klose|Bastian Schweinsteiger|Philipp Lahm|Mario Gotze|Wayne Rooney|David Beckham|Steven Gerrard|Frank Lampard|Harry Kane|Jude Bellingham|Mohamed Salah|Sadio Mane|Didier Drogba|Samuel Etoo|Yaya Toure|Michael Essien|Son Heung Min|Zlatan Ibrahimovic|Luis Suarez|Edinson Cavani|Diego Forlan|James Rodriguez|Radamel Falcao|Alexis Sanchez|Arturo Vidal|Ivan Rakitic|Ivan Perisic|Mario Mandzukic|Robin Van Persie|Arjen Robben|Wesley Sneijder|Gianluigi Buffon|Fabio Cannavaro|Andrea Pirlo|Francesco Totti|Alessandro Del Piero|Paolo Maldini|Gennaro Gattuso|Giorgio Chiellini|Dani Alves|Marcelo|Casemiro|Vinicius Junior|Alisson|Ederson|Thiago Silva|Marquinhos|Sergio Busquets|David Silva|Cesc Fabregas|Karim Benzema|Franck Ribery|Gareth Bale|Ryan Giggs|Tim Cahill|Harry Kewell|Hideo Nakata|Keisuke Honda|Shinji Kagawa|Landon Donovan|Clint Dempsey|Tim Howard|Carlos Valderrama|Rafael Marquez|Guillermo Ochoa|Cuauhtemoc Blanco|Pavel Nedved|Tomas Rosicky|Petr Cech|Hakan Sukur|Arda Turan|Adriano|Romario|Zico|Socrates|Bebeto|Johan Cruyff|Marco Van Basten|Frank Rijkaard|Ruud Gullit|Dennis Bergkamp|Roberto Baggio|Christian Vieri|Filippo Inzaghi|Daniele De Rossi|Mario Balotelli|Michael Ballack|Oliver Kahn|Jens Lehmann|Sami Khedira|Mats Hummels|Jerome Boateng|Ilkay Gundogan|Kai Havertz|Jamal Musiala|Florian Wirtz|David Alaba|Kalidou Koulibaly|Achraf Hakimi|Hakim Ziyech|Yassine Bounou|Mehdi Benatia|Riyad Mahrez|Islam Slimani|Vincent Aboubakar|George Weah|Asamoah Gyan|Nani|Ricardo Quaresma|Joao Moutinho|Pepe|Joao Felix|Bruno Fernandes|Bernardo Silva|Diego Costa|Pedro|Juan Mata|Sergio Aguero|Angel Di Maria|Gonzalo Higuain|Javier Mascherano|Javier Zanetti|Esteban Cambiasso|Juan Cuadrado|Park Ji Sung|Ali Karimi|Mehdi Mahdavikia|Luis Figo|Deco|Patrick Vieira|Claude Makelele|Xabi Alonso|Raul Gonzalez|Fernando Hierro|David Trezeguet|Koke|Xabi Alonso|Marek Hamsik|Robert Lewandowski|Edin Dzeko|Miralem Pjanic|Keylor Navas|Javier Hernandez|Andres Guardado|Bryan Ruiz|George Weah|Roger Milla|Jay Jay Okocha|Nwankwo Kanu|Emmanuel Adebayor|John Obi Mikel|Kolo Toure|Salomon Kalou|Marek Hamsik|Pavel Nedved|Tomas Rosicky|Shunsuke Nakamura|Yuto Nagatomo|Makoto Hasebe|Shinji Okazaki|Lukas Podolski|Claudio Marchisio|Antonio Di Natale|Gabriel Batistuta|Carlos Tevez|Juan Roman Riquelme|Hernan Crespo|Cuauhtemoc Blanco|Giovani Dos Santos|Gervinho|Sofiane Feghouli|Yacine Brahimi|Sami Khedira|Nemanja Vidic|Branislav Ivanovic|Darijo Srna|Dejan Stankovic|Goran Pandev
+Kylian Mbappe|Lionel Messi|Cristiano Ronaldo|Neymar|Luka Modric|Antoine Griezmann|Paul Pogba|N Golo Kante|Olivier Giroud|Hugo Lloris|Raphael Varane|Ousmane Dembele|Eden Hazard|Kevin De Bruyne|Romelu Lukaku|Thibaut Courtois|Sergio Ramos|Gerard Pique|Andres Iniesta|Xavi|Iker Casillas|David Villa|Fernando Torres|Carles Puyol|Zinedine Zidane|Thierry Henry|Ronaldinho|Ronaldo Nazario|Rivaldo|Kaka|Roberto Carlos|Cafu|Pele|Maradona|Robert Lewandowski|Manuel Neuer|Thomas Muller|Toni Kroos|Mesut Ozil|Miroslav Klose|Bastian Schweinsteiger|Philipp Lahm|Mario Gotze|Wayne Rooney|David Beckham|Steven Gerrard|Frank Lampard|Harry Kane|Jude Bellingham|Mohamed Salah|Sadio Mane|Didier Drogba|Samuel Etoo|Yaya Toure|Michael Essien|Son Heung Min|Zlatan Ibrahimovic|Luis Suarez|Edinson Cavani|Diego Forlan|James Rodriguez|Radamel Falcao|Alexis Sanchez|Arturo Vidal|Ivan Rakitic|Ivan Perisic|Mario Mandzukic|Robin Van Persie|Arjen Robben|Wesley Sneijder|Gianluigi Buffon|Fabio Cannavaro|Andrea Pirlo|Francesco Totti|Alessandro Del Piero|Paolo Maldini|Gennaro Gattuso|Giorgio Chiellini|Dani Alves|Marcelo|Casemiro|Vinicius Junior|Alisson|Ederson|Thiago Silva|Marquinhos|Sergio Busquets|David Silva|Cesc Fabregas|Karim Benzema|Franck Ribery|Gareth Bale|Ryan Giggs|Tim Cahill|Harry Kewell|Hideo Nakata|Keisuke Honda|Shinji Kagawa|Landon Donovan|Clint Dempsey|Tim Howard|Carlos Valderrama|Rafael Marquez|Guillermo Ochoa|Cuauhtemoc Blanco|Pavel Nedved|Tomas Rosicky|Petr Cech|Hakan Sukur|Arda Turan|Adriano|Romario|Zico|Socrates|Bebeto|Johan Cruyff|Marco Van Basten|Frank Rijkaard|Ruud Gullit|Dennis Bergkamp|Roberto Baggio|Christian Vieri|Filippo Inzaghi|Daniele De Rossi|Mario Balotelli|Michael Ballack|Oliver Kahn|Jens Lehmann|Sami Khedira|Mats Hummels|Jerome Boateng|Ilkay Gundogan|Kai Havertz|Jamal Musiala|Florian Wirtz|David Alaba|Kalidou Koulibaly|Achraf Hakimi|Hakim Ziyech|Yassine Bounou|Mehdi Benatia|Riyad Mahrez|Islam Slimani|Vincent Aboubakar|George Weah|Asamoah Gyan|Nani|Ricardo Quaresma|Joao Moutinho|Pepe|Joao Felix|Bruno Fernandes|Bernardo Silva|Diego Costa|Pedro|Juan Mata|Sergio Aguero|Angel Di Maria|Gonzalo Higuain|Javier Mascherano|Javier Zanetti|Esteban Cambiasso|Juan Cuadrado|Park Ji Sung|Ali Karimi|Mehdi Mahdavikia|Luis Figo|Deco|Patrick Vieira|Claude Makelele|Xabi Alonso|Raul Gonzalez|Fernando Hierro|David Trezeguet|Koke|Marek Hamsik|Edin Dzeko|Miralem Pjanic|Keylor Navas|Javier Hernandez|Andres Guardado|Bryan Ruiz|Roger Milla|Jay Jay Okocha|Nwankwo Kanu|Emmanuel Adebayor|John Obi Mikel|Kolo Toure|Salomon Kalou|Shunsuke Nakamura|Yuto Nagatomo|Makoto Hasebe|Shinji Okazaki|Lukas Podolski|Claudio Marchisio|Antonio Di Natale|Gabriel Batistuta|Carlos Tevez|Juan Roman Riquelme|Hernan Crespo|Giovani Dos Santos|Gervinho|Sofiane Feghouli|Yacine Brahimi|Nemanja Vidic|Branislav Ivanovic|Darijo Srna|Dejan Stankovic|Goran Pandev
 `.split("|").map(normalise));
 
+function playerNames(player){
+  return [player?.name,...(Array.isArray(player?.aliases)?player.aliases:[])]
+    .filter(Boolean).map(normalise).filter(Boolean);
+}
+
+function isRecognised(player,appearances){
+  return playerNames(player).some(name=>COMMON_NAMES.has(name)||(appearances.get(name)?.size||0)>=3);
+}
+
+function rarityPriority(player,appearances,thirdKeeper){
+  const names=playerNames(player);
+  const appearancesCount=Math.max(0,...names.map(name=>appearances.get(name)?.size||0));
+  const number=Number(player.number)||0;
+  return (appearancesCount===0?40:appearancesCount===1?25:0)+
+    (thirdKeeper?35:0)+(number>=23?Math.min(15,number-22):0);
+}
+
 export function assignRosterRarities(rosters,publicData){
+  const teams=Array.isArray(rosters?.teams)?rosters.teams:[];
   const metadata=new Map((publicData?.teams||[]).map(team=>[team.id,team]));
   const appearances=new Map();
-  for(const squad of rosters?.teams||[]){
+
+  for(const squad of teams){
     const year=metadata.get(squad.id)?.year;
     for(const player of squad.players||[]){
-      const key=normalise(player.name);
-      if(!appearances.has(key))appearances.set(key,new Set());
-      appearances.get(key).add(year);
+      for(const name of playerNames(player)){
+        if(!appearances.has(name))appearances.set(name,new Set());
+        if(Number.isFinite(Number(year)))appearances.get(name).add(Number(year));
+      }
     }
   }
 
-  const exceptional=[];
-  for(const squad of rosters?.teams||[]){
+  const rarityCandidates=[];
+  const candidatesByTeam=new Map();
+
+  for(const squad of teams){
     const difficulty=metadata.get(squad.id)?.teamDifficulty||"niche";
-    const players=squad.players||[];
+    const players=Array.isArray(squad.players)?squad.players:[];
     const keepers=players.filter(player=>String(player.position||"").toUpperCase()==="GK")
       .sort((a,b)=>(Number(a.number)||99)-(Number(b.number)||99));
-    const thirdKeepers=new Set(keepers.slice(2).map(player=>normalise(player.name)));
+    const thirdKeepers=new Set(keepers.slice(2));
 
     for(const [index,player] of players.entries()){
-      const key=normalise(player.name);
-      const number=Number(player.number)||index+1;
-      const appearancesCount=appearances.get(key)?.size||0;
-      const recognised=COMMON_NAMES.has(key)||appearancesCount>=3;
-      const repeat=appearancesCount>=2;
-      const thirdKeeper=thirdKeepers.has(key);
+      const names=playerNames(player);
+      const appearancesCount=Math.max(0,...names.map(name=>appearances.get(name)?.size||0));
+      const recognised=isRecognised(player,appearances);
+      const repeated=appearancesCount>=2;
+      const difficultyWeight=difficulty==="legendary"?80:difficulty==="niche"?0:-40;
+      const candidate={
+        player,index,teamId:String(squad.id||""),
+        score:rarityPriority(player,appearances,thirdKeepers.has(player))+difficultyWeight+
+          (repeated?-12:0)
+      };
 
-      if(recognised){player.rarity="Common";continue;}
-      if(difficulty==="common"){
-        player.rarity=number>=22?"Rare":"Common";
-        continue;
+      if(recognised){
+        player.rarity="Common";
+      }else{
+        player.rarity="Common";
+        rarityCandidates.push(candidate);
+        if(!candidatesByTeam.has(candidate.teamId))candidatesByTeam.set(candidate.teamId,[]);
+        candidatesByTeam.get(candidate.teamId).push(candidate);
       }
-      if(difficulty==="niche"){
-        player.rarity=repeat?"Rare":number>=20?"Niche":"Rare";
-        continue;
-      }
-
-      player.rarity=repeat?"Rare":"Niche";
-      if(difficulty==="legendary")exceptional.push({
-        player,teamId:squad.id,
-        score:(thirdKeeper?100:0)+number*2+(appearancesCount===0?10:0)
-      });
     }
   }
 
-  const bestPerTeam=new Map();
-  exceptional.sort((a,b)=>b.score-a.score||a.teamId.localeCompare(b.teamId))
-    .forEach(candidate=>{if(!bestPerTeam.has(candidate.teamId))bestPerTeam.set(candidate.teamId,candidate);});
-  const elite=[...bestPerTeam.values()].sort((a,b)=>b.score-a.score||a.teamId.localeCompare(b.teamId));
-  elite.slice(0,4).forEach(({player})=>{player.rarity="Ball Knowledge";});
-  elite.slice(4,14).forEach(({player})=>{player.rarity="Legendary";});
+  // Every squad contributes its three hardest-to-recall non-famous players:
+  // the rarest becomes Ball Knowledge, followed by two Legendary players.
+  const elitePlayers=new Set();
+  for(const squad of teams){
+    const candidates=(candidatesByTeam.get(String(squad.id||""))||[]).sort((a,b)=>
+      b.score-a.score||
+      (Number(b.player.number)||0)-(Number(a.player.number)||0)||
+      a.index-b.index
+    );
+    if(candidates.length<3)continue;
+    candidates[0].player.rarity="Ball Knowledge";
+    candidates[1].player.rarity="Legendary";
+    candidates[2].player.rarity="Legendary";
+    for(const candidate of candidates.slice(0,3))elitePlayers.add(candidate);
+  }
+
+  const remaining=rarityCandidates.filter(candidate=>!elitePlayers.has(candidate)).sort((a,b)=>
+    b.score-a.score||
+    (Number(b.player.number)||0)-(Number(a.player.number)||0)||
+    a.teamId.localeCompare(b.teamId)||
+    a.index-b.index
+  );
+
+  const total=teams.reduce((sum,team)=>sum+(Array.isArray(team.players)?team.players.length:0),0);
+  const ratio=(amount)=>Math.round(total*amount/5759);
+  const nicheTarget=ratio(1153);
+  const rareTarget=ratio(1353);
+
+  // First reserve at least three Niche and five Rare places per squad,
+  // whenever enough non-famous players remain after the three elite picks.
+  // Very famous/small squads are exceptions: never demote protected Common players.
+  const reservedPlayers=new Set();
+  let reservedNiche=0,reservedRare=0;
+  for(const squad of teams){
+    const squadCandidates=(candidatesByTeam.get(String(squad.id||""))||[])
+      .filter(candidate=>!elitePlayers.has(candidate))
+      .sort((a,b)=>b.score-a.score||
+        (Number(b.player.number)||0)-(Number(a.player.number)||0)||
+        a.index-b.index);
+    const nichePlaces=Math.min(3,squadCandidates.length);
+    for(let index=0;index<nichePlaces;index++){
+      squadCandidates[index].player.rarity="Niche";
+      reservedPlayers.add(squadCandidates[index]);
+      reservedNiche++;
+    }
+    const rarePlaces=Math.min(5,Math.max(0,squadCandidates.length-nichePlaces));
+    for(let index=0;index<rarePlaces;index++){
+      const candidate=squadCandidates[nichePlaces+index];
+      candidate.player.rarity="Rare";
+      reservedPlayers.add(candidate);
+      reservedRare++;
+    }
+  }
+
+  // Fill the remaining global quotas after the per-squad minimums.
+  // This preserves the intended overall curve without concentrating all
+  // Niche/Rare assignments in only a subset of national teams.
+  const unreserved=remaining.filter(candidate=>!reservedPlayers.has(candidate));
+  let cursor=0;
+  const additionalNiche=Math.max(0,nicheTarget-reservedNiche);
+  for(;cursor<Math.min(additionalNiche,unreserved.length);cursor++)
+    unreserved[cursor].player.rarity="Niche";
+  const additionalRare=Math.max(0,rareTarget-reservedRare);
+  const rareEnd=Math.min(cursor+additionalRare,unreserved.length);
+  for(;cursor<rareEnd;cursor++)unreserved[cursor].player.rarity="Rare";
+  for(;cursor<unreserved.length;cursor++)unreserved[cursor].player.rarity="Common";
+
   return rosters;
 }

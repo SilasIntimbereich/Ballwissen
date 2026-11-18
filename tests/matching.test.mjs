@@ -6,6 +6,20 @@ test("normalizes accents, punctuation and spacing",()=>{
  assert.equal(normalize("Kylian Mbappé"),"kylianmbappe");
  assert.equal(normalize("N'Golo Kanté"),"ngolokante");
 });
+test("normalizes common non-decomposing Latin letters",()=>{
+ assert.equal(normalize("Kjær"),"kjaer");
+ assert.equal(normalize("Nørgaard"),"norgaard");
+ assert.equal(normalize("Łukasz"),"lukasz");
+ assert.equal(normalize("Straße"),"strasse");
+ assert.equal(normalize("João"),"joao");
+});
+test("accepts ASCII transliterations of player names",()=>{
+ assert.equal(matches("Kjaer",{name:"Kjær"}),true);
+ assert.equal(matches("Norgaard",{name:"Nørgaard"}),true);
+ assert.equal(matches("Lukasz Piszczek",{name:"Łukasz Piszczek"}),true);
+ assert.equal(matches("Przemyslaw Frankowski",{name:"Przemysław Frankowski"}),true);
+});
+
 test("accepts exact names despite accents and punctuation",()=>{
  assert.equal(matches("Kylian Mbappe",{name:"Kylian Mbappé"}),true);
  assert.equal(matches("N Golo Kante",{name:"N'Golo Kanté"}),true);
@@ -34,4 +48,46 @@ test("accepts FIFA display-name variants for corrected 2026 squads",()=>{
  assert.equal(matches("Logan Rogerson",player("New Zealand",7)),true);
  assert.equal(matches("Dennis Dargahi",player("Iran",24)),true);
  assert.equal(matches("Cameron Devlin",player("Australia",14)),true);
+});
+
+test("rejects typo guesses that could match two players",()=>{
+ const squad=[{name:"Alex Mendez"},{name:"Alex Mendes"}];
+ assert.equal(matches("Alex Mende",squad[0],squad),false);
+ assert.equal(matches("Alex Mende",squad[1],squad),false);
+});
+
+test("rejects exact aliases that collide with another squad member",()=>{
+ const squad=[{name:"Cristiano Ronaldo",aliases:["CR7"]},{name:"CR7"}];
+ assert.equal(matches("CR7",squad[0],squad),false);
+ assert.equal(matches("CR7",squad[1],squad),false);
+});
+
+test("rejects duplicate canonical names unless a shirt number disambiguates them",()=>{
+ const squad=[{name:"Nam-chol Pak",number:4},{name:"Nam-Chol Pak",number:14}];
+ assert.equal(matches("Nam-chol Pak",squad[0],squad),false);
+ assert.equal(matches("Nam-chol Pak",squad[1],squad),false);
+ assert.equal(matches("Nam-chol Pak #4",squad[0],squad),true);
+ assert.equal(matches("#14 Nam-chol Pak",squad[1],squad),true);
+});
+
+test("uses shirt numbers to disambiguate duplicate player names",()=>{
+ const squad=[{name:"Nam-chol Pak",number:4},{name:"Nam-Chol Pak",number:14}];
+ assert.equal(matches("Nam-chol Pak #4",squad[0],squad),true);
+ assert.equal(matches("#14 Nam-chol Pak",squad[1],squad),true);
+ assert.equal(matches("Nam-chol Pak 14",squad[0],squad),false);
+});
+
+test("keeps a unique typo match when only one squad member is close",()=>{
+ const squad=[{name:"Cristiano Ronaldo"},{name:"Lionel Messi"},{name:"Neymar Junior"}];
+ assert.equal(matches("Cristiano Ronald",squad[0],squad),true);
+});
+
+test("recognizes compound surnames with van der particles",()=>{
+ assert.equal(matches("Der Vaart",{name:"Rafael van der Vaart"}),true);
+ assert.equal(matches("Van der Vaart",{name:"Rafael van der Vaart"}),true);
+});
+ 
+test("supports aliases when checking ambiguous surname forms",()=>{
+ const squad=[{name:"Joao Pedro dos Santos",aliases:["João Pedro dos Santos"]},{name:"Bernardo Silva"}];
+ assert.equal(matches("Dos Santos",squad[0],squad),true);
 });
