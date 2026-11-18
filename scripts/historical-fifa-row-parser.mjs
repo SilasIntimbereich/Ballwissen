@@ -17,7 +17,12 @@ export function parseColumnarRows(groups,lines){
  };
  const displayNames=valuesFor("FIFA Display Name");
  const positions=valuesFor("POS");
- const clubs=valuesFor("Club");
+ const clubCells=valuesFor("Club");
+ const clubs=[];
+ for(const value of clubCells){
+  if(/^\\([A-Z]{3}\\)$/.test(value)&&clubs.length)clubs[clubs.length-1]+=" "+value;
+  else clubs.push(value);
+ }
  const dates=valuesFor("DOB");
  if(!displayNames.length||positions.length!==displayNames.length||
     clubs.length!==displayNames.length)return [];
