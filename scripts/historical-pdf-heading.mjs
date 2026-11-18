@@ -64,6 +64,8 @@ export function extractTeamHeading(lines,knownTeams=[]){
  // mentioned in player/club text can never become the page heading.
  const firstPlayerIndex=values.findIndex(line=>/^#?\s*\d{1,2}\s*\|?\s*(?:FIFA Display Name|[A-Z][A-Z]+\s+.+?\s+\d{2}\.\d{2}\.\d{4}|GK|DF|MF|FW)\b/i.test(line));
  const headingLines=values.slice(0,firstPlayerIndex<0?values.length:firstPlayerIndex);
+ const hasPlayerRows=firstPlayerIndex>=0;
+ const hasLegacyListHeading=headingLines.some(line=>/^LIST OF PLAYERS$/i.test(line));
  const countryCodeHeading=headingLines.find(line=>{
   if(!usableHeading(line))return false;
   const match=line.match(/^(.*?)\s*\(([A-Z]{3})\)\s*$/);
@@ -72,5 +74,10 @@ export function extractTeamHeading(lines,knownTeams=[]){
   return known.has(key)&&FIFA_CODES.get(key)===match[2];
  });
  if(countryCodeHeading)return countryCodeHeading;
+ // Older FIFA layouts omit the country code. Accept their plain country heading
+ // only when it appears before a real player row or directly under the legacy
+ // "List of Players" section marker. This prevents footer/body mentions being
+ // mistaken for a team heading on pages without extractable player rows.
+ if(!hasPlayerRows&&!hasLegacyListHeading)return "";
  return headingLines.find(line=>usableHeading(line)&&known.has(canonicalTeamKey(line)))||"";
 }
