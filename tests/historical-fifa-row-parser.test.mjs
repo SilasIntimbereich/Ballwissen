@@ -85,3 +85,16 @@ test("parses FIFA 2014 row-oriented PDF extraction with all player fields",()=>{
  assert.deepEqual(rows.map(row=>row.club),["CS Constantine","Lekhwiya SC","SSC Napoli"]);
  assert.equal(rows[0].nameArea,"Cedric SI MOHAMMED SI MOHAMMED Cédric SI MOHAMMED");
 });
+
+test("joins club country codes split into separate FIFA PDF text cells",()=>{
+ const group=(label,values)=>({items:[{x:0,text:label},...values.map((text,index)=>({x:100+index*50,text}))]});
+ const groups=[
+  group("FIFA Display Name",["Jaime PENEDO","Michael MURILLO","Harold CUMMINGS"]),
+  group("POS",["GK","DF","DF"]),
+  group("Club",["Dinamo Bucuresti (ROU)","Seattle Sounders Football Club","(USA)","Universidad Autónoma de Puebla","(MEX)"]),
+  group("DOB",["26.07.1981","11.02.1990","01.01.1992"])
+ ];
+ const rows=parseColumnarRows(groups,["# 1 2 3"]);
+ assert.equal(rows.length,3);
+ assert.deepEqual(rows.map(row=>row.club),["Dinamo Bucuresti","Seattle Sounders Football Club","Universidad Autónoma de Puebla"]);
+});
