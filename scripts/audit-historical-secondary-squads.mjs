@@ -44,7 +44,7 @@ const historical = JSON.parse(await readFile("data/historical-squads.json", "utf
 const candidates = JSON.parse(await readFile("artifacts/historical-club-candidates.json", "utf8"));
 const report = {
   generatedAt: new Date().toISOString(),
-  sourceDescription: "Cross-checks each squad against Wikipedia and Planet World Cup. When FIFA PDF-derived club candidates are available, they are an additional check. Clubs are approved only when both independent archives agree on every player and any available FIFA candidate does not conflict.",
+  sourceDescription: "Cross-checks player identity and tournament clubs against Wikipedia and Planet World Cup. FIFA final squad-list positions are authoritative when available; secondary position differences are retained in the report rather than overwriting FIFA classifications. Clubs are approved only when both independent archives agree on every player and any available FIFA club candidate does not conflict.",
   tournaments: {},
   summary: {}
 };
@@ -129,21 +129,23 @@ for (const [year, config] of Object.entries(sources)) {
         const planetPosition = planet.position === "MD" ? "MF" : planet.position;
         const clubMatches = Boolean(wiki.club && planet.club && wikiClub && wikiClub === planetClub);
         const positionMatches = Boolean(wiki.position && planetPosition && wiki.position === planetPosition);
+        const fifaCandidate = candidateByNumber.get(number);
+        const fifaPosition = fifaCandidate?.clubSource ? normalizePosition(fifaCandidate.position) : null;
         if (positionMatches) {
           item.positionMatches++;
         } else {
           item.positionMismatches.push({ number, player: player.name,
-            wikipediaPosition: wiki.position, planetWorldCupPosition: planetPosition });
+            wikipediaPosition: wiki.position, planetWorldCupPosition: planetPosition,
+            fifaPosition });
         }
         item.playerChecks.push({
           number, playerName: player.name,
           wikipediaName: wiki.name, planetName: planet.name,
           wikipediaClub: wiki.club, planetClub: planet.club,
-          wikipediaPosition: wiki.position, planetPosition,
+          wikipediaPosition: wiki.position, planetPosition, fifaPosition,
           clubMatches, positionMatches
         });
 
-        const fifaCandidate = candidateByNumber.get(number);
         if (fifaCandidate?.club && fifaCandidate?.clubSource) {
           item.fifaPdfCandidatePlayers++;
           if (normalizeHistoricalClub(fifaCandidate.club) === planetClub) {
@@ -171,8 +173,7 @@ for (const [year, config] of Object.entries(sources)) {
         item.matchedPlayers === players.length && item.mismatches.length === 0;
       item.clubsClean = item.rosterClean && item.clubMatches === players.length &&
         item.clubMismatches.length === 0;
-      item.positionsClean = item.rosterClean && item.positionMatches === players.length &&
-        item.positionMismatches.length === 0;
+      item.positionsClean = item.rosterClean && item.playerChecks.every(check => Boolean(check.fifaPosition) || check.positionMatches);
       item.fifaPdfAgreement = item.fifaPdfCandidatePlayers === 0 ? "unavailable" :
         item.fifaPdfCandidateMismatches.length ? "mismatch" :
         item.fifaPdfCandidatePlayers === players.length ? "complete" : "partial_agreement";
@@ -188,7 +189,9 @@ for (const [year, config] of Object.entries(sources)) {
         for (const assignment of assignments) {
           if (!assignment.candidatePlayer || !assignment.planet.club) continue;
           assignment.candidatePlayer.club = assignment.planet.club;
-          assignment.candidatePlayer.position = assignment.planet.position === "MD" ? "MF" : assignment.planet.position;
+          assignment.candidatePlayer.position = assignment.candidatePlayer.clubSource
+            ? assignment.candidatePlayer.position
+            : assignment.planet.position === "MD" ? "MF" : assignment.planet.position;
           assignment.candidatePlayer.clubSource = planetUrl;
           item.clubsAssigned++;
         }
