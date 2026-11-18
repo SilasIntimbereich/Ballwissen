@@ -43,3 +43,32 @@ test("parses rows when PDF extraction drops the hash and pipe markers",()=>{
  assert.deepEqual(rows.map(row=>row.nameArea),["Nahuel GUZMAN","Gabriel MERCADO"]);
  assert.deepEqual(rows.map(row=>row.position),["GK","DF"]);
 });
+
+test("parses FIFA column-oriented squad pages using aligned field cells",()=>{
+ const group=(label,values)=>({items:[{x:0,text:label},...values.map((text,index)=>({x:100+index*50,text}))]});
+ const groups=[
+  group("Club",["Tigres (MEX)","Sevilla FC (ESP)","Ajax (NED)"]),
+  group("POS",["GK","DF","MF"]),
+  group("DOB",["10.02.1986","18.03.1987","31.08.1992"]),
+  group("FIFA Display Name",["Nahuel GUZMAN","Gabriel MERCADO","Nicolas TAGLIAFICO"])
+ ];
+ const rows=parseColumnarRows(groups,["# 1 2","3"]);
+ assert.equal(rows.length,3);
+ assert.deepEqual(rows.map(row=>row.number),[1,2,3]);
+ assert.deepEqual(rows.map(row=>row.nameArea),["Nahuel GUZMAN","Gabriel MERCADO","Nicolas TAGLIAFICO"]);
+ assert.deepEqual(rows.map(row=>row.position),["GK","DF","MF"]);
+ assert.deepEqual(rows.map(row=>row.club),["Tigres","Sevilla FC","Ajax"]);
+});
+
+test("parses FIFA column labels split across separate PDF text items",()=>{
+ const groups=[
+  {items:[{x:0,text:"FIFA"},{x:30,text:"Display"},{x:70,text:"Name"},{x:120,text:"Hugo LLORIS"},{x:220,text:"Olivier GIROUD"}]},
+  {items:[{x:0,text:"POS"},{x:50,text:"GK"},{x:100,text:"FW"}]},
+  {items:[{x:0,text:"DOB"},{x:50,text:"26.12.1986"},{x:100,text:"30.09.1986"}]},
+  {items:[{x:0,text:"Club"},{x:50,text:"Tottenham Hotspur (ENG)"},{x:100,text:"Chelsea FC (ENG)"}]}
+ ];
+ const rows=parseColumnarRows(groups,["# 1 2"]);
+ assert.deepEqual(rows.map(row=>row.nameArea),["Hugo LLORIS","Olivier GIROUD"]);
+ assert.deepEqual(rows.map(row=>row.position),["GK","FW"]);
+});
+
