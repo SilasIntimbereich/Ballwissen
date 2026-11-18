@@ -2,9 +2,9 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { namesMatch } from "./historical-player-name-match.mjs";
 import { isCompleteIndependentPlayerComparison } from "./independent-player-comparison.mjs";
 
-const SOURCE_INDEX="https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_squads";
+const SOURCE_INDEX="https://www.goal.com/en/lists/world-cup-2022-squads/blt5286b592f720ce72";
 const normalize=value=>String(value||"").replace(/\u0000/g,"ffi").replace(/[æÆ]/g,"ae").replace(/[øØ]/g,"o").replace(/[åÅ]/g,"a").replace(/[łŁ]/g,"l").replace(/[ß]/g,"ss").replace(/[œŒ]/g,"oe").replace(/[đĐ]/g,"dj").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");
-const teamAliases={iriran:"iran",korearepublic:"southkorea",usa:"unitedstates",koreadpr:"northkorea",chinapr:"china",repofireland:"republicofireland"};
+const teamAliases={iriran:"iran",korearepublic:"southkorea",republicofkorea:"southkorea",usa:"unitedstates",usmnt:"unitedstates",koreadpr:"northkorea",chinapr:"china",repofireland:"republicofireland"};
 const clubPrefixes=new Set(["1","1fc","fc","cf","ca","cr","se","sl","rsc","bsc","rc","rcd","vfl","sfc","ac","cd","afc","sc","club","as","ss","ssc","gd","kmsr","es","sd","ad","us","usc","uc","ud","gnk","tsg","ogc","fsv","sv","fk","aj","acf","vfb","stade","al","hnk","nk","kv","kas","if","bk","vv"]);
 const clubSuffixes=new Set(["fc","cf","sc","sfc","afc","calcio","bsc","jk","as","if","bk","vv","sk","hsc","osc","sco"]);
 const clubAliases={
@@ -88,20 +88,20 @@ function normalizePosition(value){
  if(["F","FW","FORWARD","ST","CF","STRIKER","LW","RW","LF","RF","WINGER"].includes(p)||p.includes("FORWARD"))return "FW";
  return null;
 }
-function parseWikipediaSquads(html){
+function parseGoalSquads(html){
  const squads=new Map();
- const sections=[...String(html||"").matchAll(/<h3\b[^>]*>([\s\S]*?)<\/h3>([\s\S]*?)(?=<h3\b|<h2\b|$)/gi)];
+ const sections=[...String(html||"").matchAll(/<h2\\b[^>]*>([\\s\\S]*?)<\\/h2>([\\s\\S]*?)(?=<h2\\b|$)/gi)];
  for(const section of sections){
-  const teamName=textFromHtml(section[1]).replace(/\[edit\]/gi,"").trim();
+  const teamName=textFromHtml(section[1]).replace(/\\[edit\\]/gi,"").trim();
   if(!teamName)continue;
   const rows=[];
-  for(const tr of section[2].matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)){
-   const cells=[...tr[1].matchAll(/<td\b[^>]*>([\s\S]*?)<\/td>/gi)].map(match=>textFromHtml(match[1]));
-   if(cells.length<7||!/^\d{1,2}$/.test(cells[0]))continue;
-   const position=normalizePosition(cells[1]);
-   const name=cells[2].replace(/\s*\(captain\)\s*$/i,"").trim();
+  for(const tr of section[2].matchAll(/<tr\\b[^>]*>([\\s\\S]*?)<\\/tr>/gi)){
+   const cells=[...tr[1].matchAll(/<td\\b[^>]*>([\\s\\S]*?)<\\/td>/gi)].map(match=>textFromHtml(match[1]));
+   if(cells.length<4)continue;
+   const position=normalizePosition(cells[0]);
+   const name=cells[1].replace(/\\s*\\(captain\\)\\s*$/i,"").trim();
    const club=cells[cells.length-1].trim();
-   if(position&&name&&club)rows.push({number:Number(cells[0]),name,position,club});
+   if(position&&name&&club)rows.push({name,position,club});
   }
   if(rows.length>=23)squads.set(teamKey(teamName),rows);
  }
@@ -127,7 +127,7 @@ async function fetchText(url){
 const historical=JSON.parse(await readFile("data/historical-squads.json","utf8"));
 const fifaAudit=JSON.parse(await readFile("artifacts/historical-fifa-audit.json","utf8"));
 const teams=historical.tournaments["2022"]||[];
-const report={year:2022,primarySource:"https://fdp.fifa.org/assetspublic/ce44/pdf/SquadLists-English.pdf",secondarySource:SOURCE_INDEX,sourceDescription:"Wikipedia 2022 FIFA World Cup squads article, listing shirt number, position, player and club for all 32 teams",generatedAt:new Date().toISOString(),sourceStatus:"available",teams:[],summary:{}};
+const report={year:2022,primarySource:"https://fdp.fifa.org/assetspublic/ce44/pdf/SquadLists-English.pdf",secondarySource:SOURCE_INDEX,sourceDescription:"GOAL's World Cup 2022 squad tables, updated 24 November 2022, listing player, position and club for all national teams",generatedAt:new Date().toISOString(),sourceStatus:"available",teams:[],summary:{}};
 let indexHtml;
 try{indexHtml=await fetchText(SOURCE_INDEX);}catch(error){
  report.sourceStatus="unavailable";report.sourceError=String(error);
@@ -135,12 +135,13 @@ try{indexHtml=await fetchText(SOURCE_INDEX);}catch(error){
  await mkdir("artifacts",{recursive:true});await writeFile("artifacts/2022-independent-club-audit.json",JSON.stringify(report,null,2)+String.fromCharCode(10));
  console.log(JSON.stringify(report.summary,null,2));process.exit(0);
 }
-const squadsByTeam=parseWikipediaSquads(indexHtml);
+const squadsByTeam=parseGoalSquads(indexHtml);
 const squadById=new Map(teams.map(team=>[team.id,squadsByTeam.get(teamKey(team.name))||[]]));
-if(squadById.size!==32||[...squadById.values()].filter(rows=>rows.length>=23).length!==32){
+const resolvedTeamCount=[...squadById.values()].filter(rows=>rows.length>=23).length;
+if(resolvedTeamCount!==32){
  report.sourceStatus="partial";
- report.sourceError="Wikipedia squad parser resolved "+[...squadById.values()].filter(rows=>rows.length>=23).length+" of 32 team tables.";
- report.parserDebug={teamHeadings:[...squadsByTeam.keys()],rowCounts:Object.fromEntries(teams.map(team=>[team.id,squadById.get(team.id)?.length||0]))};
+ report.sourceError="GOAL squad parser resolved "+resolvedTeamCount+" of 32 team tables.";
+ report.parserDebug={teamHeadings:[...squadsByTeam.keys()],rowCounts:Object.fromEntries(teams.map(team=>[team.id,squadById.get(team.id)?.length||0])),htmlLength:indexHtml.length,htmlPrefix:indexHtml.slice(0,1200),headingTags:(indexHtml.match(/<h[1-6]\\b/gi)||[]).length};
 }
 const manualNameAliases={
  "argentina-2022":{17:["Alejandro Gomez"]},
@@ -168,21 +169,33 @@ for(const team of teams){
  totalRows+=rows.length;
  const fifaTeam=fifaTournament?.teams.find(t=>t.teamId===team.id);
  const fifaCandidates=new Map((fifaTeam?.candidates||[]).map(row=>[row.number,row]));
- const playerByNumber=new Map(team.players.map(p=>[Number(p.number),p]));
  const matchedNumbers=new Set();
  for(const row of rows){
-  const player=playerByNumber.get(row.number),fifa=fifaCandidates.get(row.number);
-  if(!player||!fifa){item.mismatches.push({number:row.number,field:"missing_player_or_fifa_candidate",sourceName:row.name});continue;}
-  matchedNumbers.add(row.number);
-  const aliasVariants=manualNameAliases[team.id]?.[row.number]||[];
-  const identityMatches=namesMatch(player.name,row.name)||namesMatch(fifa.sourceName,row.name)||aliasVariants.some(alias=>namesMatch(alias,row.name));
+  const possible=team.players.filter(player=>{
+   const number=Number(player.number);
+   const fifa=fifaCandidates.get(number);
+   const aliases=manualNameAliases[team.id]?.[number]||[];
+   return namesMatch(player.name,row.name)||namesMatch(fifa?.sourceName,row.name)||aliases.some(alias=>namesMatch(alias,row.name));
+  });
+  if(possible.length!==1){
+   item.mismatches.push({field:possible.length?"ambiguous_source_name":"unmatched_source_name",sourceName:row.name,matchCount:possible.length});
+   continue;
+  }
+  const player=possible[0],number=Number(player.number),fifa=fifaCandidates.get(number);
+  if(!fifa||matchedNumbers.has(number)){
+   item.mismatches.push({number,field:"duplicate_or_missing_fifa_candidate",sourceName:row.name});
+   continue;
+  }
+  matchedNumbers.add(number);
+  const aliases=manualNameAliases[team.id]?.[number]||[];
+  const identityMatches=namesMatch(player.name,row.name)||namesMatch(fifa.sourceName,row.name)||aliases.some(alias=>namesMatch(alias,row.name));
   const fifaClub=String(fifa.clubAtTournament||"");
   const clubMatches=Boolean(fifaClub.trim()&&String(row.club||"").trim()&&clubKey(fifaClub)&&clubKey(fifaClub)===clubKey(row.club));
   const positionMatches=fifa.position===row.position;
-  if(!identityMatches)item.mismatches.push({number:row.number,field:"name",datasetName:player.name,sourceName:row.name});
-  if(!clubMatches)item.mismatches.push({number:row.number,field:"club",fifaClub,secondaryClub:row.club,canonicalFifaClub:clubKey(fifaClub),canonicalSecondaryClub:clubKey(row.club)});
-  if(!positionMatches)item.positionDifferences.push({number:row.number,player:player.name,fifaPosition:fifa.position,secondaryPosition:row.position});
-  item.comparisons.push({number:row.number,playerName:player.name,secondaryName:row.name,identityMatches,fifaPosition:fifa.position,secondaryPosition:row.position,positionMatches,fifaClub,secondaryClub:row.club,clubMatches});
+  if(!identityMatches)item.mismatches.push({number,field:"name",datasetName:player.name,sourceName:row.name});
+  if(!clubMatches)item.mismatches.push({number,field:"club",fifaClub,secondaryClub:row.club,canonicalFifaClub:clubKey(fifaClub),canonicalSecondaryClub:clubKey(row.club)});
+  if(!positionMatches)item.positionDifferences.push({number,player:player.name,fifaPosition:fifa.position,secondaryPosition:row.position});
+  item.comparisons.push({number,playerName:player.name,secondaryName:row.name,identityMatches,fifaPosition:fifa.position,secondaryPosition:row.position,positionMatches,fifaClub,secondaryClub:row.club,clubMatches});
   if(clubMatches)item.clubMatches++;else item.clubMismatches++;
   if(!identityMatches)item.nameMismatches++;
  }
@@ -190,7 +203,7 @@ for(const team of teams){
  item.fullyCrossChecked=rows.length===team.players.length&&item.comparisons.length===team.players.length&&item.comparisons.every(isCompleteIndependentPlayerComparison)&&item.mismatches.length===0;
  report.teams.push(item);
 }
-report.summary={sourceRows:totalRows,teamsFound:report.teams.filter(t=>t.sourcePlayerCount>=23).length,teams:report.teams.length,fullyCrossCheckedTeams:report.teams.filter(t=>t.fullyCrossChecked).length,clubMismatches:report.teams.reduce((n,t)=>n+t.clubMismatches,0),nameMismatches:report.teams.reduce((n,t)=>n+t.nameMismatches,0),positionDifferences:report.teams.reduce((n,t)=>n+t.comparisons.filter(x=>!x.positionMatches).length,0),
+report.summary={sourceRows:totalRows,teamsFound:resolvedTeamCount,teams:report.teams.length,fullyCrossCheckedTeams:report.teams.filter(t=>t.fullyCrossChecked).length,clubMismatches:report.teams.reduce((n,t)=>n+t.clubMismatches,0),nameMismatches:report.teams.reduce((n,t)=>n+t.nameMismatches,0),positionDifferences:report.teams.reduce((n,t)=>n+t.comparisons.filter(x=>!x.positionMatches).length,0),
  positionMismatches:report.teams.reduce((n,t)=>n+t.positionDifferences.length,0),missingRows:report.teams.reduce((n,t)=>n+t.mismatches.filter(m=>m.field.startsWith("missing")).length,0)};
 await mkdir("artifacts",{recursive:true});
 await writeFile("artifacts/2022-independent-club-audit.json",JSON.stringify(report,null,2)+String.fromCharCode(10));
