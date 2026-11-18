@@ -42,6 +42,13 @@ export function parseColumnarRows(groups,lines){
 
 export function parseRows(lines,format){
  const rows=[];
+ if(format==="2014"){
+  for(const line of lines){
+   const m=String(line||"").match(/^(\\d{1,2})\\s+(.+?)\\s+(\\d{2}\\.\\d{2}\\.\\d{4})\\s+(GK|DF|MF|FW)\\s+(.+?)\\s+(\\d{3})\\s+(\\d+)\\s+(\\d+)$/);
+   if(m)rows.push({number:Number(m[1]),position:m[4],nameArea:m[2],club:cleanClub(m[5]),line});
+  }
+  return rows;
+ }
  if(format==="modern-pipe"||format==="2018"){
   // FIFA's 2014 and 2018 PDFs use the same labelled, pipe-delimited layout.
   // PDF.js may preserve, split, or omit the visual pipe separators, so parse
