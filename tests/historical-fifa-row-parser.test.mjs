@@ -33,3 +33,13 @@ test("does not create a player from incomplete or coach records",()=>{
  const rows=parseRows(["# Coach: Jorge SAMPAOLI (ARG)"," # 24 | FIFA Display Name Incomplete | Last Name Incomplete"],"modern-pipe");
  assert.equal(rows.length,0);
 });
+
+test("parses rows when PDF extraction drops the hash and pipe markers",()=>{
+ const first="1 FIFA Display Name Nahuel GUZMAN Last Name GUZMAN First Name Nahuel Ignacio Shirt Name GUZMAN DOB 10.02.1986 POS GK Club Tigres (MEX) Height 192";
+ const second="2 FIFA Display Name Gabriel MERCADO Last Name MERCADO First Name Gabriel Ivan Shirt Name MERCADO DOB 18.03.1987 POS DF Club Sevilla FC (ESP) Height 181";
+ const rows=parseRows(["# FIFA Display Name Last Name First Name Shirt Name DOB POS Club Height",first,second],"2018");
+ assert.equal(rows.length,2);
+ assert.deepEqual(rows.map(row=>row.number),[1,2]);
+ assert.deepEqual(rows.map(row=>row.nameArea),["Nahuel GUZMAN","Gabriel MERCADO"]);
+ assert.deepEqual(rows.map(row=>row.position),["GK","DF"]);
+});
