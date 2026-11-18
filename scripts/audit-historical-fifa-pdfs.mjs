@@ -1,7 +1,7 @@
 import {mkdir,writeFile,readFile} from "node:fs/promises";
 import * as pdfjs from "pdfjs-dist/legacy/build/pdf.mjs";
 import { extractTeamHeading } from "./historical-pdf-heading.mjs";
-import { parseRows } from "./historical-fifa-row-parser.mjs";
+import { parseRows, parseColumnarRows } from "./historical-fifa-row-parser.mjs";
 import { namesMatch } from "./historical-player-name-match.mjs";
 import { isCompleteVerifiedRosterLedger } from "./verified-roster-ledger.mjs";
 
@@ -120,7 +120,8 @@ for(const source of SOURCES){
   const heading=extractTeamHeading(lines,teamsForYear.map(team=>team.name));
   const teamName=heading.replace(/\s*\([A-Z]{3}\)\s*$/,"").replace(/^SQUAD LIST/i,"").trim();
   const team=teamByKey.get(teamKey(heading))||teamByKey.get(teamKey(teamName));
-  const fifaRows=parseRows(lines,source.format);
+  const columnarRows=[2014,2018].includes(source.year)?parseColumnarRows(groups,lines):[];
+  const fifaRows=columnarRows.length?columnarRows:parseRows(lines,source.format);
   const mismatches=[];
   const candidates=[];
   const matchedNumbers=new Set();
