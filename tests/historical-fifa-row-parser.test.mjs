@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import {parseRows} from "../scripts/historical-fifa-row-parser.mjs";
+import {parseRows,parseColumnarRows} from "../scripts/historical-fifa-row-parser.mjs";
 
 const row2018="# 1 | FIFA Display Name Hugo LLORIS | Last Name LLORIS | First Name Hugo | Shirt Name LLORIS | DOB 26.12.1986 | POS GK | Club Tottenham Hotspur (ENG) | Height 188";
 const row2014="# 2 | FIFA Display Name Dani ALVES | Last Name ALVES DA SILVA | First Name Daniel | Shirt Name DANI ALVES | DOB 06.05.1983 | POS DF | Club FC Barcelona (ESP) | Height 175 | Caps 79 | Goals 6";
