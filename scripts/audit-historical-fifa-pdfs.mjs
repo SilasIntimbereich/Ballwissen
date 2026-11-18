@@ -57,11 +57,7 @@ const MANUAL_ALIAS_SOURCES={
  "saudi-arabia-2022":"https://datencenter.dfb.de/en/competitions/fifa-world-cup/seasons/2022-in-qatar/teams/saudi-arabia?datacenter_name=data-center",
  "tunisia-2022":"https://prod.beinsports.com/en-mena/articles/tunisia-reveal-qatar-2022-squad"
 };
-const cleanClub=s=>{const value=String(s||"").replace(/\s*\([A-Z]{3}\)\s*$/,"").trim();return /^no club affiliation$/i.testArea:m[2],club:cleanClub(m[5]),line});
-  }
- }
- return rows;
-}
+const positionMap={Goalkeeper:"GK",Defender:"DF",Midfielder:"MF",Forward:"FW",GK:"GK",DF:"DF",MF:"MF",FW:"FW"};
 
 const report={generatedAt:new Date().toISOString(),sourceNote:"FIFA final squad-list PDFs cross-checked against the independent DataHub World Cup squad dataset.",tournaments:[],summary:{}};
 const candidateData=structuredClone(historical);
