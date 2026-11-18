@@ -72,3 +72,16 @@ test("parses FIFA column labels split across separate PDF text items",()=>{
  assert.deepEqual(rows.map(row=>row.position),["GK","FW"]);
 });
 
+test("parses FIFA 2014 row-oriented PDF extraction with all player fields",()=>{
+ const lines=[
+  "1 Cedric SI MOHAMMED SI MOHAMMED Cédric SI MOHAMMED 09.01.1985 GK CS Constantine (ALG) 182 1 0",
+  "2 Madjid BOUGUERRA BOUGUERRA Madjid BOUGUERRA 07.10.1982 DF Lekhwiya SC (QAT) 189 62 4",
+  "3 Faouzi GHOULAM GHOULAM Faouzi GHOULAM 01.02.1991 DF SSC Napoli (ITA) 184 6 0"
+ ];
+ const rows=parseRows(lines,"2014");
+ assert.equal(rows.length,3);
+ assert.deepEqual(rows.map(row=>row.number),[1,2,3]);
+ assert.deepEqual(rows.map(row=>row.position),["GK","DF","DF"]);
+ assert.deepEqual(rows.map(row=>row.club),["CS Constantine","Lekhwiya SC","SSC Napoli"]);
+ assert.equal(rows[0].nameArea,"Cedric SI MOHAMMED SI MOHAMMED Cédric SI MOHAMMED");
+});
