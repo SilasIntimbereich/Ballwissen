@@ -56,7 +56,7 @@ function usableHeading(line){
  */
 export function extractTeamHeading(lines,knownTeams=[]){
  const values=(Array.isArray(lines)?lines:[])
-  .map(line=>String(line||"").replace(/\\s+/g," ").trim())
+  .map(line=>String(line||"").replace(/\s+/g," ").trim())
   .filter(Boolean);
  const known=new Set(knownTeams.map(canonicalTeamKey));
  // PDF.js does not guarantee visual reading order. Search the entire page
@@ -66,7 +66,7 @@ export function extractTeamHeading(lines,knownTeams=[]){
  const headingLines=values.slice(0,firstPlayerIndex<0?values.length:firstPlayerIndex);
  const countryCodeHeading=headingLines.find(line=>{
   if(!usableHeading(line))return false;
-  const match=line.match(/^(.*?)\\s*\\(([A-Z]{3})\\)\\s*$/);
+  const match=line.match(/^(.*?)\s*\(([A-Z]{3})\)\s*$/);
   if(!match)return false;
   const key=canonicalTeamKey(match[1]);
   return known.has(key)&&FIFA_CODES.get(key)===match[2];
