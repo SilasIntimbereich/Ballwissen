@@ -56,15 +56,17 @@ function usableHeading(line){
  */
 export function extractTeamHeading(lines,knownTeams=[]){
  const values=(Array.isArray(lines)?lines:[])
-  .map(line=>String(line||"").replace(/\s+/g," ").trim())
+  .map(line=>String(line||"").replace(/\\s+/g," ").trim())
   .filter(Boolean);
  const known=new Set(knownTeams.map(canonicalTeamKey));
- // Country headings belong near the top of the FIFA page. Do not accept
- // a country name mentioned later in a player or club description.
- const headingLines=values.slice(0,8);
+ // PDF.js does not guarantee visual reading order. Search the entire page
+ // heading block, but stop at the first numbered player row so a country
+ // mentioned in player/club text can never become the page heading.
+ const firstPlayerIndex=values.findIndex(line=>/^#?\\s*\\d{1,2}\\s*\\|?\\s*(?:FIFA Display Name|[A-Z][A-Z]+\\s+.+?\\s+\\d{2}\\.\\d{2}\\.\\d{4}|GK|DF|MF|FW)\\b/i.test(line));
+ const headingLines=values.slice(0,firstPlayerIndex<0?values.length:firstPlayerIndex);
  const countryCodeHeading=headingLines.find(line=>{
   if(!usableHeading(line))return false;
-  const match=line.match(/^(.*?)\s*\(([A-Z]{3})\)\s*$/);
+  const match=line.match(/^(.*?)\\s*\\(([A-Z]{3})\\)\\s*$/);
   if(!match)return false;
   const key=canonicalTeamKey(match[1]);
   return known.has(key)&&FIFA_CODES.get(key)===match[2];
