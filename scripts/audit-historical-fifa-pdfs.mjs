@@ -36,7 +36,6 @@ const teamAliases={
  trinidadtobago:"trinidadandtobago",bosniaherzegovina:"bosniaandherzegovina"
 };
 const teamKey=s=>teamAliases[normalize(String(s||"").replace(/\s*\([A-Z]{3}\)\s*$/,"").replace(/^SQUAD LIST/i,""))]||normalize(String(s||"").replace(/\s*\([A-Z]{3}\)\s*$/,"").replace(/^SQUAD LIST/i,""));
-const positionMap={Goalkeeper:"GK",Defender:"DF",Midfielder:"MF",Forward:"FW",GK:"GK",DF:"DF",MF:"MF",FW:"FW"};
 const MANUAL_NAME_ALIASES={
  "argentina-2022":{17:["Alejandro Gomez"]},
  "ecuador-2022":{20:["Jhegson Mendez"]},
