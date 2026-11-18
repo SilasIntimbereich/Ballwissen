@@ -62,7 +62,8 @@ function linksFrom(html,pattern){
  for(const m of html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)){
   const href=m[1].match(/\bhref\s*=\s*["']([^"']+)["']/i)?.[1];
   if(!href||!pattern.test(href))continue;
-  const label=textFromHtml(m[2])||m[2].match(/\balt\s*=\s*["']([^"']+)["']/i)?.[1]||m[1].match(/\btitle\s*=\s*["']([^"']+)["']/i)?.[1]||"";
+  const slug=href.match(/\/([^/?#]+)\.htm(?:[?#]|$)/i)?.[1]?.replace(/[-_]+/g," ")||"";
+  const label=textFromHtml(m[2])||m[2].match(/\balt\s*=\s*["']([^"']+)["']/i)?.[1]||m[1].match(/\btitle\s*=\s*["']([^"']+)["']/i)?.[1]||slug;
   out.push({href,label:decode(label)});
  }
  return out;
