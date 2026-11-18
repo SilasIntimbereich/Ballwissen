@@ -90,16 +90,16 @@ function normalizePosition(value){
 }
 function parseGoalSquads(html){
  const squads=new Map();
- const sections=[...String(html||"").matchAll(/<h2\\b[^>]*>([\\s\\S]*?)<\\/h2>([\\s\\S]*?)(?=<h2\\b|$)/gi)];
+ const sections=[...String(html||"").matchAll(/<h2\b[^>]*>([\s\S]*?)<\/h2>([\s\S]*?)(?=<h2\b|$)/gi)];
  for(const section of sections){
-  const teamName=textFromHtml(section[1]).replace(/\\[edit\\]/gi,"").trim();
+  const teamName=textFromHtml(section[1]).replace(/\[edit\]/gi,"").trim();
   if(!teamName)continue;
   const rows=[];
-  for(const tr of section[2].matchAll(/<tr\\b[^>]*>([\\s\\S]*?)<\\/tr>/gi)){
-   const cells=[...tr[1].matchAll(/<td\\b[^>]*>([\\s\\S]*?)<\\/td>/gi)].map(match=>textFromHtml(match[1]));
+  for(const tr of section[2].matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)){
+   const cells=[...tr[1].matchAll(/<td\b[^>]*>([\s\S]*?)<\/td>/gi)].map(match=>textFromHtml(match[1]));
    if(cells.length<4)continue;
    const position=normalizePosition(cells[0]);
-   const name=cells[1].replace(/\\s*\\(captain\\)\\s*$/i,"").trim();
+   const name=cells[1].replace(/\s*\(captain\)\s*$/i,"").trim();
    const club=cells[cells.length-1].trim();
    if(position&&name&&club)rows.push({name,position,club});
   }
