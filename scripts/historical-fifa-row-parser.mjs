@@ -8,7 +8,7 @@ export function parseRows(lines,format){
   // PDF.js may preserve, split, or omit the visual pipe separators, so parse
   // each numbered record by its field labels instead of relying on one rigid row regex.
   const text=lines.join(" ").replace(/\s+/g," ").trim();
-  const starts=[...text.matchAll(/#\s*(\d{1,2})\s*\|?/g)];
+  const starts=[...text.matchAll(/(?:#\s*)?(\d{1,2})\s*\|?\s*(?=FIFA\s+Display\s+Name\b)/gi)];
   const readField=(record,label,nextLabel)=>{
    const expression=new RegExp(label+"\\s+(.+?)(?=\\s*\\|?\\s*"+nextLabel+"\\b|$)","i");
    return record.match(expression)?.[1]?.trim()||"";
