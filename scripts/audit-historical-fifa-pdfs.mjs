@@ -1,11 +1,12 @@
 import {mkdir,writeFile,readFile} from "node:fs/promises";
 import * as pdfjs from "pdfjs-dist/legacy/build/pdf.mjs";
 import { extractTeamHeading } from "./historical-pdf-heading.mjs";
+import { parseRows } from "./historical-fifa-row-parser.mjs";
 import { namesMatch } from "./historical-player-name-match.mjs";
 import { isCompleteVerifiedRosterLedger } from "./verified-roster-ledger.mjs";
 
 const SOURCES=[
- {year:2006,url:"https://www.fifadata.com/document/fwc/2006/PDF/FWC_2006_SquadLists.pdf",format:"modern-pipe"},
+ {year:2006,url:"https://www.fifadata.com/document/fwc/2006/PDF/FWC_2006_SquadLists.pdf",format:"old-dot"},
  {year:2010,url:"https://www.fifadata.com/document/fwc/2010/PDF_BackUp_2010_06_13/FWC_2010_SquadLists.pdf",urls:["https://www.fifadata.com/document/fwc/2010/PDF_BackUp_2010_06_13/FWC_2010_SquadLists.pdf","https://web.archive.org/web/20100616010702id_/http://www.fifa.com/mm/document/tournament/competition/01/22/85/78/fwc_2010_squadlists.pdf"],format:"2010"},
  {year:2014,url:"https://www.fifadata.com/document/fwc/2014/pdf/fwc_2014_squadlists.pdf?cid=facebook_fifaworldcup",urls:["https://www.fifadata.com/document/fwc/2014/pdf/fwc_2014_squadlists.pdf?cid=facebook_fifaworldcup","https://www.fifadata.com/document/FWC/2014/pdf/FWC_2014_SquadLists.pdf"],format:"modern-pipe"},
  {year:2018,url:"https://www.fifadata.com/document/fwc/2018/pdf/FWC_2018_SQUADLISTS.pdf",urls:["https://www.fifadata.com/document/fwc/2018/pdf/FWC_2018_SQUADLISTS.pdf","https://web.archive.org/web/20190611000407id_/https://tournament.fifadata.com/documents/FWC/2018/pdf/FWC_2018_SQUADLISTS.PDF","https://tournament.fifadata.com/documents/FWC/2018/pdf/FWC_2018_SQUADLISTS.PDF"],format:"2018"},
@@ -56,44 +57,7 @@ const MANUAL_ALIAS_SOURCES={
  "saudi-arabia-2022":"https://datencenter.dfb.de/en/competitions/fifa-world-cup/seasons/2022-in-qatar/teams/saudi-arabia?datacenter_name=data-center",
  "tunisia-2022":"https://prod.beinsports.com/en-mena/articles/tunisia-reveal-qatar-2022-squad"
 };
-const cleanClub=s=>{const value=String(s||"").replace(/\s*\([A-Z]{3}\)\s*$/,"").trim();return /^no club affiliation$/i.test(value)||/^no club$/i.test(value)?null:value||null;};
-
-export function parseRows(lines,format){
- const rows=[];
- if(format==="modern-pipe"||format==="2018"){
-  // FIFA's 2014 and 2018 PDFs use the same labelled, pipe-delimited layout.
-  // PDF.js may preserve, split, or omit the visual pipe separators, so parse
-  // each numbered record by its field labels instead of relying on one rigid row regex.
-  const text=lines.join(" ").replace(/\s+/g," ").trim();
-  const starts=[...text.matchAll(/#\s*(\d{1,2})\s*\|?/g)];
-  const readField=(record,label,nextLabel)=>{
-   const expression=new RegExp(label+"\\s+(.+?)(?=\\s*\\|?\\s*"+nextLabel+"\\b|$)","i");
-   return record.match(expression)?.[1]?.trim()||"";
-  };
-  for(let index=0;index<starts.length;index++){
-   const current=starts[index];
-   const recordStart=current.index+current[0].length;
-   const recordEnd=index+1<starts.length?starts[index+1].index:text.length;
-   const record=text.slice(recordStart,recordEnd).replace(/\s*\|\s*$/,"").trim();
-   const nameArea=readField(record,"FIFA Display Name","Last Name");
-   const position=readField(record,"POS","Club").match(/^(GK|DF|MF|FW)\b/i)?.[1]?.toUpperCase()||"";
-   const club=readField(record,"Club","Height");
-   if(!nameArea||!position||!club)continue;
-   rows.push({number:Number(current[1]),position,nameArea,club:cleanClub(club),line:record});
-  }
-  return rows;
- }
- for(const line of lines){
-  let m;
-  if(format==="2022"){
-   m=line.match(/^(\d{1,2})\s+(GK|DF|MF|FW)\s+(.+?)\s+(\d{2}\/\d{2}\/\d{4})\s+(.+?)\s+(\d{3})\s+(\d+)\s+(\d+)$/);
-   if(m)rows.push({number:Number(m[1]),position:m[2],nameArea:m[3],club:cleanClub(m[5]),line});
-  }else if(format==="2010"){
-   m=line.match(/^(\d{1,2})\s+(Goalkeeper|Defender|Midfielder|Forward)\s+(.+?)\s+(\d{1,2}\s+[A-Za-z]{3}\s+\d{4})\s+(.+?)\s+(\d{3})$/);
-   if(m)rows.push({number:Number(m[1]),position:positionMap[m[2]],nameArea:m[3],club:cleanClub(m[5]),line});
-  }else{
-   m=line.match(/^(\d{1,2})\s+(.+?)\s+(\d{2}\.\d{2}\.\d{4})\s+(GK|DF|MF|FW)\s+(.+?)\s+(\d{3})\s+(\d+)\s+(\d+)$/);
-   if(m)rows.push({number:Number(m[1]),position:m[4],nameArea:m[2],club:cleanClub(m[5]),line});
+const cleanClub=s=>{const value=String(s||"").replace(/\s*\([A-Z]{3}\)\s*$/,"").trim();return /^no club affiliation$/i.testArea:m[2],club:cleanClub(m[5]),line});
   }
  }
  return rows;
