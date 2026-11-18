@@ -15,7 +15,7 @@ rosterAudit.teams ||= {};
 
 const report = {
   generatedAt: new Date().toISOString(),
-  rule: "Only complete player-by-player identity, club and position agreement across at least two independent HTTPS sources is applied. Incomplete evidence never overwrites existing squad data.",
+  rule: "Player identity and tournament clubs must agree across at least two independent HTTPS sources. Official FIFA final-squad positions are authoritative when present; otherwise independent archive positions must agree. Secondary position differences are retained in audit reports and never overwrite FIFA classifications.",
   appliedTeams: [],
   skippedTeams: [],
   clearedTeams: [],
@@ -78,12 +78,13 @@ function applyTeam(year, teamId, candidatePlayers, sources, evidencePlayers, fif
     const clubMatches = evidence.clubMatches === true ||
       Boolean(clubA && clubB && normalizeHistoricalClub(clubA) &&
         normalizeHistoricalClub(clubA) === normalizeHistoricalClub(clubB));
+    const officialFifaPosition = normalizePosition(evidence.fifaPosition);
     const positionA = normalizePosition(evidence.wikipediaPosition || evidence.fifaPosition);
     const positionB = normalizePosition(evidence.planetPosition || evidence.secondaryPosition);
-    const positionMatches = evidence.positionMatches === true ||
+    const positionMatches = Boolean(officialFifaPosition) || evidence.positionMatches === true ||
       Boolean(positionA && positionB && positionA === positionB);
     const club = evidence.planetClub || evidence.secondaryClub || candidate.clubAtTournament || candidate.club;
-    const position = evidence.planetPosition || evidence.secondaryPosition || candidate.position;
+    const position = officialFifaPosition || evidence.planetPosition || evidence.secondaryPosition || candidate.position;
     if (!hasIndependentIdentity || !clubMatches || !positionMatches ||
         typeof club !== "string" || !club.trim() ||
         typeof position !== "string" || !normalizePosition(position)) {
