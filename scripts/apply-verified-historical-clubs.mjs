@@ -238,7 +238,7 @@ for (const teamAudit of audit2022.teams || []) {
   }));
   applyTeam(2022, teamAudit.teamId, candidatePlayers, [
     fifaTournamentSource(fifaAudit),
-    "https://www.11v11.com/competitions/fifa-world-cup/2022/squads/"
+    audit2022.secondarySource || "https://www.goal.com/en/lists/world-cup-2022-squads/blt5286b592f720ce72"
   ], evidencePlayers, fifaTeam.pdfHeading || null, teamAudit.teamName);
 }
 
