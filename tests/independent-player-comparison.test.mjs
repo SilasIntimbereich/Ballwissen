@@ -12,11 +12,15 @@ const valid = {
   secondaryPosition: "MF"
 };
 
-test("requires player identity, club and position agreement", () => {
+test("requires identity and club agreement plus an official FIFA position", () => {
   assert.equal(isCompleteIndependentPlayerComparison(valid), true);
-  assert.equal(isCompleteIndependentPlayerComparison({ ...valid, positionMatches: false }), false);
+  // A secondary archive can use a different position taxonomy. FIFA's final
+  // squad list remains authoritative, while the difference stays in the report.
+  assert.equal(isCompleteIndependentPlayerComparison({ ...valid, positionMatches: false, secondaryPosition: "FW" }), true);
   assert.equal(isCompleteIndependentPlayerComparison({ ...valid, identityMatches: false }), false);
   assert.equal(isCompleteIndependentPlayerComparison({ ...valid, clubMatches: false }), false);
+  assert.equal(isCompleteIndependentPlayerComparison({ ...valid, fifaPosition: "" }), false);
+  assert.equal(isCompleteIndependentPlayerComparison({ ...valid, secondaryPosition: "" }), false);
 });
 
 test("does not treat two missing club values as an independent match", () => {
