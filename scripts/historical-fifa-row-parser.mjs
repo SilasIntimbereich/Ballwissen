@@ -1,5 +1,5 @@
 const positionMap={Goalkeeper:"GK",Defender:"DF",Midfielder:"MF",Forward:"FW",GK:"GK",DF:"DF",MF:"MF",FW:"FW"};
-const cleanClub=s=>{const value=String(s||"").replace(/\\s*\\([A-Z]{3}\\)\\s*$/,"").trim();return /^no club affiliation$/i.test(value)||/^no club$/i.test(value)?null:value||null;};
+const cleanClub=s=>{const value=String(s||"").replace(/\s*\([A-Z]{3}\)\s*$/,"").trim();return /^no club affiliation$/i.test(value)||/^no club$/i.test(value)?null:value||null;};
 
 export function parseRows(lines,format){
  const rows=[];
