@@ -2,7 +2,7 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { namesMatch } from "./historical-player-name-match.mjs";
 import { isCompleteIndependentPlayerComparison } from "./independent-player-comparison.mjs";
 
-const SOURCE_INDEX="https://www.footballsquads.co.uk/national/worldcup/wc2022.htm";
+const SOURCE_INDEX="https://www.11v11.com/competitions/fifa-world-cup/2022/squads/";
 const normalize=value=>String(value||"").replace(/\u0000/g,"ffi").replace(/[æÆ]/g,"ae").replace(/[øØ]/g,"o").replace(/[åÅ]/g,"a").replace(/[łŁ]/g,"l").replace(/[ß]/g,"ss").replace(/[œŒ]/g,"oe").replace(/[đĐ]/g,"dj").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");
 const teamAliases={iriran:"iran",korearepublic:"southkorea",usa:"unitedstates",koreadpr:"northkorea",chinapr:"china",repofireland:"republicofireland"};
 const clubPrefixes=new Set(["1","1fc","fc","cf","ca","cr","se","sl","rsc","bsc","rc","rcd","vfl","sfc","ac","cd","afc","sc","club","as","ss","ssc","gd","kmsr","es","sd","ad","us","usc","uc","ud","gnk","tsg","ogc","fsv","sv","fk","aj","acf","vfb","stade","al","hnk","nk","kv","kas","if","bk","vv"]);
@@ -62,7 +62,7 @@ function linksFrom(html,pattern){
  for(const m of html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)){
   const href=m[1].match(/\bhref\s*=\s*["']([^"']+)["']/i)?.[1];
   if(!href||!pattern.test(href))continue;
-  const slug=href.match(/\/([^/?#]+)\.htm(?:[?#]|$)/i)?.[1]?.replace(/[-_]+/g," ")||"";
+  const slug=(href.match(/\/squads\/([^/?#]+)\/?(?:[?#]|$)/i)?.[1]||href.match(/\/([^/?#]+)\.htm(?:[?#]|$)/i)?.[1]||"").replace(/[-_]+/g," ");
   const label=textFromHtml(m[2])||m[2].match(/\balt\s*=\s*["']([^"']+)["']/i)?.[1]||m[1].match(/\btitle\s*=\s*["']([^"']+)["']/i)?.[1]||slug;
   out.push({href,label:decode(label)});
  }
@@ -82,18 +82,18 @@ export function clubKey(value){
 }
 function normalizePosition(value){
  const p=String(value||"").trim().toUpperCase().replace(/[^A-Z]/g,"");
- if(["G","GK","GKP","GOALKEEPER"].includes(p))return "GK";
- if(["D","DF","DEF","DEFENDER","CB","LCB","RCB","LB","RB","RWB","LWB"].includes(p))return "DF";
- if(["M","MF","MID","MIDFIELDER","DM","CDM","CM","LCM","RCM","AM","CAM","LAM","RAM","LM","RM"].includes(p))return "MF";
- if(["F","FW","FORWARD","ST","CF","STRIKER","LW","RW","LF","RF","WINGER"].includes(p))return "FW";
+ if(["G","GK","GKP","GOALKEEPER"].includes(p)||p.includes("GOALKEEPER"))return "GK";
+ if(["D","DF","DEF","DEFENDER","CB","LCB","RCB","LB","RB","RWB","LWB"].includes(p)||p.includes("DEFENDER"))return "DF";
+ if(["M","MF","MID","MIDFIELDER","DM","CDM","CM","LCM","RCM","AM","CAM","LAM","RAM","LM","RM"].includes(p)||p.includes("MIDFIELDER"))return "MF";
+ if(["F","FW","FORWARD","ST","CF","STRIKER","LW","RW","LF","RF","WINGER"].includes(p)||p.includes("FORWARD"))return "FW";
  return null;
 }
 function parseFootballSquads(html){
  const rows=[];
  for(const tr of html.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)){
   const cells=[...tr[1].matchAll(/<td\b[^>]*>([\s\S]*?)<\/td>/gi)].map(m=>textFromHtml(m[1]));
-  if(cells.length>=8&&/^\d{1,2}$/.test(cells[0])){
-   const position=cells.slice(2,-1).map(normalizePosition).find(Boolean)||null;
+  if(cells.length>=5&&/^\d{1,2}$/.test(cells[0])){
+   const position=cells.length===5?normalizePosition(cells[3]):cells.slice(2,-1).map(normalizePosition).find(Boolean)||null;
    rows.push({number:Number(cells[0]),name:cells[1],position,club:cells[cells.length-1]});
   }
  }
@@ -108,7 +108,7 @@ async function fetchText(url){
 const historical=JSON.parse(await readFile("data/historical-squads.json","utf8"));
 const fifaAudit=JSON.parse(await readFile("artifacts/historical-fifa-audit.json","utf8"));
 const teams=historical.tournaments["2022"]||[];
-const report={year:2022,primarySource:"https://fdp.fifa.org/assetspublic/ce44/pdf/SquadLists-English.pdf",secondarySource:SOURCE_INDEX,generatedAt:new Date().toISOString(),sourceStatus:"available",teams:[],summary:{}};
+const report={year:2022,primarySource:"https://fdp.fifa.org/assetspublic/ce44/pdf/SquadLists-English.pdf",secondarySource:SOURCE_INDEX,sourceDescription:"11v11 FIFA World Cup 2022 squad pages",generatedAt:new Date().toISOString(),sourceStatus:"available",teams:[],summary:{}};
 let indexHtml;
 try{indexHtml=await fetchText(SOURCE_INDEX);}catch(error){
  report.sourceStatus="unavailable";report.sourceError=String(error);
@@ -116,7 +116,7 @@ try{indexHtml=await fetchText(SOURCE_INDEX);}catch(error){
  await mkdir("artifacts",{recursive:true});await writeFile("artifacts/2022-independent-club-audit.json",JSON.stringify(report,null,2)+String.fromCharCode(10));
  console.log(JSON.stringify(report.summary,null,2));process.exit(0);
 }
-const links=linksFrom(indexHtml,/\.htm/i);
+const links=linksFrom(indexHtml,/\/squads\/[^/]+\/?$/i);
 const linkByTeam=new Map();
 for(const link of links){const team=teams.find(t=>teamKey(t.name)===teamKey(link.label));if(team)linkByTeam.set(team.id,link);}
 if(linkByTeam.size!==32){
