@@ -97,10 +97,10 @@ function parseGoalSquads(html){
   const rows=[];
   for(const tr of section[2].matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)){
    const cells=[...tr[1].matchAll(/<td\b[^>]*>([\s\S]*?)<\/td>/gi)].map(match=>textFromHtml(match[1]));
-   if(cells.length<4)continue;
+   if(cells.length<2)continue;
    const position=normalizePosition(cells[0]);
    const name=cells[1].replace(/\s*\(captain\)\s*$/i,"").trim();
-   const club=cells[cells.length-1].trim();
+   const club=cells.length>=4?cells[cells.length-1].trim():null;
    if(position&&name)rows.push({name,position,club:club||null});
   }
   if(rows.length>=23)squads.set(teamKey(teamName),rows);
