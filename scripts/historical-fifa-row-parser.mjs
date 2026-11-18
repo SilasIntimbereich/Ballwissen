@@ -1,6 +1,45 @@
 const positionMap={Goalkeeper:"GK",Defender:"DF",Midfielder:"MF",Forward:"FW",GK:"GK",DF:"DF",MF:"MF",FW:"FW"};
 const cleanClub=s=>{const value=String(s||"").replace(/\s*\([A-Z]{3}\)\s*$/,"").trim();return /^no club affiliation$/i.test(value)||/^no club$/i.test(value)?null:value||null;};
 
+export function parseColumnarRows(groups,lines){
+ const valuesFor=label=>{
+  for(const group of groups||[]){
+   const items=(group.items||[]).slice().sort((a,b)=>(a.x||0)-(b.x||0))
+    .map(item=>String(item.text||"").trim()).filter(Boolean);
+   for(let count=1;count<=items.length;count++){
+    const prefix=items.slice(0,count).join(" ").trim();
+    if(prefix.toLowerCase()===label.toLowerCase())return items.slice(count);
+    if(prefix.toLowerCase().startsWith(label.toLowerCase()+" "))
+     return [prefix.slice(label.length).trim(),...items.slice(count)].filter(Boolean);
+   }
+  }
+  return [];
+ };
+ const displayNames=valuesFor("FIFA Display Name");
+ const positions=valuesFor("POS");
+ const clubs=valuesFor("Club");
+ const dates=valuesFor("DOB");
+ if(!displayNames.length||positions.length!==displayNames.length||
+    clubs.length!==displayNames.length||dates.length!==displayNames.length)return [];
+ const sourceLines=Array.isArray(lines)?lines.map(line=>String(line||"").trim()):[];
+ const numberLine=sourceLines.findIndex(line=>/^#\s*\d/.test(line));
+ if(numberLine<0)return [];
+ const numbers=[...(sourceLines[numberLine].replace(/^#\s*/,"").matchAll(/\d{1,2}/g))].map(match=>Number(match[0]));
+ for(let index=numberLine+1;index<sourceLines.length&&numbers.length<displayNames.length;index++){
+  if(!/^\d{1,2}(?:\s+\d{1,2})*$/.test(sourceLines[index]))break;
+  numbers.push(...sourceLines[index].match(/\d{1,2}/g).map(Number));
+ }
+ if(numbers.length!==displayNames.length)return [];
+ return displayNames.map((nameArea,index)=>({
+  number:numbers[index],
+  position:String(positions[index]||"").toUpperCase(),
+  nameArea,
+  club:cleanClub(clubs[index]),
+  date:dates[index],
+  line:[numbers[index],nameArea,dates[index],positions[index],clubs[index]].join(" ")
+ })).filter(row=>row.nameArea&&/^(GK|DF|MF|FW)$/.test(row.position)&&row.club);
+}
+
 export function parseRows(lines,format){
  const rows=[];
  if(format==="modern-pipe"||format==="2018"){
