@@ -175,6 +175,7 @@ export function normalizeHistoricalClub(value) {
     legiawarzaw: "legiawarszawa",
     spalferrara: "spal",
     alnasr: "nassr",
+    zenitstpetersburg: "zenitsaintpetersburg",
     "1fcnuremberg": "nurnberg",
     ulsanhyundaihorangi: "ulsanhyundai",
     busanicons: "busanipark",
