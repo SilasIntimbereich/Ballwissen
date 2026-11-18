@@ -32,3 +32,27 @@ test("fails closed when a page has unrelated headings or an unknown country code
  assert.equal(extractTeamHeading(["Official tournament document","SQUAD LIST","Player information"],["Argentina","Brazil"]),"");
  assert.equal(extractTeamHeading(["Atlantis (ATL)","SQUAD LIST"],["Argentina","Brazil"]),"");
 });
+
+test("finds a FIFA country heading beyond decorative header lines",()=>{
+ assert.equal(extractTeamHeading([
+  "FIFA World Cup Russia 2018",
+  "List of Players",
+  "Official Squad List",
+  "Competition",
+  "Player information",
+  "Date of birth",
+  "Position",
+  "Club",
+  "Argentina",
+  "# 1 | FIFA Display Name Nahuel GUZMAN | Last Name GUZMAN | POS GK"
+ ],["Argentina"]),"Argentina");
+});
+
+test("stops heading search before the first player row",()=>{
+ assert.equal(extractTeamHeading([
+  "FIFA World Cup Russia 2018",
+  "List of Players",
+  "# 1 | FIFA Display Name Hugo LLORIS | Club Tottenham Hotspur",
+  "Argentina"
+ ],["Argentina"]),"");
+});
