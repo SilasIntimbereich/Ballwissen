@@ -27497,6 +27497,705 @@
           "secondarySource": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_squads"
         }
       ]
+    },
+    "croatia-2018": {
+      "status": "verified",
+      "tournament": 2018,
+      "teamNameInDataset": "Croatia",
+      "teamNameInPrimarySource": "Croatia",
+      "reviewedAt": "2026-11-18",
+      "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+      "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads",
+      "additionalSources": [],
+      "players": [
+        {
+          "number": 1,
+          "playerName": "Dominik Livaković",
+          "sourceName": "Dominik Livakovic",
+          "sourceNameAliases": [
+            "Dominik Livaković",
+            "Dominik Livakovic"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "GK",
+          "clubAtTournament": "Dinamo Zagreb",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 2,
+          "playerName": "Šime Vrsaljko",
+          "sourceName": "Sime Vrsaljko",
+          "sourceNameAliases": [
+            "Šime Vrsaljko",
+            "Sime Vrsaljko"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Atletico Madrid",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 3,
+          "playerName": "Ivan Strinić",
+          "sourceName": "Ivan Strinic",
+          "sourceNameAliases": [
+            "Ivan Strinić",
+            "Ivan Strinic"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Sampdoria",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 4,
+          "playerName": "Ivan Perišić",
+          "sourceName": "Ivan Perisic",
+          "sourceNameAliases": [
+            "Ivan Perišić",
+            "Ivan Perisic"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Internazionale",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 5,
+          "playerName": "Vedran Ćorluka",
+          "sourceName": "Vedran Corluka",
+          "sourceNameAliases": [
+            "Vedran Ćorluka",
+            "Vedran Corluka"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Lokomotiv Moscow",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 6,
+          "playerName": "Dejan Lovren",
+          "sourceName": "Dejan Lovren",
+          "sourceNameAliases": [
+            "Dejan Lovren"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Liverpool",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 7,
+          "playerName": "Ivan Rakitić",
+          "sourceName": "Ivan Rakitic",
+          "sourceNameAliases": [
+            "Ivan Rakitić",
+            "Ivan Rakitic"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Barcelona",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 8,
+          "playerName": "Mateo Kovačić",
+          "sourceName": "Mateo Kovacic",
+          "sourceNameAliases": [
+            "Mateo Kovačić",
+            "Mateo Kovacic"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Real Madrid",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 9,
+          "playerName": "Andrej Kramarić",
+          "sourceName": "Andrej Kramaric",
+          "sourceNameAliases": [
+            "Andrej Kramarić",
+            "Andrej Kramaric"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "1899 Hoffenheim",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 10,
+          "playerName": "Luka Modrić",
+          "sourceName": "Luka Modric",
+          "sourceNameAliases": [
+            "Luka Modrić",
+            "Luka Modric"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Real Madrid",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 11,
+          "playerName": "Marcelo Brozović",
+          "sourceName": "Marcelo Brozovic",
+          "sourceNameAliases": [
+            "Marcelo Brozović",
+            "Marcelo Brozovic"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Internazionale",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 12,
+          "playerName": "Lovre Kalinić",
+          "sourceName": "Lovre Kalinic",
+          "sourceNameAliases": [
+            "Lovre Kalinić",
+            "Lovre Kalinic"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "GK",
+          "clubAtTournament": "AA Gent",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 13,
+          "playerName": "Tin Jedvaj",
+          "sourceName": "Tin Jedvaj",
+          "sourceNameAliases": [
+            "Tin Jedvaj"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Bayer Leverkusen",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 14,
+          "playerName": "Filip Bradarić",
+          "sourceName": "Filip Bradaric",
+          "sourceNameAliases": [
+            "Filip Bradarić",
+            "Filip Bradaric"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "NK Rijeka",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 15,
+          "playerName": "Duje Ćaleta-Car",
+          "sourceName": "Duje Caleta-Car",
+          "sourceNameAliases": [
+            "Duje Ćaleta-Car",
+            "Duje Caleta-Car"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Red Bull Salzburg",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 16,
+          "playerName": "Nikola Kalinić",
+          "sourceName": "Nikola Kalinic",
+          "sourceNameAliases": [
+            "Nikola Kalinić",
+            "Nikola Kalinic"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "AC Milan",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 17,
+          "playerName": "Mario Mandžukić",
+          "sourceName": "Mario Mandzukic",
+          "sourceNameAliases": [
+            "Mario Mandžukić",
+            "Mario Mandzukic"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Juventus",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 18,
+          "playerName": "Ante Rebić",
+          "sourceName": "Ante Rebic",
+          "sourceNameAliases": [
+            "Ante Rebić",
+            "Ante Rebic"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Eintracht Frankfurt",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 19,
+          "playerName": "Milan Badelj",
+          "sourceName": "Milan Badelj",
+          "sourceNameAliases": [
+            "Milan Badelj"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Fiorentina",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 20,
+          "playerName": "Marko Pjaca",
+          "sourceName": "Marko Pjaca",
+          "sourceNameAliases": [
+            "Marko Pjaca"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Schalke 04",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 21,
+          "playerName": "Domagoj Vida",
+          "sourceName": "Domagoj Vida",
+          "sourceNameAliases": [
+            "Domagoj Vida"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Besiktas",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 22,
+          "playerName": "Josip Pivarić",
+          "sourceName": "Josip Pivaric",
+          "sourceNameAliases": [
+            "Josip Pivarić",
+            "Josip Pivaric"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Dynamo Kiev",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 23,
+          "playerName": "Danijel Subašić",
+          "sourceName": "Danijel Subasic",
+          "sourceNameAliases": [
+            "Danijel Subašić",
+            "Danijel Subasic"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "GK",
+          "clubAtTournament": "AS Monaco",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_cro18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        }
+      ]
+    },
+    "poland-2018": {
+      "status": "verified",
+      "tournament": 2018,
+      "teamNameInDataset": "Poland",
+      "teamNameInPrimarySource": "Poland",
+      "reviewedAt": "2026-11-18",
+      "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+      "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads",
+      "additionalSources": [],
+      "players": [
+        {
+          "number": 1,
+          "playerName": "Wojciech Szczęsny",
+          "sourceName": "Wojciech Szczesny",
+          "sourceNameAliases": [
+            "Wojciech Szczęsny",
+            "Wojciech Szczesny"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "GK",
+          "clubAtTournament": "Juventus",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 2,
+          "playerName": "Michał Pazdan",
+          "sourceName": "Michal Pazdan",
+          "sourceNameAliases": [
+            "Michał Pazdan",
+            "Michal Pazdan"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "corrected",
+          "position": "DF",
+          "clubAtTournament": "Legia Warszawa",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 3,
+          "playerName": "Artur Jędrzejczyk",
+          "sourceName": "Artur Jedrzejczyk",
+          "sourceNameAliases": [
+            "Artur Jędrzejczyk",
+            "Artur Jedrzejczyk"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Legia Warszawa",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 4,
+          "playerName": "Thiago Cionek",
+          "sourceName": "Thiago Cionek",
+          "sourceNameAliases": [
+            "Thiago Cionek"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "SPAL Ferrara",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 5,
+          "playerName": "Jan Bednarek",
+          "sourceName": "Jan Bednarek",
+          "sourceNameAliases": [
+            "Jan Bednarek"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Southampton",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 6,
+          "playerName": "Jacek Góralski",
+          "sourceName": "Jacek Goralski",
+          "sourceNameAliases": [
+            "Jacek Góralski",
+            "Jacek Goralski"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Ludogorets Razgrad",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 7,
+          "playerName": "Arkadiusz Milik",
+          "sourceName": "Arkadiusz Milik",
+          "sourceNameAliases": [
+            "Arkadiusz Milik"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Napoli",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 8,
+          "playerName": "Karol Linetty",
+          "sourceName": "Karol Linetty",
+          "sourceNameAliases": [
+            "Karol Linetty"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Sampdoria",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 9,
+          "playerName": "Robert Lewandowski",
+          "sourceName": "Robert Lewandowski",
+          "sourceNameAliases": [
+            "Robert Lewandowski"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Bayern Munich",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 10,
+          "playerName": "Grzegorz Krychowiak",
+          "sourceName": "Grzegorz Krychowiak",
+          "sourceNameAliases": [
+            "Grzegorz Krychowiak"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "West Bromwich Albion",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 11,
+          "playerName": "Kamil Grosicki",
+          "sourceName": "Kamil Grosicki",
+          "sourceNameAliases": [
+            "Kamil Grosicki"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Hull City",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 12,
+          "playerName": "Bartosz Białkowski",
+          "sourceName": "Bartosz Bialkowski",
+          "sourceNameAliases": [
+            "Bartosz Białkowski",
+            "Bartosz Bialkowski"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "corrected",
+          "position": "GK",
+          "clubAtTournament": "Ipswich Town",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 13,
+          "playerName": "Maciej Rybus",
+          "sourceName": "Maciej Rybus",
+          "sourceNameAliases": [
+            "Maciej Rybus"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Lokomotiv Moscow",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 14,
+          "playerName": "Łukasz Teodorczyk",
+          "sourceName": "Lukasz Teodorczyk",
+          "sourceNameAliases": [
+            "Łukasz Teodorczyk",
+            "Lukasz Teodorczyk"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "corrected",
+          "position": "FW",
+          "clubAtTournament": "Anderlecht",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 15,
+          "playerName": "Kamil Glik",
+          "sourceName": "Kamil Glik",
+          "sourceNameAliases": [
+            "Kamil Glik"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "AS Monaco",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 16,
+          "playerName": "Jakub Błaszczykowski",
+          "sourceName": "Jakub Blaszczykowski",
+          "sourceNameAliases": [
+            "Jakub Błaszczykowski",
+            "Jakub Blaszczykowski"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "corrected",
+          "position": "MF",
+          "clubAtTournament": "VfL Wolfsburg",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 17,
+          "playerName": "Sławomir Peszko",
+          "sourceName": "Slawomir Peszko",
+          "sourceNameAliases": [
+            "Sławomir Peszko",
+            "Slawomir Peszko"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "corrected",
+          "position": "MF",
+          "clubAtTournament": "Lechia Gdansk",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 18,
+          "playerName": "Bartosz Bereszyński",
+          "sourceName": "Bartosz Bereszynski",
+          "sourceNameAliases": [
+            "Bartosz Bereszyński",
+            "Bartosz Bereszynski"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Sampdoria",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 19,
+          "playerName": "Piotr Zieliński",
+          "sourceName": "Piotr Zielinski",
+          "sourceNameAliases": [
+            "Piotr Zieliński",
+            "Piotr Zielinski"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Napoli",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 20,
+          "playerName": "Łukasz Piszczek",
+          "sourceName": "Lukasz Piszczek",
+          "sourceNameAliases": [
+            "Łukasz Piszczek",
+            "Lukasz Piszczek"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "corrected",
+          "position": "DF",
+          "clubAtTournament": "Borussia Dortmund",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 21,
+          "playerName": "Rafał Kurzawa",
+          "sourceName": "Rafal Kurzawa",
+          "sourceNameAliases": [
+            "Rafał Kurzawa",
+            "Rafal Kurzawa"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "corrected",
+          "position": "MF",
+          "clubAtTournament": "Gornik Zabrze",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 22,
+          "playerName": "Łukasz Fabiański",
+          "sourceName": "Lukasz Fabianski",
+          "sourceNameAliases": [
+            "Łukasz Fabiański",
+            "Lukasz Fabianski"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "corrected",
+          "position": "GK",
+          "clubAtTournament": "Swansea City",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 23,
+          "playerName": "Dawid Kownacki",
+          "sourceName": "Dawid Kownacki",
+          "sourceNameAliases": [
+            "Dawid Kownacki"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Sampdoria",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_pol18.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+        }
+      ]
     }
   }
 }
