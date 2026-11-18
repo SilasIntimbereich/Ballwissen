@@ -24,13 +24,13 @@ Rarity represents recall difficulty, not player quality. The assignment is deter
 - **Legendary:** the next two hardest eligible recall picks in each legendary-difficulty squad, after the Ball Knowledge pick.
 - **Ball Knowledge:** the single hardest eligible recall pick in each legendary-difficulty squad.
 
-The resolver uses curated recognition names, cross-tournament appearances, squad difficulty, goalkeeper depth and shirt number as a tie-breaker. It does not treat a high shirt number alone as proof that a player is obscure.
+Every squad with at least three eligible non-famous players receives one Ball Knowledge player and two Legendary players, selected as that squad's hardest-to-recall picks. The remaining players are assigned globally to the target distribution: 2,533 Common, 1,353 Rare, 1,153 Niche, 480 Legendary and 240 Ball Knowledge (5,759 players across 240 squads). The resolver uses curated recognition names, cross-tournament appearances, squad difficulty, goalkeeper depth and shirt number as a tie-breaker. It does not treat a high shirt number alone as proof that a player is obscure.
 
 ## Squad data
 
 | Data | Coverage | Status |
 |---|---:|---|
-| Historical World Cups, 2002–2022 | 192 teams / 4,511 player records | At the current audit snapshot, 44 teams / 1,015 player records have complete player-level identity, position, tournament-club and two-source audits. The remaining 148 teams are practice-only; their clubs are not presented as verified. |
+| Historical World Cups, 2002–2022 | 192 teams / 4,511 player records | At the latest completed audit snapshot, 47 teams / 1,084 player records have complete player-level identity, position, tournament-club and two-source audit evidence. The remaining 145 teams are practice-only; their clubs are not presented as verified. This count is a snapshot and must be refreshed after each successful historical audit. |
 | World Cup 2026 | 48 teams / 1,248 player records | All 48 teams have been reviewed against FIFA final squad lists and independent OpenFootball data; 26 players per team. |
 | Daily exclusions | 50 squad editions | Checked against the squad IDs and excluded from all three Daily tiers. |
 
