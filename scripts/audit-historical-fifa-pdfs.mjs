@@ -116,16 +116,6 @@ for(const source of SOURCES){
   const team=teamByKey.get(teamKey(heading))||teamByKey.get(teamKey(teamName));
   const columnarRows=[2014,2018].includes(source.year)?parseColumnarRows(groups,lines):[];
   const fifaRows=columnarRows.length?columnarRows:parseRows(lines,source.format);
-  if(source.year===2018&&fifaRows.length===0){
-   tournamentReport.debugFailedPages ||= [];
-   tournamentReport.debugFailedPages.push({
-    page:pageNo,teamName:team?.name||teamName,lines:lines.slice(0,45),
-    groups:groups.filter(group=>{
-     const label=group.items.map(item=>item.text).join(" ").trim();
-     return /FIFA|POS|Club|DOB|Shirt Name|First Name|Last Name|^#|^\\d{1,2}(?:\\s+\\d{1,2})*$/.test(label);
-    }).map(group=>group.items.map(item=>({x:item.x,y:item.y,text:item.text})))
-   });
-  }
   const mismatches=[];
   const candidates=[];
   const matchedNumbers=new Set();
