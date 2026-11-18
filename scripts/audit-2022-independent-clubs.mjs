@@ -101,7 +101,7 @@ function parseGoalSquads(html){
    const position=normalizePosition(cells[0]);
    const name=cells[1].replace(/\s*\(captain\)\s*$/i,"").trim();
    const club=cells[cells.length-1].trim();
-   if(position&&name&&club)rows.push({name,position,club});
+   if(position&&name)rows.push({name,position,club:club||null});
   }
   if(rows.length>=23)squads.set(teamKey(teamName),rows);
  }
