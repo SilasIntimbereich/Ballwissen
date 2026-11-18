@@ -140,7 +140,7 @@ const fifaTournament=fifaAudit.tournaments.find(t=>t.year===2022);
 let totalRows=0;
 for(const team of teams){
  const link=linkByTeam.get(team.id);
- const item={teamId:team.id,teamName:team.name,sourceUrl:link?new URL(link.href,SOURCE_INDEX).href:null,sourcePlayerCount:0,fullyCrossChecked:false,clubMatches:0,clubMismatches:0,nameMismatches:0,mismatches:[],comparisons:[]};
+ const item={teamId:team.id,teamName:team.name,sourceUrl:link?new URL(link.href,SOURCE_INDEX).href:null,sourcePlayerCount:0,fullyCrossChecked:false,clubMatches:0,clubMismatches:0,nameMismatches:0,mismatches:[],positionDifferences:[],comparisons:[]};
  if(!link){item.mismatches.push({field:"missing_source_link"});report.teams.push(item);continue;}
  let rows=[];
  try{rows=parseFootballSquads(await fetchText(item.sourceUrl));}catch(error){item.sourceError=String(error);item.mismatches.push({field:"source_fetch",error:String(error)});report.teams.push(item);continue;}
