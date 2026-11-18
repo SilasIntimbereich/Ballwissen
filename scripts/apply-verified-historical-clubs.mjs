@@ -238,7 +238,7 @@ for (const teamAudit of audit2022.teams || []) {
   }));
   applyTeam(2022, teamAudit.teamId, candidatePlayers, [
     fifaTournamentSource(fifaAudit),
-    "https://www.footballsquads.co.uk/national/worldcup/wc2022.htm"
+    "https://www.11v11.com/competitions/fifa-world-cup/2022/squads/"
   ], evidencePlayers, fifaTeam.pdfHeading || null, teamAudit.teamName);
 }
 
