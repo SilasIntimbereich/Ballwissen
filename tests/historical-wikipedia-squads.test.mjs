@@ -67,3 +67,34 @@ test("also supports deeper nested country headings",()=>{
  const parsed=parseWikipediaSquads(html,teams);
  assert.deepEqual(parsed.get("egypt-2018"),[{number:1,position:"GK",name:"Essam El Hadary",club:"Al Taawoun"}]);
 });
+
+test("normalizes documented historical club aliases without merging ambiguous Olimpia clubs",()=>{
+  const equivalent=[
+    ["AZ","AZ Alkmaar"],
+    ["Mainz 05","FSV Mainz 05"],
+    ["Chivas","Guadalajara"],
+    ["Saprissa","Deportivo Saprissa"],
+    ["Al Ahly","Al-Ahly Cairo"],
+    ["Nagoya Grampus","Nagoya Grampus Eight"],
+    ["West Bromwich Albion","West Bromwich A."],
+    ["Urawa Red Diamonds","Urawa Reds"],
+    ["Jeonbuk Hyundai Motors","Jeonbuk Motors"],
+    ["Dynamo Kyiv","Dynamo Kiev"],
+    ["Gent","AA Gent"],
+    ["AGF","AGF Aarhus"],
+    ["LA Galaxy","Los Angeles Galaxy"],
+    ["Paris Saint-Germain","Paris SG"],
+    ["Club León","León"],
+    ["Tigres UANL","Tigres"],
+    ["PAOK","PAOK Thessaloniki"],
+    ["1899 Hoffenheim","Hoffenheim"],
+    ["Olympiacos","Olympiakos"],
+    ["Genk","Racing Genk"],
+    ["AIK","AIK Stockholm"],
+    ["Zenit Saint Petersburg","Zenit St Petersburg"],
+    ["Legia Warsaw","Legia Warszawa"],
+    ["SPAL","SPAL Ferrara"]
+  ];
+  for(const [a,b] of equivalent)assert.equal(normalizeHistoricalClub(a),normalizeHistoricalClub(b),a+" / "+b);
+  assert.notEqual(normalizeHistoricalClub("Olimpia Tegucigalpa"),normalizeHistoricalClub("Olimpia Asuncion"));
+});
