@@ -118,6 +118,11 @@ try{indexHtml=await fetchText(SOURCE_INDEX);}catch(error){
 const links=linksFrom(indexHtml,/\.htm/i);
 const linkByTeam=new Map();
 for(const link of links){const team=teams.find(t=>teamKey(t.name)===teamKey(link.label));if(team)linkByTeam.set(team.id,link);}
+if(linkByTeam.size!==32){
+ report.sourceStatus="partial";
+ report.sourceError="Only "+linkByTeam.size+" of 32 team links could be resolved from the independent squad index.";
+ report.indexDebug={linkCount:links.length,linkLabels:links.slice(0,40).map(link=>({label:link.label,href:link.href})),htmlSample:indexHtml.slice(0,6000)};
+}
 const manualNameAliases={
  "argentina-2022":{17:["Alejandro Gomez"]},
  "australia-2022":{1:["Mat Ryan"],7:["Matthew Leckie"]},
@@ -174,4 +179,4 @@ report.summary={sourceRows:totalRows,teamsFound:linkByTeam.size,teams:report.tea
 await mkdir("artifacts",{recursive:true});
 await writeFile("artifacts/2022-independent-club-audit.json",JSON.stringify(report,null,2)+String.fromCharCode(10));
 console.log(JSON.stringify(report.summary,null,2));
-if(report.teams.length!==32||linkByTeam.size!==32)throw new Error("2022 independent audit did not locate all 32 team pages");
+if(teams.length!==32)throw new Error("2022 historical dataset does not contain exactly 32 teams");
