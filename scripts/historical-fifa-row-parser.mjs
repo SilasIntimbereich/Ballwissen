@@ -37,7 +37,7 @@ export function parseColumnarRows(groups,lines){
   club:cleanClub(clubs[index]),
   date:dates[index],
   line:[numbers[index],nameArea,dates[index],positions[index],clubs[index]].join(" ")
- })).filter(row=>row.nameArea&&/^(GK|DF|MF|FW)$/.test(row.position)&&row.club);
+ })).filter(row=>row.nameArea&&/^(GK|DF|MF|FW)$/.test(row.position));
 }
 
 export function parseRows(lines,format){
