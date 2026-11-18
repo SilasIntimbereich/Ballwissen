@@ -20,7 +20,7 @@ export function parseColumnarRows(groups,lines){
  const clubs=valuesFor("Club");
  const dates=valuesFor("DOB");
  if(!displayNames.length||positions.length!==displayNames.length||
-    clubs.length!==displayNames.length||dates.length!==displayNames.length)return [];
+    clubs.length!==displayNames.length)return [];
  const sourceLines=Array.isArray(lines)?lines.map(line=>String(line||"").trim()):[];
  const numberLine=sourceLines.findIndex(line=>/^#\s*\d/.test(line));
  if(numberLine<0)return [];
@@ -35,8 +35,8 @@ export function parseColumnarRows(groups,lines){
   position:String(positions[index]||"").toUpperCase(),
   nameArea,
   club:cleanClub(clubs[index]),
-  date:dates[index],
-  line:[numbers[index],nameArea,dates[index],positions[index],clubs[index]].join(" ")
+  date:dates[index]||"",
+  line:[numbers[index],nameArea,dates[index]||"",positions[index],clubs[index]].join(" ")
  })).filter(row=>row.nameArea&&/^(GK|DF|MF|FW)$/.test(row.position));
 }
 
