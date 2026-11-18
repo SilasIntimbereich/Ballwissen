@@ -50,9 +50,8 @@ export function parseRows(lines,format){
   return rows;
  }
  if(format==="modern-pipe"||format==="2018"){
-  // FIFA's 2014 and 2018 PDFs use the same labelled, pipe-delimited layout.
-  // PDF.js may preserve, split, or omit the visual pipe separators, so parse
-  // each numbered record by its field labels instead of relying on one rigid row regex.
+  // Parse labelled FIFA rows when the PDF text layer preserves the field labels.
+  // The 2018 source is handled by the columnar parser before reaching this fallback.
   const text=lines.join(" ").replace(/\s+/g," ").trim();
   const starts=[...text.matchAll(/(?:#\s*)?(\d{1,2})\s*\|?\s*(?=FIFA\s+Display\s+Name\b)/gi)];
   const readField=(record,label,nextLabel)=>{
