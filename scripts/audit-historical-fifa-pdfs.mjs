@@ -111,7 +111,7 @@ for(const source of SOURCES){
   const groups=[];
   for(const item of items){let group=groups[groups.length-1];if(!group||Math.abs(group.y-item.y)>1.5){group={y:item.y,items:[]};groups.push(group);}group.items.push(item);group.y=group.items.reduce((sum,entry)=>sum+entry.y,0)/group.items.length;}
   const lines=groups.map(group=>group.items.sort((a,b)=>a.x-b.x).map(item=>item.text).join(" ").replace(/\s+/g," ").trim()).filter(Boolean);
-  if(source.year===2018&&pageNo===1){
+  if([2014,2018].includes(source.year)&&pageNo===1){
    tournamentReport.debugFirstPageLines=lines.slice(0,50);
    tournamentReport.debugFirstPageGroups=groups
     .filter(group=>/^(?:Club|POS|DOB|Shirt Name|First Name|Last Name|FIFA Display Name|#)/i.test(group.items.map(item=>item.text).join(" ").trim()))
