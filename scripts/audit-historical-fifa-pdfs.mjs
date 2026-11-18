@@ -114,7 +114,7 @@ for(const source of SOURCES){
   if(source.year===2018&&pageNo===1){
    tournamentReport.debugFirstPageLines=lines.slice(0,50);
    tournamentReport.debugFirstPageGroups=groups
-    .filter(group=>/^(?:Club|POS|DOB|Shirt Name|First Name|Last Name|FIFA Display Name|#)\\b/i.test(group.items.map(item=>item.text).join(" ").trim()))
+    .filter(group=>/^(?:Club|POS|DOB|Shirt Name|First Name|Last Name|FIFA Display Name|#)/i.test(group.items.map(item=>item.text).join(" ").trim()))
     .map(group=>group.items.map(item=>({x:item.x,y:item.y,text:item.text})));
   }
   const heading=extractTeamHeading(lines,teamsForYear.map(team=>team.name));
