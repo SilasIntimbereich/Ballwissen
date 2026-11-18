@@ -90,16 +90,16 @@ function normalizePosition(value){
 }
 function parseWikipediaSquads(html){
  const squads=new Map();
- const sections=[...String(html||"").matchAll(/<h3\\b[^>]*>([\\s\\S]*?)<\\/h3>([\\s\\S]*?)(?=<h3\\b|<h2\\b|$)/gi)];
+ const sections=[...String(html||"").matchAll(/<h3\b[^>]*>([\s\S]*?)<\/h3>([\s\S]*?)(?=<h3\b|<h2\b|$)/gi)];
  for(const section of sections){
-  const teamName=textFromHtml(section[1]).replace(/\\[edit\\]/gi,"").trim();
+  const teamName=textFromHtml(section[1]).replace(/\[edit\]/gi,"").trim();
   if(!teamName)continue;
   const rows=[];
-  for(const tr of section[2].matchAll(/<tr\\b[^>]*>([\\s\\S]*?)<\\/tr>/gi)){
-   const cells=[...tr[1].matchAll(/<td\\b[^>]*>([\\s\\S]*?)<\\/td>/gi)].map(match=>textFromHtml(match[1]));
-   if(cells.length<7||!/^\\d{1,2}$/.test(cells[0]))continue;
+  for(const tr of section[2].matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)){
+   const cells=[...tr[1].matchAll(/<td\b[^>]*>([\s\S]*?)<\/td>/gi)].map(match=>textFromHtml(match[1]));
+   if(cells.length<7||!/^\d{1,2}$/.test(cells[0]))continue;
    const position=normalizePosition(cells[1]);
-   const name=cells[2].replace(/\\s*\\(captain\\)\\s*$/i,"").trim();
+   const name=cells[2].replace(/\s*\(captain\)\s*$/i,"").trim();
    const club=cells[cells.length-1].trim();
    if(position&&name&&club)rows.push({number:Number(cells[0]),name,position,club});
   }
