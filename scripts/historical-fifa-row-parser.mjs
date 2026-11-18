@@ -20,7 +20,7 @@ export function parseColumnarRows(groups,lines){
  const clubCells=valuesFor("Club");
  const clubs=[];
  for(const value of clubCells){
-  if(/^\\([A-Z]{3}\\)$/.test(value)&&clubs.length)clubs[clubs.length-1]+=" "+value;
+  if(value.length===5&&value[0]==="("&&value[4]===")"&&/^[A-Z]{3}$/.test(value.slice(1,4))&&clubs.length)clubs[clubs.length-1]+=" "+value;
   else clubs.push(value);
  }
  const dates=valuesFor("DOB");
