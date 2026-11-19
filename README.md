@@ -60,7 +60,7 @@ npx playwright install --with-deps chromium webkit
 npm run test:browser
 ~~~
 
-The browser suite checks the mobile layout, all tournament/team selectors, Easy, Hard, Practice, all Daily tiers, Give Up, timeout, results, local statistics, settings and a cold offline reload. GitHub Actions runs these checks on changes to main and the V4 branch.
+The browser suite runs on Chromium and WebKit. It checks the mobile layout, all tournament/team selectors, Easy, Hard, Practice, all Daily tiers, Give Up, timeout, results, local statistics, settings and a cold offline reload. GitHub Actions runs these checks on changes to main and the V4 branch.
 
 ## Build and publish
 
