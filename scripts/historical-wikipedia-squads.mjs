@@ -78,6 +78,15 @@ export function parseWikipediaSquads(html, teams) {
   return parsed;
 }
 
+export function displayHistoricalClub(value) {
+  const raw = String(value || "").trim();
+  const canonical = normalizeHistoricalClub(raw);
+  const displayAliases = {
+    kawasakifrontale: "Kawasaki Frontale"
+  };
+  return displayAliases[canonical] || raw;
+}
+
 export function normalizeHistoricalClub(value) {
   // Strip club abbreviations only as separate leading/trailing tokens.
   // A blind "as" prefix removal, for example, corrupts the real club Ascoli.

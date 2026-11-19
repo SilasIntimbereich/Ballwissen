@@ -1,6 +1,6 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { namesMatch } from "./historical-player-name-match.mjs";
-import { normalizeHistoricalClub } from "./historical-wikipedia-squads.mjs";
+import { normalizeHistoricalClub, displayHistoricalClub } from "./historical-wikipedia-squads.mjs";
 import { hasIndependentHttpsSources, isHttpsUrl } from "./source-url-validation.mjs";
 import { isCompleteVerifiedRosterLedger, downgradeIncompleteVerifiedRosterLedger } from "./verified-roster-ledger.mjs";
 
@@ -83,7 +83,7 @@ function applyTeam(year, teamId, candidatePlayers, sources, evidencePlayers, fif
     const positionB = normalizePosition(evidence.planetPosition || evidence.secondaryPosition);
     const positionMatches = Boolean(officialFifaPosition) || evidence.positionMatches === true ||
       Boolean(positionA && positionB && positionA === positionB);
-    const club = evidence.planetClub || evidence.secondaryClub || candidate.clubAtTournament || candidate.club;
+    const club = displayHistoricalClub(evidence.planetClub || evidence.secondaryClub || candidate.clubAtTournament || candidate.club);
     const position = officialFifaPosition || evidence.planetPosition || evidence.secondaryPosition || candidate.position;
     if (!hasIndependentIdentity || !clubMatches || !positionMatches ||
         typeof club !== "string" || !club.trim() ||

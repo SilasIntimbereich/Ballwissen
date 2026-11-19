@@ -1,6 +1,6 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { namesMatch } from "./historical-player-name-match.mjs";
-import { parseWikipediaSquads, normalizeHistoricalClub, normalizeHistoricalPosition } from "./historical-wikipedia-squads.mjs";
+import { parseWikipediaSquads, normalizeHistoricalClub, normalizeHistoricalPosition, displayHistoricalClub } from "./historical-wikipedia-squads.mjs";
 import { parsePlanetWorldCupSquad, decodePlanetWorldCupResponse } from "./planet-world-cup-squad.mjs";
 
 const sources = {
@@ -191,7 +191,7 @@ for (const [year, config] of Object.entries(sources)) {
       if (item.fullyCrossChecked && candidateTeam) {
         for (const assignment of assignments) {
           if (!assignment.candidatePlayer || !assignment.planet.club) continue;
-          assignment.candidatePlayer.club = assignment.planet.club;
+          assignment.candidatePlayer.club = displayHistoricalClub(assignment.planet.club);
           assignment.candidatePlayer.position = assignment.candidatePlayer.clubSource
             ? assignment.candidatePlayer.position
             : assignment.planet.position === "MD" ? "MF" : assignment.planet.position;

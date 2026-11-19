@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parseWikipediaSquads, normalizeHistoricalClub, normalizeHistoricalPosition } from "../scripts/historical-wikipedia-squads.mjs";
+import { parseWikipediaSquads, normalizeHistoricalClub, normalizeHistoricalPosition, displayHistoricalClub } from "../scripts/historical-wikipedia-squads.mjs";
 
 test("parses team headings, squad numbers, positions, names and tournament clubs", () => {
   const teams = [{ id: "denmark-2002", name: "Denmark" }, { id: "china-2002", name: "China" }];
@@ -105,4 +105,10 @@ test("normalizes historical position codes consistently", () => {
   assert.equal(normalizeHistoricalPosition("GK"), "GK");
   assert.equal(normalizeHistoricalPosition("df"), "DF");
   assert.equal(normalizeHistoricalPosition("FW"), "FW");
+});
+
+
+test("corrects a documented Planet World Cup spelling error in club display names", () => {
+  assert.equal(displayHistoricalClub("Kawazaki Frontale"), "Kawasaki Frontale");
+  assert.equal(displayHistoricalClub("Kawasaki Frontale"), "Kawasaki Frontale");
 });
