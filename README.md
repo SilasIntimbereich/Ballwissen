@@ -28,9 +28,9 @@ The 2022 Iran squad contains 25 players in the source data; this is not padded w
 
 The latest reproducible audit covers 160 teams across 2006, 2010, 2014, 2018 and 2022. It parsed 128 FIFA PDF pages for 2010, 2014, 2018 and 2022; the 32 teams from 2006 are carried forward from a previously complete verified ledger because the FIFA PDF host currently returns HTTP 522. A roster-clean result means every shirt-numbered player identity matches the source dataset; a fully audited result additionally passes the independent-source and club-evidence rules.
 
-| Tournament | Teams roster-clean | Fully audited teams | Remaining roster mismatches |
+| Tournament | Teams roster-clean / ledger-verified | Fully audited teams | Remaining roster mismatches |
 |---|---:|---:|---:|
-| 2006 | 32 / 32 | 32 | 0 |
+| 2006 | 32 / 32 (ledger) | 32 | 0 |
 | 2010 | 15 / 32 | 9 | 31 |
 | 2014 | 11 / 32 | 1 | 61 |
 | 2018 | 10 / 32 | 6 | 108 |
