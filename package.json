@@ -12,7 +12,9 @@
     "audit:2026": "node scripts/audit-2026-fifa-pdf.mjs",
     "build:public": "node scripts/build-public.mjs",
     "build": "npm run build:public",
-    "test:browser": "node browser-tests/smoke.mjs"
+    "test:browser": "node browser-tests/smoke.mjs",
+    "preview:ballwissen": "wrangler preview --config wrangler.ballwissen.jsonc",
+    "preview:ballwissenwc": "wrangler preview --config wrangler.ballwissenwc.jsonc"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.0"
@@ -21,6 +23,7 @@
     "node": ">=20"
   },
   "devDependencies": {
-    "pdfjs-dist": "^5.4.394"
+    "pdfjs-dist": "^5.4.394",
+    "wrangler": "^4.165.0"
   }
 }
