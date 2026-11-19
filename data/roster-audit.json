@@ -7213,7 +7213,7 @@
       "tournament": 2018,
       "teamNameInDataset": "Germany",
       "teamNameInFifaPdf": "Germany",
-      "reviewedAt": "2026-11-18",
+      "reviewedAt": "2026-11-19",
       "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_ger18.html",
       "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads",
       "notes": "All 23 roster rows were checked by shirt number, player identity and club against FIFA's final 2018 squad PDF and independently cross-checked against 11v11's Germany 2018 squad database. BBC Sport's confirmed squad article was used as a further check of squad membership and clubs. Normalized club display names are used in the game data.",
@@ -8004,218 +8004,364 @@
       "tournament": 2010,
       "teamNameInDataset": "Germany",
       "teamNameInFifaPdf": "Germany",
-      "reviewedAt": "2026-11-16",
-      "primarySource": "https://www.fifadata.com/document/fwc/2010/PDF_BackUp_2010_06_13/FWC_2010_SquadLists.pdf",
-      "secondarySource": "https://www.11v11.com/competitions/fifa-world-cup/2010/squads/germany/",
+      "reviewedAt": "2026-11-19",
+      "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+      "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads",
       "notes": "All 23 players were checked by shirt number, identity and club against FIFA's final squad PDF and independently cross-checked against 11v11's Germany 2010 squad database. The Guardian's final 23-player Germany list provides a further independent check of membership and clubs. FIFA squad numbering and names match the repository roster.",
       "players": [
         {
           "playerName": "Manuel Neuer",
-          "sourceName": "MANUEL NEUER",
+          "sourceName": "Manuel Neuer",
           "number": 1,
           "position": "GK",
           "clubAtTournament": "Schalke 04",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Manuel Neuer"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Marcell Jansen",
-          "sourceName": "MARCELL JANSEN",
+          "sourceName": "Marcell Jansen",
           "number": 2,
-          "position": "DF",
+          "position": "MF",
           "clubAtTournament": "Hamburger SV",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Marcell Jansen"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Arne Friedrich",
-          "sourceName": "ARNE FRIEDRICH",
+          "sourceName": "Arne Friedrich",
           "number": 3,
           "position": "DF",
-          "clubAtTournament": "Hertha BSC Berlin",
+          "clubAtTournament": "Hertha Berlin",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Arne Friedrich"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Dennis Aogo",
-          "sourceName": "DENNIS AOGO",
+          "sourceName": "Dennis Aogo",
           "number": 4,
           "position": "DF",
           "clubAtTournament": "Hamburger SV",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Dennis Aogo"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Serdar Tasci",
-          "sourceName": "SERDAR TASCI",
+          "sourceName": "Serdar Tasci",
           "number": 5,
           "position": "DF",
           "clubAtTournament": "VfB Stuttgart",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Serdar Tasci"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Sami Khedira",
-          "sourceName": "SAMI KHEDIRA",
+          "sourceName": "Sami Khedira",
           "number": 6,
           "position": "MF",
           "clubAtTournament": "VfB Stuttgart",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Sami Khedira"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Bastian Schweinsteiger",
-          "sourceName": "BASTIAN SCHWEINSTEIGER",
+          "sourceName": "Bastian Schweinsteiger",
           "number": 7,
           "position": "MF",
           "clubAtTournament": "Bayern Munich",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Bastian Schweinsteiger"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Mesut Özil",
-          "sourceName": "MESUT OZIL",
+          "sourceName": "Mesut Özil",
           "number": 8,
           "position": "MF",
           "clubAtTournament": "Werder Bremen",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Mesut Özil"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Stefan Kießling",
-          "sourceName": "STEFAN KIESSLING",
+          "sourceName": "Stefan Kiessling",
           "number": 9,
           "position": "FW",
           "clubAtTournament": "Bayer Leverkusen",
-          "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "status": "corrected",
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Stefan Kießling",
+            "Stefan Kiessling"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Lukas Podolski",
-          "sourceName": "LUKAS PODOLSKI",
+          "sourceName": "Lukas Podolski",
           "number": 10,
-          "position": "MF",
-          "clubAtTournament": "1. FC Köln",
+          "position": "FW",
+          "clubAtTournament": "1.FC Cologne",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Lukas Podolski"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Miroslav Klose",
-          "sourceName": "MIROSLAV KLOSE",
+          "sourceName": "Miroslav Klose",
           "number": 11,
           "position": "FW",
           "clubAtTournament": "Bayern Munich",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Miroslav Klose"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Tim Wiese",
-          "sourceName": "TIM WIESE",
+          "sourceName": "Tim Wiese",
           "number": 12,
           "position": "GK",
           "clubAtTournament": "Werder Bremen",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Tim Wiese"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Thomas Müller",
-          "sourceName": "THOMAS MULLER",
+          "sourceName": "Thomas Müller",
           "number": 13,
           "position": "MF",
           "clubAtTournament": "Bayern Munich",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Thomas Müller"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Holger Badstuber",
-          "sourceName": "HOLGER BADSTUBER",
+          "sourceName": "Holger Badstuber",
           "number": 14,
           "position": "DF",
           "clubAtTournament": "Bayern Munich",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Holger Badstuber"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Piotr Trochowski",
-          "sourceName": "PIOTR TROCHOWSKI",
+          "sourceName": "Piotr Trochowski",
           "number": 15,
           "position": "MF",
           "clubAtTournament": "Hamburger SV",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Piotr Trochowski"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Philipp Lahm",
-          "sourceName": "PHILIPP LAHM",
+          "sourceName": "Philipp Lahm",
           "number": 16,
           "position": "DF",
           "clubAtTournament": "Bayern Munich",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Philipp Lahm"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Per Mertesacker",
-          "sourceName": "PER MERTESACKER",
+          "sourceName": "Per Mertesacker",
           "number": 17,
           "position": "DF",
           "clubAtTournament": "Werder Bremen",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Per Mertesacker"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Toni Kroos",
-          "sourceName": "TONI KROOS",
+          "sourceName": "Toni Kroos",
           "number": 18,
           "position": "MF",
           "clubAtTournament": "Bayer Leverkusen",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Toni Kroos"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Cacau",
-          "sourceName": "CACAU",
+          "sourceName": "Claudemir CACAU Barreto",
           "number": 19,
           "position": "FW",
           "clubAtTournament": "VfB Stuttgart",
-          "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "status": "corrected",
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Cacau",
+            "Claudemir CACAU Barreto"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Jérôme Boateng",
-          "sourceName": "JEROME BOATENG",
+          "sourceName": "Jerome Boateng",
           "number": 20,
           "position": "DF",
           "clubAtTournament": "Hamburger SV",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Jérôme Boateng",
+            "Jerome Boateng"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Marko Marin",
-          "sourceName": "MARKO MARIN",
+          "sourceName": "Marko Marin",
           "number": 21,
           "position": "MF",
           "clubAtTournament": "Werder Bremen",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Marko Marin"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Hans-Jörg Butt",
-          "sourceName": "HANS-JORG BUTT",
+          "sourceName": "Hans Jörg Butt",
           "number": 22,
           "position": "GK",
           "clubAtTournament": "Bayern Munich",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Hans-Jörg Butt",
+            "Hans Jörg Butt"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         },
         {
           "playerName": "Mario Gómez",
-          "sourceName": "MARIO GOMEZ",
+          "sourceName": "Mario Gomez",
           "number": 23,
           "position": "FW",
           "clubAtTournament": "Bayern Munich",
           "status": "matched",
-          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication."
+          "notes": "Matched by shirt number, identity and club in FIFA's final 2010 squad PDF; independently cross-checked against 11v11's Germany 2010 squad database and The Guardian's final squad publication.",
+          "sourceNameAliases": [
+            "Mario Gómez",
+            "Mario Gomez"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ger10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         }
+      ],
+      "additionalSources": [
+        "https://web.archive.org/web/20100616010702id_/http://www.fifa.com/mm/document/tournament/competition/01/22/85/78/fwc_2010_squadlists.pdf"
       ]
     },
     "brazil-2006": {
@@ -15888,7 +16034,7 @@
       "tournament": 2010,
       "teamNameInDataset": "England",
       "teamNameInFifaPdf": "England",
-      "reviewedAt": "2026-11-18",
+      "reviewedAt": "2026-11-19",
       "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_eng10.html",
       "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads",
       "notes": "All 23 players were checked by shirt number, identity and club against FIFA's final squad PDF and MyFootballFacts' complete England 2010 squad record. 11v11 and The Soccer World Cups were used as further checks. Joe Hart's loan is explicitly resolved: Manchester City was his parent club, but FIFA and the contemporary season record list Birmingham City, where he played during the 2009-10 season and at the tournament.",
@@ -16465,7 +16611,7 @@
       "tournament": 2010,
       "teamNameInDataset": "Italy",
       "teamNameInFifaPdf": "Italy",
-      "reviewedAt": "2026-11-18",
+      "reviewedAt": "2026-11-19",
       "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_ita10.html",
       "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads",
       "notes": "All 23 players were checked by shirt number, identity and club against FIFA's final 2010 squad PDF and The Guardian's 1 June 2010 final 23-player Italy squad list. UEFA, Planet World Cup and 11v11 were used as further checks. The audit uses the tournament-time club affiliation, not subsequent transfers.",
@@ -26314,10 +26460,12 @@
       "tournament": 2018,
       "teamNameInDataset": "France",
       "teamNameInPrimarySource": "France",
-      "reviewedAt": "2026-11-18",
+      "reviewedAt": "2026-11-19",
       "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
       "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads",
-      "additionalSources": [],
+      "additionalSources": [
+        "https://web.archive.org/web/20190611000407id_/https://tournament.fifadata.com/documents/FWC/2018/pdf/FWC_2018_SQUADLISTS.PDF"
+      ],
       "players": [
         {
           "number": 1,
@@ -26645,14 +26793,15 @@
           "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_fra18.html",
           "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
         }
-      ]
+      ],
+      "teamNameInFifaPdf": "France"
     },
     "portugal-2018": {
       "status": "verified",
       "tournament": 2018,
       "teamNameInDataset": "Portugal",
       "teamNameInPrimarySource": "Portugal",
-      "reviewedAt": "2026-11-18",
+      "reviewedAt": "2026-11-19",
       "primarySource": "https://www.planetworldcup.com/CUPS/2018/squad_por18.html",
       "secondarySource": "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads",
       "additionalSources": [],
@@ -36416,6 +36565,345 @@
           "clubAtTournament": "B Mönchengladbach",
           "primarySource": "https://fdp.fifa.org/assetspublic/ce44/pdf/SquadLists-English.pdf",
           "secondarySource": "https://www.footballsquads.co.uk/national/worldcup/wc2022.htm"
+        }
+      ]
+    },
+    "japan-2010": {
+      "status": "verified",
+      "tournament": 2010,
+      "teamNameInDataset": "Japan",
+      "teamNameInFifaPdf": "Japan",
+      "reviewedAt": "2026-11-19",
+      "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+      "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads",
+      "additionalSources": [
+        "https://web.archive.org/web/20100616010702id_/http://www.fifa.com/mm/document/tournament/competition/01/22/85/78/fwc_2010_squadlists.pdf"
+      ],
+      "players": [
+        {
+          "number": 1,
+          "playerName": "Seigo Narazaki",
+          "sourceName": "Seigo Narazaki",
+          "sourceNameAliases": [
+            "Seigo Narazaki"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "GK",
+          "clubAtTournament": "Nagoya Grampus Eight",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 2,
+          "playerName": "Yuki Abe",
+          "sourceName": "Yuki Abe",
+          "sourceNameAliases": [
+            "Yuki Abe"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Urawa Reds",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 3,
+          "playerName": "Yūichi Komano",
+          "sourceName": "Yuichi Komano",
+          "sourceNameAliases": [
+            "Yūichi Komano",
+            "Yuichi Komano"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Jubilo Iwata",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 4,
+          "playerName": "Marcus Tulio Tanaka",
+          "sourceName": "Marcus Tulio Tanaka",
+          "sourceNameAliases": [
+            "Marcus Tulio Tanaka"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Nagoya Grampus Eight",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 5,
+          "playerName": "Yuto Nagatomo",
+          "sourceName": "Yuto Nagatomo",
+          "sourceNameAliases": [
+            "Yuto Nagatomo"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "FC Tokyo",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 6,
+          "playerName": "Atsuto Uchida",
+          "sourceName": "Atsuto Uchida",
+          "sourceNameAliases": [
+            "Atsuto Uchida"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Kashima Antlers",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 7,
+          "playerName": "Yasuhito Endō",
+          "sourceName": "Yasuhito Endo",
+          "sourceNameAliases": [
+            "Yasuhito Endō",
+            "Yasuhito Endo"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Gamba Osaka",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 8,
+          "playerName": "Daisuke Matsui",
+          "sourceName": "Daisuke Matsui",
+          "sourceNameAliases": [
+            "Daisuke Matsui"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Grenoble",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 9,
+          "playerName": "Shinji Okazaki",
+          "sourceName": "Shinji Okazaki",
+          "sourceNameAliases": [
+            "Shinji Okazaki"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Shimizu S-Pulse",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 10,
+          "playerName": "Shunsuke Nakamura",
+          "sourceName": "Shunsuke Nakamura",
+          "sourceNameAliases": [
+            "Shunsuke Nakamura"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Yokohama F-Marinos",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 11,
+          "playerName": "Keiji Tamada",
+          "sourceName": "Keiji Tamada",
+          "sourceNameAliases": [
+            "Keiji Tamada"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Nagoya Grampus Eight",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 12,
+          "playerName": "Kisho Yano",
+          "sourceName": "Kisho Yano",
+          "sourceNameAliases": [
+            "Kisho Yano"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Albirex Niigata",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 13,
+          "playerName": "Daiki Iwamasa",
+          "sourceName": "Daiki Iwamasa",
+          "sourceNameAliases": [
+            "Daiki Iwamasa"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Kashima Antlers",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 14,
+          "playerName": "Kengo Nakamura",
+          "sourceName": "Kengo Nakamura",
+          "sourceNameAliases": [
+            "Kengo Nakamura"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Kawasaki Frontale",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 15,
+          "playerName": "Yasuyuki Konno",
+          "sourceName": "Yasuyuki Konno",
+          "sourceNameAliases": [
+            "Yasuyuki Konno"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "FC Tokyo",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 16,
+          "playerName": "Yoshito Ōkubo",
+          "sourceName": "Yoshito Okubo",
+          "sourceNameAliases": [
+            "Yoshito Ōkubo",
+            "Yoshito Okubo"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Vissel Kobe",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 17,
+          "playerName": "Makoto Hasebe",
+          "sourceName": "Makoto Hasebe",
+          "sourceNameAliases": [
+            "Makoto Hasebe"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "VfL Wolfsburg",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 18,
+          "playerName": "Keisuke Honda",
+          "sourceName": "Keisuke Honda",
+          "sourceNameAliases": [
+            "Keisuke Honda"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "CSKA Moscow",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 19,
+          "playerName": "Takayuki Morimoto",
+          "sourceName": "Takayuki Morimoto",
+          "sourceNameAliases": [
+            "Takayuki Morimoto"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "FW",
+          "clubAtTournament": "Catania",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 20,
+          "playerName": "Junichi Inamoto",
+          "sourceName": "Junichi Inamoto",
+          "sourceNameAliases": [
+            "Junichi Inamoto"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "MF",
+          "clubAtTournament": "Kawazaki Frontale",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 21,
+          "playerName": "Eiji Kawashima",
+          "sourceName": "Eiji Kawashima",
+          "sourceNameAliases": [
+            "Eiji Kawashima"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "GK",
+          "clubAtTournament": "Kawazaki Frontale",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 22,
+          "playerName": "Yuji Nakazawa",
+          "sourceName": "Yuji Nakazawa",
+          "sourceNameAliases": [
+            "Yuji Nakazawa"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "DF",
+          "clubAtTournament": "Yokohama F-Marinos",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+        },
+        {
+          "number": 23,
+          "playerName": "Yoshikatsu Kawaguchi",
+          "sourceName": "Yoshikatsu Kawaguchi",
+          "sourceNameAliases": [
+            "Yoshikatsu Kawaguchi"
+          ],
+          "sourceNameAliasEvidenceUrl": null,
+          "status": "matched",
+          "position": "GK",
+          "clubAtTournament": "Jubilo Iwata",
+          "primarySource": "https://www.planetworldcup.com/CUPS/2010/squad_jpn10.html",
+          "secondarySource": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
         }
       ]
     }

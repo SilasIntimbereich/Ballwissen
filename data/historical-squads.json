@@ -10760,14 +10760,14 @@
           },
           {
             "name": "Marcell Jansen",
-            "position": "DF",
+            "position": "MF",
             "club": "Hamburger SV",
             "number": 2
           },
           {
             "name": "Arne Friedrich",
             "position": "DF",
-            "club": "Hertha BSC Berlin",
+            "club": "Hertha Berlin",
             "number": 3
           },
           {
@@ -10808,8 +10808,8 @@
           },
           {
             "name": "Lukas Podolski",
-            "position": "MF",
-            "club": "1. FC Köln",
+            "position": "FW",
+            "club": "1.FC Cologne",
             "number": 10
           },
           {
@@ -11637,139 +11637,139 @@
           {
             "name": "Seigo Narazaki",
             "position": "GK",
-            "club": null,
+            "club": "Nagoya Grampus Eight",
             "number": 1
           },
           {
             "name": "Yuki Abe",
             "position": "MF",
-            "club": null,
+            "club": "Urawa Reds",
             "number": 2
           },
           {
             "name": "Yūichi Komano",
             "position": "DF",
-            "club": null,
+            "club": "Jubilo Iwata",
             "number": 3
           },
           {
             "name": "Marcus Tulio Tanaka",
             "position": "DF",
-            "club": null,
+            "club": "Nagoya Grampus Eight",
             "number": 4
           },
           {
             "name": "Yuto Nagatomo",
             "position": "DF",
-            "club": null,
+            "club": "FC Tokyo",
             "number": 5
           },
           {
             "name": "Atsuto Uchida",
             "position": "DF",
-            "club": null,
+            "club": "Kashima Antlers",
             "number": 6
           },
           {
             "name": "Yasuhito Endō",
             "position": "MF",
-            "club": null,
+            "club": "Gamba Osaka",
             "number": 7
           },
           {
             "name": "Daisuke Matsui",
-            "position": "FW",
-            "club": null,
+            "position": "MF",
+            "club": "Grenoble",
             "number": 8
           },
           {
             "name": "Shinji Okazaki",
             "position": "FW",
-            "club": null,
+            "club": "Shimizu S-Pulse",
             "number": 9
           },
           {
             "name": "Shunsuke Nakamura",
             "position": "MF",
-            "club": null,
+            "club": "Yokohama F-Marinos",
             "number": 10
           },
           {
             "name": "Keiji Tamada",
             "position": "FW",
-            "club": null,
+            "club": "Nagoya Grampus Eight",
             "number": 11
           },
           {
             "name": "Kisho Yano",
             "position": "FW",
-            "club": null,
+            "club": "Albirex Niigata",
             "number": 12
           },
           {
             "name": "Daiki Iwamasa",
             "position": "DF",
-            "club": null,
+            "club": "Kashima Antlers",
             "number": 13
           },
           {
             "name": "Kengo Nakamura",
             "position": "MF",
-            "club": null,
+            "club": "Kawasaki Frontale",
             "number": 14
           },
           {
             "name": "Yasuyuki Konno",
             "position": "DF",
-            "club": null,
+            "club": "FC Tokyo",
             "number": 15
           },
           {
             "name": "Yoshito Ōkubo",
             "position": "FW",
-            "club": null,
+            "club": "Vissel Kobe",
             "number": 16
           },
           {
             "name": "Makoto Hasebe",
             "position": "MF",
-            "club": null,
+            "club": "VfL Wolfsburg",
             "number": 17
           },
           {
             "name": "Keisuke Honda",
             "position": "MF",
-            "club": null,
+            "club": "CSKA Moscow",
             "number": 18
           },
           {
             "name": "Takayuki Morimoto",
             "position": "FW",
-            "club": null,
+            "club": "Catania",
             "number": 19
           },
           {
             "name": "Junichi Inamoto",
             "position": "MF",
-            "club": null,
+            "club": "Kawazaki Frontale",
             "number": 20
           },
           {
             "name": "Eiji Kawashima",
             "position": "GK",
-            "club": null,
+            "club": "Kawazaki Frontale",
             "number": 21
           },
           {
             "name": "Yuji Nakazawa",
             "position": "DF",
-            "club": null,
+            "club": "Yokohama F-Marinos",
             "number": 22
           },
           {
             "name": "Yoshikatsu Kawaguchi",
             "position": "GK",
-            "club": null,
+            "club": "Jubilo Iwata",
             "number": 23
           }
         ]
