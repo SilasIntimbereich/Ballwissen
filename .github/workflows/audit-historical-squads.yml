@@ -45,6 +45,12 @@ on:
   schedule:
     - cron: "41 5 * * 1"
   workflow_dispatch:
+
+# Prevent overlapping audits from racing while they update the PR branch.
+concurrency:
+  group: historical-squad-audit-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
 jobs:
