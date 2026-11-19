@@ -19,6 +19,10 @@ try {
   });
   if (!response.ok) throw new Error("HTTP " + response.status);
   const parsed = parseFifa2002Roster(await response.text(), teams);
+  if (parsed.size !== teams.length) {
+    report.sourceStatus = "partial";
+    report.sourceError = "The page loaded, but the parser extracted " + parsed.size + " of " + teams.length + " team rosters; this supplementary source is not used as verification evidence.";
+  }
 
   for (const team of teams) {
     const rows = parsed.get(team.id) || [];

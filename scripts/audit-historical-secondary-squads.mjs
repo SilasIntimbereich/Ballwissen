@@ -1,6 +1,6 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { namesMatch } from "./historical-player-name-match.mjs";
-import { parseWikipediaSquads, normalizeHistoricalClub } from "./historical-wikipedia-squads.mjs";
+import { parseWikipediaSquads, normalizeHistoricalClub, normalizeHistoricalPosition } from "./historical-wikipedia-squads.mjs";
 import { parsePlanetWorldCupSquad, decodePlanetWorldCupResponse } from "./planet-world-cup-squad.mjs";
 
 const sources = {
@@ -126,11 +126,11 @@ for (const [year, config] of Object.entries(sources)) {
           item.clubMismatches.push({ number, player: player.name, wikipediaClub: wiki.club,
             planetWorldCupClub: planet.club, canonicalWikipediaClub: wikiClub, canonicalPlanetClub: planetClub });
         }
-        const planetPosition = planet.position === "MD" ? "MF" : planet.position;
+        const planetPosition = normalizeHistoricalPosition(planet.position);
         const clubMatches = Boolean(wiki.club && planet.club && wikiClub && wikiClub === planetClub);
-        const positionMatches = Boolean(wiki.position && planetPosition && wiki.position === planetPosition);
+        const positionMatches = Boolean(wiki.position && planetPosition && normalizeHistoricalPosition(wiki.position) === planetPosition);
         const fifaCandidate = candidateByNumber.get(number);
-        const fifaPosition = fifaCandidate?.clubSource ? normalizePosition(fifaCandidate.position) : null;
+        const fifaPosition = fifaCandidate?.clubSource ? normalizeHistoricalPosition(fifaCandidate.position) : null;
         if (positionMatches) {
           item.positionMatches++;
         } else {
@@ -220,15 +220,32 @@ for (const [year, config] of Object.entries(sources)) {
       await writeFile("artifacts/historical-club-candidates.json", JSON.stringify(candidates, null, 2) + "\n");
     }
   } catch (error) {
+    const message = String(error);
+    const sourceUnavailable = /Wikipedia HTTP \d+|fetch failed|ENOTFOUND|ECONN|ETIMEDOUT|EAI_AGAIN|AbortError|timed out|timeout|aborted/i.test(message);
+    if (!sourceUnavailable) throw error;
     yearReport.sourceStatus = "unavailable";
-    yearReport.sourceError = String(error);
+    yearReport.sourceError = message;
+    yearReport.teams = teams.map(team => ({
+      teamId: team.id, teamName: team.name, planetSource: null,
+      planetSourceStatus: "unavailable", planetSourceError: message,
+      wikipediaPlayerCount: 0, planetPlayerCount: 0,
+      datasetPlayerCount: (team.players || []).length, matchedPlayers: 0,
+      clubMatches: 0, clubMismatches: [], positionMatches: 0,
+      positionMismatches: [], fifaPdfCandidatePlayers: 0, fifaPdfCandidateMatches: 0,
+      fifaPdfCandidateMismatches: [], mismatches: [{ field: "source_unavailable", reason: message }],
+      playerChecks: [], clubsAssigned: 0, rosterClean: false, clubsClean: false,
+      positionsClean: false, fifaPdfAgreement: "unavailable",
+      independentArchivesAgree: false, fullyCrossChecked: false,
+      verificationLevel: "not verified"
+    }));
     yearReport.summary = {
       expectedTeams: 32, parsedWikipediaTeams: 0, planetPagesAvailable: 0,
       teamsWith23WikipediaPlayers: 0, teamsWith23PlanetPlayers: 0,
       independentArchivesAgreeTeams: 0, fullyCrossCheckedTeams: 0,
       teamsWithCompleteFifaPdfComparison: 0, matchedPlayers: 0,
       clubMatches: 0, clubMismatches: 0, positionMismatches: 0,
-      fifaPdfCandidateMismatches: 0, unresolvedMismatches: 0, clubCandidatesAssigned: 0
+      fifaPdfCandidateMismatches: 0, unresolvedMismatches: 32,
+      clubCandidatesAssigned: 0
     };
   }
   report.tournaments[year] = yearReport;

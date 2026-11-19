@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parseWikipediaSquads, normalizeHistoricalClub } from "../scripts/historical-wikipedia-squads.mjs";
+import { parseWikipediaSquads, normalizeHistoricalClub, normalizeHistoricalPosition } from "../scripts/historical-wikipedia-squads.mjs";
 
 test("parses team headings, squad numbers, positions, names and tournament clubs", () => {
   const teams = [{ id: "denmark-2002", name: "Denmark" }, { id: "china-2002", name: "China" }];
@@ -97,4 +97,12 @@ test("normalizes documented historical club aliases without merging ambiguous Ol
   ];
   for(const [a,b] of equivalent)assert.equal(normalizeHistoricalClub(a),normalizeHistoricalClub(b),a+" / "+b);
   assert.notEqual(normalizeHistoricalClub("Olimpia Tegucigalpa"),normalizeHistoricalClub("Olimpia Asuncion"));
+});
+
+
+test("normalizes historical position codes consistently", () => {
+  assert.equal(normalizeHistoricalPosition(" md "), "MF");
+  assert.equal(normalizeHistoricalPosition("GK"), "GK");
+  assert.equal(normalizeHistoricalPosition("df"), "DF");
+  assert.equal(normalizeHistoricalPosition("FW"), "FW");
 });

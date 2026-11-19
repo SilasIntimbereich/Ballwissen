@@ -2,6 +2,11 @@ const normalize = value => String(value || "")
   .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
   .toLowerCase().replace(/[^a-z0-9]/g, "");
 
+export function normalizeHistoricalPosition(value) {
+  const position = String(value || "").trim().toUpperCase().replace(/[^A-Z]/g, "");
+  return position === "MD" ? "MF" : position;
+}
+
 const teamAliases = {
   chinapr: "china",
   korearepublic: "southkorea",
