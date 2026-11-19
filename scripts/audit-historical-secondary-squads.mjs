@@ -81,7 +81,10 @@ for (const [year, config] of Object.entries(sources)) {
           planetRows = parsePlanetWorldCupSquad(await decodePlanetWorldCupResponse(planetResponse));
           planetStatus = planetRows.length ? "available" : "parsed_no_players";
         } catch (error) {
-          planetError = String(error);
+          const message = String(error);
+          const sourceUnavailable = /HTTP \d+|fetch failed|ENOTFOUND|ECONN|ETIMEDOUT|EAI_AGAIN|AbortError|timed out|timeout|aborted/i.test(message);
+          if (!sourceUnavailable) throw error;
+          planetError = message;
         }
       }
 
