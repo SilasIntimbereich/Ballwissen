@@ -31,11 +31,11 @@ The latest reproducible audit covers 160 teams across 2006, 2010, 2014, 2018 and
 | Tournament | Teams roster-clean / ledger-verified | Fully audited teams | Remaining roster mismatches |
 |---|---:|---:|---:|
 | 2006 | 32 / 32 (ledger) | 32 | 0 |
-| 2010 | 15 / 32 | 9 | 31 |
+| 2010 | 15 / 32 | 10 | 31 |
 | 2014 | 11 / 32 | 1 | 61 |
 | 2018 | 10 / 32 | 6 | 108 |
 | 2022 | 32 / 32 | 21 | 0 |
-| **Total** | **100 / 160** | **69 / 160** | **200** |
+| **Total** | **100 / 160** | **70 / 160** | **200** |
 
 The 2014 and 2018 PDF layouts require different parsers; split club/country cells in the 2018 PDF are joined before comparison. Remaining mismatches are reported, not silently aliased or overwritten. FIFA positions remain authoritative when present.
 
