@@ -1,0 +1,10 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "ballwissen",
+  "compatibility_date": "2026-11-19",
+  "assets": {
+    "directory": "./dist"
+  },
+  // Required by `wrangler preview`; keep this block even when no preview overrides are needed.
+  "previews": {}
+}

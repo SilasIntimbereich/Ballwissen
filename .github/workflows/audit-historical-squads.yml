@@ -5,34 +5,113 @@ on:
     paths:
       - "data/historical-squads.json"
       - "scripts/audit-historical-fifa-pdfs.mjs"
+      - "scripts/historical-pdf-heading.mjs"
+      - "scripts/historical-fifa-row-parser.mjs"
+      - "scripts/historical-player-name-match.mjs"
+      - "scripts/audit-2002-rosters.mjs"
+      - "scripts/historical-fifa-roster-2002.mjs"
+      - "scripts/audit-2002-fifa-rosters.mjs"
+      - "scripts/audit-2022-independent-clubs.mjs"
+      - "scripts/independent-player-comparison.mjs"
+      - "scripts/historical-wikipedia-squads.mjs"
+      - "scripts/audit-2002-clubs.mjs"
+      - "scripts/planet-world-cup-squad.mjs"
+      - "scripts/audit-historical-secondary-squads.mjs"
+      - "scripts/apply-verified-historical-clubs.mjs"
+      - "scripts/source-url-validation.mjs"
+      - "scripts/verified-roster-ledger.mjs"
+      - ".github/workflows/audit-historical-squads.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "data/historical-squads.json"
+      - "scripts/audit-historical-fifa-pdfs.mjs"
+      - "scripts/historical-pdf-heading.mjs"
+      - "scripts/historical-fifa-row-parser.mjs"
+      - "scripts/historical-player-name-match.mjs"
+      - "scripts/audit-2002-rosters.mjs"
+      - "scripts/historical-fifa-roster-2002.mjs"
+      - "scripts/audit-2002-fifa-rosters.mjs"
+      - "scripts/audit-2022-independent-clubs.mjs"
+      - "scripts/independent-player-comparison.mjs"
+      - "scripts/historical-wikipedia-squads.mjs"
+      - "scripts/audit-2002-clubs.mjs"
+      - "scripts/planet-world-cup-squad.mjs"
+      - "scripts/audit-historical-secondary-squads.mjs"
+      - "scripts/apply-verified-historical-clubs.mjs"
+      - "scripts/source-url-validation.mjs"
+      - "scripts/verified-roster-ledger.mjs"
       - ".github/workflows/audit-historical-squads.yml"
   schedule:
     - cron: "41 5 * * 1"
   workflow_dispatch:
+
+# Prevent overlapping audits from racing while they update the PR branch.
+concurrency:
+  group: historical-squad-audit-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
 jobs:
   audit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref }}
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
-      - name: Install PDF parser
-        run: npm install --no-save pdfjs-dist@^5.4.394
-      - name: Compare 160 squads with FIFA final PDFs
-        run: node scripts/audit-historical-fifa-pdfs.mjs
-      - name: Commit audit report and club candidates
-        if: always()
+      - name: Install PDF parser in isolation
         run: |
-          if [ -f artifacts/historical-fifa-audit.json ] && [ -f artifacts/historical-club-candidates.json ]; then
+          mkdir -p "$RUNNER_TEMP/pdf-parser"
+          npm install --prefix "$RUNNER_TEMP/pdf-parser" --no-save --package-lock=false pdfjs-dist@5.4.394
+          ln -s "$RUNNER_TEMP/pdf-parser/node_modules" "$GITHUB_WORKSPACE/node_modules"
+      - name: Audit 160 squads using FIFA PDFs and the existing verified ledger
+        run: node scripts/audit-historical-fifa-pdfs.mjs
+      - name: Cross-check 2022 club affiliations against an independent squad archive
+        run: node scripts/audit-2022-independent-clubs.mjs
+      - name: Cross-check 2002 squads against RSSSF
+        run: node scripts/audit-2002-rosters.mjs
+      - name: Supplementary check against the third-party 24 May 2002 roster reproduction
+        run: node scripts/audit-2002-fifa-rosters.mjs
+      - name: Cross-check 2002 tournament clubs against squad archive
+        run: node scripts/audit-2002-clubs.mjs
+      - name: Cross-check 2010, 2014 and 2018 squads and clubs against independent archives
+        run: node scripts/audit-historical-secondary-squads.mjs
+      - name: Apply only fully cross-checked historical club data
+        run: node scripts/apply-verified-historical-clubs.mjs
+      - name: Validate data after verified club updates
+        run: npm test
+      - name: Commit verified club updates to pull request branch
+        if: github.event_name == 'pull_request' && success()
+        run: |
+          if ! git diff --quiet -- data/historical-squads.json data/roster-audit.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/historical-squads.json data/roster-audit.json
+            git commit -m "Apply independently verified historical club data"
+            git fetch origin "${GITHUB_HEAD_REF}"
+            git rebase "origin/${GITHUB_HEAD_REF}"
+            git push origin "HEAD:${GITHUB_HEAD_REF}"
+          fi
+      - name: Commit audit report and club candidates
+        if: github.event_name == 'push' && always()
+        run: |
+          if [ -f artifacts/historical-fifa-audit.json ] && [ -f artifacts/historical-club-candidates.json ] && [ -f artifacts/2002-roster-audit.json ] && [ -f artifacts/2002-fifa-roster-audit.json ] && [ -f artifacts/2022-independent-club-audit.json ] && [ -f artifacts/2002-club-audit.json ] && [ -f artifacts/historical-secondary-squad-audit.json ] && [ -f artifacts/verified-historical-club-application.json ]; then
             mkdir -p reports
             cp artifacts/historical-fifa-audit.json reports/historical-fifa-audit.json
             cp artifacts/historical-club-candidates.json reports/historical-club-candidates.json
+            cp artifacts/2002-roster-audit.json reports/2002-roster-audit.json
+            cp artifacts/2002-fifa-roster-audit.json reports/2002-fifa-roster-audit.json
+            cp artifacts/2022-independent-club-audit.json reports/2022-independent-club-audit.json
+            cp artifacts/2002-club-audit.json reports/2002-club-audit.json
+            cp artifacts/historical-secondary-squad-audit.json reports/historical-secondary-squad-audit.json
+            cp artifacts/verified-historical-club-application.json reports/verified-historical-club-application.json
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add reports/historical-fifa-audit.json reports/historical-club-candidates.json
+            git add reports/historical-fifa-audit.json reports/historical-club-candidates.json reports/2002-roster-audit.json reports/2002-fifa-roster-audit.json reports/2022-independent-club-audit.json reports/2002-club-audit.json reports/historical-secondary-squad-audit.json reports/verified-historical-club-application.json
             if ! git diff --cached --quiet; then
               git commit -m "Update historical FIFA squad audit report"
               git pull --rebase origin main
@@ -41,11 +120,17 @@ jobs:
           fi
       - name: Upload full audit artifacts
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: historical-fifa-roster-audit
           path: |
             artifacts/historical-fifa-audit.json
             artifacts/historical-club-candidates.json
+            artifacts/2002-roster-audit.json
+            artifacts/2002-fifa-roster-audit.json
+            artifacts/2022-independent-club-audit.json
+            artifacts/2002-club-audit.json
+            artifacts/historical-secondary-squad-audit.json
+            artifacts/verified-historical-club-application.json
           if-no-files-found: warn
           retention-days: 30

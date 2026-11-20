@@ -1,4 +1,6 @@
 import { readFile } from "node:fs/promises";
+import { hasIndependentHttpsSources } from "./source-url-validation.mjs";
+import { isVerifiedPlayerSourceName } from "./verified-roster-ledger.mjs";
 const read = async path => JSON.parse(await readFile(path, "utf8"));
 const fail = message => { throw new Error(message); };
 const positions = new Set(["GK", "DF", "MF", "FW"]);
@@ -181,7 +183,7 @@ for (const [teamId, record] of Object.entries(audit.teams)) {
   if (record.status !== "verified") continue;
   const team = allTeamsById.get(teamId);
   if (!team) fail("Audit ledger marks an unknown team verified: " + teamId);
-  if (record.tournament !== team.year || record.teamNameInDataset !== team.name || !String(record.teamNameInFifaPdf || "").trim())
+  if (record.tournament !== team.year || record.teamNameInDataset !== team.name || !String(record.teamNameInFifaPdf || record.teamNameInPrimarySource || "").trim())
     fail("Verified audit tournament/team identity metadata mismatch: " + teamId);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(record.reviewedAt || ""))
     fail("Verified audit requires an ISO review date: " + teamId);
@@ -198,20 +200,16 @@ for (const [teamId, record] of Object.entries(audit.teams)) {
     const row = record.players.find(r => Number(r.number) === Number(player.number) && normalize(r.playerName) === normalize(player.name));
     if (!row || !["matched", "corrected"].includes(row.status) || !String(row.sourceName || "").trim())
       fail("Verified audit contains missing/unresolved player or source name: " + teamId + " / " + player.name);
-    const sourceTokens = String(row.sourceName).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
-    const playerTokens = String(player.name).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
-    const explicitAlias = (row.sourceNameAliases || []).some(alias => normalize(alias) === normalize(player.name));
-    if (!explicitAlias && !playerTokens.some(token => sourceTokens.includes(token)))
-      fail("Audit source name does not match the player or a documented alias: " + teamId + " / " + player.name);
+    if (!isVerifiedPlayerSourceName(player, row, record))
+      fail("Audit source name does not match the player or a documented evidence-backed alias: " + teamId + " / " + player.name);
     if (row.position !== player.position)
       fail("Verified audit position mismatch: " + teamId + " / " + player.name);
     if (!Object.hasOwn(row, "clubAtTournament") || (row.clubAtTournament ?? null) !== (player.club ?? null))
       fail("Verified audit club mismatch: " + teamId + " / " + player.name);
     const primary = row.primarySource || record.primarySource;
     const secondary = row.secondarySource || record.secondarySource;
-    if (![primary, secondary].every(value => {
-      try { return new URL(value).protocol === "https:"; } catch { return false; }
-    })) fail("Verified audit requires primary and secondary HTTPS sources: " + teamId + " / " + player.name);
+    if (!hasIndependentHttpsSources([primary, secondary]))
+      fail("Verified audit requires two independent HTTPS source hosts: " + teamId + " / " + player.name);
   }
 }
 const secureRosterMigration = await readText("supabase/migrations/202611160004_secure_public_rosters.sql");
