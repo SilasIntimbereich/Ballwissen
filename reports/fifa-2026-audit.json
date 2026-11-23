@@ -3,7 +3,7 @@
   "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
   "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
   "pages": 48,
-  "generatedAt": "2026-11-17T15:51:36.195Z",
+  "generatedAt": "2026-11-23T15:57:15.352Z",
   "teams": [
     {
       "page": 1,
@@ -12688,7 +12688,7 @@
           "club": "'[data-taboola-div]'"
         },
         {
-          "player": "var i = 0; i \n if",
+          "player": "var i = 0; i \n \n if",
           "field": "extra_nbc_player",
           "position": "FW",
           "club": "window.mps"
