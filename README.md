@@ -24,6 +24,23 @@ All games are local and unranked. Because answers are bundled for offline play, 
 
 The 2022 Iran squad contains 25 players in the source data; this is not padded with an invented player. Historical squads and 2026 squads are not presented as independently verified where the audit has not been completed.
 
+## Historical audit snapshot
+
+The latest reproducible audit covers 160 teams across 2006, 2010, 2014, 2018 and 2022. It parsed 128 FIFA PDF pages for 2010, 2014, 2018 and 2022; the 32 teams from 2006 are carried forward from a previously complete verified ledger because the FIFA PDF host currently returns HTTP 522. A roster-clean result means every shirt-numbered player identity matches the source dataset; a fully audited result additionally passes the independent-source and club-evidence rules.
+
+| Tournament | Teams roster-clean / ledger-verified | Fully audited teams | Remaining roster mismatches |
+|---|---:|---:|---:|
+| 2006 | 32 / 32 (ledger) | 32 | 0 |
+| 2010 | 15 / 32 | 10 | 31 |
+| 2014 | 11 / 32 | 1 | 61 |
+| 2018 | 10 / 32 | 6 | 108 |
+| 2022 | 32 / 32 | 21 | 0 |
+| **Total** | **100 / 160** | **70 / 160** | **200** |
+
+The 2014 and 2018 PDF layouts require different parsers; split club/country cells in the 2018 PDF are joined before comparison. Remaining mismatches are reported, not silently aliased or overwritten. FIFA positions remain authoritative when present.
+
+The separate 2002 audit parsed all 32 squads against RSSSF: 19 teams matched fully by player identity, and two teams also achieved complete agreement across the independent club sources. A supplementary May 24, 2002 FIFA roster reproduction parsed 32 teams, but only four matched fully; because it predates late replacements, it is not treated as final-squad authority. The independent archive audit for 2010, 2014 and 2018 reviewed all 96 teams; seven passed complete player, club and position checks (four in 2010, none in 2014, three in 2018). The 2022 independent club audit resolves all 32 teams from GOAL's updated squad tables; Poland and Switzerland pass complete player-and-club comparison. Canada's table has no club column, so it is not counted as fully cross-checked. The supplementary cross-check and data-application pass approved 11 teams for new updates and changed 26 player rows; two later club-name spelling corrections were normalized. This count is distinct from the 70/160 fully audited total, which also includes previously verified ledger entries such as the 32 teams from 2006. Only complete, independently supported teams are applied to the verification ledger.
+
 ## Run and validate
 
 Requirements: Node.js 20 or newer.
@@ -43,7 +60,7 @@ npx playwright install --with-deps chromium webkit
 npm run test:browser
 ~~~
 
-The browser suite checks the mobile layout, all tournament/team selectors, Easy, Hard, Practice, all Daily tiers, Give Up, timeout, results, local statistics, settings and a cold offline reload. GitHub Actions runs these checks on changes to main and the V4 branch.
+The browser suite runs on Chromium and WebKit. It checks the mobile layout, all tournament/team selectors, Easy, Hard, Practice, all Daily tiers, Give Up, timeout, results, local statistics, settings and a cold offline reload. GitHub Actions runs these checks on changes to main and the V4 branch.
 
 ## Build and publish
 

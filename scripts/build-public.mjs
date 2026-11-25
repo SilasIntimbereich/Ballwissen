@@ -1,4 +1,6 @@
 import { assignRosterRarities } from "../assets/js/rarity.js";
+import { hasIndependentHttpsSources } from "./source-url-validation.mjs";
+import { isVerifiedPlayerSourceName } from "./verified-roster-ledger.mjs";
 import { cp, mkdir, readFile, rm, writeFile, stat } from "node:fs/promises";
 
 const readJson = async path => JSON.parse(await readFile(path, "utf8"));
@@ -15,7 +17,7 @@ const verified = team => {
   const record = audit.teams?.[team.id];
   if (!record || record.status !== "verified") return false;
   if (record.tournament !== team.year || record.teamNameInDataset !== team.name ||
-      !String(record.teamNameInFifaPdf || "").trim() || !/^\d{4}-\d{2}-\d{2}$/.test(record.reviewedAt || ""))
+      !String(record.teamNameInFifaPdf || record.teamNameInPrimarySource || "").trim() || !/^\d{4}-\d{2}-\d{2}$/.test(record.reviewedAt || ""))
     throw new Error("Verified audit metadata is incomplete: " + team.id);
   if (!Array.isArray(record.players) || record.players.length !== (team.players || []).length)
     throw new Error("Verified audit row count mismatch: " + team.id);
@@ -24,13 +26,10 @@ const verified = team => {
   for (const player of team.players || []) {
     const row = record.players.find(item => Number(item.number) === Number(player.number) && normalize(item.playerName) === normalize(player.name));
     const sources = [row?.primarySource || record.primarySource, row?.secondarySource || record.secondarySource];
-    const sourceTokens = String(row?.sourceName || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
-    const playerTokens = String(player.name || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
-    const explicitAlias = (row?.sourceNameAliases || []).some(alias => normalize(alias) === normalize(player.name));
-    if (!row || !["matched","corrected"].includes(row.status) || !String(row.sourceName || "").trim() ||
-        (!explicitAlias && !playerTokens.some(token => sourceTokens.includes(token))) ||
+    if (!row || !["matched","corrected"].includes(row.status) ||
+        !isVerifiedPlayerSourceName(player, row, record) ||
         row.position !== player.position || (row.clubAtTournament ?? null) !== (player.club ?? null) ||
-        !sources.every(source => { try { return new URL(source).protocol === "https:"; } catch { return false; } }))
+        !hasIndependentHttpsSources(sources))
       throw new Error("Verified audit has an unresolved or incomplete player row: " + team.id + " / " + player.name);
   }
   return true;

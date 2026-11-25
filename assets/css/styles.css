@@ -684,3 +684,57 @@ body.ball-knowledge-hit .game-head{border-color:#ff8e9e;box-shadow:0 0 0 3px #f7
 @media(max-width:650px){.rarity-alert{margin:8px 0 10px;min-height:54px;padding:8px 9px;gap:8px}.rarity-alert-copy b{font-size:17px}.rarity-alert-copy strong,.rarity-alert>small{font-size:6px}.rarity-alert-icon{font-size:20px}.rarity-alert.rarity-ball-knowledge{min-height:68px}}
 @media(prefers-reduced-motion:reduce){.rarity-alert.is-active,.rarity-alert.rarity-ball-knowledge,.rarity-alert.rarity-ball-knowledge:before,.rarity-alert.rarity-ball-knowledge:after,.rarity-alert.rarity-ball-knowledge .rarity-alert-icon,body.ball-knowledge-hit .stadium{animation:none!important}}
 body.reduce-motion .rarity-alert.is-active,body.reduce-motion .rarity-alert.rarity-ball-knowledge,body.reduce-motion .rarity-alert.rarity-ball-knowledge:before,body.reduce-motion .rarity-alert.rarity-ball-knowledge:after,body.reduce-motion .rarity-alert.rarity-ball-knowledge .rarity-alert-icon{animation:none!important}
+
+
+/* V5 finish: translucent pixel-cabinet controls, crisp edges, no button gradients. */
+.mode-card,.mode-card:nth-child(n){
+  background-image:none!important;
+  background-color:rgba(26,77,70,.84)!important;
+  border:2px solid rgba(255,244,213,.78)!important;
+  border-radius:2px!important;
+  box-shadow:4px 4px 0 rgba(3,15,13,.9),inset 0 1px 0 rgba(255,255,255,.25)!important;
+  backdrop-filter:blur(7px) saturate(1.12)!important;
+  -webkit-backdrop-filter:blur(7px) saturate(1.12)!important;
+}
+.mode-card:nth-child(1){background-color:rgba(23,105,125,.84)!important}
+.mode-card:nth-child(2){background-color:rgba(83,63,128,.86)!important}
+.mode-card:nth-child(3){background-color:rgba(137,59,62,.88)!important}
+.mode-card:nth-child(4){background-color:rgba(36,104,68,.87)!important}
+.mode-card:nth-child(5){background-color:rgba(163,79,42,.88)!important}
+.mode-card:before{display:block!important;inset:0 0 auto auto;width:8px;height:8px;background:#fff0c0!important;opacity:.8}
+.mode-card:after{height:4px!important;background:#f1d36d!important}
+.mode-card:nth-child(1):after{background:#68d7d1!important}
+.mode-card:nth-child(2):after{background:#c4a1ee!important}
+.mode-card:nth-child(3):after{background:#f1d36d!important}
+.mode-card:nth-child(4):after{background:#9bdc83!important}
+.mode-card:nth-child(5):after{background:#ef9a56!important}
+.mode-card:hover,.mode-card:focus-visible{filter:brightness(1.16)!important;transform:translate(-2px,-2px)!important;box-shadow:6px 6px 0 rgba(3,15,13,.92),0 0 0 2px rgba(255,244,213,.2),inset 0 1px 0 rgba(255,255,255,.35)!important}
+.mode-card:active{transform:translate(2px,2px)!important;box-shadow:2px 2px 0 rgba(3,15,13,.9)!important}
+.utility-card,.utility-card.practice,.utility-card.tournament,.utility-card.stats-link,.utility-card.settings-link{
+  background-image:none!important;background-color:rgba(14,48,48,.82)!important;
+  border:1px solid rgba(255,244,213,.58)!important;border-radius:2px!important;
+  box-shadow:4px 4px 0 rgba(3,15,13,.84),inset 0 1px 0 rgba(255,255,255,.18)!important;
+  backdrop-filter:blur(7px) saturate(1.1);-webkit-backdrop-filter:blur(7px) saturate(1.1);
+}
+.utility-card.practice{background-color:rgba(25,91,108,.84)!important}
+.utility-card.tournament{background-color:rgba(112,54,65,.86)!important}
+.utility-card.stats-link{background-color:rgba(75,61,113,.86)!important}
+.utility-card.settings-link{background-color:rgba(124,71,40,.86)!important}
+.utility-card:hover,.utility-card:focus-visible{transform:translate(-2px,-2px);filter:brightness(1.14);box-shadow:6px 6px 0 rgba(3,15,13,.9),0 0 0 2px rgba(255,244,213,.16)!important}
+.back,.team-button,.guess-form button,.primary-btn,.give-up,.secondary-action,.timer{
+  background-image:none!important;border-radius:2px!important;
+  border:2px solid rgba(255,244,213,.72)!important;
+  box-shadow:3px 3px 0 rgba(3,15,13,.88),inset 0 1px 0 rgba(255,255,255,.2)!important;
+}
+.back,.team-button{background-color:rgba(20,61,55,.88)!important;color:#fff4d5}
+.guess-form button,.primary-btn,.timer{background-color:#f1d36d!important;color:#142b25!important;border-color:#fff0bd!important}
+.give-up,.secondary-action{background-color:rgba(111,43,55,.9)!important;color:#fff1e8}
+.player-card{background-color:rgba(9,39,44,.86)!important;border:1px solid rgba(255,244,213,.4)!important;border-radius:2px!important}
+.player-card.found{background-color:rgba(24,103,70,.92)!important}
+.player-card.missed{background-color:rgba(105,47,55,.92)!important}
+.stadium{image-rendering:pixelated}
+.crowd{background-size:13px 11px,19px 15px,23px 17px,29px 21px,112px 100%!important}
+@media(max-width:650px){
+ .mode-card,.mode-card:nth-child(n){backdrop-filter:blur(5px) saturate(1.08)!important;-webkit-backdrop-filter:blur(5px) saturate(1.08)!important}
+ .utility-card{backdrop-filter:blur(5px) saturate(1.08);-webkit-backdrop-filter:blur(5px) saturate(1.08)}
+}
