@@ -14,38 +14,54 @@ function tierFor(teamName, difficulty) {
   return "niche";
 }
 
-// Server and browser use the exact same team-aware rarity algorithm.
-// Team ID is part of the lookup because one player can have different recall difficulty across squads.
-export function createPlayerRarityResolver(historical, worldCup2026, difficulty) {
+// The audit ledger is the single source of truth for whether a squad may receive a rarity.
+export function createPlayerRarityResolver(historical, worldCup2026, difficulty, audit = { teams: {} }) {
   const rosters = { teams: [] };
   const metadata = [];
+  const verifiedIds = new Set();
+
   for (const [year, teams] of Object.entries(historical?.tournaments || {})) {
     for (const team of teams) {
       const id = team.id || (slug(team.name) + "-" + year);
       rosters.teams.push({ id, players: (team.players || []).map(player => ({ ...player })) });
-      metadata.push({ id, year: Number(year), teamDifficulty: team.teamDifficulty || tierFor(team.name, difficulty) });
+      const verified = audit?.teams?.[id]?.status === "verified";
+      if (verified) verifiedIds.add(id);
+      metadata.push({ id, year: Number(year), verified, teamDifficulty: team.teamDifficulty || tierFor(team.name, difficulty) });
     }
   }
+
   const grouped2026 = new Map();
   for (const player of worldCup2026?.players || []) {
     const teamName = player.team;
     if (!grouped2026.has(teamName)) grouped2026.set(teamName, []);
-    grouped2026.get(teamName).push({ name: player.name || player.player, position: player.position || player.pos, number: player.number, aliases: player.aliases || [] });
+    grouped2026.get(teamName).push({
+      name: player.name || player.player,
+      position: player.position || player.pos,
+      number: player.number,
+      aliases: player.aliases || []
+    });
   }
   for (const [teamName, players] of grouped2026) {
     const id = teamIdFor2026(teamName);
     rosters.teams.push({ id, players });
-    metadata.push({ id, year: 2026, teamDifficulty: tierFor(teamName, difficulty) });
+    const verified = audit?.teams?.[id]?.status === "verified";
+    if (verified) verifiedIds.add(id);
+    metadata.push({ id, year: 2026, verified, teamDifficulty: tierFor(teamName, difficulty) });
   }
+
   assignRosterRarities(rosters, { teams: metadata });
   const byTeamAndName = new Map();
   for (const team of rosters.teams) {
-    for (const player of team.players) byTeamAndName.set(team.id + "|" + normalizePlayerName(player.name), player.rarity);
+    for (const player of team.players) {
+      if (player.rarity) byTeamAndName.set(team.id + "|" + normalizePlayerName(player.name), player.rarity);
+    }
   }
+
   return (player, teamId) => {
+    if (!verifiedIds.has(teamId)) return null;
     const key = teamId + "|" + normalizePlayerName(player.name || player.player);
     const rarity = byTeamAndName.get(key);
-    if (!rarity) throw new Error("No shared rarity assignment for " + key);
+    if (!rarity) throw new Error("No rarity assignment for verified player " + key);
     return rarity;
   };
 }
