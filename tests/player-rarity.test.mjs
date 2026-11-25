@@ -1,136 +1,79 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import {readFile} from "node:fs/promises";
 import {assignRosterRarities,rarityFromEvidence} from "../assets/js/rarity.js";
-import {createPlayerRarityResolver,teamIdFor2026} from "../scripts/player-rarity.mjs";
 
-test("evidence scoring recognises an internationally established player",()=>{
- assert.equal(rarityFromEvidence({caps:100,majorAwards:5,globalRecognition:5,clubProfile:5}),"Common");
+const meta = teams => ({teams});
+
+test("rarity is based on popularity evidence only",()=>{
+  assert.equal(rarityFromEvidence({globalRecognition:5}),"Common");
+  assert.equal(rarityFromEvidence({globalRecognition:4}),"Rare");
+  assert.equal(rarityFromEvidence({globalRecognition:3}),"Niche");
+  assert.equal(rarityFromEvidence({globalRecognition:2}),"Legendary");
+  assert.equal(rarityFromEvidence({globalRecognition:0}),"Ball Knowledge");
 });
 
-test("team-aware rarity follows the collection-wide target curve and keeps France 2018 familiar",async()=>{
- const [publicData,rosters]=await Promise.all([
-  readFile("dist/data/public-teams.json","utf8").then(JSON.parse),
-  readFile("dist/data/practice-rosters.json","utf8").then(JSON.parse)
- ]);
- assignRosterRarities(rosters,publicData);
- const all=rosters.teams.flatMap(team=>team.players);
- const counts=Object.fromEntries(["Common","Rare","Niche","Legendary","Ball Knowledge"].map(tier=>[tier,all.filter(player=>player.rarity===tier).length]));
- assert.equal(all.length,5759);
- assert.deepEqual(counts,{
-  Common:2533,
-  Rare:1353,
-  Niche:1153,
-  Legendary:480,
-  "Ball Knowledge":240
- });
- for(const team of rosters.teams){
-  const elite=team.players.filter(player=>["Legendary","Ball Knowledge"].includes(player.rarity));
-  assert.equal(elite.length,3,team.id+" must have exactly three squad-specific elite picks");
-  assert.equal(elite.filter(player=>player.rarity==="Ball Knowledge").length,1);
-  assert.equal(elite.filter(player=>player.rarity==="Legendary").length,2);
-  const niche=team.players.filter(player=>player.rarity==="Niche").length;
-  const rare=team.players.filter(player=>player.rarity==="Rare").length;
-  const nonCommon=team.players.filter(player=>player.rarity!=="Common").length;
-  if(nonCommon>=11){
-   assert.ok(niche>=3,team.id+" must have at least three Niche players when enough candidates exist");
-   assert.ok(rare>=5,team.id+" must have at least five Rare players when enough candidates exist");
-  }
- }
- const france=rosters.teams.find(team=>team.id==="france-2018");
- const famousFrancePlayers=["Hugo Lloris","Raphaël Varane","Paul Pogba","Antoine Griezmann","Olivier Giroud","Kylian Mbappé","Ousmane Dembélé","N'Golo Kanté","Steve Mandanda"];
- for(const name of famousFrancePlayers){
-  assert.equal(france.players.find(player=>player.name===name)?.rarity,"Common",name+" must remain protected as Common");
- }
- assert.ok(france.players.filter(player=>player.rarity==="Niche").length>=3);
- assert.ok(france.players.filter(player=>player.rarity==="Rare").length>=5);
+test("verified World Cup appearances determine rarity across tournaments",()=>{
+  const rosters={teams:[
+    {id:"one",players:[{name:"Rising Player",number:1,position:"GK"}]},
+    {id:"two",players:[{name:"Rising Player",number:99,position:"FW"}]},
+    {id:"three",players:[{name:"Global Star",number:2,position:"DF"}]},
+    {id:"four",players:[{name:"Global Star",number:27,position:"GK"}]},
+    {id:"five",players:[{name:"Global Star",number:8,position:"MF"}]}
+  ]};
+  assignRosterRarities(rosters,meta([
+    {id:"one",year:2006,verified:true,teamDifficulty:"legendary"},
+    {id:"two",year:2010,verified:true,teamDifficulty:"common"},
+    {id:"three",year:2014,verified:true,teamDifficulty:"niche"},
+    {id:"four",year:2018,verified:true,teamDifficulty:"legendary"},
+    {id:"five",year:2022,verified:true,teamDifficulty:"common"}
+  ]));
+  assert.equal(rosters.teams[0].players[0].rarity,"Rare");
+  assert.equal(rosters.teams[1].players[0].rarity,"Rare");
+  assert.ok(rosters.teams.slice(2).every(team=>team.players[0].rarity==="Common"));
 });
 
-test("Supabase resolver uses the same team-aware rarity algorithm as the browser",async()=>{
- const [historical,worldCup2026,difficulty]=await Promise.all([
-  readFile("data/historical-squads.json","utf8").then(JSON.parse),
-  readFile("data/worldcup-2026.json","utf8").then(JSON.parse),
-  readFile("data/team-difficulty.json","utf8").then(JSON.parse)
- ]);
- const resolve=createPlayerRarityResolver(historical,worldCup2026,difficulty);
- const france2018=historical.tournaments["2018"].find(team=>team.name==="France");
- assert.equal(resolve({name:"Kylian Mbappé"},france2018.id),"Common");
- assert.equal(resolve({name:"Kylian Mbappé"},"france-2026"),"Common");
- let checked=0;
- for(const [year,teams] of Object.entries(historical.tournaments||{})){
-  for(const team of teams) for(const player of team.players||[]){
-   assert.ok(["Common","Rare","Niche","Legendary","Ball Knowledge"].includes(resolve(player,team.id)));
-   checked++;
-  }
- }
- for(const player of worldCup2026.players||[]){
-  assert.ok(["Common","Rare","Niche","Legendary","Ball Knowledge"].includes(resolve(player,teamIdFor2026(player.team))));
-  checked++;
- }
- assert.ok(checked>5700);
+test("shirt number, position and team difficulty do not change a player's rarity",()=>{
+  const first={id:"a",players:[{name:"One Tournament Player",number:1,position:"GK"}]};
+  const second={id:"b",players:[{name:"One Tournament Player",number:99,position:"FW"}]};
+  const rosters={teams:[first,second]};
+  assignRosterRarities(rosters,meta([
+    {id:"a",year:2018,verified:true,teamDifficulty:"common"},
+    {id:"b",year:2022,verified:true,teamDifficulty:"legendary"}
+  ]));
+  assert.equal(first.players[0].rarity,"Rare");
+  assert.equal(second.players[0].rarity,"Rare");
 });
 
-test("rarity curve scales proportionally and ranks the hardest-to-recall players highest",()=>{
- const teams=Array.from({length:100},(_,teamIndex)=>({
-  id:"team-"+String(teamIndex).padStart(3,"0"),
-  players:Array.from({length:teamIndex<50?62:61},(_,playerIndex)=>({
-   name:"Unknown "+teamIndex+" Player "+playerIndex,
-   number:playerIndex+1,
-   position:"FW"
-  }))
- }));
- const rosters={teams};
- const metadata={teams:teams.map(team=>({id:team.id,year:2000,teamDifficulty:"legendary"}))};
- assignRosterRarities(rosters,metadata);
- const all=teams.flatMap(team=>team.players);
- const counts=Object.fromEntries(["Common","Rare","Niche","Legendary","Ball Knowledge"].map(tier=>[
-  tier,all.filter(player=>player.rarity===tier).length
- ]));
- assert.equal(all.length,6150);
- assert.deepEqual(counts,{
-  Common:3174,
-  Rare:1445,
-  Niche:1231,
-  Legendary:200,
-  "Ball Knowledge":100
- });
- for(const team of teams){
-  assert.equal(team.players.filter(player=>player.rarity==="Ball Knowledge").length,1);
-  assert.equal(team.players.filter(player=>player.rarity==="Legendary").length,2);
- }
+test("unverified squads neither influence verified popularity nor get relabelled",()=>{
+  const rosters={teams:[
+    {id:"verified",players:[{name:"One Appearance Player",rarity:"old"}]},
+    {id:"practice",players:[{name:"One Appearance Player",rarity:"keep-this"}]}
+  ]};
+  assignRosterRarities(rosters,meta([
+    {id:"verified",year:2022,verified:true},
+    {id:"practice",year:2026,verified:false}
+  ]));
+  assert.equal(rosters.teams[0].players[0].rarity,"Niche");
+  assert.equal(rosters.teams[1].players[0].rarity,"keep-this");
 });
 
-test("rarity scoring clamps invalid evidence instead of producing unstable tiers",()=>{
- assert.equal(rarityFromEvidence({caps:Infinity,goals:-100,majorAwards:NaN,globalRecognition:0,clubProfile:0}),"Ball Knowledge");
+test("well-known players stay Common even with only one verified appearance",()=>{
+  const rosters={teams:[{id:"france-2018",players:[
+    {name:"Kylian Mbappé",number:10,position:"FW"},
+    {name:"N'Golo Kanté",number:13,position:"MF"}
+  ]}]};
+  assignRosterRarities(rosters,meta([{id:"france-2018",year:2018,verified:true}]));
+  assert.ok(rosters.teams[0].players.every(player=>player.rarity==="Common"));
 });
 
-test("counts transliterated spellings as the same player across tournaments",()=>{
- const rosters={teams:[
-  {id:"team-2006",players:[{name:"Kjær",position:"FW",number:9}]},
-  {id:"team-2010",players:[{name:"Kjaer",position:"FW",number:9}]},
-  {id:"team-2014",players:[{name:"Kjær",position:"FW",number:9}]}
- ]};
- const metadata={teams:[
-  {id:"team-2006",year:2006,teamDifficulty:"niche"},
-  {id:"team-2010",year:2010,teamDifficulty:"niche"},
-  {id:"team-2014",year:2014,teamDifficulty:"niche"}
- ]};
- assignRosterRarities(rosters,metadata);
- assert.ok(rosters.teams.every(team=>team.players[0].rarity==="Common"),
-  "All transliterated records must share the same three-tournament recognition history");
+test("transliterated names share their verified appearance history",()=>{
+  const rosters={teams:[
+    {id:"a",players:[{name:"Kjær"}]},
+    {id:"b",players:[{name:"Kjaer"}]}
+  ]};
+  assignRosterRarities(rosters,meta([
+    {id:"a",year:2006,verified:true},
+    {id:"b",year:2010,verified:true}
+  ]));
+  assert.ok(rosters.teams.every(team=>team.players[0].rarity==="Rare"));
 });
-
-
-test("small rosters do not invent elite tiers when the proportional quota rounds to zero",()=>{
- const rosters={teams:[{id:"small-legendary",players:[
-  {name:"Unknown Reserve",number:23,position:"FW"},
-  {name:"Lionel Messi",number:10,position:"FW"}
- ]}]};
- const metadata={teams:[{id:"small-legendary",year:2026,teamDifficulty:"legendary"}]};
- assignRosterRarities(rosters,metadata);
- assert.equal(rosters.teams[0].players.filter(player=>player.rarity==="Ball Knowledge").length,0);
- assert.equal(rosters.teams[0].players.filter(player=>player.rarity==="Legendary").length,0);
-});
-
-
-
