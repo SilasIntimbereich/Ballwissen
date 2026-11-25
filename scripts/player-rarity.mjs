@@ -1,8 +1,11 @@
 import { assignRosterRarities } from "../assets/js/rarity.js";
 
 export const normalizePlayerName = value => String(value || "")
+  .replace(/[æÆ]/g, "ae").replace(/[œŒ]/g, "oe").replace(/[øØ]/g, "o")
+  .replace(/[łŁ]/g, "l").replace(/[ßẞ]/g, "ss").replace(/[đĐðÐ]/g, "d")
+  .replace(/[þÞ]/g, "th").replace(/[ıİ]/g, "i")
   .normalize("NFKD").replace(/[\u0300-\u036f]/g, "")
-  .toLowerCase().replace(/[^a-z0-9]+/g, " ").trim().replace(/\s+/g, " ");
+  .toLowerCase().replace(/[’']/g, " ").replace(/[^a-z0-9]+/g, " ").trim().replace(/\s+/g, " ");
 
 const slug = value => normalizePlayerName(value).replace(/ /g, "-");
 export const teamIdFor2026 = teamName => slug(teamName) + "-2026";
