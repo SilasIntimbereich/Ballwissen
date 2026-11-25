@@ -15,7 +15,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Czech Republic",
       "teamNameInFifaPdf": "Czechia (CZE)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -23,7 +23,7 @@
       "players": [
         {
           "playerName": "Matěj Kovář",
-          "sourceName": "KOVAR Matej Matěj KOVÁŘ KOVÁŘ",
+          "sourceName": "KOVAR Matej Mat ě j KOVÁ Ř KOVÁ Ř",
           "sourceNameAliases": [
             "Matěj Kovář"
           ],
@@ -47,7 +47,7 @@
         },
         {
           "playerName": "Tomáš Holeš",
-          "sourceName": "HOLES Tomas Tomáš HOLEŠ HOLEŠ",
+          "sourceName": "HOLES Tomas Tomá š HOLE Š HOLE Š",
           "sourceNameAliases": [
             "Tomáš Holeš"
           ],
@@ -59,7 +59,7 @@
         },
         {
           "playerName": "Robin Hranáč",
-          "sourceName": "HRANAC Robin Robin HRANÁČ HRANÁČ",
+          "sourceName": "HRANAC Robin Robin HRANÁ Č HRANÁ Č",
           "sourceNameAliases": [
             "Robin Hranáč"
           ],
@@ -83,7 +83,7 @@
         },
         {
           "playerName": "Štěpán Chaloupek",
-          "sourceName": "CHALOUPEK Stepan Štěpán CHALOUPEK CHALOUPEK",
+          "sourceName": "CHALOUPEK Stepan Š t ě pán CHALOUPEK CHALOUPEK",
           "sourceNameAliases": [
             "Štěpán Chaloupek"
           ],
@@ -95,7 +95,7 @@
         },
         {
           "playerName": "Ladislav Krejčí",
-          "sourceName": "KREJCI Ladislav Ladislav KREJČÍ KREJČÍ",
+          "sourceName": "KREJCI Ladislav Ladislav KREJ Č Í KREJ Č Í",
           "sourceNameAliases": [
             "Ladislav Krejčí"
           ],
@@ -119,7 +119,7 @@
         },
         {
           "playerName": "Adam Hložek",
-          "sourceName": "HLOZEK Adam Adam HLOŽEK HLOŽEK",
+          "sourceName": "HLOZEK Adam Adam HLO Ž EK HLO Ž EK",
           "sourceNameAliases": [
             "Adam Hložek"
           ],
@@ -155,7 +155,7 @@
         },
         {
           "playerName": "Lukáš Červ",
-          "sourceName": "CERV Lukas Lukáš ČERV ČERV",
+          "sourceName": "CERV Lukas Luká š Č ERV Č ERV",
           "sourceNameAliases": [
             "Lukáš Červ"
           ],
@@ -191,7 +191,7 @@
         },
         {
           "playerName": "Pavel Šulc",
-          "sourceName": "SULC Pavel Pavel ŠULC ŠULC",
+          "sourceName": "SULC Pavel Pavel Š ULC Š ULC",
           "sourceNameAliases": [
             "Pavel Šulc"
           ],
@@ -203,7 +203,7 @@
         },
         {
           "playerName": "Jindřich Staněk",
-          "sourceName": "STANEK Jindrich Jindřich STANĚK STANĚK",
+          "sourceName": "STANEK Jindrich Jind ř ich STAN Ě K STAN Ě K",
           "sourceNameAliases": [
             "Jindřich Staněk"
           ],
@@ -215,7 +215,7 @@
         },
         {
           "playerName": "Lukáš Provod",
-          "sourceName": "PROVOD Lukas Lukáš PROVOD PROVOD",
+          "sourceName": "PROVOD Lukas Luká š PROVOD PROVOD",
           "sourceNameAliases": [
             "Lukáš Provod"
           ],
@@ -239,7 +239,7 @@
         },
         {
           "playerName": "Tomáš Chorý",
-          "sourceName": "CHORY Tomas Tomáš CHORÝ CHORÝ",
+          "sourceName": "CHORY Tomas Tomá š CHORÝ CHORÝ",
           "sourceNameAliases": [
             "Tomáš Chorý"
           ],
@@ -263,7 +263,7 @@
         },
         {
           "playerName": "David Douděra",
-          "sourceName": "DOUDERA David David DOUDĚRA DOUDĚRA",
+          "sourceName": "DOUDERA David David DOUD Ě RA DOUD Ě RA",
           "sourceNameAliases": [
             "David Douděra"
           ],
@@ -275,7 +275,7 @@
         },
         {
           "playerName": "Tomáš Souček",
-          "sourceName": "SOUCEK Tomas Tomáš SOUČEK SOUČEK",
+          "sourceName": "SOUCEK Tomas Tomá š SOU Č EK SOU Č EK",
           "sourceNameAliases": [
             "Tomáš Souček"
           ],
@@ -287,7 +287,7 @@
         },
         {
           "playerName": "Lukáš Horníček",
-          "sourceName": "HORNICEK Lukas Lukáš HORNÍČEK HORNÍČEK",
+          "sourceName": "HORNICEK Lukas Luká š HORNÍ Č EK HORNÍ Č EK",
           "sourceNameAliases": [
             "Lukáš Horníček"
           ],
@@ -311,7 +311,7 @@
         },
         {
           "playerName": "Hugo Sochůrek",
-          "sourceName": "SOCHUREK Hugo Hugo SOCHŮREK SOCHŮREK",
+          "sourceName": "SOCHUREK Hugo Hugo SOCH Ů REK SOCH Ů REK",
           "sourceNameAliases": [
             "Hugo Sochůrek"
           ],
@@ -323,7 +323,7 @@
         },
         {
           "playerName": "Denis Višinský",
-          "sourceName": "VISINSKY Denis Denis VIŠINSKÝ VIŠINSKÝ",
+          "sourceName": "VISINSKY Denis Denis VI Š INSKÝ VI Š INSKÝ",
           "sourceNameAliases": [
             "Denis Višinský"
           ],
@@ -340,7 +340,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Australia",
       "teamNameInFifaPdf": "Australia (AUS)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -666,7 +666,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Germany",
       "teamNameInFifaPdf": "Germany (GER)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -722,7 +722,7 @@
         },
         {
           "playerName": "Aleksandar Pavlović",
-          "sourceName": "PAVLOVIC Aleksandar Aleksandar PAVLOVIĆ PAVLOVIĆ",
+          "sourceName": "PAVLOVIC Aleksandar Aleksandar PAVLOVI Ć PAVLOVI Ć",
           "sourceNameAliases": [
             "Aleksandar Pavlović"
           ],
@@ -991,7 +991,7 @@
       "tournament": 2026,
       "teamNameInDataset": "France",
       "teamNameInFifaPdf": "France (FRA)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -1316,7 +1316,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Brazil",
       "teamNameInFifaPdf": "Brazil (BRA)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -1641,7 +1641,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Argentina",
       "teamNameInFifaPdf": "Argentina (ARG)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -1966,7 +1966,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Algeria",
       "teamNameInFifaPdf": "Algeria (ALG)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -2293,7 +2293,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Austria",
       "teamNameInFifaPdf": "Austria (AUT)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -2457,7 +2457,7 @@
         },
         {
           "playerName": "Saša Kalajdžić",
-          "sourceName": "KALAJDZIC Sasa Saša KALAJDŽIĆ KALAJDZIC",
+          "sourceName": "KALAJDZIC Sasa Sa š a KALAJD Ž I Ć KALAJDZIC",
           "sourceNameAliases": [
             "Saša Kalajdžić"
           ],
@@ -2518,7 +2518,7 @@
         },
         {
           "playerName": "Dejan Ljubičić",
-          "sourceName": "LJUBICIC Dejan Dejan LJUBIČIĆ LJUBICIC",
+          "sourceName": "LJUBICIC Dejan Dejan LJUBI Č I Ć LJUBICIC",
           "sourceNameAliases": [
             "Dejan Ljubičić"
           ],
@@ -2619,7 +2619,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Belgium",
       "teamNameInFifaPdf": "Belgium (BEL)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -2944,7 +2944,7 @@
       "tournament": 2026,
       "teamNameInDataset": "England",
       "teamNameInFifaPdf": "England (ENG)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -3269,7 +3269,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Japan",
       "teamNameInFifaPdf": "Japan (JPN)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -3595,7 +3595,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Mexico",
       "teamNameInFifaPdf": "Mexico (MEX)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -3920,7 +3920,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Spain",
       "teamNameInFifaPdf": "Spain (ESP)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -4245,7 +4245,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Portugal",
       "teamNameInFifaPdf": "Portugal (POR)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -4570,7 +4570,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Haiti",
       "teamNameInFifaPdf": "Haiti (HAI)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -4899,7 +4899,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Curaçao",
       "teamNameInFifaPdf": "Curaçao (CUW)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -5225,7 +5225,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Cape Verde",
       "teamNameInFifaPdf": "Cabo Verde (CPV)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -5556,7 +5556,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Jordan",
       "teamNameInFifaPdf": "Jordan (JOR)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -5902,7 +5902,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Uzbekistan",
       "teamNameInFifaPdf": "Uzbekistan (UZB)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -6231,7 +6231,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Panama",
       "teamNameInFifaPdf": "Panama (PAN)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -16971,7 +16971,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Bosnia and Herzegovina",
       "teamNameInFifaPdf": "Bosnia And Herzegovina (BIH)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -16991,7 +16991,7 @@
         },
         {
           "playerName": "Nihad Mujakić",
-          "sourceName": "MUJAKIC Nihad Nihad MUJAKIĆ MUJAKIĆ",
+          "sourceName": "MUJAKIC Nihad Nihad MUJAKI Ć MUJAKI Ć",
           "sourceNameAliases": [
             "Nihad Mujakić"
           ],
@@ -17003,7 +17003,7 @@
         },
         {
           "playerName": "Dennis Hadžikadunić",
-          "sourceName": "HADZIKADUNIC Dennis Dennis HADŽIKADUNIĆ HADŽIKADUNIĆ",
+          "sourceName": "HADZIKADUNIC Dennis Dennis HAD Ž IKADUNI Ć HAD Ž IKADUNI Ć",
           "sourceNameAliases": [
             "Dennis Hadžikadunić"
           ],
@@ -17015,7 +17015,7 @@
         },
         {
           "playerName": "Tarik Muharemović",
-          "sourceName": "MUHAREMOVIC Tarik Tarik MUHAREMOVIĆ MUHAREMOVIĆ",
+          "sourceName": "MUHAREMOVIC Tarik Tarik MUHAREMOVI Ć MUHAREMOVI Ć",
           "sourceNameAliases": [
             "Tarik Muharemović"
           ],
@@ -17027,7 +17027,7 @@
         },
         {
           "playerName": "Sead Kolašinac",
-          "sourceName": "KOLASINAC Sead Sead KOLAŠINAC KOLAŠINAC",
+          "sourceName": "KOLASINAC Sead Sead KOLA Š INAC KOLA Š INAC",
           "sourceNameAliases": [
             "Sead Kolašinac"
           ],
@@ -17039,7 +17039,7 @@
         },
         {
           "playerName": "Benjamin Tahirović",
-          "sourceName": "TAHIROVIC Benjamin Benjamin TAHIROVIC TAHIROVIĆ",
+          "sourceName": "TAHIROVIC Benjamin Benjamin TAHIROVIC TAHIROVI Ć",
           "sourceNameAliases": [
             "Benjamin Tahirović"
           ],
@@ -17051,7 +17051,7 @@
         },
         {
           "playerName": "Amar Dedić",
-          "sourceName": "DEDIC Amar Amar DEDIĆ DEDIĆ",
+          "sourceName": "DEDIC Amar Amar DEDI Ć DEDI Ć",
           "sourceNameAliases": [
             "Amar Dedić"
           ],
@@ -17063,7 +17063,7 @@
         },
         {
           "playerName": "Armin Gigović",
-          "sourceName": "GIGOVIC Armin Armin GIGOVIĆ GIGOVIĆ",
+          "sourceName": "GIGOVIC Armin Armin GIGOVI Ć GIGOVI Ć",
           "sourceNameAliases": [
             "Armin Gigović"
           ],
@@ -17075,7 +17075,7 @@
         },
         {
           "playerName": "Samed Baždar",
-          "sourceName": "BAZDAR Samed Samed BAŽDAR BAŽDAR",
+          "sourceName": "BAZDAR Samed Samed BA Ž DAR BA Ž DAR",
           "sourceNameAliases": [
             "Samed Baždar"
           ],
@@ -17087,7 +17087,7 @@
         },
         {
           "playerName": "Ermedin Demirović",
-          "sourceName": "DEMIROVIC Ermedin Ermedin DEMIROVIĆ DEMIROVIĆ",
+          "sourceName": "DEMIROVIC Ermedin Ermedin DEMIROVI Ć DEMIROVI Ć",
           "sourceNameAliases": [
             "Ermedin Demirović"
           ],
@@ -17099,7 +17099,7 @@
         },
         {
           "playerName": "Edin Džeko",
-          "sourceName": "DZEKO Edin Edin DŽEKO DŽEKO",
+          "sourceName": "DZEKO Edin Edin D Ž EKO D Ž EKO",
           "sourceNameAliases": [
             "Edin Džeko"
           ],
@@ -17123,7 +17123,7 @@
         },
         {
           "playerName": "Ivan Bašić",
-          "sourceName": "BASIC Ivan Ivan BAŠIĆ BAŠIĆ",
+          "sourceName": "BASIC Ivan Ivan BA Š I Ć BA Š I Ć",
           "sourceNameAliases": [
             "Ivan Bašić"
           ],
@@ -17135,7 +17135,7 @@
         },
         {
           "playerName": "Ivan Šunjić",
-          "sourceName": "SUNJIC Ivan Ivan ŠUNJIĆ ŠUNJIĆ",
+          "sourceName": "SUNJIC Ivan Ivan Š UNJI Ć Š UNJI Ć",
           "sourceNameAliases": [
             "Ivan Šunjić"
           ],
@@ -17147,7 +17147,7 @@
         },
         {
           "playerName": "Amar Memić",
-          "sourceName": "MEMIC Amar Amar MEMIĆ MEMIĆ",
+          "sourceName": "MEMIC Amar Amar MEMI Ć MEMI Ć",
           "sourceNameAliases": [
             "Amar Memić"
           ],
@@ -17159,7 +17159,7 @@
         },
         {
           "playerName": "Amir Hadžiahmetović",
-          "sourceName": "HADZIAHMETOVIC Amir Amir HADŽIAHMETOVIĆ HADŽIAHMETOVIĆ",
+          "sourceName": "HADZIAHMETOVIC Amir Amir HAD Ž IAHMETOVI Ć HAD Ž IAHMETOVI Ć",
           "sourceNameAliases": [
             "Amir Hadžiahmetović"
           ],
@@ -17171,7 +17171,7 @@
         },
         {
           "playerName": "Dženis Burnić",
-          "sourceName": "BURNIC Dzenis Dženis BURNIĆ BURNIĆ",
+          "sourceName": "BURNIC Dzenis D ž enis BURNI Ć BURNI Ć",
           "sourceNameAliases": [
             "Dženis Burnić"
           ],
@@ -17183,7 +17183,7 @@
         },
         {
           "playerName": "Nikola Katić",
-          "sourceName": "KATIC Nikola Nikola KATIĆ KATIĆ",
+          "sourceName": "KATIC Nikola Nikola KATI Ć KATI Ć",
           "sourceNameAliases": [
             "Nikola Katić"
           ],
@@ -17195,7 +17195,7 @@
         },
         {
           "playerName": "Kerim Alajbegović",
-          "sourceName": "ALAJBEGOVIC Kerim Kerim ALAJBEGOVIĆ ALAJBEGOVIĆ",
+          "sourceName": "ALAJBEGOVIC Kerim Kerim ALAJBEGOVI Ć ALAJBEGOVI Ć",
           "sourceNameAliases": [
             "Kerim Alajbegović"
           ],
@@ -17207,7 +17207,7 @@
         },
         {
           "playerName": "Esmir Bajraktarević",
-          "sourceName": "BAJRAKTAREVIC Esmir Esmir BAJRAKTAREVIĆ BAJRAKTAREVIĆ",
+          "sourceName": "BAJRAKTAREVIC Esmir Esmir BAJRAKTAREVI Ć BAJRAKTAREVI Ć",
           "sourceNameAliases": [
             "Esmir Bajraktarević"
           ],
@@ -17219,7 +17219,7 @@
         },
         {
           "playerName": "Stjepan Radeljić",
-          "sourceName": "RADELJIC Stjepan Stjepan RADELJIĆ RADELJIĆ",
+          "sourceName": "RADELJIC Stjepan Stjepan RADELJI Ć RADELJI Ć",
           "sourceNameAliases": [
             "Stjepan Radeljić"
           ],
@@ -17231,7 +17231,7 @@
         },
         {
           "playerName": "Martin Zlomislić",
-          "sourceName": "ZLOMISLIC Martin Martin ZLOMISLIĆ ZLOMISLIĆ",
+          "sourceName": "ZLOMISLIC Martin Martin ZLOMISLI Ć ZLOMISLI Ć",
           "sourceNameAliases": [
             "Martin Zlomislić"
           ],
@@ -17243,7 +17243,7 @@
         },
         {
           "playerName": "Haris Tabaković",
-          "sourceName": "TABAKOVIC Haris Haris TABAKOVIĆ TABAKOVIĆ",
+          "sourceName": "TABAKOVIC Haris Haris TABAKOVI Ć TABAKOVI Ć",
           "sourceNameAliases": [
             "Haris Tabaković"
           ],
@@ -17255,7 +17255,7 @@
         },
         {
           "playerName": "Arjan Malić",
-          "sourceName": "MALIC Arjan Arjan MALIĆ MALIĆ",
+          "sourceName": "MALIC Arjan Arjan MALI Ć MALI Ć",
           "sourceNameAliases": [
             "Arjan Malić"
           ],
@@ -17267,7 +17267,7 @@
         },
         {
           "playerName": "Jovo Lukić",
-          "sourceName": "LUKIC Jovo Jovo LUKIĆ LUKIĆ",
+          "sourceName": "LUKIC Jovo Jovo LUKI Ć LUKI Ć",
           "sourceNameAliases": [
             "Jovo Lukić"
           ],
@@ -17279,7 +17279,7 @@
         },
         {
           "playerName": "Ermin Mahmić",
-          "sourceName": "MAHMIC Ermin Ermin MAHMIĆ MAHMIĆ",
+          "sourceName": "MAHMIC Ermin Ermin MAHMI Ć MAHMI Ć",
           "sourceNameAliases": [
             "Ermin Mahmić"
           ],
@@ -17296,7 +17296,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Canada",
       "teamNameInFifaPdf": "Canada (CAN)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -17622,7 +17622,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Colombia",
       "teamNameInFifaPdf": "Colombia (COL)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -17947,7 +17947,7 @@
       "tournament": 2026,
       "teamNameInDataset": "DR Congo",
       "teamNameInFifaPdf": "Congo DR (COD)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -18273,7 +18273,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Ivory Coast",
       "teamNameInFifaPdf": "Côte D'Ivoire (CIV)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -18598,7 +18598,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Croatia",
       "teamNameInFifaPdf": "Croatia (CRO)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -18606,7 +18606,7 @@
       "players": [
         {
           "playerName": "Dominik Livaković",
-          "sourceName": "LIVAKOVIC Dominik Dominik LIVAKOVIĆ LIVAKOVIĆ",
+          "sourceName": "LIVAKOVIC Dominik Dominik LIVAKOVI Ć LIVAKOVI Ć",
           "sourceNameAliases": [
             "Dominik Livaković"
           ],
@@ -18618,7 +18618,7 @@
         },
         {
           "playerName": "Josip Stanišić",
-          "sourceName": "STANISIC Josip Josip STANIŠIĆ STANIŠIĆ",
+          "sourceName": "STANISIC Josip Josip STANI Š I Ć STANI Š I Ć",
           "sourceNameAliases": [
             "Josip Stanišić"
           ],
@@ -18630,7 +18630,7 @@
         },
         {
           "playerName": "Marin Pongračić",
-          "sourceName": "PONGRACIC Marin Marin PONGRAČIĆ PONGRAČIĆ",
+          "sourceName": "PONGRACIC Marin Marin PONGRA Č I Ć PONGRA Č I Ć",
           "sourceNameAliases": [
             "Marin Pongračić"
           ],
@@ -18642,7 +18642,7 @@
         },
         {
           "playerName": "Joško Gvardiol",
-          "sourceName": "GVARDIOL Josko Joško GVARDIOL GVARDIOL",
+          "sourceName": "GVARDIOL Josko Jo š ko GVARDIOL GVARDIOL",
           "sourceNameAliases": [
             "Joško Gvardiol"
           ],
@@ -18654,7 +18654,7 @@
         },
         {
           "playerName": "Duje Ćaleta-Car",
-          "sourceName": "CALETA-CAR Duje Duje ĆALETA-CAR ĆALETA-CAR",
+          "sourceName": "CALETA-CAR Duje Duje Ć ALETA-CAR Ć ALETA-CAR",
           "sourceNameAliases": [
             "Duje Ćaleta-Car"
           ],
@@ -18666,7 +18666,7 @@
         },
         {
           "playerName": "Josip Šutalo",
-          "sourceName": "SUTALO Josip Josip ŠUTALO ŠUTALO",
+          "sourceName": "SUTALO Josip Josip Š UTALO Š UTALO",
           "sourceNameAliases": [
             "Josip Šutalo"
           ],
@@ -18690,7 +18690,7 @@
         },
         {
           "playerName": "Mateo Kovačić",
-          "sourceName": "KOVACIC Mateo Mateo KOVAČIĆ KOVAČIĆ",
+          "sourceName": "KOVACIC Mateo Mateo KOVA Č I Ć KOVA Č I Ć",
           "sourceNameAliases": [
             "Mateo Kovačić"
           ],
@@ -18702,7 +18702,7 @@
         },
         {
           "playerName": "Andrej Kramarić",
-          "sourceName": "KRAMARIC Andrej Andrej KRAMARIĆ KRAMARIĆ",
+          "sourceName": "KRAMARIC Andrej Andrej KRAMARI Ć KRAMARI Ć",
           "sourceNameAliases": [
             "Andrej Kramarić"
           ],
@@ -18714,7 +18714,7 @@
         },
         {
           "playerName": "Luka Modrić",
-          "sourceName": "MODRIC Luka Luka MODRIĆ MODRIĆ",
+          "sourceName": "MODRIC Luka Luka MODRI Ć MODRI Ć",
           "sourceNameAliases": [
             "Luka Modrić"
           ],
@@ -18750,7 +18750,7 @@
         },
         {
           "playerName": "Nikola Vlašić",
-          "sourceName": "VLASIC Nikola Nikola VLAŠIĆ VLAŠIĆ",
+          "sourceName": "VLASIC Nikola Nikola VLA Š I Ć VLA Š I Ć",
           "sourceNameAliases": [
             "Nikola Vlašić"
           ],
@@ -18762,7 +18762,7 @@
         },
         {
           "playerName": "Ivan Perišić",
-          "sourceName": "PERISIC Ivan Ivan PERIŠIĆ PERIŠIĆ",
+          "sourceName": "PERISIC Ivan Ivan PERI Š I Ć PERI Š I Ć",
           "sourceNameAliases": [
             "Ivan Perišić"
           ],
@@ -18774,7 +18774,7 @@
         },
         {
           "playerName": "Mario Pašalić",
-          "sourceName": "PASALIC Mario Mario PAŠALIĆ PAŠALIĆ",
+          "sourceName": "PASALIC Mario Mario PA Š ALI Ć PA Š ALI Ć",
           "sourceNameAliases": [
             "Mario Pašalić"
           ],
@@ -18798,7 +18798,7 @@
         },
         {
           "playerName": "Petar Sučić",
-          "sourceName": "SUCIC Petar Petar SUČIĆ P. SUČIĆ",
+          "sourceName": "SUCIC Petar Petar SU Č I Ć P. SU Č I Ć",
           "sourceNameAliases": [
             "Petar Sučić"
           ],
@@ -18810,7 +18810,7 @@
         },
         {
           "playerName": "Kristijan Jakić",
-          "sourceName": "JAKIC Kristijan Kristijan JAKIĆ JAKIĆ",
+          "sourceName": "JAKIC Kristijan Kristijan JAKI Ć JAKI Ć",
           "sourceNameAliases": [
             "Kristijan Jakić"
           ],
@@ -18834,7 +18834,7 @@
         },
         {
           "playerName": "Igor Matanović",
-          "sourceName": "MATANOVIC Igor Igor MATANOVIĆ MATANOVIĆ",
+          "sourceName": "MATANOVIC Igor Igor MATANOVI Ć MATANOVI Ć",
           "sourceNameAliases": [
             "Igor Matanović"
           ],
@@ -18846,7 +18846,7 @@
         },
         {
           "playerName": "Luka Sučić",
-          "sourceName": "SUCIC Luka Luka SUČIĆ SUČIĆ",
+          "sourceName": "SUCIC Luka Luka SU Č I Ć SU Č I Ć",
           "sourceNameAliases": [
             "Luka Sučić"
           ],
@@ -18858,7 +18858,7 @@
         },
         {
           "playerName": "Luka Vušković",
-          "sourceName": "VUSKOVIC Luka Luka VUŠKOVIĆ VUŠKOVIĆ",
+          "sourceName": "VUSKOVIC Luka Luka VU Š KOVI Ć VU Š KOVI Ć",
           "sourceNameAliases": [
             "Luka Vušković"
           ],
@@ -18882,7 +18882,7 @@
         },
         {
           "playerName": "Marco Pašalić",
-          "sourceName": "PASALIC Marco Marco PAŠALIĆ M. PAŠALIĆ",
+          "sourceName": "PASALIC Marco Marco PA Š ALI Ć M. PA Š ALI Ć",
           "sourceNameAliases": [
             "Marco Pašalić"
           ],
@@ -18894,7 +18894,7 @@
         },
         {
           "playerName": "Martin Erlić",
-          "sourceName": "ERLIC Martin Martin ERLIĆ ERLIĆ",
+          "sourceName": "ERLIC Martin Martin ERLI Ć ERLI Ć",
           "sourceNameAliases": [
             "Martin Erlić"
           ],
@@ -18923,7 +18923,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Ecuador",
       "teamNameInFifaPdf": "Ecuador (ECU)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -19248,7 +19248,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Egypt",
       "teamNameInFifaPdf": "Egypt (EGY)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -19580,7 +19580,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Ghana",
       "teamNameInFifaPdf": "Ghana (GHA)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -19905,7 +19905,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Iran",
       "teamNameInFifaPdf": "IR Iran (IRN)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -20242,7 +20242,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Iraq",
       "teamNameInFifaPdf": "Iraq (IRQ)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -20570,7 +20570,7 @@
       "tournament": 2026,
       "teamNameInDataset": "South Korea",
       "teamNameInFifaPdf": "Korea Republic (KOR)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -20895,7 +20895,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Morocco",
       "teamNameInFifaPdf": "Morocco (MAR)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -21221,7 +21221,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Netherlands",
       "teamNameInFifaPdf": "Netherlands (NED)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -21546,7 +21546,7 @@
       "tournament": 2026,
       "teamNameInDataset": "New Zealand",
       "teamNameInFifaPdf": "New Zealand (NZL)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -21871,7 +21871,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Norway",
       "teamNameInFifaPdf": "Norway (NOR)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -22196,7 +22196,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Paraguay",
       "teamNameInFifaPdf": "Paraguay (PAR)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -22522,7 +22522,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Qatar",
       "teamNameInFifaPdf": "Qatar (QAT)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -22852,7 +22852,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Saudi Arabia",
       "teamNameInFifaPdf": "Saudi Arabia (KSA)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -23199,7 +23199,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Scotland",
       "teamNameInFifaPdf": "Scotland (SCO)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -23524,7 +23524,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Senegal",
       "teamNameInFifaPdf": "Senegal (SEN)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -23849,7 +23849,7 @@
       "tournament": 2026,
       "teamNameInDataset": "South Africa",
       "teamNameInFifaPdf": "South Africa (RSA)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -24174,7 +24174,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Sweden",
       "teamNameInFifaPdf": "Sweden (SWE)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -24499,7 +24499,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Switzerland",
       "teamNameInFifaPdf": "Switzerland (SUI)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -24824,7 +24824,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Tunisia",
       "teamNameInFifaPdf": "Tunisia (TUN)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -25151,7 +25151,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Turkey",
       "teamNameInFifaPdf": "Türkiye (TUR)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -25171,7 +25171,7 @@
         },
         {
           "playerName": "Zeki Çelik",
-          "sourceName": "CELIK Zeki Mehmet Zeki ÇELIK ZEKİ ÇELİK",
+          "sourceName": "CELIK Zeki Mehmet Zeki ÇELIK ZEK İ ÇEL İ K",
           "sourceNameAliases": [
             "Zeki Çelik"
           ],
@@ -25183,7 +25183,7 @@
         },
         {
           "playerName": "Merih Demiral",
-          "sourceName": "DEMIRAL Merih Merih DEMİRAL DEMİRAL",
+          "sourceName": "DEMIRAL Merih Merih DEM İ RAL DEM İ RAL",
           "sourceNameAliases": [
             "Merih Demiral"
           ],
@@ -25195,7 +25195,7 @@
         },
         {
           "playerName": "Çağlar Söyüncü",
-          "sourceName": "SOYUNCU Caglar Çağlar SÖYÜNCÜ ÇAĞLAR",
+          "sourceName": "SOYUNCU Caglar Ça ğ lar SÖYÜNCÜ ÇA Ğ LAR",
           "sourceNameAliases": [
             "Çağlar Söyüncü"
           ],
@@ -25231,7 +25231,7 @@
         },
         {
           "playerName": "Kerem Aktürkoğlu",
-          "sourceName": "AKTURKOGLU Kerem Muhammed Kerem AKTÜRKOĞLU AKTÜRKOĞLU",
+          "sourceName": "AKTURKOGLU Kerem Muhammed Kerem AKTÜRKO Ğ LU AKTÜRKO Ğ LU",
           "sourceNameAliases": [
             "Kerem Aktürkoğlu"
           ],
@@ -25255,7 +25255,7 @@
         },
         {
           "playerName": "Deniz Gül",
-          "sourceName": "GUL Deniz Deniz Daniel GÜL DENİZ GÜL",
+          "sourceName": "GUL Deniz Deniz Daniel GÜL DEN İ Z GÜL",
           "sourceNameAliases": [
             "Deniz Gül"
           ],
@@ -25267,7 +25267,7 @@
         },
         {
           "playerName": "Hakan Çalhanoğlu",
-          "sourceName": "CALHANOGLU Hakan Hakan ÇALHANOĞLU ÇALHANOĞLU",
+          "sourceName": "CALHANOGLU Hakan Hakan ÇALHANO Ğ LU ÇALHANO Ğ LU",
           "sourceNameAliases": [
             "Hakan Çalhanoğlu"
           ],
@@ -25315,7 +25315,7 @@
         },
         {
           "playerName": "Abdülkerim Bardakcı",
-          "sourceName": "BARDAKCI Abdulkerim Abdülkerİm BARDAKCI ABDÜLKERİM",
+          "sourceName": "BARDAKCI Abdulkerim Abdülker İ m BARDAKCI ABDÜLKER İ M",
           "sourceNameAliases": [
             "Abdülkerim Bardakcı"
           ],
@@ -25339,7 +25339,7 @@
         },
         {
           "playerName": "İsmail Yüksek",
-          "sourceName": "YUKSEK Ismail İsmaİl YÜKSEK İSMAİL",
+          "sourceName": "YUKSEK Ismail İ sma İ l YÜKSEK İ SMA İ L",
           "sourceNameAliases": [
             "İsmail Yüksek"
           ],
@@ -25351,7 +25351,7 @@
         },
         {
           "playerName": "İrfan Can Kahveci",
-          "sourceName": "KAHVECI Irfan Can İrfan KAHVECİ KAHVECİ",
+          "sourceName": "KAHVECI Irfan Can İ rfan KAHVEC İ KAHVEC İ",
           "sourceNameAliases": [
             "İrfan Can Kahveci"
           ],
@@ -25387,7 +25387,7 @@
         },
         {
           "playerName": "Ferdi Kadıoğlu",
-          "sourceName": "KADIOGLU Ferdi Ferdi Erenay KADIOĞLU F. KADIOĞLU",
+          "sourceName": "KADIOGLU Ferdi Ferdi Erenay KADIO Ğ LU F. KADIO Ğ LU",
           "sourceNameAliases": [
             "Ferdi Kadıoğlu"
           ],
@@ -25399,7 +25399,7 @@
         },
         {
           "playerName": "Barış Alper Yılmaz",
-          "sourceName": "YILMAZ Baris Alper Barış Alper YILMAZ BARIŞ",
+          "sourceName": "YILMAZ Baris Alper Barı ş Alper YILMAZ BARI Ş",
           "sourceNameAliases": [
             "Barış Alper Yılmaz"
           ],
@@ -25423,7 +25423,7 @@
         },
         {
           "playerName": "Uğurcan Çakır",
-          "sourceName": "CAKIR Ugurcan Uğurcan ÇAKIR UĞURCAN",
+          "sourceName": "CAKIR Ugurcan U ğ urcan ÇAKIR U Ğ URCAN",
           "sourceNameAliases": [
             "Uğurcan Çakır"
           ],
@@ -25435,7 +25435,7 @@
         },
         {
           "playerName": "Oğuz Aydın",
-          "sourceName": "AYDIN Oguz Oğuz AYDIN OĞUZ",
+          "sourceName": "AYDIN Oguz O ğ uz AYDIN O Ğ UZ",
           "sourceNameAliases": [
             "Oğuz Aydın"
           ],
@@ -25476,7 +25476,7 @@
       "tournament": 2026,
       "teamNameInDataset": "Uruguay",
       "teamNameInFifaPdf": "Uruguay (URU)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
@@ -25801,7 +25801,7 @@
       "tournament": 2026,
       "teamNameInDataset": "United States",
       "teamNameInFifaPdf": "USA (USA)",
-      "reviewedAt": "2026-11-23",
+      "reviewedAt": "2026-11-25",
       "primarySource": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
       "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
       "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",

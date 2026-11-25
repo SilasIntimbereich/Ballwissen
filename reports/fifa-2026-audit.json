@@ -3,7 +3,7 @@
   "secondarySource": "https://github.com/erickalfaro/world-cup-data-2026/blob/main/data/README.md",
   "tertiarySource": "https://www.nbcsports.com/soccer/news/2026-world-cup-squads-confirmed-rosters-for-all-48-teams",
   "pages": 48,
-  "generatedAt": "2026-11-23T15:57:15.352Z",
+  "generatedAt": "2026-11-25T13:43:14.236Z",
   "teams": [
     {
       "page": 1,
@@ -845,7 +845,7 @@
           "number": 12,
           "position": "GK",
           "nameArea": "WIEGELE Florian Florian WIEGELE WIEGELE",
-          "club": "FC Viktoria Plzeň (CZE)",
+          "club": "FC Viktoria Plze ň (CZE)",
           "clubExtractionOverride": false
         },
         {
@@ -858,7 +858,7 @@
         {
           "number": 14,
           "position": "FW",
-          "nameArea": "KALAJDZIC Sasa Saša KALAJDŽIĆ KALAJDZIC",
+          "nameArea": "KALAJDZIC Sasa Sa š a KALAJD Ž I Ć KALAJDZIC",
           "club": "LASK Linz (AUT)",
           "clubExtractionOverride": false
         },
@@ -893,7 +893,7 @@
         {
           "number": 19,
           "position": "MF",
-          "nameArea": "LJUBICIC Dejan Dejan LJUBIČIĆ LJUBICIC",
+          "nameArea": "LJUBICIC Dejan Dejan LJUBI Č I Ć LJUBICIC",
           "club": "FC Schalke 04 (GER)",
           "clubExtractionOverride": false
         },
@@ -1234,70 +1234,70 @@
         {
           "number": 2,
           "position": "DF",
-          "nameArea": "MUJAKIC Nihad Nihad MUJAKIĆ MUJAKIĆ",
+          "nameArea": "MUJAKIC Nihad Nihad MUJAKI Ć MUJAKI Ć",
           "club": "Gaziantep FK (TUR)",
           "clubExtractionOverride": false
         },
         {
           "number": 3,
           "position": "DF",
-          "nameArea": "HADZIKADUNIC Dennis Dennis HADŽIKADUNIĆ HADŽIKADUNIĆ",
+          "nameArea": "HADZIKADUNIC Dennis Dennis HAD Ž IKADUNI Ć HAD Ž IKADUNI Ć",
           "club": "UC Sampdoria (ITA)",
           "clubExtractionOverride": false
         },
         {
           "number": 4,
           "position": "DF",
-          "nameArea": "MUHAREMOVIC Tarik Tarik MUHAREMOVIĆ MUHAREMOVIĆ",
+          "nameArea": "MUHAREMOVIC Tarik Tarik MUHAREMOVI Ć MUHAREMOVI Ć",
           "club": "US Sassuolo (ITA)",
           "clubExtractionOverride": false
         },
         {
           "number": 5,
           "position": "DF",
-          "nameArea": "KOLASINAC Sead Sead KOLAŠINAC KOLAŠINAC",
+          "nameArea": "KOLASINAC Sead Sead KOLA Š INAC KOLA Š INAC",
           "club": "Atalanta Bergamo (ITA)",
           "clubExtractionOverride": false
         },
         {
           "number": 6,
           "position": "MF",
-          "nameArea": "TAHIROVIC Benjamin Benjamin TAHIROVIC TAHIROVIĆ",
+          "nameArea": "TAHIROVIC Benjamin Benjamin TAHIROVIC TAHIROVI Ć",
           "club": "Brøndby IF (DEN)",
           "clubExtractionOverride": false
         },
         {
           "number": 7,
           "position": "DF",
-          "nameArea": "DEDIC Amar Amar DEDIĆ DEDIĆ",
+          "nameArea": "DEDIC Amar Amar DEDI Ć DEDI Ć",
           "club": "SL Ben\u0000ca (POR)",
           "clubExtractionOverride": false
         },
         {
           "number": 8,
           "position": "MF",
-          "nameArea": "GIGOVIC Armin Armin GIGOVIĆ GIGOVIĆ",
+          "nameArea": "GIGOVIC Armin Armin GIGOVI Ć GIGOVI Ć",
           "club": "BSC Young Boys (SUI)",
           "clubExtractionOverride": false
         },
         {
           "number": 9,
           "position": "FW",
-          "nameArea": "BAZDAR Samed Samed BAŽDAR BAŽDAR",
-          "club": "Jagiellonia Białystok (POL)",
+          "nameArea": "BAZDAR Samed Samed BA Ž DAR BA Ž DAR",
+          "club": "Jagiellonia Bia ł ystok (POL)",
           "clubExtractionOverride": false
         },
         {
           "number": 10,
           "position": "FW",
-          "nameArea": "DEMIROVIC Ermedin Ermedin DEMIROVIĆ DEMIROVIĆ",
+          "nameArea": "DEMIROVIC Ermedin Ermedin DEMIROVI Ć DEMIROVI Ć",
           "club": "VfB Stuttgart (GER)",
           "clubExtractionOverride": false
         },
         {
           "number": 11,
           "position": "FW",
-          "nameArea": "DZEKO Edin Edin DŽEKO DŽEKO",
+          "nameArea": "DZEKO Edin Edin D Ž EKO D Ž EKO",
           "club": "FC Schalke 04 (GER)",
           "clubExtractionOverride": false
         },
@@ -1311,98 +1311,98 @@
         {
           "number": 13,
           "position": "MF",
-          "nameArea": "BASIC Ivan Ivan BAŠIĆ BAŠIĆ",
+          "nameArea": "BASIC Ivan Ivan BA Š I Ć BA Š I Ć",
           "club": "FC Astana (KAZ)",
           "clubExtractionOverride": false
         },
         {
           "number": 14,
           "position": "MF",
-          "nameArea": "SUNJIC Ivan Ivan ŠUNJIĆ ŠUNJIĆ",
+          "nameArea": "SUNJIC Ivan Ivan Š UNJI Ć Š UNJI Ć",
           "club": "Pafos FC (CYP)",
           "clubExtractionOverride": false
         },
         {
           "number": 15,
           "position": "MF",
-          "nameArea": "MEMIC Amar Amar MEMIĆ MEMIĆ",
-          "club": "FC Viktoria Plzeň (CZE)",
+          "nameArea": "MEMIC Amar Amar MEMI Ć MEMI Ć",
+          "club": "FC Viktoria Plze ň (CZE)",
           "clubExtractionOverride": false
         },
         {
           "number": 16,
           "position": "MF",
-          "nameArea": "HADZIAHMETOVIC Amir Amir HADŽIAHMETOVIĆ HADŽIAHMETOVIĆ",
+          "nameArea": "HADZIAHMETOVIC Amir Amir HAD Ž IAHMETOVI Ć HAD Ž IAHMETOVI Ć",
           "club": "Hull City FC (ENG)",
           "clubExtractionOverride": false
         },
         {
           "number": 17,
           "position": "MF",
-          "nameArea": "BURNIC Dzenis Dženis BURNIĆ BURNIĆ",
+          "nameArea": "BURNIC Dzenis D ž enis BURNI Ć BURNI Ć",
           "club": "Karlsruher SC (GER)",
           "clubExtractionOverride": false
         },
         {
           "number": 18,
           "position": "DF",
-          "nameArea": "KATIC Nikola Nikola KATIĆ KATIĆ",
+          "nameArea": "KATIC Nikola Nikola KATI Ć KATI Ć",
           "club": "FC Schalke 04 (GER)",
           "clubExtractionOverride": false
         },
         {
           "number": 19,
           "position": "FW",
-          "nameArea": "ALAJBEGOVIC Kerim Kerim ALAJBEGOVIĆ ALAJBEGOVIĆ",
+          "nameArea": "ALAJBEGOVIC Kerim Kerim ALAJBEGOVI Ć ALAJBEGOVI Ć",
           "club": "FC Red Bull Salzburg (AUT)",
           "clubExtractionOverride": false
         },
         {
           "number": 20,
           "position": "FW",
-          "nameArea": "BAJRAKTAREVIC Esmir Esmir BAJRAKTAREVIĆ BAJRAKTAREVIĆ",
+          "nameArea": "BAJRAKTAREVIC Esmir Esmir BAJRAKTAREVI Ć BAJRAKTAREVI Ć",
           "club": "PSV Eindhoven (NED)",
           "clubExtractionOverride": false
         },
         {
           "number": 21,
           "position": "DF",
-          "nameArea": "RADELJIC Stjepan Stjepan RADELJIĆ RADELJIĆ",
+          "nameArea": "RADELJIC Stjepan Stjepan RADELJI Ć RADELJI Ć",
           "club": "HNK Rijeka (CRO)",
           "clubExtractionOverride": false
         },
         {
           "number": 22,
           "position": "GK",
-          "nameArea": "ZLOMISLIC Martin Martin ZLOMISLIĆ ZLOMISLIĆ",
+          "nameArea": "ZLOMISLIC Martin Martin ZLOMISLI Ć ZLOMISLI Ć",
           "club": "HNK Rijeka (CRO)",
           "clubExtractionOverride": false
         },
         {
           "number": 23,
           "position": "FW",
-          "nameArea": "TABAKOVIC Haris Haris TABAKOVIĆ TABAKOVIĆ",
+          "nameArea": "TABAKOVIC Haris Haris TABAKOVI Ć TABAKOVI Ć",
           "club": "Borussia Mönchengladbach (GER)",
           "clubExtractionOverride": false
         },
         {
           "number": 24,
           "position": "DF",
-          "nameArea": "MALIC Arjan Arjan MALIĆ MALIĆ",
+          "nameArea": "MALIC Arjan Arjan MALI Ć MALI Ć",
           "club": "SK Sturm Graz (AUT)",
           "clubExtractionOverride": false
         },
         {
           "number": 25,
           "position": "FW",
-          "nameArea": "LUKIC Jovo Jovo LUKIĆ LUKIĆ",
+          "nameArea": "LUKIC Jovo Jovo LUKI Ć LUKI Ć",
           "club": "Universitatea Cluj (ROU)",
           "clubExtractionOverride": false
         },
         {
           "number": 26,
           "position": "MF",
-          "nameArea": "MAHMIC Ermin Ermin MAHMIĆ MAHMIĆ",
+          "nameArea": "MAHMIC Ermin Ermin MAHMI Ć MAHMI Ć",
           "club": "FC Slovan Liberec (CZE)",
           "clubExtractionOverride": false
         }
@@ -1875,14 +1875,14 @@
           "number": 20,
           "position": "FW",
           "nameArea": "RYAN MENDES Ryan Isaac DA GRACA MENDES RYAN",
-          "club": "Iğdır FK (TUR)",
+          "club": "I ğ dır FK (TUR)",
           "clubExtractionOverride": false
         },
         {
           "number": 21,
           "position": "MF",
           "nameArea": "NUNO DA COSTA Nuno Miguel DA COSTA JOIA DA COSTA",
-          "club": "Başakşehir FK (TUR)",
+          "club": "Ba ş ak ş ehir FK (TUR)",
           "clubExtractionOverride": false
         },
         {
@@ -2670,7 +2670,7 @@
           "number": 3,
           "position": "DF",
           "nameArea": "KAPUADI Steve Steve Nkanu KAPUADI KAPUADI",
-          "club": "Widzew Łódź (POL)",
+          "club": "Widzew Ł ód ź (POL)",
           "clubExtractionOverride": false
         },
         {
@@ -3028,7 +3028,7 @@
           "number": 13,
           "position": "DF",
           "nameArea": "OPERI Christopher Christopher Tea Domoraud OPERI OPERI",
-          "club": "Başakşehir FK (TUR)",
+          "club": "Ba ş ak ş ehir FK (TUR)",
           "clubExtractionOverride": false
         },
         {
@@ -3077,7 +3077,7 @@
           "number": 20,
           "position": "DF",
           "nameArea": "AGBADOU Emmanuel Badobre Emmanuel Elysee Djedje AGBADOU AGBADOU",
-          "club": "Beşiktaş JK (TUR)",
+          "club": "Be ş ikta ş JK (TUR)",
           "clubExtractionOverride": false
         },
         {
@@ -3184,42 +3184,42 @@
         {
           "number": 1,
           "position": "GK",
-          "nameArea": "LIVAKOVIC Dominik Dominik LIVAKOVIĆ LIVAKOVIĆ",
+          "nameArea": "LIVAKOVIC Dominik Dominik LIVAKOVI Ć LIVAKOVI Ć",
           "club": "GNK Dinamo Zagreb (CRO)",
           "clubExtractionOverride": false
         },
         {
           "number": 2,
           "position": "DF",
-          "nameArea": "STANISIC Josip Josip STANIŠIĆ STANIŠIĆ",
+          "nameArea": "STANISIC Josip Josip STANI Š I Ć STANI Š I Ć",
           "club": "FC Bayern München (GER)",
           "clubExtractionOverride": false
         },
         {
           "number": 3,
           "position": "DF",
-          "nameArea": "PONGRACIC Marin Marin PONGRAČIĆ PONGRAČIĆ",
+          "nameArea": "PONGRACIC Marin Marin PONGRA Č I Ć PONGRA Č I Ć",
           "club": "ACF Fiorentina (ITA)",
           "clubExtractionOverride": false
         },
         {
           "number": 4,
           "position": "DF",
-          "nameArea": "GVARDIOL Josko Joško GVARDIOL GVARDIOL",
+          "nameArea": "GVARDIOL Josko Jo š ko GVARDIOL GVARDIOL",
           "club": "Manchester City FC (ENG)",
           "clubExtractionOverride": false
         },
         {
           "number": 5,
           "position": "DF",
-          "nameArea": "CALETA-CAR Duje Duje ĆALETA-CAR ĆALETA-CAR",
+          "nameArea": "CALETA-CAR Duje Duje Ć ALETA-CAR Ć ALETA-CAR",
           "club": "Real Sociedad (ESP)",
           "clubExtractionOverride": false
         },
         {
           "number": 6,
           "position": "DF",
-          "nameArea": "SUTALO Josip Josip ŠUTALO ŠUTALO",
+          "nameArea": "SUTALO Josip Josip Š UTALO Š UTALO",
           "club": "AFC Ajax (NED)",
           "clubExtractionOverride": false
         },
@@ -3233,21 +3233,21 @@
         {
           "number": 8,
           "position": "MF",
-          "nameArea": "KOVACIC Mateo Mateo KOVAČIĆ KOVAČIĆ",
+          "nameArea": "KOVACIC Mateo Mateo KOVA Č I Ć KOVA Č I Ć",
           "club": "Manchester City FC (ENG)",
           "clubExtractionOverride": false
         },
         {
           "number": 9,
           "position": "FW",
-          "nameArea": "KRAMARIC Andrej Andrej KRAMARIĆ KRAMARIĆ",
+          "nameArea": "KRAMARIC Andrej Andrej KRAMARI Ć KRAMARI Ć",
           "club": "TSG Hoffenheim (GER)",
           "clubExtractionOverride": false
         },
         {
           "number": 10,
           "position": "MF",
-          "nameArea": "MODRIC Luka Luka MODRIĆ MODRIĆ",
+          "nameArea": "MODRIC Luka Luka MODRI Ć MODRI Ć",
           "club": "AC Milan (ITA)",
           "clubExtractionOverride": false
         },
@@ -3268,21 +3268,21 @@
         {
           "number": 13,
           "position": "MF",
-          "nameArea": "VLASIC Nikola Nikola VLAŠIĆ VLAŠIĆ",
+          "nameArea": "VLASIC Nikola Nikola VLA Š I Ć VLA Š I Ć",
           "club": "Torino FC (ITA)",
           "clubExtractionOverride": false
         },
         {
           "number": 14,
           "position": "FW",
-          "nameArea": "PERISIC Ivan Ivan PERIŠIĆ PERIŠIĆ",
+          "nameArea": "PERISIC Ivan Ivan PERI Š I Ć PERI Š I Ć",
           "club": "PSV Eindhoven (NED)",
           "clubExtractionOverride": false
         },
         {
           "number": 15,
           "position": "MF",
-          "nameArea": "PASALIC Mario Mario PAŠALIĆ PAŠALIĆ",
+          "nameArea": "PASALIC Mario Mario PA Š ALI Ć PA Š ALI Ć",
           "club": "Atalanta Bergamo (ITA)",
           "clubExtractionOverride": false
         },
@@ -3296,14 +3296,14 @@
         {
           "number": 17,
           "position": "MF",
-          "nameArea": "SUCIC Petar Petar SUČIĆ P. SUČIĆ",
+          "nameArea": "SUCIC Petar Petar SU Č I Ć P. SU Č I Ć",
           "club": "FC Internazionale Milano (ITA)",
           "clubExtractionOverride": false
         },
         {
           "number": 18,
           "position": "DF",
-          "nameArea": "JAKIC Kristijan Kristijan JAKIĆ JAKIĆ",
+          "nameArea": "JAKIC Kristijan Kristijan JAKI Ć JAKI Ć",
           "club": "FC Augsburg (GER)",
           "clubExtractionOverride": false
         },
@@ -3317,21 +3317,21 @@
         {
           "number": 20,
           "position": "FW",
-          "nameArea": "MATANOVIC Igor Igor MATANOVIĆ MATANOVIĆ",
+          "nameArea": "MATANOVIC Igor Igor MATANOVI Ć MATANOVI Ć",
           "club": "SC Freiburg (GER)",
           "clubExtractionOverride": false
         },
         {
           "number": 21,
           "position": "MF",
-          "nameArea": "SUCIC Luka Luka SUČIĆ SUČIĆ",
+          "nameArea": "SUCIC Luka Luka SU Č I Ć SU Č I Ć",
           "club": "Real Sociedad (ESP)",
           "clubExtractionOverride": false
         },
         {
           "number": 22,
           "position": "DF",
-          "nameArea": "VUSKOVIC Luka Luka VUŠKOVIĆ VUŠKOVIĆ",
+          "nameArea": "VUSKOVIC Luka Luka VU Š KOVI Ć VU Š KOVI Ć",
           "club": "Hamburger SV (GER)",
           "clubExtractionOverride": false
         },
@@ -3345,14 +3345,14 @@
         {
           "number": 24,
           "position": "FW",
-          "nameArea": "PASALIC Marco Marco PAŠALIĆ M. PAŠALIĆ",
+          "nameArea": "PASALIC Marco Marco PA Š ALI Ć M. PA Š ALI Ć",
           "club": "Orlando City SC (USA)",
           "clubExtractionOverride": false
         },
         {
           "number": 25,
           "position": "DF",
-          "nameArea": "ERLIC Martin Martin ERLIĆ ERLIĆ",
+          "nameArea": "ERLIC Martin Martin ERLI Ć ERLI Ć",
           "club": "FC Midtjylland (DEN)",
           "clubExtractionOverride": false
         },
@@ -3479,7 +3479,7 @@
           "number": 10,
           "position": "MF",
           "nameArea": "BACUNA Leandro Leandro Jones Johan BACUNA L. BACUNA",
-          "club": "Iğdır FK (TUR)",
+          "club": "I ğ dır FK (TUR)",
           "clubExtractionOverride": false
         },
         {
@@ -3632,7 +3632,7 @@
         {
           "number": 1,
           "position": "GK",
-          "nameArea": "KOVAR Matej Matěj KOVÁŘ KOVÁŘ",
+          "nameArea": "KOVAR Matej Mat ě j KOVÁ Ř KOVÁ Ř",
           "club": "PSV Eindhoven (NED)",
           "clubExtractionOverride": false
         },
@@ -3646,14 +3646,14 @@
         {
           "number": 3,
           "position": "DF",
-          "nameArea": "HOLES Tomas Tomáš HOLEŠ HOLEŠ",
+          "nameArea": "HOLES Tomas Tomá š HOLE Š HOLE Š",
           "club": "SK Slavia Praha (CZE)",
           "clubExtractionOverride": false
         },
         {
           "number": 4,
           "position": "DF",
-          "nameArea": "HRANAC Robin Robin HRANÁČ HRANÁČ",
+          "nameArea": "HRANAC Robin Robin HRANÁ Č HRANÁ Č",
           "club": "TSG Hoffenheim (GER)",
           "clubExtractionOverride": false
         },
@@ -3667,14 +3667,14 @@
         {
           "number": 6,
           "position": "DF",
-          "nameArea": "CHALOUPEK Stepan Štěpán CHALOUPEK CHALOUPEK",
+          "nameArea": "CHALOUPEK Stepan Š t ě pán CHALOUPEK CHALOUPEK",
           "club": "SK Slavia Praha (CZE)",
           "clubExtractionOverride": false
         },
         {
           "number": 7,
           "position": "DF",
-          "nameArea": "KREJCI Ladislav Ladislav KREJČÍ KREJČÍ",
+          "nameArea": "KREJCI Ladislav Ladislav KREJ Č Í KREJ Č Í",
           "club": "Wolverhampton Wanderers FC (ENG)",
           "clubExtractionOverride": false
         },
@@ -3688,7 +3688,7 @@
         {
           "number": 9,
           "position": "FW",
-          "nameArea": "HLOZEK Adam Adam HLOŽEK HLOŽEK",
+          "nameArea": "HLOZEK Adam Adam HLO Ž EK HLO Ž EK",
           "club": "TSG Hoffenheim (GER)",
           "clubExtractionOverride": false
         },
@@ -3709,8 +3709,8 @@
         {
           "number": 12,
           "position": "MF",
-          "nameArea": "CERV Lukas Lukáš ČERV ČERV",
-          "club": "FC Viktoria Plzeň (CZE)",
+          "nameArea": "CERV Lukas Luká š Č ERV Č ERV",
+          "club": "FC Viktoria Plze ň (CZE)",
           "clubExtractionOverride": false
         },
         {
@@ -3730,21 +3730,21 @@
         {
           "number": 15,
           "position": "FW",
-          "nameArea": "SULC Pavel Pavel ŠULC ŠULC",
+          "nameArea": "SULC Pavel Pavel Š ULC Š ULC",
           "club": "Olympique Lyonnais (FRA)",
           "clubExtractionOverride": false
         },
         {
           "number": 16,
           "position": "GK",
-          "nameArea": "STANEK Jindrich Jindřich STANĚK STANĚK",
+          "nameArea": "STANEK Jindrich Jind ř ich STAN Ě K STAN Ě K",
           "club": "SK Slavia Praha (CZE)",
           "clubExtractionOverride": false
         },
         {
           "number": 17,
           "position": "MF",
-          "nameArea": "PROVOD Lukas Lukáš PROVOD PROVOD",
+          "nameArea": "PROVOD Lukas Luká š PROVOD PROVOD",
           "club": "SK Slavia Praha (CZE)",
           "clubExtractionOverride": false
         },
@@ -3758,7 +3758,7 @@
         {
           "number": 19,
           "position": "FW",
-          "nameArea": "CHORY Tomas Tomáš CHORÝ CHORÝ",
+          "nameArea": "CHORY Tomas Tomá š CHORÝ CHORÝ",
           "club": "SK Slavia Praha (CZE)",
           "clubExtractionOverride": false
         },
@@ -3772,21 +3772,21 @@
         {
           "number": 21,
           "position": "DF",
-          "nameArea": "DOUDERA David David DOUDĚRA DOUDĚRA",
+          "nameArea": "DOUDERA David David DOUD Ě RA DOUD Ě RA",
           "club": "SK Slavia Praha (CZE)",
           "clubExtractionOverride": false
         },
         {
           "number": 22,
           "position": "MF",
-          "nameArea": "SOUCEK Tomas Tomáš SOUČEK SOUČEK",
+          "nameArea": "SOUCEK Tomas Tomá š SOU Č EK SOU Č EK",
           "club": "West Ham United FC (ENG)",
           "clubExtractionOverride": false
         },
         {
           "number": 23,
           "position": "GK",
-          "nameArea": "HORNICEK Lukas Lukáš HORNÍČEK HORNÍČEK",
+          "nameArea": "HORNICEK Lukas Luká š HORNÍ Č EK HORNÍ Č EK",
           "club": "SC Braga (POR)",
           "clubExtractionOverride": false
         },
@@ -3794,21 +3794,21 @@
           "number": 24,
           "position": "MF",
           "nameArea": "SOJKA Alexandr Alexandr SOJKA SOJKA",
-          "club": "FC Viktoria Plzeň (CZE)",
+          "club": "FC Viktoria Plze ň (CZE)",
           "clubExtractionOverride": false
         },
         {
           "number": 25,
           "position": "MF",
-          "nameArea": "SOCHUREK Hugo Hugo SOCHŮREK SOCHŮREK",
+          "nameArea": "SOCHUREK Hugo Hugo SOCH Ů REK SOCH Ů REK",
           "club": "AC Sparta Praha (CZE)",
           "clubExtractionOverride": false
         },
         {
           "number": 26,
           "position": "FW",
-          "nameArea": "VISINSKY Denis Denis VIŠINSKÝ VIŠINSKÝ",
-          "club": "FC Viktoria Plzeň (CZE)",
+          "nameArea": "VISINSKY Denis Denis VI Š INSKÝ VI Š INSKÝ",
+          "club": "FC Viktoria Plze ň (CZE)",
           "clubExtractionOverride": false
         }
       ],
@@ -5022,7 +5022,7 @@
         {
           "number": 5,
           "position": "MF",
-          "nameArea": "PAVLOVIC Aleksandar Aleksandar PAVLOVIĆ PAVLOVIĆ",
+          "nameArea": "PAVLOVIC Aleksandar Aleksandar PAVLOVI Ć PAVLOVI Ć",
           "club": "FC Bayern München (GER)",
           "clubExtractionOverride": false
         },
@@ -5409,7 +5409,7 @@
           "number": 18,
           "position": "DF",
           "nameArea": "OPOKU Jerome Jerome OPOKU OPOKU",
-          "club": "Başakşehir FK (TUR)",
+          "club": "Ba ş ak ş ehir FK (TUR)",
           "clubExtractionOverride": false
         },
         {
@@ -5458,7 +5458,7 @@
           "number": 25,
           "position": "FW",
           "nameArea": "ADU Prince Prince Kwabena ADU PRINCE",
-          "club": "FC Viktoria Plzeň (CZE)",
+          "club": "FC Viktoria Plze ň (CZE)",
           "clubExtractionOverride": false
         },
         {
@@ -5717,7 +5717,7 @@
           "number": 25,
           "position": "MF",
           "nameArea": "SIMON Dominique Dominique Celidor SIMON SIMON",
-          "club": "FC Tatran Prešov (SVK)",
+          "club": "FC Tatran Pre š ov (SVK)",
           "clubExtractionOverride": false
         },
         {
@@ -6062,7 +6062,7 @@
           "number": 3,
           "position": "DF",
           "nameArea": "HUSSEIN ALI Hussein Haydar Hussein ALI HUSSEIN",
-          "club": "Pogoń Szczecin (POL)",
+          "club": "Pogo ń Szczecin (POL)",
           "clubExtractionOverride": false
         },
         {
@@ -6202,7 +6202,7 @@
           "number": 23,
           "position": "DF",
           "nameArea": "MERCHAS DOSKI Merchas Ghazi Salih SALIH DOSKI",
-          "club": "FC Viktoria Plzeň (CZE)",
+          "club": "FC Viktoria Plze ň (CZE)",
           "clubExtractionOverride": false
         },
         {
@@ -6991,7 +6991,7 @@
           "number": 18,
           "position": "FW",
           "nameArea": "OH Hyeongyu Hyeongyu OH HYEONGYU",
-          "club": "Beşiktaş JK (TUR)",
+          "club": "Be ş ikta ş JK (TUR)",
           "clubExtractionOverride": false
         },
         {
@@ -7938,7 +7938,7 @@
           "number": 12,
           "position": "GK",
           "nameArea": "PAULSEN Alex Alexander Noah PAULSEN PAULSEN",
-          "club": "Lechia Gdańsk (POL)",
+          "club": "Lechia Gda ń sk (POL)",
           "clubExtractionOverride": false
         },
         {
@@ -8454,7 +8454,7 @@
           "number": 2,
           "position": "DF",
           "nameArea": "BLACKMAN Cesar Cesar Rodolfo BLACKMAN CAMARENA BLACKMAN",
-          "club": "ŠK Slovan Bratislava (SVK)",
+          "club": "Š K Slovan Bratislava (SVK)",
           "clubExtractionOverride": false
         },
         {
@@ -8601,7 +8601,7 @@
           "number": 23,
           "position": "DF",
           "nameArea": "MURILLO Amir Michael Amir MURILLO BERMUDEZ A. MURILLO",
-          "club": "Beşiktaş JK (TUR)",
+          "club": "Be ş ikta ş JK (TUR)",
           "clubExtractionOverride": false
         },
         {
@@ -11247,7 +11247,7 @@
           "number": 5,
           "position": "DF",
           "nameArea": "AROUS Adam Adam AROUS AROUS",
-          "club": "Kasımpaşa SK (TUR)",
+          "club": "Kasımpa ş a SK (TUR)",
           "clubExtractionOverride": false
         },
         {
@@ -11296,7 +11296,7 @@
           "number": 12,
           "position": "DF",
           "nameArea": "BEN OUANES Mortadha Ahmed Mortadha BEN OUANES BEN OUANES",
-          "club": "Kasımpaşa SK (TUR)",
+          "club": "Kasımpa ş a SK (TUR)",
           "clubExtractionOverride": false
         },
         {
@@ -11496,21 +11496,21 @@
         {
           "number": 2,
           "position": "DF",
-          "nameArea": "CELIK Zeki Mehmet Zeki ÇELIK ZEKİ ÇELİK",
+          "nameArea": "CELIK Zeki Mehmet Zeki ÇELIK ZEK İ ÇEL İ K",
           "club": "AS Roma (ITA)",
           "clubExtractionOverride": false
         },
         {
           "number": 3,
           "position": "DF",
-          "nameArea": "DEMIRAL Merih Merih DEMİRAL DEMİRAL",
+          "nameArea": "DEMIRAL Merih Merih DEM İ RAL DEM İ RAL",
           "club": "Al Ahli FC (KSA)",
           "clubExtractionOverride": false
         },
         {
           "number": 4,
           "position": "DF",
-          "nameArea": "SOYUNCU Caglar Çağlar SÖYÜNCÜ ÇAĞLAR",
+          "nameArea": "SOYUNCU Caglar Ça ğ lar SÖYÜNCÜ ÇA Ğ LAR",
           "club": "Fenerbahçe SK (TUR)",
           "clubExtractionOverride": false
         },
@@ -11525,13 +11525,13 @@
           "number": 6,
           "position": "MF",
           "nameArea": "KOKCU Orkun Orkun KÖKÇÜ ORKUN KÖKÇÜ",
-          "club": "Beşiktaş JK (TUR)",
+          "club": "Be ş ikta ş JK (TUR)",
           "clubExtractionOverride": false
         },
         {
           "number": 7,
           "position": "FW",
-          "nameArea": "AKTURKOGLU Kerem Muhammed Kerem AKTÜRKOĞLU AKTÜRKOĞLU",
+          "nameArea": "AKTURKOGLU Kerem Muhammed Kerem AKTÜRKO Ğ LU AKTÜRKO Ğ LU",
           "club": "Fenerbahçe SK (TUR)",
           "clubExtractionOverride": false
         },
@@ -11545,14 +11545,14 @@
         {
           "number": 9,
           "position": "FW",
-          "nameArea": "GUL Deniz Deniz Daniel GÜL DENİZ GÜL",
+          "nameArea": "GUL Deniz Deniz Daniel GÜL DEN İ Z GÜL",
           "club": "FC Porto (POR)",
           "clubExtractionOverride": false
         },
         {
           "number": 10,
           "position": "MF",
-          "nameArea": "CALHANOGLU Hakan Hakan ÇALHANOĞLU ÇALHANOĞLU",
+          "nameArea": "CALHANOGLU Hakan Hakan ÇALHANO Ğ LU ÇALHANO Ğ LU",
           "club": "FC Internazionale Milano (ITA)",
           "clubExtractionOverride": false
         },
@@ -11580,7 +11580,7 @@
         {
           "number": 14,
           "position": "DF",
-          "nameArea": "BARDAKCI Abdulkerim Abdülkerİm BARDAKCI ABDÜLKERİM",
+          "nameArea": "BARDAKCI Abdulkerim Abdülker İ m BARDAKCI ABDÜLKER İ M",
           "club": "Galatasaray SK (TUR)",
           "clubExtractionOverride": false
         },
@@ -11594,15 +11594,15 @@
         {
           "number": 16,
           "position": "MF",
-          "nameArea": "YUKSEK Ismail İsmaİl YÜKSEK İSMAİL",
+          "nameArea": "YUKSEK Ismail İ sma İ l YÜKSEK İ SMA İ L",
           "club": "Fenerbahçe SK (TUR)",
           "clubExtractionOverride": false
         },
         {
           "number": 17,
           "position": "FW",
-          "nameArea": "KAHVECI Irfan Can İrfan KAHVECİ KAHVECİ",
-          "club": "Kasımpaşa SK (TUR)",
+          "nameArea": "KAHVECI Irfan Can İ rfan KAHVEC İ KAHVEC İ",
+          "club": "Kasımpa ş a SK (TUR)",
           "clubExtractionOverride": false
         },
         {
@@ -11622,14 +11622,14 @@
         {
           "number": 20,
           "position": "DF",
-          "nameArea": "KADIOGLU Ferdi Ferdi Erenay KADIOĞLU F. KADIOĞLU",
+          "nameArea": "KADIOGLU Ferdi Ferdi Erenay KADIO Ğ LU F. KADIO Ğ LU",
           "club": "Brighton & Hove Albion FC (ENG)",
           "clubExtractionOverride": false
         },
         {
           "number": 21,
           "position": "FW",
-          "nameArea": "YILMAZ Baris Alper Barış Alper YILMAZ BARIŞ",
+          "nameArea": "YILMAZ Baris Alper Barı ş Alper YILMAZ BARI Ş",
           "club": "Galatasaray SK (TUR)",
           "clubExtractionOverride": false
         },
@@ -11643,14 +11643,14 @@
         {
           "number": 23,
           "position": "GK",
-          "nameArea": "CAKIR Ugurcan Uğurcan ÇAKIR UĞURCAN",
+          "nameArea": "CAKIR Ugurcan U ğ urcan ÇAKIR U Ğ URCAN",
           "club": "Galatasaray SK (TUR)",
           "clubExtractionOverride": false
         },
         {
           "number": 24,
           "position": "FW",
-          "nameArea": "AYDIN Oguz Oğuz AYDIN OĞUZ",
+          "nameArea": "AYDIN Oguz O ğ uz AYDIN O Ğ UZ",
           "club": "Fenerbahçe SK (TUR)",
           "clubExtractionOverride": false
         },
@@ -12459,7 +12459,7 @@
           "number": 14,
           "position": "FW",
           "nameArea": "SHOMURODOV Eldor Eldor SHOMURODOV SHOMURODOV",
-          "club": "Başakşehir FK (TUR)",
+          "club": "Ba ş ak ş ehir FK (TUR)",
           "clubExtractionOverride": false
         },
         {
@@ -12515,7 +12515,7 @@
           "number": 22,
           "position": "MF",
           "nameArea": "FAYZULLAEV Abbosbek Abbosbek FAYZULLAEV FAYZULLAEV",
-          "club": "Başakşehir FK (TUR)",
+          "club": "Ba ş ak ş ehir FK (TUR)",
           "clubExtractionOverride": false
         },
         {
