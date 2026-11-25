@@ -77,8 +77,9 @@ test("rarity rebuild is deterministic and does not alter unverified squads",()=>
   assert.deepEqual(team.players.map(player=>player.rarity),first.get(team.id),team.id+" rarity must be deterministic");
  }
  const france=generated.teams.find(team=>team.id==="france-2018");
- const famousFrancePlayers=["Hugo Lloris","Raphaël Varane","Paul Pogba","Antoine Griezmann","Olivier Giroud","Kylian Mbappé","Ousmane Dembélé","N'Golo Kanté","Steve Mandanda"];
+ const famousFrancePlayers=["Hugo Lloris","Raphaël Varane","Paul Pogba","Antoine Griezmann","Olivier Giroud","Kylian Mbappé","Ousmane Dembélé","N'Golo Kanté"];
  for(const name of famousFrancePlayers){
   assert.equal(france.players.find(player=>player.name===name)?.rarity,"Common",name+" must remain Common");
  }
+ assert.equal(france.players.find(player=>player.name==="Steve Mandanda")?.rarity,"Rare");
 });
