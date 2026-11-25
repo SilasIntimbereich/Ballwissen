@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
 import {createRound,submitGuess} from "../assets/js/gameplay.js";
-import {matches} from "../assets/js/matching.js";
+import {matches,normalize} from "../assets/js/matching.js";
 
 const historical=JSON.parse(await readFile("data/historical-squads.json","utf8"));
 const worldCup2026=JSON.parse(await readFile("data/worldcup-2026.json","utf8"));
@@ -21,9 +21,11 @@ test("every source-listed player name is accepted in the correct squad slot",()=
  for(const team of teams){
   const round=createRound(team.players);
   for(const player of team.players){
-   const outcome=submitGuess(round,player.name,matches);
-   assert.equal(outcome.status,"correct",team.id+" should accept "+player.name);
-   assert.equal(outcome.player.name,player.name,team.id+" should map "+player.name+" to the correct player");
+   const duplicateName=team.players.filter(candidate=>normalize(candidate.name)===normalize(player.name)).length>1;
+   const guess=duplicateName?player.name+" "+player.number:player.name;
+   const outcome=submitGuess(round,guess,matches);
+   assert.equal(outcome.status,"correct",team.id+" should accept "+guess);
+   assert.equal(outcome.player.name,player.name,team.id+" should map "+guess+" to the correct player");
    checked++;
   }
   assert.equal(round.found.size,team.players.length,team.id+" should be fully guessable");

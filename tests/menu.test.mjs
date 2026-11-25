@@ -25,6 +25,9 @@ test("home menu exposes every offline mode and utility screen", async () => {
   assert.match(css, /\.stadium\{[^}]*z-index:0/);
   assert.match(css, /\.utility-grid\{display:grid/);
   assert.match(css, /button:focus-visible/);
+  assert.ok(css.includes(".normal-grid .mode-card:nth-child(1)"));
+  assert.ok(css.includes(".normal-grid .mode-card:nth-child(2)"));
+  assert.ok(css.includes(".daily-grid .mode-card,.normal-grid .mode-card{grid-column:span 1!important}"));
   assert.ok(css.includes("h1 span{background:none;color:#f0c64a"));
   const serviceWorker = await read("dist/sw.js");
   assert.match(serviceWorker, /\.\/assets\/js\/menu\.js/);
@@ -66,7 +69,7 @@ test("normal gameplay is local, input-enabled and handles every end state", asyn
   assert.match(main, /function enableGuessControls\(\)/);
   assert.match(main, /input\.removeAttribute\("disabled"\)/);
   assert.match(main, /button\.removeAttribute\("disabled"\)/);
-  assert.match(main, /if\(practiceOnly\)\{\$\("#timer"\)\.textContent="∞";return;\}/);
+  assert.match(main, /if\(practiceOnly\)\{const timer=\$\("#timer"\);timer\.textContent="∞";timer\.classList\.remove\("timer-warning","timer-critical"\);timer\.setAttribute\("aria-label","Practice mode, no time limit"\);return;\}/);
   assert.match(main, /ACCURACY · /);
   assert.match(main, /PRACTICE · NO TIMER/);
   assert.doesNotMatch(main, /supabase|normalSessionId|normalHints/);

@@ -8,18 +8,30 @@ A mobile-first World Cup squad memory game with a colourful, angular retro-footb
 - **Normal Easy and Hard:** choose any World Cup edition and national team. Easy shows position hints and club details where the source contains them; Hard hides the hints.
 - **Practice:** the same complete squads with no timer.
 - **World Cup Challenge:** choose a tournament and team.
-- **Gameplay:** surname and compound-surname matching, accent-insensitive names, minor typo tolerance, duplicate and incorrect-guess feedback, shirt numbers, player rarity labels, a 120-second timer, Give Up, complete roster reveal, perfect-run results and final Daily results.
+- **Gameplay:** surname and compound-surname matching, accent-insensitive names, minor typo tolerance, duplicate and incorrect-guess feedback, shirt-number disambiguation for duplicate names, player rarity labels, a 120-second timer, Give Up, complete roster reveal, perfect-run results and final Daily results.
 - **Local statistics and settings:** games played, players found, best accuracy, reset, compact layout and reduced motion. They are stored on the current device only.
 - **Offline support:** the service worker caches the app and squad data after the first successful load.
 
 All games are local and unranked. Because answers are bundled for offline play, player names are visible in the downloaded static data. Do not use this release for competitive or ranked play.
 
+## Player rarity
+
+Rarity represents recall difficulty, not player quality. The assignment is deterministic and shared by the browser and server-side resolver:
+
+- **Common:** globally familiar names, repeated World Cup appearances, or the familiar core of a common-difficulty squad.
+- **Rare:** less familiar reserve picks in common squads or players appearing in multiple tournaments.
+- **Niche:** less familiar players in niche and legendary-difficulty squads.
+- **Legendary:** the next two hardest eligible recall picks in each legendary-difficulty squad, after the Ball Knowledge pick.
+- **Ball Knowledge:** the single hardest eligible recall pick in each legendary-difficulty squad.
+
+Every squad with at least three eligible non-famous players receives one Ball Knowledge player and two Legendary players, selected as that squad's hardest-to-recall picks. The remaining players are assigned globally to the target distribution: 2,533 Common, 1,353 Rare, 1,153 Niche, 480 Legendary and 240 Ball Knowledge (5,759 players across 240 squads). The resolver uses curated recognition names, cross-tournament appearances, squad difficulty, goalkeeper depth and shirt number as a tie-breaker. It does not treat a high shirt number alone as proof that a player is obscure.
+
 ## Squad data
 
 | Data | Coverage | Status |
 |---|---:|---|
-| Historical World Cups, 2002–2022 | 192 teams / 4,511 player records | Imported from the Fjelstul World Cup Database; position and shirt number are present. The upstream source does not provide tournament-time club values. |
-| World Cup 2026 | 48 teams / 1,248 player records | 26 players per team. 20 teams have been independently reviewed against FIFA squad documents; the remaining 28 are labelled practice data. Club hints are included where supplied. |
+| Historical World Cups, 2002–2022 | 192 teams / 4,511 player records | The latest reproducible 2006–2022 audit records 70 of 160 teams as fully audited. The separate 2002 audit matched 19 of 32 squads by player identity, with two also passing the complete independent club-source check. Only squads with complete player-level identity, position, tournament-club and independent-source evidence are treated as fully verified; all others remain practice-only. |
+| World Cup 2026 | 48 teams / 1,248 player records | 26 players per team. 20 teams have been independently reviewed against FIFA squad documents; the remaining 28 are unverified practice data. Club hints are included where supplied. |
 | Daily exclusions | 50 squad editions | Checked against the squad IDs and excluded from all three Daily tiers. |
 
 The 2022 Iran squad contains 25 players in the source data; this is not padded with an invented player. Historical squads and 2026 squads are not presented as independently verified where the audit has not been completed.

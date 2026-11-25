@@ -59,15 +59,31 @@ test("every player in every verified squad has a valid rarity assignment",()=>{
 });
 
 
-test("rarity assignment keeps elite tiers genuinely scarce and famous players Common",()=>{
+test("rarity assignment follows the gradual global curve and keeps famous players Common",()=>{
  const generated=structuredClone(localData);
  assignRosterRarities(generated,publicData);
  const all=generated.teams.flatMap(team=>team.players);
  const counts=Object.fromEntries(["Common","Rare","Niche","Legendary","Ball Knowledge"].map(tier=>[tier,all.filter(player=>player.rarity===tier).length]));
  assert.equal(all.length,5759);
- assert.ok(counts["Legendary"]<=10,"Legendary must stay extremely rare");
- assert.ok(counts["Ball Knowledge"]<=4,"Ball Knowledge must be exceptionally rare");
+ for(const team of generated.teams){
+  const nonCommon=team.players.filter(player=>player.rarity!=="Common").length;
+  if(nonCommon>=11){
+   assert.ok(team.players.filter(player=>player.rarity==="Niche").length>=3,team.id+" needs at least three Niche players");
+   assert.ok(team.players.filter(player=>player.rarity==="Rare").length>=5,team.id+" needs at least five Rare players");
+  }
+ }
+ assert.deepEqual(counts,{
+  Common:2533,
+  Rare:1353,
+  Niche:1153,
+  Legendary:480,
+  "Ball Knowledge":240
+ });
  const france=generated.teams.find(team=>team.id==="france-2018");
- assert.ok(france.players.filter(player=>player.rarity==="Common").length>=20,"France 2018 should be mostly Common");
- assert.equal(france.players.find(player=>/kylian mbapp/i.test(player.name)).rarity,"Common");
+ const famousFrancePlayers=["Hugo Lloris","Raphaël Varane","Paul Pogba","Antoine Griezmann","Olivier Giroud","Kylian Mbappé","Ousmane Dembélé","N'Golo Kanté","Steve Mandanda"];
+ for(const name of famousFrancePlayers){
+  assert.equal(france.players.find(player=>player.name===name)?.rarity,"Common",name+" must remain protected as Common");
+ }
+ assert.ok(france.players.filter(player=>player.rarity==="Niche").length>=3,"France 2018 should retain its Niche minimum");
+ assert.ok(france.players.filter(player=>player.rarity==="Rare").length>=5,"France 2018 should retain its Rare minimum");
 });

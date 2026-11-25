@@ -153,7 +153,13 @@ try{
  await timerPage.locator('[data-mode="easy"]').click();
  await timerPage.locator("#year").selectOption("2018");
  await timerPage.locator("#team-grid .team-button").getByText("Argentina",{exact:true}).click();
- await timerPage.clock.runFor(120_000);
+ await timerPage.clock.runFor(90_000);
+ assert.equal((await timerPage.locator("#timer").textContent()).trim(),"00:30");
+ assert.ok(await timerPage.locator("#timer").evaluate(el=>el.classList.contains("timer-warning")));
+ await timerPage.clock.runFor(20_000);
+ assert.equal((await timerPage.locator("#timer").textContent()).trim(),"00:10");
+ assert.ok(await timerPage.locator("#timer").evaluate(el=>el.classList.contains("timer-critical")));
+ await timerPage.clock.runFor(10_000);
  await timerPage.waitForFunction(()=>!document.querySelector("#result").classList.contains("hidden"));
  assert.match(await timerPage.locator("#result-message").textContent(),/Time is up/);
  assert.equal(await timerPage.locator(".player-card.missed").count(),23);
