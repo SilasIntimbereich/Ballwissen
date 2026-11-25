@@ -74,7 +74,7 @@ test("curated fame levels distinguish global stars from specialist-level names",
     {name:"Hugo Sochurek"}
   ]}]};
   assignRosterRarities(rosters,meta([{id:"test",year:2026,verified:true}]));
-  assert.deepEqual(rosters.teams[0].players.map(player=>player.rarity),["Common","Rare","Niche","Niche"]);
+  assert.deepEqual(rosters.teams[0].players.map(player=>player.rarity),["Common","Rare","Niche","Ball Knowledge"]);
 });
 
 test("unlisted names use the conservative Niche fallback, not an appearance-count bonus",()=>{
