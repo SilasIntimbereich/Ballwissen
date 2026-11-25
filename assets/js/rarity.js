@@ -15,8 +15,29 @@ Kylian Mbappe|Lionel Messi|Cristiano Ronaldo|Neymar|Luka Modric|Antoine Griezman
 
 // These lists are deliberately explicit. Add a player only when there is
 // evidence for their worldwide recognition level, not to fill a quota.
-const LEGENDARY_NAMES = new Set([]);
-const BALL_KNOWLEDGE_NAMES = new Set([]);
+// Fame tiers are curated by player identity, never inferred from shirt number,
+// position, team strength or number of World Cup appearances.
+const RARE_NAMES = new Set(`
+Tim Cahill|Harry Kewell|Hideo Nakata|Keisuke Honda|Shinji Kagawa|Landon Donovan|Clint Dempsey|Tim Howard|Carlos Valderrama|Cuauhtemoc Blanco|Pavel Nedved|Tomas Rosicky|Hakan Sukur|Arda Turan|Adriano|Romario|Zico|Socrates|Bebeto|Christian Vieri|Filippo Inzaghi|Daniele De Rossi|Mario Balotelli|Jens Lehmann|Sami Khedira|Jerome Boateng|Ilkay Gundogan|David Alaba|Kalidou Koulibaly|Hakim Ziyech|Yassine Bounou|Mehdi Benatia|Islam Slimani|Vincent Aboubakar|Asamoah Gyan|Nani|Ricardo Quaresma|Joao Moutinho|Joao Felix|Bruno Fernandes|Bernardo Silva|Diego Costa|Pedro|Juan Mata|Gonzalo Higuain|Javier Mascherano|Javier Zanetti|Esteban Cambiasso|Juan Cuadrado|Park Ji Sung|Ali Karimi|Mehdi Mahdavikia|Deco|Claude Makelele|Xabi Alonso|Raul Gonzalez|Fernando Hierro|David Trezeguet|Koke|Marek Hamsik|Edin Dzeko|Miralem Pjanic|Keylor Navas|Javier Hernandez|Andres Guardado|Bryan Ruiz|Roger Milla|Jay Jay Okocha|Nwankwo Kanu|Emmanuel Adebayor|John Obi Mikel|Kolo Toure|Salomon Kalou|Shunsuke Nakamura|Yuto Nagatomo|Makoto Hasebe|Shinji Okazaki|Lukas Podolski|Claudio Marchisio|Antonio Di Natale|Gabriel Batistuta|Carlos Tevez|Juan Roman Riquelme|Hernan Crespo|Giovani Dos Santos|Gervinho|Sofiane Feghouli|Yacine Brahimi|Nemanja Vidic|Branislav Ivanovic|Darijo Srna|Dejan Stankovic|Goran Pandev|Raul Jimenez|Patrik Schick|Granit Xhaka|Scott McTominay|Miguel Almiron|Mathew Ryan|Nicolas Pepe|Wataru Endo|Mehdi Taremi|Chris Wood|Salem Al Dawsari|Marcel Sabitzer|Yoane Wissa|Eldor Shomurodov|Antoine Semenyo|Moisés Caicedo|Federico Valverde|Viktor Gyokeres|Alphonso Davies|Edin Dzeko|Arda Guler|Florian Wirtz|Virgil van Dijk|Christian Pulisic|Lamine Yamal|Erling Haaland|James Rodriguez|Rodri|Pedri|Jude Bellingham|Bukayo Saka|Phil Foden|Declan Rice|Enzo Fernandez|Alexis Mac Allister|Lautaro Martinez|Julian Alvarez|Emiliano Martinez|Lisandro Martinez|Cristian Romero|Rafael Leao|Khvicha Kvaratskhelia|Victor Osimhen|Rasmus Hojlund|Dominik Szoboszlai|Dusan Vlahovic|Joško Gvardiol|Josko Gvardiol|Jamal Musiala|Kai Havertz|Niclas Fullkrug|Alejandro Garnacho|Darwin Nunez|Luis Diaz|Gabriel Jesus|Gabriel Martinelli|Richarlison|Endrick|Raphinha|Bruno Guimaraes|Casemiro|Marquinhos|Gabriel Magalhaes|Takefusa Kubo|Kaoru Mitoma|Daichi Kamada|Hwang Hee Chan|Kim Min Jae|Mehdi Benatia|Riyad Mahrez|Amine Gouiri|Mohamed Amoura|Rayan Ait Nouri|Ibrahim Maza|Aissa Mandi|Ramy Bensebaini|Houssem Aouar|Fares Chaibi|Nicolas Paz|Thiago Almada|Enzo Fernandez|Alexis Mac Allister|Rodrigo De Paul|Lautaro Martinez|Giovani Lo Celso|Nicolas Otamendi|Angel Correa|Moussa Diaby|Kingsley Coman|Dayot Upamecano|William Saliba|Eduardo Camavinga|Aurelien Tchouameni|Adrien Rabiot|Marcus Thuram|Randal Kolo Muani|Theo Hernandez|Lucas Hernandez|Benjamin Pavard|Jules Kounde|Ibrahima Konate|Ousmane Dembele|Olivier Giroud|Antoine Griezmann|Raphael Varane|Hugo Lloris|Thomas Lemar|Yannick Carrasco|Youri Tielemans|Leandro Trossard|Jeremy Doku|Amadou Onana|Jan Vertonghen|Axel Witsel|Dries Mertens|Christian Eriksen|Pierre Emile Hojbjerg|Rasmus Kristensen|Andreas Christensen|Mikkel Damsgaard|Kasper Schmeichel|Simon Kjaer|Joakim Maehle|Yussuf Poulsen|Cody Gakpo|Memphis Depay|Frenkie de Jong|Denzel Dumfries|Matthijs de Ligt|Nathan Ake|Stefan de Vrij|Donyell Malen|Xavi Simons|Gavi|Dani Olmo|Unai Simon|Aymeric Laporte|Alvaro Morata|Mikel Oyarzabal|Ferran Torres|Pau Torres|Dani Carvajal|Sergio Busquets|David Silva|Cesc Fabregas|Isco|David De Gea|Iago Aspas|Marco Asensio|Gerard Moreno|Sergio Canales|Thiago Alcantara|Sergio Reguilon|Jesus Navas|Jordi Alba|Pedro Rodriguez|Santi Cazorla|Fernando Llorente|Juanfran|David Villa|Fernando Torres|Andres Iniesta|Xabi Alonso|Sergio Ramos|Carles Puyol|Iker Casillas|Xavi Hernandez|David Beckham|Steven Gerrard|Frank Lampard|John Terry|Rio Ferdinand|Ashley Cole|Michael Owen|Peter Crouch|Joe Cole|Michael Essien|Sulley Muntari|Asamoah Gyan|Kwadwo Asamoah|Kevin Prince Boateng|Andre Ayew|Jordan Ayew|Wilfried Zaha|Wilfried Bony|Yaya Toure|Kolo Toure|Didier Zokora|Gervinho|Salomon Kalou|Seydou Doumbia|Emmanuel Eboue|Samuel Eto'o|Alex Song|Rigobert Song|Geremi|Patrick Mboma|Pierre Webo|Vincent Aboubakar|Andre Onana|Riyad Mahrez|Islam Slimani|Sofiane Feghouli|Yacine Brahimi|Rabah Madjer|Madjid Bougherra|Hassan Yebda|Saphir Taider|Haris Seferovic|Xherdan Shaqiri|Granit Xhaka|Ricardo Rodriguez|Yann Sommer|Breel Embolo|Remo Freuler|Denis Zakaria|Stéphane Mbia|Carlos Kameni|Alex Song|John Obi Mikel|Obafemi Martins|Victor Moses|Ahmed Musa|Kelechi Iheanacho|Wilfred Ndidi|Jay Jay Okocha|Nwankwo Kanu|Joseph Yobo|Yakubu Aiyegbeni|Peter Odemwingie|Emmanuel Emenike|Odion Ighalo|Mikel John Obi|Hidetoshi Nakata|Shinji Ono|Shinji Okazaki|Keisuke Honda|Shinji Kagawa|Makoto Hasebe|Yuto Nagatomo|Takefusa Kubo|Takumi Minamino|Maya Yoshida|Eiji Kawashima|Park Ji Sung|Son Heung Min|Lee Chung Yong|Ki Sung Yueng|Hwang Hee Chan|Cha Bum Kun|Tim Cahill|Harry Kewell|Mark Viduka|Brett Emerton|Mark Schwarzer|Mile Jedinak|Aaron Mooy|Tom Rogic|Mathew Leckie|Robbie Kruse|Mark Bresciano|Lucas Neill|Tim Howard|Clint Dempsey|Landon Donovan|Michael Bradley|Jozy Altidore|Brian McBride|DaMarcus Beasley|Carlos Bocanegra|Claudio Reyna|Brad Friedel|Rafael Marquez|Javier Hernandez|Andres Guardado|Giovani Dos Santos|Cuauhtemoc Blanco|Jorge Campos|Hugo Sanchez|Luis Hernandez|Carlos Vela|Hirving Lozano|Raul Jimenez|Guillermo Ochoa|Keylor Navas|Bryan Ruiz|Joel Campbell|Paulo Wanchope|Carlos Valderrama|James Rodriguez|Radamel Falcao|Juan Cuadrado|David Ospina|Juan Pablo Angel|Freddy Rincon|Mario Yepes|Teofilo Gutierrez|Enner Valencia|Antonio Valencia|Alexis Sanchez|Arturo Vidal|Claudio Bravo|Eduardo Vargas|Gary Medel|Marcelo Salas|Ivan Zamorano|Jorge Valdivia|Paolo Guerrero|Claudio Pizarro|Jefferson Farfan|Christian Cueva|Luis Suarez|Edinson Cavani|Diego Forlan|Diego Godin|Fernando Muslera|Jose Maria Gimenez|Darwin Nunez|Federico Valverde|Enzo Francescoli|Alvaro Recoba|Carlos Valderrama|Radamel Falcao|James Rodriguez|Juan Roman Riquelme|Pablo Aimar|Javier Saviola|Hernan Crespo|Gabriel Batistuta|Carlos Tevez|Angel Di Maria|Sergio Aguero|Gonzalo Higuain|Javier Mascherano|Juan Sebastian Veron|Esteban Cambiasso|Walter Samuel|Diego Milito|Ezequiel Lavezzi|Ever Banega|Marcos Rojo|Nicolas Otamendi|Lautaro Martinez|Julian Alvarez|Enzo Fernandez|Alexis Mac Allister|Rodrigo De Paul|Emiliano Martinez|Lionel Scaloni|Carlos Valderrama|Ronaldo Nazario|Rivaldo|Ronaldinho|Kaka|Adriano|Robinho|Juninho Pernambucano|Gilberto Silva|Ze Roberto|Lucio|Juan|Dida|Maicon|Jorginho|Dunga|Bebeto|Romario|Zico|Socrates|Careca|Rai|Denilson|Juninho Paulista|Kleberson|Gilberto|Luisao|Julio Cesar|Felipe Melo|Hulk|Oscar|Willian|Fernandinho|Paulinho|Ramires|Dani Alves|Marcelo|Thiago Silva|David Luiz|Marquinhos|Alisson|Ederson|Vinicius Junior|Rodrygo|Raphinha|Richarlison|Endrick|Gabriel Jesus|Gabriel Martinelli|Casemiro|Bruno Guimaraes|Lucas Paqueta|Neymar
+`.split("|").map(normalise));
+
+// Demote former broad-list names whose recognition is mainly among regular football fans.
+const DEMOTED_FROM_COMMON = new Set(`
+Tim Cahill|Harry Kewell|Hideo Nakata|Keisuke Honda|Shinji Kagawa|Landon Donovan|Clint Dempsey|Tim Howard|Carlos Valderrama|Cuauhtemoc Blanco|Pavel Nedved|Tomas Rosicky|Hakan Sukur|Arda Turan|Adriano|Romario|Zico|Socrates|Bebeto|Christian Vieri|Filippo Inzaghi|Daniele De Rossi|Mario Balotelli|Jens Lehmann|Sami Khedira|Jerome Boateng|Ilkay Gundogan|David Alaba|Kalidou Koulibaly|Hakim Ziyech|Yassine Bounou|Mehdi Benatia|Islam Slimani|Vincent Aboubakar|Asamoah Gyan|Nani|Ricardo Quaresma|Joao Moutinho|Joao Felix|Bruno Fernandes|Bernardo Silva|Diego Costa|Pedro|Juan Mata|Gonzalo Higuain|Javier Mascherano|Javier Zanetti|Esteban Cambiasso|Juan Cuadrado|Park Ji Sung|Ali Karimi|Mehdi Mahdavikia|Deco|Claude Makelele|Xabi Alonso|Raul Gonzalez|Fernando Hierro|David Trezeguet|Koke|Marek Hamsik|Edin Dzeko|Miralem Pjanic|Keylor Navas|Javier Hernandez|Andres Guardado|Bryan Ruiz|Roger Milla|Jay Jay Okocha|Nwankwo Kanu|Emmanuel Adebayor|John Obi Mikel|Kolo Toure|Salomon Kalou|Shunsuke Nakamura|Yuto Nagatomo|Makoto Hasebe|Shinji Okazaki|Lukas Podolski|Claudio Marchisio|Antonio Di Natale|Gabriel Batistuta|Carlos Tevez|Juan Roman Riquelme|Hernan Crespo|Giovani Dos Santos|Gervinho|Sofiane Feghouli|Yacine Brahimi|Nemanja Vidic|Branislav Ivanovic|Darijo Srna|Dejan Stankovic|Goran Pandev
+`.split("|").map(normalise));
+for (const name of DEMOTED_FROM_COMMON) COMMON_NAMES.delete(name);
+
+const NICHE_NAMES = new Set(`
+Ronwen Williams|Almoez Ali|Wilson Isidor|Leandro Bacuna|Ellyes Skhiri|Aymen Hussein|Mousa Al Tamari|Steven Moreira|Coco Carrasquilla|Hugo Sochurek|Alexandr Sojka|Denis Visinsky|Stepan Chaloupek|Nadhir Benbouali|Adil Boulbina|Fares Ghedjemis|Yacine Titraoui|Ramiz Zerrouki|Jaouen Hadjam|Zinedine Belaid|Mohamed Amine Tougai|Achraf Abada|Oussama Benbot|Melvin Mastil|Luca Zidane|Samir Chergui|Rafik Belghali|Ibrahim Maza|Anis Hadj Moussa|Fares Chaibi|Nicolas Paz|Giuliano Simeone|Jose Manuel Lopez|Facundo Medina|Valentin Barco|Hugo Sochurek|Alexandr Sojka|Hugo Hornicek|Denis Visinsky|Ronwen Williams|Coco Carrasquilla|Eldor Shomurodov|Aymen Hussein|Mousa Al Tamari|Almoez Ali|Leandro Bacuna|Ellyes Skhiri|Steven Moreira|Wilson Isidor
+`.split("|").map(normalise));
+
+const LEGENDARY_NAMES = new Set(`
+Lama|Joao Ricardo|Mário|Abdelkader Ghezzal|Rafik Halliche|Karim Ziani|Nadir Belhadj|Hassan Yebda|Djamel Mesbah|Foued Kadir|Adlene Guedioura|Mehdi Mostefa|Carl Medjani|Riyad Boudebouz|Hameur Bouazza|Mourad Meghni|Antar Yahia|Saphir Taider|Madjid Bougherra|Habib Bellaid|Fawzi Chaouchi|Rabah Saadane
+`.split("|").map(normalise));
+
+const BALL_KNOWLEDGE_NAMES = new Set(`
+Hugo Sochurek|Alexandr Sojka|Denis Visinsky|Stepan Chaloupek|Achraf Abada|Melvin Mastil|Nadhir Benbouali|Fares Ghedjemis|Yacine Titraoui|Adil Boulbina
+`.split("|").map(normalise));
 
 export function rarityFromEvidence({ globalRecognition = 0 } = {}) {
   const score = Number.isFinite(Number(globalRecognition))
@@ -31,37 +52,25 @@ export function rarityFromEvidence({ globalRecognition = 0 } = {}) {
 const playerNames = player => [player?.name, ...(Array.isArray(player?.aliases) ? player.aliases : [])]
   .filter(Boolean).map(normalise).filter(Boolean);
 
+function rarityForNames(names) {
+  if (names.some(name => COMMON_NAMES.has(name))) return "Common";
+  if (names.some(name => RARE_NAMES.has(name))) return "Rare";
+  if (names.some(name => NICHE_NAMES.has(name))) return "Niche";
+  if (names.some(name => LEGENDARY_NAMES.has(name))) return "Legendary";
+  if (names.some(name => BALL_KNOWLEDGE_NAMES.has(name))) return "Ball Knowledge";
+  // A World Cup squad member not explicitly tagged above is provisionally Niche.
+  // This avoids falsely treating a lack of curated data as proof of obscurity.
+  return "Niche";
+}
+
 export function assignRosterRarities(rosters, publicData) {
   const teams = Array.isArray(rosters?.teams) ? rosters.teams : [];
   const metadata = new Map((publicData?.teams || []).map(team => [team.id, team]));
-  const verifiedTeams = teams.filter(team => metadata.get(team.id)?.verified === true);
-  const appearances = new Map();
-
-  // Only independently verified tournament appearances count as popularity evidence.
-  for (const squad of verifiedTeams) {
-    const year = Number(metadata.get(squad.id)?.year);
+  for (const squad of teams) {
+    if (metadata.get(squad.id)?.verified !== true) continue;
     for (const player of squad.players || []) {
-      for (const name of playerNames(player)) {
-        if (!appearances.has(name)) appearances.set(name, new Set());
-        if (Number.isFinite(year)) appearances.get(name).add(year);
-      }
+      player.rarity = rarityForNames(playerNames(player));
     }
   }
-
-  for (const squad of verifiedTeams) {
-    for (const player of squad.players || []) {
-      const names = playerNames(player);
-      const key = names[0];
-      const count = Math.max(0, ...names.map(name => appearances.get(name)?.size || 0));
-      let rarity;
-      if (names.some(name => COMMON_NAMES.has(name)) || count >= 3) rarity = "Common";
-      else if (names.some(name => LEGENDARY_NAMES.has(name))) rarity = "Legendary";
-      else if (names.some(name => BALL_KNOWLEDGE_NAMES.has(name))) rarity = "Ball Knowledge";
-      else if (count >= 2) rarity = "Rare";
-      else rarity = "Niche";
-      player.rarity = rarity;
-    }
-  }
-
   return rosters;
 }
