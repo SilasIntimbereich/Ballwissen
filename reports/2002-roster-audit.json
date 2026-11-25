@@ -1,0 +1,4085 @@
+{
+  "year": 2002,
+  "source": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+  "sourceStatus": "available",
+  "generatedAt": "2026-11-25T13:44:42.288Z",
+  "teams": [
+    {
+      "teamId": "argentina-2002",
+      "teamName": "Argentina",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 23,
+      "missingFromSource": [],
+      "missingFromDataset": [],
+      "sourceComplete": true,
+      "rosterClean": true,
+      "matched": [
+        {
+          "datasetName": "Germán Burgos",
+          "sourceName": "Germán Burgos",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Roberto Ayala",
+          "sourceName": "Roberto Ayala",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Juan Pablo Sorín",
+          "sourceName": "Juan Pablo Sorín",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Mauricio Pochettino",
+          "sourceName": "Mauricio Pochettino",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Matías Almeyda",
+          "sourceName": "Matías Almeyda",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Walter Samuel",
+          "sourceName": "Walter Samuel",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Claudio López",
+          "sourceName": "Claudio López",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Javier Zanetti",
+          "sourceName": "Javier Zanetti",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Gabriel Batistuta",
+          "sourceName": "Gabriel Batistuta",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ariel Ortega",
+          "sourceName": "Ariel Ortega",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Juan Sebastián Verón",
+          "sourceName": "Juan Sebastián Verón",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Pablo Cavallero",
+          "sourceName": "Pablo Cavallero",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Diego Placente",
+          "sourceName": "Diego Placente",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Diego Simeone",
+          "sourceName": "Diego Simeone",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Claudio Husaín",
+          "sourceName": "Claudio Husaín",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Pablo Aimar",
+          "sourceName": "Pablo Aimar",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Gustavo López",
+          "sourceName": "Gustavo López",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Kily González",
+          "sourceName": "Cristian 'Kily' González",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Hernán Crespo",
+          "sourceName": "Hernán Crespo",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Marcelo Gallardo",
+          "sourceName": "Marcelo Gallardo",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Claudio Caniggia",
+          "sourceName": "Claudio Caniggia",
+          "match": "exact"
+        },
+        {
+          "datasetName": "José Chamot",
+          "sourceName": "José Chamot",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Roberto Bonano",
+          "sourceName": "Roberto Bonano",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "belgium-2002",
+      "teamName": "Belgium",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 23,
+      "missingFromSource": [],
+      "missingFromDataset": [],
+      "sourceComplete": true,
+      "rosterClean": true,
+      "matched": [
+        {
+          "datasetName": "Geert De Vlieger",
+          "sourceName": "Geert de Vlieger",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Éric Deflandre",
+          "sourceName": "Eric Deflandre",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Glen De Boeck",
+          "sourceName": "Glen de Boeck",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Eric Van Meir",
+          "sourceName": "Eric van Meir",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Nico Van Kerckhoven",
+          "sourceName": "Nico van Kerckhoven",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Timmy Simons",
+          "sourceName": "Timmy Simons",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Marc Wilmots",
+          "sourceName": "Marc Wilmots",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Bart Goor",
+          "sourceName": "Bart Goor",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Wesley Sonck",
+          "sourceName": "Wesley Sonck",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Johan Walem",
+          "sourceName": "Johan Walem",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Gert Verheyen",
+          "sourceName": "Gert Verheyen",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Peter Van der Heyden",
+          "sourceName": "Peter van der Heyden",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Franky Vandendriessche",
+          "sourceName": "Franky Vandendriessche",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Sven Vermant",
+          "sourceName": "Sven Vermant",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jacky Peeters",
+          "sourceName": "Jacky Peeters",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Daniel Van Buyten",
+          "sourceName": "Daniel van Buyten",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Gaëtan Englebert",
+          "sourceName": "Gaetan Englebert",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Yves Vanderhaeghe",
+          "sourceName": "Yves Vanderhaeghe",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Bernd Thijs",
+          "sourceName": "Bernd Thijs",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Branko Strupar",
+          "sourceName": "Branko Strupar",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Danny Boffin",
+          "sourceName": "Danny Boffin",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Mbo Mpenza",
+          "sourceName": "Mbo Mpenza",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Frédéric Herpoel",
+          "sourceName": "Frédéric Herpoël",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "brazil-2002",
+      "teamName": "Brazil",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 23,
+      "missingFromSource": [],
+      "missingFromDataset": [],
+      "sourceComplete": true,
+      "rosterClean": true,
+      "matched": [
+        {
+          "datasetName": "Marcos",
+          "sourceName": "Marcos",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Cafu",
+          "sourceName": "Cafu",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Lúcio",
+          "sourceName": "Lúcio",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Roque Júnior",
+          "sourceName": "Roque Júnior",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Edmílson",
+          "sourceName": "Edmílson",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Roberto Carlos",
+          "sourceName": "Roberto Carlos II",
+          "match": "manual-alias"
+        },
+        {
+          "datasetName": "Ricardinho",
+          "sourceName": "Ricardinho II",
+          "match": "manual-alias"
+        },
+        {
+          "datasetName": "Gilberto Silva",
+          "sourceName": "Gilberto Silva",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ronaldo",
+          "sourceName": "Ronaldo",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Rivaldo",
+          "sourceName": "Rivaldo",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ronaldinho",
+          "sourceName": "Ronaldinho Gaúcho",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Dida",
+          "sourceName": "Dida",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Juliano Belletti",
+          "sourceName": "Belletti",
+          "match": "manual-alias"
+        },
+        {
+          "datasetName": "Ânderson Polga",
+          "sourceName": "Ânderson Polga",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Kléberson",
+          "sourceName": "Kléberson",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Júnior",
+          "sourceName": "Júnior II",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Denílson",
+          "sourceName": "Denílson III",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Vampeta",
+          "sourceName": "Vampeta",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Juninho Paulista",
+          "sourceName": "Juninho Paulista",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Edílson",
+          "sourceName": "Edílson",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Luizão",
+          "sourceName": "Luizão",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Rogério Ceni",
+          "sourceName": "Rogério Ceni",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Kaká",
+          "sourceName": "Kaká",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "cameroon-2002",
+      "teamName": "Cameroon",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 23,
+      "missingFromSource": [],
+      "missingFromDataset": [],
+      "sourceComplete": true,
+      "rosterClean": true,
+      "matched": [
+        {
+          "datasetName": "Alioum Boukar",
+          "sourceName": "Boukar Alioum",
+          "match": "manual-alias"
+        },
+        {
+          "datasetName": "Bill Tchato",
+          "sourceName": "Bill Tchato",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Pierre Womé",
+          "sourceName": "Pierre Wome",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Rigobert Song",
+          "sourceName": "Rigobert Song",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Raymond Kalla",
+          "sourceName": "Raymond Kalla",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Pierre Njanka",
+          "sourceName": "Pierre Njanka",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Joseph N'Do",
+          "sourceName": "Joseph Ndo",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Geremi",
+          "sourceName": "Geremi Njitap",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Samuel Eto'o",
+          "sourceName": "Samuel Eto'o",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Patrick M'Boma",
+          "sourceName": "Patrick Mboma",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Pius Ndiefi",
+          "sourceName": "Pius N'Diefi",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Lauren",
+          "sourceName": "Lauren Etame-Mayer",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Lucien Mettomo",
+          "sourceName": "Lucien Mettomo",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Joël Epalle",
+          "sourceName": "Joël Epalle",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Nicolas Alnoudji",
+          "sourceName": "Nicolas Alnoudji",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jacques Songo'o",
+          "sourceName": "Jacques Songo'o",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Marc-Vivien Foé",
+          "sourceName": "Marc-Vivien Foé",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Patrick Suffo",
+          "sourceName": "Patrick Suffo",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Eric Djemba-Djemba",
+          "sourceName": "Eric Djemba-Djemba",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Salomon Olembé",
+          "sourceName": "Salomon Olembé",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Joseph-Désiré Job",
+          "sourceName": "Joseph-Désiré Job",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Carlos Kameni",
+          "sourceName": "Idriss Carlos Kameni",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Daniel Kome",
+          "sourceName": "Daniel Ngom Kome",
+          "match": "unique-token-subset"
+        }
+      ]
+    },
+    {
+      "teamId": "china-2002",
+      "teamName": "China",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 23,
+      "missingFromSource": [],
+      "missingFromDataset": [],
+      "sourceComplete": true,
+      "rosterClean": true,
+      "matched": [
+        {
+          "datasetName": "Qi An",
+          "sourceName": "An Qi",
+          "match": "manual-alias"
+        },
+        {
+          "datasetName": "Enhua Zhang",
+          "sourceName": "Zhang Enhua",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Pu Yang",
+          "sourceName": "Yang Pu",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Chengying Wu",
+          "sourceName": "Wu Chengying",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Zhiyi Fan",
+          "sourceName": "Fan Zhiyi",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Jiayi Shao",
+          "sourceName": "Shao Jiayi",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Jihai Sun",
+          "sourceName": "Sun Jihai",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Tie Li",
+          "sourceName": "Li Tie",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Mingyu Ma",
+          "sourceName": "Ma Mingyu",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Haidong Hao",
+          "sourceName": "Hao Haidong",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Genwei Yu",
+          "sourceName": "Yu Genwei",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Maozhen Su",
+          "sourceName": "Su Maozhen",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Yao Gao",
+          "sourceName": "Gao Yao",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Weifeng Li",
+          "sourceName": "Li Weifeng",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Junzhe Zhao",
+          "sourceName": "Zhao Junzhe",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Bo Qu",
+          "sourceName": "Qu Bo",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Wei Du",
+          "sourceName": "Du Wei",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Xiaopeng Li",
+          "sourceName": "Li Xiaopeng",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Hong Qi",
+          "sourceName": "Qi Hong",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Chen Yang",
+          "sourceName": "Yang Chen",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Yunlong Xu",
+          "sourceName": "Xu Yunlong",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Jin Jiang",
+          "sourceName": "Jiang Jin",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Chuliang Ou",
+          "sourceName": "Ou Chuliang",
+          "match": "unique-token-subset"
+        }
+      ]
+    },
+    {
+      "teamId": "costa-rica-2002",
+      "teamName": "Costa Rica",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 23,
+      "missingFromSource": [],
+      "missingFromDataset": [],
+      "sourceComplete": true,
+      "rosterClean": true,
+      "matched": [
+        {
+          "datasetName": "Erick Lonnis",
+          "sourceName": "Erick Lonnis",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jervis Drummond",
+          "sourceName": "Jervis Drummond",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Luis Marín",
+          "sourceName": "Luis Marín",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Mauricio Wright",
+          "sourceName": "Mauricio Wright",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Gilberto Martínez",
+          "sourceName": "Gilberto Martínez",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Wílmer López",
+          "sourceName": "Wílmer López",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Rolando Fonseca",
+          "sourceName": "Rolando Fonseca",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Mauricio Solís",
+          "sourceName": "Mauricio Solís",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Paulo Wanchope",
+          "sourceName": "Paulo Wanchope",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Walter Centeno",
+          "sourceName": "Wálter Centeno",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Rónald Gómez",
+          "sourceName": "Ronald Gómez",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Winston Parks",
+          "sourceName": "Winston Parks",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Daniel Vallejos",
+          "sourceName": "Daniel Vallejos",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Juan José Rodríguez",
+          "sourceName": "Juan José Rodríguez",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Harold Wallace",
+          "sourceName": "Harold Wallace",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Steven Bryce",
+          "sourceName": "Steven Bryce",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Hernán Medford",
+          "sourceName": "Hernán Medford",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Álvaro Mesén",
+          "sourceName": "Álvaro Mesén",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Rodrigo Cordero",
+          "sourceName": "Rodrigo Cordero",
+          "match": "exact"
+        },
+        {
+          "datasetName": "William Sunsing",
+          "sourceName": "Wílliam Sunsing",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Pablo Chinchilla",
+          "sourceName": "Pablo Chinchilla",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Carlos Castro",
+          "sourceName": "Carlos Castro",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Lester Morgan",
+          "sourceName": "Lester Morgan",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "croatia-2002",
+      "teamName": "Croatia",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 23,
+      "missingFromSource": [],
+      "missingFromDataset": [],
+      "sourceComplete": true,
+      "rosterClean": true,
+      "matched": [
+        {
+          "datasetName": "Stipe Pletikosa",
+          "sourceName": "Stipe Pletikosa",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Anthony Šerić",
+          "sourceName": "Anthony Šerić",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Josip Šimunić",
+          "sourceName": "Josip Šimunić",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Stjepan Tomas",
+          "sourceName": "Stjepan Tomas",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Milan Rapaić",
+          "sourceName": "Milan Rapaić",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Boris Živković",
+          "sourceName": "Boris Živković",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Davor Vugrinec",
+          "sourceName": "Davor Vugrinec",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Robert Prosinečki",
+          "sourceName": "Robert Prosinečki",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Davor Šuker",
+          "sourceName": "Davor Šuker",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Niko Kovač",
+          "sourceName": "Niko Kovač",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Alen Bokšić",
+          "sourceName": "Alen Bokšić",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Tomislav Butina",
+          "sourceName": "Tomislav Butina",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Mario Stanić",
+          "sourceName": "Mario Stanić",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Zvonimir Soldo",
+          "sourceName": "Zvonimir Soldo",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Daniel Šarić",
+          "sourceName": "Daniel Šarić",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jurica Vranješ",
+          "sourceName": "Jurica Vranješ",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Robert Jarni",
+          "sourceName": "Robert Jarni",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ivica Olić",
+          "sourceName": "Ivica Olić",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Goran Vlaović",
+          "sourceName": "Goran Vlaović",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Dario Šimić",
+          "sourceName": "Dario Šimić",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Robert Kovač",
+          "sourceName": "Robert Kovač",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Boško Balaban",
+          "sourceName": "Boško Balaban",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Vladimir Vasilj",
+          "sourceName": "Vladimir Vasilj",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "denmark-2002",
+      "teamName": "Denmark",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 23,
+      "missingFromSource": [],
+      "missingFromDataset": [],
+      "sourceComplete": true,
+      "rosterClean": true,
+      "matched": [
+        {
+          "datasetName": "Thomas Sørensen",
+          "sourceName": "Thomas Sørensen",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Stig Tøfting",
+          "sourceName": "Stig Tøfting",
+          "match": "exact"
+        },
+        {
+          "datasetName": "René Henriksen",
+          "sourceName": "René Henriksen",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Martin Laursen",
+          "sourceName": "Martin Laursen",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jan Heintze",
+          "sourceName": "Jan Heintze",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Thomas Helveg",
+          "sourceName": "Thomas Helveg",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Thomas Gravesen",
+          "sourceName": "Thomas Gravesen",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jesper Grønkjær",
+          "sourceName": "Jesper Grønkjær",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jon Dahl Tomasson",
+          "sourceName": "Jon Dahl Tomasson",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Martin Jørgensen",
+          "sourceName": "Martin Jørgensen",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ebbe Sand",
+          "sourceName": "Ebbe Sand",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Niclas Jensen",
+          "sourceName": "Niclas Jensen",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Steven Lustü",
+          "sourceName": "Steven Lustü",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Claus Jensen",
+          "sourceName": "Claus Jensen",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jan Michaelsen",
+          "sourceName": "Jan Michaelsen",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Peter Kjær",
+          "sourceName": "Peter Kjær",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Christian Poulsen",
+          "sourceName": "Christian Poulsen",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Peter Løvenkrands",
+          "sourceName": "Peter Løvenkrands",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Dennis Rommedahl",
+          "sourceName": "Dennis Rommedahl",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Kasper Bøgelund",
+          "sourceName": "Kasper Bøgelund",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Peter Madsen",
+          "sourceName": "Peter Madsen",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jesper Christiansen",
+          "sourceName": "Jesper Christiansen",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Brian Steen Nielsen",
+          "sourceName": "Brian Steen Nielsen",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "ecuador-2002",
+      "teamName": "Ecuador",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 21,
+      "missingFromSource": [
+        "Cléber Chalá",
+        "Giovanny Espinoza"
+      ],
+      "missingFromDataset": [
+        "Kléber Chalá",
+        "Geovanny Espinoza"
+      ],
+      "sourceComplete": true,
+      "rosterClean": false,
+      "matched": [
+        {
+          "datasetName": "José Francisco Cevallos",
+          "sourceName": "José Francisco Cevallos",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Augusto Porozo",
+          "sourceName": "Augusto Porozo",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Iván Hurtado",
+          "sourceName": "Iván Hurtado",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ulises de la Cruz",
+          "sourceName": "Ulises De la Cruz",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Alfonso Obregón",
+          "sourceName": "Alfonso Obregón",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Raúl Guerrón",
+          "sourceName": "Raúl Guerrón",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Nicolás Asencio",
+          "sourceName": "Nicolás Asencio",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Luis Gómez",
+          "sourceName": "Luis Gómez",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Iván Kaviedes",
+          "sourceName": "Iván Kaviedes",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Álex Aguinaga",
+          "sourceName": "Alex Aguinaga",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Agustín Delgado",
+          "sourceName": "Agustín Delgado",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Oswaldo Ibarra",
+          "sourceName": "Oswaldo Ibarra",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ángel Fernández",
+          "sourceName": "Ángel Fernández",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Juan Carlos Burbano",
+          "sourceName": "Juan Carlos Burbano",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Marlon Ayoví",
+          "sourceName": "Marlon Ayoví",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Carlos Tenorio",
+          "sourceName": "Carlos Tenorio",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Édison Méndez",
+          "sourceName": "Edison Méndez",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Edwin Tenorio",
+          "sourceName": "Edwin Tenorio",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Wellington Sánchez",
+          "sourceName": "Wellington Sánchez",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Daniel Viteri",
+          "sourceName": "Daniel Viteri",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Walter Ayoví",
+          "sourceName": "Walter Ayoví",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "england-2002",
+      "teamName": "England",
+      "sourceUrl": "https://www.planetworldcup.com/CUPS/2002/squad_eng02.html",
+      "sourceNote": "Planet World Cup final England squad used instead of the RSSSF page, which retains Danny Murphy from the pre-replacement list; Trevor Sinclair is in the final 23.",
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 23,
+      "missingFromSource": [],
+      "missingFromDataset": [],
+      "sourceComplete": true,
+      "rosterClean": true,
+      "matched": [
+        {
+          "datasetName": "David Seaman",
+          "sourceName": "David Seaman",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Danny Mills",
+          "sourceName": "Danny Mills",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ashley Cole",
+          "sourceName": "Ashley Cole",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Trevor Sinclair",
+          "sourceName": "Trevor Sinclair",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Rio Ferdinand",
+          "sourceName": "Rio Ferdinand",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Sol Campbell",
+          "sourceName": "Sol Campbell",
+          "match": "exact"
+        },
+        {
+          "datasetName": "David Beckham",
+          "sourceName": "David Beckham",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Paul Scholes",
+          "sourceName": "Paul Scholes",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Robbie Fowler",
+          "sourceName": "Robbie Fowler",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Michael Owen",
+          "sourceName": "Michael Owen",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Emile Heskey",
+          "sourceName": "Emile Heskey",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Wes Brown",
+          "sourceName": "Wes Brown",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Nigel Martyn",
+          "sourceName": "Nigel Martyn",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Wayne Bridge",
+          "sourceName": "Wayne Bridge",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Martin Keown",
+          "sourceName": "Martin Keown",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Gareth Southgate",
+          "sourceName": "Gareth Southgate",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Teddy Sheringham",
+          "sourceName": "Teddy Sheringham",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Owen Hargreaves",
+          "sourceName": "Owen Hargreaves",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Joe Cole",
+          "sourceName": "Joe Cole",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Darius Vassell",
+          "sourceName": "Darius Vassell",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Nicky Butt",
+          "sourceName": "Nicky Butt",
+          "match": "exact"
+        },
+        {
+          "datasetName": "David James",
+          "sourceName": "David James",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Kieron Dyer",
+          "sourceName": "Kieron Dyer",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "france-2002",
+      "teamName": "France",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 23,
+      "missingFromSource": [],
+      "missingFromDataset": [],
+      "sourceComplete": true,
+      "rosterClean": true,
+      "matched": [
+        {
+          "datasetName": "Ulrich Ramé",
+          "sourceName": "Ulrich Ramé",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Vincent Candela",
+          "sourceName": "Vincent Candela",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Bixente Lizarazu",
+          "sourceName": "Bixente Lizarazu",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Patrick Vieira",
+          "sourceName": "Patrick Vieira",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Philippe Christanval",
+          "sourceName": "Philippe Christanval",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Youri Djorkaeff",
+          "sourceName": "Youri Djorkaeff",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Claude Makélélé",
+          "sourceName": "Claude Makelele",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Marcel Desailly",
+          "sourceName": "Marcel Desailly",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Djibril Cissé",
+          "sourceName": "Djibril Cissé",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Zinedine Zidane",
+          "sourceName": "Zinedine Zidane",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Sylvain Wiltord",
+          "sourceName": "Sylvain Wiltord",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Thierry Henry",
+          "sourceName": "Thierry Henry",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Mikaël Silvestre",
+          "sourceName": "Mikaël Silvestre",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Alain Boghossian",
+          "sourceName": "Alain Boghossian",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Lilian Thuram",
+          "sourceName": "Lilian Thuram",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Fabien Barthez",
+          "sourceName": "Fabien Barthez",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Emmanuel Petit",
+          "sourceName": "Emmanuel Petit",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Frank Leboeuf",
+          "sourceName": "Frank Leboeuf",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Willy Sagnol",
+          "sourceName": "Willy Sagnol",
+          "match": "exact"
+        },
+        {
+          "datasetName": "David Trezeguet",
+          "sourceName": "David Trézéguet",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Christophe Dugarry",
+          "sourceName": "Christophe Dugarry",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Johan Micoud",
+          "sourceName": "Johan Micoud",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Grégory Coupet",
+          "sourceName": "Grégory Coupet",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "germany-2002",
+      "teamName": "Germany",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 23,
+      "missingFromSource": [],
+      "missingFromDataset": [],
+      "sourceComplete": true,
+      "rosterClean": true,
+      "matched": [
+        {
+          "datasetName": "Oliver Kahn",
+          "sourceName": "Oliver Kahn",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Thomas Linke",
+          "sourceName": "Thomas Linke",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Marko Rehmer",
+          "sourceName": "Marko Rehmer",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Frank Baumann",
+          "sourceName": "Frank Baumann",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Carsten Ramelow",
+          "sourceName": "Carsten Ramelow",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Christian Ziege",
+          "sourceName": "Christian Ziege",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Oliver Neuville",
+          "sourceName": "Oliver Neuville",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Dietmar Hamann",
+          "sourceName": "Dietmar Hamann",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Carsten Jancker",
+          "sourceName": "Carsten Jancker",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Lars Ricken",
+          "sourceName": "Lars Ricken",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Miroslav Klose",
+          "sourceName": "Miroslav Klose",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jens Lehmann",
+          "sourceName": "Jens Lehmann",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Michael Ballack",
+          "sourceName": "Michael Ballack",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Gerald Asamoah",
+          "sourceName": "Gerald Asamoah",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Sebastian Kehl",
+          "sourceName": "Sebastian Kehl",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jens Jeremies",
+          "sourceName": "Jens Jeremies",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Marco Bode",
+          "sourceName": "Marco Bode",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jörg Böhme",
+          "sourceName": "Jörg Böhme",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Bernd Schneider",
+          "sourceName": "Bernd Schneider",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Oliver Bierhoff",
+          "sourceName": "Oliver Bierhoff",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Christoph Metzelder",
+          "sourceName": "Christoph Metzelder",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Torsten Frings",
+          "sourceName": "Torsten Frings",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Hans-Jörg Butt",
+          "sourceName": "Hans-Jörg Butt",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "italy-2002",
+      "teamName": "Italy",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 23,
+      "missingFromSource": [],
+      "missingFromDataset": [],
+      "sourceComplete": true,
+      "rosterClean": true,
+      "matched": [
+        {
+          "datasetName": "Gianluigi Buffon",
+          "sourceName": "Gianluigi Buffon",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Christian Panucci",
+          "sourceName": "Christian Panucci",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Paolo Maldini",
+          "sourceName": "Paolo Maldini",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Francesco Coco",
+          "sourceName": "Francesco Coco",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Fabio Cannavaro",
+          "sourceName": "Fabio Cannavaro",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Cristiano Zanetti",
+          "sourceName": "Cristiano Zanetti",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Alessandro Del Piero",
+          "sourceName": "Alessandro Del Piero",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Gennaro Gattuso",
+          "sourceName": "Gennaro Gattuso",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Filippo Inzaghi",
+          "sourceName": "Filippo Inzaghi",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Francesco Totti",
+          "sourceName": "Francesco Totti",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Cristiano Doni",
+          "sourceName": "Cristiano Doni",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Christian Abbiati",
+          "sourceName": "Christian Abbiati",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Alessandro Nesta",
+          "sourceName": "Alessandro Nesta",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Luigi Di Biagio",
+          "sourceName": "Luigi Di Biagio",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Mark Iuliano",
+          "sourceName": "Mark Iuliano",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Angelo Di Livio",
+          "sourceName": "Angelo Di Livio",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Damiano Tommasi",
+          "sourceName": "Damiano Tommasi",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Marco Delvecchio",
+          "sourceName": "Marco Delvecchio",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Gianluca Zambrotta",
+          "sourceName": "Gianluca Zambrotta",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Vincenzo Montella",
+          "sourceName": "Vincenzo Montella",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Christian Vieri",
+          "sourceName": "Christian Vieri",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Francesco Toldo",
+          "sourceName": "Francesco Toldo",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Marco Materazzi",
+          "sourceName": "Marco Materazzi",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "japan-2002",
+      "teamName": "Japan",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 22,
+      "missingFromSource": [
+        "Alessandro Santos"
+      ],
+      "missingFromDataset": [
+        "Alex"
+      ],
+      "sourceComplete": true,
+      "rosterClean": false,
+      "matched": [
+        {
+          "datasetName": "Yoshikatsu Kawaguchi",
+          "sourceName": "Yoshikatsu Kawaguchi",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Yutaka Akita",
+          "sourceName": "Yutaka Akita",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Naoki Matsuda",
+          "sourceName": "Naoki Matsuda",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ryuzo Morioka",
+          "sourceName": "Ryuzo Morioka",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Junichi Inamoto",
+          "sourceName": "Junichi Inamoto",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Toshihiro Hattori",
+          "sourceName": "Toshihiro Hattori",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Hidetoshi Nakata",
+          "sourceName": "Hidetoshi Nakata",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Hiroaki Morishima",
+          "sourceName": "Hiroaki Morishima",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Akinori Nishizawa",
+          "sourceName": "Akinori Nishizawa",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Masashi Nakayama",
+          "sourceName": "Masashi Nakayama",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Takayuki Suzuki",
+          "sourceName": "Takayuki Suzuki",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Seigo Narazaki",
+          "sourceName": "Seigo Narazaki",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Atsushi Yanagisawa",
+          "sourceName": "Atsushi Yanagisawa",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Takashi Fukunishi",
+          "sourceName": "Takashi Fukunishi",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Kōji Nakata",
+          "sourceName": "Koji Nakata",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Tsuneyasu Miyamoto",
+          "sourceName": "Tsuneyasu Miyamoto",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Shinji Ono",
+          "sourceName": "Shinji Ono",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Mitsuo Ogasawara",
+          "sourceName": "Mitsuo Ogasawara",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Tomokazu Myojin",
+          "sourceName": "Tomokazu Myojin",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Kazuyuki Toda",
+          "sourceName": "Kazuyuki Toda",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Daisuke Ichikawa",
+          "sourceName": "Daisuke Ichikawa",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Hitoshi Sogahata",
+          "sourceName": "Hitoshi Sogahata",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "mexico-2002",
+      "teamName": "Mexico",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 23,
+      "missingFromSource": [],
+      "missingFromDataset": [],
+      "sourceComplete": true,
+      "rosterClean": true,
+      "matched": [
+        {
+          "datasetName": "Óscar Pérez",
+          "sourceName": "Oscar Pérez",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Francisco Gabriel de Anda",
+          "sourceName": "Francisco Gabriel de Anda",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Rafael García",
+          "sourceName": "Rafael García",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Rafael Márquez",
+          "sourceName": "Rafael Márquez",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Manuel Vidrio",
+          "sourceName": "Manuel Vidrio",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Gerardo Torrado",
+          "sourceName": "Gerardo Torrado",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ramón Morales",
+          "sourceName": "Ramón Morales",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Alberto García Aspe",
+          "sourceName": "Alberto García Aspe",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jared Borgetti",
+          "sourceName": "Jared Borgetti",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Cuauhtémoc Blanco",
+          "sourceName": "Cuauhtémoc Blanco",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Braulio Luna",
+          "sourceName": "Braulio Luna",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Oswaldo Sánchez",
+          "sourceName": "Oswaldo Sánchez",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Sigifredo Mercado",
+          "sourceName": "Sigifredo Mercado",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Germán Villa",
+          "sourceName": "Germán Villa",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Luis Hernández",
+          "sourceName": "Luis Hernández",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Salvador Carmona",
+          "sourceName": "Salvador Carmona",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Francisco Palencia",
+          "sourceName": "Juan Francisco Palencia",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Johan Rodríguez",
+          "sourceName": "Johan Rodríguez",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Gabriel Caballero",
+          "sourceName": "Gabriel Caballero",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Melvin Brown",
+          "sourceName": "Melvin Brown",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jesús Arellano",
+          "sourceName": "Jesús Arellano",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Alberto Rodríguez",
+          "sourceName": "Alberto Rodríguez",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jorge Campos",
+          "sourceName": "Jorge Campos",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "nigeria-2002",
+      "teamName": "Nigeria",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 22,
+      "missingFromSource": [
+        "Efe Sodje"
+      ],
+      "missingFromDataset": [
+        "Efetobore Sodje"
+      ],
+      "sourceComplete": true,
+      "rosterClean": false,
+      "matched": [
+        {
+          "datasetName": "Ike Shorunmu",
+          "sourceName": "Ike Shorunmu",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Joseph Yobo",
+          "sourceName": "Joseph Yobo",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Celestine Babayaro",
+          "sourceName": "Celestine Babayaro",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Nwankwo Kanu",
+          "sourceName": "Nwankwo Kanu",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Isaac Okoronkwo",
+          "sourceName": "Isaac Okoronkwo",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Taribo West",
+          "sourceName": "Taribo West",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Pius Ikedia",
+          "sourceName": "Pius Ikedia",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Mutiu Adepoju",
+          "sourceName": "Mutiu Adepoju",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Bartholomew Ogbeche",
+          "sourceName": "Bartholomew Ogbeche",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jay-Jay Okocha",
+          "sourceName": "Jay Jay Okocha",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Garba Lawal",
+          "sourceName": "Garba Lawal",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Austin Ejide",
+          "sourceName": "Austin Ejide",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Rabiu Afolabi",
+          "sourceName": "Rabiu Afolabi",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ifeanyi Udeze",
+          "sourceName": "Ifeanyi Udeze",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Justice Christopher",
+          "sourceName": "Justice Christopher",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Julius Aghahowa",
+          "sourceName": "Julius Aghahowa",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Benedict Akwuegbu",
+          "sourceName": "Benedict Akwuegbu",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Eric Ejiofor",
+          "sourceName": "Eric Ejiofor",
+          "match": "exact"
+        },
+        {
+          "datasetName": "James Obiorah",
+          "sourceName": "James Obiorah",
+          "match": "exact"
+        },
+        {
+          "datasetName": "John Utaka",
+          "sourceName": "John Utaka",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Vincent Enyeama",
+          "sourceName": "Vincent Enyeama",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Femi Opabunmi",
+          "sourceName": "Femi Opabunmi",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "paraguay-2002",
+      "teamName": "Paraguay",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 22,
+      "missingFromSource": [
+        "Richart Báez"
+      ],
+      "missingFromDataset": [
+        "Richard Báez"
+      ],
+      "sourceComplete": true,
+      "rosterClean": false,
+      "matched": [
+        {
+          "datasetName": "José Luis Chilavert",
+          "sourceName": "José Luis Chilavert",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Francisco Arce",
+          "sourceName": "Francisco Arce",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Pedro Sarabia",
+          "sourceName": "Pedro Sarabia",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Carlos Gamarra",
+          "sourceName": "Carlos Gamarra",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Celso Ayala",
+          "sourceName": "Celso Ayala",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Estanislao Struway",
+          "sourceName": "Estanislao Struway",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Guido Alvarenga",
+          "sourceName": "Guido Alvarenga",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Roque Santa Cruz",
+          "sourceName": "Roque Santa Cruz",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Roberto Acuña",
+          "sourceName": "Roberto Acuña",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jorge Luis Campos",
+          "sourceName": "Jorge Campos",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Justo Villar",
+          "sourceName": "Justo Villar",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Carlos Paredes",
+          "sourceName": "Carlos Humberto Paredes",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Diego Gavilán",
+          "sourceName": "Diego Gavilán",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Carlos Bonet",
+          "sourceName": "Carlos Bonet",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Gustavo Morínigo",
+          "sourceName": "Gustavo Morínigo",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Juan Carlos Franco",
+          "sourceName": "Juan Carlos Franco",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Julio César Cáceres",
+          "sourceName": "Julio César Cáceres",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Daniel Sanabria",
+          "sourceName": "Daniel Sanabria",
+          "match": "exact"
+        },
+        {
+          "datasetName": "José Cardozo",
+          "sourceName": "José Cardozo",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Denis Caniza",
+          "sourceName": "Denis Caniza",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ricardo Tavarelli",
+          "sourceName": "Ricardo Tavarelli",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Nelson Cuevas",
+          "sourceName": "Nelson Cuevas",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "poland-2002",
+      "teamName": "Poland",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 23,
+      "missingFromSource": [],
+      "missingFromDataset": [],
+      "sourceComplete": true,
+      "rosterClean": true,
+      "matched": [
+        {
+          "datasetName": "Jerzy Dudek",
+          "sourceName": "Jerzy Dudek",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Tomasz Kłos",
+          "sourceName": "Tomasz Kłos",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jacek Zieliński",
+          "sourceName": "Jacek Zieliński",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Michał Żewłakow",
+          "sourceName": "Michał Żewłakow",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Tomasz Rząsa",
+          "sourceName": "Tomasz Rząsa",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Tomasz Hajto",
+          "sourceName": "Tomasz Hajto",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Piotr Świerczewski",
+          "sourceName": "Piotr Świerczewski",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Cezary Kucharski",
+          "sourceName": "Cezary Kucharski",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Paweł Kryszałowicz",
+          "sourceName": "Paweł Kryszałowicz",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Radosław Kałużny",
+          "sourceName": "Radosław Kałużny",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Emmanuel Olisadebe",
+          "sourceName": "Emmanuel Olisadebe",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Radosław Majdan",
+          "sourceName": "Radosław Majdan",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Arkadiusz Głowacki",
+          "sourceName": "Arkadiusz Głowacki",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Marcin Żewłakow",
+          "sourceName": "Marcin Żewłakow",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Tomasz Wałdoch",
+          "sourceName": "Tomasz Wałdoch",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Maciej Murawski",
+          "sourceName": "Maciej Murawski",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Arkadiusz Bąk",
+          "sourceName": "Arkadiusz Bąk",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jacek Krzynówek",
+          "sourceName": "Jacek Krzynówek",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Maciej Żurawski",
+          "sourceName": "Maciej Żurawski",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jacek Bąk",
+          "sourceName": "Jacek Bąk",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Marek Koźmiński",
+          "sourceName": "Marek Koźmiński",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Adam Matysek",
+          "sourceName": "Adam Matysek",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Paweł Sibik",
+          "sourceName": "Paweł Sibik",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "portugal-2002",
+      "teamName": "Portugal",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 23,
+      "missingFromSource": [],
+      "missingFromDataset": [],
+      "sourceComplete": true,
+      "rosterClean": true,
+      "matched": [
+        {
+          "datasetName": "Vítor Baía",
+          "sourceName": "Vítor Baía",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jorge Costa",
+          "sourceName": "Jorge Costa",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Abel Xavier",
+          "sourceName": "Abel Xavier",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Marco Caneira",
+          "sourceName": "Caneira",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Fernando Couto",
+          "sourceName": "Fernando Couto",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Paulo Sousa",
+          "sourceName": "Paulo Sousa",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Luís Figo",
+          "sourceName": "Figo",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "João Pinto",
+          "sourceName": "João Pinto II",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Pauleta",
+          "sourceName": "Pauleta",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Rui Costa",
+          "sourceName": "Rui Costa",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Sérgio Conceição",
+          "sourceName": "Sérgio Conceição",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Hugo Viana",
+          "sourceName": "Hugo Viana",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jorge Andrade",
+          "sourceName": "Jorge Andrade",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Pedro Barbosa",
+          "sourceName": "Pedro Barbosa",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Nélson Pereira",
+          "sourceName": "Nélson",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Ricardo",
+          "sourceName": "Ricardo",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Paulo Bento",
+          "sourceName": "Paulo Bento",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Nuno Frechaut",
+          "sourceName": "Frechaut",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Capucho",
+          "sourceName": "Capucho",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Petit",
+          "sourceName": "Petit",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Nuno Gomes",
+          "sourceName": "Nuno Gomes",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Beto",
+          "sourceName": "Beto",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Rui Jorge",
+          "sourceName": "Rui Jorge",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "republic-of-ireland-2002",
+      "teamName": "Republic of Ireland",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 22,
+      "missingFromSource": [
+        "Andrew O'Brien"
+      ],
+      "missingFromDataset": [
+        "Andy O'Brien"
+      ],
+      "sourceComplete": true,
+      "rosterClean": false,
+      "matched": [
+        {
+          "datasetName": "Shay Given",
+          "sourceName": "Shay Given",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Steve Finnan",
+          "sourceName": "Steve Finnan",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ian Harte",
+          "sourceName": "Ian Harte",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Kenny Cunningham",
+          "sourceName": "Kenny Cunningham",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Steve Staunton",
+          "sourceName": "Steve Staunton",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Roy Keane",
+          "sourceName": "Roy Keane*",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jason McAteer",
+          "sourceName": "Jason McAteer",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Matt Holland",
+          "sourceName": "Matt Holland",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Damien Duff",
+          "sourceName": "Damien Duff",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Robbie Keane",
+          "sourceName": "Robbie Keane",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Kevin Kilbane",
+          "sourceName": "Kevin Kilbane",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Mark Kinsella",
+          "sourceName": "Mark Kinsella",
+          "match": "exact"
+        },
+        {
+          "datasetName": "David Connolly",
+          "sourceName": "David Connolly",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Gary Breen",
+          "sourceName": "Gary Breen",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Richard Dunne",
+          "sourceName": "Richard Dunne",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Dean Kiely",
+          "sourceName": "Dean Kiely",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Niall Quinn",
+          "sourceName": "Niall Quinn",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Gary Kelly",
+          "sourceName": "Gary Kelly",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Clinton Morrison",
+          "sourceName": "Clinton Morrison",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Steven Reid",
+          "sourceName": "Steven Reid",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Lee Carsley",
+          "sourceName": "Lee Carsley",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Alan Kelly",
+          "sourceName": "Alan Kelly",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "russia-2002",
+      "teamName": "Russia",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 14,
+      "missingFromSource": [
+        "Ruslan Nigmatullin",
+        "Alexey Smertin",
+        "Valeri Karpin",
+        "Aleksandr Mostovoi",
+        "Vyacheslav Dayev",
+        "Dmitri Alenichev",
+        "Aleksandr Kerzhakov",
+        "Dmitri Khokhlov",
+        "Aleksandr Filimonov"
+      ],
+      "missingFromDataset": [
+        "Ruslan Nigamatullin",
+        "Alexei Smertin",
+        "Valery Karpin",
+        "Alexandr Mostovoi",
+        "Viacheslav Daev",
+        "Dmitry Alenichev",
+        "Alexander Kerzhakov",
+        "Dmitry Khokhlov",
+        "Aleksander Filimonov"
+      ],
+      "sourceComplete": true,
+      "rosterClean": false,
+      "matched": [
+        {
+          "datasetName": "Yuri Kovtun",
+          "sourceName": "Yuri Kovtun",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Yuri Nikiforov",
+          "sourceName": "Yuri Nikiforov",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Andrei Solomatin",
+          "sourceName": "Andrei Solomatin",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Igor Semshov",
+          "sourceName": "Igor Semshov",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Viktor Onopko",
+          "sourceName": "Viktor Onopko",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Yegor Titov",
+          "sourceName": "Egor Titov",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Vladimir Beschastnykh",
+          "sourceName": "Vladimir Beschastnykh",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Stanislav Cherchesov",
+          "sourceName": "Stanislav Cherchesov",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Igor Chugainov",
+          "sourceName": "Igor Chugainov",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Sergei Semak",
+          "sourceName": "Sergei Semak",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Dmitri Sennikov",
+          "sourceName": "Dmitri Sennikov",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ruslan Pimenov",
+          "sourceName": "Ruslan Pimenov",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Marat Izmailov",
+          "sourceName": "Marat Izmailov",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Dmitri Sychev",
+          "sourceName": "Dmitri Sychev",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "saudi-arabia-2002",
+      "teamName": "Saudi Arabia",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 15,
+      "missingFromSource": [
+        "Mohamed Al-Deayea",
+        "Mohammad Al-Shalhoub",
+        "Obeid Al-Dosari",
+        "Ahmed Al-Dokhi",
+        "Hussein Abdulghani",
+        "Khamis Al-Dosari",
+        "Al Hasan Al-Yami",
+        "Mohammed Al-Khojali"
+      ],
+      "missingFromDataset": [
+        "Mohammed Al-Deayea",
+        "Mohammed Al-Shlhoub",
+        "Obeid Al-Dossary",
+        "Ahmed Dukhi Al-Dossary",
+        "Hussein Sulimani",
+        "Khamis Al-Owairan Al-Dossari",
+        "Al Hassan Al-Yami",
+        "Mohammed Khojali Babkr"
+      ],
+      "sourceComplete": true,
+      "rosterClean": false,
+      "matched": [
+        {
+          "datasetName": "Mohammed Al-Jahani",
+          "sourceName": "Mohammed Al-Jahani",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Redha Tukar",
+          "sourceName": "Redha Tukar",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Abdullah Sulaiman Zubromawi",
+          "sourceName": "Abdullah Sulaiman Zubromawi",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Mohsin Al-Harthi",
+          "sourceName": "Mohsin Harthi",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Fouzi Al-Shehri",
+          "sourceName": "Fouzi Al-Shehri",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ibrahim Al-Shahrani",
+          "sourceName": "Ibrahim Al-Shahrani",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Mohammed Noor",
+          "sourceName": "Mohammed Noor",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Sami Al-Jaber",
+          "sourceName": "Sami Al-Jaber",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Abdulaziz Al-Khathran",
+          "sourceName": "Abdulaziz Al-Khathran",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Abdullah Al-Jumaan",
+          "sourceName": "Abdullah Jumaan Al-Dosary",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Abdullah Al-Waked",
+          "sourceName": "Abdullah Alwaked Al-Shahrani",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Nawaf Al-Temyat",
+          "sourceName": "Nawaf Al-Temyat",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Omar Al-Ghamdi",
+          "sourceName": "Omar Al-Ghamdi",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Mabrouk Zaid",
+          "sourceName": "Mabrouk Zaid",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Mansour Al-Thagafi",
+          "sourceName": "Mansour Al-Thagafi",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "senegal-2002",
+      "teamName": "Senegal",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 21,
+      "missingFromSource": [
+        "Papa Bouba Diop",
+        "Makhtar N'Diaye"
+      ],
+      "missingFromDataset": [
+        "Pape Bouba Diop",
+        "Makthar Ndiaye"
+      ],
+      "sourceComplete": true,
+      "rosterClean": false,
+      "matched": [
+        {
+          "datasetName": "Tony Sylva",
+          "sourceName": "Tony Sylva",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Omar Daf",
+          "sourceName": "Omar Daf",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Pape Sarr",
+          "sourceName": "Pape Sarr",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Pape Malick Diop",
+          "sourceName": "Pape Malick Diop",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Alassane N'Dour",
+          "sourceName": "Alassane Ndour",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Aliou Cissé",
+          "sourceName": "Aliou Cissé",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Henri Camara",
+          "sourceName": "Henri Camara",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Amara Traoré",
+          "sourceName": "Amara Traoré",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Souleymane Camara",
+          "sourceName": "Souleymane Camara",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Khalilou Fadiga",
+          "sourceName": "Khalilou Fadiga",
+          "match": "exact"
+        },
+        {
+          "datasetName": "El Hadji Diouf",
+          "sourceName": "El Hadji Diouf",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Amdy Faye",
+          "sourceName": "Amdy Faye",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Lamine Diatta",
+          "sourceName": "Lamine Diatta",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Moussa N'Diaye",
+          "sourceName": "Moussa Ndiaye",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Salif Diao",
+          "sourceName": "Salif Diao",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Omar Diallo",
+          "sourceName": "Omar Diallo",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ferdinand Coly",
+          "sourceName": "Ferdinand Coly",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Pape Thiaw",
+          "sourceName": "Pape Thiaw",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Sylvain N'Diaye",
+          "sourceName": "Sylvain Ndiaye",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Habib Beye",
+          "sourceName": "Habib Bèye",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Kalidou Cissokho",
+          "sourceName": "Kalidou Cissokho",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "slovenia-2002",
+      "teamName": "Slovenia",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 23,
+      "missingFromSource": [],
+      "missingFromDataset": [],
+      "sourceComplete": true,
+      "rosterClean": true,
+      "matched": [
+        {
+          "datasetName": "Marko Simeunovič",
+          "sourceName": "Marko Simeunovič",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Goran Sankovič",
+          "sourceName": "Goran Sankovič",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Željko Milinovič",
+          "sourceName": "Željko Milinovič",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Muamer Vugdalić",
+          "sourceName": "Muamer Vugdalič",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Marinko Galič",
+          "sourceName": "Marinko Galič",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Aleksander Knavs",
+          "sourceName": "Aleksander Knavs",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Džoni Novak",
+          "sourceName": "Đoni Novak",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Aleš Čeh",
+          "sourceName": "Aleš Čeh",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Milan Osterc",
+          "sourceName": "Milan Osterc",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Zlatko Zahovič",
+          "sourceName": "Zlatko Zahovič",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Miran Pavlin",
+          "sourceName": "Miran Pavlin",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Mladen Dabanovič",
+          "sourceName": "Mladen Dabanovič",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Mladen Rudonja",
+          "sourceName": "Mladen Rudonja",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Saša Gajser",
+          "sourceName": "Saša Gajser",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Rajko Tavčar",
+          "sourceName": "Rajko Tavčar",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Senad Tiganj",
+          "sourceName": "Senad Tiganj",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Zoran Pavlović",
+          "sourceName": "Zoran Pavlovič",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Milenko Ačimovič",
+          "sourceName": "Milenko Ačimovič",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Amir Karić",
+          "sourceName": "Amir Karič",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Nastja Čeh",
+          "sourceName": "Nastja Čeh",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Sebastjan Cimirotič",
+          "sourceName": "Sebastjan Cimirotič",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Dejan Nemec",
+          "sourceName": "Dejan Nemec",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Spasoje Bulajič",
+          "sourceName": "Spasoje Bulajič",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "south-africa-2002",
+      "teamName": "South Africa",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 21,
+      "missingFromSource": [
+        "MacDonald Mukansi",
+        "Benni McCarthy"
+      ],
+      "missingFromDataset": [
+        "MacDonald Mukasi",
+        "Benedict McCarthy"
+      ],
+      "sourceComplete": true,
+      "rosterClean": false,
+      "matched": [
+        {
+          "datasetName": "Hans Vonk",
+          "sourceName": "Hans Vonk",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Cyril Nzama",
+          "sourceName": "Cyril Nzama",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Bradley Carnell",
+          "sourceName": "Bradley Carnell",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Aaron Mokoena",
+          "sourceName": "Aaron Mokoena",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jacob Lekgetho",
+          "sourceName": "Jacob Lekgetho",
+          "match": "exact"
+        },
+        {
+          "datasetName": "MacBeth Sibaya",
+          "sourceName": "MacBeth Sibaya",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Quinton Fortune",
+          "sourceName": "Quinton Fortune",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Thabo Mngomeni",
+          "sourceName": "Thabo Mngomeni",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Bennett Mnguni",
+          "sourceName": "Bennett Mnguni",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jabu Pule",
+          "sourceName": "Jabu Pule",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Teboho Mokoena",
+          "sourceName": "Teboho Mokoena",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Pierre Issa",
+          "sourceName": "Pierre Issa",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Siyabonga Nomvethe",
+          "sourceName": "Siyabonga Nomvethe",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Sibusiso Zuma",
+          "sourceName": "Sibusiso Zuma",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Andre Arendse",
+          "sourceName": "Andre Arendse",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Delron Buckley",
+          "sourceName": "Delron Buckley",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Lucas Radebe",
+          "sourceName": "Lucas Radebe",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Calvin Marlin",
+          "sourceName": "Calvin Marlin",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Steven Pienaar",
+          "sourceName": "Steven Pienaar",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Thabang Molefe",
+          "sourceName": "Thabang Molefe",
+          "match": "exact"
+        },
+        {
+          "datasetName": "George Koumantarakis",
+          "sourceName": "George Koumantarakis",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "south-korea-2002",
+      "teamName": "South Korea",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 16,
+      "missingFromSource": [
+        "Jin-cheul Choi",
+        "Sang-chul Yoo",
+        "Ki-hyeon Seol",
+        "Chun-soo Lee",
+        "Du-ri Cha",
+        "Sun-hong Hwang",
+        "Chong-gug Song"
+      ],
+      "missingFromDataset": [
+        "Choi Jin-Cheol",
+        "Yoo Sang-Cheol",
+        "Seol Ki-Hyun",
+        "Lee Cheon-Soo",
+        "Cha Doo-Ri",
+        "Hwang Seon-Hong",
+        "Song Jong-Gook"
+      ],
+      "sourceComplete": true,
+      "rosterClean": false,
+      "matched": [
+        {
+          "datasetName": "Woon-jae Lee",
+          "sourceName": "Lee Woon-Jae",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Young-min Hyun",
+          "sourceName": "Hyun Young-Min",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Sung-yong Choi",
+          "sourceName": "Choi Sung-Yong",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Nam-il Kim",
+          "sourceName": "Kim Nam-Il",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Tae-young Kim",
+          "sourceName": "Kim Tae-Young",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Tae-uk Choi",
+          "sourceName": "Choi Tae-Uk",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Young-pyo Lee",
+          "sourceName": "Lee Young-Pyo",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Yong-soo Choi",
+          "sourceName": "Choi Yong-Soo",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Byung-ji Kim",
+          "sourceName": "Kim Byung-Ji",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Eul-yong Lee",
+          "sourceName": "Lee Eul-Yong",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Min-sung Lee",
+          "sourceName": "Lee Min-Sung",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Jong-hwan Yoon",
+          "sourceName": "Yoon Jong-Hwan",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Jung-hwan Ahn",
+          "sourceName": "Ahn Jung-Hwan",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Myung-bo Hong",
+          "sourceName": "Hong Myung-Bo",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Ji-sung Park",
+          "sourceName": "Park Ji-Sung",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Eun-sung Choi",
+          "sourceName": "Choi Eun-Sung",
+          "match": "unique-token-subset"
+        }
+      ]
+    },
+    {
+      "teamId": "spain-2002",
+      "teamName": "Spain",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 23,
+      "missingFromSource": [],
+      "missingFromDataset": [],
+      "sourceComplete": true,
+      "rosterClean": true,
+      "matched": [
+        {
+          "datasetName": "Iker Casillas",
+          "sourceName": "Iker Casillas",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Curro Torres",
+          "sourceName": "Curro Torres",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Juanfran",
+          "sourceName": "Juanfran",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Iván Helguera",
+          "sourceName": "Iván Helguera",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Carles Puyol",
+          "sourceName": "Puyol",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Fernando Hierro",
+          "sourceName": "Hierro",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Raúl",
+          "sourceName": "Raúl",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Rubén Baraja",
+          "sourceName": "Baraja",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Fernando Morientes",
+          "sourceName": "Morientes",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Diego Tristán",
+          "sourceName": "Diego Tristán",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Javier de Pedro",
+          "sourceName": "De Pedro",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Albert Luque",
+          "sourceName": "Luque",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Ricardo",
+          "sourceName": "Ricardo",
+          "match": "exact"
+        },
+        {
+          "datasetName": "David Albelda",
+          "sourceName": "Albelda",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Enrique Romero",
+          "sourceName": "Romero",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Gaizka Mendieta",
+          "sourceName": "Mendieta",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Juan Carlos Valerón",
+          "sourceName": "Valerón",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Sergio",
+          "sourceName": "Sergio",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Xavi",
+          "sourceName": "Xavi",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Miguel Ángel Nadal",
+          "sourceName": "Nadal",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Luis Enrique",
+          "sourceName": "Luis Enrique",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Joaquín",
+          "sourceName": "Joaquín Sánchez",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "Pedro Contreras",
+          "sourceName": "Contreras",
+          "match": "unique-token-subset"
+        }
+      ]
+    },
+    {
+      "teamId": "sweden-2002",
+      "teamName": "Sweden",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 22,
+      "missingFromSource": [
+        "Freddie Ljungberg"
+      ],
+      "missingFromDataset": [
+        "Fredrik Ljungberg"
+      ],
+      "sourceComplete": true,
+      "rosterClean": false,
+      "matched": [
+        {
+          "datasetName": "Magnus Hedman",
+          "sourceName": "Magnus Hedman",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Olof Mellberg",
+          "sourceName": "Olof Mellberg",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Patrik Andersson",
+          "sourceName": "Patrik Andersson",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Johan Mjällby",
+          "sourceName": "Johan Mjällby",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Michael Svensson",
+          "sourceName": "Michael Svensson",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Tobias Linderoth",
+          "sourceName": "Tobias Linderoth",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Niclas Alexandersson",
+          "sourceName": "Niclas Alexandersson",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Anders Svensson",
+          "sourceName": "Anders Svensson",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Marcus Allbäck",
+          "sourceName": "Marcus Allbäck",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Henrik Larsson",
+          "sourceName": "Henrik Larsson",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Magnus Kihlstedt",
+          "sourceName": "Magnus Kihlstedt",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Tomas Antonelius",
+          "sourceName": "Tomas Antonelius",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Erik Edman",
+          "sourceName": "Erik Edman",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Andreas Jakobsson",
+          "sourceName": "Andreas Jakobsson",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Teddy Lučić",
+          "sourceName": "Teddy Lucic",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Magnus Svensson",
+          "sourceName": "Magnus Svensson",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Mattias Jonson",
+          "sourceName": "Mattias Jonson",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Pontus Farnerud",
+          "sourceName": "Pontus Farnerud",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Daniel Andersson",
+          "sourceName": "Daniel Andersson",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Zlatan Ibrahimović",
+          "sourceName": "Zlatan Ibrahimovic",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Andreas Andersson",
+          "sourceName": "Andreas Andersson",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Andreas Isaksson",
+          "sourceName": "Andreas Isaksson",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "tunisia-2002",
+      "teamName": "Tunisia",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 19,
+      "missingFromSource": [
+        "Zoubeir Baya",
+        "Ziad Jaziri",
+        "Imed Mhedhebi",
+        "Selim Benachour"
+      ],
+      "missingFromDataset": [
+        "Zoubeir Beya",
+        "Zied Jaziri",
+        "Imed Mhadhebi",
+        "Slim Ben Achour"
+      ],
+      "sourceComplete": true,
+      "rosterClean": false,
+      "matched": [
+        {
+          "datasetName": "Ali Boumnijel",
+          "sourceName": "Ali Boumnijel",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Khaled Badra",
+          "sourceName": "Khaled Badra",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Mohamed Mkacher",
+          "sourceName": "Mohamed Mkacher",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Hatem Trabelsi",
+          "sourceName": "Hatem Trabelsi",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Hassen Gabsi",
+          "sourceName": "Hassen Gabsi",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Riadh Jelassi",
+          "sourceName": "Riadh Jelassi",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Kaies Ghodhbane",
+          "sourceName": "Kaies Ghodhbane",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Adel Sellimi",
+          "sourceName": "Adel Sellimi",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Raouf Bouzaiene",
+          "sourceName": "Raouf Bouzaiène",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Riadh Bouazizi",
+          "sourceName": "Riadh Bouazizi",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Hamdi Marzouki",
+          "sourceName": "Hamdi Marzouki",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Radhi Jaïdi",
+          "sourceName": "Radhi Jaïdi",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Hassen Bejaoui",
+          "sourceName": "Hassen Bejaoui",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Tarek Thabet",
+          "sourceName": "Tarek Thabet",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Emir Mkademi",
+          "sourceName": "Emir Mkademi",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ali Zitouni",
+          "sourceName": "Ali Zitouni",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Mourad Melki",
+          "sourceName": "Mourad Melki",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ahmed El-Jaouachi",
+          "sourceName": "Ahmed Jaouachi",
+          "match": "unique-token-subset"
+        },
+        {
+          "datasetName": "José Clayton",
+          "sourceName": "José Clayton",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "turkey-2002",
+      "teamName": "Turkey",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 22,
+      "missingFromSource": [
+        "Muzzy Izzet"
+      ],
+      "missingFromDataset": [
+        "Mustafa İzzet"
+      ],
+      "sourceComplete": true,
+      "rosterClean": false,
+      "matched": [
+        {
+          "datasetName": "Rüştü Reçber",
+          "sourceName": "Rüştü Reçber",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Emre Aşık",
+          "sourceName": "Emre Aşık",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Bülent Korkmaz",
+          "sourceName": "Bülent Korkmaz",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Fatih Akyel",
+          "sourceName": "Fatih Akyel",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Alpay Özalan",
+          "sourceName": "Alpay Özalan",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Arif Erdem",
+          "sourceName": "Arif Erdem",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Okan Buruk",
+          "sourceName": "Okan Buruk",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Tugay Kerimoğlu",
+          "sourceName": "Tugay Kerimoğlu",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Hakan Şükür",
+          "sourceName": "Hakan Šükür",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Yıldıray Baştürk",
+          "sourceName": "Yıldıray Baştürk",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Hasan Şaş",
+          "sourceName": "Hasan Şaş",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ömer Çatkıç",
+          "sourceName": "Ömer Çatkıç",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Tayfur Havutçu",
+          "sourceName": "Tayfur Havutçu",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Nihat Kahveci",
+          "sourceName": "Nihat Kahveci",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ümit Özat",
+          "sourceName": "Ümit Özat",
+          "match": "exact"
+        },
+        {
+          "datasetName": "İlhan Mansız",
+          "sourceName": "İlhan Mansız",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ergün Penbe",
+          "sourceName": "Ergün Penbe",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Abdullah Ercan",
+          "sourceName": "Abdullah Ercan",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Hakan Ünsal",
+          "sourceName": "Hakan Ünsal",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Emre Belözoğlu",
+          "sourceName": "Emre Belözoğlu",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Ümit Davala",
+          "sourceName": "Ümit Davala",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Zafer Özgültekin",
+          "sourceName": "Zafer Özgültekın",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "united-states-2002",
+      "teamName": "United States",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 23,
+      "missingFromSource": [],
+      "missingFromDataset": [],
+      "sourceComplete": true,
+      "rosterClean": true,
+      "matched": [
+        {
+          "datasetName": "Brad Friedel",
+          "sourceName": "Brad Friedel",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Frankie Hejduk",
+          "sourceName": "Frankie Hejduk",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Gregg Berhalter",
+          "sourceName": "Gregg Berhalter",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Pablo Mastroeni",
+          "sourceName": "Pablo Mastroeni",
+          "match": "exact"
+        },
+        {
+          "datasetName": "John O'Brien",
+          "sourceName": "John O'Brien",
+          "match": "exact"
+        },
+        {
+          "datasetName": "David Regis",
+          "sourceName": "David Regis",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Eddie Lewis",
+          "sourceName": "Eddie Lewis",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Earnie Stewart",
+          "sourceName": "Earnie Stewart",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Joe-Max Moore",
+          "sourceName": "Joe-Max Moore",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Claudio Reyna",
+          "sourceName": "Claudio Reyna",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Clint Mathis",
+          "sourceName": "Clint Mathis",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Jeff Agoos",
+          "sourceName": "Jeff Agoos",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Cobi Jones",
+          "sourceName": "Cobi Jones",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Steve Cherundolo",
+          "sourceName": "Steve Cherundolo",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Josh Wolff",
+          "sourceName": "Josh Wolff",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Carlos Llamosa",
+          "sourceName": "Carlos Llamosa",
+          "match": "exact"
+        },
+        {
+          "datasetName": "DaMarcus Beasley",
+          "sourceName": "DaMarcus Beasley",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Kasey Keller",
+          "sourceName": "Kasey Keller",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Tony Meola",
+          "sourceName": "Tony Meola",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Brian McBride",
+          "sourceName": "Brian McBride",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Landon Donovan",
+          "sourceName": "Landon Donovan",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Tony Sanneh",
+          "sourceName": "Tony Sanneh",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Eddie Pope",
+          "sourceName": "Eddie Pope",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "teamId": "uruguay-2002",
+      "teamName": "Uruguay",
+      "sourceUrl": "https://raw.githubusercontent.com/rsssf/tables/master/tables/2002full.txt",
+      "sourceNote": null,
+      "sourcePlayerCount": 23,
+      "datasetPlayerCount": 23,
+      "matchedCount": 23,
+      "missingFromSource": [],
+      "missingFromDataset": [],
+      "sourceComplete": true,
+      "rosterClean": true,
+      "matched": [
+        {
+          "datasetName": "Fabián Carini",
+          "sourceName": "Fabián Carini",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Gustavo Méndez",
+          "sourceName": "Gustavo Méndez",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Alejandro Lembo",
+          "sourceName": "Alejandro Lembo",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Paolo Montero",
+          "sourceName": "Paolo Montero",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Pablo García",
+          "sourceName": "Pablo García",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Darío Rodríguez",
+          "sourceName": "Darío Rodríguez",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Gianni Guigou",
+          "sourceName": "Gianni Guigou",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Gustavo Varela",
+          "sourceName": "Gustavo Varela",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Darío Silva",
+          "sourceName": "Darío Silva",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Fabián O'Neill",
+          "sourceName": "Fabián O'Neill",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Federico Magallanes",
+          "sourceName": "Federico Magallanes",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Gustavo Munúa",
+          "sourceName": "Gustavo Munúa",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Sebastián Abreu",
+          "sourceName": "Sebastián Abreu",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Gonzalo Sorondo",
+          "sourceName": "Gonzalo Sorondo",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Nicolás Olivera",
+          "sourceName": "Nicolás Olivera",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Marcelo Romero",
+          "sourceName": "Marcelo Romero",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Mario Regueiro",
+          "sourceName": "Mario Regueiro",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Richard Morales",
+          "sourceName": "Richard Morales",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Joe Bizera",
+          "sourceName": "Joe Bizera",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Álvaro Recoba",
+          "sourceName": "Álvaro Recoba",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Diego Forlán",
+          "sourceName": "Diego Forlán",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Gonzalo de los Santos",
+          "sourceName": "Gonzalo De los Santos",
+          "match": "exact"
+        },
+        {
+          "datasetName": "Federico Elduayen",
+          "sourceName": "Federico Elduayen",
+          "match": "exact"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "expectedTeams": 32,
+    "parsedTeams": 32,
+    "teamsWith23SourcePlayers": 32,
+    "fullyMatchedTeams": 19,
+    "sourcePlayers": 736,
+    "datasetPlayers": 736,
+    "matchedPlayers": 696,
+    "unresolvedDifferences": 80,
+    "sourceOverrides": 1
+  }
+}

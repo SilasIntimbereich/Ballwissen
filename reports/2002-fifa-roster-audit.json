@@ -1,0 +1,22 @@
+{
+  "year": 2002,
+  "source": "https://www.lacancha.com/Roster.html",
+  "sourceNote": "A third-party page reproduces a roster release dated 24 May 2002; this is not a direct FIFA-hosted document and it predates late tournament replacements. Treat it only as a supplementary identity/number/position cross-check, never as final-roster authority. Club affiliations are not taken from this page.",
+  "sourceStatus": "unavailable",
+  "generatedAt": "2026-11-25T13:44:42.408Z",
+  "teams": [],
+  "summary": {
+    "expectedTeams": 32,
+    "parsedTeams": 0,
+    "teamsWith23SourcePlayers": 0,
+    "fullyMatchedTeams": 0,
+    "sourcePlayers": 0,
+    "matchedPlayers": 0,
+    "numberMatches": 0,
+    "nameMismatches": 0,
+    "missingFromSource": 0,
+    "missingFromDataset": 0,
+    "positionDifferences": 0
+  },
+  "sourceError": "TypeError: fetch failed"
+}
