@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {assignRosterRarities,rarityFromEvidence} from "../assets/js/rarity.js";
+import {createPlayerRarityResolver} from "../scripts/player-rarity.mjs";
 
 const meta = teams => ({teams});
 
@@ -86,4 +87,23 @@ test("transliterated aliases do not affect a player's manually curated fame tier
   const rosters={teams:[{id:"a",players:[{name:"Kjær"}]},{id:"b",players:[{name:"Kjaer"}]}]};
   assignRosterRarities(rosters,meta([{id:"a",year:2006,verified:true},{id:"b",year:2010,verified:true}]));
   assert.ok(rosters.teams.every(team=>team.players[0].rarity==="Niche"));
+});
+
+test("server rarity resolver uses the same verified-only fame assignments",()=>{
+  const historical={tournaments:{
+    2018:[
+      {id:"france-2018",name:"France",players:[{name:"Kylian Mbappé"},{name:"Olivier Giroud"}]},
+      {id:"practice-2018",name:"Practice",players:[{name:"Lionel Messi"}]}
+    ]
+  }};
+  const worldCup2026={players:[{team:"Argentina",name:"Lionel Messi"}]};
+  const audit={teams:{
+    "france-2018":{status:"verified"},
+    "practice-2018":{status:"unverified"},
+    "argentina-2026":{status:"verified"}
+  }};
+  const resolve=createPlayerRarityResolver(historical,worldCup2026,{tiers:{}},audit);
+  assert.equal(resolve({name:"Kylian Mbappé"},"france-2018"),"Common");
+  assert.equal(resolve({name:"Lionel Messi"},"argentina-2026"),"Common");
+  assert.equal(resolve({name:"Lionel Messi"},"practice-2018"),null);
 });
