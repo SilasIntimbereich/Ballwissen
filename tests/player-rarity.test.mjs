@@ -4,7 +4,7 @@ import {assignRosterRarities,rarityFromEvidence} from "../assets/js/rarity.js";
 
 const meta = teams => ({teams});
 
-test("rarity is based on popularity evidence only",()=>{
+test("evidence scale maps recognition directly to the five rarity tiers",()=>{
   assert.equal(rarityFromEvidence({globalRecognition:5}),"Common");
   assert.equal(rarityFromEvidence({globalRecognition:4}),"Rare");
   assert.equal(rarityFromEvidence({globalRecognition:3}),"Niche");
@@ -12,7 +12,7 @@ test("rarity is based on popularity evidence only",()=>{
   assert.equal(rarityFromEvidence({globalRecognition:0}),"Ball Knowledge");
 });
 
-test("verified World Cup appearances determine rarity across tournaments",()=>{
+test("repeat World Cup appearances do not make a player more famous",()=>{
   const rosters={teams:[
     {id:"one",players:[{name:"Rising Player",number:1,position:"GK"}]},
     {id:"two",players:[{name:"Rising Player",number:99,position:"FW"}]},
@@ -27,9 +27,7 @@ test("verified World Cup appearances determine rarity across tournaments",()=>{
     {id:"four",year:2018,verified:true,teamDifficulty:"legendary"},
     {id:"five",year:2022,verified:true,teamDifficulty:"common"}
   ]));
-  assert.equal(rosters.teams[0].players[0].rarity,"Rare");
-  assert.equal(rosters.teams[1].players[0].rarity,"Rare");
-  assert.ok(rosters.teams.slice(2).every(team=>team.players[0].rarity==="Common"));
+  assert.ok(rosters.teams.every(team=>team.players[0].rarity==="Niche"));
 });
 
 test("shirt number, position and team difficulty do not change a player's rarity",()=>{
@@ -40,11 +38,11 @@ test("shirt number, position and team difficulty do not change a player's rarity
     {id:"a",year:2018,verified:true,teamDifficulty:"common"},
     {id:"b",year:2022,verified:true,teamDifficulty:"legendary"}
   ]));
-  assert.equal(first.players[0].rarity,"Rare");
-  assert.equal(second.players[0].rarity,"Rare");
+  assert.equal(first.players[0].rarity,"Niche");
+  assert.equal(second.players[0].rarity,"Niche");
 });
 
-test("unverified squads neither influence verified popularity nor get relabelled",()=>{
+test("unverified squads neither receive nor influence verified player rarity",()=>{
   const rosters={teams:[
     {id:"verified",players:[{name:"One Appearance Player",rarity:"old"}]},
     {id:"practice",players:[{name:"One Appearance Player",rarity:"keep-this"}]}
@@ -57,23 +55,35 @@ test("unverified squads neither influence verified popularity nor get relabelled
   assert.equal(rosters.teams[1].players[0].rarity,"keep-this");
 });
 
-test("well-known players stay Common even with only one verified appearance",()=>{
+test("global household names are Common even with one verified appearance",()=>{
   const rosters={teams:[{id:"france-2018",players:[
     {name:"Kylian Mbappé",number:10,position:"FW"},
-    {name:"N'Golo Kanté",number:13,position:"MF"}
+    {name:"N'Golo Kanté",number:13,position:"MF"},
+    {name:"Lionel Messi",number:10,position:"FW"}
   ]}]};
   assignRosterRarities(rosters,meta([{id:"france-2018",year:2018,verified:true}]));
   assert.ok(rosters.teams[0].players.every(player=>player.rarity==="Common"));
 });
 
-test("transliterated names share their verified appearance history",()=>{
-  const rosters={teams:[
-    {id:"a",players:[{name:"Kjær"}]},
-    {id:"b",players:[{name:"Kjaer"}]}
-  ]};
-  assignRosterRarities(rosters,meta([
-    {id:"a",year:2006,verified:true},
-    {id:"b",year:2010,verified:true}
-  ]));
-  assert.ok(rosters.teams.every(team=>team.players[0].rarity==="Rare"));
+test("curated fame levels distinguish global stars from specialist-level names",()=>{
+  const rosters={teams:[{id:"test",players:[
+    {name:"Lionel Messi"},
+    {name:"Granit Xhaka"},
+    {name:"Almoez Ali"},
+    {name:"Hugo Sochurek"}
+  ]}]};
+  assignRosterRarities(rosters,meta([{id:"test",year:2026,verified:true}]));
+  assert.deepEqual(rosters.teams[0].players.map(player=>player.rarity),["Common","Rare","Niche","Niche"]);
+});
+
+test("unlisted names use the conservative Niche fallback, not an appearance-count bonus",()=>{
+  const rosters={teams:[{id:"one",players:[{name:"Unlisted Squad Player"}]},{id:"two",players:[{name:"Unlisted Squad Player"}]}]};
+  assignRosterRarities(rosters,meta([{id:"one",year:2006,verified:true},{id:"two",year:2010,verified:true}]));
+  assert.ok(rosters.teams.every(team=>team.players[0].rarity==="Niche"));
+});
+
+test("transliterated aliases do not affect a player's manually curated fame tier",()=>{
+  const rosters={teams:[{id:"a",players:[{name:"Kjær"}]},{id:"b",players:[{name:"Kjaer"}]}]};
+  assignRosterRarities(rosters,meta([{id:"a",year:2006,verified:true},{id:"b",year:2010,verified:true}]));
+  assert.ok(rosters.teams.every(team=>team.players[0].rarity==="Niche"));
 });
