@@ -1,4 +1,4 @@
-const GENERIC_HEADING=/^(?:FIFA WORLD CUP.*|SQUAD LIST|LIST OF PLAYERS|LIST OF PLAYER|TEAM SQUAD|SQUAD)$/i;
+// Keep heading recognition conservative: uncertain PDF text must never be promoted to a country heading.\nconst GENERIC_HEADING=/^(?:FIFA WORLD CUP.*|SQUAD LIST|LIST OF PLAYERS|LIST OF PLAYER|TEAM SQUAD|SQUAD)$/i;
 const TABLE_HEADING=/^(?:#|POS|POSITION|PLAYER|NAME|DOB|DATE OF BIRTH|CLUB|HEIGHT|CAPS|GOALS)(?:\s|$)/i;
 const POSITION_LEGEND=/^GK\s*:\s*Goalkeeper.*DF\s*:\s*Defender.*MF\s*:\s*Midfielder.*FW\s*:\s*Forward$/i;
 const DATE_HEADING=/^(?:DOB:|POS:|DATE OF BIRTH|(?:MONDAY|TUESDAY|WEDNESDAY|THURSDAY|FRIDAY|SATURDAY|SUNDAY)\s+\d{1,2}\s+\w+\s+\d{4})/i;
