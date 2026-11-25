@@ -32,12 +32,22 @@ Ronwen Williams|Almoez Ali|Wilson Isidor|Leandro Bacuna|Ellyes Skhiri|Aymen Huss
 `.split("|").map(normalise));
 
 const LEGENDARY_NAMES = new Set(`
-Lama|Joao Ricardo|Mário|Abdelkader Ghezzal|Rafik Halliche|Karim Ziani|Nadir Belhadj|Hassan Yebda|Djamel Mesbah|Foued Kadir|Adlene Guedioura|Mehdi Mostefa|Carl Medjani|Riyad Boudebouz|Hameur Bouazza|Mourad Meghni|Antar Yahia|Saphir Taider|Madjid Bougherra|Habib Bellaid|Fawzi Chaouchi|Rabah Saadane
+Lama|Joao Ricardo|Mário|Abdelkader Ghezzal|Rafik Halliche|Karim Ziani|Nadir Belhadj|Hassan Yebda|Djamel Mesbah|Foued Kadir|Adlene Guedioura|Mehdi Mostefa|Carl Medjani|Riyad Boudebouz|Hameur Bouazza|Mourad Meghni|Antar Yahia|Saphir Taider|Madjid Bougherra|Habib Bellaid|Fawzi Chaouchi|Rabah Saadane|Rabah Madjer
 `.split("|").map(normalise));
 
 const BALL_KNOWLEDGE_NAMES = new Set(`
 Hugo Sochurek|Alexandr Sojka|Denis Visinsky|Stepan Chaloupek|Achraf Abada|Melvin Mastil|Nadhir Benbouali|Fares Ghedjemis|Yacine Titraoui|Adil Boulbina
 `.split("|").map(normalise));
+
+// Resolve intentional demotions so every player has one unambiguous manual tier.
+const DEMOTED_FROM_RARE = new Set(`
+Lama|Joao Ricardo|Mário|Abdelkader Ghezzal|Rafik Halliche|Karim Ziani|Nadir Belhadj|Hassan Yebda|Djamel Mesbah|Foued Kadir|Adlene Guedioura|Mehdi Mostefa|Carl Medjani|Riyad Boudebouz|Hameur Bouazza|Mourad Meghni|Antar Yahia|Saphir Taider|Madjid Bougherra|Habib Bellaid|Fawzi Chaouchi|Rabah Madjer|Hugo Sochurek|Alexandr Sojka|Denis Visinsky|Stepan Chaloupek|Achraf Abada|Melvin Mastil|Nadhir Benbouali|Fares Ghedjemis|Yacine Titraoui|Adil Boulbina
+`.split("|").map(normalise));
+for (const name of DEMOTED_FROM_RARE) RARE_NAMES.delete(name);
+const DEMOTED_FROM_NICHE = new Set(`
+Hugo Sochurek|Alexandr Sojka|Denis Visinsky|Stepan Chaloupek|Achraf Abada|Melvin Mastil|Nadhir Benbouali|Fares Ghedjemis|Yacine Titraoui|Adil Boulbina
+`.split("|").map(normalise));
+for (const name of DEMOTED_FROM_NICHE) NICHE_NAMES.delete(name);
 
 export function rarityFromEvidence({ globalRecognition = 0 } = {}) {
   const score = Number.isFinite(Number(globalRecognition))
