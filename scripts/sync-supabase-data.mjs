@@ -4,13 +4,13 @@ import {createClient} from "@supabase/supabase-js";
 const url=process.env.SUPABASE_URL,key=process.env.SUPABASE_SERVICE_ROLE_KEY;
 if(!url||!key)throw new Error("Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in the environment. Never use this key in browser code.");
 const db=createClient(url,key,{auth:{persistSession:false}});
-const [historicalRaritySource,worldCupRaritySource,difficulty]=await Promise.all([
+const [historicalRaritySource,worldCupRaritySource,difficulty,audit]=await Promise.all([
  readFile("data/historical-squads.json","utf8").then(JSON.parse),
  readFile("data/worldcup-2026.json","utf8").then(JSON.parse),
- readFile("data/team-difficulty.json","utf8").then(JSON.parse)
+ readFile("data/team-difficulty.json","utf8").then(JSON.parse),
+ readFile("data/roster-audit.json","utf8").then(JSON.parse)
 ]);
-const rarityOf=createPlayerRarityResolver(historicalRaritySource,worldCupRaritySource,difficulty);
-const audit=JSON.parse(await readFile("data/roster-audit.json","utf8"));
+const rarityOf=createPlayerRarityResolver(historicalRaritySource,worldCupRaritySource,difficulty,audit);
 const tierOf=name=>Object.entries(difficulty.tiers).find(([,names])=>names.includes(name))?.[0]||"niche";
 const normalize=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");
 const slug=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
