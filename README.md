@@ -30,7 +30,7 @@ Every squad with at least three eligible non-famous players receives one Ball Kn
 
 | Data | Coverage | Status |
 |---|---:|---|
-| Historical World Cups, 2002–2022 | 192 teams / 4,511 player records | The latest five-tournament FIFA-PDF audit (2006–2022, excluding the separately reported 2002 checks) records 47 fully audited teams / 1,084 player records. Across the historical dataset, clubs are presented as verified only where the audit ledger contains complete player-level identity, position, tournament-club and independent-source evidence; all other squads remain practice-only. These counts are snapshots and must be refreshed after each successful historical audit. |
+| Historical World Cups, 2002–2022 | 192 teams / 4,511 player records | The latest reproducible 2006–2022 audit records 70 of 160 teams as fully audited. The separate 2002 audit matched 19 of 32 squads by player identity, with two also passing the complete independent club-source check. Only squads with complete player-level identity, position, tournament-club and independent-source evidence are treated as fully verified; all others remain practice-only. |
 | World Cup 2026 | 48 teams / 1,248 player records | All 48 teams have been reviewed against FIFA final squad lists and independent OpenFootball data; 26 players per team. |
 | Daily exclusions | 50 squad editions | Checked against the squad IDs and excluded from all three Daily tiers. |
 
