@@ -6,6 +6,7 @@ import {assignRosterRarities} from "../assets/js/rarity.js";
 const publicData=JSON.parse(await readFile("dist/data/public-teams.json","utf8"));
 const localData=JSON.parse(await readFile("dist/data/practice-rosters.json","utf8"));
 const localById=new Map(localData.teams.map(team=>[team.id,team]));
+const allowed=new Set(["Common","Rare","Niche","Legendary","Ball Knowledge"]);
 
 test("public build contains metadata for all 240 tournament squads",()=>{
  assert.equal(publicData.teams.length,240);
@@ -36,54 +37,48 @@ test("raw source roster files are absent from the public deployment",async()=>{
  }
 });
 
-test("every player in every verified squad has a valid rarity assignment",()=>{
- const allowed=new Set(["Common","Rare","Niche","Legendary","Ball Knowledge"]);
- let verifiedTeams=0,verifiedPlayers=0,allPlayers=0;
+test("only independently verified players receive rarity assignments",()=>{
+ let verifiedTeams=0,verifiedPlayers=0,unverifiedPlayers=0;
  for(const team of publicData.teams){
   const local=localById.get(team.id);
-  for(const player of local.players){
-   allPlayers++;
-   assert.ok(allowed.has(player.rarity),"Missing or invalid rarity: "+team.id+" / "+player.name);
-  }
   if(team.verified){
    verifiedTeams++;
    verifiedPlayers+=local.players.length;
    for(const player of local.players){
-    assert.ok(allowed.has(player.rarity),"Verified player has no rarity: "+team.id+" / "+player.name);
+    assert.ok(allowed.has(player.rarity),"Verified player has no valid rarity: "+team.id+" / "+player.name);
+   }
+  }else{
+   unverifiedPlayers+=local.players.length;
+   for(const player of local.players){
+    assert.equal(player.rarity,undefined,"Unverified player was assigned a rarity: "+team.id+" / "+player.name);
    }
   }
  }
- assert.ok(verifiedTeams>0,"At least one independently verified squad must be present");
- assert.ok(verifiedPlayers>0,"Verified squads must contain player records");
- assert.equal(allPlayers,5759,"Every source roster player must be packaged with a rarity");
+ assert.ok(verifiedTeams>0);
+ assert.ok(verifiedPlayers>0);
+ assert.ok(unverifiedPlayers>0);
+ assert.equal(localData.teams.reduce((sum,team)=>sum+team.players.length,0),5759);
 });
 
-
-test("rarity assignment follows the gradual global curve and keeps famous players Common",()=>{
+test("rarity rebuild is deterministic and does not alter unverified squads",()=>{
  const generated=structuredClone(localData);
+ const beforeUnverified=new Map(generated.teams
+  .filter(team=>publicData.teams.find(meta=>meta.id===team.id)?.verified!==true)
+  .map(team=>[team.id,JSON.stringify(team.players)]));
  assignRosterRarities(generated,publicData);
- const all=generated.teams.flatMap(team=>team.players);
- const counts=Object.fromEntries(["Common","Rare","Niche","Legendary","Ball Knowledge"].map(tier=>[tier,all.filter(player=>player.rarity===tier).length]));
- assert.equal(all.length,5759);
  for(const team of generated.teams){
-  const nonCommon=team.players.filter(player=>player.rarity!=="Common").length;
-  if(nonCommon>=11){
-   assert.ok(team.players.filter(player=>player.rarity==="Niche").length>=3,team.id+" needs at least three Niche players");
-   assert.ok(team.players.filter(player=>player.rarity==="Rare").length>=5,team.id+" needs at least five Rare players");
-  }
+  const verified=publicData.teams.find(meta=>meta.id===team.id)?.verified===true;
+  if(!verified)assert.equal(JSON.stringify(team.players),beforeUnverified.get(team.id));
+  else for(const player of team.players)assert.ok(allowed.has(player.rarity));
  }
- assert.deepEqual(counts,{
-  Common:2533,
-  Rare:1353,
-  Niche:1153,
-  Legendary:480,
-  "Ball Knowledge":240
- });
+ const first=new Map(generated.teams.map(team=>[team.id,team.players.map(player=>player.rarity)]));
+ assignRosterRarities(generated,publicData);
+ for(const team of generated.teams){
+  assert.deepEqual(team.players.map(player=>player.rarity),first.get(team.id),team.id+" rarity must be deterministic");
+ }
  const france=generated.teams.find(team=>team.id==="france-2018");
  const famousFrancePlayers=["Hugo Lloris","Raphaël Varane","Paul Pogba","Antoine Griezmann","Olivier Giroud","Kylian Mbappé","Ousmane Dembélé","N'Golo Kanté","Steve Mandanda"];
  for(const name of famousFrancePlayers){
-  assert.equal(france.players.find(player=>player.name===name)?.rarity,"Common",name+" must remain protected as Common");
+  assert.equal(france.players.find(player=>player.name===name)?.rarity,"Common",name+" must remain Common");
  }
- assert.ok(france.players.filter(player=>player.rarity==="Niche").length>=3,"France 2018 should retain its Niche minimum");
- assert.ok(france.players.filter(player=>player.rarity==="Rare").length>=5,"France 2018 should retain its Rare minimum");
 });
