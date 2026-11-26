@@ -79,6 +79,23 @@ test("curated fame levels distinguish global stars from specialist-level names",
   assert.deepEqual(rosters.teams[0].players.map(player=>player.rarity),["Common","Rare","Niche","Legendary","Legendary","Ball Knowledge"]);
 });
 
+test("iconic international cult players are Legendary, not generic Rare",()=>{
+  const rosters={teams:[{id:"icons",players:[
+    {name:"Tim Cahill"},{name:"Keisuke Honda"},{name:"Ali Daei"},
+    {name:"Asamoah Gyan"},{name:"Papa Bouba Diop"},{name:"Dwight Yorke"}
+  ]}]};
+  assignRosterRarities(rosters,meta([{id:"icons",year:2010,verified:true}]));
+  assert.ok(rosters.teams[0].players.every(player=>player.rarity==="Legendary"));
+});
+
+test("unheralded Algeria 2010 squad members are not mislabeled Legendary",()=>{
+  const rosters={teams:[{id:"algeria",players:[
+    {name:"Joao Ricardo"},{name:"Lama"},{name:"Karim Ziani"}
+  ]}]};
+  assignRosterRarities(rosters,meta([{id:"algeria",year:2010,verified:true}]));
+  assert.ok(rosters.teams[0].players.every(player=>player.rarity==="Niche"));
+});
+
 test("unlisted names use the conservative Niche fallback, not an appearance-count bonus",()=>{
   const rosters={teams:[{id:"one",players:[{name:"Unlisted Squad Player"}]},{id:"two",players:[{name:"Unlisted Squad Player"}]}]};
   assignRosterRarities(rosters,meta([{id:"one",year:2006,verified:true},{id:"two",year:2010,verified:true}]));
