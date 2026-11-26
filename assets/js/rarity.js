@@ -35,7 +35,7 @@ Ronwen Williams|Almoez Ali|Wilson Isidor|Leandro Bacuna|Ellyes Skhiri|Aymen Huss
 
 const LEGENDARY_NAMES = new Set(`
 Lama|Joao Ricardo|Mário|Abdelkader Ghezzal|Rafik Halliche|Karim Ziani|Nadir Belhadj|Hassan Yebda|Djamel Mesbah|Foued Kadir|Adlene Guedioura|Mehdi Mostefa|Carl Medjani|Riyad Boudebouz|Hameur Bouazza|Mourad Meghni|Antar Yahia|Saphir Taider|Madjid Bougherra|Habib Bellaid|Fawzi Chaouchi|Rabah Saadane|Rabah Madjer
-|Roger Milla|Jay Jay Okocha|Nwankwo Kanu|Hidetoshi Nakata|Ali Karimi|Davor Suker|Gheorghe Hagi|Hristo Stoichkov|Henrik Larsson|Tomas Brolin|Oleg Salenko|Ilhan Mansiz|Shunsuke Nakamura|Park Ji Sung|Carlos Valderrama|George Weah|Rabah Madjer|Pavel Nedved|Tomas Rosicky|Hakan Sukur`.split("|").map(normalise));
+|Roger Milla|Jay Jay Okocha|Nwankwo Kanu|Hidetoshi Nakata|Ali Karimi|Davor Suker|Gheorghe Hagi|Hristo Stoichkov|Henrik Larsson|Tomas Brolin|Oleg Salenko|Ilhan Mansiz|Shunsuke Nakamura|Park Ji Sung|Carlos Valderrama|George Weah|Rabah Madjer|Pavel Nedved|Tomas Rosicky|Hakan Sukur|Marek Hamsik`.split("|").map(normalise));
 
 const BALL_KNOWLEDGE_NAMES = new Set(`
 Hugo Sochurek|Alexandr Sojka|Denis Visinsky|Stepan Chaloupek|Achraf Abada|Melvin Mastil|Nadhir Benbouali|Fares Ghedjemis|Yacine Titraoui|Adil Boulbina
@@ -44,7 +44,7 @@ Hugo Sochurek|Alexandr Sojka|Denis Visinsky|Stepan Chaloupek|Achraf Abada|Melvin
 // Resolve intentional demotions so every player has one unambiguous manual tier.
 const DEMOTED_FROM_RARE = new Set(`
 Lama|Joao Ricardo|Mário|Abdelkader Ghezzal|Rafik Halliche|Karim Ziani|Nadir Belhadj|Hassan Yebda|Djamel Mesbah|Foued Kadir|Adlene Guedioura|Mehdi Mostefa|Carl Medjani|Riyad Boudebouz|Hameur Bouazza|Mourad Meghni|Antar Yahia|Saphir Taider|Madjid Bougherra|Habib Bellaid|Fawzi Chaouchi|Rabah Madjer|Hugo Sochurek|Alexandr Sojka|Denis Visinsky|Stepan Chaloupek|Achraf Abada|Melvin Mastil|Nadhir Benbouali|Fares Ghedjemis|Yacine Titraoui|Adil Boulbina
-|Roger Milla|Jay Jay Okocha|Nwankwo Kanu|Hidetoshi Nakata|Ali Karimi|Davor Suker|Gheorghe Hagi|Hristo Stoichkov|Henrik Larsson|Tomas Brolin|Oleg Salenko|Ilhan Mansiz|Shunsuke Nakamura|Park Ji Sung|Carlos Valderrama|George Weah|Rabah Madjer|Pavel Nedved|Tomas Rosicky|Hakan Sukur`.split("|").map(normalise));
+|Roger Milla|Jay Jay Okocha|Nwankwo Kanu|Hidetoshi Nakata|Ali Karimi|Davor Suker|Gheorghe Hagi|Hristo Stoichkov|Henrik Larsson|Tomas Brolin|Oleg Salenko|Ilhan Mansiz|Shunsuke Nakamura|Park Ji Sung|Carlos Valderrama|George Weah|Rabah Madjer|Pavel Nedved|Tomas Rosicky|Hakan Sukur|Marek Hamsik`.split("|").map(normalise));
 for (const name of DEMOTED_FROM_RARE) RARE_NAMES.delete(name);
 const DEMOTED_FROM_NICHE = new Set(`
 Hugo Sochurek|Alexandr Sojka|Denis Visinsky|Stepan Chaloupek|Achraf Abada|Melvin Mastil|Nadhir Benbouali|Fares Ghedjemis|Yacine Titraoui|Adil Boulbina
