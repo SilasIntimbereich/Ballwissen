@@ -1,9 +1,18 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import {assignRosterRarities,rarityFromEvidence} from "../assets/js/rarity.js";
+import {assignRosterRarities,rarityFromEvidence,RARITY_DISTRIBUTION_TARGET} from "../assets/js/rarity.js";
 import {createPlayerRarityResolver} from "../scripts/player-rarity.mjs";
 
 const meta = teams => ({teams});
+
+test("distribution target is descending and sums to 100 without enforcing quotas",()=>{
+  const values=Object.values(RARITY_DISTRIBUTION_TARGET);
+  assert.deepEqual(RARITY_DISTRIBUTION_TARGET,{
+    Common:40,Rare:30,Niche:20,Legendary:7,"Ball Knowledge":3
+  });
+  assert.equal(values.reduce((sum,value)=>sum+value,0),100);
+  assert.ok(values.every((value,index)=>index===0||values[index-1]>value));
+});
 
 test("evidence scale maps recognition directly to the five rarity tiers",()=>{
   assert.equal(rarityFromEvidence({globalRecognition:5}),"Common");
