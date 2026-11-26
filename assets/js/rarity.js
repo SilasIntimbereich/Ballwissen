@@ -2,6 +2,16 @@
 // national-team difficulty and squad quotas must never affect the result.
 export const RARITY_TIERS = ["Common", "Rare", "Niche", "Legendary", "Ball Knowledge"];
 
+// Revised distribution goal for the full verified player pool.
+// These are review guidelines, never quotas: individual recognition evidence wins.
+export const RARITY_DISTRIBUTION_TARGET = Object.freeze({
+  Common: 40,
+  Rare: 30,
+  Niche: 20,
+  Legendary: 7,
+  "Ball Knowledge": 3
+});
+
 const normalise = value => String(value || "")
   .replace(/[æÆ]/g, "ae").replace(/[œŒ]/g, "oe").replace(/[øØ]/g, "o")
   .replace(/[łŁ]/g, "l").replace(/[ßẞ]/g, "ss").replace(/[đĐðÐ]/g, "d")
